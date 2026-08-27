@@ -31,3 +31,411 @@
     order: unset;
   }
 }
+
+/* ---------------------------------------------------------------------------
+   Shared content styling for Beckman columns variants
+   --------------------------------------------------------------------------- */
+
+.columns-productspec,
+.columns-reversed,
+.columns-product,
+.columns-contentform {
+  --col-eyebrow-orange: #ec6608;
+  --col-eyebrow-blue: #0f4bd1;
+  --col-heading: #1a2340;
+  --col-body: #5b6472;
+  --col-cta-bg: #ec6608;
+  --col-cta-hover: #d25a06;
+  --col-check: #0f4bd1;
+}
+
+.columns-productspec h2,
+.columns-reversed h2,
+.columns-product h2,
+.columns-contentform h2,
+.columns-productspec h3,
+.columns-reversed h3,
+.columns-product h3,
+.columns-contentform h3 {
+  margin: 0 0 16px;
+  color: var(--col-heading);
+  font-size: clamp(28px, 3.2vw, 40px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+.columns-productspec p,
+.columns-reversed p,
+.columns-product p,
+.columns-contentform p {
+  color: var(--col-body);
+  font-size: var(--body-font-size-s);
+  line-height: 1.6;
+}
+
+/* eyebrow = first paragraph rendered as small uppercase label */
+.columns-productspec .col-eyebrow,
+.columns-product .col-eyebrow {
+  margin: 0 0 10px;
+  color: var(--col-eyebrow-orange);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.columns-reversed .col-eyebrow,
+.columns-contentform .col-eyebrow {
+  margin: 0 0 10px;
+  color: var(--col-eyebrow-blue);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* check / bullet lists */
+.columns-productspec ul,
+.columns-reversed ul,
+.columns-contentform ul {
+  margin: 20px 0;
+  padding: 0;
+  list-style: none;
+}
+
+.columns-productspec li,
+.columns-reversed li,
+.columns-contentform li {
+  position: relative;
+  margin: 12px 0;
+  padding-left: 30px;
+  color: var(--col-heading);
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 1.4;
+}
+
+.columns-productspec li::before,
+.columns-reversed li::before,
+.columns-contentform li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  top: 0;
+  color: var(--col-check);
+  font-weight: 700;
+}
+
+/* CTA buttons */
+.columns-productspec a.button,
+.columns-product a.button {
+  border-radius: 4px;
+  padding: 0.7em 1.8em;
+  font-weight: 700;
+  border-color: var(--col-cta-bg);
+  background-color: var(--col-cta-bg);
+  color: #fff;
+}
+
+.columns-productspec a.button:hover,
+.columns-product a.button:hover {
+  border-color: var(--col-cta-hover);
+  background-color: var(--col-cta-hover);
+  color: #fff;
+}
+
+/* outlined CTA (reversed block "View Specifications") */
+/* stylelint-disable-next-line no-descending-specificity */
+.columns-reversed a.button {
+  border-radius: 4px;
+  padding: 0.7em 1.8em;
+  font-weight: 600;
+  border-color: #c2c9d4;
+  background-color: transparent;
+  color: var(--col-heading);
+}
+
+.columns-reversed a.button:hover {
+  border-color: var(--col-heading);
+  background-color: #f2f4f7;
+  color: var(--col-heading);
+}
+
+/* stylelint-disable no-descending-specificity */
+.columns-productspec img,
+.columns-reversed img,
+.columns-product img,
+.columns-contentform img {
+  border-radius: 8px;
+}
+/* stylelint-enable no-descending-specificity */
+
+/* ---------------------------------------------------------------------------
+   Variant: columns-productspec (block 6, "DxC 700 AU")
+   A tab bar row on top, then a 2-col text/image row.
+   The tab bar is the FIRST row (single cell holding a list of links).
+   --------------------------------------------------------------------------- */
+
+.columns-productspec > div:first-child {
+  display: block;
+  border-bottom: 1px solid #e2e6ec;
+  margin-bottom: 32px;
+}
+
+.columns-productspec > div:first-child ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.columns-productspec > div:first-child li {
+  margin: 0;
+  padding: 0 0 14px;
+  font-weight: 600;
+  color: var(--col-body);
+}
+
+.columns-productspec > div:first-child li::before {
+  content: none;
+}
+
+.columns-productspec > div:first-child li:nth-child(2) {
+  color: var(--col-eyebrow-blue);
+  border-bottom: 2px solid var(--col-eyebrow-blue);
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: columns-reversed (block 7, "DxH 900") — image left, text right
+   --------------------------------------------------------------------------- */
+
+@media (width >= 900px) {
+  .columns-reversed > div > .columns-img-col {
+    order: 0;
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: columns-product (block 11, "CytoFLEX") — text left, media right
+   with a strip of thumbnails under the main image.
+   --------------------------------------------------------------------------- */
+
+.columns-product .col-thumbs {
+  display: flex;
+  gap: 12px;
+  margin-top: 12px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns-product .col-thumbs img {
+  width: auto;
+  flex: 1;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: columns-contentform (block 12, "Access 2") — content left, a
+   static request-quote form panel on the right.
+   --------------------------------------------------------------------------- */
+
+.columns-contentform {
+  margin: 0;
+  padding: 48px 0;
+  background-color: #eef1f5;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: columns-insights ("Latest Insights") — left intro, right stacked
+   insight entries (eyebrow + heading + body).
+   --------------------------------------------------------------------------- */
+
+.columns-insights {
+  --ins-eyebrow: #0f4bd1;
+  --ins-heading: #1a2340;
+  --ins-body: #5b6472;
+  --ins-cta: #ec6608;
+}
+
+.columns-insights h2 {
+  margin: 0 0 16px;
+  color: var(--ins-heading);
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 700;
+}
+
+.columns-insights > div > div:first-child > p {
+  color: var(--ins-body);
+  font-size: var(--body-font-size-s);
+  line-height: 1.6;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns-insights a.button {
+  border-radius: 0;
+  border: 1px solid var(--ins-cta);
+  background: transparent;
+  color: var(--ins-cta);
+  font-weight: 700;
+}
+
+.columns-insights a.button:hover {
+  background: var(--ins-cta);
+  color: #fff;
+}
+
+/* the right cell holds a list of insight items */
+.columns-insights .insight {
+  padding: 20px 0;
+  border-bottom: 1px solid #e2e6ec;
+}
+
+.columns-insights .insight:first-child {
+  padding-top: 0;
+}
+
+.columns-insights .insight .eyebrow {
+  margin: 0 0 6px;
+  color: var(--ins-eyebrow);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.columns-insights .insight h3 {
+  margin: 0 0 8px;
+  color: var(--ins-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns-insights .insight p {
+  margin: 0;
+  color: var(--ins-body);
+  font-size: var(--body-font-size-xs);
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------------------
+   Static form panels (columns-formrequest block 10 & columns-contentform
+   block 12). These carry hand-authored form markup for a visual layout only
+   (no submission wiring).
+   --------------------------------------------------------------------------- */
+
+.columns-formrequest {
+  margin: 0;
+  padding: 56px 0;
+  background-color: #eef1f5;
+}
+
+.columns-formrequest .form-heading {
+  text-align: center;
+  margin-bottom: 28px;
+}
+
+.columns-formrequest .form-heading h2 {
+  margin: 0 0 8px;
+  color: #1a2340;
+  font-weight: 700;
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.columns-formrequest .form-heading p {
+  margin: 0;
+  color: #5b6472;
+}
+
+.contact-form {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 32px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
+}
+
+.contact-form .form-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+@media (width >= 600px) {
+  .contact-form .form-row.two {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.contact-form label {
+  display: block;
+  margin-bottom: 6px;
+  color: #1a2340;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.contact-form input,
+.contact-form textarea,
+.contact-form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid #c2c9d4;
+  border-radius: 4px;
+  background: #fff;
+  color: #1a2340;
+  font-size: 15px;
+}
+
+.contact-form textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+.contact-form .form-consent {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  margin: 4px 0 20px;
+  color: #5b6472;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.contact-form .form-consent input {
+  width: auto;
+  margin-top: 3px;
+}
+
+.contact-form .form-submit {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 4px;
+  background: #ec6608;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.contact-form .form-submit:hover {
+  background: #d25a06;
+}
+
+/* compact form used inside the columns-contentform right cell */
+.columns-contentform .contact-form {
+  max-width: none;
+  box-shadow: 0 1px 6px rgb(0 0 0 / 10%);
+}
+
+.columns-contentform .contact-form h3 {
+  margin: 0 0 18px;
+  font-size: 22px;
+}
