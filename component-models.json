@@ -214,5 +214,57 @@
         "valueType": "string"
       }
     ]
+  },
+  {
+    "id": "navigation",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "brand",
+        "value": "",
+        "label": "Brand",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "links",
+        "value": "",
+        "label": "Links",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "tools",
+        "value": "",
+        "label": "Tools",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "site-footer",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "brand",
+        "value": "",
+        "label": "Brand",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "columns",
+        "value": "",
+        "label": "Link Columns",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "legal",
+        "value": "",
+        "label": "Legal / Copyright",
+        "valueType": "string"
+      }
+    ]
   }
 ]
