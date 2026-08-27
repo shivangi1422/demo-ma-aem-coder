@@ -115,7 +115,11 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
 export default async function decorate(block) {
   // load nav as fragment
   const navMeta = getMetadata('nav');
-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
+  // default to a "nav" fragment in the current content directory, falling
+  // back to the site-root "/nav" when the page lives at the root
+  const dir = window.location.pathname.replace(/[^/]+$/, '');
+  const defaultPath = dir && dir !== '/' ? `${dir}nav` : '/nav';
+  const navPath = navMeta ? new URL(navMeta, window.location).pathname : defaultPath;
   const fragment = await loadFragment(navPath);
 
   // decorate nav DOM
