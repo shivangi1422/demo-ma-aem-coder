@@ -21,6 +21,17 @@
       "id": "hero",
       "fields": [
         {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Style",
+          "options": [
+            { "name": "Default", "value": "" },
+            { "name": "Diagnostics (image + CTAs)", "value": "hero-diagnostics" },
+            { "name": "Banner (solid blue)", "value": "hero-banner" }
+          ]
+        },
+        {
           "component": "reference",
           "valueType": "string",
           "name": "image",
