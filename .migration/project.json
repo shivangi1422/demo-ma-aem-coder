@@ -1,0 +1,14 @@
+{
+  "sites": {
+    "demo-ma-aem-coder": {
+      "previewOrg": "shivangi1422",
+      "previewSite": "demo-ma-aem-coder",
+      "contentHostUrl": "author-p24152-e1275188.adobeaemcloud.com",
+      "aemSitePath": "/content/demo-ma-aem-coder",
+      "aemAssetsFolderPath": "/content/dam/demo-ma-aem-coder",
+      "aemSiteName": "demo-ma-aem-coder",
+      "aemSiteTitle": "Site Beckman",
+      "baseUrl": "https://www.beckmancoulter.com/"
+    }
+  }
+}

@@ -1,0 +1,2271 @@
+From e66291680f8d0e5c02dab40f47eb64b179e80ad2 Mon Sep 17 00:00:00 2001
+From: Claude Code <noreply@anthropic.com>
+Date: Tue, 1 Sep 2026 11:36:50 +0000
+Subject: [PATCH 3/4] Port Beckman Coulter blocks and styling to figmadesigns
+
+- Add carousel-instruments, navigation, site-footer blocks
+- Apply Beckman variant styling to cards, columns, footer, header, hero
+- Register carousel-instruments, navigation, site-footer as section
+  children in models/_section.json
+- Regenerate aggregated component JSON
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ blocks/cards/_cards.json                      |  18 ++
+ blocks/cards/cards.css                        | 206 +++++++++++++
+ .../_carousel-instruments.json                |  70 +++++
+ .../carousel-instruments.css                  | 172 +++++++++++
+ .../carousel-instruments.js                   | 114 ++++++++
+ blocks/columns/_columns.json                  |  13 +
+ blocks/columns/columns.css                    | 273 ++++++++++++++++++
+ blocks/footer/footer.css                      |  94 +++++-
+ blocks/footer/footer.js                       |   6 +-
+ blocks/header/header.css                      |  54 +++-
+ blocks/header/header.js                       |   6 +-
+ blocks/hero/_hero.json                        |  11 +
+ blocks/hero/hero.css                          | 164 ++++++++++-
+ blocks/navigation/_navigation.json            |  48 +++
+ blocks/navigation/navigation.css              | 212 ++++++++++++++
+ blocks/navigation/navigation.js               |  71 +++++
+ blocks/site-footer/_site-footer.json          |  48 +++
+ blocks/site-footer/site-footer.css            | 101 +++++++
+ blocks/site-footer/site-footer.js             |  45 +++
+ component-definition.json                     |  61 ++++
+ component-filters.json                        |   9 +
+ component-models.json                         | 155 ++++++++++
+ models/_section.json                          |   3 +
+ 23 files changed, 1944 insertions(+), 10 deletions(-)
+ create mode 100644 blocks/carousel-instruments/_carousel-instruments.json
+ create mode 100644 blocks/carousel-instruments/carousel-instruments.css
+ create mode 100644 blocks/carousel-instruments/carousel-instruments.js
+ create mode 100644 blocks/navigation/_navigation.json
+ create mode 100644 blocks/navigation/navigation.css
+ create mode 100644 blocks/navigation/navigation.js
+ create mode 100644 blocks/site-footer/_site-footer.json
+ create mode 100644 blocks/site-footer/site-footer.css
+ create mode 100644 blocks/site-footer/site-footer.js
+
+diff --git a/blocks/cards/_cards.json b/blocks/cards/_cards.json
+index 1b2ca0e..4b5a43c 100644
+--- a/blocks/cards/_cards.json
++++ b/blocks/cards/_cards.json
+@@ -9,6 +9,7 @@
+             "resourceType": "core/franklin/components/block/v1/block",
+             "template": {
+               "name": "Cards",
++              "model": "cards",
+               "filter": "cards"
+             }
+           }
+@@ -32,6 +33,23 @@
+     }
+   ],
+   "models": [
++    {
++      "id": "cards",
++      "fields": [
++        {
++          "component": "select",
++          "name": "classes",
++          "value": "",
++          "label": "Style",
++          "options": [
++            { "name": "Default", "value": "" },
++            { "name": "Solutions", "value": "cards-solutions" },
++            { "name": "Product Lines", "value": "cards-productlines" },
++            { "name": "Insights", "value": "cards-insights" }
++          ]
++        }
++      ]
++    },
+     {
+       "id": "card",
+       "fields": [
+diff --git a/blocks/cards/cards.css b/blocks/cards/cards.css
+index 74ea4fe..1d79644 100644
+--- a/blocks/cards/cards.css
++++ b/blocks/cards/cards.css
+@@ -25,3 +25,209 @@
+   aspect-ratio: 4 / 3;
+   object-fit: cover;
+ }
++
++/* ---------------------------------------------------------------------------
++   Variant: cards-solutions ("Our Solutions")
++   3-up cards: image on top, small blue uppercase eyebrow, bold dark heading,
++   gray body copy, orange "Learn More" link at the bottom.
++   --------------------------------------------------------------------------- */
++
++.cards-solutions {
++  --cards-sol-eyebrow: #0f4bd1;
++  --cards-sol-heading: #1a2340;
++  --cards-sol-body: #5b6472;
++  --cards-sol-link: #ec6608;
++  --cards-sol-card-bg: #f7f8fa;
++}
++
++.cards-solutions > ul {
++  grid-template-columns: 1fr;
++  gap: 28px;
++}
++
++@media (width >= 900px) {
++  .cards-solutions > ul {
++    grid-template-columns: repeat(3, 1fr);
++  }
++}
++
++.cards-solutions > ul > li {
++  display: flex;
++  flex-direction: column;
++  border: none;
++  border-radius: 8px;
++  overflow: hidden;
++  background-color: var(--cards-sol-card-bg);
++  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
++}
++
++.cards-solutions .cards-card-image img {
++  aspect-ratio: 3 / 2;
++}
++
++.cards-solutions .cards-card-body {
++  display: flex;
++  flex-direction: column;
++  flex: 1;
++  margin: 24px;
++}
++
++.cards-solutions .cards-card-body p {
++  margin: 0;
++  color: var(--cards-sol-body);
++  font-size: var(--body-font-size-s);
++  line-height: 1.5;
++}
++
++.cards-solutions .cards-card-body h3,
++.cards-solutions .cards-card-body h4 {
++  margin: 0 0 12px;
++  color: var(--cards-sol-heading);
++  font-size: 24px;
++  font-weight: 700;
++  line-height: 1.2;
++}
++
++.cards-solutions .cards-card-body p.button-wrapper {
++  margin-top: auto;
++  padding-top: 16px;
++}
++
++.cards-solutions .cards-card-body a,
++.cards-solutions .cards-card-body a.button {
++  padding: 0;
++  border: none;
++  border-radius: 0;
++  background: none;
++  color: var(--cards-sol-link);
++  font-size: var(--body-font-size-s);
++  font-weight: 700;
++}
++
++.cards-solutions .cards-card-body a:hover {
++  color: var(--cards-sol-link);
++  text-decoration: underline;
++}
++
++/* ---------------------------------------------------------------------------
++   Variant: cards-productlines ("Explore Our Product Lines")
++   3-up cards with image, bold heading, gray body. No eyebrow, white cards.
++   --------------------------------------------------------------------------- */
++
++.cards-productlines {
++  --cards-pl-heading: #1a2340;
++  --cards-pl-body: #5b6472;
++}
++
++.cards-productlines > ul {
++  grid-template-columns: 1fr;
++  gap: 28px;
++}
++
++@media (width >= 900px) {
++  .cards-productlines > ul {
++    grid-template-columns: repeat(3, 1fr);
++  }
++}
++
++.cards-productlines > ul > li {
++  display: flex;
++  flex-direction: column;
++  border: none;
++  border-radius: 8px;
++  overflow: hidden;
++  background-color: var(--background-color);
++  box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
++}
++
++.cards-productlines .cards-card-image img {
++  aspect-ratio: 16 / 10;
++}
++
++.cards-productlines .cards-card-body {
++  margin: 24px;
++}
++
++.cards-productlines .cards-card-body h3,
++.cards-productlines .cards-card-body h4 {
++  margin: 0 0 12px;
++  color: var(--cards-pl-heading);
++  font-size: 22px;
++  font-weight: 700;
++}
++
++.cards-productlines .cards-card-body p {
++  margin: 0;
++  color: var(--cards-pl-body);
++  font-size: var(--body-font-size-s);
++  line-height: 1.5;
++}
++
++/* ---------------------------------------------------------------------------
++   Variant: cards-insights ("Latest Insights")
++   Text-only cards (no image): small blue eyebrow (WHITE PAPER etc.), bold
++   heading, gray body. Rendered as a 2-up list on a light panel.
++   --------------------------------------------------------------------------- */
++
++.cards-insights {
++  --cards-ins-eyebrow: #0f4bd1;
++  --cards-ins-heading: #1a2340;
++  --cards-ins-body: #5b6472;
++}
++
++.cards-insights > ul {
++  grid-template-columns: 1fr;
++  gap: 20px;
++}
++
++@media (width >= 900px) {
++  .cards-insights > ul {
++    grid-template-columns: repeat(2, 1fr);
++  }
++}
++
++.cards-insights > ul > li {
++  border: 1px solid #e2e6ec;
++  border-radius: 6px;
++  background-color: var(--background-color);
++}
++
++.cards-insights .cards-card-body {
++  margin: 24px;
++}
++
++.cards-insights .cards-card-body h3,
++.cards-insights .cards-card-body h4 {
++  margin: 0 0 10px;
++  color: var(--cards-ins-heading);
++  font-size: 20px;
++  font-weight: 700;
++  line-height: 1.25;
++}
++
++.cards-insights .cards-card-body p {
++  margin: 0;
++  color: var(--cards-ins-body);
++  font-size: var(--body-font-size-s);
++  line-height: 1.5;
++}
++
++/* Eyebrow labels (first line of card body) — kept last so the generic `p`
++   rules above are not overridden out of specificity order. */
++.cards-solutions .cards-card-body p:first-child {
++  margin: 0 0 8px;
++  color: var(--cards-sol-eyebrow);
++  font-size: 13px;
++  font-weight: 700;
++  letter-spacing: 0.06em;
++  text-transform: uppercase;
++}
++
++.cards-insights .cards-card-body p:first-child {
++  margin: 0 0 8px;
++  color: var(--cards-ins-eyebrow);
++  font-size: 12px;
++  font-weight: 700;
++  letter-spacing: 0.06em;
++  text-transform: uppercase;
++}
+diff --git a/blocks/carousel-instruments/_carousel-instruments.json b/blocks/carousel-instruments/_carousel-instruments.json
+new file mode 100644
+index 0000000..1914730
+--- /dev/null
++++ b/blocks/carousel-instruments/_carousel-instruments.json
+@@ -0,0 +1,70 @@
++{
++  "definitions": [
++    {
++      "title": "Carousel Instruments",
++      "id": "carousel-instruments",
++      "plugins": {
++        "xwalk": {
++          "page": {
++            "resourceType": "core/franklin/components/block/v1/block",
++            "template": {
++              "name": "Carousel Instruments",
++              "filter": "carousel-instruments"
++            }
++          }
++        }
++      }
++    },
++    {
++      "title": "Carousel Instruments Slide",
++      "id": "carousel-instruments-slide",
++      "plugins": {
++        "xwalk": {
++          "page": {
++            "resourceType": "core/franklin/components/block/v1/block/item",
++            "template": {
++              "name": "Slide",
++              "model": "carousel-instruments-slide"
++            }
++          }
++        }
++      }
++    }
++  ],
++  "models": [
++    {
++      "id": "carousel-instruments-slide",
++      "fields": [
++        {
++          "component": "reference",
++          "valueType": "string",
++          "name": "image",
++          "label": "Image",
++          "multi": false
++        },
++        {
++          "component": "text",
++          "valueType": "string",
++          "name": "imageAlt",
++          "label": "Alt",
++          "value": ""
++        },
++        {
++          "component": "richtext",
++          "name": "text",
++          "value": "",
++          "label": "Text",
++          "valueType": "string"
++        }
++      ]
++    }
++  ],
++  "filters": [
++    {
++      "id": "carousel-instruments",
++      "components": [
++        "carousel-instruments-slide"
++      ]
++    }
++  ]
++}
+diff --git a/blocks/carousel-instruments/carousel-instruments.css b/blocks/carousel-instruments/carousel-instruments.css
+new file mode 100644
+index 0000000..2af2e2b
+--- /dev/null
++++ b/blocks/carousel-instruments/carousel-instruments.css
+@@ -0,0 +1,172 @@
++/* Featured Instruments carousel — dark navy section with an active slide and
++   a thumbnail/tab row for navigation. */
++
++.carousel-instruments {
++  --ci-bg: #0a1b3d;
++  --ci-panel-text: #fff;
++  --ci-eyebrow: #ec6608;
++  --ci-body: #c7d3e8;
++  --ci-tab-bg: rgb(255 255 255 / 6%);
++  --ci-tab-active-bg: #0f4bd1;
++  --ci-tab-active-border: #ec6608;
++  --ci-tab-cat: #9fb0cd;
++  --ci-arrow: #fff;
++}
++
++.carousel-instruments-container {
++  background-color: #0a1b3d;
++  padding: 48px 0;
++}
++
++/* the section heading ("Featured Instruments") is default content that lives
++   on the dark carousel background — keep it white. */
++.carousel-instruments-container > div > h1,
++.carousel-instruments-container > div > h2,
++.carousel-instruments-container > div > h3 {
++  color: #fff;
++}
++
++.carousel-instruments-track {
++  color: var(--ci-panel-text);
++}
++
++/* slides */
++.carousel-instruments-slides {
++  position: relative;
++}
++
++.carousel-instruments-slide {
++  display: none;
++  position: relative;
++  border-radius: 8px;
++  overflow: hidden;
++  min-height: 420px;
++}
++
++.carousel-instruments-slide.is-active {
++  display: block;
++}
++
++.carousel-instruments-media,
++.carousel-instruments-media picture,
++.carousel-instruments-media img {
++  position: absolute;
++  inset: 0;
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++}
++
++.carousel-instruments-slide::after {
++  content: '';
++  position: absolute;
++  inset: 0;
++  background: linear-gradient(90deg, rgb(10 27 61 / 88%) 0%, rgb(10 27 61 / 35%) 55%, rgb(10 27 61 / 10%) 100%);
++}
++
++.carousel-instruments-panel {
++  position: relative;
++  z-index: 1;
++  max-width: 500px;
++  margin: 0;
++  padding: 48px 40px;
++}
++
++.carousel-instruments-panel p {
++  margin: 0;
++  color: var(--ci-body);
++  font-size: var(--body-font-size-s);
++  line-height: 1.55;
++}
++
++/* stylelint-disable no-descending-specificity */
++.carousel-instruments-panel h2,
++.carousel-instruments-panel h3 {
++  margin: 0 0 16px;
++  color: var(--ci-panel-text);
++  font-size: clamp(28px, 3vw, 38px);
++  font-weight: 700;
++  line-height: 1.15;
++}
++/* stylelint-enable no-descending-specificity */
++
++/* eyebrow = first line of the panel */
++.carousel-instruments-panel p:first-child {
++  margin: 0 0 12px;
++  color: var(--ci-eyebrow);
++  font-size: 13px;
++  font-weight: 700;
++  letter-spacing: 0.08em;
++  text-transform: uppercase;
++}
++
++/* nav row: arrows + thumbnail tabs */
++.carousel-instruments-nav {
++  display: flex;
++  align-items: stretch;
++  gap: 16px;
++  margin-top: 28px;
++}
++
++.carousel-instruments-tabs {
++  display: grid;
++  grid-template-columns: 1fr;
++  gap: 16px;
++  flex: 1;
++}
++
++@media (width >= 900px) {
++  .carousel-instruments-tabs {
++    grid-template-columns: repeat(4, 1fr);
++  }
++}
++
++.carousel-instruments-tab {
++  display: flex;
++  flex-direction: column;
++  gap: 4px;
++  padding: 16px 20px;
++  border: 1px solid transparent;
++  border-radius: 6px;
++  background-color: var(--ci-tab-bg);
++  color: var(--ci-panel-text);
++  text-align: left;
++  cursor: pointer;
++}
++
++.carousel-instruments-tab.is-active {
++  background-color: var(--ci-tab-active-bg);
++  border-color: var(--ci-tab-active-border);
++}
++
++.carousel-instruments-tab-cat {
++  color: var(--ci-tab-cat);
++  font-size: 13px;
++}
++
++.carousel-instruments-tab.is-active .carousel-instruments-tab-cat {
++  color: #dbe6fb;
++}
++
++.carousel-instruments-tab-label {
++  font-size: var(--body-font-size-s);
++  font-weight: 700;
++}
++
++.carousel-instruments-arrow {
++  flex: 0 0 auto;
++  align-self: center;
++  width: 44px;
++  height: 44px;
++  border: 1px solid rgb(255 255 255 / 40%);
++  border-radius: 50%;
++  background: transparent;
++  color: var(--ci-arrow);
++  font-size: 24px;
++  line-height: 1;
++  cursor: pointer;
++}
++
++.carousel-instruments-arrow:hover {
++  background-color: rgb(255 255 255 / 12%);
++}
+diff --git a/blocks/carousel-instruments/carousel-instruments.js b/blocks/carousel-instruments/carousel-instruments.js
+new file mode 100644
+index 0000000..8b44b6e
+--- /dev/null
++++ b/blocks/carousel-instruments/carousel-instruments.js
+@@ -0,0 +1,114 @@
++import { createOptimizedPicture } from '../../scripts/aem.js';
++import { moveInstrumentation } from '../../scripts/scripts.js';
++
++/**
++ * Featured Instruments carousel.
++ * Expected initial structure (one row per slide, 2 cells: image | text):
++ *   <div class="carousel-instruments">
++ *     <div><div><picture>…</picture></div><div><h.../><p.../></div></div>
++ *     …
++ *   </div>
++ * Renders a single active slide with an overlay text panel, plus a thumbnail
++ * row of category/label tabs and prev/next arrows for navigation.
++ */
++export default function decorate(block) {
++  // Capture the tab label/category BEFORE content is moved out of the text
++  // cell: the eyebrow (first <p>) is the category, first heading is the label.
++  const slides = [...block.children].map((row, index) => {
++    const [imageCell, textCell] = row.children;
++    const category = textCell?.querySelector('p')?.textContent?.trim() || '';
++    const label = textCell?.querySelector('h1,h2,h3,h4,h5,h6')?.textContent?.trim() || `Slide ${index + 1}`;
++    return {
++      index,
++      imageCell,
++      textCell,
++      category,
++      label,
++    };
++  });
++
++  const container = document.createElement('div');
++  container.className = 'carousel-instruments-track';
++
++  const slidesWrap = document.createElement('div');
++  slidesWrap.className = 'carousel-instruments-slides';
++
++  slides.forEach((slide) => {
++    const li = document.createElement('div');
++    li.className = 'carousel-instruments-slide';
++    moveInstrumentation(slide.imageCell?.closest('div') || slide.imageCell, li);
++
++    const media = document.createElement('div');
++    media.className = 'carousel-instruments-media';
++    if (slide.imageCell) {
++      while (slide.imageCell.firstChild) media.append(slide.imageCell.firstChild);
++    }
++
++    const panel = document.createElement('div');
++    panel.className = 'carousel-instruments-panel';
++    if (slide.textCell) {
++      while (slide.textCell.firstChild) panel.append(slide.textCell.firstChild);
++    }
++
++    li.append(media, panel);
++    slidesWrap.append(li);
++  });
++
++  // optimize images
++  slidesWrap.querySelectorAll('picture > img').forEach((img) => {
++    const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '2000' }]);
++    moveInstrumentation(img, optimized.querySelector('img'));
++    img.closest('picture').replaceWith(optimized);
++  });
++
++  // thumbnail / tab row
++  const nav = document.createElement('div');
++  nav.className = 'carousel-instruments-nav';
++
++  const prev = document.createElement('button');
++  prev.type = 'button';
++  prev.className = 'carousel-instruments-arrow carousel-instruments-prev';
++  prev.setAttribute('aria-label', 'Previous slide');
++  prev.textContent = '‹';
++
++  const next = document.createElement('button');
++  next.type = 'button';
++  next.className = 'carousel-instruments-arrow carousel-instruments-next';
++  next.setAttribute('aria-label', 'Next slide');
++  next.textContent = '›';
++
++  const tabs = document.createElement('div');
++  tabs.className = 'carousel-instruments-tabs';
++
++  slides.forEach((slide) => {
++    const { category, label } = slide;
++    const tab = document.createElement('button');
++    tab.type = 'button';
++    tab.className = 'carousel-instruments-tab';
++    tab.dataset.index = String(slide.index);
++    tab.innerHTML = `<span class="carousel-instruments-tab-cat">${category}</span><span class="carousel-instruments-tab-label">${label}</span>`;
++    tabs.append(tab);
++  });
++
++  nav.append(prev, tabs, next);
++  container.append(slidesWrap, nav);
++  block.replaceChildren(container);
++
++  let active = 0;
++  const slideEls = [...slidesWrap.children];
++  const tabEls = [...tabs.children];
++
++  const setActive = (i) => {
++    active = (i + slideEls.length) % slideEls.length;
++    slideEls.forEach((el, idx) => el.classList.toggle('is-active', idx === active));
++    tabEls.forEach((el, idx) => el.classList.toggle('is-active', idx === active));
++  };
++
++  prev.addEventListener('click', () => setActive(active - 1));
++  next.addEventListener('click', () => setActive(active + 1));
++  tabEls.forEach((tab) => {
++    tab.addEventListener('click', () => setActive(Number(tab.dataset.index)));
++  });
++
++  setActive(0);
++}
+diff --git a/blocks/columns/_columns.json b/blocks/columns/_columns.json
+index 6f08e8a..d88e7a5 100644
+--- a/blocks/columns/_columns.json
++++ b/blocks/columns/_columns.json
+@@ -20,6 +20,19 @@
+     {
+       "id": "columns",
+       "fields": [
++        {
++          "component": "select",
++          "name": "classes",
++          "value": "",
++          "label": "Style",
++          "options": [
++            { "name": "Default", "value": "" },
++            { "name": "Product Spec (tabs)", "value": "columns-productspec" },
++            { "name": "Reversed (image left)", "value": "columns-reversed" },
++            { "name": "Product (media + thumbs)", "value": "columns-product" },
++            { "name": "Insights", "value": "columns-insights" }
++          ]
++        },
+         {
+           "component": "text",
+           "valueType": "number",
+diff --git a/blocks/columns/columns.css b/blocks/columns/columns.css
+index f2b203e..f2e73c2 100644
+--- a/blocks/columns/columns.css
++++ b/blocks/columns/columns.css
+@@ -31,3 +31,276 @@
+     order: unset;
+   }
+ }
++
++/* ---------------------------------------------------------------------------
++   Shared content styling for Beckman columns variants
++   --------------------------------------------------------------------------- */
++
++.columns-productspec,
++.columns-reversed,
++.columns-product {
++  --col-eyebrow-orange: #ec6608;
++  --col-eyebrow-blue: #0f4bd1;
++  --col-heading: #1a2340;
++  --col-body: #5b6472;
++  --col-cta-bg: #ec6608;
++  --col-cta-hover: #d25a06;
++  --col-check: #0f4bd1;
++}
++
++.columns-productspec h2,
++.columns-reversed h2,
++.columns-product h2,
++.columns-productspec h3,
++.columns-reversed h3,
++.columns-product h3 {
++  margin: 0 0 16px;
++  color: var(--col-heading);
++  font-size: clamp(28px, 3.2vw, 40px);
++  font-weight: 700;
++  line-height: 1.15;
++}
++
++.columns-productspec p,
++.columns-reversed p,
++.columns-product p {
++  color: var(--col-body);
++  font-size: var(--body-font-size-s);
++  line-height: 1.6;
++}
++
++/* eyebrow = first paragraph rendered as small uppercase label */
++.columns-productspec .col-eyebrow,
++.columns-product .col-eyebrow {
++  margin: 0 0 10px;
++  color: var(--col-eyebrow-orange);
++  font-size: 13px;
++  font-weight: 700;
++  letter-spacing: 0.08em;
++  text-transform: uppercase;
++}
++
++.columns-reversed .col-eyebrow {
++  margin: 0 0 10px;
++  color: var(--col-eyebrow-blue);
++  font-size: 13px;
++  font-weight: 700;
++  letter-spacing: 0.08em;
++  text-transform: uppercase;
++}
++
++/* check / bullet lists */
++.columns-productspec ul,
++.columns-reversed ul {
++  margin: 20px 0;
++  padding: 0;
++  list-style: none;
++}
++
++.columns-productspec li,
++.columns-reversed li {
++  position: relative;
++  margin: 12px 0;
++  padding-left: 30px;
++  color: var(--col-heading);
++  font-size: var(--body-font-size-s);
++  font-weight: 600;
++  line-height: 1.4;
++}
++
++.columns-productspec li::before,
++.columns-reversed li::before {
++  content: '✓';
++  position: absolute;
++  left: 0;
++  top: 0;
++  color: var(--col-check);
++  font-weight: 700;
++}
++
++/* CTA buttons */
++.columns-productspec a.button,
++.columns-product a.button {
++  border-radius: 4px;
++  padding: 0.7em 1.8em;
++  font-weight: 700;
++  border-color: var(--col-cta-bg);
++  background-color: var(--col-cta-bg);
++  color: #fff;
++}
++
++.columns-productspec a.button:hover,
++.columns-product a.button:hover {
++  border-color: var(--col-cta-hover);
++  background-color: var(--col-cta-hover);
++  color: #fff;
++}
++
++/* outlined CTA (reversed block "View Specifications") */
++/* stylelint-disable-next-line no-descending-specificity */
++.columns-reversed a.button {
++  border-radius: 4px;
++  padding: 0.7em 1.8em;
++  font-weight: 600;
++  border-color: #c2c9d4;
++  background-color: transparent;
++  color: var(--col-heading);
++}
++
++.columns-reversed a.button:hover {
++  border-color: var(--col-heading);
++  background-color: #f2f4f7;
++  color: var(--col-heading);
++}
++
++/* stylelint-disable no-descending-specificity */
++.columns-productspec img,
++.columns-reversed img,
++.columns-product img {
++  border-radius: 8px;
++}
++/* stylelint-enable no-descending-specificity */
++
++/* ---------------------------------------------------------------------------
++   Variant: columns-productspec (block 6, "DxC 700 AU")
++   A tab bar row on top, then a 2-col text/image row.
++   The tab bar is the FIRST row (single cell holding a list of links).
++   --------------------------------------------------------------------------- */
++
++.columns-productspec > div:first-child {
++  display: block;
++  border-bottom: 1px solid #e2e6ec;
++  margin-bottom: 32px;
++}
++
++.columns-productspec > div:first-child ul {
++  display: flex;
++  flex-wrap: wrap;
++  gap: 28px;
++  margin: 0;
++  padding: 0;
++  list-style: none;
++}
++
++.columns-productspec > div:first-child li {
++  margin: 0;
++  padding: 0 0 14px;
++  font-weight: 600;
++  color: var(--col-body);
++}
++
++.columns-productspec > div:first-child li::before {
++  content: none;
++}
++
++.columns-productspec > div:first-child li:nth-child(2) {
++  color: var(--col-eyebrow-blue);
++  border-bottom: 2px solid var(--col-eyebrow-blue);
++}
++
++/* ---------------------------------------------------------------------------
++   Variant: columns-reversed (block 7, "DxH 900") — image left, text right
++   --------------------------------------------------------------------------- */
++
++@media (width >= 900px) {
++  .columns-reversed > div > .columns-img-col {
++    order: 0;
++  }
++}
++
++/* ---------------------------------------------------------------------------
++   Variant: columns-product (block 11, "CytoFLEX") — text left, media right
++   with a strip of thumbnails under the main image.
++   --------------------------------------------------------------------------- */
++
++.columns-product .col-thumbs {
++  display: flex;
++  gap: 12px;
++  margin-top: 12px;
++}
++
++/* stylelint-disable-next-line no-descending-specificity */
++.columns-product .col-thumbs img {
++  width: auto;
++  flex: 1;
++  aspect-ratio: 4 / 3;
++  object-fit: cover;
++}
++
++/* ---------------------------------------------------------------------------
++   Variant: columns-insights ("Latest Insights") — left intro, right stacked
++   insight entries (eyebrow + heading + body).
++   --------------------------------------------------------------------------- */
++
++.columns-insights {
++  --ins-eyebrow: #0f4bd1;
++  --ins-heading: #1a2340;
++  --ins-body: #5b6472;
++  --ins-cta: #ec6608;
++}
++
++.columns-insights h2 {
++  margin: 0 0 16px;
++  color: var(--ins-heading);
++  font-size: clamp(28px, 3vw, 36px);
++  font-weight: 700;
++}
++
++.columns-insights > div > div:first-child > p {
++  color: var(--ins-body);
++  font-size: var(--body-font-size-s);
++  line-height: 1.6;
++}
++
++/* stylelint-disable-next-line no-descending-specificity */
++.columns-insights a.button {
++  border-radius: 0;
++  border: 1px solid var(--ins-cta);
++  background: transparent;
++  color: var(--ins-cta);
++  font-weight: 700;
++}
++
++.columns-insights a.button:hover {
++  background: var(--ins-cta);
++  color: #fff;
++}
++
++/* the right cell holds a list of insight items */
++.columns-insights .insight {
++  padding: 20px 0;
++  border-bottom: 1px solid #e2e6ec;
++}
++
++.columns-insights .insight:first-child {
++  padding-top: 0;
++}
++
++.columns-insights .insight .eyebrow {
++  margin: 0 0 6px;
++  color: var(--ins-eyebrow);
++  font-size: 12px;
++  font-weight: 700;
++  letter-spacing: 0.06em;
++  text-transform: uppercase;
++}
++
++.columns-insights .insight h3 {
++  margin: 0 0 8px;
++  color: var(--ins-heading);
++  font-size: 20px;
++  font-weight: 700;
++  line-height: 1.25;
++}
++
++/* stylelint-disable-next-line no-descending-specificity */
++.columns-insights .insight p {
++  margin: 0;
++  color: var(--ins-body);
++  font-size: var(--body-font-size-xs);
++  line-height: 1.5;
++}
++
++/* Static form panels removed — the two forms are now real Adaptive Form
++   blocks (see the form-request / content-form section styles in
++   styles/lazy-styles.css). */
+diff --git a/blocks/footer/footer.css b/blocks/footer/footer.css
+index d8617de..00818f8 100644
+--- a/blocks/footer/footer.css
++++ b/blocks/footer/footer.css
+@@ -1,12 +1,13 @@
+ footer {
+-  background-color: var(--light-color);
++  background-color: #0a1b3d;
++  color: #c7d3e8;
+   font-size: var(--body-font-size-xs);
+ }
+ 
+-footer .footer > div {
+-  margin: auto;
++footer .footer {
+   max-width: 1200px;
+-  padding: 40px 24px 24px;
++  margin: auto;
++  padding: 48px 24px 24px;
+ }
+ 
+ footer .footer p {
+@@ -14,7 +15,88 @@ footer .footer p {
+ }
+ 
+ @media (width >= 900px) {
+-  footer .footer > div {
+-    padding: 40px 32px 24px;
++  footer .footer {
++    padding: 56px 32px 24px;
+   }
+ }
++
++footer .footer a:any-link {
++  color: #9fb0cd;
++  text-decoration: none;
++}
++
++footer .footer a:hover {
++  color: #fff;
++}
++
++footer .footer .section {
++  margin: 0;
++}
++
++/* brand block — first section: wordmark + description */
++footer .footer .section:first-child p:first-child strong {
++  color: #fff;
++  font-size: 20px;
++  font-weight: 700;
++  letter-spacing: 0.02em;
++}
++
++footer .footer .section:first-child p:last-child {
++  max-width: 420px;
++  margin-top: 10px;
++  color: #9fb0cd;
++  line-height: 1.5;
++}
++
++/* link columns — middle section holds the six column divs */
++footer .footer .section:nth-child(2) {
++  margin: 36px 0;
++  padding: 36px 0;
++  border-top: 1px solid rgb(255 255 255 / 12%);
++  border-bottom: 1px solid rgb(255 255 255 / 12%);
++}
++
++footer .footer .section:nth-child(2) .default-content-wrapper {
++  display: grid;
++  grid-template-columns: repeat(2, 1fr);
++  gap: 28px 24px;
++}
++
++@media (width >= 600px) {
++  footer .footer .section:nth-child(2) .default-content-wrapper {
++    grid-template-columns: repeat(3, 1fr);
++  }
++}
++
++@media (width >= 900px) {
++  footer .footer .section:nth-child(2) .default-content-wrapper {
++    grid-template-columns: repeat(6, 1fr);
++  }
++}
++
++/* stylelint-disable-next-line no-descending-specificity */
++footer .footer .section:nth-child(2) p strong {
++  display: block;
++  margin-bottom: 12px;
++  color: #fff;
++  font-size: 13px;
++  font-weight: 700;
++  letter-spacing: 0.06em;
++  text-transform: uppercase;
++}
++
++footer .footer .section:nth-child(2) ul {
++  list-style: none;
++  margin: 0;
++  padding: 0;
++}
++
++footer .footer .section:nth-child(2) li {
++  margin: 8px 0;
++}
++
++/* legal / copyright — last section */
++footer .footer .section:last-child {
++  margin-top: 28px;
++  color: #7f8fad;
++}
+diff --git a/blocks/footer/footer.js b/blocks/footer/footer.js
+index ff5708a..bc46889 100644
+--- a/blocks/footer/footer.js
++++ b/blocks/footer/footer.js
+@@ -8,7 +8,11 @@ import { loadFragment } from '../fragment/fragment.js';
+ export default async function decorate(block) {
+   // load footer as fragment
+   const footerMeta = getMetadata('footer');
+-  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : '/footer';
++  // default to a "footer" fragment in the current content directory, falling
++  // back to the site-root "/footer" when the page lives at the root
++  const dir = window.location.pathname.replace(/[^/]+$/, '');
++  const defaultPath = dir && dir !== '/' ? `${dir}footer` : '/footer';
++  const footerPath = footerMeta ? new URL(footerMeta, window.location).pathname : defaultPath;
+   const fragment = await loadFragment(footerPath);
+ 
+   // decorate footer DOM
+diff --git a/blocks/header/header.css b/blocks/header/header.css
+index 19d07bc..b4a6eab 100644
+--- a/blocks/header/header.css
++++ b/blocks/header/header.css
+@@ -4,6 +4,7 @@ header .nav-wrapper {
+   width: 100%;
+   z-index: 2;
+   position: fixed;
++  border-bottom: 1px solid #e2e6ec;
+ }
+ 
+ header nav {
+@@ -266,7 +267,58 @@ header nav .nav-sections ul > li > ul > li {
+   }
+ }
+ 
+-/* tools */
++/* tools: search icon + Contact Us button on one row */
+ header nav .nav-tools {
+   grid-area: tools;
++  display: flex;
++  align-items: center;
++  gap: 16px;
++}
++
++/* ---------------------------------------------------------------------------
++   Beckman Coulter header styling
++   Bold navy brand wordmark, dark nav links, search icon + orange Contact Us.
++   --------------------------------------------------------------------------- */
++
++header nav .nav-brand a:any-link {
++  color: #1a2340;
++  font-weight: 700;
++  letter-spacing: 0.02em;
++  text-decoration: none;
++}
++
++header nav .nav-sections a:any-link,
++header nav .nav-sections .default-content-wrapper > ul > li {
++  color: #3a4150;
++}
++
++header nav .nav-sections a:hover {
++  color: #0f4bd1;
++  text-decoration: none;
++}
++
++header nav .nav-tools p {
++  display: flex;
++  align-items: center;
++}
++
++header nav .nav-tools .icon-search {
++  width: 20px;
++  height: 20px;
++  color: #3a4150;
++}
++
++header nav .nav-tools a.button {
++  border-radius: 4px;
++  padding: 0.55em 1.4em;
++  font-weight: 700;
++  border-color: #ec6608;
++  background-color: #ec6608;
++  color: #fff;
++}
++
++header nav .nav-tools a.button:hover {
++  border-color: #d25a06;
++  background-color: #d25a06;
++  color: #fff;
+ }
+diff --git a/blocks/header/header.js b/blocks/header/header.js
+index c7d6ea2..52bcdf1 100644
+--- a/blocks/header/header.js
++++ b/blocks/header/header.js
+@@ -115,7 +115,11 @@ function toggleMenu(nav, navSections, forceExpanded = null) {
+ export default async function decorate(block) {
+   // load nav as fragment
+   const navMeta = getMetadata('nav');
+-  const navPath = navMeta ? new URL(navMeta, window.location).pathname : '/nav';
++  // default to a "nav" fragment in the current content directory, falling
++  // back to the site-root "/nav" when the page lives at the root
++  const dir = window.location.pathname.replace(/[^/]+$/, '');
++  const defaultPath = dir && dir !== '/' ? `${dir}nav` : '/nav';
++  const navPath = navMeta ? new URL(navMeta, window.location).pathname : defaultPath;
+   const fragment = await loadFragment(navPath);
+ 
+   // decorate nav DOM
+diff --git a/blocks/hero/_hero.json b/blocks/hero/_hero.json
+index 0e64ea4..0b82435 100644
+--- a/blocks/hero/_hero.json
++++ b/blocks/hero/_hero.json
+@@ -20,6 +20,17 @@
+     {
+       "id": "hero",
+       "fields": [
++        {
++          "component": "select",
++          "name": "classes",
++          "value": "",
++          "label": "Style",
++          "options": [
++            { "name": "Default", "value": "" },
++            { "name": "Diagnostics (image + CTAs)", "value": "hero-diagnostics" },
++            { "name": "Banner (solid blue)", "value": "hero-banner" }
++          ]
++        },
+         {
+           "component": "reference",
+           "valueType": "string",
+diff --git a/blocks/hero/hero.css b/blocks/hero/hero.css
+index 974eaf2..75eaa48 100644
+--- a/blocks/hero/hero.css
++++ b/blocks/hero/hero.css
+@@ -34,4 +34,166 @@
+   .hero {
+     padding: 40px 32px;
+   }
+-}
+\ No newline at end of file
++}
++
++/* ---------------------------------------------------------------------------
++   Variant: hero-diagnostics
++   Full-bleed lab background photo with a blue overlay, centered white
++   headline + subtitle, and two CTAs (orange primary + outlined secondary).
++   --------------------------------------------------------------------------- */
++
++.hero-diagnostics {
++  --hero-diag-overlay: rgb(30 74 148 / 82%);
++  --hero-diag-text: #fff;
++  --hero-diag-primary-bg: #ec6608;
++  --hero-diag-primary-hover: #d25a06;
++  --hero-diag-min-height: 600px;
++
++  position: relative;
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  justify-content: center;
++  text-align: center;
++  min-height: var(--hero-diag-min-height);
++  padding: 64px 24px;
++  overflow: hidden;
++}
++
++/* blue overlay sits above the background picture, below the content */
++.hero-diagnostics::before {
++  content: '';
++  position: absolute;
++  inset: 0;
++  z-index: -1;
++  background-color: var(--hero-diag-overlay);
++}
++
++.hero-diagnostics picture,
++.hero-diagnostics img {
++  position: absolute;
++  inset: 0;
++  z-index: -2;
++  width: 100%;
++  height: 100%;
++  object-fit: cover;
++}
++
++.hero-diagnostics h1,
++.hero-diagnostics h2 {
++  max-width: 900px;
++  margin: 0 auto 20px;
++  color: var(--hero-diag-text);
++  font-size: clamp(38px, 5vw, 64px);
++  font-weight: 700;
++  line-height: 1.12;
++}
++
++.hero-diagnostics p {
++  max-width: 720px;
++  margin: 0 auto;
++  color: var(--hero-diag-text);
++  font-size: var(--body-font-size-m);
++  line-height: 1.5;
++}
++
++.hero-diagnostics p.button-wrapper {
++  display: inline-block;
++  margin: 28px 6px 0;
++  vertical-align: middle;
++}
++
++/* primary CTA (orange, filled) */
++.hero-diagnostics a.button {
++  border-radius: 4px;
++  padding: 0.7em 1.8em;
++  font-weight: 700;
++}
++
++.hero-diagnostics a.button.primary {
++  border-color: var(--hero-diag-primary-bg);
++  background-color: var(--hero-diag-primary-bg);
++  color: var(--hero-diag-text);
++}
++
++.hero-diagnostics a.button.primary:hover,
++.hero-diagnostics a.button.primary:focus-visible {
++  border-color: var(--hero-diag-primary-hover);
++  background-color: var(--hero-diag-primary-hover);
++  color: var(--hero-diag-text);
++}
++
++/* secondary CTA (outlined, white) */
++.hero-diagnostics a.button.secondary {
++  border-color: var(--hero-diag-text);
++  background-color: transparent;
++  color: var(--hero-diag-text);
++}
++
++.hero-diagnostics a.button.secondary:hover,
++.hero-diagnostics a.button.secondary:focus-visible {
++  border-color: var(--hero-diag-text);
++  background-color: rgb(255 255 255 / 15%);
++  color: var(--hero-diag-text);
++}
++
++/* ---------------------------------------------------------------------------
++   Variant: hero-banner
++   Solid blue full-width band with centered white heading, subtext and a
++   single orange CTA. No background image.
++   --------------------------------------------------------------------------- */
++
++.hero-banner {
++  --hero-banner-bg: #0f4bd1;
++  --hero-banner-text: #fff;
++  --hero-banner-cta-bg: #ec6608;
++  --hero-banner-cta-hover: #d25a06;
++
++  display: flex;
++  flex-direction: column;
++  align-items: center;
++  justify-content: center;
++  text-align: center;
++  min-height: 300px;
++  padding: 56px 24px;
++  background-color: var(--hero-banner-bg);
++}
++
++.hero-banner h1,
++.hero-banner h2 {
++  max-width: 900px;
++  margin: 0 auto 12px;
++  color: var(--hero-banner-text);
++  font-size: clamp(28px, 3.4vw, 40px);
++  font-weight: 700;
++  line-height: 1.2;
++}
++
++.hero-banner p {
++  max-width: 760px;
++  margin: 0 auto;
++  color: var(--hero-banner-text);
++  font-size: var(--body-font-size-s);
++  line-height: 1.5;
++}
++
++.hero-banner p.button-wrapper {
++  margin-top: 28px;
++}
++
++/* stylelint-disable-next-line no-descending-specificity */
++.hero-banner a.button.primary {
++  border-radius: 4px;
++  padding: 0.7em 1.8em;
++  font-weight: 700;
++  border-color: var(--hero-banner-cta-bg);
++  background-color: var(--hero-banner-cta-bg);
++  color: var(--hero-banner-text);
++}
++
++.hero-banner a.button.primary:hover,
++.hero-banner a.button.primary:focus-visible {
++  border-color: var(--hero-banner-cta-hover);
++  background-color: var(--hero-banner-cta-hover);
++  color: var(--hero-banner-text);
++}
+diff --git a/blocks/navigation/_navigation.json b/blocks/navigation/_navigation.json
+new file mode 100644
+index 0000000..0de8ef6
+--- /dev/null
++++ b/blocks/navigation/_navigation.json
+@@ -0,0 +1,48 @@
++{
++  "definitions": [
++    {
++      "title": "Navigation",
++      "id": "navigation",
++      "plugins": {
++        "xwalk": {
++          "page": {
++            "resourceType": "core/franklin/components/block/v1/block",
++            "template": {
++              "name": "Navigation",
++              "model": "navigation"
++            }
++          }
++        }
++      }
++    }
++  ],
++  "models": [
++    {
++      "id": "navigation",
++      "fields": [
++        {
++          "component": "richtext",
++          "name": "brand",
++          "value": "",
++          "label": "Brand",
++          "valueType": "string"
++        },
++        {
++          "component": "richtext",
++          "name": "links",
++          "value": "",
++          "label": "Links",
++          "valueType": "string"
++        },
++        {
++          "component": "richtext",
++          "name": "tools",
++          "value": "",
++          "label": "Tools",
++          "valueType": "string"
++        }
++      ]
++    }
++  ],
++  "filters": []
++}
+diff --git a/blocks/navigation/navigation.css b/blocks/navigation/navigation.css
+new file mode 100644
+index 0000000..0c1c1da
+--- /dev/null
++++ b/blocks/navigation/navigation.css
+@@ -0,0 +1,212 @@
++.navigation {
++  --nav-brand: #1a2340;
++  --nav-link: #3a4150;
++  --nav-link-hover: #0f4bd1;
++  --nav-cta-bg: #ec6608;
++  --nav-cta-hover: #d25a06;
++  --nav-border: #e2e6ec;
++}
++
++.navigation-container {
++  border-bottom: 1px solid var(--nav-border);
++  background-color: var(--background-color);
++}
++
++.navigation .navigation-nav {
++  display: grid;
++  grid-template:
++    'hamburger brand tools' auto
++    'sections sections sections' auto / auto 1fr auto;
++  align-items: center;
++  gap: 0 20px;
++  max-width: 1200px;
++  margin: auto;
++  padding: 12px 24px;
++}
++
++/* brand */
++.navigation .navigation-brand {
++  grid-area: brand;
++  font-weight: 700;
++  letter-spacing: 0.02em;
++}
++
++.navigation .navigation-brand a,
++.navigation .navigation-brand p {
++  margin: 0;
++  color: var(--nav-brand);
++  font-size: 20px;
++  font-weight: 700;
++  text-decoration: none;
++}
++
++.navigation .navigation-brand img {
++  max-height: 32px;
++  width: auto;
++}
++
++/* sections / links */
++.navigation .navigation-sections {
++  grid-area: sections;
++  display: none;
++}
++
++.navigation .navigation-nav[aria-expanded='true'] .navigation-sections {
++  display: block;
++}
++
++.navigation .navigation-sections ul {
++  list-style: none;
++  margin: 12px 0 0;
++  padding: 0;
++}
++
++.navigation .navigation-sections > ul > li {
++  padding: 10px 0;
++  color: var(--nav-link);
++  font-weight: 500;
++}
++
++.navigation .navigation-sections a {
++  color: var(--nav-link);
++  text-decoration: none;
++}
++
++.navigation .navigation-sections a:hover {
++  color: var(--nav-link-hover);
++}
++
++.navigation .navigation-sections ul ul {
++  margin: 6px 0 0;
++  padding-left: 16px;
++}
++
++.navigation .navigation-sections ul ul li {
++  padding: 6px 0;
++  font-weight: 400;
++}
++
++/* tools */
++.navigation .navigation-tools {
++  grid-area: tools;
++  display: flex;
++  align-items: center;
++  gap: 16px;
++}
++
++.navigation .navigation-tools p {
++  margin: 0;
++  display: flex;
++  align-items: center;
++}
++
++.navigation .navigation-tools .icon,
++.navigation .navigation-tools .icon-search {
++  width: 20px;
++  height: 20px;
++  color: var(--nav-link);
++}
++
++/* stylelint-disable no-descending-specificity */
++.navigation .navigation-tools p:last-child a {
++  display: inline-block;
++  border-radius: 4px;
++  padding: 0.55em 1.4em;
++  border: 2px solid var(--nav-cta-bg);
++  background-color: var(--nav-cta-bg);
++  color: #fff;
++  font-weight: 700;
++}
++
++.navigation .navigation-tools p:last-child a:hover {
++  border-color: var(--nav-cta-hover);
++  background-color: var(--nav-cta-hover);
++  color: #fff;
++}
++/* stylelint-enable no-descending-specificity */
++
++/* hamburger */
++.navigation .navigation-hamburger {
++  grid-area: hamburger;
++  width: 28px;
++  height: 22px;
++  padding: 0;
++  border: 0;
++  background: transparent;
++  cursor: pointer;
++}
++
++.navigation .navigation-hamburger-icon,
++.navigation .navigation-hamburger-icon::before,
++.navigation .navigation-hamburger-icon::after {
++  display: block;
++  position: relative;
++  width: 22px;
++  height: 2px;
++  border-radius: 2px;
++  background: var(--nav-brand);
++}
++
++.navigation .navigation-hamburger-icon::before,
++.navigation .navigation-hamburger-icon::after {
++  content: '';
++  position: absolute;
++}
++
++.navigation .navigation-hamburger-icon::before {
++  top: -7px;
++}
++
++.navigation .navigation-hamburger-icon::after {
++  top: 7px;
++}
++
++@media (width >= 900px) {
++  .navigation .navigation-nav {
++    display: flex;
++    justify-content: space-between;
++    gap: 32px;
++    padding: 12px 32px;
++  }
++
++  .navigation .navigation-hamburger {
++    display: none;
++  }
++
++  .navigation .navigation-sections {
++    display: block;
++    flex: 1;
++  }
++
++  .navigation .navigation-sections > ul {
++    display: flex;
++    gap: 28px;
++    margin: 0;
++    justify-content: center;
++  }
++
++  .navigation .navigation-sections > ul > li {
++    position: relative;
++    padding: 0;
++    white-space: nowrap;
++  }
++
++  .navigation .navigation-sections .navigation-drop > ul {
++    display: none;
++    position: absolute;
++    top: 150%;
++    left: 0;
++    min-width: 200px;
++    margin: 0;
++    padding: 12px 16px;
++    background: var(--background-color);
++    border: 1px solid var(--nav-border);
++    border-radius: 6px;
++    box-shadow: 0 6px 20px rgb(0 0 0 / 10%);
++    z-index: 5;
++  }
++
++  .navigation .navigation-sections .navigation-drop:hover > ul {
++    display: block;
++  }
++}
+diff --git a/blocks/navigation/navigation.js b/blocks/navigation/navigation.js
+new file mode 100644
+index 0000000..aa248ec
+--- /dev/null
++++ b/blocks/navigation/navigation.js
+@@ -0,0 +1,71 @@
++import { moveInstrumentation } from '../../scripts/scripts.js';
++
++/**
++ * Standalone navigation block (Beckman Coulter).
++ * Expected initial structure — three rows:
++ *   row 1: brand (logo text or image + link)
++ *   row 2: nav links (a list; nested lists become dropdowns)
++ *   row 3: tools (search icon, Contact Us CTA)
++ *
++ * Renders a responsive bar with a hamburger toggle on mobile.
++ */
++export default function decorate(block) {
++  // each row wraps its content in a single cell <div>; unwrap it
++  const unwrap = (row) => {
++    if (row && row.children.length === 1 && row.firstElementChild.tagName === 'DIV') {
++      return row.firstElementChild;
++    }
++    return row;
++  };
++
++  const rows = [...block.children];
++  const [brandRow, sectionsRow, toolsRow] = rows.map(unwrap);
++
++  const nav = document.createElement('nav');
++  nav.className = 'navigation-nav';
++  nav.setAttribute('aria-expanded', 'false');
++
++  // hamburger (mobile)
++  const hamburger = document.createElement('button');
++  hamburger.type = 'button';
++  hamburger.className = 'navigation-hamburger';
++  hamburger.setAttribute('aria-label', 'Open navigation');
++  hamburger.setAttribute('aria-controls', 'navigation-sections');
++  hamburger.innerHTML = '<span class="navigation-hamburger-icon"></span>';
++
++  const brand = document.createElement('div');
++  brand.className = 'navigation-brand';
++  if (brandRow) {
++    moveInstrumentation(brandRow, brand);
++    while (brandRow.firstChild) brand.append(brandRow.firstChild);
++  }
++
++  const sections = document.createElement('div');
++  sections.className = 'navigation-sections';
++  sections.id = 'navigation-sections';
++  if (sectionsRow) {
++    moveInstrumentation(sectionsRow, sections);
++    while (sectionsRow.firstChild) sections.append(sectionsRow.firstChild);
++  }
++
++  // mark list items that contain a nested list as dropdowns
++  sections.querySelectorAll(':scope ul > li').forEach((li) => {
++    if (li.querySelector('ul')) li.classList.add('navigation-drop');
++  });
++
++  const tools = document.createElement('div');
++  tools.className = 'navigation-tools';
++  if (toolsRow) {
++    moveInstrumentation(toolsRow, tools);
++    while (toolsRow.firstChild) tools.append(toolsRow.firstChild);
++  }
++
++  hamburger.addEventListener('click', () => {
++    const expanded = nav.getAttribute('aria-expanded') === 'true';
++    nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
++    hamburger.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
++  });
++
++  nav.append(hamburger, brand, sections, tools);
++  block.replaceChildren(nav);
++}
+diff --git a/blocks/site-footer/_site-footer.json b/blocks/site-footer/_site-footer.json
+new file mode 100644
+index 0000000..20b25b0
+--- /dev/null
++++ b/blocks/site-footer/_site-footer.json
+@@ -0,0 +1,48 @@
++{
++  "definitions": [
++    {
++      "title": "Site Footer",
++      "id": "site-footer",
++      "plugins": {
++        "xwalk": {
++          "page": {
++            "resourceType": "core/franklin/components/block/v1/block",
++            "template": {
++              "name": "Site Footer",
++              "model": "site-footer"
++            }
++          }
++        }
++      }
++    }
++  ],
++  "models": [
++    {
++      "id": "site-footer",
++      "fields": [
++        {
++          "component": "richtext",
++          "name": "brand",
++          "value": "",
++          "label": "Brand",
++          "valueType": "string"
++        },
++        {
++          "component": "richtext",
++          "name": "columns",
++          "value": "",
++          "label": "Link Columns",
++          "valueType": "string"
++        },
++        {
++          "component": "richtext",
++          "name": "legal",
++          "value": "",
++          "label": "Legal / Copyright",
++          "valueType": "string"
++        }
++      ]
++    }
++  ],
++  "filters": []
++}
+diff --git a/blocks/site-footer/site-footer.css b/blocks/site-footer/site-footer.css
+new file mode 100644
+index 0000000..b0ce25e
+--- /dev/null
++++ b/blocks/site-footer/site-footer.css
+@@ -0,0 +1,101 @@
++.site-footer-container {
++  background-color: #0a1b3d;
++}
++
++.site-footer {
++  --sf-text: #c7d3e8;
++  --sf-muted: #9fb0cd;
++  --sf-heading: #fff;
++  --sf-border: rgb(255 255 255 / 12%);
++
++  max-width: 1200px;
++  margin: auto;
++  padding: 48px 24px 24px;
++  color: var(--sf-text);
++  font-size: var(--body-font-size-xs);
++}
++
++@media (width >= 900px) {
++  .site-footer {
++    padding: 56px 32px 24px;
++  }
++}
++
++.site-footer p {
++  margin: 0;
++}
++
++.site-footer a:any-link {
++  color: var(--sf-muted);
++  text-decoration: none;
++}
++
++.site-footer a:hover {
++  color: #fff;
++}
++
++/* brand */
++.site-footer-brand p:first-child,
++.site-footer-brand p:first-child strong {
++  color: var(--sf-heading);
++  font-size: 20px;
++  font-weight: 700;
++  letter-spacing: 0.02em;
++}
++
++.site-footer-brand p:last-child {
++  max-width: 420px;
++  margin-top: 10px;
++  color: var(--sf-muted);
++  line-height: 1.5;
++}
++
++/* link columns */
++.site-footer-columns {
++  display: grid;
++  grid-template-columns: repeat(2, 1fr);
++  gap: 28px 24px;
++  margin: 36px 0;
++  padding: 36px 0;
++  border-top: 1px solid var(--sf-border);
++  border-bottom: 1px solid var(--sf-border);
++}
++
++@media (width >= 600px) {
++  .site-footer-columns {
++    grid-template-columns: repeat(3, 1fr);
++  }
++}
++
++@media (width >= 900px) {
++  .site-footer-columns {
++    grid-template-columns: repeat(6, 1fr);
++  }
++}
++
++.site-footer-col p:first-child,
++.site-footer-col p:first-child strong {
++  display: block;
++  margin-bottom: 12px;
++  color: var(--sf-heading);
++  font-size: 13px;
++  font-weight: 700;
++  letter-spacing: 0.06em;
++  text-transform: uppercase;
++}
++
++.site-footer-col ul {
++  list-style: none;
++  margin: 0;
++  padding: 0;
++}
++
++.site-footer-col li {
++  margin: 8px 0;
++}
++
++/* legal / copyright */
++.site-footer-legal {
++  margin-top: 28px;
++  color: #7f8fad;
++}
+diff --git a/blocks/site-footer/site-footer.js b/blocks/site-footer/site-footer.js
+new file mode 100644
+index 0000000..457b229
+--- /dev/null
++++ b/blocks/site-footer/site-footer.js
+@@ -0,0 +1,45 @@
++/**
++ * Standalone site-footer block (Beckman Coulter).
++ * Simple block — three fields, one cell per row:
++ *   row 1: brand   (wordmark + description)
++ *   row 2: columns (rich content: one heading + list per link column)
++ *   row 3: legal   (copyright)
++ *
++ * The columns cell holds consecutive "heading + list" pairs; each pair is
++ * grouped into its own column element for the grid layout.
++ */
++export default function decorate(block) {
++  // each row wraps content in a single cell <div>; unwrap to that cell
++  const cell = (row) => (row && row.children.length === 1 && row.firstElementChild.tagName === 'DIV'
++    ? row.firstElementChild
++    : row);
++
++  const rows = [...block.children];
++  const [brandRow, columnsRow, legalRow] = rows;
++
++  if (brandRow) brandRow.classList.add('site-footer-brand');
++
++  if (columnsRow) {
++    columnsRow.classList.add('site-footer-columns');
++    const src = cell(columnsRow);
++
++    // group each heading (p containing strong, or h*) with the nodes that
++    // follow it (its list) into a single column element
++    const columns = [];
++    let current = null;
++    [...src.children].forEach((node) => {
++      const isHeading = /^H[1-6]$/.test(node.tagName)
++        || (node.tagName === 'P' && node.querySelector('strong'));
++      if (isHeading) {
++        current = document.createElement('div');
++        current.className = 'site-footer-col';
++        columns.push(current);
++      }
++      if (current) current.append(node);
++    });
++
++    if (columns.length) columnsRow.replaceChildren(...columns);
++  }
++
++  if (legalRow) legalRow.classList.add('site-footer-legal');
++}
+diff --git a/component-definition.json b/component-definition.json
+index 56170ba..1370035 100644
+--- a/component-definition.json
++++ b/component-definition.json
+@@ -91,6 +91,7 @@
+                 "resourceType": "core/franklin/components/block/v1/block",
+                 "template": {
+                   "name": "Cards",
++                  "model": "cards",
+                   "filter": "cards"
+                 }
+               }
+@@ -112,6 +113,36 @@
+             }
+           }
+         },
++        {
++          "title": "Carousel Instruments",
++          "id": "carousel-instruments",
++          "plugins": {
++            "xwalk": {
++              "page": {
++                "resourceType": "core/franklin/components/block/v1/block",
++                "template": {
++                  "name": "Carousel Instruments",
++                  "filter": "carousel-instruments"
++                }
++              }
++            }
++          }
++        },
++        {
++          "title": "Carousel Instruments Slide",
++          "id": "carousel-instruments-slide",
++          "plugins": {
++            "xwalk": {
++              "page": {
++                "resourceType": "core/franklin/components/block/v1/block/item",
++                "template": {
++                  "name": "Slide",
++                  "model": "carousel-instruments-slide"
++                }
++              }
++            }
++          }
++        },
+         {
+           "title": "Columns",
+           "id": "columns",
+@@ -645,6 +676,36 @@
+               }
+             }
+           }
++        },
++        {
++          "title": "Navigation",
++          "id": "navigation",
++          "plugins": {
++            "xwalk": {
++              "page": {
++                "resourceType": "core/franklin/components/block/v1/block",
++                "template": {
++                  "name": "Navigation",
++                  "model": "navigation"
++                }
++              }
++            }
++          }
++        },
++        {
++          "title": "Site Footer",
++          "id": "site-footer",
++          "plugins": {
++            "xwalk": {
++              "page": {
++                "resourceType": "core/franklin/components/block/v1/block",
++                "template": {
++                  "name": "Site Footer",
++                  "model": "site-footer"
++                }
++              }
++            }
++          }
+         }
+       ]
+     }
+diff --git a/component-filters.json b/component-filters.json
+index 9041d23..4289245 100644
+--- a/component-filters.json
++++ b/component-filters.json
+@@ -15,6 +15,9 @@
+       "hero",
+       "cards",
+       "columns",
++      "carousel-instruments",
++      "navigation",
++      "site-footer",
+       "fragment",
+       "form"
+     ]
+@@ -25,6 +28,12 @@
+       "card"
+     ]
+   },
++  {
++    "id": "carousel-instruments",
++    "components": [
++      "carousel-instruments-slide"
++    ]
++  },
+   {
+     "id": "columns",
+     "components": [
+diff --git a/component-models.json b/component-models.json
+index 0511afa..246dd92 100644
+--- a/component-models.json
++++ b/component-models.json
+@@ -141,6 +141,35 @@
+       }
+     ]
+   },
++  {
++    "id": "cards",
++    "fields": [
++      {
++        "component": "select",
++        "name": "classes",
++        "value": "",
++        "label": "Style",
++        "options": [
++          {
++            "name": "Default",
++            "value": ""
++          },
++          {
++            "name": "Solutions",
++            "value": "cards-solutions"
++          },
++          {
++            "name": "Product Lines",
++            "value": "cards-productlines"
++          },
++          {
++            "name": "Insights",
++            "value": "cards-insights"
++          }
++        ]
++      }
++    ]
++  },
+   {
+     "id": "card",
+     "fields": [
+@@ -160,9 +189,63 @@
+       }
+     ]
+   },
++  {
++    "id": "carousel-instruments-slide",
++    "fields": [
++      {
++        "component": "reference",
++        "valueType": "string",
++        "name": "image",
++        "label": "Image",
++        "multi": false
++      },
++      {
++        "component": "text",
++        "valueType": "string",
++        "name": "imageAlt",
++        "label": "Alt",
++        "value": ""
++      },
++      {
++        "component": "richtext",
++        "name": "text",
++        "value": "",
++        "label": "Text",
++        "valueType": "string"
++      }
++    ]
++  },
+   {
+     "id": "columns",
+     "fields": [
++      {
++        "component": "select",
++        "name": "classes",
++        "value": "",
++        "label": "Style",
++        "options": [
++          {
++            "name": "Default",
++            "value": ""
++          },
++          {
++            "name": "Product Spec (tabs)",
++            "value": "columns-productspec"
++          },
++          {
++            "name": "Reversed (image left)",
++            "value": "columns-reversed"
++          },
++          {
++            "name": "Product (media + thumbs)",
++            "value": "columns-product"
++          },
++          {
++            "name": "Insights",
++            "value": "columns-insights"
++          }
++        ]
++      },
+       {
+         "component": "text",
+         "valueType": "number",
+@@ -4900,6 +4983,26 @@
+   {
+     "id": "hero",
+     "fields": [
++      {
++        "component": "select",
++        "name": "classes",
++        "value": "",
++        "label": "Style",
++        "options": [
++          {
++            "name": "Default",
++            "value": ""
++          },
++          {
++            "name": "Diagnostics (image + CTAs)",
++            "value": "hero-diagnostics"
++          },
++          {
++            "name": "Banner (solid blue)",
++            "value": "hero-banner"
++          }
++        ]
++      },
+       {
+         "component": "reference",
+         "valueType": "string",
+@@ -4922,5 +5025,57 @@
+         "valueType": "string"
+       }
+     ]
++  },
++  {
++    "id": "navigation",
++    "fields": [
++      {
++        "component": "richtext",
++        "name": "brand",
++        "value": "",
++        "label": "Brand",
++        "valueType": "string"
++      },
++      {
++        "component": "richtext",
++        "name": "links",
++        "value": "",
++        "label": "Links",
++        "valueType": "string"
++      },
++      {
++        "component": "richtext",
++        "name": "tools",
++        "value": "",
++        "label": "Tools",
++        "valueType": "string"
++      }
++    ]
++  },
++  {
++    "id": "site-footer",
++    "fields": [
++      {
++        "component": "richtext",
++        "name": "brand",
++        "value": "",
++        "label": "Brand",
++        "valueType": "string"
++      },
++      {
++        "component": "richtext",
++        "name": "columns",
++        "value": "",
++        "label": "Link Columns",
++        "valueType": "string"
++      },
++      {
++        "component": "richtext",
++        "name": "legal",
++        "value": "",
++        "label": "Legal / Copyright",
++        "valueType": "string"
++      }
++    ]
+   }
+ ]
+\ No newline at end of file
+diff --git a/models/_section.json b/models/_section.json
+index efc3e05..c8c7829 100644
+--- a/models/_section.json
++++ b/models/_section.json
+@@ -50,6 +50,9 @@
+         "hero",
+         "cards",
+         "columns",
++        "carousel-instruments",
++        "navigation",
++        "site-footer",
+         "fragment",
+         "form"
+       ]
+-- 
+2.39.5
+

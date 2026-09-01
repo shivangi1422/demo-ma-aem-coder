@@ -1,0 +1,33 @@
+From af3cf2b63dfd762cec86a3bafab16373b59bbaba Mon Sep 17 00:00:00 2001
+From: Claude Code <noreply@anthropic.com>
+Date: Tue, 1 Sep 2026 15:46:25 +0000
+Subject: [PATCH 4/4] Hide empty image row in hero-banner variant
+
+The hero-banner carries no image but needs an empty image row so its
+content columns align to the hero model (image, then text) for md2jcr.
+Hide that empty first row so it doesn't render as a blank gap.
+
+Co-Authored-By: Claude Opus 4.8 (1M context) <noreply@anthropic.com>
+---
+ blocks/hero/hero.css | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/blocks/hero/hero.css b/blocks/hero/hero.css
+index 75eaa48..c9465f3 100644
+--- a/blocks/hero/hero.css
++++ b/blocks/hero/hero.css
+@@ -159,6 +159,11 @@
+   background-color: var(--hero-banner-bg);
+ }
+ 
++/* the banner carries no image; hide the empty image row kept for model alignment */
++.hero-banner > div:first-child:not(:only-child) {
++  display: none;
++}
++
+ .hero-banner h1,
+ .hero-banner h2 {
+   max-width: 900px;
+-- 
+2.39.5
+
