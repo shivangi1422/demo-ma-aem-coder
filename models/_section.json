@@ -53,8 +53,8 @@
         "carousel-instruments",
         "navigation",
         "site-footer",
-
-        "fragment"
+        "fragment",
+        "form"
       ]
     }
   ]
