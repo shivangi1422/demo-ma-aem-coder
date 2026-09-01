@@ -29,6 +29,12 @@
     ]
   },
   {
+    "id": "carousel-instruments",
+    "components": [
+      "carousel-instruments-slide"
+    ]
+  },
+  {
     "id": "columns",
     "components": [
       "column"

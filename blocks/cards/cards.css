@@ -25,3 +25,209 @@
   aspect-ratio: 4 / 3;
   object-fit: cover;
 }
+
+/* ---------------------------------------------------------------------------
+   Variant: cards-solutions ("Our Solutions")
+   3-up cards: image on top, small blue uppercase eyebrow, bold dark heading,
+   gray body copy, orange "Learn More" link at the bottom.
+   --------------------------------------------------------------------------- */
+
+.cards-solutions {
+  --cards-sol-eyebrow: #0f4bd1;
+  --cards-sol-heading: #1a2340;
+  --cards-sol-body: #5b6472;
+  --cards-sol-link: #ec6608;
+  --cards-sol-card-bg: #f7f8fa;
+}
+
+.cards-solutions > ul {
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (width >= 900px) {
+  .cards-solutions > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cards-solutions > ul > li {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--cards-sol-card-bg);
+  box-shadow: 0 1px 3px rgb(0 0 0 / 8%);
+}
+
+.cards-solutions .cards-card-image img {
+  aspect-ratio: 3 / 2;
+}
+
+.cards-solutions .cards-card-body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  margin: 24px;
+}
+
+.cards-solutions .cards-card-body p {
+  margin: 0;
+  color: var(--cards-sol-body);
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+.cards-solutions .cards-card-body h3,
+.cards-solutions .cards-card-body h4 {
+  margin: 0 0 12px;
+  color: var(--cards-sol-heading);
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+.cards-solutions .cards-card-body p.button-wrapper {
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.cards-solutions .cards-card-body a,
+.cards-solutions .cards-card-body a.button {
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: none;
+  color: var(--cards-sol-link);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+}
+
+.cards-solutions .cards-card-body a:hover {
+  color: var(--cards-sol-link);
+  text-decoration: underline;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: cards-productlines ("Explore Our Product Lines")
+   3-up cards with image, bold heading, gray body. No eyebrow, white cards.
+   --------------------------------------------------------------------------- */
+
+.cards-productlines {
+  --cards-pl-heading: #1a2340;
+  --cards-pl-body: #5b6472;
+}
+
+.cards-productlines > ul {
+  grid-template-columns: 1fr;
+  gap: 28px;
+}
+
+@media (width >= 900px) {
+  .cards-productlines > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.cards-productlines > ul > li {
+  display: flex;
+  flex-direction: column;
+  border: none;
+  border-radius: 8px;
+  overflow: hidden;
+  background-color: var(--background-color);
+  box-shadow: 0 1px 4px rgb(0 0 0 / 10%);
+}
+
+.cards-productlines .cards-card-image img {
+  aspect-ratio: 16 / 10;
+}
+
+.cards-productlines .cards-card-body {
+  margin: 24px;
+}
+
+.cards-productlines .cards-card-body h3,
+.cards-productlines .cards-card-body h4 {
+  margin: 0 0 12px;
+  color: var(--cards-pl-heading);
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.cards-productlines .cards-card-body p {
+  margin: 0;
+  color: var(--cards-pl-body);
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+/* ---------------------------------------------------------------------------
+   Variant: cards-insights ("Latest Insights")
+   Text-only cards (no image): small blue eyebrow (WHITE PAPER etc.), bold
+   heading, gray body. Rendered as a 2-up list on a light panel.
+   --------------------------------------------------------------------------- */
+
+.cards-insights {
+  --cards-ins-eyebrow: #0f4bd1;
+  --cards-ins-heading: #1a2340;
+  --cards-ins-body: #5b6472;
+}
+
+.cards-insights > ul {
+  grid-template-columns: 1fr;
+  gap: 20px;
+}
+
+@media (width >= 900px) {
+  .cards-insights > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cards-insights > ul > li {
+  border: 1px solid #e2e6ec;
+  border-radius: 6px;
+  background-color: var(--background-color);
+}
+
+.cards-insights .cards-card-body {
+  margin: 24px;
+}
+
+.cards-insights .cards-card-body h3,
+.cards-insights .cards-card-body h4 {
+  margin: 0 0 10px;
+  color: var(--cards-ins-heading);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.cards-insights .cards-card-body p {
+  margin: 0;
+  color: var(--cards-ins-body);
+  font-size: var(--body-font-size-s);
+  line-height: 1.5;
+}
+
+/* Eyebrow labels (first line of card body) — kept last so the generic `p`
+   rules above are not overridden out of specificity order. */
+.cards-solutions .cards-card-body p:first-child {
+  margin: 0 0 8px;
+  color: var(--cards-sol-eyebrow);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.cards-insights .cards-card-body p:first-child {
+  margin: 0 0 8px;
+  color: var(--cards-ins-eyebrow);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}

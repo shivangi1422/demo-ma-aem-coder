@@ -142,6 +142,35 @@
     ]
   },
   {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Solutions",
+            "value": "cards-solutions"
+          },
+          {
+            "name": "Product Lines",
+            "value": "cards-productlines"
+          },
+          {
+            "name": "Insights",
+            "value": "cards-insights"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -161,8 +190,62 @@
     ]
   },
   {
+    "id": "carousel-instruments-slide",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Product Spec (tabs)",
+            "value": "columns-productspec"
+          },
+          {
+            "name": "Reversed (image left)",
+            "value": "columns-reversed"
+          },
+          {
+            "name": "Product (media + thumbs)",
+            "value": "columns-product"
+          },
+          {
+            "name": "Insights",
+            "value": "columns-insights"
+          }
+        ]
+      },
       {
         "component": "text",
         "valueType": "number",
@@ -4900,6 +4983,26 @@
   {
     "id": "hero",
     "fields": [
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Style",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Diagnostics (image + CTAs)",
+            "value": "hero-diagnostics"
+          },
+          {
+            "name": "Banner (solid blue)",
+            "value": "hero-banner"
+          }
+        ]
+      },
       {
         "component": "reference",
         "valueType": "string",

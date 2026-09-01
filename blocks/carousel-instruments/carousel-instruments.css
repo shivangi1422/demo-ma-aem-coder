@@ -1,0 +1,172 @@
+/* Featured Instruments carousel — dark navy section with an active slide and
+   a thumbnail/tab row for navigation. */
+
+.carousel-instruments {
+  --ci-bg: #0a1b3d;
+  --ci-panel-text: #fff;
+  --ci-eyebrow: #ec6608;
+  --ci-body: #c7d3e8;
+  --ci-tab-bg: rgb(255 255 255 / 6%);
+  --ci-tab-active-bg: #0f4bd1;
+  --ci-tab-active-border: #ec6608;
+  --ci-tab-cat: #9fb0cd;
+  --ci-arrow: #fff;
+}
+
+.carousel-instruments-container {
+  background-color: #0a1b3d;
+  padding: 48px 0;
+}
+
+/* the section heading ("Featured Instruments") is default content that lives
+   on the dark carousel background — keep it white. */
+.carousel-instruments-container > div > h1,
+.carousel-instruments-container > div > h2,
+.carousel-instruments-container > div > h3 {
+  color: #fff;
+}
+
+.carousel-instruments-track {
+  color: var(--ci-panel-text);
+}
+
+/* slides */
+.carousel-instruments-slides {
+  position: relative;
+}
+
+.carousel-instruments-slide {
+  display: none;
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 420px;
+}
+
+.carousel-instruments-slide.is-active {
+  display: block;
+}
+
+.carousel-instruments-media,
+.carousel-instruments-media picture,
+.carousel-instruments-media img {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-instruments-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(10 27 61 / 88%) 0%, rgb(10 27 61 / 35%) 55%, rgb(10 27 61 / 10%) 100%);
+}
+
+.carousel-instruments-panel {
+  position: relative;
+  z-index: 1;
+  max-width: 500px;
+  margin: 0;
+  padding: 48px 40px;
+}
+
+.carousel-instruments-panel p {
+  margin: 0;
+  color: var(--ci-body);
+  font-size: var(--body-font-size-s);
+  line-height: 1.55;
+}
+
+/* stylelint-disable no-descending-specificity */
+.carousel-instruments-panel h2,
+.carousel-instruments-panel h3 {
+  margin: 0 0 16px;
+  color: var(--ci-panel-text);
+  font-size: clamp(28px, 3vw, 38px);
+  font-weight: 700;
+  line-height: 1.15;
+}
+/* stylelint-enable no-descending-specificity */
+
+/* eyebrow = first line of the panel */
+.carousel-instruments-panel p:first-child {
+  margin: 0 0 12px;
+  color: var(--ci-eyebrow);
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* nav row: arrows + thumbnail tabs */
+.carousel-instruments-nav {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+  margin-top: 28px;
+}
+
+.carousel-instruments-tabs {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+  flex: 1;
+}
+
+@media (width >= 900px) {
+  .carousel-instruments-tabs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.carousel-instruments-tab {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 16px 20px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: var(--ci-tab-bg);
+  color: var(--ci-panel-text);
+  text-align: left;
+  cursor: pointer;
+}
+
+.carousel-instruments-tab.is-active {
+  background-color: var(--ci-tab-active-bg);
+  border-color: var(--ci-tab-active-border);
+}
+
+.carousel-instruments-tab-cat {
+  color: var(--ci-tab-cat);
+  font-size: 13px;
+}
+
+.carousel-instruments-tab.is-active .carousel-instruments-tab-cat {
+  color: #dbe6fb;
+}
+
+.carousel-instruments-tab-label {
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+}
+
+.carousel-instruments-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid rgb(255 255 255 / 40%);
+  border-radius: 50%;
+  background: transparent;
+  color: var(--ci-arrow);
+  font-size: 24px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.carousel-instruments-arrow:hover {
+  background-color: rgb(255 255 255 / 12%);
+}

@@ -21,6 +21,19 @@
       "id": "columns",
       "fields": [
         {
+          "component": "select",
+          "name": "classes",
+          "value": "",
+          "label": "Style",
+          "options": [
+            { "name": "Default", "value": "" },
+            { "name": "Product Spec (tabs)", "value": "columns-productspec" },
+            { "name": "Reversed (image left)", "value": "columns-reversed" },
+            { "name": "Product (media + thumbs)", "value": "columns-product" },
+            { "name": "Insights", "value": "columns-insights" }
+          ]
+        },
+        {
           "component": "text",
           "valueType": "number",
           "name": "columns",
