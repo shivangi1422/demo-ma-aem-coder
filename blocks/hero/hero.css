@@ -159,6 +159,11 @@
   background-color: var(--hero-banner-bg);
 }
 
+/* the banner carries no image; hide the empty image row kept for model alignment */
+.hero-banner > div:first-child:not(:only-child) {
+  display: none;
+}
+
 .hero-banner h1,
 .hero-banner h2 {
   max-width: 900px;
