@@ -1,1 +1,209 @@
 /* add global styles that can be loaded post LCP here */
+
+/* ---------------------------------------------------------------------------
+   Form section styles (Beckman Coulter)
+   Applied via section metadata "Style":
+   - form-request : centered "Request Information" form on a light panel
+   - content-form : two-column layout, content left + request-quote form right
+   These style the Adaptive Form block output to match the original design.
+   --------------------------------------------------------------------------- */
+
+/* Shared form card appearance ------------------------------------------------ */
+main .section.form-request,
+main .section.content-form {
+  background-color: #eef1f5;
+}
+
+main .form-request .form,
+main .content-form .form {
+  padding: 32px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgb(0 0 0 / 8%);
+}
+
+/* form field rhythm — override the block's wide default gaps */
+main .form-request .form form,
+main .content-form .form form {
+  display: grid;
+  gap: 18px;
+}
+
+main .form-request .form .field-wrapper,
+main .content-form .form .field-wrapper {
+  margin: 0;
+}
+
+main .form-request .form label,
+main .content-form .form label {
+  display: block;
+  margin-bottom: 6px;
+  color: #1a2340;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+main .form-request .form input,
+main .form-request .form textarea,
+main .form-request .form select,
+main .content-form .form input,
+main .content-form .form textarea,
+main .content-form .form select {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 11px 14px;
+  border: 1px solid #c2c9d4;
+  border-radius: 4px;
+  background: #fff;
+  color: #1a2340;
+  font-size: 15px;
+}
+
+main .form-request .form textarea,
+main .content-form .form textarea {
+  min-height: 96px;
+  resize: vertical;
+}
+
+/* consent / any checkbox row: box beside its label */
+main .form-request .form .checkbox-wrapper,
+main .content-form .form .checkbox-wrapper {
+  display: flex;
+  gap: 10px;
+  align-items: flex-start;
+  color: #5b6472;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+main .form-request .form .checkbox-wrapper input,
+main .content-form .form .checkbox-wrapper input {
+  width: auto;
+  margin-top: 3px;
+}
+
+main .form-request .form .checkbox-wrapper label,
+main .content-form .form .checkbox-wrapper label {
+  margin: 0;
+  font-weight: 400;
+  color: inherit;
+}
+
+/* submit button */
+main .form-request .form .button,
+main .content-form .form .button {
+  width: 100%;
+  padding: 13px;
+  border: none;
+  border-radius: 4px;
+  background: #ec6608;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+main .form-request .form .button:hover,
+main .content-form .form .button:hover {
+  background: #d25a06;
+}
+
+/* Variant: form-request — centered heading + single narrow form panel -------- */
+main .section.form-request {
+  padding: 56px 0;
+}
+
+main .form-request > div > h2,
+main .form-request > div > p {
+  text-align: center;
+}
+
+main .form-request > div > h2 {
+  margin: 0 0 8px;
+  color: #1a2340;
+  font-weight: 700;
+}
+
+main .form-request > div > p {
+  margin: 0 auto 28px;
+  color: #5b6472;
+}
+
+main .form-request .form {
+  max-width: 720px;
+  margin: 0 auto;
+}
+
+/* place first & last name side by side on wider screens */
+@media (width >= 600px) {
+  main .form-request .form form {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  main .form-request .form .field-wrapper {
+    grid-column: 1 / -1;
+  }
+
+  main .form-request .form .field-fname {
+    grid-column: 1 / 2;
+  }
+
+  main .form-request .form .field-lname {
+    grid-column: 2 / 3;
+  }
+}
+
+/* Variant: content-form — content left, request-quote form right.
+   EDS renders the default content and the form block as two sibling
+   wrappers (.default-content-wrapper + .form-wrapper); lay those out as
+   the two grid columns on the section itself. */
+main .section.content-form {
+  padding: 48px 0;
+}
+
+@media (width >= 900px) {
+  /* full-width background retained; content centered within 1200px via padding */
+  main .section.content-form {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+    align-items: start;
+    padding: 48px max(24px, calc((100% - 1200px) / 2));
+  }
+
+  main .section.content-form > .default-content-wrapper {
+    grid-column: 1;
+    max-width: none;
+    margin: 0;
+  }
+
+  main .section.content-form > .form-wrapper {
+    grid-column: 2;
+    max-width: none;
+    margin: 0;
+  }
+}
+
+main .content-form .default-content-wrapper > h2 {
+  margin: 0 0 16px;
+  color: #1a2340;
+  font-weight: 700;
+}
+
+main .content-form .default-content-wrapper > ul {
+  margin: 0 0 20px;
+  padding-left: 1.1em;
+  color: #5b6472;
+  line-height: 1.6;
+}
+
+main .content-form .default-content-wrapper > p img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* the form sits in the right column, aligned with the content top */
+main .content-form .form {
+  margin: 0;
+}
