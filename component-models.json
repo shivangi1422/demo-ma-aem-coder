@@ -299,7 +299,26 @@
     ]
   },
   {
-    "id": "columns-product-detail",
+    "id": "columns",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "columns",
+        "value": "",
+        "label": "Columns"
+      },
+      {
+        "component": "text",
+        "valueType": "number",
+        "name": "rows",
+        "value": "",
+        "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "content-product-detail",
     "fields": [
       {
         "component": "richtext",
@@ -332,7 +351,7 @@
     ]
   },
   {
-    "id": "columns-product-form",
+    "id": "content-product-form",
     "fields": [
       {
         "component": "richtext",
@@ -365,7 +384,7 @@
     ]
   },
   {
-    "id": "columns-reversed",
+    "id": "content-reversed",
     "fields": [
       {
         "component": "reference",
@@ -387,25 +406,6 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "columns",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "number",
-        "name": "columns",
-        "value": "",
-        "label": "Columns"
-      },
-      {
-        "component": "text",
-        "valueType": "number",
-        "name": "rows",
-        "value": "",
-        "label": "Rows"
       }
     ]
   },

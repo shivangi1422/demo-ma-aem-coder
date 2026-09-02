@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
- * Decorates the columns-product-form block.
+ * Decorates the content-product-form block.
  * Authored as a simple block with three rows:
  *   row 0: product text (title, highlight list)
  *   row 1: product image
@@ -21,7 +21,7 @@ export default function decorate(block) {
 
   // Product column = text row + image.
   const productCol = document.createElement('div');
-  productCol.className = 'columns-product-form-product';
+  productCol.className = 'content-product-form-product';
   const textCell = textRow && textRow.firstElementChild;
   if (textCell) {
     while (textCell.firstChild) productCol.append(textCell.firstChild);
@@ -37,7 +37,7 @@ export default function decorate(block) {
 
   // Form column.
   const formCol = document.createElement('div');
-  formCol.className = 'columns-product-form-form';
+  formCol.className = 'content-product-form-form';
   const formCell = formRow && formRow.firstElementChild;
   if (formCell) {
     while (formCell.firstChild) formCol.append(formCell.firstChild);
@@ -68,7 +68,7 @@ function decorateForm(formCol) {
     if (el.tagName === 'P' && link) {
       const submit = document.createElement('button');
       submit.type = 'submit';
-      submit.className = 'columns-product-form-submit';
+      submit.className = 'content-product-form-submit';
       submit.textContent = link.textContent.trim();
       submit.addEventListener('click', (e) => e.preventDefault());
       form.append(submit);
@@ -78,10 +78,10 @@ function decorateForm(formCol) {
     if (el.tagName === 'P' && strong) {
       const label = strong.textContent.trim();
       const placeholder = el.textContent.replace(label, '').trim();
-      const id = `columns-product-form-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
+      const id = `content-product-form-${label.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/(^-|-$)/g, '')}`;
 
       const field = document.createElement('div');
-      field.className = 'columns-product-form-field';
+      field.className = 'content-product-form-field';
 
       const lbl = document.createElement('label');
       lbl.setAttribute('for', id);

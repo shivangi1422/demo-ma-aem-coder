@@ -1,15 +1,15 @@
 {
   "definitions": [
     {
-      "title": "Columns Product Form",
-      "id": "columns-product-form",
+      "title": "Content Reversed",
+      "id": "content-reversed",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Columns Product Form",
-              "model": "columns-product-form"
+              "name": "Content Reversed",
+              "model": "content-reversed"
             }
           }
         }
@@ -18,34 +18,27 @@
   ],
   "models": [
     {
-      "id": "columns-product-form",
+      "id": "content-reversed",
       "fields": [
-        {
-          "component": "richtext",
-          "name": "text",
-          "value": "",
-          "label": "Product Column",
-          "valueType": "string"
-        },
         {
           "component": "reference",
           "valueType": "string",
           "name": "image",
-          "label": "Product Image",
+          "label": "Image",
           "multi": false
         },
         {
           "component": "text",
           "valueType": "string",
           "name": "imageAlt",
-          "label": "Product Image Alt",
+          "label": "Image Alt",
           "value": ""
         },
         {
           "component": "richtext",
-          "name": "formBody",
+          "name": "text",
           "value": "",
-          "label": "Form Column",
+          "label": "Text",
           "valueType": "string"
         }
       ]

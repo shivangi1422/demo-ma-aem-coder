@@ -57,11 +57,11 @@
         "cards-product-lines",
         "carousel-instruments",
         "tabs-products",
-        "columns-reversed",
+        "content-reversed",
         "cards-insights",
         "form-request",
-        "columns-product-detail",
-        "columns-product-form"
+        "content-product-detail",
+        "content-product-form"
       ]
     }
   ]

@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
- * Decorates the columns-product-detail block.
+ * Decorates the content-product-detail block.
  * Authored as a simple block with three rows:
  *   row 0: text/spec column (eyebrow, title, descriptions, spec list, CTA)
  *   row 1: main product image
@@ -26,26 +26,26 @@ export default function decorate(block) {
   const textRow = rows.find((r) => !r.querySelector('picture'));
   const imageRows = rows.filter((r) => r.querySelector('picture'));
 
-  if (textRow) textRow.firstElementChild?.classList.add('columns-product-detail-text');
+  if (textRow) textRow.firstElementChild?.classList.add('content-product-detail-text');
 
   // Build the gallery column from the image rows: first single image = main,
   // a row with multiple images = thumbnails.
   const gallery = document.createElement('div');
-  gallery.className = 'columns-product-detail-gallery';
+  gallery.className = 'content-product-detail-gallery';
 
   imageRows.forEach((row) => {
     const cell = row.firstElementChild;
     const pics = [...cell.querySelectorAll('picture')];
     if (pics.length === 1) {
       const opt = optimize(pics[0]);
-      opt.classList.add('columns-product-detail-main');
+      opt.classList.add('content-product-detail-main');
       gallery.append(opt);
     } else if (pics.length > 1) {
       const thumbs = document.createElement('div');
-      thumbs.className = 'columns-product-detail-thumbs';
+      thumbs.className = 'content-product-detail-thumbs';
       pics.forEach((p) => {
         const opt = optimize(p);
-        opt.classList.add('columns-product-detail-thumb');
+        opt.classList.add('content-product-detail-thumb');
         thumbs.append(opt);
       });
       gallery.append(thumbs);

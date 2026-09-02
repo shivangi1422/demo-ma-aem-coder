@@ -1,23 +1,23 @@
-.columns-product-form {
+.content-product-form {
   padding: 40px 24px;
   background-color: var(--bc-surface);
 }
 
-.columns-product-form > div {
+.content-product-form > div {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.columns-product-form .columns-product-form-product {
+.content-product-form .content-product-form-product {
   display: flex;
   flex-direction: column;
   gap: 24px;
   font-family: var(--bc-brand-font);
 }
 
-.columns-product-form .columns-product-form-product h2,
-.columns-product-form .columns-product-form-product h3 {
+.content-product-form .content-product-form-product h2,
+.content-product-form .content-product-form-product h3 {
   margin: 0;
   color: var(--bc-navy);
   font-weight: 800;
@@ -25,7 +25,7 @@
   line-height: 1.2;
 }
 
-.columns-product-form .columns-product-form-product img {
+.content-product-form .content-product-form-product img {
   width: 100%;
   height: auto;
   border: 1px solid var(--bc-border);
@@ -33,7 +33,7 @@
   display: block;
 }
 
-.columns-product-form .columns-product-form-product ul {
+.content-product-form .content-product-form-product ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -42,7 +42,7 @@
   gap: 12px;
 }
 
-.columns-product-form .columns-product-form-product li {
+.content-product-form .content-product-form-product li {
   position: relative;
   padding-left: 28px;
   color: var(--bc-grey);
@@ -51,7 +51,7 @@
   line-height: 1.2;
 }
 
-.columns-product-form .columns-product-form-product li::before {
+.content-product-form .content-product-form-product li::before {
   content: '✓';
   position: absolute;
   left: 0;
@@ -59,7 +59,7 @@
   font-weight: 700;
 }
 
-.columns-product-form .columns-product-form-form {
+.content-product-form .content-product-form-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -70,9 +70,9 @@
   font-family: var(--bc-brand-font);
 }
 
-.columns-product-form .columns-product-form-form h2,
-.columns-product-form .columns-product-form-form h3,
-.columns-product-form .columns-product-form-form h4 {
+.content-product-form .content-product-form-form h2,
+.content-product-form .content-product-form-form h3,
+.content-product-form .content-product-form-form h4 {
   margin: 0;
   color: var(--bc-navy);
   font-weight: 800;
@@ -80,32 +80,32 @@
   line-height: 1.2;
 }
 
-.columns-product-form .columns-product-form-form p {
+.content-product-form .content-product-form-form p {
   margin: 0;
   color: var(--bc-grey);
   font-size: 13px;
   line-height: 1.25;
 }
 
-.columns-product-form .columns-product-form-form form {
+.content-product-form .content-product-form-form form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.columns-product-form .columns-product-form-field {
+.content-product-form .content-product-form-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.columns-product-form .columns-product-form-field label {
+.content-product-form .content-product-form-field label {
   color: var(--bc-navy);
   font-size: 12px;
   font-weight: 600;
 }
 
-.columns-product-form .columns-product-form-field input {
+.content-product-form .content-product-form-field input {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--bc-border);
@@ -117,7 +117,7 @@
   box-sizing: border-box;
 }
 
-.columns-product-form .columns-product-form-submit {
+.content-product-form .content-product-form-submit {
   margin: 4px 0 0;
   padding: 12px 24px;
   border: none;
@@ -132,21 +132,21 @@
 }
 
 @media (width >= 900px) {
-  .columns-product-form {
+  .content-product-form {
     padding: 80px;
   }
 
-  .columns-product-form > div {
+  .content-product-form > div {
     flex-direction: row;
     align-items: flex-start;
     gap: 64px;
   }
 
-  .columns-product-form .columns-product-form-product {
+  .content-product-form .content-product-form-product {
     flex: 1;
   }
 
-  .columns-product-form .columns-product-form-form {
+  .content-product-form .content-product-form-form {
     flex: 0 0 420px;
     padding: 36px;
   }

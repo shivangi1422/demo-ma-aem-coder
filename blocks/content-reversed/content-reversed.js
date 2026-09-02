@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
- * Decorates the columns-reversed block.
+ * Decorates the content-reversed block.
  * Authored as a simple block with two rows: an image row and a text row
  * (eyebrow, title, description, bullet list, CTA). Rendered as image-left /
  * text-right at desktop widths.
@@ -13,7 +13,7 @@ export default function decorate(block) {
     const cell = row.firstElementChild;
     if (!cell) return;
     if (cell.querySelector('picture')) {
-      cell.classList.add('columns-reversed-image');
+      cell.classList.add('content-reversed-image');
       const img = cell.querySelector('img');
       if (img) {
         const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '1000' }]);
@@ -21,7 +21,7 @@ export default function decorate(block) {
         img.closest('picture').replaceWith(optimized);
       }
     } else {
-      cell.classList.add('columns-reversed-text');
+      cell.classList.add('content-reversed-text');
     }
   });
 }

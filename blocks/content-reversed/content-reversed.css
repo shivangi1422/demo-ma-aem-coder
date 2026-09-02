@@ -1,4 +1,4 @@
-.columns-reversed {
+.content-reversed {
   display: flex;
   flex-direction: column;
   gap: 24px;
@@ -6,31 +6,31 @@
   background-color: var(--bc-surface);
 }
 
-.columns-reversed > div {
+.content-reversed > div {
   display: flex;
   flex-direction: column;
   gap: 24px;
 }
 
-.columns-reversed .columns-reversed-image {
+.content-reversed .content-reversed-image {
   line-height: 0;
 }
 
-.columns-reversed .columns-reversed-image img {
+.content-reversed .content-reversed-image img {
   width: 100%;
   height: auto;
   border: 1px solid var(--bc-border);
   border-radius: 8px;
 }
 
-.columns-reversed .columns-reversed-text {
+.content-reversed .content-reversed-text {
   display: flex;
   flex-direction: column;
   gap: 16px;
   font-family: var(--bc-brand-font);
 }
 
-.columns-reversed .columns-reversed-text p {
+.content-reversed .content-reversed-text p {
   margin: 0;
   color: var(--bc-grey);
   font-size: 16px;
@@ -38,7 +38,7 @@
 }
 
 /* eyebrow */
-.columns-reversed .columns-reversed-text p:first-child {
+.content-reversed .content-reversed-text p:first-child {
   color: var(--bc-blue);
   font-weight: 700;
   font-size: 12px;
@@ -46,8 +46,8 @@
   letter-spacing: 0.03em;
 }
 
-.columns-reversed .columns-reversed-text h2,
-.columns-reversed .columns-reversed-text h3 {
+.content-reversed .content-reversed-text h2,
+.content-reversed .content-reversed-text h3 {
   margin: 0;
   color: var(--bc-navy);
   font-weight: 800;
@@ -55,7 +55,7 @@
   line-height: 1.22;
 }
 
-.columns-reversed .columns-reversed-text ul {
+.content-reversed .content-reversed-text ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -64,7 +64,7 @@
   gap: 12px;
 }
 
-.columns-reversed .columns-reversed-text li {
+.content-reversed .content-reversed-text li {
   position: relative;
   padding-left: 28px;
   color: var(--bc-navy);
@@ -73,7 +73,7 @@
   line-height: 1.2;
 }
 
-.columns-reversed .columns-reversed-text li::before {
+.content-reversed .content-reversed-text li::before {
   content: '✓';
   position: absolute;
   left: 0;
@@ -81,7 +81,7 @@
   font-weight: 700;
 }
 
-.columns-reversed .columns-reversed-text a.button:any-link {
+.content-reversed .content-reversed-text a.button:any-link {
   align-self: flex-start;
   margin: 4px 0 0;
   padding: 12px 28px;
@@ -94,19 +94,19 @@
 }
 
 @media (width >= 900px) {
-  .columns-reversed {
+  .content-reversed {
     flex-direction: row;
     align-items: center;
     gap: 64px;
     padding: 80px;
   }
 
-  .columns-reversed > div {
+  .content-reversed > div {
     flex: 1;
   }
 
-  .columns-reversed .columns-reversed-text h2,
-  .columns-reversed .columns-reversed-text h3 {
+  .content-reversed .content-reversed-text h2,
+  .content-reversed .content-reversed-text h3 {
     font-size: 36px;
   }
 }
