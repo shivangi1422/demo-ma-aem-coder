@@ -12,12 +12,12 @@
     { "block": 5, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/179b9ab9-8805-4478-a596-9bd99b720a4e", "filename": "cards-product-lines-2.png", "usage": "content-image" },
     { "block": 5, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cf856091-d7c5-47b2-a964-de19e1b1328e", "filename": "cards-product-lines-3.png", "usage": "content-image" },
     { "block": 6, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0bf7d1d7-0182-490d-ba90-b3795096073f", "filename": "tabs-products-dxc700.png", "usage": "content-image" },
-    { "block": 7, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1ef0ddd2-349a-441d-b76c-489729c163bd", "filename": "columns-reversed-dxh900.png", "usage": "content-image" },
-    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd730f8d-a419-419a-961b-0ff1395d2108", "filename": "columns-product-detail-main.png", "usage": "content-image" },
-    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/90b308cf-d781-4318-acdf-03473aeb4b69", "filename": "columns-product-detail-thumb1.png", "usage": "content-image" },
-    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/8aa8d78d-5371-41c4-b6f6-d73a4cbd55da", "filename": "columns-product-detail-thumb2.png", "usage": "content-image" },
-    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/70ac7310-d896-40a1-847a-7f53ab1ee8dc", "filename": "columns-product-detail-thumb3.png", "usage": "content-image" },
-    { "block": 12, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d474cbc7-16ef-4f3a-9b3c-06ad20c588a6", "filename": "columns-product-form-access2.png", "usage": "content-image" },
+    { "block": 7, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/1ef0ddd2-349a-441d-b76c-489729c163bd", "filename": "content-reversed-dxh900.png", "usage": "content-image" },
+    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd730f8d-a419-419a-961b-0ff1395d2108", "filename": "content-product-detail-main.png", "usage": "content-image" },
+    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/90b308cf-d781-4318-acdf-03473aeb4b69", "filename": "content-product-detail-thumb1.png", "usage": "content-image" },
+    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/8aa8d78d-5371-41c4-b6f6-d73a4cbd55da", "filename": "content-product-detail-thumb2.png", "usage": "content-image" },
+    { "block": 11, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/70ac7310-d896-40a1-847a-7f53ab1ee8dc", "filename": "content-product-detail-thumb3.png", "usage": "content-image" },
+    { "block": 12, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d474cbc7-16ef-4f3a-9b3c-06ad20c588a6", "filename": "content-product-form-access2.png", "usage": "content-image" },
     { "block": 13, "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7e884f94-9164-439b-acc0-c65eeb9fbe63", "filename": "footer-socials.png", "usage": "content-image" }
   ]
 }

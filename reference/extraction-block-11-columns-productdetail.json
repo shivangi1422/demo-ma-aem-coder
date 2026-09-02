@@ -2,7 +2,7 @@
   "blockOrder": 11,
   "figmaName": "V1 — Beckman Coulter/Product Detail",
   "nodeId": "214:1482",
-  "variant": "columns-product-detail",
+  "variant": "content-product-detail",
   "blockType": "columns",
   "designContext": "White section, row items-center gap 64px, padding 80px. 2 columns. LEFT spec col gap 24px: eyebrow 'FEATURED PRODUCT' (Inter bold 12px #003da5 uppercase), title (Inter extrabold 36px/44px #1a1a2e), 2 desc paragraphs (Inter normal 16px/19px #666677), specs list (icon 16px + Inter semibold 15px #1a1a2e), orange CTA (bg #ff6b00 px28 py14 rounded4, white bold 16px 'Request Quote'). RIGHT img col gap 20px: main image full width h320 rounded 8px border 1px #e5e7eb + 3 thumbnails row gap 16px, each h100 rounded 4px border 1px #e5e7eb.",
   "content": {
@@ -14,14 +14,14 @@
     ],
     "specs": ["Up to 21 parameters concurrently", "Violet laser standard configuration", "Compact scientific benchtop footprint", "Research and clinical assays available"],
     "cta": "Request Quote",
-    "mainImage": "columns-product-detail-main.png",
-    "thumbnails": ["columns-product-detail-thumb1.png", "columns-product-detail-thumb2.png", "columns-product-detail-thumb3.png"]
+    "mainImage": "content-product-detail-main.png",
+    "thumbnails": ["content-product-detail-thumb1.png", "content-product-detail-thumb2.png", "content-product-detail-thumb3.png"]
   },
   "assets": [
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd730f8d-a419-419a-961b-0ff1395d2108", "suggestedName": "columns-product-detail-main.png", "usage": "content-image", "context": "CytoFLEX main image" },
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/90b308cf-d781-4318-acdf-03473aeb4b69", "suggestedName": "columns-product-detail-thumb1.png", "usage": "content-image", "context": "CytoFLEX thumbnail 1" },
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/8aa8d78d-5371-41c4-b6f6-d73a4cbd55da", "suggestedName": "columns-product-detail-thumb2.png", "usage": "content-image", "context": "CytoFLEX thumbnail 2" },
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/70ac7310-d896-40a1-847a-7f53ab1ee8dc", "suggestedName": "columns-product-detail-thumb3.png", "usage": "content-image", "context": "CytoFLEX thumbnail 3" }
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cd730f8d-a419-419a-961b-0ff1395d2108", "suggestedName": "content-product-detail-main.png", "usage": "content-image", "context": "CytoFLEX main image" },
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/90b308cf-d781-4318-acdf-03473aeb4b69", "suggestedName": "content-product-detail-thumb1.png", "usage": "content-image", "context": "CytoFLEX thumbnail 1" },
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/8aa8d78d-5371-41c4-b6f6-d73a4cbd55da", "suggestedName": "content-product-detail-thumb2.png", "usage": "content-image", "context": "CytoFLEX thumbnail 2" },
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/70ac7310-d896-40a1-847a-7f53ab1ee8dc", "suggestedName": "content-product-detail-thumb3.png", "usage": "content-image", "context": "CytoFLEX thumbnail 3" }
   ],
   "tokens": {
     "colors": { "section-bg": "#ffffff", "eyebrow": "#003da5", "title": "#1a1a2e", "desc": "#666677", "spec-text": "#1a1a2e", "cta-bg": "#ff6b00", "cta-text": "#ffffff", "image-border": "#e5e7eb" },

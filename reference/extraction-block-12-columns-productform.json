@@ -2,13 +2,13 @@
   "blockOrder": 12,
   "figmaName": "V1 — Beckman Coulter/Content Form",
   "nodeId": "214:1483",
-  "variant": "columns-product-form",
+  "variant": "content-product-form",
   "blockType": "columns",
   "designContext": "Section bg #f5f5f5, row items-center gap 64px, padding 80px. 2 columns. LEFT product col gap 24px: title 'Access 2 Immunoassay System' (Inter extrabold 32px/39px #1a1a2e), product image full width h260 rounded 8px border 1px #e5e7eb, highlights list (icon 16px + Inter medium 14px/17px #666677). RIGHT form card w480 gap 28px padding 36px rounded 8px bg #ffffff border 1px #e5e7eb: MiniFormHeader gap 6px (title Inter extrabold 20px/24px #1a1a2e 'Request Quote & Demo', subtitle Inter normal 13px/16px #666677). Fields gap 16px: Full Name*, Email*, Instrument of Interest* (select w/ chevron, value 'Access 2 Immunoassay System'). Inputs h40 px12 rounded4 bg #f5f5f5, labels Inter semibold 12px #1a1a2e. Submit full width bg #ff6b00 px24 py12 rounded4 white bold 15px 'Request Quote & Demo'.",
   "content": {
     "left": {
       "title": "Access 2 Immunoassay System",
-      "image": "columns-product-form-access2.png",
+      "image": "content-product-form-access2.png",
       "highlights": ["Modular configuration that optimizes bench space", "Consolidated and robust immunoassay diagnostics menu", "Continuous load system with dedicated sample handling", "Minimal daily maintenance requirements"]
     },
     "form": {
@@ -23,7 +23,7 @@
     }
   },
   "assets": [
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d474cbc7-16ef-4f3a-9b3c-06ad20c588a6", "suggestedName": "columns-product-form-access2.png", "usage": "content-image", "context": "Access 2 product image (left column)" }
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d474cbc7-16ef-4f3a-9b3c-06ad20c588a6", "suggestedName": "content-product-form-access2.png", "usage": "content-image", "context": "Access 2 product image (left column)" }
   ],
   "tokens": {
     "colors": { "section-bg": "#f5f5f5", "title": "#1a1a2e", "highlight-text": "#666677", "form-bg": "#ffffff", "form-border": "#e5e7eb", "form-title": "#1a1a2e", "form-subtitle": "#666677", "label": "#1a1a2e", "input-bg": "#f5f5f5", "placeholder": "#666677", "submit-bg": "#ff6b00", "submit-text": "#ffffff", "image-border": "#e5e7eb" },
