@@ -54,14 +54,14 @@
         "hero-home",
         "hero-banner",
         "cards-solutions",
-        "cards-productlines",
+        "cards-product-lines",
         "carousel-instruments",
         "tabs-products",
         "columns-reversed",
         "cards-insights",
         "form-request",
-        "columns-productdetail",
-        "columns-productform"
+        "columns-product-detail",
+        "columns-product-form"
       ]
     }
   ]

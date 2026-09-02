@@ -1,23 +1,23 @@
-.columns-productform {
+.columns-product-form {
   padding: 40px 24px;
   background-color: var(--bc-surface);
 }
 
-.columns-productform > div {
+.columns-product-form > div {
   display: flex;
   flex-direction: column;
   gap: 32px;
 }
 
-.columns-productform .columns-productform-product {
+.columns-product-form .columns-product-form-product {
   display: flex;
   flex-direction: column;
   gap: 24px;
   font-family: var(--bc-brand-font);
 }
 
-.columns-productform .columns-productform-product h2,
-.columns-productform .columns-productform-product h3 {
+.columns-product-form .columns-product-form-product h2,
+.columns-product-form .columns-product-form-product h3 {
   margin: 0;
   color: var(--bc-navy);
   font-weight: 800;
@@ -25,7 +25,7 @@
   line-height: 1.2;
 }
 
-.columns-productform .columns-productform-product img {
+.columns-product-form .columns-product-form-product img {
   width: 100%;
   height: auto;
   border: 1px solid var(--bc-border);
@@ -33,7 +33,7 @@
   display: block;
 }
 
-.columns-productform .columns-productform-product ul {
+.columns-product-form .columns-product-form-product ul {
   margin: 0;
   padding: 0;
   list-style: none;
@@ -42,7 +42,7 @@
   gap: 12px;
 }
 
-.columns-productform .columns-productform-product li {
+.columns-product-form .columns-product-form-product li {
   position: relative;
   padding-left: 28px;
   color: var(--bc-grey);
@@ -51,7 +51,7 @@
   line-height: 1.2;
 }
 
-.columns-productform .columns-productform-product li::before {
+.columns-product-form .columns-product-form-product li::before {
   content: '✓';
   position: absolute;
   left: 0;
@@ -59,7 +59,7 @@
   font-weight: 700;
 }
 
-.columns-productform .columns-productform-form {
+.columns-product-form .columns-product-form-form {
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -70,9 +70,9 @@
   font-family: var(--bc-brand-font);
 }
 
-.columns-productform .columns-productform-form h2,
-.columns-productform .columns-productform-form h3,
-.columns-productform .columns-productform-form h4 {
+.columns-product-form .columns-product-form-form h2,
+.columns-product-form .columns-product-form-form h3,
+.columns-product-form .columns-product-form-form h4 {
   margin: 0;
   color: var(--bc-navy);
   font-weight: 800;
@@ -80,32 +80,32 @@
   line-height: 1.2;
 }
 
-.columns-productform .columns-productform-form p {
+.columns-product-form .columns-product-form-form p {
   margin: 0;
   color: var(--bc-grey);
   font-size: 13px;
   line-height: 1.25;
 }
 
-.columns-productform .columns-productform-form form {
+.columns-product-form .columns-product-form-form form {
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
-.columns-productform .columns-productform-field {
+.columns-product-form .columns-product-form-field {
   display: flex;
   flex-direction: column;
   gap: 6px;
 }
 
-.columns-productform .columns-productform-field label {
+.columns-product-form .columns-product-form-field label {
   color: var(--bc-navy);
   font-size: 12px;
   font-weight: 600;
 }
 
-.columns-productform .columns-productform-field input {
+.columns-product-form .columns-product-form-field input {
   width: 100%;
   padding: 10px 12px;
   border: 1px solid var(--bc-border);
@@ -117,7 +117,7 @@
   box-sizing: border-box;
 }
 
-.columns-productform .columns-productform-submit {
+.columns-product-form .columns-product-form-submit {
   margin: 4px 0 0;
   padding: 12px 24px;
   border: none;
@@ -132,21 +132,21 @@
 }
 
 @media (width >= 900px) {
-  .columns-productform {
+  .columns-product-form {
     padding: 80px;
   }
 
-  .columns-productform > div {
+  .columns-product-form > div {
     flex-direction: row;
     align-items: flex-start;
     gap: 64px;
   }
 
-  .columns-productform .columns-productform-product {
+  .columns-product-form .columns-product-form-product {
     flex: 1;
   }
 
-  .columns-productform .columns-productform-form {
+  .columns-product-form .columns-product-form-form {
     flex: 0 0 420px;
     padding: 36px;
   }

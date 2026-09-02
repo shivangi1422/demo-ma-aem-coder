@@ -1,4 +1,7 @@
 .columns-reversed {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
   padding: 40px 24px;
   background-color: var(--bc-surface);
 }
@@ -92,16 +95,13 @@
 
 @media (width >= 900px) {
   .columns-reversed {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
     padding: 80px;
   }
 
   .columns-reversed > div {
-    flex-direction: row;
-    align-items: center;
-    gap: 64px;
-  }
-
-  .columns-reversed > div > div {
     flex: 1;
   }
 

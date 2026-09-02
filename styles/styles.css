@@ -335,28 +335,28 @@ main > .section:first-of-type {
 main > .section:has(> div > .hero-home),
 main > .section:has(> div > .hero-banner),
 main > .section:has(> div > .cards-solutions),
-main > .section:has(> div > .cards-productlines),
+main > .section:has(> div > .cards-product-lines),
 main > .section:has(> div > .carousel-instruments),
 main > .section:has(> div > .tabs-products),
 main > .section:has(> div > .columns-reversed),
 main > .section:has(> div > .cards-insights),
 main > .section:has(> div > .form-request),
-main > .section:has(> div > .columns-productdetail),
-main > .section:has(> div > .columns-productform) {
+main > .section:has(> div > .columns-product-detail),
+main > .section:has(> div > .columns-product-form) {
   margin: 0;
 }
 
 main > .section:has(> div > .hero-home) > div,
 main > .section:has(> div > .hero-banner) > div,
 main > .section:has(> div > .cards-solutions) > div,
-main > .section:has(> div > .cards-productlines) > div,
+main > .section:has(> div > .cards-product-lines) > div,
 main > .section:has(> div > .carousel-instruments) > div,
 main > .section:has(> div > .tabs-products) > div,
 main > .section:has(> div > .columns-reversed) > div,
 main > .section:has(> div > .cards-insights) > div,
 main > .section:has(> div > .form-request) > div,
-main > .section:has(> div > .columns-productdetail) > div,
-main > .section:has(> div > .columns-productform) > div {
+main > .section:has(> div > .columns-product-detail) > div,
+main > .section:has(> div > .columns-product-form) > div {
   max-width: none;
   padding: 0;
 }

@@ -115,15 +115,15 @@
         },
         {
           "title": "Cards Product Lines",
-          "id": "cards-productlines",
+          "id": "cards-product-lines",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Cards Product Lines",
-                  "model": "cards-productlines",
-                  "filter": "cards-productlines"
+                  "model": "cards-product-lines",
+                  "filter": "cards-product-lines"
                 }
               }
             }
@@ -131,14 +131,14 @@
         },
         {
           "title": "Product Line Card",
-          "id": "cards-productlines-item",
+          "id": "cards-product-lines-item",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block/item",
                 "template": {
                   "name": "Product Line Card",
-                  "model": "cards-productlines-item"
+                  "model": "cards-product-lines-item"
                 }
               }
             }
@@ -238,14 +238,14 @@
         },
         {
           "title": "Columns Product Detail",
-          "id": "columns-productdetail",
+          "id": "columns-product-detail",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Columns Product Detail",
-                  "model": "columns-productdetail"
+                  "model": "columns-product-detail"
                 }
               }
             }
@@ -253,14 +253,14 @@
         },
         {
           "title": "Columns Product Form",
-          "id": "columns-productform",
+          "id": "columns-product-form",
           "plugins": {
             "xwalk": {
               "page": {
                 "resourceType": "core/franklin/components/block/v1/block",
                 "template": {
                   "name": "Columns Product Form",
-                  "model": "columns-productform"
+                  "model": "columns-product-form"
                 }
               }
             }

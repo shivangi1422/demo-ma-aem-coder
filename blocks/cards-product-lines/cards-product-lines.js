@@ -2,7 +2,7 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
- * Decorates the cards-productlines block.
+ * Decorates the cards-product-lines block.
  * Authored structure: optional first row = section heading, then one row per
  * product card (image cell + body cell with title and description).
  * @param {Element} block
@@ -23,9 +23,9 @@ export default function decorate(block) {
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       if (div.children.length === 1 && div.querySelector('picture')) {
-        div.className = 'cards-productlines-image';
+        div.className = 'cards-product-lines-image';
       } else {
-        div.className = 'cards-productlines-body';
+        div.className = 'cards-product-lines-body';
       }
     });
     ul.append(li);
@@ -39,7 +39,7 @@ export default function decorate(block) {
 
   if (headingRow) {
     const heading = document.createElement('div');
-    heading.className = 'cards-productlines-heading';
+    heading.className = 'cards-product-lines-heading';
     while (headingRow.firstElementChild) heading.append(headingRow.firstElementChild);
     headingRow.remove();
     block.append(heading);
