@@ -30,22 +30,8 @@
         {
           "component": "reference",
           "valueType": "string",
-          "name": "image",
-          "label": "Main Image",
-          "multi": false
-        },
-        {
-          "component": "text",
-          "valueType": "string",
-          "name": "imageAlt",
-          "label": "Main Image Alt",
-          "value": ""
-        },
-        {
-          "component": "reference",
-          "valueType": "string",
-          "name": "thumbnails",
-          "label": "Thumbnails",
+          "name": "images",
+          "label": "Images (first = main, rest = thumbnails)",
           "multi": true
         }
       ]
