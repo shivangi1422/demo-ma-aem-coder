@@ -1,0 +1,31 @@
+{
+  "blockOrder": 2,
+  "figmaName": "V1 - Beckman Coulter/Hero",
+  "nodeId": "224:530",
+  "variant": "hero-home",
+  "blockType": "hero",
+  "designContext": "Flattened bg image (v1BeckmanCoulterhero) over overlay bg #002b7ab2 (blue, ~70% opacity). Centered content, padding 80px, w1440 h600. Heading white centered, subtext white centered, two CTAs.",
+  "content": {
+    "heading": "Advancing Diagnostics. Moving Science Forward.",
+    "subtext": "From clinical chemistry to hematology, our integrated solutions help labs deliver accurate results faster.",
+    "ctas": [
+      { "label": "Explore Solutions", "style": "primary-orange" },
+      { "label": "Watch Demo", "style": "secondary-outline" }
+    ]
+  },
+  "assets": [
+    {
+      "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/85949e0f-6821-41ac-b876-05fc0f0a815d",
+      "suggestedName": "hero-home-bg.png",
+      "usage": "background-image",
+      "context": "Full-width hero background: lab/lab-equipment photo behind blue overlay"
+    }
+  ],
+  "tokens": {
+    "colors": { "overlay": "#002b7ab2", "heading": "#ffffff", "body": "#ffffff", "cta-primary-bg": "#ed6c1f", "cta-secondary-border": "#ffffff" },
+    "typography": { "heading-size": "48px", "body-size": "18px" },
+    "spacing": { "padding": "80px", "gap": "32px" },
+    "dimensions": { "width": "1440px", "height": "600px" }
+  },
+  "perItemVariations": null
+}

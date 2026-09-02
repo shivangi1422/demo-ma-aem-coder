@@ -1,0 +1,20 @@
+{
+  "blockOrder": 8,
+  "figmaName": "V1 — Beckman Coulter/Banner",
+  "nodeId": "214:1479",
+  "variant": "hero-banner",
+  "blockType": "hero",
+  "designContext": "Solid blue bg #003da5, col items-center gap 24px, padding 80px. Heading centered (Inter extrabold 40px/48px white). Subtext w800 centered (Inter normal 18px/22px #ffffffe6). CTA button bg #ff6b00 px32 py16 rounded 4px, white bold 16px 'Schedule a Consultation'. No image.",
+  "content": {
+    "heading": "Transform Your Laboratory Operations",
+    "subtext": "Unlock clinical excellence with Beckman Coulter's integrated hardware, custom reagents, and next-generation middleware.",
+    "cta": "Schedule a Consultation"
+  },
+  "assets": [],
+  "tokens": {
+    "colors": { "section-bg": "#003da5", "heading": "#ffffff", "subtext": "#ffffffe6", "cta-bg": "#ff6b00", "cta-text": "#ffffff" },
+    "typography": { "heading": "Inter extrabold 40px/48px", "subtext": "Inter normal 18px/22px", "cta": "Inter bold 16px/19px" },
+    "spacing": { "section-padding": "80px", "gap": "24px", "subtext-width": "800px", "cta-px": "32px", "cta-py": "16px", "cta-radius": "4px" }
+  },
+  "perItemVariations": null
+}

@@ -1,0 +1,34 @@
+{
+  "blockOrder": 12,
+  "figmaName": "V1 — Beckman Coulter/Content Form",
+  "nodeId": "214:1483",
+  "variant": "columns-productform",
+  "blockType": "columns",
+  "designContext": "Section bg #f5f5f5, row items-center gap 64px, padding 80px. 2 columns. LEFT product col gap 24px: title 'Access 2 Immunoassay System' (Inter extrabold 32px/39px #1a1a2e), product image full width h260 rounded 8px border 1px #e5e7eb, highlights list (icon 16px + Inter medium 14px/17px #666677). RIGHT form card w480 gap 28px padding 36px rounded 8px bg #ffffff border 1px #e5e7eb: MiniFormHeader gap 6px (title Inter extrabold 20px/24px #1a1a2e 'Request Quote & Demo', subtitle Inter normal 13px/16px #666677). Fields gap 16px: Full Name*, Email*, Instrument of Interest* (select w/ chevron, value 'Access 2 Immunoassay System'). Inputs h40 px12 rounded4 bg #f5f5f5, labels Inter semibold 12px #1a1a2e. Submit full width bg #ff6b00 px24 py12 rounded4 white bold 15px 'Request Quote & Demo'.",
+  "content": {
+    "left": {
+      "title": "Access 2 Immunoassay System",
+      "image": "columns-productform-access2.png",
+      "highlights": ["Modular configuration that optimizes bench space", "Consolidated and robust immunoassay diagnostics menu", "Continuous load system with dedicated sample handling", "Minimal daily maintenance requirements"]
+    },
+    "form": {
+      "title": "Request Quote & Demo",
+      "subtitle": "Fill out this quick form and our diagnostic experts will call back.",
+      "fields": [
+        { "label": "Full Name *", "placeholder": "Your name", "type": "text" },
+        { "label": "Email *", "placeholder": "you@institution.org", "type": "email" },
+        { "label": "Instrument of Interest *", "type": "select", "value": "Access 2 Immunoassay System" }
+      ],
+      "submit": "Request Quote & Demo"
+    }
+  },
+  "assets": [
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/d474cbc7-16ef-4f3a-9b3c-06ad20c588a6", "suggestedName": "columns-productform-access2.png", "usage": "content-image", "context": "Access 2 product image (left column)" }
+  ],
+  "tokens": {
+    "colors": { "section-bg": "#f5f5f5", "title": "#1a1a2e", "highlight-text": "#666677", "form-bg": "#ffffff", "form-border": "#e5e7eb", "form-title": "#1a1a2e", "form-subtitle": "#666677", "label": "#1a1a2e", "input-bg": "#f5f5f5", "placeholder": "#666677", "submit-bg": "#ff6b00", "submit-text": "#ffffff", "image-border": "#e5e7eb" },
+    "typography": { "title": "Inter extrabold 32px/39px", "highlight": "Inter medium 14px/17px", "form-title": "Inter extrabold 20px/24px", "form-subtitle": "Inter normal 13px/16px", "label": "Inter semibold 12px/15px", "input": "Inter normal 14px/17px", "submit": "Inter bold 15px/18px" },
+    "spacing": { "section-padding": "80px", "grid-gap": "64px", "col-gap": "24px", "image-height": "260px", "highlights-gap": "12px", "form-width": "480px", "form-padding": "36px", "form-gap": "28px", "fields-gap": "16px", "input-height": "40px", "input-px": "12px", "input-radius": "4px", "submit-px": "24px", "submit-py": "12px", "image-radius": "8px" }
+  },
+  "perItemVariations": null
+}

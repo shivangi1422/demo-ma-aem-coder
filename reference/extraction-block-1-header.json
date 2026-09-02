@@ -1,0 +1,24 @@
+{
+  "blockOrder": 1,
+  "figmaName": "V1 — Beckman Coulter/Header",
+  "nodeId": "214:1472",
+  "variant": "header",
+  "blockType": "header",
+  "blockTypeNote": "EDS header is driven by nav.plain.html fragment loaded via header block JS, NOT a normal in-page block. Content authored in /nav document. Will implement nav content + style header block.",
+  "designContext": "White header h80, row justify-between items-center, px80, bottom border 1px #e5e7eb. Logo left (Beckman Coulter). Nav center: Products & Solutions, Services, Support, Resources, About Us (Inter semibold 14px/17px #1a1a2e, gap 32px). Actions right gap 24px: search icon 20px + Contact Us button (bg #ff6b00 px20 py10 rounded4 white bold 14px).",
+  "content": {
+    "logo": "Beckman Coulter",
+    "logoImage": "header-logo.png",
+    "nav": ["Products & Solutions", "Services", "Support", "Resources", "About Us"],
+    "actions": { "search": true, "cta": "Contact Us" }
+  },
+  "assets": [
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/9263a635-b983-4ed4-83da-95329397c2be", "suggestedName": "header-logo.png", "usage": "content-image", "context": "Beckman Coulter logo" }
+  ],
+  "tokens": {
+    "colors": { "bg": "#ffffff", "border": "#e5e7eb", "nav-text": "#1a1a2e", "cta-bg": "#ff6b00", "cta-text": "#ffffff" },
+    "typography": { "nav": "Inter semibold 14px/17px", "cta": "Inter bold 14px/17px" },
+    "spacing": { "height": "80px", "px": "80px", "nav-gap": "32px", "actions-gap": "24px", "cta-px": "20px", "cta-py": "10px", "cta-radius": "4px" }
+  },
+  "perItemVariations": null
+}

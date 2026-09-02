@@ -1,0 +1,32 @@
+{
+  "blockOrder": 6,
+  "figmaName": "V1 — Beckman Coulter/Table Column",
+  "nodeId": "214:1477",
+  "variant": "tabs-products",
+  "blockType": "tabs",
+  "designContext": "White section, padding 80px, gap 48px. TabBar: row gap 32px, bottom border 1px #e5e7eb. Tabs: py16px. Inactive tab text (Inter medium 16px #666677); active tab 'Analyzers' (Inter bold 16px #003da5, bottom border #003da5). ContentGrid: row items-center gap 64px. LeftTextCol: gap 24px: eyebrow 'INNOVATION' (Inter bold 12px #ff6b00 uppercase), title 'DxC 700 AU Analyzer' (Inter extrabold 36px/44px #1a1a2e), desc (Inter normal 16px/19px #666677), bullets (checkmark 16px + Inter semibold 15px #1a1a2e), CTA button (bg #ff6b00, px28 py14, rounded 4px, white bold 16px 'Request a Demo'). Right: product image full width h450 rounded 8px border 1px #e5e7eb.",
+  "content": {
+    "tabs": ["All Products", "Analyzers", "Reagents", "Software", "Services"],
+    "activeTab": "Analyzers",
+    "panel": {
+      "eyebrow": "INNOVATION",
+      "title": "DxC 700 AU Analyzer",
+      "desc": "A clinical chemistry workhorse combining robust, reliable hardware with advanced automation to empower high-throughput hospital and commercial laboratories.",
+      "bullets": ["Up to 1,200 tests/hour", "Consolidated testing menu", "STAT processing capability", "Integrated quality control"],
+      "cta": "Request a Demo",
+      "image": "tabs-products-dxc700.png"
+    }
+  },
+  "assets": [
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/0bf7d1d7-0182-490d-ba90-b3795096073f", "suggestedName": "tabs-products-dxc700.png", "usage": "content-image", "context": "DxC 700 AU analyzer product image (right column)" }
+  ],
+  "tokens": {
+    "colors": { "section-bg": "#ffffff", "tab-inactive": "#666677", "tab-active": "#003da5", "tabbar-border": "#e5e7eb", "eyebrow": "#ff6b00", "title": "#1a1a2e", "desc": "#666677", "bullet-text": "#1a1a2e", "cta-bg": "#ff6b00", "cta-text": "#ffffff", "image-border": "#e5e7eb" },
+    "typography": { "tab": "Inter medium/bold 16px/19px", "eyebrow": "Inter bold 12px/15px uppercase", "title": "Inter extrabold 36px/44px", "desc": "Inter normal 16px/19px", "bullet": "Inter semibold 15px/18px", "cta": "Inter bold 16px/19px" },
+    "spacing": { "section-padding": "80px", "section-gap": "48px", "tabbar-gap": "32px", "tab-py": "16px", "grid-gap": "64px", "col-gap": "24px", "bullets-gap": "12px", "cta-px": "28px", "cta-py": "14px", "cta-radius": "4px", "image-height": "450px", "image-radius": "8px" }
+  },
+  "perItemVariations": {
+    "type": "active-tab",
+    "note": "Active tab uses #003da5 bold + bottom border; inactive tabs use #666677 medium"
+  }
+}

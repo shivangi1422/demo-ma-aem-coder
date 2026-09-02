@@ -1,0 +1,27 @@
+{
+  "blockOrder": 3,
+  "figmaName": "V1 — Beckman Coulter/Cards",
+  "nodeId": "214:1474",
+  "variant": "cards-solutions",
+  "blockType": "cards",
+  "designContext": "Section: white bg, padding 80px, gap 48px. Heading 'Our Solutions' (Inter extrabold 36px/44px #1a1a2e). CardsGrid: row, gap 32px, 3 equal cards. Each card: col, gap 20px, rounded 8px, bg #f5f5f5, border 1px #e5e7eb, overflow hidden. Image full width h220px. CardBody padding 24px gap 12px: category (Inter bold 12px/15px #003da5 uppercase), title (Inter bold 20px/24px #1a1a2e), desc (Inter normal 14px/17px #666677), LearnMore link (Inter bold 14px #ff6b00 + arrow icon 14px).",
+  "content": {
+    "heading": "Our Solutions",
+    "cards": [
+      { "category": "Clinical Chemistry", "title": "DxC 700 AU Analyzer", "desc": "Designed to meet the needs of mid- to high-volume clinical laboratories. Optimizes workflows with automation.", "cta": "Learn More", "image": "cards-solutions-1.png" },
+      { "category": "Hematology", "title": "DxH 900 Analyzer", "desc": "High-performing complete blood count analysis. Delivers reliable first-pass results with advanced cellular analysis.", "cta": "Learn More", "image": "cards-solutions-2.png" },
+      { "category": "Flow Cytometry", "title": "CytoFLEX Platform", "desc": "Provides research and clinical capabilities in a compact benchtop design. Flexible configuration with up to 21 parameters.", "cta": "Learn More", "image": "cards-solutions-3.png" }
+    ]
+  },
+  "assets": [
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/db851fac-786b-47a6-a7c7-7258013a47c0", "suggestedName": "cards-solutions-1.png", "usage": "content-image", "context": "DxC 700 AU card image" },
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/5232ad3b-c9a3-4992-8097-cddc0d7feb2d", "suggestedName": "cards-solutions-2.png", "usage": "content-image", "context": "DxH 900 card image" },
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/481a5c2c-c721-45b2-ad39-1248dfe1d6db", "suggestedName": "cards-solutions-3.png", "usage": "content-image", "context": "CytoFLEX card image" }
+  ],
+  "tokens": {
+    "colors": { "section-bg": "#ffffff", "card-bg": "#f5f5f5", "card-border": "#e5e7eb", "heading": "#1a1a2e", "category": "#003da5", "title": "#1a1a2e", "desc": "#666677", "cta": "#ff6b00" },
+    "typography": { "heading": "Inter extrabold 36px/44px", "category": "Inter bold 12px/15px uppercase", "title": "Inter bold 20px/24px", "desc": "Inter normal 14px/17px", "cta": "Inter bold 14px/17px" },
+    "spacing": { "section-padding": "80px", "section-gap": "48px", "grid-gap": "32px", "card-gap": "20px", "card-body-padding": "24px", "card-body-gap": "12px", "card-radius": "8px", "image-height": "220px" }
+  },
+  "perItemVariations": null
+}

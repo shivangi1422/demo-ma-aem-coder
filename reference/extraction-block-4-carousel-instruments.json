@@ -1,0 +1,31 @@
+{
+  "blockOrder": 4,
+  "figmaName": "V1 — Beckman Coulter/Carousel",
+  "nodeId": "214:1475",
+  "variant": "carousel-instruments",
+  "blockType": "carousel",
+  "designContext": "Dark section bg #051a40, padding 80px, gap 40px. Heading 'Featured Instruments' (Inter extrabold 36px/44px white). MainSlider: bg image with dark overlay #00000066, h450, rounded 8px, padding 48px, overlay text bottom-left. ThumbnailsRow: prev arrow + 4 thumb cards + next arrow, gap 20px. Each thumb: rounded 6px, bg #ffffff1a, padding 16px, gap 8px, category (Inter semibold 12px #ffffffb3) + title (Inter bold 14px white). Active thumb (Immunoassay/Access 2): bg #003da5, border 1px #ff6b00.",
+  "content": {
+    "heading": "Featured Instruments",
+    "activeSlide": { "category": "Featured Clinical Chemistry", "title": "Access 2 Immunoassay System", "desc": "Maximize space and minimize workflows with our robust, benchtop analyzer designed for high-efficiency clinical labs." },
+    "thumbs": [
+      { "category": "Clinical Chemistry", "title": "DxC 700 AU", "active": false },
+      { "category": "Hematology", "title": "DxH 900", "active": false },
+      { "category": "Flow Cytometry", "title": "CytoFLEX", "active": false },
+      { "category": "Immunoassay", "title": "Access 2", "active": true }
+    ]
+  },
+  "assets": [
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/dfccca95-afd3-47c8-a009-e8193d588f20", "suggestedName": "carousel-instruments-main.png", "usage": "content-image", "context": "Main featured slide image (Access 2 lab equipment)" }
+  ],
+  "tokens": {
+    "colors": { "section-bg": "#051a40", "heading": "#ffffff", "slide-overlay": "#00000066", "thumb-bg": "#ffffff1a", "thumb-category": "#ffffffb3", "thumb-title": "#ffffff", "thumb-active-bg": "#003da5", "thumb-active-border": "#ff6b00" },
+    "typography": { "heading": "Inter extrabold 36px/44px", "thumb-category": "Inter semibold 12px/15px", "thumb-title": "Inter bold 14px/17px" },
+    "spacing": { "section-padding": "80px", "section-gap": "40px", "slide-height": "450px", "slide-radius": "8px", "slide-padding": "48px", "thumbs-gap": "20px", "thumb-padding": "16px", "thumb-radius": "6px" }
+  },
+  "perItemVariations": {
+    "type": "active-state",
+    "property": "background+border",
+    "note": "Active thumbnail (index 3) uses bg #003da5 + border #ff6b00; others use bg #ffffff1a no border"
+  }
+}

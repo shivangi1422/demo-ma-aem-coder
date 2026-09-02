@@ -1,0 +1,23 @@
+{
+  "blockOrder": 9,
+  "figmaName": "V1 — Beckman Coulter/Text Cards",
+  "nodeId": "214:1480",
+  "variant": "cards-insights",
+  "blockType": "columns",
+  "blockTypeNote": "Two-column layout: left intro panel + right list of text cards. Modeled as columns block (left cell = intro text+CTA, right cell = stacked insight cards). No images.",
+  "designContext": "White section, row gap 64px, padding 80px. LeftPanel w480 gap 24px: heading 'Latest Insights' (Inter extrabold 36px/44px #1a1a2e), desc (Inter normal 16px/19px #666677), outlined orange CTA (border 2px #ff6b00, px28 py14 rounded 4px, text #ff6b00 bold 16px 'View All Resources'). RightCardsList gap 20px: 2 insight cards. Each card: col gap 12px, padding 24px, rounded 8px, bg #f5f5f5, border 1px #e5e7eb. CardMeta row: tag (Inter bold 12px #003da5 uppercase) + dot + read time (Inter normal 12px #666677). Title (Inter bold 20px/24px #1a1a2e). Desc (Inter normal 14px/17px #666677).",
+  "content": {
+    "intro": { "heading": "Latest Insights", "desc": "Stay informed with Beckman Coulter's expert diagnostics resources, deep technical guides, and curated clinical case studies.", "cta": "View All Resources" },
+    "cards": [
+      { "tag": "White Paper", "readTime": "8 min read", "title": "Improving Lab Efficiency with Automation", "desc": "Learn how modern clinical laboratories are cutting manual handling steps by up to 60% through smart sample routing." },
+      { "tag": "Application Note", "readTime": "12 min read", "title": "Advances in Flow Cytometry Applications", "desc": "Deep dive into multi-color panel designs and cellular sorting innovations utilizing benchtop lasers." }
+    ]
+  },
+  "assets": [],
+  "tokens": {
+    "colors": { "section-bg": "#ffffff", "heading": "#1a1a2e", "desc": "#666677", "cta-border": "#ff6b00", "cta-text": "#ff6b00", "card-bg": "#f5f5f5", "card-border": "#e5e7eb", "tag": "#003da5", "meta": "#666677", "card-title": "#1a1a2e", "card-desc": "#666677" },
+    "typography": { "heading": "Inter extrabold 36px/44px", "desc": "Inter normal 16px/19px", "cta": "Inter bold 16px/19px", "tag": "Inter bold 12px/15px uppercase", "meta": "Inter normal 12px/15px", "card-title": "Inter bold 20px/24px", "card-desc": "Inter normal 14px/17px" },
+    "spacing": { "section-padding": "80px", "grid-gap": "64px", "left-width": "480px", "left-gap": "24px", "cards-gap": "20px", "card-padding": "24px", "card-gap": "12px", "card-radius": "8px", "cta-px": "28px", "cta-py": "14px", "cta-radius": "4px" }
+  },
+  "perItemVariations": null
+}

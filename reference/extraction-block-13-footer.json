@@ -1,0 +1,33 @@
+{
+  "blockOrder": 13,
+  "figmaName": "V1 — Beckman Coulter/Footer",
+  "nodeId": "214:1484",
+  "variant": "footer",
+  "blockType": "footer",
+  "blockTypeNote": "EDS footer is driven by footer.plain.html fragment loaded via footer block JS. Content authored in /footer document. Will implement footer content + style footer block. Social icons are one flattened image (socials).",
+  "designContext": "Dark footer bg #1a1a2e, col gap 64px, pt80 px80 pb40. FooterMain row gap 48px: Branding col w320 gap20 (brand 'BECKMAN COULTER' Inter extrabold 22px/27px white, desc Inter normal 14px #ffffffb3, socials image row). LinksGrid row gap 32px, 6 columns (Products/Solutions/Support/Resources/Company/Legal): heading (Inter bold 14px white uppercase) + links (Inter normal 13px/16px #ffffffb3, gap12). FooterBottom: top border 1px #ffffff1a, pt32, row justify-between: copyright (Inter normal 13px #ffffff80) + BackToTop (text #ffffffcc + arrow icon in #ffffff1a box).",
+  "content": {
+    "brand": "BECKMAN COULTER",
+    "description": "A global leader in clinical diagnostics and life sciences instrumentation. Part of the Danaher family.",
+    "socials": ["LinkedIn", "Twitter", "YouTube", "Facebook"],
+    "columns": [
+      { "heading": "Products", "links": ["Clinical Chemistry", "Hematology", "Flow Cytometry", "Centrifugation"] },
+      { "heading": "Solutions", "links": ["Lab Automation", "Workflow", "Integration"] },
+      { "heading": "Support", "links": ["Technical Support", "Training", "Documentation"] },
+      { "heading": "Resources", "links": ["White Papers", "Webinars", "Case Studies"] },
+      { "heading": "Company", "links": ["About Us", "Careers", "News"] },
+      { "heading": "Legal", "links": ["Privacy", "Terms", "Cookies"] }
+    ],
+    "copyright": "© 2024 Beckman Coulter, Inc. A Danaher Company. All rights reserved.",
+    "backToTop": "Back to top"
+  },
+  "assets": [
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7e884f94-9164-439b-acc0-c65eeb9fbe63", "suggestedName": "footer-socials.png", "usage": "content-image", "context": "Social icons row (LinkedIn/Twitter/YouTube/Facebook)" }
+  ],
+  "tokens": {
+    "colors": { "bg": "#1a1a2e", "brand": "#ffffff", "desc": "#ffffffb3", "col-heading": "#ffffff", "link": "#ffffffb3", "bottom-border": "#ffffff1a", "copyright": "#ffffff80", "backtotop": "#ffffffcc" },
+    "typography": { "brand": "Inter extrabold 22px/27px", "desc": "Inter normal 14px/17px", "col-heading": "Inter bold 14px/17px uppercase", "link": "Inter normal 13px/16px", "copyright": "Inter normal 13px/16px" },
+    "spacing": { "pt": "80px", "px": "80px", "pb": "40px", "section-gap": "64px", "main-gap": "48px", "branding-width": "320px", "branding-gap": "20px", "links-grid-gap": "32px", "col-gap": "16px", "links-gap": "12px", "bottom-pt": "32px" }
+  },
+  "perItemVariations": null
+}

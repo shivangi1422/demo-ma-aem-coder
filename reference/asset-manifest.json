@@ -1,0 +1,28 @@
+{
+  "pageName": "home",
+  "imageDirectory": "content/images/home",
+  "summary": {
+    "totalDiscovered": 17,
+    "totalDownloaded": 17,
+    "totalFailed": 0
+  },
+  "assets": [
+    { "blockOrder": 1, "blockVariant": "header", "filename": "header-logo.png", "localPath": "./images/home/header-logo.png", "usage": "content-image", "status": "downloaded", "dimensions": "438x54" },
+    { "blockOrder": 2, "blockVariant": "hero-home", "filename": "hero-home-bg.png", "localPath": "./images/home/hero-home-bg.png", "usage": "background-image", "status": "downloaded", "dimensions": "2880x1200", "note": "2.4:1 matches 1440x600 hero slot, no crop needed" },
+    { "blockOrder": 3, "blockVariant": "cards-solutions", "filename": "cards-solutions-1.png", "localPath": "./images/home/cards-solutions-1.png", "usage": "content-image", "status": "downloaded", "dimensions": "811x440" },
+    { "blockOrder": 3, "blockVariant": "cards-solutions", "filename": "cards-solutions-2.png", "localPath": "./images/home/cards-solutions-2.png", "usage": "content-image", "status": "downloaded", "dimensions": "811x440" },
+    { "blockOrder": 3, "blockVariant": "cards-solutions", "filename": "cards-solutions-3.png", "localPath": "./images/home/cards-solutions-3.png", "usage": "content-image", "status": "downloaded", "dimensions": "811x440" },
+    { "blockOrder": 4, "blockVariant": "carousel-instruments", "filename": "carousel-instruments-main.png", "localPath": "./images/home/carousel-instruments-main.png", "usage": "content-image", "status": "downloaded", "dimensions": "2560x900" },
+    { "blockOrder": 5, "blockVariant": "cards-productlines", "filename": "cards-productlines-1.png", "localPath": "./images/home/cards-productlines-1.png", "usage": "content-image", "status": "downloaded", "dimensions": "822x400" },
+    { "blockOrder": 5, "blockVariant": "cards-productlines", "filename": "cards-productlines-2.png", "localPath": "./images/home/cards-productlines-2.png", "usage": "content-image", "status": "downloaded", "dimensions": "822x400" },
+    { "blockOrder": 5, "blockVariant": "cards-productlines", "filename": "cards-productlines-3.png", "localPath": "./images/home/cards-productlines-3.png", "usage": "content-image", "status": "downloaded", "dimensions": "822x400" },
+    { "blockOrder": 6, "blockVariant": "tabs-products", "filename": "tabs-products-dxc700.png", "localPath": "./images/home/tabs-products-dxc700.png", "usage": "content-image", "status": "downloaded", "dimensions": "1218x900" },
+    { "blockOrder": 7, "blockVariant": "columns-reversed", "filename": "columns-reversed-dxh900.png", "localPath": "./images/home/columns-reversed-dxh900.png", "usage": "content-image", "status": "downloaded", "dimensions": "1218x900" },
+    { "blockOrder": 11, "blockVariant": "columns-productdetail", "filename": "columns-productdetail-main.png", "localPath": "./images/home/columns-productdetail-main.png", "usage": "content-image", "status": "downloaded", "dimensions": "1216x640" },
+    { "blockOrder": 11, "blockVariant": "columns-productdetail", "filename": "columns-productdetail-thumb1.png", "localPath": "./images/home/columns-productdetail-thumb1.png", "usage": "content-image", "status": "downloaded", "dimensions": "384x200" },
+    { "blockOrder": 11, "blockVariant": "columns-productdetail", "filename": "columns-productdetail-thumb2.png", "localPath": "./images/home/columns-productdetail-thumb2.png", "usage": "content-image", "status": "downloaded", "dimensions": "384x200" },
+    { "blockOrder": 11, "blockVariant": "columns-productdetail", "filename": "columns-productdetail-thumb3.png", "localPath": "./images/home/columns-productdetail-thumb3.png", "usage": "content-image", "status": "downloaded", "dimensions": "384x200" },
+    { "blockOrder": 12, "blockVariant": "columns-productform", "filename": "columns-productform-access2.png", "localPath": "./images/home/columns-productform-access2.png", "usage": "content-image", "status": "downloaded", "dimensions": "1472x520" },
+    { "blockOrder": 13, "blockVariant": "footer", "filename": "footer-socials.png", "localPath": "./images/home/footer-socials.png", "usage": "content-image", "status": "downloaded", "dimensions": "360x88" }
+  ]
+}
