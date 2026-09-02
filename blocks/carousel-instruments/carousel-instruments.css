@@ -1,0 +1,230 @@
+.carousel-instruments {
+  padding: 40px 24px;
+  background-color: var(--bc-blue-dark);
+}
+
+.carousel-instruments .carousel-instruments-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.carousel-instruments .carousel-instruments-heading h1,
+.carousel-instruments .carousel-instruments-heading h2,
+.carousel-instruments .carousel-instruments-heading h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--bc-brand-font);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.22;
+}
+
+.carousel-instruments .carousel-instruments-stage {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  min-height: 320px;
+}
+
+.carousel-instruments .carousel-instruments-slide {
+  display: none;
+  position: relative;
+  min-height: 320px;
+}
+
+.carousel-instruments .carousel-instruments-slide.is-active {
+  display: block;
+}
+
+.carousel-instruments .carousel-instruments-slide picture {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel-instruments .carousel-instruments-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+
+  /*
+   * The flattened Figma slide export bakes the title text into the photo.
+   * A light blur + scale dissolves that baked text so it does not ghost next
+   * to the live overlay panel, while the equipment photo still reads clearly.
+   */
+  filter: blur(5px);
+  transform: scale(1.05);
+}
+
+/* soft left-to-right dark scrim to deepen the panel side of the photo */
+.carousel-instruments .carousel-instruments-slide::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, rgb(5 15 35 / 80%) 0%, rgb(5 15 35 / 35%) 45%, rgb(5 15 35 / 0%) 65%);
+}
+
+/* contained rounded overlay panel, bottom-left */
+.carousel-instruments .carousel-instruments-overlay {
+  position: absolute;
+  z-index: 1;
+  left: 24px;
+  bottom: 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  max-width: 440px;
+  padding: 24px;
+  border-radius: 8px;
+  background-color: rgb(10 20 45 / 45%);
+  backdrop-filter: blur(4px);
+  font-family: var(--bc-brand-font);
+}
+
+/* default paragraph = muted description */
+.carousel-instruments .carousel-instruments-overlay p {
+  margin: 0;
+  color: rgb(255 255 255 / 85%);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.35;
+}
+
+/* first paragraph = orange eyebrow */
+.carousel-instruments .carousel-instruments-overlay p:first-child {
+  color: var(--bc-orange);
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+
+.carousel-instruments .carousel-instruments-overlay h3,
+.carousel-instruments .carousel-instruments-overlay h4 {
+  margin: 0;
+  color: #fff;
+  font-weight: 800;
+  font-size: 24px;
+  line-height: 1.15;
+}
+
+/* controls: prev arrow + thumbnail rail + next arrow */
+.carousel-instruments .carousel-instruments-controls {
+  display: flex;
+  align-items: stretch;
+  gap: 16px;
+}
+
+.carousel-instruments .carousel-instruments-arrow {
+  flex: 0 0 auto;
+  align-self: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 1px solid rgb(255 255 255 / 60%);
+  border-radius: 50%;
+  background: transparent;
+  color: #fff;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.carousel-instruments .carousel-instruments-arrow:hover {
+  background-color: rgb(255 255 255 / 12%);
+}
+
+.carousel-instruments .carousel-instruments-arrow::before {
+  content: '';
+  width: 9px;
+  height: 9px;
+  border-style: solid;
+  border-width: 2px 2px 0 0;
+  border-color: #fff;
+}
+
+.carousel-instruments .carousel-instruments-arrow-prev::before {
+  transform: rotate(-135deg);
+  margin-left: 3px;
+}
+
+.carousel-instruments .carousel-instruments-arrow-next::before {
+  transform: rotate(45deg);
+  margin-right: 3px;
+}
+
+.carousel-instruments .carousel-instruments-thumbs {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.carousel-instruments .carousel-instruments-thumb {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  padding: 16px;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background-color: rgb(255 255 255 / 10%);
+  text-align: left;
+  cursor: pointer;
+  font-family: var(--bc-brand-font);
+}
+
+.carousel-instruments .carousel-instruments-thumb.is-active {
+  background-color: var(--bc-blue);
+  border-color: var(--bc-orange);
+}
+
+.carousel-instruments .carousel-instruments-thumb h3,
+.carousel-instruments .carousel-instruments-thumb h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- unrelated component, ordering is intentional */
+.carousel-instruments .carousel-instruments-thumb p {
+  margin: 0;
+  color: rgb(255 255 255 / 70%);
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: none;
+}
+
+/* compact thumbnail shows only the category + title, not the description */
+.carousel-instruments .carousel-instruments-thumb p:last-child {
+  display: none;
+}
+
+@media (width >= 900px) {
+  .carousel-instruments {
+    padding: 80px;
+  }
+
+  .carousel-instruments .carousel-instruments-heading h1,
+  .carousel-instruments .carousel-instruments-heading h2,
+  .carousel-instruments .carousel-instruments-heading h3 {
+    font-size: 36px;
+  }
+
+  .carousel-instruments .carousel-instruments-stage,
+  .carousel-instruments .carousel-instruments-slide {
+    min-height: 450px;
+  }
+
+  .carousel-instruments .carousel-instruments-overlay {
+    left: 48px;
+    bottom: 48px;
+    padding: 28px;
+  }
+
+  .carousel-instruments .carousel-instruments-thumbs {
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+  }
+}

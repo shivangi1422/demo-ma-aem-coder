@@ -1,0 +1,112 @@
+.columns-reversed {
+  padding: 40px 24px;
+  background-color: var(--bc-surface);
+}
+
+.columns-reversed > div {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.columns-reversed .columns-reversed-image {
+  line-height: 0;
+}
+
+.columns-reversed .columns-reversed-image img {
+  width: 100%;
+  height: auto;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+}
+
+.columns-reversed .columns-reversed-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-family: var(--bc-brand-font);
+}
+
+.columns-reversed .columns-reversed-text p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+/* eyebrow */
+.columns-reversed .columns-reversed-text p:first-child {
+  color: var(--bc-blue);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.columns-reversed .columns-reversed-text h2,
+.columns-reversed .columns-reversed-text h3 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.22;
+}
+
+.columns-reversed .columns-reversed-text ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.columns-reversed .columns-reversed-text li {
+  position: relative;
+  padding-left: 28px;
+  color: var(--bc-navy);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.columns-reversed .columns-reversed-text li::before {
+  content: '✓';
+  position: absolute;
+  left: 0;
+  color: var(--bc-blue);
+  font-weight: 700;
+}
+
+.columns-reversed .columns-reversed-text a.button:any-link {
+  align-self: flex-start;
+  margin: 4px 0 0;
+  padding: 12px 28px;
+  border: 2px solid var(--bc-navy);
+  border-radius: 4px;
+  background: none;
+  color: var(--bc-navy);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+@media (width >= 900px) {
+  .columns-reversed {
+    padding: 80px;
+  }
+
+  .columns-reversed > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 64px;
+  }
+
+  .columns-reversed > div > div {
+    flex: 1;
+  }
+
+  .columns-reversed .columns-reversed-text h2,
+  .columns-reversed .columns-reversed-text h3 {
+    font-size: 36px;
+  }
+}

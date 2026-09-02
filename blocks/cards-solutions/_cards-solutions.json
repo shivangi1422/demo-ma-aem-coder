@@ -1,0 +1,83 @@
+{
+  "definitions": [
+    {
+      "title": "Cards Solutions",
+      "id": "cards-solutions",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards Solutions",
+              "model": "cards-solutions",
+              "filter": "cards-solutions"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Solution Card",
+      "id": "cards-solutions-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Solution Card",
+              "model": "cards-solutions-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-solutions",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Section Heading",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "cards-solutions-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-solutions",
+      "components": [
+        "cards-solutions-item"
+      ]
+    }
+  ]
+}
