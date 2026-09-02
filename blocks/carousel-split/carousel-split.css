@@ -1,0 +1,106 @@
+.carousel-split {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--bc-surface);
+  overflow: hidden;
+}
+
+.carousel-split .carousel-split-image {
+  line-height: 0;
+}
+
+.carousel-split .carousel-split-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel-split .carousel-split-text {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 24px;
+  font-family: var(--bc-brand-font);
+}
+
+.carousel-split .carousel-split-text p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+/* eyebrow (first paragraph) */
+.carousel-split .carousel-split-text p:first-child {
+  color: var(--bc-orange);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.carousel-split .carousel-split-text h2,
+.carousel-split .carousel-split-text h3 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.2;
+}
+
+/* specs list rendered as a 2-column grid */
+.carousel-split .carousel-split-text ul {
+  list-style: none;
+  margin: 4px 0 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px 24px;
+}
+
+.carousel-split .carousel-split-text li {
+  color: var(--bc-navy);
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.carousel-split .carousel-split-text li strong {
+  display: block;
+  color: var(--bc-grey);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.carousel-split .carousel-split-text a {
+  color: var(--bc-orange);
+  font-weight: 700;
+  font-size: 15px;
+  text-decoration: none;
+}
+
+.carousel-split .carousel-split-text a::after {
+  content: ' →';
+}
+
+@media (width >= 900px) {
+  .carousel-split {
+    flex-direction: row;
+    min-height: 520px;
+  }
+
+  .carousel-split .carousel-split-image {
+    flex: 1 1 55%;
+  }
+
+  .carousel-split .carousel-split-text {
+    flex: 1 1 45%;
+    justify-content: center;
+    gap: 20px;
+    padding: 64px;
+  }
+
+  .carousel-split .carousel-split-text h2,
+  .carousel-split .carousel-split-text h3 {
+    font-size: 32px;
+  }
+}

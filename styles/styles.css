@@ -342,7 +342,10 @@ main > .section:has(> div > .content-reversed),
 main > .section:has(> div > .cards-insights),
 main > .section:has(> div > .form-request),
 main > .section:has(> div > .content-product-detail),
-main > .section:has(> div > .content-product-form) {
+main > .section:has(> div > .content-product-form),
+main > .section:has(> div > .hero-split),
+main > .section:has(> div > .carousel-split),
+main > .section:has(> div > .product-banner) {
   margin: 0;
 }
 
@@ -356,7 +359,10 @@ main > .section:has(> div > .content-reversed) > div,
 main > .section:has(> div > .cards-insights) > div,
 main > .section:has(> div > .form-request) > div,
 main > .section:has(> div > .content-product-detail) > div,
-main > .section:has(> div > .content-product-form) > div {
+main > .section:has(> div > .content-product-form) > div,
+main > .section:has(> div > .hero-split) > div,
+main > .section:has(> div > .carousel-split) > div,
+main > .section:has(> div > .product-banner) > div {
   max-width: none;
   padding: 0;
 }

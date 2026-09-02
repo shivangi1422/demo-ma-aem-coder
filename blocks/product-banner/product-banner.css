@@ -1,0 +1,108 @@
+.product-banner {
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+}
+
+.product-banner .product-banner-image {
+  line-height: 0;
+}
+
+.product-banner .product-banner-image img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+}
+
+.product-banner .product-banner-content {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding: 40px 24px;
+  font-family: var(--bc-brand-font);
+}
+
+.product-banner .product-banner-content p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* eyebrow */
+.product-banner .product-banner-content p:first-child {
+  color: var(--bc-blue);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.product-banner .product-banner-content h2,
+.product-banner .product-banner-content h3 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.25;
+}
+
+/* 2x2 feature grid rendered from a list */
+.product-banner .product-banner-content ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.product-banner .product-banner-content li {
+  padding: 20px;
+  border-radius: 8px;
+  background-color: var(--bc-surface);
+  color: var(--bc-grey);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.product-banner .product-banner-content li strong {
+  display: block;
+  margin-bottom: 6px;
+  color: var(--bc-navy);
+  font-size: 16px;
+}
+
+.product-banner .product-banner-content a.button:any-link {
+  align-self: flex-start;
+  margin: 0;
+  padding: 12px 24px;
+  border-radius: 4px;
+  background-color: var(--bc-orange);
+  border-color: var(--bc-orange);
+  color: #fff;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+@media (width >= 600px) {
+  .product-banner .product-banner-content ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .product-banner .product-banner-image img {
+    height: 320px;
+  }
+
+  .product-banner .product-banner-content {
+    gap: 32px;
+    padding: 64px 80px;
+  }
+
+  .product-banner .product-banner-content h2,
+  .product-banner .product-banner-content h3 {
+    font-size: 32px;
+  }
+}

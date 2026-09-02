@@ -61,7 +61,10 @@
         "cards-insights",
         "form-request",
         "content-product-detail",
-        "content-product-form"
+        "content-product-form",
+        "hero-split",
+        "carousel-split",
+        "product-banner"
       ]
     }
   ]
