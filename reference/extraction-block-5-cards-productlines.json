@@ -2,21 +2,21 @@
   "blockOrder": 5,
   "figmaName": "V1 — Beckman Coulter/Slider",
   "nodeId": "214:1476",
-  "variant": "cards-productlines",
+  "variant": "cards-product-lines",
   "blockType": "cards",
   "designContext": "Section bg #f5f5f5, padding 80px, gap 40px. SliderHeader: row justify-between. Heading 'Explore Our Product Lines' (Inter extrabold 36px/44px #1a1a2e) + dots indicator right. SliderRow: 3 cards gap 24px. Each card: col gap 20px, rounded 6px, bg #ffffff, border 1px #e5e7eb, overflow hidden. Image full width h200. ProductBody padding 24px gap 12px: title (Inter bold 20px/24px #1a1a2e) + desc (Inter normal 14px/17px #666677). No CTA/category.",
   "content": {
     "heading": "Explore Our Product Lines",
     "cards": [
-      { "title": "Immunoassay Systems", "desc": "Comprehensive diagnostic assay menu running on highly efficient clinical instruments.", "image": "cards-productlines-1.png" },
-      { "title": "Centrifugation", "desc": "Robust performance and versatility for molecular biology and diagnostic research.", "image": "cards-productlines-2.png" },
-      { "title": "Lab Automation", "desc": "Scale clinical operations seamlessly with robust high-throughput sample management.", "image": "cards-productlines-3.png" }
+      { "title": "Immunoassay Systems", "desc": "Comprehensive diagnostic assay menu running on highly efficient clinical instruments.", "image": "cards-product-lines-1.png" },
+      { "title": "Centrifugation", "desc": "Robust performance and versatility for molecular biology and diagnostic research.", "image": "cards-product-lines-2.png" },
+      { "title": "Lab Automation", "desc": "Scale clinical operations seamlessly with robust high-throughput sample management.", "image": "cards-product-lines-3.png" }
     ]
   },
   "assets": [
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/996073f4-f5ad-4b9a-8024-cd02f8bfbb74", "suggestedName": "cards-productlines-1.png", "usage": "content-image", "context": "Immunoassay Systems image" },
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/179b9ab9-8805-4478-a596-9bd99b720a4e", "suggestedName": "cards-productlines-2.png", "usage": "content-image", "context": "Centrifugation image" },
-    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cf856091-d7c5-47b2-a964-de19e1b1328e", "suggestedName": "cards-productlines-3.png", "usage": "content-image", "context": "Lab Automation image" }
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/996073f4-f5ad-4b9a-8024-cd02f8bfbb74", "suggestedName": "cards-product-lines-1.png", "usage": "content-image", "context": "Immunoassay Systems image" },
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/179b9ab9-8805-4478-a596-9bd99b720a4e", "suggestedName": "cards-product-lines-2.png", "usage": "content-image", "context": "Centrifugation image" },
+    { "url": "https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/cf856091-d7c5-47b2-a964-de19e1b1328e", "suggestedName": "cards-product-lines-3.png", "usage": "content-image", "context": "Lab Automation image" }
   ],
   "tokens": {
     "colors": { "section-bg": "#f5f5f5", "card-bg": "#ffffff", "card-border": "#e5e7eb", "heading": "#1a1a2e", "title": "#1a1a2e", "desc": "#666677" },
