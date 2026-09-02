@@ -75,6 +75,12 @@
     ]
   },
   {
+    "id": "content-product-detail",
+    "components": [
+      "content-product-detail-item"
+    ]
+  },
+  {
     "id": "form-request",
     "components": [
       "form-request-item"

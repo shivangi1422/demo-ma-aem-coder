@@ -326,13 +326,25 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      },
+      }
+    ]
+  },
+  {
+    "id": "content-product-detail-item",
+    "fields": [
       {
         "component": "reference",
         "valueType": "string",
-        "name": "images",
-        "label": "Images (first = main, rest = thumbnails)",
-        "multi": true
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
       }
     ]
   },
