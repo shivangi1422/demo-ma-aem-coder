@@ -1,36 +1,48 @@
-# Figma-to-Blocks Migration Plan
+# About Us Page Migration Plan
 
 ## Overview
-Migrate the Figma design (ContentGenAI, node `214-563`) into reusable AEM Edge Delivery Services **blocks** using the dedicated Figma-to-EDS tooling to extract the design and content directly from Figma, then generate properly modeled, styled, and authorable blocks. If the frame contains multiple distinct sections, each becomes its own independent block.
+Migrate the Figma design (ContentGenAI, node `227-563`) into an **About Us page created under `home`** in this AEM Edge Delivery Services project. **Reuse the existing block library first** — the blocks already built for the homepage (hero-home, hero-banner, cards-solutions, cards-product-lines, carousel-instruments, tabs-products, content-reversed, cards-insights, form-request, content-product-detail, content-product-form) plus the boilerplate cards/columns/hero — and only create a new block if a section has no suitable match.
 
-> **Note:** This is a Universal Editor (crosswalk/xwalk) project, so each block also requires a `_{blockname}.json` model, a `models/_section.json` filter entry, and a `npm run build:json` regeneration step.
+> **Note:** This is a Universal Editor (crosswalk/xwalk) project. New blocks (only if needed) require a `_{blockname}.json` model, a `models/_section.json` filter entry, and `npm run build:json`. Reused blocks need no model changes. New page content goes to `content/about-us.plain.html`; nav/footer are inherited via page metadata.
 
-## Source
+## Source & Target
 - **Figma file:** ContentGenAI (`di82oKZ00hH1BNqHJ3waL3`)
-- **Node:** `214-563` (the prototype URL points at the same design node `214:563`)
-- **Structure:** unknown until the frame is read — block count, types, and content models will be determined from Figma metadata.
+- **Node:** `227-563` (the About Us frame)
+- **New page path:** `/content/about-us` (authored as `content/about-us.plain.html`, linked under home)
+- **Strategy:** reuse-first — map each section to an existing block; create new only as a last resort.
 
-## Known Risk / Blocker
-- The Figma design API has been failing this session: first HTTP 429 ("rate limit exceeded"), then HTTP 403 ("Invalid token"). The 403 is an **authentication failure** — the injected Figma credential is invalid/expired or lacks access to this file. You indicated you'd re-check Figma access in Settings → LLM Permissions. Migration cannot start until a design fetch succeeds. If auth stays broken, an exported PNG/JPG of the frame is the fallback input.
+## Reuse Candidates (existing blocks to match against)
+- Hero / banner → `hero-home`, `hero-banner`
+- Card grids → `cards-solutions`, `cards-product-lines`, `cards-insights`, boilerplate `cards`
+- Image + text / two-column → `content-reversed`, boilerplate `columns`
+- Tabs → `tabs-products`
+- Forms → `form-request`, `content-product-form`
+- Product/detail galleries → `content-product-detail`
+- Header/Footer → existing `header` / `footer` (branded)
 
 ## Checklist
 
-- [ ] **Verify Figma access** — after you re-enable/refresh the Figma credential in Settings, confirm the design fetch authenticates (no 403/429).
-- [ ] **Read frame structure** — fetch metadata for node `214:563`, capture a reference screenshot.
-- [ ] **Segment & identify blocks** — determine whether it's one block or several; map each section to an EDS block type (hero, cards, columns, etc.) and assign variant names.
-- [ ] **Per block — check for reuse** — compare against existing blocks/variants; reuse a match or create a new variant.
-- [ ] **Per block — extract design tokens** — pull exact layout, colors, typography, spacing, and assets.
-- [ ] **Per block — build the block** — create `blocks/{blockname}/{blockname}.js` + `.css` (mobile-first, scoped, accessible) and the `_{blockname}.json` UE model.
-- [ ] **Per block — register in UE** — append each variant to `models/_section.json`'s section filter.
-- [ ] **Regenerate aggregates** — run `npm run build:json` so the blocks appear in Universal Editor.
-- [ ] **Per block — generate content** — produce EDS plain HTML with field hints; download images locally.
-- [ ] **Preview & verify** — render each block in the local preview and compare against the Figma design; iterate on CSS until it matches.
-- [ ] **Lint & validate** — run `npm run lint` (and `lint:fix`) and confirm model rules pass.
-- [ ] **Summarize** — report every block created/reused, its content model, and how to author it.
+- [ ] **Confirm Figma access** — ensure the Figma tooling is connected; retry the fetch if rate-limited (429) or auth-failed (403).
+- [ ] **Read frame structure** — fetch metadata + screenshot for node `227:563`; enumerate the About Us sections.
+- [ ] **Map sections to existing blocks** — for each section, pick the best-matching existing block; flag any section with no match.
+- [ ] **Decide reuse vs. create (per section)** — reuse existing block variants wherever they fit; only design a new block if truly unmatched (confirm with user before creating).
+- [ ] **Extract content & assets** — pull text, images, and tokens for each section; download images locally to `content/images/about-us/`.
+- [ ] **Author the page** — build `content/about-us.plain.html` using reused block classes, correct table/row structure, and md2jcr field hints (xwalk).
+- [ ] **Wire nav/footer + link under home** — add page metadata (`nav`/`footer`) and ensure About Us is reachable from the home nav.
+- [ ] **Regenerate aggregates (only if new blocks)** — run `npm run build:json` if any new block/model was added.
+- [ ] **Preview & verify** — render `/content/about-us` locally, compare against the Figma design, iterate on CSS until it matches; confirm full-bleed and md2jcr-safe structure.
+- [ ] **Lint & validate** — run `npm run lint` (and `lint:fix`); confirm model rules pass and no md2jcr mapping issues.
+- [ ] **Summarize** — report which existing blocks were reused, any new blocks created, and how to author/edit the page.
 
 ## Open Questions (resolve once the frame is readable)
-- Whether node `214-563` is a single block or multiple sections → multiple independent blocks.
-- What block type(s) it maps to and whether any match existing variants (reuse vs. create).
+- How many sections node `227-563` contains and which existing block each maps to.
+- Whether any section genuinely needs a new block (I'll confirm before creating one, per "use existing blocks").
+- Exact nav placement for the About Us link (top-level nav item vs. under an existing menu).
+
+## Known Risks
+- **Figma API**: prior sessions hit 429 (rate limit) and 403 (auth). If the fetch fails, I'll retry with cooldown or ask for an exported image of the frame.
+- **md2jcr safety**: any new block must follow the established safe patterns (single reference field in simple blocks; container+item for image collections; hyphenated names that avoid the reserved `columns` prefix; field hints on every non-empty cell).
+- **Deploy/push**: the current branch has unpushed commits blocked by a GitHub 403 permission; the new page won't appear on the preview/author environments until the push is unblocked.
 
 ## Execution Readiness
-Plan is ready. Execution requires **Execute mode** and a working Figma connection. On execution I'll first retry the fetch for node `214:563`; if it still returns 403/429, I'll pause and ask you to confirm the Figma credential is refreshed in Settings, or to provide an exported image of the frame as a fallback. Once the fetch succeeds I'll work through the per-block build/verify workflow above.
+Plan is ready. Execution requires **Execute mode** and a working Figma connection. On execution I'll fetch node `227:563`, map its sections to existing blocks (reuse-first), author `content/about-us.plain.html` linked under home, and verify against the design — creating a new block only if a section has no suitable existing match (and confirming with you first).
