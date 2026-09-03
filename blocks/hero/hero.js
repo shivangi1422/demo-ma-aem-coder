@@ -12,11 +12,13 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
  * @param {Element} block
  */
 export default function decorate(block) {
-  const isSplit = block.classList.contains('split') || block.classList.contains('split-left');
+  const isSplit = block.classList.contains('split') || block.classList.contains('split-left')
+    || block.classList.contains('gradient');
 
   if (isSplit) {
-    // Two side-by-side columns. The flex children are the row wrappers (direct
-    // children of the block), so tag those — the CSS order/flip keys off them.
+    // Two side-by-side columns (split) or a gradient banner with the image
+    // bleeding off the right (gradient). The flex children are the row wrappers
+    // (direct children of the block), so tag those — the CSS keys off them.
     [...block.children].forEach((row) => {
       if (row.querySelector('picture')) {
         row.classList.add('hero-image');
@@ -26,6 +28,10 @@ export default function decorate(block) {
           moveInstrumentation(img, optimized.querySelector('img'));
           img.closest('picture').replaceWith(optimized);
         }
+      } else if (row.textContent.trim() === '') {
+        // Empty image column (the model always supplies one) — drop it so it
+        // doesn't get styled as a second text panel.
+        row.remove();
       } else {
         row.classList.add('hero-text');
       }

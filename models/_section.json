@@ -58,7 +58,8 @@
         "form-request",
         "content-product-detail",
         "content-product-form",
-        "product-banner"
+        "product-banner",
+        "quote"
       ]
     }
   ]

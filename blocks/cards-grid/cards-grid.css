@@ -209,10 +209,153 @@
   line-height: 1.2;
 }
 
+/* ============================================================
+   SIMPLE — clean white 4-up cards: image + tag + title + desc + link
+   (matches beckmancoulter.com product pages)
+   ============================================================ */
+.cards-grid.simple {
+  padding: 48px 24px;
+  background-color: #fff;
+}
+
+.cards-grid.simple ul > li {
+  position: relative;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.cards-grid.simple .cards-grid-image img {
+  aspect-ratio: 4 / 3;
+}
+
+/* "NEW" ribbon, top-left over the image */
+.cards-grid.simple .cards-grid-badge {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 1;
+  padding: 6px 18px;
+  background-color: #6b2fb3;
+  color: #fff;
+  font-family: var(--bc-brand-font);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+/* first paragraph = volume/category tag, shown as a filled pill */
+.cards-grid.simple .cards-grid-body p:first-child {
+  align-self: flex-start;
+  margin-bottom: 4px;
+  padding: 4px 14px;
+  border-radius: 14px;
+  background-color: #ece9f7;
+  color: #6b2fb3;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.cards-grid.simple .cards-grid-body a {
+  color: var(--bc-blue);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.cards-grid.simple .cards-grid-body a::after {
+  content: ' →';
+}
+
+/* ============================================================
+   FEATURES — centered, borderless 3-up with a line icon above each label
+   (matches beckmancoulter.com "Support improved patient care with:")
+   ============================================================ */
+.cards-grid.features {
+  padding: 56px 24px;
+  background-color: #ece9f7;
+  text-align: center;
+}
+
+.cards-grid.features .cards-grid-heading {
+  margin-bottom: 48px;
+  text-align: center;
+}
+
+.cards-grid.features .cards-grid-heading h1,
+.cards-grid.features .cards-grid-heading h2,
+.cards-grid.features .cards-grid-heading h3 {
+  color: var(--bc-navy);
+  font-weight: 400;
+}
+
+.cards-grid.features ul {
+  gap: 40px;
+}
+
+.cards-grid.features ul > li {
+  border: 0;
+  background: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+/* icon sits between the title and the description (JS emits that order) */
+.cards-grid.features .cards-grid-image {
+  margin: 8px 0 16px;
+}
+
+.cards-grid.features .cards-grid-image img {
+  width: 72px;
+  height: 72px;
+  aspect-ratio: 1;
+  object-fit: contain;
+}
+
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+.cards-grid.features li > h2,
+.cards-grid.features li > h3,
+.cards-grid.features li > h4,
+.cards-grid.features li > h5 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-family: var(--bc-brand-font);
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 1.15;
+}
+
+.cards-grid.features .cards-grid-body {
+  align-items: center;
+  padding: 0 16px;
+}
+
+.cards-grid.features .cards-grid-body p {
+  color: var(--bc-grey);
+  font-size: 15px;
+}
+/* stylelint-enable no-descending-specificity */
+
 @media (width >= 600px) {
   .cards-grid.solutions ul,
-  .cards-grid.productlines ul {
+  .cards-grid.productlines ul,
+  .cards-grid.features ul {
     grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-grid.simple ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-grid.simple ul {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
 

@@ -169,6 +169,14 @@
           {
             "name": "Insights (intro + text cards)",
             "value": "insights"
+          },
+          {
+            "name": "Simple (4-up: image + tag + title + link)",
+            "value": "simple"
+          },
+          {
+            "name": "Features (centered, borderless, no image)",
+            "value": "features"
           }
         ]
       }
@@ -497,6 +505,14 @@
             "value": "banner"
           },
           {
+            "name": "Plain (white, dark text, no image)",
+            "value": "plain"
+          },
+          {
+            "name": "Gradient (banner, white text, image bleeds right)",
+            "value": "gradient"
+          },
+          {
             "name": "Split (text left, image right)",
             "value": "split"
           },
@@ -530,6 +546,25 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "quote",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "quote",
+        "value": "",
+        "label": "Quote",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "attribution",
+        "value": "",
+        "label": "Attribution",
         "valueType": "string"
       }
     ]

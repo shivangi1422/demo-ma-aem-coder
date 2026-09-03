@@ -52,7 +52,9 @@
           "options": [
             { "name": "Solutions (image + category + link)", "value": "solutions" },
             { "name": "Product Lines (image + title)", "value": "productlines" },
-            { "name": "Insights (intro + text cards)", "value": "insights" }
+            { "name": "Insights (intro + text cards)", "value": "insights" },
+            { "name": "Simple (4-up: image + tag + title + link)", "value": "simple" },
+            { "name": "Features (centered, borderless, no image)", "value": "features" }
           ]
         }
       ]
