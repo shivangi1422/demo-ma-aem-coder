@@ -2,24 +2,49 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
- * Decorates the carousel-instruments block.
- * Authored structure:
- *   row 0 (optional, no picture): section heading
- *   row 1..N: one slide each — image cell + body cell (category, title, description)
- * The first slide is shown large in the stage; all slides render as a thumbnail
- * selector row flanked by prev/next arrow buttons. Selecting a thumbnail (or an
- * arrow) activates the corresponding slide.
+ * Decorates the carousel block. One block, two styles via the "Style" dropdown
+ * (variant class):
+ *   - .carousel.instruments (default) dark thumbnail slider: a large stage with
+ *     an overlay panel, and a thumbnail rail flanked by prev/next arrows.
+ *   - .carousel.split  a single item rendered as image + text panel (with an
+ *     optional specs list).
+ * Authored structure: optional row 0 = heading, rows 1..N = one slide each
+ * (image cell + text cell).
  * @param {Element} block
  */
 export default function decorate(block) {
+  const split = block.classList.contains('split');
   const rows = [...block.children];
 
-  let headingRow = null;
-  if (rows.length && !rows[0].querySelector('picture')) {
-    [headingRow] = rows;
+  const headingRow = rows[0] && !rows[0].querySelector('picture') ? rows[0] : null;
+  const slideRows = rows.filter((r) => r !== headingRow);
+
+  // ---- SPLIT: single item, image beside text ----
+  if (split) {
+    const row = slideRows[0];
+    if (row) {
+      const cells = [...row.children];
+      const imageCell = cells.find((c) => c.querySelector('picture')) || cells[0];
+      const textCell = cells.find((c) => c !== imageCell);
+      if (imageCell) {
+        imageCell.classList.add('carousel-image');
+        const img = imageCell.querySelector('img');
+        if (img) {
+          const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '1200' }]);
+          moveInstrumentation(img, optimized.querySelector('img'));
+          img.closest('picture').replaceWith(optimized);
+        }
+      }
+      if (textCell) textCell.classList.add('carousel-text');
+    }
+    // Drop any extra rows and the heading (split shows one item only).
+    if (headingRow) headingRow.remove();
+    slideRows.slice(1).forEach((r) => r.remove());
+    return;
   }
 
-  const slides = rows.filter((row) => row !== headingRow).map((row) => {
+  // ---- INSTRUMENTS: thumbnail slider ----
+  const slides = slideRows.map((row) => {
     const cells = [...row.children];
     const imageCell = cells.find((c) => c.querySelector('picture')) || cells[0];
     const bodyCell = cells.find((c) => c !== imageCell) || document.createElement('div');
@@ -27,42 +52,41 @@ export default function decorate(block) {
   });
 
   const wrapper = document.createElement('div');
-  wrapper.className = 'carousel-instruments-inner';
+  wrapper.className = 'carousel-inner';
 
   if (headingRow) {
     const heading = document.createElement('div');
-    heading.className = 'carousel-instruments-heading';
+    heading.className = 'carousel-heading';
     while (headingRow.firstElementChild) heading.append(headingRow.firstElementChild);
     wrapper.append(heading);
   }
 
   const stage = document.createElement('div');
-  stage.className = 'carousel-instruments-stage';
+  stage.className = 'carousel-stage';
 
-  // Controls row: prev arrow + thumbnail rail + next arrow.
   const controls = document.createElement('div');
-  controls.className = 'carousel-instruments-controls';
+  controls.className = 'carousel-controls';
 
   const prev = document.createElement('button');
   prev.type = 'button';
-  prev.className = 'carousel-instruments-arrow carousel-instruments-arrow-prev';
-  prev.setAttribute('aria-label', 'Previous instrument');
+  prev.className = 'carousel-arrow carousel-arrow-prev';
+  prev.setAttribute('aria-label', 'Previous slide');
 
   const thumbs = document.createElement('div');
-  thumbs.className = 'carousel-instruments-thumbs';
+  thumbs.className = 'carousel-thumbs';
 
   const next = document.createElement('button');
   next.type = 'button';
-  next.className = 'carousel-instruments-arrow carousel-instruments-arrow-next';
-  next.setAttribute('aria-label', 'Next instrument');
+  next.className = 'carousel-arrow carousel-arrow-next';
+  next.setAttribute('aria-label', 'Next slide');
 
   let activeIndex = 0;
   const activate = (i) => {
     activeIndex = (i + slides.length) % slides.length;
-    stage.querySelectorAll('.carousel-instruments-slide').forEach((p, pi) => {
+    stage.querySelectorAll('.carousel-slide').forEach((p, pi) => {
       p.classList.toggle('is-active', pi === activeIndex);
     });
-    thumbs.querySelectorAll('.carousel-instruments-thumb').forEach((t, ti) => {
+    thumbs.querySelectorAll('.carousel-thumb').forEach((t, ti) => {
       t.classList.toggle('is-active', ti === activeIndex);
       t.setAttribute('aria-selected', ti === activeIndex ? 'true' : 'false');
     });
@@ -70,7 +94,7 @@ export default function decorate(block) {
 
   slides.forEach((slide, i) => {
     const panel = document.createElement('div');
-    panel.className = 'carousel-instruments-slide';
+    panel.className = 'carousel-slide';
     if (i === 0) panel.classList.add('is-active');
     moveInstrumentation(slide.row, panel);
 
@@ -81,14 +105,14 @@ export default function decorate(block) {
       panel.append(optimized);
     }
     const overlay = document.createElement('div');
-    overlay.className = 'carousel-instruments-overlay';
+    overlay.className = 'carousel-overlay';
     [...slide.bodyCell.children].forEach((child) => overlay.append(child.cloneNode(true)));
     panel.append(overlay);
     stage.append(panel);
 
     const thumb = document.createElement('button');
     thumb.type = 'button';
-    thumb.className = 'carousel-instruments-thumb';
+    thumb.className = 'carousel-thumb';
     thumb.setAttribute('role', 'tab');
     if (i === 0) thumb.classList.add('is-active');
     [...slide.bodyCell.children].forEach((child) => thumb.append(child.cloneNode(true)));

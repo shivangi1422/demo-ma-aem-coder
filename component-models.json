@@ -220,45 +220,36 @@
     ]
   },
   {
-    "id": "carousel-instruments",
+    "id": "carousel",
     "fields": [
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Section Heading",
+        "label": "Heading",
         "valueType": "string"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Style",
+        "value": "instruments",
+        "options": [
+          {
+            "name": "Instruments (thumbnail slider)",
+            "value": "instruments"
+          },
+          {
+            "name": "Split (image + text panel)",
+            "value": "split"
+          }
+        ]
       }
     ]
   },
   {
-    "id": "carousel-instruments-item",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Slide Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Slide Image Alt",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "carousel-split",
+    "id": "carousel-item",
     "fields": [
       {
         "component": "reference",

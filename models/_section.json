@@ -52,13 +52,12 @@
         "columns",
         "fragment",
         "cards-grid",
-        "carousel-instruments",
+        "carousel",
         "tabs-products",
         "content-reversed",
         "form-request",
         "content-product-detail",
         "content-product-form",
-        "carousel-split",
         "product-banner"
       ]
     }
