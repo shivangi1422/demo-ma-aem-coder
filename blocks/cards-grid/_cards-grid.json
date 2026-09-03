@@ -1,31 +1,31 @@
 {
   "definitions": [
     {
-      "title": "Cards Product Lines",
-      "id": "cards-product-lines",
+      "title": "Cards Grid",
+      "id": "cards-grid",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Cards Product Lines",
-              "model": "cards-product-lines",
-              "filter": "cards-product-lines"
+              "name": "Cards Grid",
+              "model": "cards-grid",
+              "filter": "cards-grid"
             }
           }
         }
       }
     },
     {
-      "title": "Product Line Card",
-      "id": "cards-product-lines-item",
+      "title": "Card",
+      "id": "cards-grid-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
-              "name": "Product Line Card",
-              "model": "cards-product-lines-item"
+              "name": "Card",
+              "model": "cards-grid-item"
             }
           }
         }
@@ -34,19 +34,31 @@
   ],
   "models": [
     {
-      "id": "cards-product-lines",
+      "id": "cards-grid",
       "fields": [
         {
           "component": "richtext",
           "name": "text",
           "value": "",
-          "label": "Section Heading",
+          "label": "Heading / Intro",
           "valueType": "string"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Style",
+          "value": "solutions",
+          "options": [
+            { "name": "Solutions (image + category + link)", "value": "solutions" },
+            { "name": "Product Lines (image + title)", "value": "productlines" },
+            { "name": "Insights (intro + text cards)", "value": "insights" }
+          ]
         }
       ]
     },
     {
-      "id": "cards-product-lines-item",
+      "id": "cards-grid-item",
       "fields": [
         {
           "component": "reference",
@@ -74,9 +86,9 @@
   ],
   "filters": [
     {
-      "id": "cards-product-lines",
+      "id": "cards-grid",
       "components": [
-        "cards-product-lines-item"
+        "cards-grid-item"
       ]
     }
   ]

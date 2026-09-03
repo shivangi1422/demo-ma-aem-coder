@@ -1,0 +1,258 @@
+/* Cards Grid — one block, three styles via "Style": solutions | productlines | insights */
+
+/* shared heading */
+.cards-grid .cards-grid-heading {
+  margin: 0 0 32px;
+}
+
+.cards-grid .cards-grid-heading h1,
+.cards-grid .cards-grid-heading h2,
+.cards-grid .cards-grid-heading h3 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-family: var(--bc-brand-font);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.22;
+}
+
+/* shared card grid */
+.cards-grid ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+.cards-grid ul > li {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--bc-border);
+  overflow: hidden;
+}
+
+.cards-grid .cards-grid-image {
+  line-height: 0;
+}
+
+.cards-grid .cards-grid-image img {
+  width: 100%;
+  object-fit: cover;
+}
+
+.cards-grid .cards-grid-body {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  font-family: var(--bc-brand-font);
+}
+
+.cards-grid .cards-grid-body p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+.cards-grid .cards-grid-body h3,
+.cards-grid .cards-grid-body h4 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+/* ============================================================
+   SOLUTIONS — white section, category eyebrow + Learn More link
+   ============================================================ */
+.cards-grid.solutions {
+  padding: 48px 24px;
+}
+
+.cards-grid.solutions ul > li {
+  border-radius: 8px;
+  background-color: var(--bc-surface);
+}
+
+.cards-grid.solutions .cards-grid-image img {
+  aspect-ratio: 16 / 9;
+}
+
+/* first paragraph = category eyebrow */
+.cards-grid.solutions .cards-grid-body p:first-child {
+  color: var(--bc-blue);
+  font-weight: 700;
+  font-size: 12px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.cards-grid.solutions .cards-grid-body a {
+  color: var(--bc-orange);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+}
+
+.cards-grid.solutions .cards-grid-body a::after {
+  content: ' →';
+}
+
+/* ============================================================
+   PRODUCT LINES — grey section, image + title/desc
+   ============================================================ */
+.cards-grid.productlines {
+  padding: 40px 24px;
+  background-color: var(--bc-surface);
+}
+
+.cards-grid.productlines ul > li {
+  border-radius: 6px;
+  background-color: #fff;
+}
+
+.cards-grid.productlines .cards-grid-image img {
+  aspect-ratio: 2 / 1;
+}
+
+/* ============================================================
+   INSIGHTS — intro panel + stacked text cards (two-column)
+   ============================================================ */
+.cards-grid.insights {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  padding: 40px 24px;
+  background-color: #fff;
+}
+
+.cards-grid.insights .cards-grid-intro {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  font-family: var(--bc-brand-font);
+}
+
+.cards-grid.insights .cards-grid-intro h2,
+.cards-grid.insights .cards-grid-intro h3 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-weight: 800;
+  font-size: 30px;
+  line-height: 1.22;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.cards-grid.insights .cards-grid-intro p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 16px;
+  line-height: 1.2;
+}
+
+.cards-grid.insights .cards-grid-intro a.button:any-link {
+  align-self: flex-start;
+  margin: 0;
+  padding: 12px 28px;
+  border: 2px solid var(--bc-orange);
+  border-radius: 4px;
+  background: none;
+  color: var(--bc-orange);
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.cards-grid.insights .cards-grid-list {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.cards-grid.insights .cards-grid-card {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding: 24px;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+  background-color: var(--bc-surface);
+  font-family: var(--bc-brand-font);
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.cards-grid.insights .cards-grid-card p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 14px;
+  line-height: 1.25;
+}
+
+/* meta line (tag · read time) */
+.cards-grid.insights .cards-grid-card p:first-child {
+  color: var(--bc-blue);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.cards-grid.insights .cards-grid-card h3,
+.cards-grid.insights .cards-grid-card h4 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+@media (width >= 600px) {
+  .cards-grid.solutions ul,
+  .cards-grid.productlines ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (width >= 900px) {
+  .cards-grid.solutions,
+  .cards-grid.productlines {
+    padding: 80px;
+  }
+
+  .cards-grid.solutions .cards-grid-heading,
+  .cards-grid.productlines .cards-grid-heading {
+    margin-bottom: 48px;
+  }
+
+  .cards-grid .cards-grid-heading h1,
+  .cards-grid .cards-grid-heading h2,
+  .cards-grid .cards-grid-heading h3 {
+    font-size: 36px;
+  }
+
+  .cards-grid.solutions ul {
+    gap: 32px;
+  }
+
+  .cards-grid.insights {
+    flex-direction: row;
+    gap: 64px;
+    padding: 80px;
+  }
+
+  .cards-grid.insights .cards-grid-intro {
+    flex: 0 0 480px;
+  }
+
+  .cards-grid.insights .cards-grid-intro h2,
+  .cards-grid.insights .cards-grid-intro h3 {
+    font-size: 36px;
+  }
+
+  .cards-grid.insights .cards-grid-list {
+    flex: 1;
+  }
+}

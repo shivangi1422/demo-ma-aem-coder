@@ -16,12 +16,10 @@
       "cards",
       "columns",
       "fragment",
-      "cards-solutions",
-      "cards-product-lines",
+      "cards-grid",
       "carousel-instruments",
       "tabs-products",
       "content-reversed",
-      "cards-insights",
       "form-request",
       "content-product-detail",
       "content-product-form",
@@ -30,21 +28,9 @@
     ]
   },
   {
-    "id": "cards-insights",
+    "id": "cards-grid",
     "components": [
-      "cards-insights-item"
-    ]
-  },
-  {
-    "id": "cards-product-lines",
-    "components": [
-      "cards-product-lines-item"
-    ]
-  },
-  {
-    "id": "cards-solutions",
-    "components": [
-      "cards-solutions-item"
+      "cards-grid-item"
     ]
   },
   {

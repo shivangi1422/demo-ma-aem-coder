@@ -142,81 +142,40 @@
     ]
   },
   {
-    "id": "cards-insights",
+    "id": "cards-grid",
     "fields": [
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Intro Panel",
+        "label": "Heading / Intro",
         "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "cards-insights-item",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "cards-product-lines",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Section Heading",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "cards-product-lines-item",
-    "fields": [
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
       },
       {
-        "component": "text",
+        "component": "select",
         "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
+        "name": "classes",
+        "label": "Style",
+        "value": "solutions",
+        "options": [
+          {
+            "name": "Solutions (image + category + link)",
+            "value": "solutions"
+          },
+          {
+            "name": "Product Lines (image + title)",
+            "value": "productlines"
+          },
+          {
+            "name": "Insights (intro + text cards)",
+            "value": "insights"
+          }
+        ]
       }
     ]
   },
   {
-    "id": "cards-solutions",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Section Heading",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "cards-solutions-item",
+    "id": "cards-grid-item",
     "fields": [
       {
         "component": "reference",
