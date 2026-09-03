@@ -185,6 +185,11 @@
   margin: 0;
 }
 
+.hero.split .hero-text .button-wrapper + .button-wrapper,
+.hero.split-left .hero-text .button-wrapper + .button-wrapper {
+  margin-top: 16px;
+}
+
 .hero.split .hero-text a.button:any-link,
 .hero.split-left .hero-text a.button:any-link {
   padding: 12px 24px;
