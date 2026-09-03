@@ -332,8 +332,7 @@ main > .section:first-of-type {
  * so their section wrapper must span the full viewport width with no max-width,
  * side padding, or vertical margin.
  */
-main > .section:has(> div > .hero-home),
-main > .section:has(> div > .hero-banner),
+main > .section:has(> div > .hero),
 main > .section:has(> div > .cards-solutions),
 main > .section:has(> div > .cards-product-lines),
 main > .section:has(> div > .carousel-instruments),
@@ -343,14 +342,12 @@ main > .section:has(> div > .cards-insights),
 main > .section:has(> div > .form-request),
 main > .section:has(> div > .content-product-detail),
 main > .section:has(> div > .content-product-form),
-main > .section:has(> div > .hero-split),
 main > .section:has(> div > .carousel-split),
 main > .section:has(> div > .product-banner) {
   margin: 0;
 }
 
-main > .section:has(> div > .hero-home) > div,
-main > .section:has(> div > .hero-banner) > div,
+main > .section:has(> div > .hero) > div,
 main > .section:has(> div > .cards-solutions) > div,
 main > .section:has(> div > .cards-product-lines) > div,
 main > .section:has(> div > .carousel-instruments) > div,
@@ -360,7 +357,6 @@ main > .section:has(> div > .cards-insights) > div,
 main > .section:has(> div > .form-request) > div,
 main > .section:has(> div > .content-product-detail) > div,
 main > .section:has(> div > .content-product-form) > div,
-main > .section:has(> div > .hero-split) > div,
 main > .section:has(> div > .carousel-split) > div,
 main > .section:has(> div > .product-banner) > div {
   max-width: none;

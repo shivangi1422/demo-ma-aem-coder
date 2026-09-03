@@ -40,6 +40,18 @@
           "value": "",
           "label": "Text",
           "valueType": "string"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Style",
+          "value": "home",
+          "options": [
+            { "name": "Home (background image)", "value": "home" },
+            { "name": "Banner (solid, no image)", "value": "banner" },
+            { "name": "Split (image beside text)", "value": "split" }
+          ]
         }
       ]
     }

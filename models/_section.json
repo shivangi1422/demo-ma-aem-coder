@@ -51,8 +51,6 @@
         "cards",
         "columns",
         "fragment",
-        "hero-home",
-        "hero-banner",
         "cards-solutions",
         "cards-product-lines",
         "carousel-instruments",
@@ -62,7 +60,6 @@
         "form-request",
         "content-product-detail",
         "content-product-form",
-        "hero-split",
         "carousel-split",
         "product-banner"
       ]
