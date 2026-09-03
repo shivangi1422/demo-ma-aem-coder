@@ -35,7 +35,10 @@ export default function decorate(block) {
       const card = document.createElement('div');
       card.className = 'cards-grid-card';
       moveInstrumentation(row, card);
-      const cell = row.firstElementChild || row;
+      // The model gives each item an (empty) image cell + a text cell; use the
+      // cell that actually has content.
+      const cells = [...row.children];
+      const cell = cells.find((c) => c.textContent.trim() !== '') || cells[cells.length - 1] || row;
       while (cell.firstChild) card.append(cell.firstChild);
       list.append(card);
     });
