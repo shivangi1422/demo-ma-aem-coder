@@ -50,7 +50,8 @@
           "options": [
             { "name": "Home (background image)", "value": "home" },
             { "name": "Banner (solid, no image)", "value": "banner" },
-            { "name": "Split (image beside text)", "value": "split" }
+            { "name": "Split (text left, image right)", "value": "split" },
+            { "name": "Split (image left, text right)", "value": "split-left" }
           ]
         }
       ]

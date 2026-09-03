@@ -141,15 +141,19 @@
 
 /* ============================================================
    SPLIT — image beside a text panel
+     .split       text left, image right
+     .split-left  image left, text right
    ============================================================ */
-.hero.split {
+.hero.split,
+.hero.split-left {
   display: flex;
   flex-direction: column;
   background-color: #fff;
   overflow: hidden;
 }
 
-.hero.split .hero-text {
+.hero.split .hero-text,
+.hero.split-left .hero-text {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -158,7 +162,9 @@
 }
 
 .hero.split .hero-text h1,
-.hero.split .hero-text h2 {
+.hero.split .hero-text h2,
+.hero.split-left .hero-text h1,
+.hero.split-left .hero-text h2 {
   margin: 0;
   color: var(--bc-navy);
   font-weight: 800;
@@ -166,34 +172,40 @@
   line-height: 1.15;
 }
 
-.hero.split .hero-text p {
+.hero.split .hero-text p,
+.hero.split-left .hero-text p {
   margin: 0;
   color: var(--bc-grey);
   font-size: 16px;
   line-height: 1.5;
 }
 
-.hero.split .hero-text .button-wrapper {
+.hero.split .hero-text .button-wrapper,
+.hero.split-left .hero-text .button-wrapper {
   margin: 0;
 }
 
-.hero.split .hero-text a.button:any-link {
+.hero.split .hero-text a.button:any-link,
+.hero.split-left .hero-text a.button:any-link {
   padding: 12px 24px;
   font-weight: 600;
   font-size: 14px;
 }
 
-.hero.split .hero-text a.button.secondary:any-link {
+.hero.split .hero-text a.button.secondary:any-link,
+.hero.split-left .hero-text a.button.secondary:any-link {
   background-color: transparent;
   border: 2px solid var(--bc-blue);
   color: var(--bc-blue);
 }
 
-.hero.split .hero-image {
+.hero.split .hero-image,
+.hero.split-left .hero-image {
   line-height: 0;
 }
 
-.hero.split .hero-image img {
+.hero.split .hero-image img,
+.hero.split-left .hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -222,25 +234,47 @@
     font-size: 40px;
   }
 
-  .hero.split {
+  .hero.split,
+  .hero.split-left {
     flex-direction: row;
     min-height: 600px;
   }
 
-  .hero.split .hero-text {
-    order: 0;
+  .hero.split .hero-text,
+  .hero.split-left .hero-text {
     flex: 1 1 55%;
     justify-content: center;
-    padding: 80px 64px 80px 80px;
   }
 
   .hero.split .hero-text h1,
-  .hero.split .hero-text h2 {
+  .hero.split .hero-text h2,
+  .hero.split-left .hero-text h1,
+  .hero.split-left .hero-text h2 {
     font-size: 48px;
+  }
+
+  .hero.split .hero-image,
+  .hero.split-left .hero-image {
+    flex: 1 1 45%;
+  }
+
+  /* split: text left, image right */
+  .hero.split .hero-text {
+    order: 0;
+    padding: 80px 64px 80px 80px;
   }
 
   .hero.split .hero-image {
     order: 1;
-    flex: 1 1 45%;
+  }
+
+  /* split-left: image left, text right */
+  .hero.split-left .hero-image {
+    order: 0;
+  }
+
+  .hero.split-left .hero-text {
+    order: 1;
+    padding: 80px 80px 80px 64px;
   }
 }

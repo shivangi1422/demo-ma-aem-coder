@@ -497,8 +497,12 @@
             "value": "banner"
           },
           {
-            "name": "Split (image beside text)",
+            "name": "Split (text left, image right)",
             "value": "split"
+          },
+          {
+            "name": "Split (image left, text right)",
+            "value": "split-left"
           }
         ]
       }
