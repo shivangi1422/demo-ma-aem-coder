@@ -50,7 +50,16 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "cards-grid",
+        "carousel",
+        "tabs-products",
+        "content-reversed",
+        "form-request",
+        "content-product-detail",
+        "content-product-form",
+        "product-banner",
+        "quote"
       ]
     }
   ]

@@ -142,6 +142,73 @@
     ]
   },
   {
+    "id": "cards-grid",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Heading / Intro",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Style",
+        "value": "solutions",
+        "options": [
+          {
+            "name": "Solutions (image + category + link)",
+            "value": "solutions"
+          },
+          {
+            "name": "Product Lines (image + title)",
+            "value": "productlines"
+          },
+          {
+            "name": "Insights (intro + text cards)",
+            "value": "insights"
+          },
+          {
+            "name": "Simple (4-up: image + tag + title + link)",
+            "value": "simple"
+          },
+          {
+            "name": "Features (centered, borderless, no image)",
+            "value": "features"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cards-grid-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "card",
     "fields": [
       {
@@ -150,6 +217,61 @@
         "name": "image",
         "label": "Image",
         "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "carousel",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Heading",
+        "valueType": "string"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Style",
+        "value": "instruments",
+        "options": [
+          {
+            "name": "Instruments (thumbnail slider)",
+            "value": "instruments"
+          },
+          {
+            "name": "Split (image + text panel)",
+            "value": "split"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "carousel-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
       },
       {
         "component": "richtext",
@@ -176,6 +298,160 @@
         "name": "rows",
         "value": "",
         "label": "Rows"
+      }
+    ]
+  },
+  {
+    "id": "content-product-detail",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "content-product-detail-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "content-product-form",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Product Column",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Product Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Product Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "formBody",
+        "value": "",
+        "label": "Form Column",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "content-reversed",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "form-request",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Header (Title + Subtitle)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "form-request-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "placeholder",
+        "label": "Placeholder",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "type",
+        "label": "Type",
+        "value": "text",
+        "options": [
+          {
+            "name": "Text",
+            "value": "text"
+          },
+          {
+            "name": "Text (half width)",
+            "value": "half"
+          },
+          {
+            "name": "Email",
+            "value": "email"
+          },
+          {
+            "name": "Text area",
+            "value": "textarea"
+          },
+          {
+            "name": "Consent text",
+            "value": "consent"
+          },
+          {
+            "name": "Submit button",
+            "value": "submit"
+          }
+        ]
       }
     ]
   },
@@ -212,6 +488,121 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Style",
+        "value": "home",
+        "options": [
+          {
+            "name": "Home (background image)",
+            "value": "home"
+          },
+          {
+            "name": "Banner (solid, no image)",
+            "value": "banner"
+          },
+          {
+            "name": "Plain (white, dark text, no image)",
+            "value": "plain"
+          },
+          {
+            "name": "Gradient (banner, white text, image bleeds right)",
+            "value": "gradient"
+          },
+          {
+            "name": "Split (text left, image right)",
+            "value": "split"
+          },
+          {
+            "name": "Split (image left, text right)",
+            "value": "split-left"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "product-banner",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Banner Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Banner Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "quote",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "quote",
+        "value": "",
+        "label": "Quote",
+        "valueType": "string"
+      },
+      {
+        "component": "text",
+        "name": "attribution",
+        "value": "",
+        "label": "Attribution",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tabs-products",
+    "fields": []
+  },
+  {
+    "id": "tabs-products-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Tab Label",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Panel Content",
+        "valueType": "string"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Panel Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Panel Image Alt",
+        "value": ""
       }
     ]
   }

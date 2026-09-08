@@ -83,6 +83,37 @@
       "id": "blocks",
       "components": [
         {
+          "title": "Cards Grid",
+          "id": "cards-grid",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Grid",
+                  "model": "cards-grid",
+                  "filter": "cards-grid"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Card",
+          "id": "cards-grid-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Card",
+                  "model": "cards-grid-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards",
           "id": "cards",
           "plugins": {
@@ -113,6 +144,37 @@
           }
         },
         {
+          "title": "Carousel",
+          "id": "carousel",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Carousel",
+                  "model": "carousel",
+                  "filter": "carousel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Carousel Slide",
+          "id": "carousel-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Carousel Slide",
+                  "model": "carousel-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Columns",
           "id": "columns",
           "plugins": {
@@ -122,6 +184,98 @@
                 "template": {
                   "columns": "2",
                   "rows": "1"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Content Product Detail",
+          "id": "content-product-detail",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Content Product Detail",
+                  "model": "content-product-detail",
+                  "filter": "content-product-detail"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Image",
+          "id": "content-product-detail-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Product Image",
+                  "model": "content-product-detail-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Content Product Form",
+          "id": "content-product-form",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Content Product Form",
+                  "model": "content-product-form"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Content Reversed",
+          "id": "content-reversed",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Content Reversed",
+                  "model": "content-reversed"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Form Request",
+          "id": "form-request",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Form Request",
+                  "model": "form-request",
+                  "filter": "form-request"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Form Field",
+          "id": "form-request-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Form Field",
+                  "model": "form-request-item"
                 }
               }
             }
@@ -152,6 +306,67 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Banner",
+          "id": "product-banner",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Banner",
+                  "model": "product-banner"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Quote",
+          "id": "quote",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Quote",
+                  "model": "quote"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tabs Products",
+          "id": "tabs-products",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Tabs Products",
+                  "model": "tabs-products",
+                  "filter": "tabs-products"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Tab Panel",
+          "id": "tabs-products-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Tab Panel",
+                  "model": "tabs-products-item"
                 }
               }
             }

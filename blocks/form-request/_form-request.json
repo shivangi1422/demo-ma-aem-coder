@@ -1,0 +1,91 @@
+{
+  "definitions": [
+    {
+      "title": "Form Request",
+      "id": "form-request",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Form Request",
+              "model": "form-request",
+              "filter": "form-request"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Form Field",
+      "id": "form-request-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Form Field",
+              "model": "form-request-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "form-request",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Header (Title + Subtitle)",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "form-request-item",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "label",
+          "label": "Label",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "placeholder",
+          "label": "Placeholder",
+          "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "type",
+          "label": "Type",
+          "value": "text",
+          "options": [
+            { "name": "Text", "value": "text" },
+            { "name": "Text (half width)", "value": "half" },
+            { "name": "Email", "value": "email" },
+            { "name": "Text area", "value": "textarea" },
+            { "name": "Consent text", "value": "consent" },
+            { "name": "Submit button", "value": "submit" }
+          ]
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "form-request",
+      "components": [
+        "form-request-item"
+      ]
+    }
+  ]
+}

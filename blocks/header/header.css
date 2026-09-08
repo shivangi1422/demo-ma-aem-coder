@@ -4,6 +4,8 @@ header .nav-wrapper {
   width: 100%;
   z-index: 2;
   position: fixed;
+  border-bottom: 1px solid var(--bc-border);
+  font-family: var(--bc-brand-font);
 }
 
 header nav {
@@ -269,4 +271,30 @@ header nav .nav-sections ul > li > ul > li {
 /* tools */
 header nav .nav-tools {
   grid-area: tools;
+}
+
+/* Beckman Coulter brand styling */
+header nav .nav-brand {
+  font-weight: 800;
+  color: var(--bc-navy);
+}
+
+@media (width >= 900px) {
+  header nav .nav-sections ul > li {
+    color: var(--bc-navy);
+    font-weight: 600;
+    font-size: 14px;
+  }
+}
+
+header nav .nav-tools .button,
+header nav .nav-tools a.button:any-link {
+  margin: 0;
+  padding: 10px 20px;
+  border-radius: 4px;
+  background-color: var(--bc-orange);
+  border-color: var(--bc-orange);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
 }
