@@ -1,0 +1,15 @@
+{
+  "name": "form-request",
+  "blockType": "form",
+  "description": "A centered request/contact form card with a richtext header (title plus subtitle) and repeatable field items (label, placeholder, type) that render as text, half-width, email, textarea, consent checkbox, or submit controls in a responsive two-column field grid.",
+  "purpose": "form",
+  "colorScheme": "light",
+  "density": "comfortable",
+  "imagePattern": "none",
+  "contentPattern": {
+    "structure": "Row 0 is the header (title + subtitle); each following field item supplies label, placeholder, and a type select that drives input rendering, with consent and submit as special types; no image",
+    "buttonCount": 1,
+    "imageCount": "none"
+  },
+  "usage": { "pagesUsing": [] }
+}

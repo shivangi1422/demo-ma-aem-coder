@@ -1,0 +1,21 @@
+{
+  "name": "carousel",
+  "blockType": "carousel",
+  "description": "A carousel with an optional heading and repeatable slide items (image, image alt, richtext), rendered either as a dark thumbnail slider with prev/next arrows and an overlay panel (instruments) or as a single image-beside-text panel with a specs list (split).",
+  "purpose": "feature",
+  "colorScheme": "dark",
+  "density": "spacious",
+  "imagePattern": "multiple",
+  "contentPattern": {
+    "structure": "Optional row 0 is a heading; each subsequent row is one slide with an image cell and a text cell (eyebrow, title, description); instruments variant builds a stage plus a clickable thumbnail rail, split variant shows one slide",
+    "buttonCount": "variable",
+    "imageCount": "multiple"
+  },
+  "usage": {
+    "pagesUsing": [
+      "/en/products/immunoassay"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-09"
+  }
+}

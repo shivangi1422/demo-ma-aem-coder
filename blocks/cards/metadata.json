@@ -1,0 +1,15 @@
+{
+  "name": "cards",
+  "blockType": "cards",
+  "description": "A simple auto-filling responsive card grid built from repeatable card items (image, richtext), where each card renders an image and a body region inside a bordered list tile.",
+  "purpose": "feature",
+  "colorScheme": "neutral",
+  "density": "comfortable",
+  "imagePattern": "multiple",
+  "contentPattern": {
+    "structure": "Each row becomes one card list item split into an image cell and a body cell; cards flow in an auto-fill grid of minimum 257px columns",
+    "buttonCount": 0,
+    "imageCount": "multiple"
+  },
+  "usage": { "pagesUsing": [] }
+}

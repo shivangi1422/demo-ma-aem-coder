@@ -3,22 +3,25 @@
   background-color: #fff;
 }
 
+/* Tab bar sits inside a rounded outlined container (matches Figma) */
 .tabs-products .tabs-products-tabbar {
   display: flex;
   flex-wrap: wrap;
-  gap: 24px;
+  gap: 8px;
   margin-bottom: 40px;
-  border-bottom: 1px solid var(--bc-border);
+  padding: 6px 12px;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
   font-family: var(--bc-brand-font);
 }
 
 .tabs-products .tabs-products-tab {
-  padding: 16px 0;
+  padding: 10px 14px;
   border: none;
-  border-bottom: 2px solid transparent;
+  border-radius: 6px;
   background: none;
   color: var(--bc-grey);
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   cursor: pointer;
 }
@@ -26,7 +29,7 @@
 .tabs-products .tabs-products-tab.is-active {
   color: var(--bc-blue);
   font-weight: 700;
-  border-bottom-color: var(--bc-blue);
+  background-color: rgb(0 61 165 / 8%);
 }
 
 .tabs-products .tabs-products-panel {
@@ -82,17 +85,17 @@
 
 .tabs-products .tabs-products-text li {
   position: relative;
-  padding-left: 28px;
+  padding-left: 26px;
   color: var(--bc-navy);
-  font-size: 15px;
-  font-weight: 600;
+  font-size: 14px;
+  font-weight: 500;
 }
 
 .tabs-products .tabs-products-text li::before {
   content: '✓';
   position: absolute;
   left: 0;
-  color: var(--bc-orange);
+  color: var(--bc-blue);
   font-weight: 700;
 }
 

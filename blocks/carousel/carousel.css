@@ -166,38 +166,49 @@
   gap: 12px;
 }
 
+@media (width >= 900px) {
+  .carousel.instruments .carousel-thumbs {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
 .carousel.instruments .carousel-thumb {
   display: flex;
   flex-direction: column;
-  gap: 6px;
-  padding: 16px;
+  gap: 4px;
+  padding: 14px 16px;
   border: 1px solid transparent;
   border-radius: 6px;
-  background-color: rgb(255 255 255 / 10%);
+  background-color: rgb(255 255 255 / 8%);
   text-align: left;
   cursor: pointer;
   font-family: var(--bc-brand-font);
 }
 
+/* active thumb: solid brand blue (matches Figma) */
 .carousel.instruments .carousel-thumb.is-active {
   background-color: var(--bc-blue);
-  border-color: var(--bc-orange);
+  border-color: var(--bc-blue);
 }
 
+/* thumb title: white bold */
 .carousel.instruments .carousel-thumb h3,
 .carousel.instruments .carousel-thumb h4 {
   margin: 0;
+  order: 2;
   color: #fff;
-  font-size: 14px;
+  font-size: 15px;
   font-weight: 700;
 }
 
+/* thumb category label: small muted, sits above the title */
 /* stylelint-disable-next-line no-descending-specificity -- distinct sub-element, ordering intentional */
 .carousel.instruments .carousel-thumb p {
   margin: 0;
-  color: rgb(255 255 255 / 70%);
+  order: 1;
+  color: rgb(255 255 255 / 65%);
   font-size: 12px;
-  font-weight: 600;
+  font-weight: 500;
   text-transform: none;
 }
 

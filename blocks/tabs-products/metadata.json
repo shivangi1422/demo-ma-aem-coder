@@ -1,0 +1,15 @@
+{
+  "name": "tabs-products",
+  "blockType": "tabs",
+  "description": "A tabbed product showcase built from repeatable panel items (label, richtext content, image, image alt); a generated tab bar switches between panels, each rendering a two-column layout of text (eyebrow, title, checkmark list, CTA) beside an image.",
+  "purpose": "feature",
+  "colorScheme": "light",
+  "density": "spacious",
+  "imagePattern": "multiple",
+  "contentPattern": {
+    "structure": "One row per tab: cell 0 is the tab label, cell 1 is the panel richtext, cell 2 is the panel image; a tab bar is generated and clicking a tab reveals its two-column panel",
+    "buttonCount": "variable",
+    "imageCount": "multiple"
+  },
+  "usage": { "pagesUsing": [] }
+}

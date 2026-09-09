@@ -1,0 +1,21 @@
+{
+  "name": "columns",
+  "blockType": "columns",
+  "description": "A generic multi-column layout defined by columns and rows counts, where each cell holds default content (text, image, button, or title) and stacks vertically on mobile before becoming side-by-side columns at desktop widths.",
+  "purpose": "content",
+  "colorScheme": "neutral",
+  "density": "comfortable",
+  "imagePattern": "multiple",
+  "contentPattern": {
+    "structure": "A configurable grid of rows and columns; each column cell contains free-form default content and image-only columns are tagged for ordering",
+    "buttonCount": "variable",
+    "imageCount": "multiple"
+  },
+  "usage": {
+    "pagesUsing": [
+      "/en/products/immunoassay"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-09"
+  }
+}

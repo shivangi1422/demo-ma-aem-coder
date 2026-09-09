@@ -1,0 +1,21 @@
+{
+  "name": "hero",
+  "blockType": "hero",
+  "description": "A full-width hero with an optional image, richtext heading/copy and CTA buttons, offering six style variants (home background-image, solid banner, plain white, gradient banner, and two image/text split layouts) selected via a Style dropdown.",
+  "purpose": "hero",
+  "colorScheme": "dark",
+  "density": "spacious",
+  "imagePattern": "large",
+  "contentPattern": {
+    "structure": "An optional image row plus a richtext row (heading, paragraph, CTAs); image is used as a full-bleed background, a right-bleeding illustration, or a side-by-side panel depending on the variant",
+    "buttonCount": "variable",
+    "imageCount": "single"
+  },
+  "usage": {
+    "pagesUsing": [
+      "/en/products/immunoassay"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-09"
+  }
+}

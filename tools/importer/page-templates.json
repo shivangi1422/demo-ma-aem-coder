@@ -1,0 +1,162 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "products",
+      "urls": [
+        "https://www.beckmancoulter.com/en/products/immunoassay"
+      ],
+      "representativeUrl": "https://www.beckmancoulter.com/en/products/immunoassay",
+      "description": "Beckman Coulter product overview page (immunoassay)",
+      "urlPattern": "/en/products/*",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            "#main-container > div.sublayout.ui.aligned.segment.grid > div.lazyload.fade.video-hero-carousel.ui.container.active"
+          ]
+        },
+        {
+          "name": "cards-grid",
+          "instances": [
+            "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(3)",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.product-list.lazyload.active"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(5)",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.double-showcase-feature"
+          ]
+        },
+        {
+          "name": "content-reversed",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.social-proof-section"
+          ]
+        },
+        {
+          "name": "carousel",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.lazyload.page-content.education-filter-carousel.active"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "Hero",
+          "selector": "#main-container > div.sublayout.ui.aligned.segment.grid > div.lazyload.fade.video-hero-carousel.ui.container.active",
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "Intro",
+          "selector": "#main-container > div.sublayout.ui.aligned.segment.grid > div.wysiwyg-content.lazyload.gtm-page-body-link.active",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.aligned.segment.grid > div.wysiwyg-content.lazyload.gtm-page-body-link.active"
+          ]
+        },
+        {
+          "id": "3",
+          "name": "Value Props",
+          "selector": "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(3)",
+          "style": null,
+          "blocks": [
+            "cards-grid"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "4",
+          "name": "Analyzers Intro",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(1)",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(1)"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Analyzer Products",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.product-list.lazyload.active",
+          "style": null,
+          "blocks": [
+            "cards-grid"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "6",
+          "name": "Solutions Heading",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(3)",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(3)"
+          ]
+        },
+        {
+          "id": "7",
+          "name": "Clinical Categories",
+          "selector": "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(5)",
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "8",
+          "name": "Dual Promo Panels",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.double-showcase-feature",
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "9",
+          "name": "Reimagining Rows",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.social-proof-section",
+          "style": null,
+          "blocks": [
+            "content-reversed"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "10",
+          "name": "Education Carousel",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.lazyload.page-content.education-filter-carousel.active",
+          "style": null,
+          "blocks": [
+            "carousel"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "11",
+          "name": "Disclaimer",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.disclaimer-text.lazyload.active",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.disclaimer-text.lazyload.active"
+          ]
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "name": "product-banner",
+  "blockType": "banner",
+  "description": "A product banner with a full-width top image and a content column (eyebrow, title, description, a 2x2 feature grid from a list, and a CTA button).",
+  "purpose": "banner",
+  "colorScheme": "light",
+  "density": "spacious",
+  "imagePattern": "large",
+  "contentPattern": {
+    "structure": "Row 0 is a full-width banner image; row 1 is richtext content with eyebrow, heading, description, a feature list rendered as a grid, and a call-to-action button",
+    "buttonCount": 1,
+    "imageCount": "single"
+  },
+  "usage": { "pagesUsing": [] }
+}

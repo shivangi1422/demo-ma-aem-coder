@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/products/immunoassay",
+  "path": "en/products/immunoassay",
+  "timestamp": "2026-09-09T13:32:10.017Z",
+  "title": "Immunoassay Analyzers and Assays | Beckman Coulter",
+  "template": "products",
+  "blocks": [
+    "hero",
+    "cards-grid",
+    "cards-grid",
+    "columns",
+    "columns",
+    "content-reversed",
+    "carousel"
+  ]
+}

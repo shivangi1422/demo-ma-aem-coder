@@ -1,0 +1,15 @@
+{
+  "name": "quote",
+  "blockType": "quote",
+  "description": "A centered testimonial block with a large italic richtext quote rendered as a blockquote and an optional plain-text attribution line beneath it.",
+  "purpose": "testimonial",
+  "colorScheme": "light",
+  "density": "comfortable",
+  "imagePattern": "none",
+  "contentPattern": {
+    "structure": "Two rows: a quote row (richtext) and an attribution row (text); no image",
+    "buttonCount": 0,
+    "imageCount": "none"
+  },
+  "usage": { "pagesUsing": [] }
+}

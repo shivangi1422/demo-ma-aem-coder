@@ -5,7 +5,7 @@
   padding: 0;
 }
 
-/* shared button styling across variants */
+/* shared button styling across variants (blog heroes use the orange CTA) */
 .hero a.button:any-link {
   margin: 0;
   border-radius: 4px;
@@ -51,8 +51,8 @@
   inset: 0;
   z-index: 1;
 
-  /* brand-blue tint so white heading/CTAs stay legible over any authored photo */
-  background-color: rgb(0 43 122 / 55%);
+  /* royal-blue tint from Figma — heavy so white text/CTAs stay legible over the photo */
+  background-color: rgb(37 78 173 / 82%);
 }
 
 .hero.home > * {
@@ -60,41 +60,74 @@
   z-index: 2;
 }
 
+/* Headline — Figma exact: Inter ExtraBold 56px / 68px desktop, white, centered.
+   Base (mobile) scaled down; desktop pins the exact Figma size.
+   (h3 included — the importer emits the hero title as an h3.) */
 .hero.home h1,
-.hero.home h2 {
+.hero.home h2,
+.hero.home h3 {
   margin: 0;
-  max-width: 900px;
+  max-width: 800px;
   color: #fff;
   font-family: var(--bc-brand-font);
   font-weight: 800;
-  font-size: 36px;
+  font-size: 34px;
   line-height: 1.2;
 }
 
+/* Subtitle — Figma exact: Inter Regular 18px / 22px, white, centered.
+   All hero text is white regardless of element. */
 .hero.home p {
   margin: 0;
-  max-width: 720px;
+  max-width: 800px;
   color: #fff;
   font-family: var(--bc-brand-font);
+  font-weight: 400;
   font-size: 18px;
-  line-height: 1.35;
+  line-height: 22px;
 }
 
 .hero.home .button-wrapper {
   display: inline-block;
-  margin: 12px 8px 0;
+  margin: 12px 6px 0;
 }
 
-.hero.home a.button:any-link {
-  padding: 14px 28px;
+/* stylelint-disable no-descending-specificity */
+
+/* Primary CTA — solid orange (Figma "Explore Solutions", 47px tall).
+   Matches both EDS-decorated .button links and a plain anchor emitted by
+   the importer (the immunoassay hero CTA has no .button class). */
+.hero.home a.button:any-link,
+.hero.home p > a:only-child:any-link {
+  display: inline-block;
+  padding: 13px 28px;
+  border: none;
+  border-radius: 4px;
+  background-color: var(--bc-orange);
+  color: #fff;
   font-size: 16px;
+  font-weight: 700;
+  line-height: 1;
+  text-decoration: none;
 }
 
+.hero.home a.button:any-link:hover,
+.hero.home p > a:only-child:any-link:hover {
+  background-color: #e05f00;
+}
+
+/* Secondary CTA — outlined white (Figma "Watch Demo") */
 .hero.home a.button.secondary:any-link {
   background-color: transparent;
   border: 1px solid #fff;
   color: #fff;
 }
+
+.hero.home a.button.secondary:any-link:hover {
+  background-color: rgb(255 255 255 / 15%);
+}
+
+/* stylelint-enable no-descending-specificity */
 
 /* ============================================================
    BANNER — solid colour, text only, no image
@@ -103,8 +136,8 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 20px;
-  padding: 48px 24px;
+  gap: 18px;
+  padding: 56px 24px;
   text-align: center;
   background-color: var(--bc-blue);
 }
@@ -113,7 +146,7 @@
 .hero.banner h2,
 .hero.banner h3 {
   margin: 0;
-  max-width: 900px;
+  max-width: 800px;
   color: #fff;
   font-family: var(--bc-brand-font);
   font-weight: 800;
@@ -123,20 +156,28 @@
 
 .hero.banner p {
   margin: 0;
-  max-width: 800px;
+  max-width: 640px;
   color: rgb(255 255 255 / 90%);
   font-family: var(--bc-brand-font);
-  font-size: 18px;
-  line-height: 1.22;
+  font-size: 15px;
+  line-height: 1.45;
 }
 
 .hero.banner .button-wrapper {
-  margin: 4px 0 0;
+  margin: 8px 0 0;
 }
 
+/* Orange CTA (Figma "Schedule a Consultation") */
+/* stylelint-disable-next-line no-descending-specificity */
 .hero.banner a.button:any-link {
-  padding: 16px 32px;
-  font-size: 16px;
+  padding: 13px 28px;
+  border-radius: 4px;
+  background-color: var(--bc-orange);
+  border-color: var(--bc-orange);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1;
 }
 
 /* ============================================================
@@ -364,7 +405,8 @@
 
   .hero.home h1,
   .hero.home h2 {
-    font-size: 48px;
+    font-size: 56px;
+    line-height: 68px;
   }
 
   .hero.banner {
@@ -422,3 +464,105 @@
     padding: 80px 80px 80px 64px;
   }
 }
+
+/* ============================================================
+   PRODUCT (default / no-variant) — full-bleed purple banner,
+   white left-aligned heading + inverted (outlined) CTA.
+   Matches beckmancoulter.com/en/products/immunoassay video hero.
+
+   Placed last & scoped with :not() on every known variant so the
+   blog heroes (home/banner/split/split-left/gradient/plain) are
+   untouched. These :not() selectors are mutually exclusive with the
+   variant rules above (they can never match the same element), so
+   the descending-specificity ordering is a false positive here.
+   ============================================================ */
+
+/* stylelint-disable no-descending-specificity */
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) {
+  position: relative;
+  background-color: #2e1a47;
+  background-image: linear-gradient(rgb(0 0 0 / 10%), rgb(0 0 0 / 10%)),
+    url("https://media.beckmancoulter.com/-/media/diagnostics/products/immunoassay/images/ia-dp-2023/immunoassa-banner.jpg?rev=9e5b44a4755b4225a90e9f42ed6c47eb");
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  overflow: hidden;
+}
+
+/* the single content row becomes the centered max-width container */
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) > div {
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 40px 24px;
+}
+
+/* the content cell — text column, left aligned */
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) > div > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 20px;
+  text-align: left;
+}
+
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) h1,
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) h2,
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--bc-brand-font);
+  font-weight: 300;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) p {
+  margin: 0;
+  color: rgb(255 255 255 / 90%);
+  font-family: var(--bc-brand-font);
+  font-weight: 300;
+  font-size: 18px;
+  line-height: 1.4;
+}
+
+/* inverted (outlined) CTA — overrides the shared orange button */
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) .button-container {
+  margin: 0;
+}
+
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) a.button:any-link {
+  padding: 11px 24px;
+  border: 2px solid #fff;
+  border-radius: 5px;
+  background-color: transparent;
+  color: #fff;
+  font-weight: 700;
+  font-size: 16px;
+}
+
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) a.button:any-link:hover,
+.hero:not(.home, .banner, .split, .split-left, .gradient, .plain) a.button:any-link:focus-visible {
+  background-color: #fff;
+  border-color: #fff;
+  color: rgb(0 0 0 / 80%);
+}
+
+@media (width >= 900px) {
+  .hero:not(.home, .banner, .split, .split-left, .gradient, .plain) > div {
+    padding: 6.5rem 30px;
+  }
+
+  .hero:not(.home, .banner, .split, .split-left, .gradient, .plain) > div > div {
+    width: 55%;
+    gap: 24px;
+  }
+
+  .hero:not(.home, .banner, .split, .split-left, .gradient, .plain) h1,
+  .hero:not(.home, .banner, .split, .split-left, .gradient, .plain) h2,
+  .hero:not(.home, .banner, .split, .split-left, .gradient, .plain) h3 {
+    font-size: 28px;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */

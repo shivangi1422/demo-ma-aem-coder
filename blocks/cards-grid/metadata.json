@@ -1,0 +1,21 @@
+{
+  "name": "cards-grid",
+  "blockType": "cards",
+  "description": "A grid of cards with an optional heading/intro and repeatable card items (image, image alt, richtext), offering five style variants (solutions, product lines, insights, simple 4-up, and borderless features) laid out as a responsive multi-column grid.",
+  "purpose": "feature",
+  "colorScheme": "light",
+  "density": "comfortable",
+  "imagePattern": "multiple",
+  "contentPattern": {
+    "structure": "Row 0 is a heading/intro panel; each subsequent row is one card with an image cell and a text cell (eyebrow/tag, title, description, optional link or badge)",
+    "buttonCount": "variable",
+    "imageCount": "multiple"
+  },
+  "usage": {
+    "pagesUsing": [
+      "/en/products/immunoassay"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-09"
+  }
+}
