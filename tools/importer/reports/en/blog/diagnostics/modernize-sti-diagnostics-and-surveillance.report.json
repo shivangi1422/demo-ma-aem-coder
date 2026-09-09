@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/blog/diagnostics/modernize-sti-diagnostics-and-surveillance",
+  "path": "en/blog/diagnostics/modernize-sti-diagnostics-and-surveillance",
+  "timestamp": "2026-09-08T09:58:42.177Z",
+  "title": "What is driving the need to modernize STI diagnostics and surveillance? | Beckman Coulter",
+  "template": "diagnostics",
+  "blocks": [
+    "hero-blog",
+    "columns-tags",
+    "columns-author",
+    "cards-blog"
+  ]
+}

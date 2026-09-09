@@ -1,0 +1,128 @@
+/* cards-blog -- "Related Articles" article card grid.
+   Values extracted from source computed styles (beckmancoulter.com blog). */
+
+/* Light-gray section background (section metadata style="light-gray").
+   Source section background: rgb(248, 248, 248). Full-width band. */
+main .section.light-gray {
+  background-color: #f8f8f8;
+  margin: 0;
+  padding: 40px 0;
+}
+
+/* Card grid: single column mobile, three columns desktop (stackable). */
+.cards-blog > ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+}
+
+/* Card */
+.cards-blog > ul > li {
+  display: flex;
+  flex-direction: column;
+  background-color: var(--background-color);
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 10%) 0 2px 2px 0;
+  overflow: hidden;
+}
+
+/* Card image -- EDS wraps the <picture> in a <p>; reset it and fill the top. */
+.cards-blog .cards-blog-card-image {
+  position: relative;
+  line-height: 0;
+}
+
+/* White "article" mark on the top-left of each card image (source: lnr-file-empty). */
+.cards-blog .cards-blog-card-image::before {
+  content: '';
+  position: absolute;
+  top: 16px;
+  left: 16px;
+  z-index: 1;
+  width: 26px;
+  height: 26px;
+  background-color: #fff;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V9z'/%3E%3Cpolyline points='13 2 13 9 20 9'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.cards-blog .cards-blog-card-image p {
+  margin: 0;
+  line-height: 0;
+}
+
+.cards-blog > ul > li img {
+  display: block;
+  width: 100%;
+  aspect-ratio: 950 / 480;
+  object-fit: cover;
+}
+
+/* Card body */
+.cards-blog .cards-blog-card-body {
+  padding: 30px;
+}
+
+/* Title */
+.cards-blog .cards-blog-card-body h3 {
+  margin: 0 0 24px;
+  font-size: 28px;
+  font-weight: 200;
+  line-height: 36px;
+  color: var(--text-color);
+}
+
+/* All body paragraphs default to the summary style. */
+.cards-blog .cards-blog-card-body p {
+  margin: 20px 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.2;
+  color: var(--text-color);
+}
+
+/* Byline / meta (first paragraph). */
+.cards-blog .cards-blog-card-body p:first-of-type {
+  font-size: 12px;
+  text-transform: uppercase;
+}
+
+/* Read More container paragraph. */
+.cards-blog .cards-blog-card-body p:last-of-type {
+  margin: 0;
+}
+
+/* Read More link */
+.cards-blog .cards-blog-card-body a {
+  display: inline-block;
+  padding: 12px 24px 12px 0;
+  color: #08c;
+  font-size: 16px;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cards-blog .cards-blog-card-body a::after {
+  content: '';
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  margin-left: 6px;
+  vertical-align: middle;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='9 18 15 12 9 6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.cards-blog .cards-blog-card-body a:hover {
+  text-decoration: underline;
+}
+
+/* Three-up grid on desktop. */
+@media (width >= 900px) {
+  .cards-blog > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px 28px;
+  }
+}

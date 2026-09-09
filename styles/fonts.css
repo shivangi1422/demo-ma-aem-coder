@@ -1,4 +1,38 @@
 /* stylelint-disable max-line-length */
+
+/* ProximaNova — self-hosted from beckmancoulter.com source */
+@font-face {
+  font-family: proximanova;
+  font-style: normal;
+  font-weight: 400;
+  font-display: swap;
+  src: url('../fonts/proximanova-regular-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: proximanova;
+  font-style: normal;
+  font-weight: 200;
+  font-display: swap;
+  src: url('../fonts/proximanova-light-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: proximanova;
+  font-style: normal;
+  font-weight: 600;
+  font-display: swap;
+  src: url('../fonts/proximanova-semibold-webfont.woff2') format('woff2');
+}
+
+@font-face {
+  font-family: proximanova;
+  font-style: normal;
+  font-weight: 700;
+  font-display: swap;
+  src: url('../fonts/proximanova-semibold-webfont.woff2') format('woff2');
+}
+
 @font-face {
   font-family: roboto-condensed;
   font-style: normal;

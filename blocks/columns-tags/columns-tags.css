@@ -1,0 +1,55 @@
+/* Block: columns-tags -- blog tag/category row
+ * Values extracted from source computed styles:
+ * https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology
+ * (.blog-post-tag-list). Row has 1px solid black top/bottom rules with a leading
+ * tag icon and an inline blue tag link.
+ */
+
+.columns-tags {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0;
+  padding: 14px 0;
+  border-top: 1px solid var(--text-color);
+  border-bottom: 1px solid var(--text-color);
+}
+
+/* leading outline tag icon (source used a Linearicons glyph, replaced with inline SVG) */
+.columns-tags::before {
+  content: '';
+  flex: 0 0 auto;
+  width: 21px;
+  height: 21px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23000' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20.59 13.41l-7.17 7.17a2 2 0 0 1-2.83 0L2 12V2h10l8.59 8.59a2 2 0 0 1 0 2.82z'/%3E%3Ccircle cx='7' cy='7' r='1'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: contain;
+}
+
+/* row + cell wrappers carry no spacing of their own */
+.columns-tags > div,
+.columns-tags > div > div {
+  margin: 0;
+  padding: 0;
+}
+
+.columns-tags p {
+  margin: 0;
+}
+
+/* tag link -- exact source color #0088cc (rgb(0, 136, 204)), semibold heading face */
+.columns-tags a:any-link {
+  margin: 0 5px;
+  color: #08c;
+  font-family: var(--heading-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.43;
+  text-decoration: none;
+}
+
+.columns-tags a:hover {
+  color: #08c;
+  text-decoration: underline;
+}

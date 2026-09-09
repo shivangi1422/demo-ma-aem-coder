@@ -1,0 +1,37 @@
+{
+  "variantName": "columns-tags",
+  "baseBlock": "columns",
+  "version": "1.0.0",
+  "created": "2026-09-08T00:00:00.000Z",
+  "sourceContext": {
+    "originUrl": "https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology",
+    "originPage": "Beckman Coulter diagnostics blog post",
+    "blockPosition": "middle"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "compact",
+    "purpose": "blog-tags",
+    "imagePattern": "noimg"
+  },
+  "contentPattern": {
+    "structure": "row of blog category / tag links",
+    "buttonCount": 0,
+    "imageCount": 0
+  },
+  "reuseGuidance": {
+    "suitableFor": [
+      "blog category / tag rows",
+      "inline lists of taxonomy links below an article"
+    ],
+    "notSuitableFor": [
+      "content requiring images or multi-row comparison layouts",
+      "author bios or media-rich columns"
+    ]
+  },
+  "usage": {
+    "pagesUsing": ["/en/blog/diagnostics/the-value-of-mpv-in-hematology"],
+    "reuseCount": 1,
+    "lastUsed": "2026-09-08T00:00:00.000Z"
+  }
+}

@@ -1,0 +1,105 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "diagnostics",
+      "urls": [
+        "https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology",
+        "https://www.beckmancoulter.com/en/blog/diagnostics/modernize-sti-diagnostics-and-surveillance"
+      ],
+      "representativeUrl": "https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology",
+      "description": "Beckman Coulter diagnostics blog article page",
+      "urlPattern": "/en/blog/diagnostics/*",
+      "blocks": [
+        {
+          "name": "hero-blog",
+          "instances": [
+            "#main-container > div.sublayout.ui.aligned.segment.grid:nth-of-type(1)"
+          ]
+        },
+        {
+          "name": "columns-tags",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list"
+          ]
+        },
+        {
+          "name": "columns-author",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column"
+          ]
+        },
+        {
+          "name": "cards-blog",
+          "instances": [
+            "#main-container > div.sublayout.ui.aligned.segment.grid.light-gray"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc1",
+          "name": "Article Header",
+          "selector": "#main-container > div.sublayout.ui.aligned.segment.grid:nth-of-type(1)",
+          "style": null,
+          "blocks": [
+            "hero-blog"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc2",
+          "name": "Article Body",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.lazyload.page-content.nested-padding.active",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.lazyload.page-content.nested-padding.active"
+          ]
+        },
+        {
+          "id": "rc3",
+          "name": "References and Disclaimer",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.disclaimer-text.lazyload.active",
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.disclaimer-text.lazyload.active"
+          ]
+        },
+        {
+          "id": "rc4",
+          "name": "Blog Tags",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list",
+          "style": null,
+          "blocks": [
+            "columns-tags"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc5",
+          "name": "Author Bio",
+          "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column",
+          "style": null,
+          "blocks": [
+            "columns-author"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc6",
+          "name": "Related Articles",
+          "selector": "#main-container > div.sublayout.ui.aligned.segment.grid.light-gray",
+          "style": "light-gray",
+          "blocks": [
+            "cards-blog"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

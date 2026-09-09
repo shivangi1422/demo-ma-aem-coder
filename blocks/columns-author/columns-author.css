@@ -1,0 +1,71 @@
+/* Block: columns-author — contributor bio (circular headshot + name/bio/link)
+   Values extracted from source computed styles (beckmancoulter.com blog). */
+
+.columns-author {
+  margin: 28px 0;
+  color: var(--text-color);
+}
+
+/* row: headshot beside the name/bio/link content */
+.columns-author > div {
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 24px;
+}
+
+/* headshot cell — small fixed-width circular avatar */
+.columns-author > div > .columns-author-img-col {
+  flex: 0 0 auto;
+  width: 147px;
+}
+
+.columns-author .columns-author-img-col picture,
+.columns-author .columns-author-img-col img {
+  display: block;
+  width: 147px;
+  height: 147px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* content cell */
+.columns-author > div > div {
+  flex: 1;
+  min-width: 0;
+}
+
+/* name */
+.columns-author h3 {
+  margin: 0;
+  font-family: var(--heading-font-family);
+  font-size: 19.2px;
+  font-weight: 700;
+  line-height: 1.2;
+  text-transform: uppercase;
+  color: var(--text-color);
+}
+
+/* bio */
+.columns-author p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.43;
+  color: var(--text-color);
+}
+
+/* "See all by …" link — source contributor link color (#0088cc, not a brand token) */
+.columns-author a:any-link {
+  color: #08c;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.columns-author a:hover {
+  text-decoration: underline;
+}
+
+.columns-author a:any-link::after {
+  content: " \203A";
+  font-weight: 400;
+}
