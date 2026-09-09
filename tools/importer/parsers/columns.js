@@ -43,11 +43,21 @@ export default function parse(element, { document }) {
   } else {
     // Link-list columns: one cell per `.column`, preserving its list markup.
     const columns = Array.from(element.querySelectorAll(':scope > .column'));
-    const row = columns.map((col) => {
-      const list = col.querySelector('ul, ol');
-      return list ? [list] : [...col.childNodes];
-    });
-    if (row.length) cells.push(row);
+    if (columns.length) {
+      const row = columns.map((col) => {
+        const list = col.querySelector('ul, ol');
+        return list ? [list] : [...col.childNodes];
+      });
+      cells.push(row);
+    } else {
+      // Text-only section (convention: single text/title is wrapped in columns).
+      // Single column cell carrying the section's headings + paragraphs.
+      const cell = [];
+      element.querySelectorAll('h1, h2, h3, h4, h5, h6, p').forEach((el) => {
+        if (!isPlaceholder(el.textContent) && el.textContent.trim()) cell.push(el);
+      });
+      if (cell.length) cells.push([cell]);
+    }
   }
 
   // Empty-block guard.

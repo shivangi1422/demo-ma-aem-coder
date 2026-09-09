@@ -204,11 +204,19 @@ var CustomImportScript = (() => {
       if (row.length) cells.push(row);
     } else {
       const columns = Array.from(element.querySelectorAll(":scope > .column"));
-      const row = columns.map((col) => {
-        const list = col.querySelector("ul, ol");
-        return list ? [list] : [...col.childNodes];
-      });
-      if (row.length) cells.push(row);
+      if (columns.length) {
+        const row = columns.map((col) => {
+          const list = col.querySelector("ul, ol");
+          return list ? [list] : [...col.childNodes];
+        });
+        cells.push(row);
+      } else {
+        const cell = [];
+        element.querySelectorAll("h1, h2, h3, h4, h5, h6, p").forEach((el) => {
+          if (!isPlaceholder(el.textContent) && el.textContent.trim()) cell.push(el);
+        });
+        if (cell.length) cells.push([cell]);
+      }
     }
     if (cells.length === 0) {
       element.replaceWith(...element.childNodes);
@@ -408,11 +416,23 @@ var CustomImportScript = (() => {
     blocks: [
       { name: "hero", instances: ["#main-container > div.sublayout.ui.aligned.segment.grid > div.lazyload.fade.video-hero-carousel.ui.container.active"] },
       { name: "cards-grid", instances: ["#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(3)", "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.product-list.lazyload.active"] },
-      { name: "columns", instances: ["#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(5)", "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.double-showcase-feature"] },
+      { name: "columns", instances: ["#main-container > div.sublayout.ui.aligned.segment.grid > div.wysiwyg-content.lazyload.gtm-page-body-link.active", "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(1)", "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(3)", "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(5)", "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.double-showcase-feature"] },
       { name: "content-reversed", instances: ["#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.social-proof-section"] },
       { name: "carousel", instances: ["#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.lazyload.page-content.education-filter-carousel.active"] }
     ],
-    sections: new Array(11).fill(0).map((_, i) => ({ id: String(i + 1) }))
+    sections: [
+      { id: "1", selector: "#main-container > div.sublayout.ui.aligned.segment.grid > div.lazyload.fade.video-hero-carousel.ui.container.active", style: null },
+      { id: "2", selector: "#main-container > div.sublayout.ui.aligned.segment.grid > div.wysiwyg-content.lazyload.gtm-page-body-link.active", style: null },
+      { id: "3", selector: "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(3)", style: null },
+      { id: "4", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(1)", style: null },
+      { id: "5", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.product-list.lazyload.active", style: null },
+      { id: "6", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(3)", style: null },
+      { id: "7", selector: "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(5)", style: null },
+      { id: "8", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.double-showcase-feature", style: null },
+      { id: "9", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.social-proof-section", style: null },
+      { id: "10", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.lazyload.page-content.education-filter-carousel.active", style: null },
+      { id: "11", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.disclaimer-text.lazyload.active", style: null }
+    ]
   };
   var transformers = [
     transform,

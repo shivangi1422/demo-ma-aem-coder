@@ -28,6 +28,9 @@
         {
           "name": "columns",
           "instances": [
+            "#main-container > div.sublayout.ui.aligned.segment.grid > div.wysiwyg-content.lazyload.gtm-page-body-link.active",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(1)",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(3)",
             "#main-container > div.sublayout.ui.three.column.stackable.equal.height.grid.container.col-3-default-padding:nth-of-type(5)",
             "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(6) > div.double-showcase-feature"
           ]
@@ -61,10 +64,10 @@
           "name": "Intro",
           "selector": "#main-container > div.sublayout.ui.aligned.segment.grid > div.wysiwyg-content.lazyload.gtm-page-body-link.active",
           "style": null,
-          "blocks": [],
-          "defaultContent": [
-            "#main-container > div.sublayout.ui.aligned.segment.grid > div.wysiwyg-content.lazyload.gtm-page-body-link.active"
-          ]
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
         },
         {
           "id": "3",
@@ -81,10 +84,10 @@
           "name": "Analyzers Intro",
           "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(1)",
           "style": null,
-          "blocks": [],
-          "defaultContent": [
-            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(1)"
-          ]
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
         },
         {
           "id": "5",
@@ -101,10 +104,10 @@
           "name": "Solutions Heading",
           "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(3)",
           "style": null,
-          "blocks": [],
-          "defaultContent": [
-            "#main-container > div.sublayout.ui.one.column.stackable.grid.container:nth-of-type(4) > div.lazyload.page-content.nested-padding.active:nth-of-type(3)"
-          ]
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
         },
         {
           "id": "7",
