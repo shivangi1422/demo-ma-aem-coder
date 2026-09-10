@@ -1,6 +1,9 @@
-/* Base section padding — consistent with the other blocks (no Figma variant). */
+/* Vertical padding only — the columns block sits inside a normal max-width
+   section wrapper that already provides the horizontal inset, so adding side
+   padding here would double-indent the content and misalign it with the other
+   sections. Keep top/bottom spacing for rhythm. */
 .columns {
-  padding: 40px 24px;
+  padding: 40px 0;
 }
 
 .columns > div {
@@ -26,7 +29,7 @@
 
 @media (width >= 900px) {
   .columns {
-    padding: 80px;
+    padding: 56px 0;
   }
 
   .columns > div {

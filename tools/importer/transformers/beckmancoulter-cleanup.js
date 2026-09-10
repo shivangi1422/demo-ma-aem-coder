@@ -31,6 +31,9 @@ export default function transform(hookName, element, payload) {
       '.uw-s10-left-ruler-guide',        // cleaned.html:68
       '.uw-s10-reading-guide',           // cleaned.html:70
       '.uw-s12-tooltip',                 // cleaned.html:74
+      // Hidden Marketo confirmation message ("Thank you for your request…") —
+      // a display:hidden sibling of the form, not authorable page content.
+      '#confirmform',
     ]);
   }
 
@@ -51,5 +54,14 @@ export default function transform(hookName, element, payload) {
       'noscript',
       'script',
     ]);
+
+    // JS-injected "Feedback" widget label — rendered at runtime as a bare
+    // element, not authorable content. Remove any leaf element whose only text
+    // is "Feedback".
+    element.querySelectorAll('p, div, span, a, button').forEach((el) => {
+      if (el.children.length === 0 && /^\s*feedback\s*$/i.test(el.textContent || '')) {
+        el.remove();
+      }
+    });
   }
 }

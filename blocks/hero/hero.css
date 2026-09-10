@@ -100,6 +100,7 @@
 .hero.home a.button:any-link,
 .hero.home p > a:only-child:any-link {
   display: inline-block;
+  margin-top: 16px; /* extra separation from the hero copy above the CTA */
   padding: 13px 28px;
   border: none;
   border-radius: 4px;
@@ -109,7 +110,9 @@
   font-weight: 700;
   line-height: 1;
   text-decoration: none;
+  text-transform: capitalize;
 }
+
 
 .hero.home a.button:any-link:hover,
 .hero.home p > a:only-child:any-link:hover {

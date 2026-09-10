@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/products/dxs-service-and-supports",
+  "path": "en/products/dxs-service-and-supports",
+  "timestamp": "2026-09-10T13:09:36.887Z",
+  "title": "DxS Service and Support | Beckman Coulter",
+  "template": "dxs-service-and-supports",
+  "blocks": [
+    "hero",
+    "cards-grid",
+    "cards-grid",
+    "cards-grid",
+    "content-reversed",
+    "columns",
+    "quote",
+    "tabs-products",
+    "form-request"
+  ]
+}

@@ -52,9 +52,14 @@ export default function parse(element, { document }) {
     } else {
       // Text-only section (convention: single text/title is wrapped in columns).
       // Single column cell carrying the section's headings + paragraphs.
+      // Skip JS-injected chrome that isn't authorable content (e.g. a lone
+      // "Feedback" widget label the source page renders at runtime).
+      const isChrome = (t) => /^\s*feedback\s*$/i.test(t);
       const cell = [];
       element.querySelectorAll('h1, h2, h3, h4, h5, h6, p').forEach((el) => {
-        if (!isPlaceholder(el.textContent) && el.textContent.trim()) cell.push(el);
+        if (isPlaceholder(el.textContent) || !el.textContent.trim()) return;
+        if (isChrome(el.textContent)) return;
+        cell.push(el);
       });
       if (cell.length) cells.push([cell]);
     }

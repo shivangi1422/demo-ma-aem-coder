@@ -13,6 +13,23 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 export default function decorate(block) {
   const rows = [...block.children];
 
+  // Adopt a section heading that sits just before the block (emitted as default
+  // content by the importer) so it renders INSIDE the block and shares its
+  // padding/alignment instead of sitting flush at the section edge.
+  let heading = null;
+  const prev = block.parentElement?.previousElementSibling;
+  const prevHeading = prev && (prev.matches?.('h1, h2, h3') ? prev : prev.querySelector?.('h1, h2, h3'));
+  const ownWrapper = block.closest('.tabs-products-wrapper');
+  const wrapperPrevHeading = ownWrapper?.previousElementSibling?.matches?.('h1, h2, h3')
+    ? ownWrapper.previousElementSibling : null;
+  const src = wrapperPrevHeading || prevHeading;
+  if (src && src.textContent.trim()) {
+    heading = document.createElement('h2');
+    heading.className = 'tabs-products-heading';
+    heading.textContent = src.textContent.trim();
+    src.remove();
+  }
+
   const tabbar = document.createElement('div');
   tabbar.className = 'tabs-products-tabbar';
   tabbar.setAttribute('role', 'tablist');
@@ -49,6 +66,32 @@ export default function decorate(block) {
     const textCol = document.createElement('div');
     textCol.className = 'tabs-products-text';
     if (textCell) while (textCell.firstChild) textCol.append(textCell.firstChild);
+
+    // Regroup a flat resource list (eyebrow <p> + <h4> + link <p>, repeated)
+    // into separated resource items. Each <h4> begins an item; a preceding <p>
+    // (with no anchor) is its eyebrow tag. Only runs when the panel is a list of
+    // h4 resources (e.g. "Articles and Stories"), not a normal product panel.
+    const headings = [...textCol.children].filter((el) => el.tagName === 'H4');
+    if (headings.length > 1) {
+      const nodes = [...textCol.children];
+      const items = [];
+      let current = null;
+      nodes.forEach((el) => {
+        const isEyebrow = el.tagName === 'P' && !el.querySelector('a');
+        // A new resource starts at its eyebrow <p>, or at an <h4> if the item
+        // has no eyebrow. The title/link then append to the current item.
+        const startsItem = isEyebrow || (el.tagName === 'H4' && (!current || current.querySelector('h4')));
+        if (startsItem) {
+          current = document.createElement('div');
+          current.className = 'tabs-products-resource';
+          items.push(current);
+        }
+        if (isEyebrow) el.classList.add('tabs-products-eyebrow');
+        (current || textCol).append(el);
+      });
+      textCol.append(...items);
+    }
+
     panel.append(textCol);
 
     if (imageCell) {
@@ -72,5 +115,9 @@ export default function decorate(block) {
     panels.append(panel);
   });
 
-  block.replaceChildren(tabbar, panels);
+  if (heading) {
+    block.replaceChildren(heading, tabbar, panels);
+  } else {
+    block.replaceChildren(tabbar, panels);
+  }
 }

@@ -24,7 +24,9 @@ export default function parse(element, { document }) {
     if (!bgUrl) {
       const withBg = Array.from(element.querySelectorAll('*')).find((el) => {
         const bg = (el.getAttribute && el.getAttribute('style')) || '';
-        return /background-image\s*:\s*url\(/i.test(bg) && /\.(jpe?g|png|webp|avif)/i.test(bg);
+        // Match both `background-image: url()` and the `background: url()`
+        // shorthand (dxs sets `#video-tag-thumbnail { background: url(...) }`).
+        return /background(-image)?\s*:\s*[^;]*url\(/i.test(bg) && /\.(jpe?g|png|webp|avif)/i.test(bg);
       });
       if (withBg) {
         const m = withBg.getAttribute('style').match(/url\(["']?([^"')]+)["']?\)/i);
@@ -46,7 +48,11 @@ export default function parse(element, { document }) {
   }
 
   // Text content: heading, optional subheading paragraphs, CTA link(s)
-  const heading = element.querySelector('.banner-details h1, .banner-details h2, .banner-details h3, h1, h2, h3');
+  const scope = element.querySelector('.banner-details') || element;
+  const headings = Array.from(scope.querySelectorAll('h1, h2, h3, h4, h5'))
+    .filter((h) => h.textContent && h.textContent.trim().length > 0);
+  const heading = headings[0] || null;
+  const subtitles = headings.slice(1);
   const paragraphs = Array.from(
     element.querySelectorAll('.banner-details p'),
   ).filter((p) => p.textContent.replace(/ /g, '').trim().length > 0);
@@ -74,6 +80,7 @@ export default function parse(element, { document }) {
   const textFrag = document.createDocumentFragment();
   textFrag.appendChild(document.createComment(' field:text '));
   if (heading) textFrag.appendChild(heading);
+  subtitles.forEach((s) => textFrag.appendChild(s));
   paragraphs.forEach((p) => textFrag.appendChild(p));
   ctaLinks.forEach((a) => textFrag.appendChild(a));
   cells.push([textFrag]);

@@ -3,6 +3,16 @@
   background-color: #fff;
 }
 
+/* Section heading, adopted into the block so it aligns with the block content. */
+.tabs-products .tabs-products-heading {
+  margin: 0 0 24px;
+  color: var(--bc-navy);
+  font-family: var(--bc-brand-font);
+  font-weight: 800;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
 /* Tab bar sits inside a rounded outlined container (matches Figma) */
 .tabs-products .tabs-products-tabbar {
   display: flex;
@@ -111,6 +121,67 @@
   font-size: 16px;
 }
 
+/* Resource list (e.g. "Articles and Stories" blog items). Each resource is a
+   separated card: eyebrow tag + title + "Read more" link. */
+.tabs-products .tabs-products-resource {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--bc-border);
+}
+
+.tabs-products .tabs-products-resource:first-child {
+  padding-top: 0;
+}
+
+.tabs-products .tabs-products-resource:last-child {
+  border-bottom: 0;
+}
+
+.tabs-products .tabs-products-eyebrow {
+  margin: 0;
+  color: var(--bc-orange);
+  font-weight: 700;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.tabs-products .tabs-products-resource h4 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-family: var(--bc-brand-font);
+  font-weight: 700;
+  font-size: 20px;
+  line-height: 1.25;
+}
+
+/* "Read more" — orange bold link with arrow */
+/* stylelint-disable-next-line no-descending-specificity */
+.tabs-products .tabs-products-resource p {
+  margin: 0;
+}
+
+/* "Read More" — solid orange button (title-cased via CSS, source text kept). */
+.tabs-products .tabs-products-resource a:any-link {
+  display: inline-block;
+  align-self: flex-start;
+  margin-top: 4px;
+  padding: 10px 22px;
+  border-radius: 4px;
+  background-color: var(--bc-orange);
+  color: #fff;
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.tabs-products .tabs-products-resource a:any-link:hover {
+  background-color: #e05f00;
+}
+
 .tabs-products .tabs-products-image img {
   width: 100%;
   height: auto;
@@ -128,7 +199,9 @@
     margin-bottom: 48px;
   }
 
-  .tabs-products .tabs-products-panel {
+  /* Side-by-side text|image only when the panel actually has an image; an
+     image-less resource list (e.g. blog articles) stays full-width stacked. */
+  .tabs-products .tabs-products-panel:has(.tabs-products-image) {
     flex-direction: row;
     align-items: center;
     gap: 64px;

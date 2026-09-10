@@ -37,7 +37,14 @@
   line-height: 0;
 }
 
+/* The importer wraps the image in a <p>; strip its default margin so the image
+   sits flush against the card's top edge (no gap). */
+.cards-grid .cards-grid-image p {
+  margin: 0;
+}
+
 .cards-grid .cards-grid-image img {
+  display: block;
   width: 100%;
   object-fit: cover;
 }
@@ -148,6 +155,21 @@
   background-color: #f7f8fa;
 }
 
+/* When two productlines grids are consecutive (source split one 8-card group
+   into two 4-card rows), tighten the seam so they read as a single group. Use
+   half the grid row-gap (14px) on each side so the space between the two rows
+   matches the gap between cards within a row (28px total). */
+.section.cards-grid-container:has(.cards-grid.productlines)
+  + .section.cards-grid-container:has(.cards-grid.productlines) .cards-grid.productlines {
+  padding-top: 14px;
+}
+
+.section.cards-grid-container:has(.cards-grid.productlines):has(
+    + .section.cards-grid-container .cards-grid.productlines
+  ) .cards-grid.productlines {
+  padding-bottom: 14px;
+}
+
 /* Heading: bold navy, matches "Explore Our Product Lines" */
 .cards-grid.productlines .cards-grid-heading {
   margin: 0 0 28px;
@@ -179,7 +201,7 @@
 /* Title: bold navy; description: muted grey */
 .cards-grid.productlines .cards-grid-body {
   gap: 8px;
-  padding: 20px 4px 4px;
+  padding: 20px 20px 24px;
 }
 
 .cards-grid.productlines .cards-grid-body h3,
@@ -192,6 +214,29 @@
 .cards-grid.productlines .cards-grid-body p {
   font-size: 13px;
   line-height: 1.4;
+}
+
+/* "Learn more" CTA — orange bold link with trailing arrow (matches source).
+   Imported CTAs arrive as a lone <a> in a <p> (no .button class), so match both. */
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-grid.productlines .cards-grid-body a:any-link,
+.cards-grid.productlines .cards-grid-body p > a:only-child:any-link {
+  display: inline-block;
+  margin-top: 6px;
+  color: var(--bc-orange);
+  font-weight: 700;
+  font-size: 14px;
+  text-decoration: none;
+  text-transform: capitalize;
+}
+
+.cards-grid.productlines .cards-grid-body a:any-link::after {
+  content: ' →';
+}
+
+/* stylelint-disable-next-line no-descending-specificity */
+.cards-grid.productlines .cards-grid-body a:any-link:hover {
+  text-decoration: underline;
 }
 
 /* ============================================================
@@ -334,6 +379,7 @@
   text-transform: uppercase;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .cards-grid.simple .cards-grid-body a {
   color: var(--bc-blue);
   font-weight: 700;
@@ -341,6 +387,7 @@
   text-decoration: none;
 }
 
+/* stylelint-disable-next-line no-descending-specificity */
 .cards-grid.simple .cards-grid-body a::after {
   content: ' →';
 }
@@ -429,7 +476,8 @@
 }
 
 @media (width >= 900px) {
-  .cards-grid.simple ul {
+  .cards-grid.simple ul,
+  .cards-grid.productlines ul {
     grid-template-columns: repeat(4, 1fr);
   }
 }

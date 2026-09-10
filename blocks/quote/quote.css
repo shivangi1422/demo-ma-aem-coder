@@ -1,23 +1,24 @@
-/* Quote — testimonial with a large quote and attribution */
+/* Quote — full-bleed royal-blue banner with white centered statement
+   (matches the source "Increase staff confidence…" testimonial band). */
 .quote {
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  align-items: center;
+  gap: 16px;
   padding: 48px 24px;
-  background-color: var(--bc-surface);
+  background-color: var(--bc-blue);
   text-align: center;
 }
 
 .quote .quote-text {
   margin: 0;
-  max-width: 900px;
+  max-width: 820px;
   align-self: center;
-  color: var(--bc-navy);
+  color: #fff;
   font-family: var(--bc-brand-font);
-  font-weight: 400;
-  font-style: italic;
+  font-weight: 700;
   font-size: 22px;
-  line-height: 1.4;
+  line-height: 1.35;
 }
 
 .quote .quote-text p {
@@ -26,18 +27,19 @@
 
 .quote .quote-attribution {
   margin: 0;
-  color: var(--bc-grey);
+  color: rgb(255 255 255 / 85%);
   font-family: var(--bc-brand-font);
-  font-weight: 700;
+  font-weight: 600;
   font-size: 15px;
 }
 
 @media (width >= 900px) {
   .quote {
-    padding: 72px 80px;
+    padding: 64px 80px;
   }
 
   .quote .quote-text {
     font-size: 28px;
+    line-height: 1.3;
   }
 }
