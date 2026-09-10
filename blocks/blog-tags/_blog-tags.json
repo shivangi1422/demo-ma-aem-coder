@@ -1,0 +1,34 @@
+{
+  "definitions": [
+    {
+      "title": "Blog Tags",
+      "id": "blog-tags",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Blog Tags",
+              "model": "blog-tags"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "blog-tags",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Tags",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

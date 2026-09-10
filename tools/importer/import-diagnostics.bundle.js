@@ -85,7 +85,7 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
-  // tools/importer/parsers/columns-tags.js
+  // tools/importer/parsers/blog-tags.js
   function parse2(element, { document: document2 }) {
     let links = Array.from(element.querySelectorAll("a.blog-tag"));
     if (links.length === 0) {
@@ -95,17 +95,17 @@ var CustomImportScript = (() => {
       element.replaceWith(...element.childNodes);
       return;
     }
-    const cell = [];
+    const cell = [document2.createComment(" field:text ")];
     links.forEach((a, i) => {
       if (i > 0) cell.push(document2.createTextNode(" "));
       cell.push(a);
     });
     const cells = [[cell]];
-    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-tags", cells });
+    const block = WebImporter.Blocks.createBlock(document2, { name: "blog-tags", cells });
     element.replaceWith(block);
   }
 
-  // tools/importer/parsers/columns-author.js
+  // tools/importer/parsers/author-bio.js
   function parse3(element, { document: document2 }) {
     const image = element.querySelector(".headshot img, .column-left img, img");
     const name = element.querySelector(".contributor-name");
@@ -115,9 +115,11 @@ var CustomImportScript = (() => {
       element.replaceWith(...element.childNodes);
       return;
     }
-    const imageCell = [];
-    if (image) imageCell.push(image);
-    const textCell = [];
+    const cells = [];
+    if (image) {
+      cells.push([[document2.createComment(" field:image "), image]]);
+    }
+    const textCell = [document2.createComment(" field:text ")];
     if (name && name.textContent.trim()) {
       const h = document2.createElement("h3");
       h.textContent = name.textContent.trim();
@@ -133,8 +135,8 @@ var CustomImportScript = (() => {
       p.appendChild(cta);
       textCell.push(p);
     }
-    const cells = [[imageCell, textCell]];
-    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-author", cells });
+    cells.push([textCell]);
+    const block = WebImporter.Blocks.createBlock(document2, { name: "author-bio", cells });
     element.replaceWith(block);
   }
 
@@ -286,8 +288,8 @@ var CustomImportScript = (() => {
   // tools/importer/import-diagnostics.js
   var parsers = {
     "hero-blog": parse,
-    "columns-tags": parse2,
-    "columns-author": parse3,
+    "blog-tags": parse2,
+    "author-bio": parse3,
     "cards-blog": parse4
   };
   var PAGE_TEMPLATE = {
@@ -302,11 +304,11 @@ var CustomImportScript = (() => {
         instances: ["#main-container > div.sublayout.ui.aligned.segment.grid:nth-of-type(1)"]
       },
       {
-        name: "columns-tags",
+        name: "blog-tags",
         instances: ["#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list"]
       },
       {
-        name: "columns-author",
+        name: "author-bio",
         instances: ["#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column"]
       },
       {
@@ -318,8 +320,8 @@ var CustomImportScript = (() => {
       { id: "rc1", name: "Article Header", selector: "#main-container > div.sublayout.ui.aligned.segment.grid:nth-of-type(1)", style: null, blocks: ["hero-blog"], defaultContent: [] },
       { id: "rc2", name: "Article Body", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.lazyload.page-content.nested-padding.active", style: null, blocks: [], defaultContent: ["#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.lazyload.page-content.nested-padding.active"] },
       { id: "rc3", name: "References and Disclaimer", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.disclaimer-text.lazyload.active", style: null, blocks: [], defaultContent: ["#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.disclaimer-text.lazyload.active"] },
-      { id: "rc4", name: "Blog Tags", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list", style: null, blocks: ["columns-tags"], defaultContent: [] },
-      { id: "rc5", name: "Author Bio", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column", style: null, blocks: ["columns-author"], defaultContent: [] },
+      { id: "rc4", name: "Blog Tags", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list", style: null, blocks: ["blog-tags"], defaultContent: [] },
+      { id: "rc5", name: "Author Bio", selector: "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column", style: null, blocks: ["author-bio"], defaultContent: [] },
       { id: "rc6", name: "Related Articles", selector: "#main-container > div.sublayout.ui.aligned.segment.grid.light-gray", style: "light-gray", blocks: ["cards-blog"], defaultContent: [] }
     ]
   };

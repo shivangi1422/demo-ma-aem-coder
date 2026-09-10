@@ -1,16 +1,17 @@
 /* eslint-disable */
 /* global WebImporter */
 /**
- * Parser for columns-author. Base block: columns.
+ * Parser for author-bio. Base block: author-bio (named block/v1/block).
  * Source: https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology
- * Columns block: row2 = one cell per column of free (default) content. NO field:* hints for columns blocks.
- * Structure: 1 row x 2 cells -> cell1 = headshot image, cell2 = name (heading) + bio + CTA link.
+ * Model (blocks/author-bio/_author-bio.json): image [reference], imageAlt [collapsed -> img alt], text [richtext]
+ * Named-block structure (like hero-blog): row1 = image (field:image),
+ *   row2 = richtext (field:text) with name (heading) + bio + CTA link.
  */
 export default function parse(element, { document }) {
-  // Cell 1: headshot image
+  // Headshot image.
   const image = element.querySelector('.headshot img, .column-left img, img');
 
-  // Cell 2: name, bio, CTA
+  // Name, bio, CTA.
   const name = element.querySelector('.contributor-name');
   const bio = element.querySelector('.contributor-bio');
   const cta = element.querySelector('.contributor-link a, a.btn-cta, a.button');
@@ -20,10 +21,15 @@ export default function parse(element, { document }) {
     return;
   }
 
-  const imageCell = [];
-  if (image) imageCell.push(image);
+  const cells = [];
 
-  const textCell = [];
+  // Row: image (field:image). imageAlt collapses into the <img alt>.
+  if (image) {
+    cells.push([[document.createComment(' field:image '), image]]);
+  }
+
+  // Row: text (field:text) -> name heading + bio + CTA.
+  const textCell = [document.createComment(' field:text ')];
   if (name && name.textContent.trim()) {
     const h = document.createElement('h3');
     h.textContent = name.textContent.trim();
@@ -39,10 +45,8 @@ export default function parse(element, { document }) {
     p.appendChild(cta);
     textCell.push(p);
   }
+  cells.push([textCell]);
 
-  // Single row, two columns (image | text).
-  const cells = [[imageCell, textCell]];
-
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns-author', cells });
+  const block = WebImporter.Blocks.createBlock(document, { name: 'author-bio', cells });
   element.replaceWith(block);
 }

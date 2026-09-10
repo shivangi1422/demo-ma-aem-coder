@@ -2,13 +2,13 @@
   "status": "success",
   "url": "https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology",
   "path": "en/blog/diagnostics/the-value-of-mpv-in-hematology",
-  "timestamp": "2026-09-08T07:11:42.315Z",
+  "timestamp": "2026-09-10T05:11:39.834Z",
   "title": "The Value of Mean Platelet Volume (MPV) in Hematology | Beckman Coulter",
   "template": "diagnostics",
   "blocks": [
     "hero-blog",
-    "columns-tags",
-    "columns-author",
+    "blog-tags",
+    "author-bio",
     "cards-blog"
   ]
 }

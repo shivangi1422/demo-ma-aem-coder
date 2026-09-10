@@ -1,11 +1,11 @@
-/* Block: columns-tags -- blog tag/category row
+/* Block: blog-tags -- blog tag/category row
  * Values extracted from source computed styles:
  * https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology
  * (.blog-post-tag-list). Row has 1px solid black top/bottom rules with a leading
  * tag icon and an inline blue tag link.
  */
 
-.columns-tags {
+.blog-tags {
   display: flex;
   align-items: center;
   gap: 8px;
@@ -16,7 +16,7 @@
 }
 
 /* leading outline tag icon (source used a Linearicons glyph, replaced with inline SVG) */
-.columns-tags::before {
+.blog-tags::before {
   content: '';
   flex: 0 0 auto;
   width: 21px;
@@ -27,19 +27,16 @@
   background-size: contain;
 }
 
-/* row + cell wrappers carry no spacing of their own */
-.columns-tags > div,
-.columns-tags > div > div {
+/* any leftover row/cell wrappers + paragraphs carry no spacing of their own */
+.blog-tags > div,
+.blog-tags > div > div,
+.blog-tags p {
   margin: 0;
   padding: 0;
 }
 
-.columns-tags p {
-  margin: 0;
-}
-
 /* tag link -- exact source color #0088cc (rgb(0, 136, 204)), semibold heading face */
-.columns-tags a:any-link {
+.blog-tags a:any-link {
   margin: 0 5px;
   color: #08c;
   font-family: var(--heading-font-family);
@@ -49,7 +46,7 @@
   text-decoration: none;
 }
 
-.columns-tags a:hover {
+.blog-tags a:hover {
   color: #08c;
   text-decoration: underline;
 }

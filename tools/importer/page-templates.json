@@ -20,13 +20,13 @@
           ]
         },
         {
-          "name": "columns-tags",
+          "name": "blog-tags",
           "instances": [
             "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list"
           ]
         },
         {
-          "name": "columns-author",
+          "name": "author-bio",
           "instances": [
             "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column"
           ]
@@ -75,7 +75,7 @@
           "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list",
           "style": null,
           "blocks": [
-            "columns-tags"
+            "blog-tags"
           ],
           "defaultContent": []
         },
@@ -85,7 +85,7 @@
           "selector": "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column",
           "style": null,
           "blocks": [
-            "columns-author"
+            "author-bio"
           ],
           "defaultContent": []
         },

@@ -142,7 +142,7 @@
     ]
   },
   {
-    "id": "card",
+    "id": "author-bio",
     "fields": [
       {
         "component": "reference",
@@ -152,10 +152,29 @@
         "multi": false
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt",
+        "value": ""
+      },
+      {
         "component": "richtext",
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "blog-tags",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Tags",
         "valueType": "string"
       }
     ]
@@ -180,40 +199,21 @@
     ]
   },
   {
-    "id": "columns-author",
+    "id": "card",
     "fields": [
       {
-        "component": "text",
-        "valueType": "number",
-        "name": "columns",
-        "value": "",
-        "label": "Columns"
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
       },
       {
-        "component": "text",
-        "valueType": "number",
-        "name": "rows",
+        "component": "richtext",
+        "name": "text",
         "value": "",
-        "label": "Rows"
-      }
-    ]
-  },
-  {
-    "id": "columns-tags",
-    "fields": [
-      {
-        "component": "text",
-        "valueType": "number",
-        "name": "columns",
-        "value": "",
-        "label": "Columns"
-      },
-      {
-        "component": "text",
-        "valueType": "number",
-        "name": "rows",
-        "value": "",
-        "label": "Rows"
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },

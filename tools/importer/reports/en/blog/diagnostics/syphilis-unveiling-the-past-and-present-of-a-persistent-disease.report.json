@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/blog/diagnostics/syphilis-unveiling-the-past-and-present-of-a-persistent-disease",
+  "path": "en/blog/diagnostics/syphilis-unveiling-the-past-and-present-of-a-persistent-disease",
+  "timestamp": "2026-09-10T05:09:36.039Z",
+  "title": "Syphilis: Unveiling the Past and Present of a Persistent Disease | Beckman Coulter",
+  "template": "diagnostics",
+  "blocks": [
+    "hero-blog",
+    "blog-tags",
+    "author-bio",
+    "cards-blog"
+  ]
+}

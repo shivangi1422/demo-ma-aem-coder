@@ -3,8 +3,8 @@
 
 // PARSER IMPORTS
 import heroBlogParser from './parsers/hero-blog.js';
-import columnsTagsParser from './parsers/columns-tags.js';
-import columnsAuthorParser from './parsers/columns-author.js';
+import blogTagsParser from './parsers/blog-tags.js';
+import authorBioParser from './parsers/author-bio.js';
 import cardsBlogParser from './parsers/cards-blog.js';
 
 // TRANSFORMER IMPORTS
@@ -14,8 +14,8 @@ import sectionsTransformer from './transformers/beckmancoulter-sections.js';
 // PARSER REGISTRY
 const parsers = {
   'hero-blog': heroBlogParser,
-  'columns-tags': columnsTagsParser,
-  'columns-author': columnsAuthorParser,
+  'blog-tags': blogTagsParser,
+  'author-bio': authorBioParser,
   'cards-blog': cardsBlogParser,
 };
 
@@ -32,11 +32,11 @@ const PAGE_TEMPLATE = {
       instances: ['#main-container > div.sublayout.ui.aligned.segment.grid:nth-of-type(1)'],
     },
     {
-      name: 'columns-tags',
+      name: 'blog-tags',
       instances: ['#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list'],
     },
     {
-      name: 'columns-author',
+      name: 'author-bio',
       instances: ['#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column'],
     },
     {
@@ -48,8 +48,8 @@ const PAGE_TEMPLATE = {
     { id: 'rc1', name: 'Article Header', selector: '#main-container > div.sublayout.ui.aligned.segment.grid:nth-of-type(1)', style: null, blocks: ['hero-blog'], defaultContent: [] },
     { id: 'rc2', name: 'Article Body', selector: '#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.lazyload.page-content.nested-padding.active', style: null, blocks: [], defaultContent: ['#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.lazyload.page-content.nested-padding.active'] },
     { id: 'rc3', name: 'References and Disclaimer', selector: '#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.disclaimer-text.lazyload.active', style: null, blocks: [], defaultContent: ['#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.disclaimer-text.lazyload.active'] },
-    { id: 'rc4', name: 'Blog Tags', selector: '#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list', style: null, blocks: ['columns-tags'], defaultContent: [] },
-    { id: 'rc5', name: 'Author Bio', selector: '#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column', style: null, blocks: ['columns-author'], defaultContent: [] },
+    { id: 'rc4', name: 'Blog Tags', selector: '#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.ui.grid.container.blog-post-tag-list', style: null, blocks: ['blog-tags'], defaultContent: [] },
+    { id: 'rc5', name: 'Author Bio', selector: '#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.contributor-detail.summary.sixteen.wide.column', style: null, blocks: ['author-bio'], defaultContent: [] },
     { id: 'rc6', name: 'Related Articles', selector: '#main-container > div.sublayout.ui.aligned.segment.grid.light-gray', style: 'light-gray', blocks: ['cards-blog'], defaultContent: [] },
   ],
 };

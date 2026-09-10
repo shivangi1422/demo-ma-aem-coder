@@ -1,9 +1,10 @@
 /* eslint-disable */
 /* global WebImporter */
 /**
- * Parser for columns-tags. Base block: columns.
+ * Parser for blog-tags. Base block: blog-tags (named block/v1/block).
  * Source: https://www.beckmancoulter.com/en/blog/diagnostics/the-value-of-mpv-in-hematology
- * Columns block: row2+ = one cell per column of free (default) content. NO field:* hints for columns blocks.
+ * Model (blocks/blog-tags/_blog-tags.json): text [richtext] — the tag links.
+ * Named-block structure: one row, one text cell (field:text) holding the tag link(s).
  * Content: horizontal strip of blog category/tag links. Tag icon and share widget are chrome -> dropped.
  */
 export default function parse(element, { document }) {
@@ -21,8 +22,8 @@ export default function parse(element, { document }) {
     return;
   }
 
-  // Single row with a single content cell holding the tag link(s).
-  const cell = [];
+  // Single row with a single richtext cell (field:text) holding the tag link(s).
+  const cell = [document.createComment(' field:text ')];
   links.forEach((a, i) => {
     if (i > 0) cell.push(document.createTextNode(' '));
     cell.push(a);
@@ -30,6 +31,6 @@ export default function parse(element, { document }) {
 
   const cells = [[cell]];
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns-tags', cells });
+  const block = WebImporter.Blocks.createBlock(document, { name: 'blog-tags', cells });
   element.replaceWith(block);
 }
