@@ -76,7 +76,9 @@
         "content-product-form",
         "product-banner",
         "quote",
-        "table-grouped"
+        "table-grouped",
+        "form",
+        "form-file"
       ]
     }
   ]
