@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/learning-and-events/case-studies",
+  "path": "en/learning-and-events/case-studies",
+  "timestamp": "2026-10-21T08:49:00.439Z",
+  "title": "Case Studies | Beckman Coulter",
+  "template": "learning-and-events",
+  "blocks": [
+    "cards-media-list",
+    "cards-media-list",
+    "cards-media-list",
+    "cards-media-list"
+  ]
+}
