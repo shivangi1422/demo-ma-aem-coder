@@ -399,3 +399,175 @@
     flex: 1;
   }
 }
+
+/* ============================================================
+   VIDEO — 3-up grid of 16:9 video posters with a play overlay, no text body
+   ============================================================ */
+.cards-grid.video {
+  padding: 40px 24px;
+}
+
+.cards-grid.video ul > li {
+  border: 0;
+  background: none;
+}
+
+.cards-grid.video .cards-grid-video-poster {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #000;
+  line-height: 0;
+}
+
+.cards-grid.video .cards-grid-video-poster img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-grid.video .cards-grid-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background-color: rgb(0 0 0 / 60%);
+  transform: translate(-50%, -50%);
+}
+
+.cards-grid.video .cards-grid-video-play::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border-style: solid;
+  border-width: 12px 0 12px 20px;
+  border-color: transparent transparent transparent #fff;
+  transform: translate(-35%, -50%);
+}
+
+.cards-grid.video .cards-grid-video-poster:hover .cards-grid-video-play,
+.cards-grid.video .cards-grid-video-poster:focus-visible .cards-grid-video-play {
+  background-color: var(--bc-orange);
+}
+
+.cards-grid.video .cards-grid-video-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+/* title is the accessible label only; the source shows posters without text */
+.cards-grid.video .cards-grid-video-title {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ============================================================
+   SHOWCASE — white cards over a full-bleed background image,
+   centered white heading + subheading, optional card images
+   ============================================================ */
+.cards-grid.showcase {
+  position: relative;
+  padding: 48px 24px;
+  overflow: hidden;
+  background-color: var(--bc-blue-dark);
+}
+
+.cards-grid.showcase .cards-grid-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  line-height: 0;
+}
+
+.cards-grid.showcase .cards-grid-background picture {
+  display: block;
+  height: 100%;
+}
+
+.cards-grid.showcase .cards-grid-background img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-grid.showcase > .cards-grid-heading,
+.cards-grid.showcase > ul {
+  position: relative;
+  z-index: 1;
+}
+
+.cards-grid.showcase .cards-grid-heading {
+  text-align: center;
+}
+
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+.cards-grid.showcase .cards-grid-heading h1,
+.cards-grid.showcase .cards-grid-heading h2,
+.cards-grid.showcase .cards-grid-heading h3,
+.cards-grid.showcase .cards-grid-heading p {
+  color: #fff;
+}
+
+.cards-grid.showcase .cards-grid-heading p {
+  margin: 12px 0 0;
+}
+
+.cards-grid.showcase ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.cards-grid.showcase ul > li {
+  flex: 1 1 100%;
+  border: 0;
+  background-color: #fff;
+}
+
+.cards-grid.showcase .cards-grid-image img {
+  aspect-ratio: 56 / 37;
+}
+
+.cards-grid.showcase .cards-grid-body {
+  flex: 1;
+}
+
+.cards-grid.showcase .cards-grid-cta {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.cards-grid.showcase .cards-grid-cta a.button {
+  margin: 0;
+}
+/* stylelint-enable no-descending-specificity */
+
+@media (width >= 600px) {
+  .cards-grid.video ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .cards-grid.showcase ul > li {
+    flex: 1 1 0;
+    min-width: 240px;
+    max-width: 480px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-grid.showcase {
+    padding: 60px 80px;
+  }
+}

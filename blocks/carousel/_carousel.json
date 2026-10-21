@@ -51,7 +51,8 @@
           "value": "instruments",
           "options": [
             { "name": "Instruments (thumbnail slider)", "value": "instruments" },
-            { "name": "Split (image + text panel)", "value": "split" }
+            { "name": "Split (image + text panel)", "value": "split" },
+            { "name": "Resources (filter pills + 3-up card slider)", "value": "resources" }
           ]
         }
       ]

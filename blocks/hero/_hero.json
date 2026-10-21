@@ -53,7 +53,8 @@
             { "name": "Plain (white, dark text, no image)", "value": "plain" },
             { "name": "Gradient (banner, white text, image bleeds right)", "value": "gradient" },
             { "name": "Split (text left, image right)", "value": "split" },
-            { "name": "Split (image left, text right)", "value": "split-left" }
+            { "name": "Split (image left, text right)", "value": "split-left" },
+            { "name": "Left (background image, left-aligned text)", "value": "left" }
           ]
         }
       ]

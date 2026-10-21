@@ -1,0 +1,65 @@
+/*
+ * Brand tokens extracted from beckmancoulter.com
+ * (source: /en/learning-and-events/case-studies, 1440px viewport)
+ */
+
+:root {
+  /* colors */
+  --background-color: #fff;
+  --light-color: #f5f5f5;
+  --dark-color: #505050;
+  --text-color: rgb(0 0 0 / 87%);
+  --heading-color: #000;
+
+  /* brand #08c / #ea1c2c / #f12e3d deepened slightly to meet WCAG AA 4.5:1 on white */
+  --link-color: #007dbc;
+  --link-hover-color: #1e70bf;
+  --brand-red: #e81b2b;
+  --brand-red-hover: #e22b39;
+  --divider-color: #979797;
+
+  /* fonts */
+  --body-font-family: montserrat, montserrat-fallback, sans-serif;
+  --heading-font-family: montserrat, montserrat-fallback, 'Open Sans', 'Helvetica Neue', arial, sans-serif;
+  --heading-font-weight: 300;
+  --heading-letter-spacing: 0.128px;
+
+  /* body sizes */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
+  --body-line-height: 1.5;
+
+  /* heading sizes (mobile); xl is the semibold section heading */
+  --heading-xl-font-weight: 600;
+  --heading-font-size-xxl: 36px;
+  --heading-font-size-xl: 20px;
+  --heading-font-size-l: 24px;
+  --heading-font-size-m: 20px;
+  --heading-font-size-s: 18px;
+  --heading-font-size-xs: 16px;
+
+  /* buttons */
+  --button-radius: 8px;
+  --button-padding: 12px 24px;
+  --button-font-size: 15.75px;
+  --button-font-weight: 500;
+  --button-transition: 0.2s;
+
+  /* layout */
+  --content-max-width: 1372px;
+  --section-spacing: 40px;
+  --nav-height: 70px;
+}
+
+@media (width >= 900px) {
+  :root {
+    /* heading sizes (desktop) */
+    --heading-font-size-xxl: 42px;
+    --heading-font-size-xl: 20px;
+    --heading-font-size-l: 30px;
+    --heading-font-size-m: 24px;
+    --heading-font-size-s: 20px;
+    --heading-font-size-xs: 16px;
+  }
+}

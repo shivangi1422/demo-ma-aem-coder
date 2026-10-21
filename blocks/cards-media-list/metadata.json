@@ -1,0 +1,13 @@
+{
+  "variantName": "cards-media-list",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": "Borderless vertical list of horizontal rows: ~209px thumbnail or video poster on the left, eyebrow label + light title + description + chevron text CTA on the right, optional NEW badge over the image; white background, 40px row gap. Stacks image above text on mobile.",
+  "contentPattern": "One row per item: cell 1 image (thumbnail or video poster, optional link - video links such as Vidyard get a play overlay); cell 2 rich text: optional NEW badge paragraph, eyebrow paragraph (Case Study / Video / Poster / Webinar), h3 linked title, description paragraph (may be a quotation), optional CTA link paragraph (Read case study / Download / Watch video / Watch now).",
+  "options": [],
+  "memberVariantIds": [
+    "cards-media-list"
+  ],
+  "usage": "Lists of case studies, videos, posters, and webinars grouped under a category heading, e.g. the Case Studies page laboratory segments (high-volume, mid-volume, reference lab, other clinical labs).",
+  "reuseGuidance": "Use for vertical lists of resource/media items with a small thumbnail beside text. Use cards-grid instead for multi-column card grids with bordered cards."
+}

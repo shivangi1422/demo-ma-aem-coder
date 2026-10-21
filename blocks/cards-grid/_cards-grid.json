@@ -50,11 +50,34 @@
           "label": "Style",
           "value": "solutions",
           "options": [
-            { "name": "Solutions (image + category + link)", "value": "solutions" },
-            { "name": "Product Lines (image + title)", "value": "productlines" },
-            { "name": "Insights (intro + text cards)", "value": "insights" },
-            { "name": "Simple (4-up: image + tag + title + link)", "value": "simple" },
-            { "name": "Features (centered, borderless, no image)", "value": "features" }
+            {
+              "name": "Solutions (image + category + link)",
+              "value": "solutions"
+            },
+            {
+              "name": "Product Lines (image + title)",
+              "value": "productlines"
+            },
+            {
+              "name": "Insights (intro + text cards)",
+              "value": "insights"
+            },
+            {
+              "name": "Simple (4-up: image + tag + title + link)",
+              "value": "simple"
+            },
+            {
+              "name": "Features (centered, borderless, no image)",
+              "value": "features"
+            },
+            {
+              "name": "Video (3-up video posters, play overlay)",
+              "value": "video"
+            },
+            {
+              "name": "Showcase (white cards over background image)",
+              "value": "showcase"
+            }
           ]
         }
       ]

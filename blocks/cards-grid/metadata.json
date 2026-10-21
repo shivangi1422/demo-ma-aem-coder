@@ -1,0 +1,54 @@
+{
+  "variantName": "cards-grid",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "Multi-column card grid with an optional heading/intro row; the Style option picks the card treatment",
+    "description": "solutions: bordered 3-up cards with image, category eyebrow, title, Learn More link. productlines: white cards on a grey band. insights: intro panel beside stacked text cards. simple: 4-up cards with tag pill and NEW ribbon. features: centered borderless 3-up columns (title, icon, description). video: 3-up 16:9 Vidyard posters with a play overlay, no text body; clicking inlines the player. showcase: white cards over a full-bleed background image with a centered white heading/subheading; cards with or without images and a Learn more button."
+  },
+  "contentPattern": {
+    "structure": "row 0 = heading/intro (rich text; showcase: optional heading + subheading and optional background image, in the heading row or the container Background Image field); rows 1..N = one card each: image cell + rich text cell (title, description, link). video: poster image + paragraph with a link to the video (link text = video title)"
+  },
+  "options": [
+    {
+      "class": "solutions",
+      "label": "Solutions (image + category + link)"
+    },
+    {
+      "class": "productlines",
+      "label": "Product Lines (image + title)"
+    },
+    {
+      "class": "insights",
+      "label": "Insights (intro + text cards)"
+    },
+    {
+      "class": "simple",
+      "label": "Simple (4-up: image + tag + title + link)"
+    },
+    {
+      "class": "features",
+      "label": "Features (centered, borderless, no image)"
+    },
+    {
+      "class": "video",
+      "label": "Video (3-up video posters, play overlay)"
+    },
+    {
+      "class": "showcase",
+      "label": "Showcase (white cards over background image)"
+    }
+  ],
+  "memberVariantIds": [
+    "cards-grid",
+    "cards-grid (solutions)",
+    "cards-grid (productlines)",
+    "cards-grid (insights)",
+    "cards-grid (simple)",
+    "cards-grid (features)",
+    "cards-grid (video)",
+    "cards-grid (showcase)"
+  ],
+  "usage": "Home, About Us, Products and Chemistry pages (solutions, productlines, insights, simple, features); Host Response to Infection solution page (features, video, showcase).",
+  "reuseGuidance": "Use for multi-column card grids. Use cards-media-list for vertical image-left/text-right resource lists. Use carousel resources when cards must be filterable and paged."
+}

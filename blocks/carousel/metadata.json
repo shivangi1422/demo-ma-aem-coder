@@ -1,0 +1,34 @@
+{
+  "variantName": "carousel",
+  "baseBlock": "carousel",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "Slider of items with an optional heading row; the Style option picks the treatment",
+    "description": "instruments: dark stage with overlay panel and thumbnail rail flanked by prev/next arrows. split: single item as image beside a text panel with specs. resources: row of filter pills built from the authored filter labels, 3-up card slider (background image, category eyebrow, title, CTA button), dot pagination; clicking a pill filters cards by category, clicking it again clears."
+  },
+  "contentPattern": {
+    "structure": "row 0 = heading/config (rich text; resources: a bulleted list of filter labels, plus optional heading); rows 1..N = one slide each: image cell + rich text cell (resources: first paragraph = category matching a filter label, heading = title, trailing link paragraph = CTA)"
+  },
+  "options": [
+    {
+      "class": "instruments",
+      "label": "Instruments (thumbnail slider)"
+    },
+    {
+      "class": "split",
+      "label": "Split (image + text panel)"
+    },
+    {
+      "class": "resources",
+      "label": "Resources (filter pills + 3-up card slider)"
+    }
+  ],
+  "memberVariantIds": [
+    "carousel",
+    "carousel (instruments)",
+    "carousel (split)",
+    "carousel (resources)"
+  ],
+  "usage": "Home and About Us pages (instruments, split); Host Response to Infection Educational Resources section (resources).",
+  "reuseGuidance": "Use resources for filterable resource/news card sliders. Use cards-grid for static grids that need no paging or filtering."
+}

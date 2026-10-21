@@ -1,0 +1,18 @@
+{
+  "variantName": "table-grouped",
+  "baseBlock": "table",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "Two-column reference table grouped by bold full-width label rows",
+    "description": "No header row. Single-cell bold group-label rows span both columns. Data rows: narrow name column (may contain links) | wide description column. Thin horizontal rules only, no vertical borders or striping."
+  },
+  "contentPattern": {
+    "structure": "one row per entry: group row = one cell with the group label (or an empty Description); data row = name cell (text or link) | description cell"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "table-grouped"
+  ],
+  "usage": "Host Response to Infection biomarkers section (Established / Novel / Emerging Inflammatory Markers).",
+  "reuseGuidance": "Use for grouped term/definition or marker/description lists. Use a plain table block for tabular data with a header row."
+}

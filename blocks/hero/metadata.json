@@ -1,0 +1,54 @@
+{
+  "variantName": "hero",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Page-top hero; the Style option picks the treatment",
+    "description": "home: full-bleed background image, blue tint, centered white heading/text/CTAs. left: same as home but left-aligned text, CTA optional. banner: solid blue, centered text. plain: white, dark left text. gradient: indigo-to-teal banner with image bleeding right. split / split-left: text and image side by side."
+  },
+  "contentPattern": {
+    "structure": "optional image row (image + alt) and a rich text row (heading, subtitle, optional CTA links)"
+  },
+  "options": [
+    {
+      "class": "home",
+      "label": "Home (background image)"
+    },
+    {
+      "class": "banner",
+      "label": "Banner (solid, no image)"
+    },
+    {
+      "class": "plain",
+      "label": "Plain (white, dark text, no image)"
+    },
+    {
+      "class": "gradient",
+      "label": "Gradient (banner, white text, image bleeds right)"
+    },
+    {
+      "class": "split",
+      "label": "Split (text left, image right)"
+    },
+    {
+      "class": "split-left",
+      "label": "Split (image left, text right)"
+    },
+    {
+      "class": "left",
+      "label": "Left (background image, left-aligned text)"
+    }
+  ],
+  "memberVariantIds": [
+    "hero",
+    "hero (home)",
+    "hero (banner)",
+    "hero (plain)",
+    "hero (gradient)",
+    "hero (split)",
+    "hero (split-left)",
+    "hero (left)"
+  ],
+  "usage": "Home, Products, About Us, Chemistry pages; Host Response to Infection solution page header (left).",
+  "reuseGuidance": "Use left for solution/landing page headers with a photo background and left-aligned title + subtitle; use home when text should be centered with CTAs."
+}

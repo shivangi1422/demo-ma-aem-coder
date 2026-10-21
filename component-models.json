@@ -136,8 +136,23 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Divider",
+            "value": "divider"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
           }
         ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "background",
+        "label": "Background Image",
+        "multi": false
       }
     ]
   },
@@ -177,6 +192,14 @@
           {
             "name": "Features (centered, borderless, no image)",
             "value": "features"
+          },
+          {
+            "name": "Video (3-up video posters, play overlay)",
+            "value": "video"
+          },
+          {
+            "name": "Showcase (white cards over background image)",
+            "value": "showcase"
           }
         ]
       }
@@ -198,6 +221,38 @@
         "name": "imageAlt",
         "label": "Image Alt",
         "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-media-list-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "media_image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "media_imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "media_link",
+        "label": "Video / Image Link (optional)"
       },
       {
         "component": "richtext",
@@ -251,6 +306,10 @@
           {
             "name": "Split (image + text panel)",
             "value": "split"
+          },
+          {
+            "name": "Resources (filter pills + 3-up card slider)",
+            "value": "resources"
           }
         ]
       }
@@ -519,6 +578,10 @@
           {
             "name": "Split (image left, text right)",
             "value": "split-left"
+          },
+          {
+            "name": "Left (background image, left-aligned text)",
+            "value": "left"
           }
         ]
       }
@@ -565,6 +628,25 @@
         "name": "attribution",
         "value": "",
         "label": "Attribution",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-grouped-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "name",
+        "value": "",
+        "label": "Name (or group label when Description is empty)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "description",
+        "value": "",
+        "label": "Description (leave empty for a group label row)",
         "valueType": "string"
       }
     ]

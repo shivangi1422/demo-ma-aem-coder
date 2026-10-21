@@ -17,6 +17,7 @@
       "columns",
       "fragment",
       "cards-grid",
+      "cards-media-list",
       "carousel",
       "tabs-products",
       "content-reversed",
@@ -24,13 +25,20 @@
       "content-product-detail",
       "content-product-form",
       "product-banner",
-      "quote"
+      "quote",
+      "table-grouped"
     ]
   },
   {
     "id": "cards-grid",
     "components": [
       "cards-grid-item"
+    ]
+  },
+  {
+    "id": "cards-media-list",
+    "components": [
+      "cards-media-list-item"
     ]
   },
   {
@@ -70,6 +78,12 @@
     "id": "form-request",
     "components": [
       "form-request-item"
+    ]
+  },
+  {
+    "id": "table-grouped",
+    "components": [
+      "table-grouped-row"
     ]
   },
   {

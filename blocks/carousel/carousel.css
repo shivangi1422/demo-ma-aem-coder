@@ -342,3 +342,156 @@
     font-size: 32px;
   }
 }
+
+/* ============================================================
+   RESOURCES — filter pills + 3-up card slider with dot pagination
+   ============================================================ */
+.carousel.resources {
+  --carousel-per-view: 1;
+  --carousel-gap: 24px;
+
+  padding: 24px 0;
+}
+
+.carousel.resources .carousel-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.carousel.resources .carousel-filters {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+}
+
+.carousel.resources .carousel-filter {
+  margin: 0;
+  padding: 8px 24px;
+  border: 1px solid var(--bc-navy);
+  border-radius: 4px;
+  background-color: #fff;
+  color: var(--bc-navy);
+  font-family: var(--bc-brand-font);
+  font-size: 14px;
+  cursor: pointer;
+}
+
+.carousel.resources .carousel-filter[aria-pressed='true'] {
+  background-color: var(--bc-navy);
+  color: #fff;
+}
+
+.carousel.resources .carousel-track {
+  position: relative;
+  display: flex;
+  gap: var(--carousel-gap);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel.resources .carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel.resources .carousel-card {
+  position: relative;
+  display: flex;
+  flex: 0 0 calc((100% - (var(--carousel-per-view) - 1) * var(--carousel-gap)) / var(--carousel-per-view));
+  min-height: 206px;
+  overflow: hidden;
+  scroll-snap-align: start;
+  background-color: var(--bc-navy);
+}
+
+.carousel.resources .carousel-card[hidden] {
+  display: none;
+}
+
+.carousel.resources .carousel-card > picture {
+  position: absolute;
+  inset: 0;
+}
+
+.carousel.resources .carousel-card > picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel.resources .carousel-card-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  padding: 16px;
+  font-family: var(--bc-brand-font);
+}
+
+.carousel.resources .carousel-card-body h3,
+.carousel.resources .carousel-card-body h4 {
+  margin: 0;
+  color: #fff;
+  font-size: 20px;
+  line-height: 1.2;
+}
+
+.carousel.resources .carousel-card-eyebrow {
+  margin: 0;
+  color: #fff;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.carousel.resources .carousel-card-cta {
+  margin: auto 0 0;
+}
+
+.carousel.resources .carousel-card-cta a.button {
+  margin: 0;
+  padding: 6px 16px;
+  border: 1px solid #fff;
+  background-color: #fff;
+  color: var(--bc-navy);
+  font-size: 14px;
+}
+
+.carousel.resources .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+}
+
+.carousel.resources .carousel-dot {
+  width: 10px;
+  height: 10px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 50%;
+  background-color: var(--bc-border);
+  cursor: pointer;
+}
+
+.carousel.resources .carousel-dot.is-active {
+  background-color: var(--bc-navy);
+}
+
+@media (width >= 600px) {
+  .carousel.resources {
+    --carousel-per-view: 2;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel.resources {
+    --carousel-per-view: 3;
+  }
+}

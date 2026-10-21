@@ -33,8 +33,23 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Divider",
+              "value": "divider"
+            },
+            {
+              "name": "Centered",
+              "value": "centered"
             }
           ]
+        },
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "background",
+          "label": "Background Image",
+          "multi": false
         }
       ]
     }
@@ -52,6 +67,7 @@
         "columns",
         "fragment",
         "cards-grid",
+        "cards-media-list",
         "carousel",
         "tabs-products",
         "content-reversed",
@@ -59,7 +75,8 @@
         "content-product-detail",
         "content-product-form",
         "product-banner",
-        "quote"
+        "quote",
+        "table-grouped"
       ]
     }
   ]

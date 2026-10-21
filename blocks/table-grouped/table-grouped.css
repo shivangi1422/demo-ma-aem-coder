@@ -1,0 +1,49 @@
+/* Table Grouped — two-column name | description table, no header row,
+   full-width bold group-label rows, thin horizontal rules only */
+.table-grouped {
+  overflow-x: auto;
+}
+
+.table-grouped table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: var(--bc-brand-font);
+  font-size: 14px;
+  line-height: 1.4;
+  text-align: left;
+}
+
+.table-grouped tr {
+  border-bottom: 1px solid var(--bc-border);
+}
+
+.table-grouped th,
+.table-grouped td {
+  padding: 12px 16px;
+  border: 0;
+  vertical-align: top;
+}
+
+.table-grouped .table-grouped-group th {
+  font-weight: 700;
+}
+
+.table-grouped .table-grouped-name {
+  width: 30%;
+  font-weight: 400;
+}
+
+.table-grouped th > p,
+.table-grouped td > p {
+  margin: 0;
+}
+
+.table-grouped td > p + p {
+  margin-top: 8px;
+}
+
+@media (width >= 900px) {
+  .table-grouped .table-grouped-name {
+    width: 20%;
+  }
+}
