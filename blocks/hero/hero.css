@@ -97,70 +97,64 @@
 }
 
 /* ============================================================
-   LEFT — same treatment as HOME (full-bleed background image,
-   brand tint, white text) but left-aligned and CTA-optional
+   LEFT — Beckman Coulter "large header banner"
+   (source: /en/solutions/host-response-infection, div.large-header-banner)
+   mobile: image stacked above dark text; desktop: image as a
+   full-bleed cover background with white left-aligned text
    ============================================================ */
 .hero.left {
   position: relative;
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
   justify-content: center;
-  gap: 12px;
-  padding: 48px 24px;
-  min-height: 240px;
+  min-height: 375px;
   text-align: left;
-  background-color: var(--bc-blue);
   overflow: hidden;
 }
 
-.hero.left picture {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
+.hero.left > picture {
+  display: block;
+  line-height: 0;
 }
 
-.hero.left picture img {
+.hero.left > picture img {
+  display: block;
   width: 100%;
-  height: 100%;
-  object-fit: cover;
+  height: auto;
 }
 
-.hero.left::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  z-index: 1;
-  background-color: rgb(0 43 122 / 55%);
-}
-
-.hero.left > :not(picture) {
-  position: relative;
-  z-index: 2;
+/* text row: 20px + 10px source container insets; top/bottom reproduce the
+   source's 10 + 30 + 5px offsets, -20px lift and 18.75px trailing margin */
+.hero.left > div {
+  box-sizing: border-box;
   width: 100%;
-  max-width: 1200px;
+  padding: 25px 30px 18.75px;
 }
 
 .hero.left h1,
 .hero.left h2 {
-  margin: 0;
-  color: #fff;
-  font-family: var(--bc-brand-font);
-  font-weight: 800;
-  font-size: 36px;
-  line-height: 1.2;
+  margin: 0 0 14px;
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 300;
+  line-height: 41.1429px;
+  letter-spacing: var(--heading-letter-spacing);
 }
 
+/* subtitle (source h3, authored as a paragraph) */
 .hero.left p {
-  margin: 0;
-  color: #fff;
-  font-family: var(--bc-brand-font);
-  font-size: 18px;
-  line-height: 1.35;
+  margin: 24.8571px 0 0;
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 28.2857px;
+  letter-spacing: var(--heading-letter-spacing);
 }
 
 .hero.left .button-wrapper {
-  margin: 12px 0 0;
+  margin: 24px 0 0;
 }
 
 .hero.left a.button:any-link {
@@ -169,14 +163,46 @@
 }
 
 @media (width >= 900px) {
-  .hero.left {
-    padding: 64px 80px;
-    min-height: 400px;
+  /* image becomes a cover background behind the text */
+  .hero.left > picture {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+  }
+
+  .hero.left > picture img {
+    height: 100%;
+    object-fit: cover;
+    object-position: 50% 50%;
+  }
+
+  .hero.left > div {
+    position: relative;
+    z-index: 1;
+    padding: 15px 40px 20px;
   }
 
   .hero.left h1,
   .hero.left h2 {
-    font-size: 48px;
+    color: #fff;
+    font-size: 55px;
+    line-height: 70.7143px;
+  }
+
+  .hero.left p {
+    margin-top: 24px;
+    color: #fff;
+    font-size: 28px;
+    line-height: 36px;
+  }
+}
+
+@media (width >= 1200px) {
+  /* 1400px content container, 40px + 30px insets */
+  .hero.left > div {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 95px 70px 110px;
   }
 }
 

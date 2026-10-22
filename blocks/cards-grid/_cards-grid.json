@@ -71,6 +71,10 @@
               "value": "features"
             },
             {
+              "name": "Features (purple band)",
+              "value": "features-purple"
+            },
+            {
               "name": "Video (3-up video posters, play overlay)",
               "value": "video"
             },

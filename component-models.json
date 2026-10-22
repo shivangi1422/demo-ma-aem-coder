@@ -194,6 +194,10 @@
             "value": "features"
           },
           {
+            "name": "Features (purple band)",
+            "value": "features-purple"
+          },
+          {
             "name": "Video (3-up video posters, play overlay)",
             "value": "video"
           },
@@ -5348,6 +5352,23 @@
         "value": "",
         "label": "Attribution",
         "valueType": "string"
+      },
+      {
+        "component": "select",
+        "name": "classes",
+        "value": "",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Banner (dark band, upright white text)",
+            "value": "banner"
+          }
+        ]
       }
     ]
   },

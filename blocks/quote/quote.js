@@ -2,6 +2,8 @@
  * Decorates the quote block: a testimonial with quote text and attribution.
  * Authored as a simple block with two rows: a quote row (richtext) and an
  * attribution row (text) — one row per model field.
+ * Style option (block class): .quote.banner — full-width dark band with upright
+ * white text; decoration is identical, only CSS differs.
  * @param {Element} block
  */
 export default function decorate(block) {

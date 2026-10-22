@@ -156,6 +156,13 @@
           "instances": [
             "div.education-filter-carousel"
           ]
+        },
+        {
+          "name": "form",
+          "instances": [
+            "form.mktoForm",
+            "form[id^=\"mktoForm_\"]"
+          ]
         }
       ],
       "urlPattern": "/en/solutions/*",
@@ -329,7 +336,9 @@
             "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
           ],
           "style": "centered",
-          "blocks": [],
+          "blocks": [
+            "form"
+          ],
           "defaultContent": [
             "h2"
           ]
@@ -341,6 +350,174 @@
             "div.disclaimer-text"
           ],
           "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "dxs-service-and-supports",
+      "urls": [
+        "https://www.beckmancoulter.com/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
+      ],
+      "representativeUrl": "https://www.beckmancoulter.com/en/products/dxs-service-and-supports/remote-services-and-diagnostics",
+      "description": "DxS service & support product pages: split hero, purple key-benefits band, video and image feature rows, resources carousel, dark quote banner, solution cards, centered contact CTA and disclaimer.",
+      "blocks": [
+        {
+          "name": "hero-split-left",
+          "instances": [
+            "div.sublayout-two-column-dynamic"
+          ]
+        },
+        {
+          "name": "cards-grid-features-purple",
+          "instances": [
+            "div.data-visualization-container"
+          ]
+        },
+        {
+          "name": "columns-video",
+          "instances": [
+            "div.social-proof-section"
+          ]
+        },
+        {
+          "name": "content-reversed",
+          "instances": [
+            "div.adjustable-two-column-display"
+          ]
+        },
+        {
+          "name": "carousel-resources",
+          "instances": [
+            "div.education-filter-carousel"
+          ]
+        },
+        {
+          "name": "quote-banner",
+          "instances": [
+            "div.testimonial-slim"
+          ]
+        },
+        {
+          "name": "cards-grid-solutions",
+          "instances": [
+            "div.col-3-default-padding:not(:has([class*=\"vidyard\"]))"
+          ]
+        }
+      ],
+      "urlPattern": "/en/products/dxs-service-and-supports/*",
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Remote Services and Diagnostics",
+          "selector": [
+            "div.sublayout-two-column-dynamic"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-split-left"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "key-benefits",
+          "name": "Key Benefits of Remote Desktop Sharing",
+          "selector": [
+            "div.data-visualization-container"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-features-purple"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "intelliserve",
+          "name": "DxS IntelliServe",
+          "selector": [
+            "div.social-proof-section"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-video"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "proservice",
+          "name": "DxS PROService",
+          "selector": [
+            "div.adjustable-two-column-display"
+          ],
+          "style": null,
+          "blocks": [
+            "content-reversed"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "resources",
+          "name": "Educational Resources",
+          "selector": [
+            "div.education-filter-carousel"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-resources"
+          ],
+          "defaultContent": [
+            "h2"
+          ]
+        },
+        {
+          "id": "tagline",
+          "name": "Increase uptime and improve productivity with remote connectivity",
+          "selector": [
+            "div.testimonial-slim"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "solutions",
+          "name": "Solutions designed for your laboratory needs",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ],
+          "style": "centered",
+          "blocks": [
+            "cards-grid-solutions"
+          ],
+          "defaultContent": [
+            "h2"
+          ]
+        },
+        {
+          "id": "contact-cta",
+          "name": "Speak to a Representative about Remote Connectivity",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ],
+          "style": "centered",
+          "blocks": [],
+          "defaultContent": [
+            "h2",
+            "a.button"
+          ]
+        },
+        {
+          "id": "disclaimer",
+          "name": "This product may not be available",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ],
+          "style": "divider, centered",
           "blocks": [],
           "defaultContent": [
             "p"

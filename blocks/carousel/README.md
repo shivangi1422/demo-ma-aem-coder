@@ -6,7 +6,7 @@ Custom **carousel** block. Purpose: Slider of items with an optional heading row
 
 Model: `collection`
 
-Repeating rows — one row per item. Each item: row 0 = heading/config (rich text; resources: a bulleted list of filter labels, plus optional heading); rows 1..N = one slide each: image cell + rich text cell (resources: first paragraph = category matching a filter label, heading = title, trailing link paragraph = CTA).
+Repeating rows — one row per item. Each item: row 0 = heading/config (rich text; resources: a bulleted list of filter labels, plus optional heading); rows 1..N = one slide each: image cell (resources: may be left empty for a solid category colour) + rich text cell (resources: first paragraph = category matching a filter label, heading = title, trailing link paragraph = CTA).
 
 ## Supported variations
 

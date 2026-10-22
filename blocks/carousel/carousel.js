@@ -4,9 +4,10 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 /**
  * RESOURCES: filter pills + 3-up card slider with dot pagination.
  * Row 0 (heading/config) holds an optional heading and a list of filter
- * labels. Rows 1..N = one card each: background image + text (first
+ * labels. Rows 1..N = one card each: optional background image + text (first
  * paragraph = category, matching a filter label; heading = title; trailing
- * link paragraph = CTA).
+ * link paragraph = CTA). Cards without an image get a solid background
+ * colour keyed on their category (data-category).
  * @param {Element} block
  * @param {Element|null} headingRow
  * @param {Element[]} slideRows
@@ -38,6 +39,7 @@ function decorateResources(block, headingRow, slideRows) {
   track.setAttribute('tabindex', '0');
   track.setAttribute('aria-label', 'Resources');
 
+  const categoryCounts = new Map();
   const cards = slideRows.map((row) => {
     const li = document.createElement('li');
     li.className = 'carousel-card';
@@ -72,6 +74,14 @@ function decorateResources(block, headingRow, slideRows) {
     }
     li.append(body);
     li.dataset.category = category.toLowerCase();
+    if (!img) {
+      // No image: CSS paints a solid colour per category; repeat cards of the
+      // same category alternate between two shades (.carousel-card-alt).
+      li.classList.add('carousel-card-no-image');
+      const seen = categoryCounts.get(li.dataset.category) || 0;
+      if (seen % 2 === 1) li.classList.add('carousel-card-alt');
+      categoryCounts.set(li.dataset.category, seen + 1);
+    }
     track.append(li);
     return li;
   });

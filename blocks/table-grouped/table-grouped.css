@@ -1,36 +1,70 @@
 /* Table Grouped — two-column name | description table, no header row,
-   full-width bold group-label rows, thin horizontal rules only */
+   full-width lilac group-label rows, light cell grid.
+   Mobile (base): rows stack into blocks; desktop: celled table. */
 .table-grouped {
-  overflow-x: auto;
-}
-
-.table-grouped table {
-  width: 100%;
-  border-collapse: collapse;
-  font-family: var(--bc-brand-font);
-  font-size: 14px;
-  line-height: 1.4;
   text-align: left;
 }
 
+.table-grouped table {
+  width: 70%;
+  margin: 0 auto;
+  border: 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  color: rgb(0 0 0);
+  font-family: var(--body-font-family);
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+  text-align: left;
+}
+
+.table-grouped tbody {
+  display: block;
+}
+
 .table-grouped tr {
-  border-bottom: 1px solid var(--bc-border);
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+  box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 10%);
+}
+
+.table-grouped tr:first-child {
+  box-shadow: inset 0 -1px 0 0 rgb(0 0 0 / 10%), 0 -1px 0 0 rgb(0 0 0 / 10%);
 }
 
 .table-grouped th,
 .table-grouped td {
-  padding: 12px 16px;
+  display: block;
+  padding: 4px 12px;
   border: 0;
-  vertical-align: top;
+  border-left: 1px solid rgb(34 36 38 / 10%);
+  font-weight: 400;
+  text-align: left;
+  vertical-align: middle;
 }
 
 .table-grouped .table-grouped-group th {
-  font-weight: 700;
+  background-color: rgb(243 226 252);
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.table-grouped .table-grouped-group strong {
+  font-weight: 600;
 }
 
 .table-grouped .table-grouped-name {
-  width: 30%;
-  font-weight: 400;
+  font-weight: 600;
+}
+
+.table-grouped a:any-link {
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.table-grouped a:hover {
+  text-decoration: underline;
 }
 
 .table-grouped th > p,
@@ -43,7 +77,35 @@
 }
 
 @media (width >= 900px) {
+  .table-grouped tbody {
+    display: table-row-group;
+  }
+
+  .table-grouped tr,
+  .table-grouped tr:first-child {
+    display: table-row;
+    padding: 0;
+    border-bottom: 0;
+    box-shadow: none;
+  }
+
+  .table-grouped th,
+  .table-grouped td {
+    display: table-cell;
+    padding: 12.5714px;
+    border-top: 1px solid rgb(34 36 38 / 10%);
+  }
+
+  .table-grouped th:last-child,
+  .table-grouped td:last-child {
+    border-right: 1px solid rgb(34 36 38 / 10%);
+  }
+
+  .table-grouped tr:last-child > * {
+    border-bottom: 1px solid rgb(34 36 38 / 10%);
+  }
+
   .table-grouped .table-grouped-name {
-    width: 20%;
+    font-weight: 400;
   }
 }

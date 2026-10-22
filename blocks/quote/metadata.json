@@ -1,0 +1,30 @@
+{
+  "variantName": "quote",
+  "baseBlock": "quote",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Pull quote / testimonial with optional attribution",
+    "description": "default: centered navy italic quote (22-28px) on a light surface band with a bold grey attribution. banner: full-width dark slate #474c55 band with upright white ~26px centered text, typically no attribution."
+  },
+  "contentPattern": {
+    "structure": "row 1 = quote (rich text); row 2 = attribution (plain text, optional; omitted when empty). Style select (classes) picks the option."
+  },
+  "options": [
+    {
+      "class": "banner",
+      "label": "Banner (dark band, upright white text)"
+    }
+  ],
+  "memberVariantIds": [
+    "quote",
+    "quote (banner)"
+  ],
+  "usage": {
+    "description": "Chemistry page (default testimonial); Remote Services and Diagnostics page (banner tagline).",
+    "pagesUsing": [
+      "/home/chemistry",
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
+    ]
+  },
+  "reuseGuidance": "Use for a single standalone quote or tagline. Use banner for a full-width statement band without attribution. Use hero or default content for headings with CTAs."
+}

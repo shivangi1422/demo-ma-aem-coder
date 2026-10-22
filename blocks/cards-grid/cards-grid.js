@@ -161,6 +161,7 @@ function decorateShowcase(block, rows) {
  *   - .cards-grid.insights     intro panel + stacked text cards (two-column)
  *   - .cards-grid.simple       4-up cards (image, tag, title, link)
  *   - .cards-grid.features     centered borderless columns (title, icon, desc)
+ *   - .cards-grid.features-purple  features layout on a purple band, white text
  *   - .cards-grid.video        3-up 16:9 video posters with a play overlay
  *   - .cards-grid.showcase     white cards over a full-bleed background image
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
@@ -182,6 +183,8 @@ export default function decorate(block) {
   }
 
   const insights = block.classList.contains('insights');
+  // features-purple shares the features layout; only the colour scheme differs.
+  if (block.classList.contains('features-purple')) block.classList.add('features');
   const features = block.classList.contains('features');
 
   // Row 0 (no picture) is the heading / intro panel.
@@ -199,7 +202,16 @@ export default function decorate(block) {
       const textCell = cells.find((c) => c !== imgCell && c.textContent.trim() !== '');
 
       // Title first.
-      const heading = textCell && textCell.querySelector('h2, h3, h4, h5');
+      let heading = textCell && textCell.querySelector('h2, h3, h4, h5');
+      if (!heading && textCell) {
+        // Fallback: a leading bold-only paragraph acts as the title.
+        const first = textCell.firstElementChild;
+        const strong = first && first.tagName === 'P' && first.querySelector(':scope > strong');
+        if (strong && first.textContent.trim() === strong.textContent.trim()) {
+          first.classList.add('cards-grid-title');
+          heading = first;
+        }
+      }
       if (heading) li.append(heading);
 
       // Icon between title and description.

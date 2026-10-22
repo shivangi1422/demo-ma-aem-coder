@@ -345,44 +345,71 @@
 
 /* ============================================================
    RESOURCES — filter pills + 3-up card slider with dot pagination
+   (values from source div.education-filter-carousel)
    ============================================================ */
 .carousel.resources {
   --carousel-per-view: 1;
-  --carousel-gap: 24px;
+  --carousel-gap: 26px;
 
-  padding: 24px 0;
+  box-sizing: content-box;
+  max-width: var(--content-max-width);
+  margin: 0 auto 30px;
+  padding: 14px 14px 0;
+  color: rgb(0 0 0 / 87%);
+  font-family: var(--body-font-family);
+  letter-spacing: var(--heading-letter-spacing);
 }
 
 .carousel.resources .carousel-inner {
   display: flex;
   flex-direction: column;
-  gap: 24px;
 }
 
+/* filter pills (mobile: wrapping rows, last pill stretches) */
 .carousel.resources .carousel-filters {
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
-  gap: 12px;
+  gap: 10px;
+  padding: 5px 5px 23px;
 }
 
 .carousel.resources .carousel-filter {
+  flex: 1 1 calc((100% - 20px) / 3);
+  box-sizing: border-box;
   margin: 0;
-  padding: 8px 24px;
-  border: 1px solid var(--bc-navy);
-  border-radius: 4px;
-  background-color: #fff;
-  color: var(--bc-navy);
-  font-family: var(--bc-brand-font);
-  font-size: 14px;
+  padding: 5px;
+  border: 0;
+  border-radius: var(--button-radius);
+  background-color: transparent;
+  box-shadow: inset 0 0 0 1px #1b1c1d;
+  color: #1b1c1d;
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: 400;
+  line-height: normal;
+  letter-spacing: normal;
+  text-align: center;
   cursor: pointer;
+  transition: var(--button-transition);
+}
+
+.carousel.resources .carousel-filter:hover,
+.carousel.resources .carousel-filter:focus-visible {
+  box-shadow: inset 0 0 0 1px #983cc9;
+  color: #983cc9;
 }
 
 .carousel.resources .carousel-filter[aria-pressed='true'] {
-  background-color: var(--bc-navy);
+  background-color: #a333c8;
+  box-shadow: none;
   color: #fff;
 }
 
+.carousel.resources .carousel-filter[aria-pressed='true']:hover {
+  color: #fbfbfb;
+}
+
+/* slider track */
 .carousel.resources .carousel-track {
   position: relative;
   display: flex;
@@ -403,16 +430,17 @@
   position: relative;
   display: flex;
   flex: 0 0 calc((100% - (var(--carousel-per-view) - 1) * var(--carousel-gap)) / var(--carousel-per-view));
-  min-height: 206px;
+  height: 206px;
   overflow: hidden;
   scroll-snap-align: start;
-  background-color: var(--bc-navy);
+  background-color: #d3d3d3;
 }
 
 .carousel.resources .carousel-card[hidden] {
   display: none;
 }
 
+/* source paints the 450x206 artwork at its natural size from the top-left */
 .carousel.resources .carousel-card > picture {
   position: absolute;
   inset: 0;
@@ -422,66 +450,135 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: left top;
 }
 
 .carousel.resources .carousel-card-body {
   position: relative;
   z-index: 1;
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
+  box-sizing: border-box;
   width: 100%;
-  padding: 16px;
-  font-family: var(--bc-brand-font);
-}
-
-.carousel.resources .carousel-card-body h3,
-.carousel.resources .carousel-card-body h4 {
-  margin: 0;
+  padding: 18px;
   color: #fff;
-  font-size: 20px;
-  line-height: 1.2;
 }
 
 .carousel.resources .carousel-card-eyebrow {
   margin: 0;
   color: #fff;
-  font-weight: 700;
-  font-size: 18px;
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 22.856px;
 }
 
+.carousel.resources .carousel-card-body h3,
+.carousel.resources .carousel-card-body h4 {
+  margin: 24.57px 0 14px;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 18.34px;
+  font-weight: 300;
+  line-height: 1.2857;
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+/* CTA: centred, pinned 10px above the card bottom */
 .carousel.resources .carousel-card-cta {
-  margin: auto 0 0;
-}
-
-.carousel.resources .carousel-card-cta a.button {
+  position: absolute;
+  right: 0;
+  bottom: 10px;
+  left: 0;
   margin: 0;
-  padding: 6px 16px;
-  border: 1px solid #fff;
-  background-color: #fff;
-  color: var(--bc-navy);
-  font-size: 14px;
+  text-align: center;
 }
 
+main .carousel.resources .carousel-card-cta a.button:any-link {
+  margin: 0;
+  padding: 11px 21px;
+  border: 2px solid #fff;
+  border-radius: var(--button-radius);
+  background-color: transparent;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: normal;
+}
+
+main .carousel.resources .carousel-card-cta a.button:any-link:hover,
+main .carousel.resources .carousel-card-cta a.button:any-link:focus-visible {
+  background-color: #fff;
+  color: rgb(0 0 0 / 80%);
+}
+
+/* dot pagination */
 .carousel.resources .carousel-dots {
   display: flex;
   justify-content: center;
-  gap: 8px;
+  align-items: center;
+  padding: 10px 0;
+  background-color: #fff;
 }
 
 .carousel.resources .carousel-dot {
+  box-sizing: border-box;
   width: 10px;
   height: 10px;
-  margin: 0;
+  margin: 4px;
   padding: 0;
-  border: 0;
-  border-radius: 50%;
-  background-color: var(--bc-border);
+  border: 1px solid var(--divider-color);
+  border-radius: 500px;
+  background-color: #fff;
   cursor: pointer;
 }
 
 .carousel.resources .carousel-dot.is-active {
-  background-color: var(--bc-navy);
+  background-color: var(--divider-color);
+}
+
+/* image-less cards: solid colour per category (neutral fallback = navy).
+   remote-services values are the source's per-card inline colours. */
+.carousel.resources .carousel-card-no-image {
+  background-color: var(--carousel-card-bg, var(--bc-navy));
+}
+
+.carousel.resources .carousel-card-no-image[data-category='application'] {
+  --carousel-card-bg: #128bb2;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='data sheet'] {
+  --carousel-card-bg: #00927c;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='brochures'] {
+  --carousel-card-bg: #006298;
+}
+
+.carousel.resources .carousel-card-no-image.carousel-card-alt[data-category='brochures'] {
+  --carousel-card-bg: #00a9e0;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='videos'] {
+  --carousel-card-bg: #811167;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='blogs'] {
+  --carousel-card-bg: #128bb2;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='articles'] {
+  --carousel-card-bg: #00927c;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='symposiums'] {
+  --carousel-card-bg: #006298;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='news releases'] {
+  --carousel-card-bg: #811167;
+}
+
+.carousel.resources .carousel-card-no-image[data-category='evidence'] {
+  --carousel-card-bg: #474c55;
 }
 
 @media (width >= 600px) {
@@ -493,5 +590,22 @@
 @media (width >= 900px) {
   .carousel.resources {
     --carousel-per-view: 3;
+  }
+
+  /* desktop: fixed-width pills in a single left-aligned row */
+  .carousel.resources .carousel-filters {
+    flex-wrap: nowrap;
+    gap: 11.8125px;
+    padding: 0 0 18px;
+  }
+
+  .carousel.resources .carousel-filter {
+    flex: 0 0 184px;
+    padding: 12.375px 23.625px;
+  }
+
+  .carousel.resources .carousel-card-body h3,
+  .carousel.resources .carousel-card-body h4 {
+    font-size: 24px;
   }
 }

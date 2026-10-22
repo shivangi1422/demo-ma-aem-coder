@@ -596,6 +596,30 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/parsers/form.js
+  var FORM_JSON = {
+    "2549": "/forms/speak-to-representative.json"
+  };
+  var DEFAULT_FORM_JSON = "/forms/speak-to-representative.json";
+  function parse8(element, { document }) {
+    var _a;
+    const visibleFields = element.querySelectorAll('input:not([type="hidden"]), select, textarea');
+    if (!visibleFields.length) {
+      element.remove();
+      return;
+    }
+    const formId = (element.id || "").replace(/^mktoForm_/, "") || (((_a = element.querySelector('input[name="formid"]')) == null ? void 0 : _a.getAttribute("value")) || "");
+    const file = FORM_JSON[formId] || DEFAULT_FORM_JSON;
+    const link = document.createElement("a");
+    link.href = file;
+    link.textContent = file;
+    const block = WebImporter.Blocks.createBlock(document, {
+      name: "Form",
+      cells: [[[document.createComment(" field:reference "), link]]]
+    });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/beckmancoulter-cleanup.js
   var CHROME_SELECTORS = [
     // accessibility widget (UserWay)
@@ -1201,6 +1225,13 @@ var CustomImportScript = (() => {
         "instances": [
           "div.education-filter-carousel"
         ]
+      },
+      {
+        "name": "form",
+        "instances": [
+          "form.mktoForm",
+          'form[id^="mktoForm_"]'
+        ]
       }
     ],
     "urlPattern": "/en/solutions/*",
@@ -1374,7 +1405,9 @@ var CustomImportScript = (() => {
           "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
         ],
         "style": "centered",
-        "blocks": [],
+        "blocks": [
+          "form"
+        ],
         "defaultContent": [
           "h2"
         ]
@@ -1400,7 +1433,8 @@ var CustomImportScript = (() => {
     "table-grouped": parse4,
     "columns": parse5,
     "cards-grid-showcase": parse6,
-    "carousel-resources": parse7
+    "carousel-resources": parse7,
+    form: parse8
   };
   var transformers = [transform, transform2, transform3, transform4];
   function executeTransformers(hookName, element, payload) {

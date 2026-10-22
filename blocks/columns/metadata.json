@@ -1,0 +1,25 @@
+{
+  "variantName": "columns",
+  "baseBlock": "columns",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "Side-by-side content columns (text, images, video)",
+    "description": "N columns per row (columns-N-cols class added); stacked on mobile with image columns first, side by side from 900px. A column holding a Vidyard link (play.vidyard.com/{uuid}), optionally with a poster image above it, renders a 16:9 poster with a play overlay; clicking swaps in the inline Vidyard player. Without a poster the Vidyard thumbnail is used."
+  },
+  "contentPattern": {
+    "structure": "Columns/rows grid authored in UE (column filter: text, image, button, title). Each cell is rich content. Video cell: optional poster image + a paragraph whose only content is a link to play.vidyard.com/{uuid} (link text = video title, used as the accessible label)."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns"
+  ],
+  "usage": {
+    "description": "Footer (link columns); Host Response to Infection (text + image split); Remote Services and Diagnostics (IntelliServe text + Vidyard video).",
+    "pagesUsing": [
+      "/footer",
+      "/en/solutions/host-response-infection",
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
+    ]
+  },
+  "reuseGuidance": "Use for generic side-by-side text/media splits, including text beside an inline Vidyard video. Use content-reversed for the image-left feature split, and cards-grid video for a grid of several video posters."
+}

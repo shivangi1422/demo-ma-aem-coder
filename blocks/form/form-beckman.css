@@ -1,0 +1,250 @@
+/*
+ * Beckman Coulter overrides for the vendored aem-boilerplate-forms block.
+ * Values come from the source Marketo form (form.mktoForm) computed styles,
+ * see migration-work/form-extracted.css.
+ *
+ * This file is @imported at the top of form.css, so its rules come before the
+ * vendored rules in the cascade. Every selector is therefore scoped to
+ * `main .form.block` to outrank the vendored `main .form ...` selectors.
+ */
+
+main .form.block {
+  --form-field-vert-gap: 4px;
+  --form-field-horz-gap: 50px;
+  --form-text-color: #333;
+  --form-border-color: #7c858c;
+  --form-focus-color: #00a9e0;
+  --form-panel-background: #f9f9f9;
+  --form-required-color: #f00;
+
+  background-color: transparent;
+  font-family: var(--body-font-family);
+}
+
+/* the vendored block draws a card around the wrapper; the source has none */
+main div.form-wrapper:has(> .form.block) {
+  padding: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+}
+
+main .form.block form {
+  max-width: 954px;
+  margin: 0 auto;
+  gap: var(--form-field-vert-gap) var(--form-field-horz-gap);
+}
+
+/* hidden inputs must not create empty grid rows */
+main .form.block form .hidden-wrapper {
+  display: none;
+}
+
+main .form.block form .field-wrapper {
+  margin: 0;
+}
+
+/* outlined fields with a "notched" label sitting on the top border */
+main .form.block form .field-wrapper:has(> label + :is(input, select, textarea)) {
+  position: relative;
+  padding-top: 29px;
+}
+
+main .form.block form .field-wrapper:has(> label + :is(input, select, textarea)) > label {
+  position: absolute;
+  top: 15px;
+  left: 10px;
+  z-index: 1;
+  margin: 0;
+  padding: 0 7px;
+  background-color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.128px;
+  color: var(--form-text-color);
+}
+
+/* the source does not show the required asterisk on the outlined fields */
+main .form.block form .field-wrapper[data-required="true"]:has(> label + :is(input, select, textarea)) > label::after {
+  content: none;
+}
+
+/* focused or filled field: small blue label (source :focus-within / .filled) */
+main .form.block form .field-wrapper:focus-within > label,
+main .form.block form .field-wrapper:has(> label + :is(input, select, textarea):valid) > label {
+  padding: 0 10px;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  color: var(--form-focus-color);
+  transition: 0.1s;
+}
+
+main .form.block form .field-wrapper > :is(input, select, textarea):not([type="radio"], [type="checkbox"], [type="file"]) {
+  height: auto;
+  min-height: 50px;
+  margin: 0;
+  padding: 12px 16px;
+  border: 1px solid var(--form-border-color);
+  border-radius: 4px;
+  background-color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 19.2px;
+  color: var(--form-text-color);
+}
+
+main .form.block form .field-wrapper > select {
+  appearance: none;
+  padding-right: 48px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='21' height='12' fill='none' viewBox='0 0 21 12'%3E%3Cpath stroke='%23828181' d='M1 1l9.5 10L20 1'/%3E%3C/svg%3E");
+  background-position: 95% 50%;
+  background-repeat: no-repeat;
+  cursor: pointer;
+}
+
+/* consent panel */
+main .form.block form fieldset.panel-wrapper {
+  display: block;
+  width: 90%;
+  margin: 30px auto 0;
+  padding: 27.75px 10px 27.75px 27.75px;
+  background-color: var(--form-panel-background);
+}
+
+main .form.block form .plain-text-wrapper p {
+  margin: 0 0 17px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 17px;
+  letter-spacing: 0.21px;
+  color: #000;
+}
+
+main .form.block form .plain-text-wrapper p strong {
+  font-weight: 700;
+}
+
+/* "By Email" / "By Phone" radio groups, options side by side */
+main .form.block form fieldset.radio-group-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+  padding: 3.9px 0;
+}
+
+main .form.block form fieldset.radio-group-wrapper > legend {
+  margin: 0;
+  padding: 0;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 24px;
+  letter-spacing: 0.128px;
+  color: var(--form-text-color);
+}
+
+main .form.block form fieldset.radio-group-wrapper[data-required="true"] > legend::after {
+  content: "*";
+  padding-inline-start: 4px;
+  color: var(--form-required-color);
+}
+
+main .form.block form fieldset.radio-group-wrapper > .radio-wrapper {
+  flex-wrap: nowrap;
+  gap: 0;
+  margin: 0;
+}
+
+main .form.block form fieldset.radio-group-wrapper > .radio-wrapper:first-of-type {
+  margin-left: 3.9px;
+}
+
+main .form.block form fieldset.radio-group-wrapper > .radio-wrapper > input[type="radio"] {
+  width: 13px;
+  height: 13px;
+  margin: 0;
+  accent-color: var(--form-text-color);
+}
+
+main .form.block form fieldset.radio-group-wrapper > .radio-wrapper > label.field-label {
+  flex-basis: auto;
+  margin: 1.4px 25px 4.2px 10px;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 24px;
+  letter-spacing: 0.128px;
+  color: var(--form-text-color);
+  cursor: pointer;
+}
+
+/* submit */
+main .form.block form .submit-wrapper {
+  width: 100%;
+  margin: 44px 0 0;
+  text-align: center;
+}
+
+main .form.block form .submit-wrapper button {
+  width: 320px;
+  max-width: 100%;
+  min-height: 40px;
+  margin: 0;
+  padding: 7.6px 19px;
+  border: 1px solid var(--brand-red);
+  border-radius: 8px;
+  background: var(--brand-red);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 19px;
+  font-weight: 500;
+  line-height: 23px;
+  cursor: pointer;
+}
+
+main .form.block form .submit-wrapper button:hover,
+main .form.block form .submit-wrapper button:focus-visible {
+  border: 1px solid #bb1623;
+  background: #bb1623;
+  color: #fff;
+}
+
+main .form.block form .submit-wrapper button:disabled {
+  border-color: var(--form-input-disable-color);
+  background: var(--form-input-disable-color);
+  color: var(--form-text-color);
+  cursor: auto;
+}
+
+@media (width >= 600px) {
+  main .form.block {
+    --form-field-vert-gap: 0;
+  }
+
+  /* two-column grid; company name spans the full row */
+  main .form.block form .field-wrapper:has(> label + :is(input, select)) {
+    grid-column: span 6;
+  }
+
+  main .form.block form .field-wrapper.field-company {
+    grid-column: span 12;
+  }
+
+  main .form.block form .field-wrapper > :is(input, select, textarea):not([type="radio"], [type="checkbox"], [type="file"]) {
+    min-height: 0;
+  }
+
+  main .form.block form fieldset.panel-wrapper {
+    width: 100%;
+    margin: 30px 0 0;
+    padding: 25px 10px 25px 55px;
+  }
+
+  main .form.block form fieldset.radio-group-wrapper > .radio-wrapper > label.field-label {
+    margin: 1.4px 80px 4.2px 25px;
+  }
+}

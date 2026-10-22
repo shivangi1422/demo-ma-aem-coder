@@ -41,3 +41,58 @@
     font-size: 28px;
   }
 }
+
+/*
+ * BANNER — dark slate band (source: .testimonial-slim), edge-to-edge up to
+ * the source's 1400px container, upright white centered text. Values below
+ * are the source computed styles; percentage paddings mirror the source
+ * (resolved against the band's content width).
+ */
+main > .section > .quote-wrapper:has(> .quote.banner) {
+  max-width: 1400px;
+  padding: 0;
+}
+
+.quote.banner {
+  gap: 0;
+  padding: 0 14px;
+  background-color: #474c55;
+}
+
+.quote.banner .quote-text {
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  margin: 0;
+  padding: 4% 46.7656px 6%;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-style: normal;
+  font-weight: 100;
+  font-size: 22px;
+  line-height: 26.4px;
+  letter-spacing: 0.128px;
+}
+
+.quote.banner:has(.quote-attribution) .quote-text {
+  padding-bottom: 0;
+}
+
+.quote.banner .quote-attribution {
+  padding: 2% 0 4%;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.128px;
+  text-transform: uppercase;
+}
+
+@media (width >= 768px) {
+  .quote.banner .quote-text {
+    width: min(90%, 1200px);
+    font-size: 36px;
+    line-height: 65px;
+  }
+}

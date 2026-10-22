@@ -49,6 +49,13 @@
     "hero (split-left)",
     "hero (left)"
   ],
-  "usage": "Home, Products, About Us, Chemistry pages; Host Response to Infection solution page header (left).",
+  "usage": {
+    "description": "Home, Products, About Us, Chemistry pages; Host Response to Infection solution page header (left).",
+    "pagesUsing": [
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-22"
+  },
   "reuseGuidance": "Use left for solution/landing page headers with a photo background and left-aligned title + subtitle; use home when text should be centered with CTAs."
 }

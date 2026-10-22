@@ -4,10 +4,10 @@
   "canonicalModel": "collection",
   "visualCharacteristics": {
     "purpose": "Multi-column card grid with an optional heading/intro row; the Style option picks the card treatment",
-    "description": "solutions: bordered 3-up cards with image, category eyebrow, title, Learn More link. productlines: white cards on a grey band. insights: intro panel beside stacked text cards. simple: 4-up cards with tag pill and NEW ribbon. features: centered borderless 3-up columns (title, icon, description). video: 3-up 16:9 Vidyard posters with a play overlay, no text body; clicking inlines the player. showcase: white cards over a full-bleed background image with a centered white heading/subheading; cards with or without images and a Learn more button."
+    "description": "solutions: bordered 3-up cards with image, category eyebrow, title, Learn More link. productlines: white cards on a grey band. insights: intro panel beside stacked text cards. simple: 4-up cards with tag pill and NEW ribbon. features: centered borderless 3-up columns (title, icon, description) on a lavender band. features-purple: same layout as features on a full-width purple #811167 band with white heading, titles, descriptions and white line icons. video: 3-up 16:9 Vidyard posters with a play overlay, no text body; clicking inlines the player. showcase: white cards over a full-bleed background image with a centered white heading/subheading; cards with or without images and a Learn more button."
   },
   "contentPattern": {
-    "structure": "row 0 = heading/intro (rich text; showcase: optional heading + subheading and optional background image, in the heading row or the container Background Image field); rows 1..N = one card each: image cell + rich text cell (title, description, link). video: poster image + paragraph with a link to the video (link text = video title)"
+    "structure": "row 0 = heading/intro (rich text; showcase: optional heading + subheading and optional background image, in the heading row or the container Background Image field); rows 1..N = one card each: image cell + rich text cell (title, description, link). video: poster image + paragraph with a link to the video (link text = video title). features/features-purple: card title is a heading or a leading bold-only paragraph; it renders above the icon"
   },
   "options": [
     {
@@ -31,6 +31,10 @@
       "label": "Features (centered, borderless, no image)"
     },
     {
+      "class": "features-purple",
+      "label": "Features (purple band)"
+    },
+    {
       "class": "video",
       "label": "Video (3-up video posters, play overlay)"
     },
@@ -46,9 +50,17 @@
     "cards-grid (insights)",
     "cards-grid (simple)",
     "cards-grid (features)",
+    "cards-grid (features-purple)",
     "cards-grid (video)",
     "cards-grid (showcase)"
   ],
-  "usage": "Home, About Us, Products and Chemistry pages (solutions, productlines, insights, simple, features); Host Response to Infection solution page (features, video, showcase).",
+  "usage": {
+    "description": "Home, About Us, Products and Chemistry pages (solutions, productlines, insights, simple, features); Host Response to Infection solution page (features, video, showcase).",
+    "pagesUsing": [
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-22"
+  },
   "reuseGuidance": "Use for multi-column card grids. Use cards-media-list for vertical image-left/text-right resource lists. Use carousel resources when cards must be filterable and paged."
 }

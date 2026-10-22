@@ -6,6 +6,8 @@ import cleanupTransformer from './transformers/beckmancoulter-cleanup.js';
 import sectionsTransformer from './transformers/beckmancoulter-sections.js';
 import solutionsCleanupTransformer from './transformers/beckmancoulter-solutions-cleanup.js';
 import solutionsSectionsTransformer from './transformers/beckmancoulter-solutions-sections.js';
+import dxsCleanupTransformer from './transformers/beckmancoulter-dxs-cleanup.js';
+import dxsSectionsTransformer from './transformers/beckmancoulter-dxs-sections.js';
 
 const PAGE_TEMPLATE = {
   "name": "learning-and-events",
@@ -119,7 +121,7 @@ const parsers = {
 
 // every template's transformers are registered; each guards on PAGE_TEMPLATE.name.
 // cleanup must run before sections within each template.
-const transformers = [cleanupTransformer, sectionsTransformer, solutionsCleanupTransformer, solutionsSectionsTransformer];
+const transformers = [cleanupTransformer, sectionsTransformer, solutionsCleanupTransformer, solutionsSectionsTransformer, dxsCleanupTransformer, dxsSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };

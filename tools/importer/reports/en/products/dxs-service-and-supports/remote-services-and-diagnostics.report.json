@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/products/dxs-service-and-supports/remote-services-and-diagnostics",
+  "path": "en/products/dxs-service-and-supports/remote-services-and-diagnostics",
+  "timestamp": "2026-10-22T07:10:09.012Z",
+  "title": "Remote Services and Diagnostics | Beckman Coulter",
+  "template": "dxs-service-and-supports",
+  "blocks": [
+    "hero-split-left",
+    "cards-grid-features-purple",
+    "columns-video",
+    "content-reversed",
+    "carousel-resources",
+    "quote-banner",
+    "cards-grid-solutions"
+  ]
+}

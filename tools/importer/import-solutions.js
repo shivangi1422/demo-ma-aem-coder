@@ -8,10 +8,13 @@ import tableGroupedParser from './parsers/table-grouped.js';
 import columnsParser from './parsers/columns.js';
 import cardsGridShowcaseParser from './parsers/cards-grid-showcase.js';
 import carouselResourcesParser from './parsers/carousel-resources.js';
+import formParser from './parsers/form.js';
 import cleanupTransformer from './transformers/beckmancoulter-cleanup.js';
 import sectionsTransformer from './transformers/beckmancoulter-sections.js';
 import solutionsCleanupTransformer from './transformers/beckmancoulter-solutions-cleanup.js';
 import solutionsSectionsTransformer from './transformers/beckmancoulter-solutions-sections.js';
+import dxsCleanupTransformer from './transformers/beckmancoulter-dxs-cleanup.js';
+import dxsSectionsTransformer from './transformers/beckmancoulter-dxs-sections.js';
 
 const PAGE_TEMPLATE = {
   "name": "solutions",
@@ -63,6 +66,13 @@ const PAGE_TEMPLATE = {
       "name": "carousel-resources",
       "instances": [
         "div.education-filter-carousel"
+      ]
+    },
+    {
+      "name": "form",
+      "instances": [
+        "form.mktoForm",
+        "form[id^=\"mktoForm_\"]"
       ]
     }
   ],
@@ -237,7 +247,9 @@ const PAGE_TEMPLATE = {
         "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
       ],
       "style": "centered",
-      "blocks": [],
+      "blocks": [
+        "form"
+      ],
       "defaultContent": [
         "h2"
       ]
@@ -262,14 +274,15 @@ const parsers = {
   'cards-grid-features': cardsGridFeaturesParser,
   'cards-grid-video': cardsGridVideoParser,
   'table-grouped': tableGroupedParser,
-  'columns': columnsParser,
+  columns: columnsParser,
   'cards-grid-showcase': cardsGridShowcaseParser,
   'carousel-resources': carouselResourcesParser,
+  form: formParser,
 };
 
 // every template's transformers are registered; each guards on PAGE_TEMPLATE.name.
 // cleanup must run before sections within each template.
-const transformers = [cleanupTransformer, sectionsTransformer, solutionsCleanupTransformer, solutionsSectionsTransformer];
+const transformers = [cleanupTransformer, sectionsTransformer, solutionsCleanupTransformer, solutionsSectionsTransformer, dxsCleanupTransformer, dxsSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };
