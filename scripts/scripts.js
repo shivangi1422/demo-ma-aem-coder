@@ -109,6 +109,33 @@ export function decorateButtons(main) {
   });
 }
 
+const GENERIC_LINK_TEXT = /^(learn more|read more|explore|explore now|download|watch video|watch now|read blog|read article|read case study)$/i;
+
+/**
+ * Gives generic links ("Learn more", "Download"…) a screen-reader-only suffix
+ * naming what they point to: the nearest heading of their card or section.
+ * Runs after blocks are decorated; the visible text is unchanged.
+ * @param {Element} main The main element
+ */
+export function describeGenericLinks(main) {
+  main.querySelectorAll('a[href]').forEach((a) => {
+    const text = a.textContent.replace(/[→›]/g, '').trim();
+    if (!GENERIC_LINK_TEXT.test(text) || a.hasAttribute('aria-label') || a.querySelector('.visually-hidden')) return;
+    let scope = a.parentElement;
+    let heading = null;
+    for (let i = 0; scope && scope !== main && i < 6 && !heading; i += 1) {
+      heading = [...scope.querySelectorAll('h1, h2, h3, h4, h5, h6')].find((h) => !h.contains(a));
+      scope = scope.parentElement;
+    }
+    const context = heading?.textContent.trim();
+    if (!context) return;
+    const hint = document.createElement('span');
+    hint.className = 'visually-hidden';
+    hint.textContent = `: ${context}`;
+    a.append(hint);
+  });
+}
+
 /**
  * Decorates the main element.
  * @param {Element} main The main element
@@ -155,6 +182,7 @@ async function loadLazy(doc) {
 
   const main = doc.querySelector('main');
   await loadSections(main);
+  describeGenericLinks(main);
 
   const { hash } = window.location;
   const element = hash ? doc.getElementById(hash.substring(1)) : false;

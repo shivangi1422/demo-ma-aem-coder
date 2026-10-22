@@ -54,6 +54,22 @@ export default function decorate(block) {
     tbody.append(tr);
   });
 
+  // name the table after the nearest heading above it (screen-reader caption);
+  // a real caption also keeps the full-width first group row from reading as a fake one
+  let label = null;
+  let prev = (block.parentElement || block).previousElementSibling;
+  while (prev && !label) {
+    label = [...prev.querySelectorAll('h1, h2, h3, h4, h5, h6')].pop()
+      || (prev.matches('h1, h2, h3, h4, h5, h6') ? prev : null);
+    prev = prev.previousElementSibling;
+  }
+  if (label) {
+    const caption = document.createElement('caption');
+    caption.className = 'table-grouped-caption';
+    caption.textContent = label.textContent.trim();
+    table.append(caption);
+  }
+
   table.append(tbody);
   block.replaceChildren(table);
 }

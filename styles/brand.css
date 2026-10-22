@@ -11,8 +11,9 @@
   --text-color: rgb(0 0 0 / 87%);
   --heading-color: #000;
 
-  /* brand #08c / #ea1c2c / #f12e3d deepened slightly to meet WCAG AA 4.5:1 on white */
-  --link-color: #007dbc;
+  /* brand #08c / #ea1c2c / #f12e3d deepened slightly to meet WCAG AA 4.5:1
+     (links also on the #f5f5f5 light band) */
+  --link-color: #0076b2;
   --link-hover-color: #1e70bf;
   --brand-red: #e81b2b;
   --brand-red-hover: #e22b39;

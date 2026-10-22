@@ -109,3 +109,15 @@
     font-weight: 400;
   }
 }
+
+/* caption duplicates the visible heading above: screen readers only */
+.table-grouped .table-grouped-caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}

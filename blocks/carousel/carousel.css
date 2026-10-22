@@ -513,6 +513,7 @@ main .carousel.resources .carousel-card-cta a.button:any-link:focus-visible {
 /* dot pagination */
 .carousel.resources .carousel-dots {
   display: flex;
+  flex-wrap: wrap;
   justify-content: center;
   align-items: center;
   box-sizing: border-box;
@@ -521,34 +522,53 @@ main .carousel.resources .carousel-card-cta a.button:any-link:focus-visible {
   background-color: #fff;
 }
 
+/* 24px tap target (WCAG 2.2 target size) around a 10px visual dot */
 .carousel.resources .carousel-dot {
+  position: relative;
   box-sizing: border-box;
-  width: 10px;
-  height: 10px;
-  margin: 4px;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
   padding: 0;
-  border: 1px solid var(--divider-color);
-  border-radius: 500px;
-  background-color: #fff;
+  border: 0;
+  background: none;
   cursor: pointer;
 }
 
-.carousel.resources .carousel-dot.is-active {
+.carousel.resources .carousel-dot::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  box-sizing: border-box;
+  border: 1px solid var(--divider-color);
+  border-radius: 500px;
+  background-color: #fff;
+}
+
+.carousel.resources .carousel-dot.is-active::before {
   background-color: var(--divider-color);
 }
 
+.carousel.resources .carousel-dot:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 0;
+  border-radius: 500px;
+}
+
 /* image-less cards: solid colour per category (neutral fallback = navy).
-   remote-services values are the source's per-card inline colours. */
+   remote-services values are the source's per-card colours, deepened where
+   needed so white text meets WCAG AA 4.5:1. */
 .carousel.resources .carousel-card-no-image {
   background-color: var(--carousel-card-bg, var(--bc-navy));
 }
 
 .carousel.resources .carousel-card-no-image[data-category='application'] {
-  --carousel-card-bg: #128bb2;
+  --carousel-card-bg: #1080a4;
 }
 
 .carousel.resources .carousel-card-no-image[data-category='data sheet'] {
-  --carousel-card-bg: #00927c;
+  --carousel-card-bg: #008672;
 }
 
 .carousel.resources .carousel-card-no-image[data-category='brochures'] {
@@ -556,7 +576,7 @@ main .carousel.resources .carousel-card-cta a.button:any-link:focus-visible {
 }
 
 .carousel.resources .carousel-card-no-image.carousel-card-alt[data-category='brochures'] {
-  --carousel-card-bg: #00a9e0;
+  --carousel-card-bg: #007fa9;
 }
 
 .carousel.resources .carousel-card-no-image[data-category='videos'] {
@@ -564,11 +584,11 @@ main .carousel.resources .carousel-card-cta a.button:any-link:focus-visible {
 }
 
 .carousel.resources .carousel-card-no-image[data-category='blogs'] {
-  --carousel-card-bg: #128bb2;
+  --carousel-card-bg: #1080a4;
 }
 
 .carousel.resources .carousel-card-no-image[data-category='articles'] {
-  --carousel-card-bg: #00927c;
+  --carousel-card-bg: #008672;
 }
 
 .carousel.resources .carousel-card-no-image[data-category='symposiums'] {
