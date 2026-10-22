@@ -386,7 +386,7 @@
   font-family: var(--body-font-family);
   font-size: var(--button-font-size);
   font-weight: 400;
-  line-height: normal;
+  line-height: 1;
   letter-spacing: normal;
   text-align: center;
   cursor: pointer;
@@ -515,6 +515,8 @@ main .carousel.resources .carousel-card-cta a.button:any-link:focus-visible {
   display: flex;
   justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  min-height: 38px;
   padding: 10px 0;
   background-color: #fff;
 }

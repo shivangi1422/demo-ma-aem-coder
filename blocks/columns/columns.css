@@ -50,10 +50,11 @@
 .columns .columns-video-play {
   position: absolute;
   inset: 50% auto auto 50%;
-  width: 64px;
-  height: 64px;
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  border: 3px solid #fff;
   border-radius: 50%;
-  background-color: rgb(0 0 0 / 60%);
   transform: translate(-50%, -50%);
 }
 
@@ -62,7 +63,7 @@
   position: absolute;
   inset: 50% auto auto 55%;
   border-style: solid;
-  border-width: 12px 0 12px 20px;
+  border-width: 14px 0 14px 22px;
   border-color: transparent transparent transparent #fff;
   transform: translate(-50%, -50%);
 }
@@ -72,4 +73,129 @@
   width: 100%;
   aspect-ratio: 16 / 9;
   border: 0;
+}
+
+/*
+ * Page-body columns (scoped to main so the footer fragment is unaffected).
+ * Source: beckmancoulter.com social-proof-section (text + video) and
+ * adjustable-two-column-display (text + image).
+ */
+
+/* eyebrow label: a short paragraph directly above the heading */
+main .columns > div > div > p:first-child:has(+ h2) {
+  margin: 16px 0 0;
+  color: #006298;
+  font-size: 16px;
+  line-height: 19.2px;
+  text-transform: uppercase;
+}
+
+/* CTA: a paragraph holding only a link, last in its column */
+main .columns > div > div > p:last-child > a:only-child {
+  display: inline-block;
+  max-width: 100%;
+  border-radius: var(--button-radius);
+  padding: var(--button-padding);
+  background-color: var(--brand-red);
+  color: var(--background-color);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: normal;
+  text-align: center;
+  transition: background-color var(--button-transition);
+}
+
+main .columns > div > div > p:last-child > a:only-child:hover,
+main .columns > div > div > p:last-child > a:only-child:focus-visible {
+  background-color: var(--brand-red-hover);
+  color: var(--background-color);
+}
+
+/* text + video row (social-proof card) */
+main .columns > div:has(> .columns-video-col) > div:not(.columns-video-col) {
+  padding: 14px 0 0;
+  color: #000;
+  letter-spacing: 0.128px;
+}
+
+main .columns > div:has(> .columns-video-col) h2 {
+  margin: 8px 0 0;
+  color: var(--heading-color);
+  font-size: 30px;
+  font-weight: var(--heading-font-weight);
+  line-height: 38.5714px;
+  text-transform: capitalize;
+}
+
+/* text + image row, image authored last (adjustable two-column display) */
+main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) {
+  max-width: 550px;
+  margin: 0 auto;
+}
+
+main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) > div:not(.columns-img-col) {
+  margin: 0 0 14px;
+  padding: 24px 24px 0;
+  letter-spacing: 0.128px;
+}
+
+main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) h2 {
+  margin: 0 0 14px;
+  color: var(--heading-color);
+  font-size: 24.385px;
+  font-weight: var(--heading-font-weight);
+  line-height: 31.3521px;
+}
+
+main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) p {
+  margin: 0 0 15.75px;
+  font-size: 15.75px;
+  line-height: 23.625px;
+}
+
+@media (width >= 900px) {
+  main .columns > div:has(> .columns-video-col) {
+    max-width: 1200px;
+    margin: 0 auto;
+    gap: 0;
+  }
+
+  main .columns > div:has(> .columns-video-col) > div:not(.columns-video-col) {
+    box-sizing: border-box;
+    flex: 0 1 55%;
+    padding: 24px 48px;
+  }
+
+  main .columns > div:has(> .columns-video-col) > .columns-video-col {
+    flex: 0 1 45%;
+  }
+
+  main .columns > div:has(> .columns-video-col) h2 {
+    margin: 0;
+    font-size: 40px;
+    line-height: 51.4286px;
+  }
+
+  main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) {
+    flex-direction: row-reverse;
+    justify-content: space-around;
+    max-width: 1100px;
+    gap: 0;
+  }
+
+  main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) > div {
+    flex: 1 1 0;
+    max-width: 550px;
+  }
+
+  main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) > div:not(.columns-img-col) {
+    align-self: flex-start;
+    margin: 0;
+    padding: 54px 45px 0;
+  }
+
+  main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) h2 {
+    font-size: 35px;
+    line-height: 45px;
+  }
 }

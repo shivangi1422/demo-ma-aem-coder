@@ -10,7 +10,7 @@
 
 main .form.block {
   --form-field-vert-gap: 4px;
-  --form-field-horz-gap: 50px;
+  --form-field-horz-gap: 10px;
   --form-text-color: #333;
   --form-border-color: #7c858c;
   --form-focus-color: #00a9e0;
@@ -223,6 +223,7 @@ main .form.block form .submit-wrapper button:disabled {
 @media (width >= 600px) {
   main .form.block {
     --form-field-vert-gap: 0;
+    --form-field-horz-gap: 50px;
   }
 
   /* two-column grid; company name spans the full row */

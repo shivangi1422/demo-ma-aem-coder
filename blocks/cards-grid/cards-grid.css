@@ -341,34 +341,92 @@
 }
 /* stylelint-enable no-descending-specificity */
 
-/* FEATURES-PURPLE — features layout (JS adds .features) on a purple band */
+.cards-grid.features li > .cards-grid-title {
+  margin: 0;
+}
+
+/* ============================================================
+   FEATURES-PURPLE — features layout (JS adds .features) on a purple band
+   (source: beckmancoulter.com .data-visualization-container)
+   ============================================================ */
 .cards-grid.features-purple {
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0;
   background-color: #811167;
   color: #fff;
 }
 
-/* stylelint-disable no-descending-specificity -- colour overrides of features */
+/* stylelint-disable no-descending-specificity -- overrides of the features variant */
+.cards-grid.features-purple .cards-grid-heading {
+  margin: 0;
+  padding: 20px 40px 50px;
+}
+
 .cards-grid.features-purple .cards-grid-heading h1,
 .cards-grid.features-purple .cards-grid-heading h2,
-.cards-grid.features-purple .cards-grid-heading h3,
+.cards-grid.features-purple .cards-grid-heading h3 {
+  margin: 0;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-weight: 300;
+  font-size: 24.385px;
+  line-height: 31.3521px;
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.cards-grid.features-purple ul {
+  gap: 0;
+}
+
+.cards-grid.features-purple ul > li {
+  padding: 14px 54px 34px;
+  overflow: visible;
+}
+
+/* title is lifted 20px above the column's padding box, as on the source */
 .cards-grid.features-purple li > h2,
 .cards-grid.features-purple li > h3,
 .cards-grid.features-purple li > h4,
 .cards-grid.features-purple li > h5,
-.cards-grid.features-purple li > .cards-grid-title,
-.cards-grid.features-purple .cards-grid-body p {
+.cards-grid.features-purple li > .cards-grid-title {
+  min-height: 60px;
+  margin: -20px 0 0;
   color: #fff;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  font-size: 19.2px;
+  line-height: 23.04px;
 }
-/* stylelint-enable no-descending-specificity */
+
+.cards-grid.features-purple li > .cards-grid-title strong {
+  font-weight: inherit;
+}
+
+.cards-grid.features-purple .cards-grid-image {
+  margin: 27px 0 0;
+}
 
 .cards-grid.features-purple .cards-grid-image img {
-  width: 95px;
-  height: 95px;
+  width: 90px;
+  height: 90px;
 }
 
-.cards-grid.features li > .cards-grid-title {
-  margin: 0;
+.cards-grid.features-purple .cards-grid-body {
+  gap: 0;
+  margin-top: 10px;
+  padding: 0;
+  font-family: var(--body-font-family);
 }
+
+.cards-grid.features-purple .cards-grid-body p {
+  margin: 0;
+  color: #fff;
+  font-size: 16px;
+  line-height: 1;
+}
+/* stylelint-enable no-descending-specificity */
 
 @media (width >= 600px) {
   .cards-grid.solutions ul,
@@ -429,11 +487,20 @@
   }
 }
 
+
 /* ============================================================
    VIDEO — 3-up grid of 16:9 video posters with a play overlay, no text body
+   (source: beckmancoulter.com .col-3-default-padding with Vidyard players)
    ============================================================ */
 .cards-grid.video {
-  padding: 40px 24px;
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 42px 14px 18px;
+}
+
+.cards-grid.video ul {
+  gap: 72px;
 }
 
 .cards-grid.video ul > li {
@@ -460,8 +527,8 @@
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 64px;
-  height: 64px;
+  width: 68px;
+  height: 68px;
   border-radius: 50%;
   background-color: rgb(0 0 0 / 60%);
   transform: translate(-50%, -50%);
@@ -473,14 +540,14 @@
   top: 50%;
   left: 50%;
   border-style: solid;
-  border-width: 12px 0 12px 20px;
+  border-width: 13px 0 13px 22px;
   border-color: transparent transparent transparent #fff;
   transform: translate(-35%, -50%);
 }
 
 .cards-grid.video .cards-grid-video-poster:hover .cards-grid-video-play,
 .cards-grid.video .cards-grid-video-poster:focus-visible .cards-grid-video-play {
-  background-color: var(--bc-orange);
+  background-color: rgb(0 0 0 / 80%);
 }
 
 .cards-grid.video .cards-grid-video-frame {
@@ -503,19 +570,29 @@
 }
 
 /* ============================================================
-   SHOWCASE — white cards over a full-bleed background image,
-   centered white heading + subheading, optional card images
+   SHOWCASE — white cards over a background image (section "background").
+   Text-only cards (source .double-showcase-feature) and photo cards
+   (source .tripple-showcase-feature) are told apart by .cards-grid-has-image.
    ============================================================ */
 .cards-grid.showcase {
   position: relative;
-  padding: 48px 24px;
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 60px 14px;
   overflow: hidden;
   background-color: var(--bc-blue-dark);
 }
 
+/* no heading: the source still reserves its (empty) intro block */
+.cards-grid.showcase:not(:has(> .cards-grid-heading)) {
+  padding-top: 132px;
+}
+
+/* the source's parallax layer overhangs the block by 25% top and bottom */
 .cards-grid.showcase .cards-grid-background {
   position: absolute;
-  inset: 0;
+  inset: -25% 0;
   z-index: 0;
   line-height: 0;
 }
@@ -529,6 +606,7 @@
   width: 100%;
   height: 100%;
   object-fit: cover;
+  object-position: 50% 50%;
 }
 
 .cards-grid.showcase > .cards-grid-heading,
@@ -537,66 +615,257 @@
   z-index: 1;
 }
 
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
 .cards-grid.showcase .cards-grid-heading {
+  margin: 30px 0;
+  padding: 0 40px;
   text-align: center;
 }
 
-/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
 .cards-grid.showcase .cards-grid-heading h1,
 .cards-grid.showcase .cards-grid-heading h2,
-.cards-grid.showcase .cards-grid-heading h3,
-.cards-grid.showcase .cards-grid-heading p {
+.cards-grid.showcase .cards-grid-heading h3 {
+  margin: 0;
   color: #fff;
+  font-family: var(--heading-font-family);
+  font-weight: 300;
+  font-size: 24.385px;
+  line-height: 31.3521px;
+  letter-spacing: var(--heading-letter-spacing);
 }
 
+/* subheading (source span.sub-header) */
 .cards-grid.showcase .cards-grid-heading p {
-  margin: 12px 0 0;
+  margin: 12.1925px 0 0;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-weight: 600;
+  font-size: 12.1925px;
+  line-height: 14.631px;
 }
 
 .cards-grid.showcase ul {
   display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  padding: 15px;
 }
 
 .cards-grid.showcase ul > li {
-  flex: 1 1 100%;
   border: 0;
   background-color: #fff;
 }
 
-.cards-grid.showcase .cards-grid-image img {
-  aspect-ratio: 56 / 37;
-}
-
 .cards-grid.showcase .cards-grid-body {
   flex: 1;
+  gap: 0;
+  font-family: var(--body-font-family);
+}
+
+.cards-grid.showcase .cards-grid-body h3 {
+  font-family: var(--heading-font-family);
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.cards-grid.showcase .cards-grid-body p {
+  font-size: 18px;
+  line-height: 27px;
 }
 
 .cards-grid.showcase .cards-grid-cta {
-  margin-top: auto;
-  padding-top: 8px;
+  margin: 0;
 }
 
-.cards-grid.showcase .cards-grid-cta a.button {
+main .cards-grid.showcase .cards-grid-cta a.button:any-link {
   margin: 0;
+  padding: 12.375px 23.625px;
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 16px;
+}
+
+/* --- text-only cards (source .showcase-feature) --- */
+.cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-body {
+  padding: 50px;
+}
+
+.cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-body h3 {
+  margin: 0 0 14px;
+  color: #000;
+  font-weight: 300;
+  font-size: 24.385px;
+  line-height: 31.3521px;
+}
+
+.cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-body p {
+  margin: 0 0 18px;
+  color: var(--text-color);
+}
+
+.cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-body .cards-grid-cta {
+  margin: 0;
+}
+
+main .cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-cta a.button:any-link {
+  border-radius: var(--button-radius);
+  background-color: var(--brand-red);
+  color: #fff;
+}
+
+main .cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-cta a.button:hover,
+main .cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-cta a.button:focus-visible {
+  background-color: #b61522;
+  color: #fff;
+}
+
+/* --- photo cards (source .photo-card) --- */
+.cards-grid.showcase li.cards-grid-has-image {
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 10%);
+  transition: box-shadow 0.1s, transform 0.1s;
+}
+
+.cards-grid.showcase li.cards-grid-has-image:hover {
+  transform: translateY(-5px);
+}
+
+.cards-grid.showcase .cards-grid-image img {
+  display: block;
+  aspect-ratio: 56 / 37;
+}
+
+.cards-grid.showcase li.cards-grid-has-image .cards-grid-body {
+  padding: 16px 16px 40px;
+  text-align: center;
+}
+
+.cards-grid.showcase li.cards-grid-has-image .cards-grid-body h3 {
+  margin: -6.4275px 0 0;
+  padding: 30px 0 7.5px;
+  color: rgb(0 0 0 / 85%);
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 38.5714px;
+  letter-spacing: 0.75px;
+}
+
+.cards-grid.showcase li.cards-grid-has-image .cards-grid-body p {
+  margin: 0;
+  padding: 16.884px 0 8.1px;
+  color: #000;
+}
+
+.cards-grid.showcase li.cards-grid-has-image .cards-grid-body .cards-grid-cta {
+  margin-top: auto;
+  padding: 13.0612px 0 0;
+}
+
+main .cards-grid.showcase li.cards-grid-has-image .cards-grid-cta a.button:any-link {
+  position: relative;
+  border-radius: 4px;
+  background: none;
+  color: var(--link-color);
+}
+
+/* chevron-right after the label (source: Linearicons glyph in the right padding) */
+main .cards-grid.showcase li.cards-grid-has-image .cards-grid-cta a.button::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 8px;
+  width: 7px;
+  height: 7px;
+  border-top: 1.5px solid currentcolor;
+  border-right: 1.5px solid currentcolor;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+main .cards-grid.showcase li.cards-grid-has-image .cards-grid-cta a.button:hover,
+main .cards-grid.showcase li.cards-grid-has-image .cards-grid-cta a.button:focus-visible {
+  background: none;
+  color: var(--link-hover-color);
 }
 /* stylelint-enable no-descending-specificity */
 
 @media (width >= 600px) {
   .cards-grid.video ul {
     grid-template-columns: repeat(3, 1fr);
+    gap: 28px;
   }
 
-  .cards-grid.showcase ul > li {
-    flex: 1 1 0;
-    min-width: 240px;
-    max-width: 480px;
+  .cards-grid.features-purple ul > li {
+    padding: 14px 14px 34px;
   }
 }
 
 @media (width >= 900px) {
-  .cards-grid.showcase {
-    padding: 60px 80px;
+  .cards-grid.video {
+    padding: 42px 28px 18px;
+  }
+
+  /* features-purple */
+  .cards-grid.features-purple {
+    padding: 0 14px;
+  }
+
+  .cards-grid.features-purple .cards-grid-heading {
+    box-sizing: border-box;
+    max-width: 672px;
+    margin: 0 auto;
+    padding: 30px 30px 60px;
+  }
+
+  .cards-grid.features-purple .cards-grid-heading h1,
+  .cards-grid.features-purple .cards-grid-heading h2,
+  .cards-grid.features-purple .cards-grid-heading h3 {
+    font-size: 35px;
+    line-height: 45px;
+  }
+
+  .cards-grid.features-purple ul > li {
+    padding: 14px 64px 74px;
+  }
+
+  .cards-grid.features-purple .cards-grid-body {
+    margin-top: 33px;
+  }
+
+  /* showcase */
+  .cards-grid.showcase:not(:has(> .cards-grid-heading)) {
+    padding-top: 140px;
+  }
+
+  .cards-grid.showcase .cards-grid-heading {
+    padding: 0;
+  }
+
+  .cards-grid.showcase .cards-grid-heading h1,
+  .cards-grid.showcase .cards-grid-heading h2,
+  .cards-grid.showcase .cards-grid-heading h3 {
+    font-size: 40px;
+    line-height: 51.4286px;
+  }
+
+  .cards-grid.showcase .cards-grid-heading p {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+
+  .cards-grid.showcase ul {
+    flex-direction: row;
+  }
+
+  .cards-grid.showcase ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .cards-grid.showcase li:not(.cards-grid-has-image) .cards-grid-body h3 {
+    font-size: 40px;
+    line-height: 51.4286px;
+  }
+
+  .cards-grid.showcase li.cards-grid-has-image .cards-grid-body p {
+    padding: 16.884px 33.75px 8.1px;
   }
 }
