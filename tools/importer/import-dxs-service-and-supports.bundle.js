@@ -87,7 +87,9 @@ var CustomImportScript = (() => {
           const a = document.createElement("a");
           a.href = href;
           a.textContent = text;
-          p.append(a);
+          const strong = document.createElement("strong");
+          strong.append(a);
+          p.append(strong);
         } else {
           p.textContent = text;
         }
@@ -973,6 +975,11 @@ var CustomImportScript = (() => {
       if (el.getAttribute("data-bg-src")) return;
       const src = [el, ...el.querySelectorAll(".floating-bg")].map(urlOf).find(Boolean);
       if (src) el.setAttribute("data-bg-src", src);
+    });
+    safeQueryAll2(element, ".data-visualization-container .chart-feature").forEach((el) => {
+      if (el.getAttribute("data-icon-src")) return;
+      const src = [...el.querySelectorAll(".custom-icon, .chart-graph")].map(urlOf).find(Boolean);
+      if (src) el.setAttribute("data-icon-src", src);
     });
   }
   function transform3(hookName, element, payload) {

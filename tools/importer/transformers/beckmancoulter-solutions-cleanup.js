@@ -220,6 +220,12 @@ function preserveShowcaseBackgrounds(element) {
     const src = [el, ...el.querySelectorAll('.floating-bg')].map(urlOf).find(Boolean);
     if (src) el.setAttribute('data-bg-src', src);
   });
+  // feature icons are inline backgrounds on empty .custom-icon divs (also dropped later)
+  safeQueryAll(element, '.data-visualization-container .chart-feature').forEach((el) => {
+    if (el.getAttribute('data-icon-src')) return;
+    const src = [...el.querySelectorAll('.custom-icon, .chart-graph')].map(urlOf).find(Boolean);
+    if (src) el.setAttribute('data-icon-src', src);
+  });
 }
 
 export default function transform(hookName, element, payload) {

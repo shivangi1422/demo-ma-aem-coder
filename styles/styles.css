@@ -315,15 +315,16 @@ main > .section:has(> div > .product-banner) {
   margin: 0;
 }
 
-main > .section:has(> div > .hero) > div,
-main > .section:has(> div > .cards-grid) > div,
-main > .section:has(> div > .carousel) > div,
-main > .section:has(> div > .tabs-products) > div,
-main > .section:has(> div > .content-reversed) > div,
-main > .section:has(> div > .form-request) > div,
-main > .section:has(> div > .content-product-detail) > div,
-main > .section:has(> div > .content-product-form) > div,
-main > .section:has(> div > .product-banner) > div {
+/* only the block's own wrapper goes full-bleed; default content keeps the content width */
+main > .section > div:has(> .hero),
+main > .section > div:has(> .cards-grid),
+main > .section > div:has(> .carousel),
+main > .section > div:has(> .tabs-products),
+main > .section > div:has(> .content-reversed),
+main > .section > div:has(> .form-request),
+main > .section > div:has(> .content-product-detail),
+main > .section > div:has(> .content-product-form),
+main > .section > div:has(> .product-banner) {
   max-width: none;
   padding: 0;
 }

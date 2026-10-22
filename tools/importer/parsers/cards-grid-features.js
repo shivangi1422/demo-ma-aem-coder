@@ -75,7 +75,9 @@ export default function parse(element, { document }) {
     const imageCell = [];
     const icon = feature.querySelector('.custom-icon');
     const iconImg = feature.querySelector('.chart-graph img');
-    const src = (iconImg && iconImg.getAttribute('src')) || bgUrl(icon) || bgUrl(feature.querySelector('.chart-graph'));
+    // data-icon-src is recorded by the solutions cleanup before empty icon divs are removed
+    const src = (iconImg && iconImg.getAttribute('src')) || feature.getAttribute('data-icon-src')
+      || bgUrl(icon) || bgUrl(feature.querySelector('.chart-graph'));
     const titleEl = feature.querySelector('.chart-header');
     const title = clean(titleEl ? titleEl.textContent : '');
     if (src) {

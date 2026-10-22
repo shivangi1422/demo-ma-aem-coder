@@ -140,7 +140,7 @@ var CustomImportScript = (() => {
       const imageCell = [];
       const icon = feature.querySelector(".custom-icon");
       const iconImg = feature.querySelector(".chart-graph img");
-      const src = iconImg && iconImg.getAttribute("src") || bgUrl2(icon) || bgUrl2(feature.querySelector(".chart-graph"));
+      const src = iconImg && iconImg.getAttribute("src") || feature.getAttribute("data-icon-src") || bgUrl2(icon) || bgUrl2(feature.querySelector(".chart-graph"));
       const titleEl = feature.querySelector(".chart-header");
       const title = clean2(titleEl ? titleEl.textContent : "");
       if (src) {
@@ -1033,6 +1033,11 @@ var CustomImportScript = (() => {
       const src = [el, ...el.querySelectorAll(".floating-bg")].map(urlOf).find(Boolean);
       if (src) el.setAttribute("data-bg-src", src);
     });
+    safeQueryAll2(element, ".data-visualization-container .chart-feature").forEach((el) => {
+      if (el.getAttribute("data-icon-src")) return;
+      const src = [...el.querySelectorAll(".custom-icon, .chart-graph")].map(urlOf).find(Boolean);
+      if (src) el.setAttribute("data-icon-src", src);
+    });
   }
   function transform3(hookName, element, payload) {
     const template = payload && payload.template;
@@ -1168,6 +1173,326 @@ var CustomImportScript = (() => {
         if (marker) {
           if (i === 0) marker.remove();
           else marker.removeAttribute(MARKER_ATTR2);
+        }
+      }
+    }
+  }
+
+  // tools/importer/transformers/beckmancoulter-dxs-cleanup.js
+  var TEMPLATE_NAME3 = "dxs-service-and-supports";
+  var ANCHOR_OVERRIDES = {
+    IntelliServe: "key-benefits-of-remote-desktop-sharing"
+  };
+  var CHROME_SELECTORS3 = [
+    // UserWay accessibility widget
+    ".uw-sl",
+    ".uwy",
+    '[class*="userway"]',
+    '[class^="uw-s"]',
+    ".uwaw-dictionary-tooltip",
+    // header / navigation / search
+    "header",
+    ".nav-container",
+    "#universal-navigation",
+    "#mobile-universal-nav",
+    "#dx-navigation",
+    ".primary-navigation",
+    ".mobile-subnav-header",
+    "#mobile-language-select-btn",
+    ".global-search-spacer",
+    ".coveo-global-search",
+    // country selector + profile (gigya) modals
+    ".country-language-modal",
+    ".country-language-selector",
+    ".gigya-prefs-modal",
+    "#gigya-prefs-modal",
+    // breadcrumb + share / print bar
+    ".photo-header-container",
+    ".breadcrumb-container",
+    ".breadcrumbs",
+    ".share-container",
+    // footer
+    "footer",
+    ".footer-container",
+    ".universal-footer",
+    ".universal-footer-text",
+    // cookie banner / feedback widgets
+    "#onetrust-consent-sdk",
+    ".onetrust-pc-dark-filter",
+    "#kampyleButtonContainer",
+    ".kampyle_button",
+    // spacers
+    "div.line-break",
+    // inline code
+    "script",
+    "style",
+    "noscript",
+    "link"
+  ];
+  function safeQueryAll3(root, selector) {
+    try {
+      return [...root.querySelectorAll(selector)];
+    } catch (e) {
+      return [];
+    }
+  }
+  function norm4(text) {
+    return (text || "").replace(/[\s ]+/g, " ").trim().toLowerCase();
+  }
+  function slugify(text) {
+    return norm4(text).replace(/[^a-z0-9]+/g, "-").replace(/-+/g, "-").replace(/^-|-$/g, "");
+  }
+  function collectProtected2(element, template) {
+    const set = /* @__PURE__ */ new Set();
+    (template && template.blocks || []).forEach((block) => {
+      (block.instances || []).forEach((sel) => {
+        safeQueryAll3(element, sel).forEach((el) => set.add(el));
+      });
+    });
+    return [...set];
+  }
+  function makeRemover2(element, protectedEls) {
+    const main = element.querySelector("#main-container");
+    return (el) => {
+      if (!el || !el.isConnected) return;
+      if (el === main || main && el.contains(main)) return;
+      if (protectedEls.some((p) => p === el || el.contains(p))) return;
+      el.remove();
+    };
+  }
+  function hasMedia2(el) {
+    return !!el.querySelector("img, picture, video, iframe, table, svg, input");
+  }
+  function isEmpty2(el) {
+    return !norm4(el.textContent) && !hasMedia2(el);
+  }
+  function isEmptyHeading(h) {
+    return norm4(h.textContent) === "empty heading" && !hasMedia2(h);
+  }
+  function removeChrome3(element, remove) {
+    CHROME_SELECTORS3.forEach((sel) => {
+      safeQueryAll3(element, sel).forEach(remove);
+    });
+    safeQueryAll3(element, "nav").forEach((nav) => {
+      if (!nav.closest("#main-container")) remove(nav);
+    });
+    safeQueryAll3(element, ".ui.modal").forEach((el) => {
+      if (/Choose your country\/region and language/i.test(el.textContent || "")) remove(el);
+    });
+    safeQueryAll3(element, "body > div, body > span").forEach((el) => {
+      if (el.querySelector("#main-container")) return;
+      if (isEmpty2(el)) remove(el);
+    });
+  }
+  function removeEmptyHeadings2(element, remove) {
+    safeQueryAll3(element, "h1, h2, h3, h4, h5, h6").forEach((h) => {
+      if (isEmptyHeading(h)) remove(h);
+    });
+  }
+  function removeEmptySpacers2(element, remove, protectedEls) {
+    const inBlock = (el) => protectedEls.some((p) => p.contains(el));
+    safeQueryAll3(element, "#main-container p").forEach((p) => {
+      if (!inBlock(p) && isEmpty2(p)) remove(p);
+    });
+    safeQueryAll3(
+      element,
+      "#main-container section, #main-container div.page-content, #main-container div.sublayout, #main-container div.content-container"
+    ).forEach((el) => {
+      if (isEmpty2(el)) remove(el);
+    });
+  }
+  function headingFor(target, element) {
+    if (/^H[1-6]$/.test(target.tagName) && !isEmptyHeading(target)) return target;
+    const main = element.querySelector("#main-container") || element;
+    let node = target;
+    while (node && node.parentElement && node.parentElement !== main) {
+      const parent = node.parentElement;
+      if (parent.matches("div.sublayout") && parent.parentElement === main) break;
+      node = parent;
+    }
+    const headings = safeQueryAll3(node, "h1, h2, h3, h4, h5, h6").filter((h) => !isEmptyHeading(h));
+    return headings[0] || null;
+  }
+  function rewriteInPageAnchors(element) {
+    safeQueryAll3(element, 'a[href^="#"]').forEach((a) => {
+      const id = (a.getAttribute("href") || "").slice(1);
+      if (!id) return;
+      if (ANCHOR_OVERRIDES[id]) {
+        a.setAttribute("href", `#${ANCHOR_OVERRIDES[id]}`);
+        return;
+      }
+      let target = null;
+      try {
+        target = element.querySelector(`#${CSS.escape(id)}`);
+      } catch (e) {
+        target = safeQueryAll3(element, "[id]").find((el) => el.id === id) || null;
+      }
+      if (!target) return;
+      const h = headingFor(target, element);
+      const slug = h && slugify(h.textContent);
+      if (slug) a.setAttribute("href", `#${slug}`);
+    });
+  }
+  function fixContactLink(element) {
+    const doc = element.ownerDocument;
+    safeQueryAll3(element, "#main-container a[href]").forEach((a) => {
+      if (norm4(a.textContent) !== "contact us") return;
+      const href = a.getAttribute("href") || "";
+      if (/[?&](sc_database|preview|country|lang)=/i.test(href)) {
+        const hashIdx = href.indexOf("#");
+        const hash = hashIdx >= 0 ? href.slice(hashIdx) : "";
+        const base = href.split(/[?#]/)[0];
+        a.setAttribute("href", `${base}${hash}`);
+      }
+      a.removeAttribute("class");
+      let strong = a.parentElement && a.parentElement.tagName === "STRONG" ? a.parentElement : null;
+      if (!strong) {
+        strong = doc.createElement("strong");
+        a.replaceWith(strong);
+        strong.append(a);
+      }
+      const parent = strong.parentElement;
+      const alone = parent && parent.tagName === "P" && [...parent.childNodes].every((n) => n === strong || n.nodeType === 3 && !norm4(n.textContent));
+      if (!alone) {
+        const p = doc.createElement("p");
+        if (parent && parent.tagName === "P") parent.after(p);
+        else strong.before(p);
+        p.append(strong);
+      }
+    });
+  }
+  function transform5(hookName, element, payload) {
+    const template = payload && payload.template;
+    if (!template || template.name !== TEMPLATE_NAME3) return;
+    if (hookName === "beforeTransform") {
+      const protectedEls = collectProtected2(element, template);
+      const remove = makeRemover2(element, protectedEls);
+      rewriteInPageAnchors(element);
+      removeChrome3(element, remove);
+      removeEmptyHeadings2(element, remove);
+      fixContactLink(element);
+      removeEmptySpacers2(element, remove, protectedEls);
+    }
+    if (hookName === "afterTransform") {
+      WebImporter.DOMUtils.remove(element, [
+        "script",
+        "noscript",
+        "style",
+        "link",
+        "iframe",
+        "input",
+        "form",
+        ".uw-sl",
+        ".uwy",
+        "#onetrust-consent-sdk",
+        "#kampyleButtonContainer",
+        ".kampyle_button"
+      ]);
+      safeQueryAll3(element, "*").forEach((el) => {
+        [...el.attributes].forEach(({ name }) => {
+          if (name.startsWith("data-gtm") || name.startsWith("data-uw") || name.startsWith("data-track") || name === "onclick") {
+            el.removeAttribute(name);
+          }
+        });
+      });
+    }
+  }
+
+  // tools/importer/transformers/beckmancoulter-dxs-sections.js
+  var TEMPLATE_NAME4 = "dxs-service-and-supports";
+  var MARKER_ATTR3 = "data-excat-section-id";
+  var GENERIC_SELECTOR2 = /div\.(page-content|intro-content)\s*(:[\w-]+(\([^)]*\))?)?\s*$/;
+  function norm5(text) {
+    return (text || "").replace(/[\s ]+/g, " ").trim().toLowerCase();
+  }
+  function safeQuery3(root, selector) {
+    try {
+      return root.querySelector(selector);
+    } catch (e) {
+      return null;
+    }
+  }
+  function contentRoot2(element) {
+    return element.querySelector("#main-container") || element;
+  }
+  function topLevel2(el, element) {
+    const root = contentRoot2(element);
+    let node = el;
+    while (node && node.parentElement && node.parentElement !== root && node.parentElement !== element) {
+      const parent = node.parentElement;
+      if (parent.matches("div.sublayout") && parent.parentElement === root) return node;
+      node = parent;
+    }
+    return node || el;
+  }
+  function findByName2(element, name) {
+    const target = norm5(name);
+    if (!target) return null;
+    const root = contentRoot2(element);
+    const pools = ["h1, h2, h3, h4, h5, h6", "p"];
+    for (const sel of pools) {
+      const match = [...root.querySelectorAll(sel)].find((n) => norm5(n.textContent).startsWith(target));
+      if (match) return topLevel2(match, element);
+    }
+    return null;
+  }
+  function findBySelector2(element, section) {
+    const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
+    for (const sel of selectors) {
+      if (!sel) continue;
+      const el = safeQuery3(element, sel);
+      if (el) return topLevel2(el, element);
+    }
+    return null;
+  }
+  function isGeneric2(section) {
+    const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
+    return selectors.every((sel) => !sel || GENERIC_SELECTOR2.test(sel));
+  }
+  function findSectionElement3(element, section) {
+    if (isGeneric2(section)) {
+      return findByName2(element, section.name) || findBySelector2(element, section);
+    }
+    return findBySelector2(element, section) || findByName2(element, section.name);
+  }
+  function transform6(hookName, element, payload) {
+    const template = payload && payload.template;
+    if (!template || template.name !== TEMPLATE_NAME4) return;
+    const sections = template.sections || [];
+    if (sections.length < 2) return;
+    const document = element.ownerDocument;
+    if (hookName === "beforeTransform") {
+      for (let i = sections.length - 1; i >= 0; i -= 1) {
+        const section = sections[i];
+        const el = findSectionElement3(element, section);
+        if (!el) continue;
+        if (i === 0 && !section.style) continue;
+        const hr = document.createElement("hr");
+        if (section.style) hr.setAttribute(MARKER_ATTR3, section.id);
+        el.before(hr);
+      }
+    }
+    if (hookName === "afterTransform") {
+      for (let i = sections.length - 1; i >= 0; i -= 1) {
+        const section = sections[i];
+        if (!section.style) continue;
+        const marker = element.querySelector(`hr[${MARKER_ATTR3}="${section.id}"]`);
+        let anchor = marker;
+        if (!anchor) {
+          anchor = findSectionElement3(element, section);
+          if (!anchor) continue;
+        }
+        const metadata = WebImporter.Blocks.createBlock(document, {
+          name: "Section Metadata",
+          cells: { style: section.style }
+        });
+        let end = anchor.nextElementSibling;
+        while (end && end.tagName !== "HR") end = end.nextElementSibling;
+        if (end) end.before(metadata);
+        else anchor.parentElement.append(metadata);
+        if (marker) {
+          if (i === 0) marker.remove();
+          else marker.removeAttribute(MARKER_ATTR3);
         }
       }
     }
@@ -1431,12 +1756,12 @@ var CustomImportScript = (() => {
     "cards-grid-features": parse2,
     "cards-grid-video": parse3,
     "table-grouped": parse4,
-    "columns": parse5,
+    columns: parse5,
     "cards-grid-showcase": parse6,
     "carousel-resources": parse7,
     form: parse8
   };
-  var transformers = [transform, transform2, transform3, transform4];
+  var transformers = [transform, transform2, transform3, transform4, transform5, transform6];
   function executeTransformers(hookName, element, payload) {
     const enhancedPayload = __spreadProps(__spreadValues({}, payload), { template: PAGE_TEMPLATE });
     transformers.forEach((fn) => {

@@ -389,20 +389,17 @@
 }
 
 /* ============================================================
-   SPLIT — image beside a text panel
-     .split       text left, image right
-     .split-left  image left, text right
+   SPLIT — image beside a text panel: text left, image right
+   (.split-left is styled separately below)
    ============================================================ */
-.hero.split,
-.hero.split-left {
+.hero.split {
   display: flex;
   flex-direction: column;
   background-color: #fff;
   overflow: hidden;
 }
 
-.hero.split .hero-text,
-.hero.split-left .hero-text {
+.hero.split .hero-text {
   display: flex;
   flex-direction: column;
   gap: 32px;
@@ -411,9 +408,7 @@
 }
 
 .hero.split .hero-text h1,
-.hero.split .hero-text h2,
-.hero.split-left .hero-text h1,
-.hero.split-left .hero-text h2 {
+.hero.split .hero-text h2 {
   margin: 0;
   color: var(--bc-navy);
   font-weight: 800;
@@ -421,45 +416,38 @@
   line-height: 1.15;
 }
 
-.hero.split .hero-text p,
-.hero.split-left .hero-text p {
+.hero.split .hero-text p {
   margin: 0;
   color: var(--bc-grey);
   font-size: 16px;
   line-height: 1.5;
 }
 
-.hero.split .hero-text .button-wrapper,
-.hero.split-left .hero-text .button-wrapper {
+.hero.split .hero-text .button-wrapper {
   margin: 0;
 }
 
-.hero.split .hero-text .button-wrapper + .button-wrapper,
-.hero.split-left .hero-text .button-wrapper + .button-wrapper {
+.hero.split .hero-text .button-wrapper + .button-wrapper {
   margin-top: 16px;
 }
 
-.hero.split .hero-text a.button:any-link,
-.hero.split-left .hero-text a.button:any-link {
+.hero.split .hero-text a.button:any-link {
   padding: 12px 24px;
   font-weight: 600;
   font-size: 14px;
 }
 
-.hero.split .hero-text a.button.secondary:any-link,
-.hero.split-left .hero-text a.button.secondary:any-link {
+.hero.split .hero-text a.button.secondary:any-link {
   background-color: transparent;
   border: 2px solid var(--bc-blue);
   color: var(--bc-blue);
 }
 
-.hero.split .hero-image,
-.hero.split-left .hero-image {
+.hero.split .hero-image {
   line-height: 0;
 }
 
-.hero.split .hero-image img,
-.hero.split-left .hero-image img {
+.hero.split .hero-image img {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -488,48 +476,148 @@
     font-size: 40px;
   }
 
-  .hero.split,
-  .hero.split-left {
+  .hero.split {
     flex-direction: row;
     min-height: 600px;
   }
 
-  .hero.split .hero-text,
-  .hero.split-left .hero-text {
-    flex: 1 1 55%;
-    justify-content: center;
-  }
-
-  .hero.split .hero-text h1,
-  .hero.split .hero-text h2,
-  .hero.split-left .hero-text h1,
-  .hero.split-left .hero-text h2 {
-    font-size: 48px;
-  }
-
-  .hero.split .hero-image,
-  .hero.split-left .hero-image {
-    flex: 1 1 45%;
-  }
-
   /* split: text left, image right */
   .hero.split .hero-text {
+    flex: 1 1 55%;
+    justify-content: center;
     order: 0;
     padding: 80px 64px 80px 80px;
   }
 
+  .hero.split .hero-text h1,
+  .hero.split .hero-text h2 {
+    font-size: 48px;
+  }
+
   .hero.split .hero-image {
+    flex: 1 1 45%;
     order: 1;
-  }
-
-  /* split-left: image left, text right */
-  .hero.split-left .hero-image {
-    order: 0;
-  }
-
-  .hero.split-left .hero-text {
-    order: 1;
-    padding: 80px 80px 80px 64px;
   }
 }
 
+/* ============================================================
+   SPLIT-LEFT — contained 1400px row, image column left and
+   top-aligned text right
+   (source: /en/products/dxs-service-and-supports/remote-services-and-diagnostics,
+   div.sublayout-two-column-dynamic)
+   ============================================================ */
+.hero.split-left {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto 30px;
+  padding: 0 30px 30px;
+  background-color: #fff;
+}
+
+.hero.split-left .hero-image {
+  line-height: 0;
+}
+
+.hero.split-left .hero-image p {
+  margin: 0;
+}
+
+/* source slideshow item leaves a 4px sliver beside the image */
+.hero.split-left .hero-image img {
+  display: block;
+  width: calc(100% - 4px);
+  height: auto;
+}
+
+.hero.split-left .hero-text {
+  min-width: 0;
+  padding: 10px 5%;
+  font-family: var(--body-font-family);
+}
+
+.hero.split-left .hero-text h1,
+.hero.split-left .hero-text h2 {
+  margin: 0 0 14px;
+  color: var(--heading-color);
+  font-family: var(--heading-font-family);
+  font-size: calc(16px + 2.95vw);
+  font-weight: 300;
+  line-height: 1.2857;
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.hero.split-left .hero-text p {
+  margin: 0 0 16px;
+  color: var(--text-color);
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* bold subhead (source .subhead-regular) */
+.hero.split-left .hero-text p:has(> strong) {
+  line-height: 27px;
+}
+
+.hero.split-left .hero-text p > strong {
+  color: var(--heading-color);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 27px;
+}
+
+/* source primary CTA: red, 8px radius; overrides the shared hero orange button */
+.hero.split-left .hero-text a.button:any-link {
+  border: 0;
+  border-radius: var(--button-radius);
+  padding: 12.375px 23.625px;
+  background-color: var(--brand-red);
+  color: var(--background-color);
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+
+  /* source "normal" line box with MontserratRegular metrics -> 41px tall button */
+  line-height: 16.25px;
+}
+
+.hero.split-left .hero-text a.button:any-link:hover,
+.hero.split-left .hero-text a.button:any-link:focus-visible {
+  background-color: var(--brand-red-hover);
+  color: var(--background-color);
+}
+
+@media (width >= 900px) {
+  .hero.split-left {
+    flex-direction: row;
+    align-items: flex-start;
+    margin-top: 35px;
+  }
+
+  .hero.split-left .hero-image,
+  .hero.split-left .hero-text {
+    flex: 1 1 0;
+  }
+
+  .hero.split-left .hero-text {
+    padding: 10px 0;
+  }
+
+  .hero.split-left .hero-text h1,
+  .hero.split-left .hero-text h2 {
+    font-size: 48px;
+  }
+}
+
+@media (width >= 1200px) {
+  /* 35% image column + 30px gap; text runs to the container edge */
+  .hero.split-left {
+    padding-right: 0;
+  }
+
+  .hero.split-left .hero-image {
+    flex: 0 0 calc((100% - 30px) * 0.35);
+    margin-right: 30px;
+  }
+}

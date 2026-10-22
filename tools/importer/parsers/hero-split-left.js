@@ -66,7 +66,10 @@ export default function parse(element, { document }) {
         const a = document.createElement('a');
         a.href = href;
         a.textContent = text;
-        p.append(a);
+        // source CTA is a red primary button: <strong> makes EDS decorate it as a.button.primary
+        const strong = document.createElement('strong');
+        strong.append(a);
+        p.append(strong);
       } else {
         p.textContent = text;
       }
