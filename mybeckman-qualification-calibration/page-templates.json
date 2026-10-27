@@ -1,0 +1,109 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "mybeckman-qualification-calibration",
+      "urls": [
+        "https://www.mybeckman.in/service/instrument-qualification-calibration"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/instrument-qualification-calibration",
+      "description": "mybeckman.in instrument qualification & calibration page",
+      "urlPattern": "/service/instrument-qualification-calibration",
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
+        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/support/technical-documents": "/en-in/support/technical-documents",
+        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration"
+      },
+      "metaOverrides": {
+        "/service/instrument-qualification-calibration": {
+          "title": "Instrument Qualification & Calibration",
+          "description": "Maintain compliance with expert installation, equipment qualification and calibration services from Beckman Coulter Life Sciences, covering USP, GLP, GMP and ISO 17025, 21501 and 11171.",
+          "image": "https://media.beckman.com/-/media/service/media/page14_services_2.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "name": "hero-plain",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
+          ]
+        },
+        {
+          "name": "columns-intro",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section--grey .Section__intro)"
+          ]
+        },
+        {
+          "name": "columns-two-column",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column)"
+          ]
+        },
+        {
+          "name": "columns-contact",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> #getInTouch)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero-plain",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-plain"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "columns-intro",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section--grey .Section__intro)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "columns-intro"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "columns-two-column",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-two-column"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "4",
+          "name": "columns-contact",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> #getInTouch)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "columns-contact"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

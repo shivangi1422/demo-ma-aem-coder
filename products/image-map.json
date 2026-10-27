@@ -1,0 +1,15 @@
+{
+  "/en/products/hematology": {
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/dxh-900/images/dxh-900.jpg": "/products/hematology/dxh-900-hematology-analyzer.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/dxh-800/images/hem-dxh-connected-workcell-solutions-web.jpg": "/products/hematology/dxh-900-connected-workcell.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/dxh-800/images/hem-dxh-slidemaker-stainer-web.jpg": "/products/hematology/dxh-slidemaker-stainer-ii.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/scopio/scopio-563x480.jpg": "/products/hematology/scopio-labs-x100-digital-cell-morphology.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/dxh-690t/dxh-690t-hematology-analyzer-table-563x480-web.jpg": "/products/hematology/dxh-690t-hematology-analyzer.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/dxh-560/3dxh-560-al-hematology-analyzer563x480.png": "/products/hematology/dxh-560-al-hematology-analyzer.png",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/dxh-250/images/hem-dxh520-web.jpg": "/products/hematology/dxh-520-hematology-analyzer.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/hematology/dxh-500/images/hem-dxh500-web.jpg": "/products/hematology/dxh-500-hematology-analyzer.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/automation/dxa-5000-fit/images/1-dxa-5000-fit-input-output-563x450.jpg": "/products/hematology/dxa-5000-fit-lab-automation.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/cimt/proservice/images/cimt-proservice4-web.jpg": "/products/hematology/dxs-service-and-support.jpg",
+    "https://media.beckmancoulter.com/-/media/diagnostics/products/urinalysis/new-urinalysis-dp/scenario-software-solutions-1.jpg": "/products/hematology/clinical-informatics-solutions.jpg"
+  }
+}

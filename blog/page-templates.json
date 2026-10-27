@@ -1,0 +1,117 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "blog",
+      "urls": [
+        "https://www.beckmancoulter.com/en/blog/diagnostics/improving-hematology-workflow-efficiency-through-flagging-optimization",
+        "https://www.beckmancoulter.com/en/blog/diagnostics/modernize-sti-diagnostics-and-surveillance",
+        "https://www.beckmancoulter.com/en/blog/diagnostics/the-silent-epidemic-of-hepatitis-c-virus",
+        "https://www.beckmancoulter.com/en/blog/diagnostics/three-advantages-of-advantaged-workflows-at-nhls-sebokeng",
+        "https://www.beckmancoulter.com/en/blog/diagnostics/when-efficiency-meets-clinical-excellence"
+      ],
+      "representativeUrl": "https://www.beckmancoulter.com/en/blog/diagnostics/when-efficiency-meets-clinical-excellence",
+      "description": "Beckman Coulter diagnostics blog article (variable body sections)",
+      "urlPattern": "/en/blog/diagnostics/*",
+      "blocks": [
+        {
+          "name": "hero-gradient",
+          "instances": [
+            "#main-container > .sublayout.ui.aligned.segment.grid > .blog-post-header"
+          ]
+        },
+        {
+          "name": "columns-text",
+          "instances": [
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .page-content.nested-padding",
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .disclaimer-text",
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .product-ordering.stand-alone"
+          ]
+        },
+        {
+          "name": "columns-media",
+          "instances": [
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .sublayout-two-column-dynamic",
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .adjustable-two-column-display"
+          ]
+        },
+        {
+          "name": "content-reversed-story",
+          "instances": [
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .social-proof-section",
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .media-showcase-simple"
+          ]
+        },
+        {
+          "name": "quote-testimonial",
+          "instances": [
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .customer-testimonial"
+          ]
+        },
+        {
+          "name": "columns-tags",
+          "instances": [
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .blog-post-tag-list"
+          ]
+        },
+        {
+          "name": "columns-author",
+          "instances": [
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > .contributor-detail.summary"
+          ]
+        },
+        {
+          "name": "cards-grid-productlines",
+          "instances": [
+            "#main-container > .sublayout.ui.aligned.segment.grid.light-gray > .blog-post-list"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "Blog Header",
+          "selector": [
+            "#main-container > .sublayout.ui.aligned.segment.grid > .blog-post-header"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-gradient"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "Body (each non-empty child of the body wrapper is its own section)",
+          "selector": [
+            "#main-container > .sublayout.ui.one.column.stackable.grid.container > *"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-text",
+            "columns-media",
+            "content-reversed-story",
+            "quote-testimonial",
+            "columns-tags",
+            "columns-author"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "Related / Featured Articles",
+          "selector": [
+            "#main-container > .sublayout.ui.aligned.segment.grid.light-gray > .blog-post-list"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-productlines"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

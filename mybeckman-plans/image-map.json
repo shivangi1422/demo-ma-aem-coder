@@ -1,0 +1,10 @@
+{
+  "/service/plans": {
+    "https://media.beckman.com/-/media/centrifugation/products/instruments/ultracentrifuge/optima-xe/centrifuge-ultracentrifuge-optima-xe-full-view-2017-04.png": "/en-in/service/plans/optima-xe-ultracentrifuge.png",
+    "https://media.beckman.com/-/media/flow-cytometry/products/instruments/cytoflex/flow-cytometry-cytometers-cytoflex-full-view-2017-05.png": "/en-in/service/plans/cytoflex-flow-cytometer.png",
+    "https://media.beckman.com/-/media/automation/products/instruments/biomek-i-series/i5/automation-liquid-handler-biomek-i5-full-view-2017-04.png": "/en-in/service/plans/biomek-i5-liquid-handler.png",
+    "https://media.beckman.com/-/media/service/media/service_images_call_center.jpg": "/en-in/service/plans/service-support-specialist-desk.jpg",
+    "https://embed-ssl.wistia.com/deliveries/e36ec1516ebebefe5879fca5307cea4c18fa6cf8.webp": "/en-in/service/plans/beckmanconnect-remote-service-video-poster.webp",
+    "https://media.beckman.com/-/media/service/media/page2_service_training.jpg": "/en-in/service/plans/service-training-classroom.jpg"
+  }
+}

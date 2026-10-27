@@ -1,0 +1,72 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "mybeckman-instrument-optimization",
+      "urls": [
+        "https://www.mybeckman.in/service/instrument-optimization"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/instrument-optimization",
+      "description": "mybeckman.in instrument optimization page",
+      "urlPattern": "/service/instrument-optimization",
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
+        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/support/technical-documents": "/en-in/support/technical-documents",
+        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration"
+      },
+      "metaOverrides": {
+        "/service/instrument-optimization": {
+          "description": "Keep your Beckman Coulter Life Sciences instruments at peak performance. Contact our service team by phone or email, or request technical support.",
+          "image": "https://media.beckman.com/-/media/service/media/service_hub_home-2022-09.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "name": "hero-plain",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section > .Header)"
+          ]
+        },
+        {
+          "name": "columns-contact",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> #getInTouch)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero-plain",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section > .Header)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-plain"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "columns-contact",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> #getInTouch)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "columns-contact"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}

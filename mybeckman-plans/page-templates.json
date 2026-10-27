@@ -1,0 +1,153 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "mybeckman-plans",
+      "urls": [
+        "https://www.mybeckman.in/service/plans"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/plans",
+      "description": "mybeckman.in service plans page",
+      "urlPattern": "/service/plans",
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
+        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/support/technical-documents": "/en-in/support/technical-documents",
+        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration"
+      },
+      "metaOverrides": {
+        "/service/plans": {
+          "title": "Service Plans",
+          "description": "Beckman Coulter Life Sciences service plans: priority response, certified parts and labor, technology updates and compliance support to minimize instrument downtime.",
+          "image": "https://media.beckman.com/-/media/service/media/service_images_call_center.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "name": "hero-plain",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
+          ]
+        },
+        {
+          "name": "cards-grid-benefits",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Intro)"
+          ]
+        },
+        {
+          "name": "cards-grid-products",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.productCards)"
+          ]
+        },
+        {
+          "name": "columns-two-column",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-right > ul)",
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.wistia_responsive_padding)",
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-left > img):has(.Section__two-column-right > .btn)"
+          ]
+        },
+        {
+          "name": "columns-contact",
+          "instances": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Contact)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "1",
+          "name": "hero-plain",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-plain"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "cards-grid-benefits",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Intro)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "cards-grid-benefits"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "cards-grid-products",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.productCards)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-products"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "4",
+          "name": "columns-two-column-1",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-right > ul)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-two-column"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "5",
+          "name": "columns-two-column-2",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.wistia_responsive_padding)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-two-column"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "6",
+          "name": "columns-two-column-3",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-left > img):has(.Section__two-column-right > .btn)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-two-column"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "7",
+          "name": "columns-contact",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Contact)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "columns-contact"
+          ],
+          "defaultContent": []
+        }
+      ]
+    }
+  ]
+}
