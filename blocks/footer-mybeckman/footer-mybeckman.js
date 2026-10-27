@@ -4,14 +4,16 @@
  *
  * All copy, links and images come from the footer document (/en-in/footer). Sections are
  * recognised by their content:
- *   - heading + <strong> link            newsletter: <em> paragraph = required email field,
- *                                        other paragraphs = notes, <strong> link = submit
+ *   - heading + button link              newsletter: <em> text = required email field,
+ *                                        other paragraphs = notes, button = submit
  *                                        (hands off to the live sign-up form)
  *   - list of text links                 link columns (first = primary, red)
- *   - list of image links, before legal  social icons (added under the last link column)
+ *   - images, before legal               social icons (added under the last link column)
  *   - single short paragraph             "back to top" button
- *   - paragraphs + image link            legal: copyright + logo, then fine print
- *   - list of images, after legal        company logos band
+ *   - long text + image                  legal: copyright + logo, then fine print
+ *   - images, after legal                company logos band
+ * An image's link is either around it or the link right after it (image + button in the
+ * authoring environment); a button is <strong><a> or an authoring-environment a.button.
  */
 
 const ICON_PATH = `${window.hlx?.codeBasePath || ''}/icons`;
@@ -71,8 +73,41 @@ function cloneLink(a, content) {
   return link;
 }
 
-const isImageList = (el) => el.matches('ul') && [...el.children].every((li) => li.querySelector('img'));
-const isTextLinkList = (el) => el.matches('ul') && [...el.children].every((li) => li.querySelector('a') && !li.querySelector('img'));
+const isTextLinkList = (el) => el.matches('ul') && el.children.length
+  && [...el.children].every((li) => li.querySelector('a') && !li.querySelector('img'));
+const isShortLink = (el) => el.matches('p') && el.querySelector('a') && !el.querySelector('img')
+  && el.textContent.trim() === el.querySelector('a').textContent.trim();
+const isLongText = (el) => el.matches('p') && !el.querySelector('img') && el.textContent.trim().length > 60;
+
+/** The link of a button paragraph (<strong><a>, <em><a> or an a.button), or null. */
+function buttonOf(el) {
+  if (!el.matches('p')) return null;
+  const a = el.querySelector(':scope > strong > a, :scope > em > a, :scope > a.button, :scope > strong > a.button');
+  return a && el.textContent.trim() === a.textContent.trim() ? a : null;
+}
+
+/**
+ * Images of a section with their links: the link around the image, or the short link that
+ * follows it. Also reads the older list form (<ul><li><a><img></a></li></ul>).
+ * @returns {{img: HTMLImageElement, a: Element|null}[]}
+ */
+function imageLinks(section) {
+  const listItems = [...section.querySelectorAll(':scope > ul > li')];
+  const nodes = listItems.length ? listItems : [...section.children];
+  const items = [];
+  nodes.forEach((el) => {
+    const img = el.querySelector('img');
+    if (img) {
+      items.push({ img, a: img.closest('a') || (el.tagName === 'LI' ? el.querySelector('a') : null) });
+    } else if (isShortLink(el) && items.length && !items[items.length - 1].a) {
+      items[items.length - 1].a = el.querySelector('a');
+    }
+  });
+  return items;
+}
+
+const isImageSet = (section) => !!section.querySelector('img')
+  && [...section.children].every((el) => el.querySelector('img') || isShortLink(el));
 
 /* ---------- builders ---------- */
 
@@ -88,15 +123,15 @@ function buildNewsletter(section) {
       h.className = 'footer-mybeckman-heading';
       h.textContent = el.textContent.trim();
       wrap.append(h);
-    } else if (el.matches('p') && el.querySelector(':scope > strong > a')) {
-      const a = el.querySelector('a');
+    } else if (buttonOf(el)) {
+      const a = buttonOf(el);
       submitHref = a.getAttribute('href');
       const button = document.createElement('button');
       button.type = 'submit';
       button.textContent = a.textContent.trim();
       form.append(button);
-    } else if (el.matches('p') && el.children.length === 1 && el.firstElementChild.tagName === 'EM'
-      && el.textContent.trim() === el.firstElementChild.textContent.trim()) {
+    } else if (el.tagName === 'EM' || (el.matches('p') && el.children.length === 1 && el.firstElementChild.tagName === 'EM'
+      && el.textContent.trim() === el.firstElementChild.textContent.trim())) {
       // <em> paragraph = required email field with its label
       const id = 'footer-mybeckman-email';
       const label = document.createElement('label');
@@ -141,7 +176,7 @@ function buildLinkColumn(ul, primary) {
   col.className = `footer-mybeckman-column footer-mybeckman-column-${primary ? 'primary' : 'secondary'}`;
   const list = document.createElement('ul');
   list.className = 'footer-mybeckman-links';
-  ul.querySelectorAll(':scope > li > a').forEach((a) => {
+  ul.querySelectorAll(':scope > li > a, :scope > li > p > a').forEach((a) => {
     const li = document.createElement('li');
     li.append(cloneLink(a));
     list.append(li);
@@ -172,15 +207,14 @@ async function inlineSvg(src) {
  * Social icons are inlined (they use currentColor, so they follow the link colour:
  * grey, red on hover); if an icon cannot be inlined the image is kept.
  */
-async function buildSocial(ul) {
+async function buildSocial(section) {
   const list = document.createElement('ul');
   list.className = 'footer-mybeckman-social';
-  const items = await Promise.all([...ul.querySelectorAll(':scope > li')].map(async (item) => {
-    const a = item.querySelector('a');
-    const img = item.querySelector('img');
+  const linked = imageLinks(section).filter(({ a }) => a);
+  const items = await Promise.all(linked.map(async ({ img, a }) => {
     const glyph = (await inlineSvg(img.src)) || img.cloneNode(true);
     const link = cloneLink(a, [glyph]);
-    link.setAttribute('aria-label', img.alt);
+    link.setAttribute('aria-label', img.alt || a.textContent.trim());
     const li = document.createElement('li');
     li.append(link);
     return li;
@@ -206,23 +240,26 @@ function buildLegal(section) {
   legal.className = 'footer-mybeckman-legal';
   const inner = document.createElement('div');
   inner.className = 'footer-mybeckman-legal-inner';
-  const paragraphs = [...section.children];
-  const logoIndex = paragraphs.findIndex((p) => p.querySelector('a img'));
-  // row 1: text before the logo + the logo; row 2: the rest (fine print)
+  const children = [...section.children];
+  const logoIndex = children.findIndex((el) => el.querySelector('img'));
+  const texts = children.filter(isLongText);
+  // row 1: text before the logo + the logo; row 2: the text after it (fine print)
   const row1 = document.createElement('div');
   row1.className = 'footer-mybeckman-legal-row';
-  paragraphs.slice(0, logoIndex).forEach((p) => row1.append(p.cloneNode(true)));
-  if (logoIndex >= 0) {
-    const a = paragraphs[logoIndex].querySelector('a');
-    const img = a.querySelector('img').cloneNode(true);
+  texts.filter((p) => children.indexOf(p) < logoIndex)
+    .forEach((p) => row1.append(p.cloneNode(true)));
+  const [logo] = imageLinks(section);
+  if (logo) {
+    const img = logo.img.cloneNode(true);
     img.className = 'footer-mybeckman-legal-logo';
     img.loading = 'lazy';
-    const link = cloneLink(a, [img]);
+    const link = logo.a ? cloneLink(logo.a, [img]) : document.createElement('span');
+    if (!logo.a) link.append(img);
     link.className = 'footer-mybeckman-legal-logo-link';
     row1.append(link);
   }
   inner.append(row1);
-  const rest = paragraphs.slice(logoIndex + 1);
+  const rest = texts.filter((p) => children.indexOf(p) > logoIndex);
   if (rest.length) {
     const row2 = document.createElement('div');
     row2.className = 'footer-mybeckman-legal-row';
@@ -237,14 +274,14 @@ function buildLegal(section) {
   return legal;
 }
 
-function buildLogos(ul) {
+function buildLogos(section) {
   const band = document.createElement('div');
   band.className = 'footer-mybeckman-logos';
   const list = document.createElement('ul');
-  ul.querySelectorAll(':scope > li').forEach((item) => {
-    const img = item.querySelector('img').cloneNode(true);
+  imageLinks(section).forEach((item) => {
+    const img = item.img.cloneNode(true);
     img.loading = 'lazy';
-    const a = item.querySelector('a');
+    const { a } = item;
     const holder = a ? cloneLink(a, [img]) : document.createElement('span');
     if (!a) holder.append(img);
     holder.setAttribute('aria-label', img.alt);
@@ -278,22 +315,22 @@ export default async function decorate(block) {
   sections.forEach((section) => {
     const first = section.firstElementChild;
     if (!first) return;
-    if (section.querySelector('h1, h2, h3, h4, h5, h6') && section.querySelector('strong > a')) {
+    if (section.querySelector('h1, h2, h3, h4, h5, h6') && [...section.children].some(buttonOf)) {
       newsletter = buildNewsletter(section);
     } else if (section.children.length === 1 && isTextLinkList(first)) {
       columns.append(buildLinkColumn(first, !columns.children.length));
-    } else if (section.children.length === 1 && isImageList(first)) {
-      if (legalSeen) {
-        after.push(buildLogos(first));
-      } else {
-        const column = columns.lastElementChild;
-        pending.push(buildSocial(first).then((social) => column?.append(social)));
-      }
     } else if (section.children.length === 1 && first.matches('p') && !first.querySelector('a, img')) {
       pending.push(buildBackToTop(first).then((button) => { backToTop = button; }));
-    } else if (section.querySelector('p a img')) {
+    } else if (section.querySelector('img') && [...section.children].some(isLongText)) {
       legalSeen = true;
       after.push(buildLegal(section));
+    } else if (isImageSet(section)) {
+      if (legalSeen) {
+        after.push(buildLogos(section));
+      } else {
+        const column = columns.lastElementChild;
+        pending.push(buildSocial(section).then((social) => column?.append(social)));
+      }
     }
   });
 

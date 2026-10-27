@@ -85,9 +85,9 @@ function buildBrand(section) {
   const brand = document.createElement('a');
   brand.className = 'header-mybeckman-brand';
   brand.href = a.getAttribute('href');
-  const img = a.querySelector('img');
+  const img = section.querySelector('img');
   if (img) {
-    brand.setAttribute('aria-label', img.alt);
+    brand.setAttribute('aria-label', img.alt || a.textContent.trim());
     const logo = document.createElement('img');
     logo.src = img.src;
     logo.alt = img.alt;
@@ -142,8 +142,22 @@ function buildTools(section) {
 
 /* ---------- row 1: menu panels ---------- */
 
+const ITEM_LINK = ':scope > a, :scope > p > a, :scope > strong > a';
+
 function isGroup(li) {
-  return !li.querySelector(':scope > a') && li.querySelector(':scope > ul') && textOf(li);
+  return !li.querySelector(ITEM_LINK) && li.querySelector(':scope > ul') && textOf(li);
+}
+
+/**
+ * The link of a "button" paragraph: <p><strong><a> (primary), <p><em><a> (secondary),
+ * or an authoring-environment button (<p class="button-container"><a class="button …">).
+ * @returns {{a: Element, secondary: boolean}|null}
+ */
+function buttonOf(el) {
+  if (!el.matches('p')) return null;
+  const a = el.querySelector(':scope > strong > a, :scope > em > a, :scope > a.button, :scope > strong > a.button');
+  if (!a || el.textContent.trim() !== a.textContent.trim()) return null;
+  return { a, secondary: !!el.querySelector(':scope > em') || a.classList.contains('secondary') };
 }
 
 /**
@@ -178,7 +192,7 @@ function buildLevel(ul, depth, owner, parentLink, backLabel) {
     list.append(back, title, all);
   }
   const addItem = (li) => {
-    const a = li.querySelector(':scope > a');
+    const a = li.querySelector(ITEM_LINK);
     if (!a) return;
     const item = document.createElement('li');
     item.className = 'header-mybeckman-link';
@@ -270,7 +284,10 @@ function buildDrop(section, index) {
   trigger.setAttribute('aria-expanded', 'false');
   trigger.setAttribute('aria-label', label);
   const img = triggerSource?.querySelector('img');
-  const token = triggerSource?.textContent.trim().match(/^:([a-z0-9-]+):$/);
+  const iconSpan = triggerSource?.querySelector('span.icon');
+  const iconName = iconSpan
+    ? [...iconSpan.classList].find((c) => c.startsWith('icon-'))?.slice(5)
+    : triggerSource?.textContent.trim().match(/^:([a-z0-9-]+):$/)?.[1];
   if (img) {
     const flag = document.createElement('img');
     flag.src = img.src;
@@ -279,8 +296,8 @@ function buildDrop(section, index) {
     flag.width = 14;
     flag.height = 14;
     trigger.append(flag);
-  } else if (token) {
-    trigger.append(icon(token[1]));
+  } else if (iconName) {
+    trigger.append(icon(iconName));
   }
 
   const drop = document.createElement('div');
@@ -290,8 +307,8 @@ function buildDrop(section, index) {
   const body = document.createElement('div');
   body.className = 'header-mybeckman-drop-body';
   const selects = [];
-  const submit = children.find((c) => c.matches('p') && c.querySelector(':scope > strong > a'));
-  const submitHref = submit?.querySelector('a').getAttribute('href');
+  const submit = children.find((c) => buttonOf(c) && !buttonOf(c).secondary);
+  const submitHref = submit && buttonOf(submit).a.getAttribute('href');
   for (let i = 0; i < children.length; i += 1) {
     const el = children[i];
     const next = children[i + 1];
@@ -302,10 +319,10 @@ function buildDrop(section, index) {
       selects.push(select);
       body.append(field);
       i += 1;
-    } else if (el.tagName === 'P' && el.querySelector(':scope > strong > a, :scope > em > a')) {
-      const a = el.querySelector('a');
+    } else if (buttonOf(el)) {
+      const { a, secondary } = buttonOf(el);
       const btn = linkFrom(a);
-      btn.className = el.querySelector(':scope > strong') ? 'header-mybeckman-button' : 'header-mybeckman-button header-mybeckman-button-secondary';
+      btn.className = secondary ? 'header-mybeckman-button header-mybeckman-button-secondary' : 'header-mybeckman-button';
       if (selects.length) {
         // submit: combine the chosen country and language (language from the second select)
         btn.addEventListener('click', (e) => {
@@ -317,7 +334,7 @@ function buildDrop(section, index) {
         });
       }
       body.append(btn);
-    } else if (el.tagName === 'P' && el.children.length === 1 && el.firstElementChild.tagName === 'STRONG' && el.textContent.trim() === el.firstElementChild.textContent.trim()) {
+    } else if (el.tagName === 'STRONG' || (el.tagName === 'P' && el.children.length === 1 && el.firstElementChild.tagName === 'STRONG' && el.textContent.trim() === el.firstElementChild.textContent.trim())) {
       const title = document.createElement('p');
       title.className = 'header-mybeckman-drop-title';
       title.textContent = el.textContent.trim();
