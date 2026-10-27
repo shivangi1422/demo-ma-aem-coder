@@ -20,6 +20,23 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "theme",
+        "label": "Theme",
+        "description": "Site design for this page. mybeckman.in loads its own header, footer and styles.",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "mybeckman.in",
+            "value": "theme-mybeckman"
+          }
+        ]
       }
     ]
   },

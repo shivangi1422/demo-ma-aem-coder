@@ -17,18 +17,32 @@
 const ICON_PATH = `${window.hlx?.codeBasePath || ''}/icons`;
 
 /**
- * Fetches the footer document (local preview path first, then the published path).
+ * Fetches the first available copy of a site document. The site root comes from the current
+ * page path, so this works locally (/content/en-in/…), in the authoring environment
+ * (/content/<site>/en-in/…) and on the published site (/en-in/…).
+ * @returns {Promise<{resp: Response, url: string}|null>}
+ */
+async function fetchSiteDocument(name) {
+  const marker = '/en-in/';
+  const { pathname } = window.location;
+  const root = pathname.includes(marker) ? pathname.slice(0, pathname.indexOf(marker)) : '';
+  const urls = [...new Set([`${root}/en-in/${name}.plain.html`, `/content/en-in/${name}.plain.html`, `/en-in/${name}.plain.html`])];
+  const tryNext = async ([url, ...rest]) => {
+    if (!url) return null;
+    const resp = await fetch(url);
+    return resp.ok ? { resp, url } : tryNext(rest);
+  };
+  return tryNext(urls);
+}
+
+/**
+ * Fetches the footer document of the /en-in site.
  * @returns {Promise<Document|null>}
  */
 async function fetchFooter() {
-  // metadata-independent: /content first (localhost), then root (published site)
-  let url = '/content/en-in/footer.plain.html';
-  let resp = await fetch('/content/en-in/footer.plain.html');
-  if (!resp.ok) {
-    url = '/en-in/footer.plain.html';
-    resp = await fetch('/en-in/footer.plain.html');
-  }
-  if (!resp.ok) return null;
+  const found = await fetchSiteDocument('footer');
+  if (!found) return null;
+  const { resp, url } = found;
   const base = new URL(url, window.location.href).href;
   const doc = new DOMParser().parseFromString(await resp.text(), 'text/html');
   // images are referenced relative to the footer document
