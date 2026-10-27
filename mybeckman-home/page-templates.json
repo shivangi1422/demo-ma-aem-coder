@@ -1,0 +1,180 @@
+{
+  "templates": [
+    {
+      "name": "mybeckman-home",
+      "urls": [
+        "https://www.mybeckman.in/"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/",
+      "description": "mybeckman.in home page",
+      "blocks": [
+        {
+          "name": "hero-curved-panel",
+          "instances": [
+            "#main > div.main-holder > div.relative.justify-end.sm\\:flex"
+          ]
+        },
+        {
+          "name": "jump-nav",
+          "instances": [
+            "#main > div.main-holder > nav.sticky.top-4.z-20.hidden.items-center.md\\:\\!flex"
+          ]
+        },
+        {
+          "name": "cards-promo",
+          "instances": [
+            "#latest > div.grid"
+          ]
+        },
+        {
+          "name": "cards-topic-tiles",
+          "instances": [
+            "#topics > div.grid"
+          ]
+        },
+        {
+          "name": "columns-diagnostics-bar",
+          "instances": [
+            "#main > div.main-holder > div.mx-auto.bg-brand-gray-50.p-2 > p"
+          ]
+        },
+        {
+          "name": "cards-service-icon",
+          "instances": [
+            "#service div.grid"
+          ]
+        },
+        {
+          "name": "hero-photo-card",
+          "instances": [
+            "#about"
+          ]
+        }
+      ],
+      "urlPattern": "/",
+      "site": "mybeckman",
+      "sections": [
+        {
+          "id": "1",
+          "name": "Home hero",
+          "selector": [
+            "#main > div.main-holder > div.relative.justify-end.sm\\:flex"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-curved-panel"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "2",
+          "name": "Jump-to nav",
+          "selector": [
+            "#main > div.main-holder > nav.sticky.top-4.z-20.hidden.items-center.md\\:\\!flex"
+          ],
+          "style": null,
+          "blocks": [
+            "jump-nav"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "3",
+          "name": "Fresh insights",
+          "selector": [
+            "#latest"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-promo"
+          ],
+          "defaultContent": [
+            "#latest > h2"
+          ]
+        },
+        {
+          "id": "4",
+          "name": "Popular topics",
+          "selector": [
+            "#main > div.main-holder > div.gradient-section-background"
+          ],
+          "style": "light-grey-gradient, split",
+          "blocks": [
+            "cards-topic-tiles"
+          ],
+          "defaultContent": [
+            "#topics > div:first-child"
+          ]
+        },
+        {
+          "id": "5",
+          "name": "Diagnostics bar",
+          "selector": [
+            "#main > div.main-holder > div.mx-auto.bg-brand-gray-50.p-2"
+          ],
+          "style": "light-grey, centered",
+          "blocks": [
+            "columns-diagnostics-bar"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "6",
+          "name": "Service & technical support",
+          "selector": [
+            "#service"
+          ],
+          "style": "off-white, split",
+          "blocks": [
+            "cards-service-icon"
+          ],
+          "defaultContent": [
+            "#service > div > div:first-child"
+          ]
+        },
+        {
+          "id": "7",
+          "name": "Our company",
+          "selector": [
+            "#about"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-photo-card"
+          ],
+          "defaultContent": []
+        }
+      ],
+      "sectionAnchors": {
+        "3": "latest",
+        "4": "topics",
+        "6": "service",
+        "7": "about"
+      },
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
+        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/support/technical-documents": "/en-in/support/technical-documents",
+        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
+        "": "/en-in/index",
+        "/": "/en-in/"
+      },
+      "metaOverrides": {
+        "": {
+          "title": "Life Sciences Instruments, Reagents, Supplies | Beckman Coulter Life Sciences",
+          "description": "Beckman Coulter Life Sciences provides lab instruments, workflow automation, scientific insights, and service support for modern laboratories.",
+          "image": "https://media.beckman.com/-/media/beckman/site_promotion_banners/homepage_hero_images/homepage-hero-20231218.jpg",
+          "keywords": "Beckman Coulter Life Sciences, Beckman Coulter",
+          "theme": "theme-mybeckman"
+        }
+      }
+    }
+  ],
+  "metadata": {
+    "projectType": "xwalk"
+  }
+}

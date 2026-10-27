@@ -23,6 +23,7 @@ t.linkRules = {
   migratedPaths: [...migratedPaths].sort(),
   pathMap: PATH_MAP,
   hrefOverrides: t.hrefOverrides || [],
+  keepAnchors: Object.values(t.sectionAnchors || {}),
   anchorOverrides: fs.existsSync(overridesFile) ? JSON.parse(fs.readFileSync(overridesFile, 'utf8')) : {},
 };
 // Optional image map: original image URL (origin + path, no query) -> clean local path.
@@ -102,6 +103,8 @@ export default {
     if (metaOverride.title) meta.Title = metaOverride.title;
     if (metaOverride.description) meta.Description = metaOverride.description;
     if (metaOverride.image) { const img = document.createElement('img'); img.src = metaOverride.image; meta.Image = img; }
+    // Any other key (e.g. theme, keywords) becomes its own metadata row.
+    Object.entries(metaOverride).forEach(([k, v]) => { if (!['title', 'description', 'image'].includes(k)) meta[k] = v; });
     if (Object.keys(meta).length) main.append(WebImporter.Blocks.getMetadataBlock(document, meta));
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);

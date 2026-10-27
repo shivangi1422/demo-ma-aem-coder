@@ -98,6 +98,8 @@ export default function transform(hookName, element, payload) {
     if (!href || /^(mailto:|javascript:)/i.test(href)) return;
 
     if (href.startsWith('#')) {
+      // Links to a section's authored Anchor ID stay as they are.
+      if ((rules.keepAnchors || []).includes(href.slice(1))) return;
       const text = anchorTargets.get(href);
       if (text && headingIds.has(slugify(text))) a.setAttribute('href', `#${slugify(text)}`);
       return;

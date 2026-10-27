@@ -19,7 +19,9 @@
         "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
         "/service/tech-support": "/en-in/service/tech-support",
         "/support/technical-documents": "/en-in/support/technical-documents",
-        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration"
+        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
+        "": "/en-in/index",
+        "/": "/en-in/"
       },
       "hrefOverrides": [
         {
