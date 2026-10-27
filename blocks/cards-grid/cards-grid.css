@@ -445,6 +445,11 @@ body.mybeckman .cards-grid.productlines > ul > li {
   border-radius: 0;
   padding: 12px 0;
   background-color: #fff;
+  transition: box-shadow 0.2s ease-out;
+}
+
+body.mybeckman .cards-grid.productlines > ul > li:hover {
+  box-shadow: 0 2px 15px 0 rgb(0 0 0 / 10%);
 }
 
 body.mybeckman .cards-grid.productlines .cards-grid-image {
@@ -470,6 +475,7 @@ body.mybeckman .cards-grid.productlines .cards-grid-body h4 {
   font-weight: 300;
   font-size: 28px;
   line-height: 1.25;
+  text-align: center;
 }
 
 body.mybeckman .cards-grid.productlines .cards-grid-body :is(p, ul, ol) {
