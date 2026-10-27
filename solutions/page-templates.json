@@ -13,19 +13,19 @@
       "urlPattern": "/en/solutions/*",
       "blocks": [
         {
-          "name": "hero-home",
+          "name": "hero-home-solutions",
           "instances": [
             "#main-container > .sublayout.ui.aligned > .video-hero-carousel"
           ]
         },
         {
-          "name": "form-request-marketo",
+          "name": "form-request-marketo-solutions",
           "instances": [
             "#main-container > .sublayout.stackable > form.mktoForm"
           ]
         },
         {
-          "name": "columns-text",
+          "name": "columns-text-solutions",
           "instances": [
             "#main-container > .sublayout.stackable > .page-content.nested-padding"
           ]
@@ -37,20 +37,20 @@
           ]
         },
         {
-          "name": "columns-media",
+          "name": "columns-media-solutions",
           "instances": [
             "#main-container > .sublayout.stackable > .adjustable-two-column-display",
             "#main-container > .sublayout.stackable > .sublayout-two-column-dynamic"
           ]
         },
         {
-          "name": "content-reversed-story",
+          "name": "content-reversed-story-solutions",
           "instances": [
             "#main-container > .sublayout.stackable > .social-proof-section"
           ]
         },
         {
-          "name": "quote-testimonial",
+          "name": "quote-testimonial-solutions",
           "instances": [
             "#main-container > .sublayout.stackable > .customer-testimonial"
           ]
@@ -71,7 +71,7 @@
           ],
           "style": null,
           "blocks": [
-            "hero-home"
+            "hero-home-solutions"
           ],
           "defaultContent": []
         },
@@ -83,17 +83,18 @@
           ],
           "style": null,
           "blocks": [
-            "form-request-marketo",
-            "columns-text",
+            "form-request-marketo-solutions",
+            "columns-text-solutions",
             "columns-cta",
-            "columns-media",
-            "content-reversed-story",
-            "quote-testimonial",
+            "columns-media-solutions",
+            "content-reversed-story-solutions",
+            "quote-testimonial-solutions",
             "carousel-testimonial"
           ],
           "defaultContent": []
         }
-      ]
+      ],
+      "site": "beckmancoulter"
     }
   ]
 }

@@ -20,7 +20,14 @@ no block, model, style or script changes. This branch holds tooling only and is 
 | Folder | Contents |
 |---|---|
 | `shared/` | `gen-import.cjs` (builds the import script; adds link rules, path map, image map, metadata overrides), `beckmancoulter-0-links.js` (link step, runs first), `make-image-map.cjs`, `run-import.sh` |
-| `<template>/` | `page-templates.json`, `parsers/`, `transformers/`, and optional `image-map.json` and `link-overrides.json` |
+| `lib/<site>/parsers/` | **One copy of each section parser per site** (`mybeckman`, `beckmancoulter`). Every page type picks its parsers from here, so a fix to a parser reaches every page that uses it. |
+| `lib/<site>/transformers/` | Shared cleanup and section-split steps for a site whose pages all work the same way (mybeckman). |
+| `<template>/` | One folder per page type: `page-templates.json` (with `"site"`, the list of sections and which parser handles each), optional `transformers/` overriding the site's, `image-map.json` and `link-overrides.json`. |
+
+**Adding a page:**
+- If its sections already exist in `lib/<site>/parsers`, only a new `<template>/page-templates.json` is needed.
+- If a section is built the same way but needs a tweak, improve the library parser and re-run the page types that use it, checking their output is unchanged.
+- On beckmancoulter.com, parsers suffixed with a page family (e.g. `hero-home-solutions`, `columns-text-blog`) are separate section types that only share a name.
 
 Templates:
 - **beckmancoulter.com:** `products`, `products-legacy`, `solutions`, `blog`.

@@ -23,7 +23,7 @@
           ]
         },
         {
-          "name": "columns-text",
+          "name": "columns-text-blog",
           "instances": [
             "#main-container > .sublayout.ui.one.column.stackable.grid.container > .page-content.nested-padding",
             "#main-container > .sublayout.ui.one.column.stackable.grid.container > .disclaimer-text",
@@ -31,21 +31,21 @@
           ]
         },
         {
-          "name": "columns-media",
+          "name": "columns-media-blog",
           "instances": [
             "#main-container > .sublayout.ui.one.column.stackable.grid.container > .sublayout-two-column-dynamic",
             "#main-container > .sublayout.ui.one.column.stackable.grid.container > .adjustable-two-column-display"
           ]
         },
         {
-          "name": "content-reversed-story",
+          "name": "content-reversed-story-blog",
           "instances": [
             "#main-container > .sublayout.ui.one.column.stackable.grid.container > .social-proof-section",
             "#main-container > .sublayout.ui.one.column.stackable.grid.container > .media-showcase-simple"
           ]
         },
         {
-          "name": "quote-testimonial",
+          "name": "quote-testimonial-blog",
           "instances": [
             "#main-container > .sublayout.ui.one.column.stackable.grid.container > .customer-testimonial"
           ]
@@ -63,7 +63,7 @@
           ]
         },
         {
-          "name": "cards-grid-productlines",
+          "name": "cards-grid-productlines-blog",
           "instances": [
             "#main-container > .sublayout.ui.aligned.segment.grid.light-gray > .blog-post-list"
           ]
@@ -90,10 +90,10 @@
           ],
           "style": null,
           "blocks": [
-            "columns-text",
-            "columns-media",
-            "content-reversed-story",
-            "quote-testimonial",
+            "columns-text-blog",
+            "columns-media-blog",
+            "content-reversed-story-blog",
+            "quote-testimonial-blog",
             "columns-tags",
             "columns-author"
           ],
@@ -107,11 +107,12 @@
           ],
           "style": null,
           "blocks": [
-            "cards-grid-productlines"
+            "cards-grid-productlines-blog"
           ],
           "defaultContent": []
         }
-      ]
+      ],
+      "site": "beckmancoulter"
     }
   ]
 }

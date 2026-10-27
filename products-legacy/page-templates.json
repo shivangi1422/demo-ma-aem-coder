@@ -15,19 +15,19 @@
       "urlPattern": "/en/products/*",
       "blocks": [
         {
-          "name": "hero-home",
+          "name": "hero-home-products-legacy",
           "instances": [
             "#main-container .video-hero-carousel"
           ]
         },
         {
-          "name": "form-request-marketo",
+          "name": "form-request-marketo-products-legacy",
           "instances": [
             "#main-container > form.mktoForm"
           ]
         },
         {
-          "name": "cards-grid-productlines",
+          "name": "cards-grid-productlines-products-legacy",
           "instances": [
             "#main-container .related-products",
             "#main-container > .col-3-default-padding:has(.photo-card)"
@@ -41,20 +41,20 @@
           ]
         },
         {
-          "name": "cards-grid-simple",
+          "name": "cards-grid-simple-products-legacy",
           "instances": [
             "#main-container .product-list"
           ]
         },
         {
-          "name": "content-reversed-story",
+          "name": "content-reversed-story-products-legacy",
           "instances": [
             "#main-container .media-showcase-simple",
             "#main-container .social-proof-section"
           ]
         },
         {
-          "name": "quote-testimonial",
+          "name": "quote-testimonial-products-legacy",
           "instances": [
             "#main-container .testimonial-slim"
           ]
@@ -73,7 +73,7 @@
           ]
         },
         {
-          "name": "columns-text",
+          "name": "columns-text-products-legacy",
           "instances": [
             "#main-container > .wysiwyg-content",
             "#main-container > .sublayout > .wysiwyg-content",
@@ -111,16 +111,16 @@
           ],
           "style": null,
           "blocks": [
-            "hero-home",
-            "form-request-marketo",
-            "cards-grid-productlines",
+            "hero-home-products-legacy",
+            "form-request-marketo-products-legacy",
+            "cards-grid-productlines-products-legacy",
             "cards-grid-stats",
-            "cards-grid-simple",
-            "content-reversed-story",
-            "quote-testimonial",
+            "cards-grid-simple-products-legacy",
+            "content-reversed-story-products-legacy",
+            "quote-testimonial-products-legacy",
             "education-resources",
             "columns-multi",
-            "columns-text"
+            "columns-text-products-legacy"
           ],
           "defaultContent": []
         }
@@ -130,7 +130,8 @@
         "#main-container .social-proof-section",
         "#main-container .media-showcase-simple",
         "#main-container .expanding-product-links-grid"
-      ]
+      ],
+      "site": "beckmancoulter"
     }
   ]
 }
