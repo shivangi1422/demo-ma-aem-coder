@@ -30,7 +30,8 @@
           "description": "Site design for this page. mybeckman.in loads its own header, footer and styles.",
           "options": [
             { "name": "Default", "value": "" },
-            { "name": "mybeckman.in", "value": "theme-mybeckman" }
+            { "name": "mybeckman.in (home page)", "value": "theme-mybeckman" },
+            { "name": "mybeckman.in (inner pages)", "value": "theme-mybeckman, mybeckman-inner" }
           ]
         }
       ]

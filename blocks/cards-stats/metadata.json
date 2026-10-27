@@ -1,0 +1,23 @@
+{
+  "variantName": "cards-stats",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "layout": "Flex row, wraps; items content width with space-between and max-width 1170px >= 992px, equal flex 1 1 0 at 768-991px, one per row on mobile.",
+    "item": "margin 10px, padding-right 10px, white 14px/1.65; value paragraph bold 24px with no bottom margin, label paragraph with no top margin.",
+    "section": "Sits in a full-bleed blue (#007acb) section (section style 'blue'); the band comes from the section, not the block.",
+    "purpose": "Row of headline statistics (value + label)."
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "rows": [
+      { "row": "1..N", "cells": ["text (richtext): <p><strong>value</strong></p><p>label</p>"] }
+    ],
+    "structure": "One item per row; first paragraph is the value (bold), following paragraph(s) the label."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service stat band under the hero (section style 'blue').",
+  "reuseGuidance": "Use for short value + label statistic rows on mybeckman.in pages; put it in a 'blue' section for the white-on-blue look.",
+  "sourceUrl": "https://www.mybeckman.in/service"
+}

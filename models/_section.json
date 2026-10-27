@@ -53,6 +53,10 @@
               "value": "off-white"
             },
             {
+              "name": "Blue",
+              "value": "blue"
+            },
+            {
               "name": "Split (intro beside block)",
               "value": "split"
             },
@@ -91,7 +95,11 @@
         "cards-promo",
         "cards-topic-tiles",
         "cards-service-icon",
-        "hero-photo-card"
+        "hero-photo-card",
+        "hero-dim-photo",
+        "cards-stats",
+        "cards-icon-border",
+        "cards-button-caption"
       ]
     }
   ]

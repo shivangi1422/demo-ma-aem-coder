@@ -1,0 +1,25 @@
+{
+  "variantName": "cards-icon-border",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "layout": "Flex wrap, centred, max-width 1170px; 330px cards (3 per row at 1440, 1 per row on mobile), equal height per row.",
+    "card": "2px solid #f0f3f5 border, padding 40px, margin 10px (2px 2px 0 0 at 768-991px); whole-card hover background #f0f3f5.",
+    "icon": "Font Awesome solid SVG from /icons (fa-<name>.svg) painted #007acb through a CSS mask, 48px tall, width from the SVG viewBox (60/60/54/48/48/48).",
+    "title": "h4 15px/1.3 weight 500, margin 19.95px 0; link #007acb, underline on hover.",
+    "description": "p 16px/1.65 margin 16px 0; whole paragraph is a #007acb link to the same page as the title.",
+    "purpose": "Service / feature link cards with a coloured icon, title and description."
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "rows": [
+      { "row": "1..N", "cells": ["text (richtext): <p>:fa-icon:</p><h4><a>title</a></h4><p><a>description</a></p>"] }
+    ],
+    "structure": "One card per row. Icon token (:fa-user-plus:) in its own paragraph, arriving as text or span.icon; h4 title link; description link (kept as a plain link, never a button)."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service service-area cards (6 cards).",
+  "reuseGuidance": "Use for icon + title + description link cards on mybeckman.in. Icons live in /icons as fa-<name>.svg (Font Awesome Free 5.15.4 solid); add new ones there.",
+  "sourceUrl": "https://www.mybeckman.in/service"
+}

@@ -1,0 +1,112 @@
+/*
+ * Cards (button caption) — mybeckman.in /service "Get in Touch" (Contact__body).
+ * Values are the source's inline \3c style> (html font-size 10px, so 1rem = 10px)
+ * on top of Bootstrap 3 (border-box, body 16px/1.65 Gotham, .btn 13.5px/500).
+ * The blue band, heading and intro come from the section ("blue, centered").
+ */
+
+.cards-button-caption {
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+  color: #fff;
+}
+
+.cards-button-caption,
+.cards-button-caption *,
+.cards-button-caption *::before,
+.cards-button-caption *::after {
+  box-sizing: border-box;
+}
+
+/* .Contact__body */
+.cards-button-caption > ul {
+  display: flex;
+  flex-wrap: wrap;
+  place-content: center space-around;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* .Contact__body div */
+.cards-button-caption .cards-button-caption-item {
+  margin: 20px auto;
+  text-align: center;
+  color: #fff;
+}
+
+/* the button sits directly in the item on the source: no paragraph box */
+.cards-button-caption .cards-button-caption-cta {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+}
+
+/* .btn.btn-primary + .Contact__body override: outline button on blue */
+.cards-button-caption a.cards-button-caption-button:any-link {
+  display: inline-block;
+  inline-size: 200px;
+  max-width: none;
+  margin: 0;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: break-word;
+  color: #fff;
+  background-color: #007acb;
+  box-shadow: 0 8px 15px rgb(0 0 0 / 10%);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cards-button-caption a.cards-button-caption-button:hover,
+.cards-button-caption a.cards-button-caption-button:focus-visible,
+.cards-button-caption a.cards-button-caption-button:active {
+  text-decoration: none;
+  color: #fff;
+  background-color: #0065a7;
+}
+
+/* .Contact p: 1.4rem */
+.cards-button-caption .cards-button-caption-text {
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #fff;
+}
+
+/* the source caption is plain text; an auto-linked e-mail address keeps that look */
+.cards-button-caption .cards-button-caption-text a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  .cards-button-caption > ul {
+    margin-top: 50px;
+  }
+
+  .cards-button-caption .cards-button-caption-item {
+    width: 30%;
+  }
+
+  .cards-button-caption a.cards-button-caption-button:any-link {
+    min-width: 200px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-button-caption a.cards-button-caption-button:any-link {
+    transition: none;
+  }
+}

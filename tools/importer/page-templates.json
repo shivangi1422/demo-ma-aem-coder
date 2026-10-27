@@ -1,0 +1,119 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "mybeckman-service-hub",
+      "urls": [
+        "https://www.mybeckman.in/service"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service",
+      "description": "mybeckman.in service hub page (exact match: photo hero, stats band, service cards, Get in Touch band)",
+      "urlPattern": "/service",
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
+        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/support/technical-documents": "/en-in/support/technical-documents",
+        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
+        "": "/en-in/index",
+        "/": "/en-in/"
+      },
+      "metaOverrides": {
+        "/service": {
+          "description": "Comprehensive service plans, remote connectivity, instrument optimization, repairs, technical support and qualification & calibration from Beckman Coulter Life Sciences.",
+          "image": "https://media.beckman.com/-/media/service/media/service_hub_home-2022-09.jpg"
+        }
+      },
+      "blocks": [
+        {
+          "name": "hero-dim-photo",
+          "instances": [
+            ".bc-rich-text > .hero",
+            ".hero"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".Section--blue .Section__intro",
+            ".Section__intro"
+          ]
+        },
+        {
+          "name": "cards-icon-border",
+          "instances": [
+            ".ServiceCards"
+          ]
+        },
+        {
+          "name": "cards-button-caption",
+          "instances": [
+            "#getInTouch .Contact__body",
+            ".Contact__body"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Service-hub photo hero",
+          "selector": [
+            ".bc-rich-text:has(> .hero)",
+            ".bc-rich-text:nth-of-type(1)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-dim-photo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Stats band",
+          "selector": [
+            ".bc-rich-text:has(.Section__intro)",
+            ".bc-rich-text:nth-of-type(2)"
+          ],
+          "style": "blue",
+          "blocks": [
+            "cards-stats"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Service cards",
+          "selector": [
+            ".bc-rich-text:has(.ServiceCards)",
+            ".bc-rich-text:nth-of-type(3)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-icon-border"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Get in Touch band",
+          "selector": [
+            "#getInTouch"
+          ],
+          "style": "blue, centered",
+          "blocks": [
+            "cards-button-caption"
+          ],
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
+        }
+      ]
+    }
+  ]
+}

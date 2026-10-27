@@ -83,6 +83,36 @@
       "id": "blocks",
       "components": [
         {
+          "title": "Cards Button Caption",
+          "id": "cards-button-caption",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Button Caption",
+                  "filter": "cards-button-caption"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Button Caption",
+          "id": "cards-button-caption-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Button Caption",
+                  "model": "cards-button-caption-item"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Cards Grid",
           "id": "cards-grid",
           "plugins": {
@@ -108,6 +138,36 @@
                 "template": {
                   "name": "Card",
                   "model": "cards-grid-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards Icon Border",
+          "id": "cards-icon-border",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Icon Border",
+                  "filter": "cards-icon-border"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Icon Card",
+          "id": "cards-icon-border-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Icon Card",
+                  "model": "cards-icon-border-item"
                 }
               }
             }
@@ -168,6 +228,36 @@
                 "template": {
                   "name": "Service Card",
                   "model": "cards-service-icon-item"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Cards Stats",
+          "id": "cards-stats",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Cards Stats",
+                  "filter": "cards-stats"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Stat",
+          "id": "cards-stats-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Stat",
+                  "model": "cards-stats-item"
                 }
               }
             }
@@ -396,6 +486,21 @@
                 "template": {
                   "name": "Hero Curved Panel",
                   "model": "hero-curved-panel"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Hero Dim Photo",
+          "id": "hero-dim-photo",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Hero Dim Photo",
+                  "model": "hero-dim-photo"
                 }
               }
             }

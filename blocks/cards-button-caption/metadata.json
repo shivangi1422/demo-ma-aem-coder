@@ -1,0 +1,24 @@
+{
+  "variantName": "cards-button-caption",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "layout": "Flex wrap, space-around, align-content centre; items margin 20px auto; >= 768px list margin-top 50px and items 30% wide; stacked on mobile.",
+    "button": "Outline button: background #007acb, 1px solid #fff, colour #fff, 200px wide, padding 13px 20px, 13.5px/500, radius 2px, shadow 0 8px 15px rgba(0,0,0,.1), wraps long labels; hover background #0065a7.",
+    "caption": "p 14px/1.65 margin 14px 0, white, centred.",
+    "section": "Sits in a 'blue, centered' section that supplies the band, h2 and intro paragraph; the section Anchor ID get-in-touch is the hero CTA target.",
+    "purpose": "Contact options: a button per channel with a short caption."
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "rows": [
+      { "row": "1..N", "cells": ["text (richtext): <p><a>button label</a></p><p>caption</p>"] }
+    ],
+    "structure": "One item per row; the first paragraph holding only a link (plain, bold/italic or p.button-container > a.button) is the button, other paragraphs are captions."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service 'Get in Touch' contact band (section style 'blue, centered').",
+  "reuseGuidance": "Use for 2-4 call-to-action buttons with captions on a blue mybeckman.in band (tel:/mailto:/page links).",
+  "sourceUrl": "https://www.mybeckman.in/service"
+}

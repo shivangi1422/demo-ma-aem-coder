@@ -74,12 +74,12 @@
 
 /* the source sign-up form is set in Gotham (falls back to Arial where Gotham is not licensed) */
 
-/* below 481px the source form is inset 10px and its field is taller */
+/* below 481px the source form is inset 10px (not below the button) and its field is taller */
 .footer-mybeckman-form form {
   max-width: 720px;
   margin: 0 auto;
-  padding: 10px;
-  font-family: 'Gotham A', 'Gotham B', arial, sans-serif;
+  padding: 10px 10px 0;
+  font-family: var(--mb-form-font-family, 'Gotham A', 'Gotham B', arial, sans-serif);
 }
 
 /* each form row ends with 15px of space, as in the source form */
@@ -398,4 +398,60 @@
   .footer-mybeckman-form {
     padding-right: 192px;
   }
+}
+
+/*
+ * Inner pages (body.mybeckman-inner): the source serves the same footer with its
+ * classic stylesheet (media.beckman.com/assets/css/styles.css, Bootstrap 3) instead of
+ * the home page's Tailwind build, so it inherits line-height 1.65, light headings with
+ * browser margins, 1em paragraph tops, indented 15px link lists and a 12px email field.
+ * Not copied (source defects): company logos collapsing to 0 width and the social
+ * icons shrinking below 768px.
+ */
+body.mybeckman-inner .footer-mybeckman {
+  line-height: 1.65;
+}
+
+body.mybeckman-inner .footer-mybeckman .footer-mybeckman-heading {
+  margin-top: 26.6px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+body.mybeckman-inner .footer-mybeckman p:not(.footer-mybeckman-note) {
+  margin-top: 1em;
+}
+
+body.mybeckman-inner .footer-mybeckman .footer-mybeckman-legal-row p.footer-mybeckman-fineprint {
+  margin-top: 12px;
+}
+
+body.mybeckman-inner .footer-mybeckman-form form {
+  line-height: 1.65;
+}
+
+body.mybeckman-inner .footer-mybeckman-field input {
+  font-size: 12px;
+}
+
+body.mybeckman-inner .footer-mybeckman-form button {
+  line-height: 1.65;
+}
+
+body.mybeckman-inner .footer-mybeckman .footer-mybeckman-links {
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+body.mybeckman-inner .footer-mybeckman-links li {
+  line-height: 1.65;
+}
+
+body.mybeckman-inner .footer-mybeckman .footer-mybeckman-social {
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+body.mybeckman-inner .footer-mybeckman-legal {
+  line-height: 1.65;
 }

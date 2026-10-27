@@ -1,0 +1,89 @@
+/*
+ * Cards (stats) — mybeckman.in /service "Section__intro" stat row.
+ * Values are the source's inline \3c style> (html font-size 10px, so 1rem = 10px)
+ * on top of Bootstrap 3 (border-box, body 16px/1.65 Gotham, p margin 1em 0).
+ * The blue band is the section style ("blue"), not this block.
+ */
+
+.cards-stats {
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: #fff;
+}
+
+.cards-stats,
+.cards-stats *,
+.cards-stats *::before,
+.cards-stats *::after {
+  box-sizing: border-box;
+}
+
+/* .Section__intro */
+.cards-stats > ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin: auto;
+  padding: 0;
+  list-style: none;
+  color: #fff;
+}
+
+/* .Section__intro div */
+.cards-stats .cards-stats-item {
+  margin: 10px;
+  padding: 0 10px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+  color: #fff;
+}
+
+.cards-stats .cards-stats-item > * {
+  margin: 14px 0;
+  font-family: inherit;
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: inherit;
+}
+
+.cards-stats .cards-stats-item > :first-child {
+  margin-bottom: 0;
+}
+
+.cards-stats .cards-stats-item > :last-child {
+  margin-top: 0;
+}
+
+/* .Section__intro strong: 2.4rem bold */
+.cards-stats .cards-stats-item strong,
+.cards-stats .cards-stats-item b {
+  font-size: 24px;
+  font-weight: 700;
+}
+
+.cards-stats .cards-stats-item a:any-link {
+  color: inherit;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  .cards-stats .cards-stats-item {
+    flex: 1 1 0;
+  }
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 992px) {
+  .cards-stats > ul {
+    justify-content: space-between;
+    max-width: 1170px;
+  }
+
+  /* flex: inherit -> the list's initial 0 1 auto (content width) */
+  .cards-stats .cards-stats-item {
+    flex: 0 1 auto;
+  }
+}

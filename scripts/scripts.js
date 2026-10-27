@@ -139,12 +139,14 @@ export function decorateMain(main) {
 const PATH_THEMES = [
   // mybeckman.in home page
   [/^(\/content(\/[^/]+)?)?\/en-in(\.html|\/(index(\.html)?)?)?$/, 'theme-mybeckman'],
+  // mybeckman.in service hub (inner-page design)
+  [/^(\/content(\/[^/]+)?)?\/en-in\/service(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
 ];
 
 function applyPathTheme() {
   if (getMetadata('theme')) return;
   const match = PATH_THEMES.find(([pattern]) => pattern.test(window.location.pathname));
-  if (match) document.body.classList.add(match[1]);
+  if (match) document.body.classList.add(...match[1].split(' '));
 }
 
 /**

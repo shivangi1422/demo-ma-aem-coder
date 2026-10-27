@@ -114,8 +114,8 @@ body.theme-mybeckman {
   }
 }
 
-/* header-mybeckman: full-size logo row from 1025px, desktop layout from 1120px */
-@media (width >= 1025px) {
+/* header-mybeckman: full-size logo row from 1024px, desktop layout from 1120px */
+@media (width >= 1024px) {
   body.theme-mybeckman {
     --nav-height: 119px;
   }
@@ -524,3 +524,241 @@ body.theme-mybeckman main .section.split.light-grey-gradient .default-content-wr
     line-height: 1.5;
   }
 }
+
+/* =====================================================================
+ * Inner pages: body.theme-mybeckman.mybeckman-inner
+ *
+ * The mybeckman.in inner pages (/service, ...) use the classic Beckman design
+ * (media.beckman.com/assets/css/styles.css on Bootstrap 3) rather than the
+ * Tailwind home page: Gotham, body 16px/1.65 #4d4d4d, links #007acb without
+ * underline, light (300) headings with browser-default margins, blue
+ * .btn-primary buttons, 1170px content (.Section, padding 2vw).
+ * Gotham is replaced by Montserrat (styles/fonts.css).
+ *
+ * Selectors use body.mybeckman-inner (same specificity as the home rules above,
+ * later in the file) so they win over the home rules and still lose to blocks.
+ * Breakpoints are the source's 768/992 (breakpoint-exception).
+ *
+ * This layer overrides the home rules above on purpose by coming later with the
+ * same specificity, so stylelint's no-descending-specificity is off until the end
+ * of the file.
+ * ===================================================================== */
+
+/* stylelint-disable no-descending-specificity */
+
+body.mybeckman-inner {
+  --mb-font-family: mybeckman-montserrat, arial, sans-serif;
+  --mb-form-font-family: mybeckman-montserrat, arial, sans-serif;
+  --mb-color-blue: #007acb;
+  --mb-color-blue-dark: #0065a7;
+  --mb-color-grey-light: #f0f3f5;
+  --mb-inner-max-width: 1170px;
+  --link-color: var(--mb-color-blue);
+  --link-hover-color: var(--mb-color-blue);
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
+
+  /* header-mybeckman on the classic stylesheet: 113 / 117 from 1024px / 123 from 1120px */
+  --nav-height: 113px;
+
+  /* Bootstrap 3 + styles.css (h2/h3 2.5rem at a 10px root) */
+  --heading-font-size-xxl: 36px;
+  --heading-font-size-xl: 25px;
+  --heading-font-size-l: 25px;
+  --heading-font-size-m: 18px;
+  --heading-font-size-s: 14px;
+  --heading-font-size-xs: 12px;
+
+  line-height: 1.65;
+}
+
+/* breakpoint-exception: header-mybeckman's own breakpoints */
+@media (width >= 1024px) {
+  body.mybeckman-inner {
+    --nav-height: 117px;
+  }
+}
+
+@media (width >= 1120px) {
+  body.mybeckman-inner {
+    --nav-height: 123px;
+  }
+}
+
+body.mybeckman-inner :where(h1, h2, h3, h4, h5, h6) {
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: normal;
+}
+
+/* browser-default heading margins (the source has no heading margin rules) */
+body.mybeckman-inner :where(h1) {
+  margin: 0.67em 0;
+}
+
+body.mybeckman-inner :where(h2) {
+  margin: 0.83em 0;
+  font-weight: 500;
+}
+
+body.mybeckman-inner :where(h3) {
+  margin: 1em 0;
+}
+
+body.mybeckman-inner :where(h4) {
+  margin: 1.33em 0;
+}
+
+body.mybeckman-inner :where(h5) {
+  margin: 1.67em 0;
+}
+
+body.mybeckman-inner :where(h6) {
+  margin: 2.33em 0;
+}
+
+
+body.mybeckman-inner :where(p) {
+  margin: 1em 0;
+}
+
+body.mybeckman-inner :where(ul, ol) {
+  margin: 0 0 10px;
+  padding-left: 15px;
+}
+
+body.mybeckman-inner main .section .default-content-wrapper > h2 {
+  margin: 0.83em 0;
+}
+
+body.mybeckman-inner a:hover {
+  text-decoration: none;
+}
+
+/* ---------- inner: buttons (.btn.btn-primary) ---------- */
+body.mybeckman-inner a.button:any-link,
+body.mybeckman-inner button.button {
+  display: inline-block;
+  border: 0;
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+  text-decoration: none;
+  color: var(--mb-color-white);
+  background-color: var(--mb-color-blue);
+  transition: all 0.3s;
+}
+
+body.mybeckman-inner a.button.primary,
+body.mybeckman-inner button.button.primary,
+body.mybeckman-inner a.button.primary:focus-visible,
+body.mybeckman-inner button.button.primary:focus-visible {
+  color: var(--mb-color-white);
+  background-color: var(--mb-color-blue);
+}
+
+/* <em><a>: outline variant (no instance on the source; derived from the hero override) */
+body.mybeckman-inner a.button.secondary,
+body.mybeckman-inner button.button.secondary,
+body.mybeckman-inner a.button.secondary:focus-visible,
+body.mybeckman-inner button.button.secondary:focus-visible {
+  padding: 12px 19px;
+  border: 1px solid var(--mb-color-blue);
+  color: var(--mb-color-blue);
+  background-color: transparent;
+}
+
+body.mybeckman-inner a.button:hover,
+body.mybeckman-inner button.button:hover,
+body.mybeckman-inner a.button:active,
+body.mybeckman-inner button.button:active {
+  border-color: var(--mb-color-blue-dark);
+  color: var(--mb-color-white);
+  background-color: var(--mb-color-blue-dark);
+  text-decoration: none;
+}
+
+/* ---------- inner: sections (.Section) ---------- */
+
+/*
+ * One .Section box per section: padding 4vw 8vw 0 below 768px; from 768px
+ * padding 2vw inside a centred 1170px (border-box) column. The section carries
+ * the padding so a section style can paint the full width behind it.
+ */
+body.mybeckman-inner main > .section,
+body.mybeckman-inner main > .section.centered {
+  margin: 0;
+  padding: 4vw 8vw 0;
+}
+
+body.mybeckman-inner main > :where(.section) > div {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  body.mybeckman-inner main > .section,
+  body.mybeckman-inner main > .section.centered {
+    padding: 2vw max(2vw, calc((100% - var(--mb-inner-max-width)) / 2 + 2vw));
+  }
+}
+
+/* blue band (.Section--blue): white text, headings and outline buttons */
+body.mybeckman-inner main > .section.blue {
+  color: var(--mb-color-white);
+  background-color: var(--mb-color-blue);
+}
+
+body.mybeckman-inner main > .section.blue :where(h1, h2, h3, h4, h5, h6, a:any-link) {
+  color: var(--mb-color-white);
+}
+
+body.mybeckman-inner main > .section.blue a.button:any-link {
+  border: 1px solid var(--mb-color-white);
+  padding: 12px 19px;
+  background-color: var(--mb-color-blue);
+}
+
+body.mybeckman-inner main > .section.blue a.button:hover,
+body.mybeckman-inner main > .section.blue a.button:active {
+  border-color: var(--mb-color-white);
+  background-color: var(--mb-color-blue-dark);
+}
+
+/*
+ * blue + centered = the "Get in Touch" band (#getInTouch): 40px gap above,
+ * an extra 2vw below the .Section padding, centred 14px intro (.Contact).
+ */
+body.mybeckman-inner main > .section.blue.centered {
+  margin-top: 40px;
+  padding-bottom: 2vw;
+  text-align: center;
+}
+
+body.mybeckman-inner main > .section.centered .default-content-wrapper {
+  text-align: center;
+}
+
+body.mybeckman-inner main > .section.blue.centered .default-content-wrapper p {
+  font-size: 14px;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  body.mybeckman-inner main > .section.blue.centered {
+    padding-bottom: 4vw;
+  }
+}
+
+/* classic footer (body .footer2023): 50px gap above it on inner pages */
+body.mybeckman-inner footer {
+  margin-top: 50px;
+}
+
+/* stylelint-enable no-descending-specificity */

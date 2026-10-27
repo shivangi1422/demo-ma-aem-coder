@@ -30,13 +30,29 @@
       "cards-promo",
       "cards-topic-tiles",
       "cards-service-icon",
-      "hero-photo-card"
+      "hero-photo-card",
+      "hero-dim-photo",
+      "cards-stats",
+      "cards-icon-border",
+      "cards-button-caption"
+    ]
+  },
+  {
+    "id": "cards-button-caption",
+    "components": [
+      "cards-button-caption-item"
     ]
   },
   {
     "id": "cards-grid",
     "components": [
       "cards-grid-item"
+    ]
+  },
+  {
+    "id": "cards-icon-border",
+    "components": [
+      "cards-icon-border-item"
     ]
   },
   {
@@ -49,6 +65,12 @@
     "id": "cards-service-icon",
     "components": [
       "cards-service-icon-item"
+    ]
+  },
+  {
+    "id": "cards-stats",
+    "components": [
+      "cards-stats-item"
     ]
   },
   {

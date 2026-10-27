@@ -1,6 +1,6 @@
 /*
  * Header (mybeckman theme). Values are the computed styles of the mybeckman.in header.
- * Mobile first, on the live site's own breakpoints: 601px (wider gutters), 1025px (full-size
+ * Mobile first, on the live site's own breakpoints: 601px (wider gutters), 1024px (full-size
  * logo, quote button, utility panels on hover) and 1120px (desktop menu).
  */
 
@@ -662,10 +662,10 @@ body.header-mybeckman-scroll-lock {
   }
 }
 
-/* ---------- from 1025px ---------- */
+/* ---------- from 1024px / 1025px ---------- */
 
-/* breakpoint-exception: the live header shows the full logo + quote button and opens the utility panels on hover from 1025px */
-@media (width >= 1025px) {
+/* breakpoint-exception: the live header CSS shows the full logo + quote button from 1024px */
+@media (width >= 1024px) {
   .header-mybeckman-brand {
     flex-basis: 164px;
     height: 44px;
@@ -682,7 +682,10 @@ body.header-mybeckman-scroll-lock {
   .header-mybeckman-tools a.header-mybeckman-cta:any-link {
     display: flex;
   }
+}
 
+/* breakpoint-exception: the live header.js opens the utility panels on hover from 1025px */
+@media (width >= 1025px) {
   .header-mybeckman-utility-item:nth-child(2) > .header-mybeckman-drop {
     right: auto;
     left: calc(50% - 130px);
@@ -916,3 +919,101 @@ body.header-mybeckman-scroll-lock {
     display: none;
   }
 }
+
+/*
+ * Inner pages (body.mybeckman-inner): the source header sits on the classic stylesheet
+ * there (media.beckman.com/assets/css/styles.css) instead of the home page's Tailwind
+ * build: 70px logo row from 1024px, 46px menu row below 1024px, 25px tool gap, smaller
+ * eStore link, dark search glyph, 20px menu icon and a globe for the language picker.
+ * These rules override the ones above by order, hence no-descending-specificity is off here.
+ */
+
+/* stylelint-disable no-descending-specificity */
+body.mybeckman-inner .header-mybeckman-search button {
+  color: #0f2231;
+}
+
+body.mybeckman-inner .header-mybeckman-search button .header-mybeckman-icon {
+  width: 14px;
+  height: 14px;
+}
+
+body.mybeckman-inner .header-mybeckman-tools {
+  gap: 25px;
+  padding-left: 0;
+}
+
+body.mybeckman-inner .header-mybeckman-tools a.header-mybeckman-tool:any-link {
+  padding-left: 9.6px;
+  font-size: 11.7px;
+}
+
+body.mybeckman-inner .header-mybeckman-menubar {
+  min-height: 46px;
+}
+
+body.mybeckman-inner .header-mybeckman-hamburger .header-mybeckman-icon {
+  width: 18px;
+  height: 20px;
+}
+
+/* icons centred in the 46px / 52px row, as on the source */
+body.mybeckman-inner .header-mybeckman-utility a.header-mybeckman-utility-trigger:any-link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding-top: 0;
+  padding-bottom: 0;
+}
+
+/* language picker: Font Awesome globe instead of the country flag */
+body.mybeckman-inner .header-mybeckman-flag {
+  display: none;
+}
+
+body.mybeckman-inner .header-mybeckman-utility-trigger:has(> .header-mybeckman-flag)::before {
+  content: '';
+  display: inline-block;
+  width: 13px;
+  height: 14px;
+  background-color: currentcolor;
+  mask: url('../../icons/fa-globe.svg') center / contain no-repeat;
+  vertical-align: -2px;
+}
+
+/* breakpoint-exception: the live header CSS shows the full logo + quote button from 1024px */
+@media (width >= 1024px) {
+  body.mybeckman-inner .header-mybeckman-bar {
+    padding-bottom: 13px;
+  }
+
+  body.mybeckman-inner .header-mybeckman-tools a.header-mybeckman-tool:any-link {
+    padding-left: 0;
+  }
+
+  body.mybeckman-inner .header-mybeckman-menubar {
+    min-height: 47px;
+  }
+}
+
+/* breakpoint-exception: the live header switches to the desktop menu at 1120px */
+@media (width >= 1120px) {
+  body.mybeckman-inner .header-mybeckman-menubar {
+    min-height: 52px;
+  }
+
+  /*
+   * Montserrat medium is ~2px wider per label than Gotham medium: 1px less padding on
+   * each side keeps every label at the source's x position. Menu text sits 1px lower.
+   */
+  body.mybeckman-inner .header-mybeckman-menu > li,
+  body.mybeckman-inner .header-mybeckman-menu > li.is-active {
+    padding: 14px 17px 12px;
+  }
+
+  body.mybeckman-inner .header-mybeckman-menu > li:first-child {
+    padding-left: 0;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */

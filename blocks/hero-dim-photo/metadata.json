@@ -1,0 +1,25 @@
+{
+  "variantName": "hero-dim-photo",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "layout": "Full-bleed, 60vh (min 360px) on mobile, 50vh >= 768px, 40vh >= 992px; black background, flex-centred content.",
+    "image": "Photo at 50% opacity, absolute, full height, object-position 68% 25%; full width >= 992px. Eager LCP image (fetchpriority high).",
+    "text": "Centred white text box (padding 10px; 2vw and max-width 1200px >= 768px). h1 40px/1.1 weight 400; p 16px/1.65.",
+    "button": "Outline CTA: transparent, 1px solid #fff, radius 2px, padding 13px 20px, 13.5px/500; hover background #0065a7; transition .3s.",
+    "purpose": "Page-top hero with a dimmed photo and a centred heading, intro and CTA."
+  },
+  "contentPattern": {
+    "baseBlock": "hero",
+    "rows": [
+      { "row": 1, "cells": ["image (reference) + imageAlt"] },
+      { "row": 2, "cells": ["text (richtext): h1, paragraph(s), paragraph holding a single CTA link"] }
+    ],
+    "structure": "Image row then rich-text row. Any paragraph holding only one link (plain, bold/italic or already a button) renders as the outline button."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service page hero (body.theme-mybeckman).",
+  "reuseGuidance": "Use for mybeckman.in page heroes with a dimmed full-width photo and centred white text. CTA may be an in-page anchor (e.g. #get-in-touch).",
+  "sourceUrl": "https://www.mybeckman.in/service"
+}

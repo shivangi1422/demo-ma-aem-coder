@@ -33,8 +33,12 @@
             "value": ""
           },
           {
-            "name": "mybeckman.in",
+            "name": "mybeckman.in (home page)",
             "value": "theme-mybeckman"
+          },
+          {
+            "name": "mybeckman.in (inner pages)",
+            "value": "theme-mybeckman, mybeckman-inner"
           }
         ]
       }
@@ -173,6 +177,10 @@
             "value": "off-white"
           },
           {
+            "name": "Blue",
+            "value": "blue"
+          },
+          {
             "name": "Split (intro beside block)",
             "value": "split"
           },
@@ -181,6 +189,18 @@
             "value": "centered"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "cards-button-caption-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (button link paragraph, caption)",
+        "valueType": "string"
       }
     ]
   },
@@ -252,6 +272,18 @@
     ]
   },
   {
+    "id": "cards-icon-border-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (:fa-icon-name:, linked h4, linked description)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "cards-promo-item",
     "fields": [
       {
@@ -285,6 +317,18 @@
         "name": "text",
         "value": "",
         "label": "Text (:icon-name:, linked h3, description)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-stats-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (bold value paragraph, label paragraph)",
         "valueType": "string"
       }
     ]
@@ -587,6 +631,32 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "hero-dim-photo",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (h1, paragraph, CTA link)",
         "valueType": "string"
       }
     ]
