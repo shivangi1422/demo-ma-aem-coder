@@ -8,6 +8,7 @@ import {
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
+  getMetadata,
   waitForFirstImage,
   loadSection,
   loadSections,
@@ -131,12 +132,29 @@ export function decorateMain(main) {
 }
 
 /**
+ * Site themes given by page location, for pages that don't set `theme` metadata themselves:
+ * [path pattern, theme class]. Paths match locally (/content/…), in the authoring
+ * environment (/content/<site>/…) and on the published site.
+ */
+const PATH_THEMES = [
+  // mybeckman.in home page
+  [/^(\/content(\/[^/]+)?)?\/en-in(\.html|\/(index(\.html)?)?)?$/, 'theme-mybeckman'],
+];
+
+function applyPathTheme() {
+  if (getMetadata('theme')) return;
+  const match = PATH_THEMES.find(([pattern]) => pattern.test(window.location.pathname));
+  if (match) document.body.classList.add(match[1]);
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+  applyPathTheme();
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
