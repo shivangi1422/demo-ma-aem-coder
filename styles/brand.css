@@ -553,6 +553,14 @@ body.mybeckman-inner {
   --mb-color-blue-dark: #0065a7;
   --mb-color-grey-light: #f0f3f5;
   --mb-inner-max-width: 1170px;
+
+  /*
+   * Montserrat weights that match Gotham's stroke weight at the same width
+   * (measured ink coverage: 420 = Gotham Book 400, 570 = Gotham Medium 500).
+   * Blocks and header/footer read these with 400 / 500 fallbacks.
+   */
+  --mb-weight-regular: 420;
+  --mb-weight-medium: 570;
   --link-color: var(--mb-color-blue);
   --link-hover-color: var(--mb-color-blue);
   --body-font-size-m: 16px;
@@ -570,6 +578,7 @@ body.mybeckman-inner {
   --heading-font-size-s: 14px;
   --heading-font-size-xs: 12px;
 
+  font-weight: var(--mb-weight-regular);
   line-height: 1.65;
 }
 
@@ -599,7 +608,7 @@ body.mybeckman-inner :where(h1) {
 
 body.mybeckman-inner :where(h2) {
   margin: 0.83em 0;
-  font-weight: 500;
+  font-weight: var(--mb-weight-medium);
 }
 
 body.mybeckman-inner :where(h3) {
@@ -644,7 +653,7 @@ body.mybeckman-inner button.button {
   border-radius: 2px;
   padding: 13px 20px;
   font-size: 13.5px;
-  font-weight: 500;
+  font-weight: var(--mb-weight-medium);
   line-height: 1.65;
   text-align: center;
   text-decoration: none;

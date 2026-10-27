@@ -69,7 +69,7 @@ main > .section:has(> div > .hero-dim-photo) > div {
   margin: 26.8px 0;
   font-family: inherit;
   font-size: 40px;
-  font-weight: 400;
+  font-weight: var(--mb-weight-regular, 400);
   line-height: 1.1;
   letter-spacing: normal;
   color: #fff;
@@ -98,7 +98,7 @@ main > .section:has(> div > .hero-dim-photo) > div {
   padding: 13px 20px;
   font-family: inherit;
   font-size: 13.5px;
-  font-weight: 500;
+  font-weight: var(--mb-weight-medium, 500);
   line-height: 1.65;
   text-align: center;
   text-decoration: none;

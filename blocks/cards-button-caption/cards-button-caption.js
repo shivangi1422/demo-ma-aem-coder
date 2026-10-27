@@ -1,4 +1,4 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, rowContentCells } from '../../scripts/scripts.js';
 
 const BUTTON_CLASSES = ['button', 'primary', 'secondary', 'accent'];
 
@@ -16,7 +16,7 @@ export default function decorate(block) {
   const ul = document.createElement('ul');
 
   [...block.children].forEach((row) => {
-    const cells = [...row.children].filter((cell) => cell.textContent.trim() !== '');
+    const cells = rowContentCells(row).filter((cell) => cell.textContent.trim() !== '');
     if (!cells.length) return;
 
     const li = document.createElement('li');

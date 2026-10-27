@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, rowContentCells } from '../../scripts/scripts.js';
 
 const BUTTON_CLASSES = ['button', 'primary', 'secondary', 'accent'];
 
@@ -63,8 +63,7 @@ export default function decorate(block) {
     }
 
     // text cell(s): move their content into the centred text box
-    const cells = [...row.children];
-    (cells.length ? cells : [row]).forEach((cell) => {
+    rowContentCells(row).forEach((cell) => {
       if (cell.textContent.trim() === '') return;
       moveInstrumentation(cell, content);
       content.append(...cell.childNodes);

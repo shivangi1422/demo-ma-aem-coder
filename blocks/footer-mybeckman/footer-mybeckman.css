@@ -67,7 +67,7 @@
 .footer-mybeckman .footer-mybeckman-heading {
   margin: 0 0 16px;
   font-size: 20px;
-  font-weight: 400;
+  font-weight: var(--mb-weight-regular, 400);
   line-height: 1.5;
   color: var(--mbf-text);
 }
@@ -92,7 +92,7 @@
   margin-bottom: 5px;
   padding: 2.56px 0 3.84px;
   font-size: 12.8px;
-  font-weight: 500;
+  font-weight: var(--mb-weight-medium, 500);
   line-height: 1.5;
   color: var(--mbf-muted);
 }
@@ -139,7 +139,7 @@
   box-shadow: none;
   font: inherit;
   font-size: 14px;
-  font-weight: 500;
+  font-weight: var(--mb-weight-medium, 500);
   line-height: 1.5;
   color: #fff;
   cursor: pointer;

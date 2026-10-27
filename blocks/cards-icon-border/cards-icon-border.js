@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, rowContentCells } from '../../scripts/scripts.js';
 
 const BUTTON_CLASSES = ['button', 'primary', 'secondary', 'accent'];
 const ICON_TOKEN = /^:([a-z0-9-]+):$/;
@@ -45,7 +45,7 @@ export default function decorate(block) {
   const ul = document.createElement('ul');
 
   [...block.children].forEach((row) => {
-    const cells = [...row.children].filter((cell) => cell.textContent.trim() !== '' || cell.querySelector('picture, img, .icon'));
+    const cells = rowContentCells(row).filter((cell) => cell.textContent.trim() !== '' || cell.querySelector('picture, img, .icon'));
     if (!cells.length) return;
 
     const li = document.createElement('li');
@@ -85,7 +85,13 @@ export default function decorate(block) {
 
       cell.querySelectorAll('span.icon').forEach((span) => {
         decorateIconSpan(span);
-        const holder = span.closest('p');
+        let holder = span.closest('p');
+        // an icon delivered outside a paragraph gets one
+        if (!holder && span.parentElement === cell) {
+          holder = document.createElement('p');
+          span.replaceWith(holder);
+          holder.append(span);
+        }
         if (holder && holder.parentElement === cell && holder.textContent.trim() === '') {
           holder.className = 'cards-icon-border-icon';
         }

@@ -51,6 +51,40 @@ export function moveInstrumentation(from, to) {
 }
 
 /**
+ * Returns the content elements of a block row's cells, the same whichever way the
+ * row is delivered: <div><div>…</div></div> (preview), the rich text wrapped in an
+ * extra element, or the content placed on the row itself (authoring). Also undoes
+ * what the browser makes of stored <p><h4>…</h4></p>: the heading loses its
+ * paragraph and the empty paragraphs around it are removed.
+ * @param {Element} row A block row
+ * @returns {Element[]} One element per cell whose children are the cell content
+ */
+export function rowContentCells(row) {
+  const children = [...row.children];
+  const cells = children.length && children.every((el) => el.tagName === 'DIV') ? children : [row];
+  // a lone <div>, or a <p> that only holds block content (aem.js wraps cells that do not
+  // start with a paragraph into one), is a wrapper around the real content
+  const isWrapper = (el) => el.tagName === 'DIV'
+    || (el.tagName === 'P' && el.querySelector(':scope > :is(div, p, h1, h2, h3, h4, h5, h6, ul, ol)'));
+  return cells.map((cell) => {
+    let root = cell;
+    while (root.children.length === 1 && isWrapper(root.firstElementChild)
+      && ![...root.childNodes].some((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim())) {
+      root = root.firstElementChild;
+    }
+    root.querySelectorAll(':scope > p').forEach((p) => {
+      const only = p.children.length === 1 ? p.firstElementChild : null;
+      if (only && /^H[1-6]$/.test(only.tagName) && p.textContent.trim() === only.textContent.trim()) {
+        p.replaceWith(only);
+      } else if (!p.textContent.trim() && !p.querySelector('img, picture, svg, .icon')) {
+        p.remove();
+      }
+    });
+    return root;
+  });
+}
+
+/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
