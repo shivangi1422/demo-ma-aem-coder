@@ -1,0 +1,21 @@
+{
+  "variantName": "content-reversed",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Image next to a promotional text panel with CTA",
+    "description": "Two-part side-by-side layout: image on the left, text panel on the right (eyebrow, heading, paragraph, optional bullet list, CTA) at desktop widths; stacked on mobile."
+  },
+  "contentPattern": {
+    "structure": "Row 1: image (image + imageAlt). Row 2: richtext (optional eyebrow, heading, description, bullet list, CTA link)"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": "Use for a single image + promotional text panel pair (e.g. bundle or product callout banners).",
+  "usage": {
+    "pagesUsing": [
+      "/reagents/particle/valita-titer-assays"
+    ],
+    "reuseCount": 1
+  }
+}
