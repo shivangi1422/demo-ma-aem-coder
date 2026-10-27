@@ -1,0 +1,155 @@
+/*
+ * Hero (photo card) — mybeckman.in home "Our company" section (#about).
+ * Values are the source's computed styles (Tailwind, 1 spacing unit = 0.5rem);
+ * colours, sizes and easing use the --mb-* theme tokens in styles/brand.css.
+ *
+ * The CTA is a plain authored button (<strong><a> → a.button.primary): its pill,
+ * colours, hover and transition come from the theme button rules in brand.css.
+ * This file only adds the arrow and its hover nudge.
+ */
+
+/* full-bleed: the section and its wrapper carry no max-width, padding or margin */
+main > .section:has(> div > .hero-photo-card) {
+  margin: 0;
+}
+
+main > .section:has(> div > .hero-photo-card) > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* #about: relative bg-gradient-to-bl from-brand-gray-200 to-brand-gray-50 */
+.hero-photo-card {
+  position: relative;
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mb-color-text);
+  background-image: linear-gradient(to bottom left, var(--mb-color-gray-200), var(--mb-color-gray-50));
+}
+
+/* Tailwind-like box model, as on the live site (scoped to the block) */
+.hero-photo-card,
+.hero-photo-card *,
+.hero-photo-card *::before,
+.hero-photo-card *::after {
+  box-sizing: border-box;
+}
+
+/* img: absolute inset-0 h-full w-full object-cover saturate-0 */
+.hero-photo-card .hero-photo-card-image {
+  position: absolute;
+  inset: 0;
+  display: block;
+}
+
+.hero-photo-card .hero-photo-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0);
+}
+
+/* relative z-10 mx-auto max-w-screen-xl py-8 lg:py-16 */
+.hero-photo-card .hero-photo-card-inner {
+  position: relative;
+  z-index: 10;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+/* mx-auto w-11/12 rounded-xl border-l-4 border-l-brand-primary bg-white bg-opacity-95 p-3 */
+.hero-photo-card .hero-photo-card-card {
+  width: 91.6667%;
+  margin: 0 auto;
+  border-left: 4px solid var(--mb-color-primary);
+  border-radius: 12px;
+  padding: 24px;
+  background-color: rgb(255 255 255 / 95%);
+}
+
+.hero-photo-card .hero-photo-card-card > :last-child {
+  margin-bottom: 0;
+}
+
+/* p.mb-4.text-brand-gray-600 */
+.hero-photo-card .hero-photo-card-card p {
+  margin: 0 0 32px;
+  color: var(--mb-color-gray-600);
+}
+
+/* eyebrow: mb-3 text-sm text-brand-primary */
+.hero-photo-card .hero-photo-card-card p.hero-photo-card-eyebrow {
+  margin-bottom: 24px;
+  font-size: var(--mb-font-size-sm);
+  line-height: 1.333;
+  color: var(--mb-color-primary);
+}
+
+/* h2: mb-2 text-2xl font-light text-brand-text-light md:text-3xl */
+.hero-photo-card .hero-photo-card-card h1,
+.hero-photo-card .hero-photo-card-card h2,
+.hero-photo-card .hero-photo-card-card h3 {
+  margin: 0 0 16px;
+  font-family: inherit;
+  font-size: var(--mb-font-size-2xl);
+  font-weight: 300;
+  line-height: 1.3333;
+  color: var(--mb-color-text-light);
+}
+
+.hero-photo-card .hero-photo-card-card p.button-wrapper {
+  margin: 0;
+}
+
+/* CTA arrow: inline-block transition-transform duration-300 ease-out group-hover:translate-x-0.5 */
+.hero-photo-card .hero-photo-card-arrow {
+  display: inline-block;
+  transition: transform 0.3s var(--mb-ease-out);
+}
+
+.hero-photo-card a:hover .hero-photo-card-arrow {
+  transform: translateX(4px);
+}
+
+@media (width >= 768px) {
+  /* md:w-3/4 */
+  .hero-photo-card .hero-photo-card-card {
+    width: 75%;
+  }
+
+  /* md:text-3xl */
+  .hero-photo-card .hero-photo-card-card h1,
+  .hero-photo-card .hero-photo-card-card h2,
+  .hero-photo-card .hero-photo-card-card h3 {
+    font-size: var(--mb-font-size-3xl);
+  }
+}
+
+@media (width >= 1024px) {
+  /* lg:py-16 */
+  .hero-photo-card .hero-photo-card-inner {
+    padding: 128px 0;
+  }
+
+  /* lg:border-l-8 lg:p-8 */
+  .hero-photo-card .hero-photo-card-card {
+    border-left-width: 8px;
+    padding: 64px;
+  }
+}
+
+@media (width >= 1280px) {
+  /* xl:w-7/12 */
+  .hero-photo-card .hero-photo-card-card {
+    width: 58.3333%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-photo-card .hero-photo-card-arrow {
+    transition: none;
+  }
+}

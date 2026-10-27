@@ -1,0 +1,182 @@
+/*
+ * Cards (promo) — mybeckman.in home "Fresh insights".
+ * 1 column (gap 40px) / 2 columns >= 640px (gap 24px) / 4 columns >= 1024px.
+ */
+
+.cards-promo {
+  --cards-promo-primary: #d52331;
+
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mb-color-text, #4d4d4d);
+}
+
+/* Tailwind-like box model, as on the live site (scoped to the block) */
+.cards-promo,
+.cards-promo *,
+.cards-promo *::before,
+.cards-promo *::after {
+  box-sizing: border-box;
+}
+
+.cards-promo > ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 2.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-promo .cards-promo-item {
+  margin: 0;
+}
+
+/* the card link fills its grid cell (source <a> is the grid item itself) */
+
+.cards-promo .cards-promo-card,
+.cards-promo .cards-promo-card:any-link {
+  display: block;
+  height: 100%;
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards-promo .cards-promo-card:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards-promo .cards-promo-card:focus-visible {
+  border-radius: 0.5rem;
+  outline: 2px solid var(--cards-promo-primary);
+  outline-offset: 4px;
+}
+
+/* ---------- image ---------- */
+.cards-promo .cards-promo-image {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  overflow: hidden;
+  border-radius: 0.5rem;
+}
+
+/* grey pulse skeleton behind the image while it loads */
+.cards-promo .cards-promo-image::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  border-radius: 0.25rem;
+  background-color: #e0e0e0;
+  animation: cards-promo-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.cards-promo .cards-promo-image.is-loaded::before {
+  animation: none;
+}
+
+.cards-promo .cards-promo-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-promo .cards-promo-image img {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: saturate(0);
+  transform: translate3d(0, 0, 0);
+  transition-property: transform, filter;
+  transition-duration: 0.5s;
+  transition-timing-function: cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cards-promo .cards-promo-card:hover .cards-promo-image img,
+.cards-promo .cards-promo-card:focus-visible .cards-promo-image img {
+  filter: saturate(1);
+  transform: translate3d(0, 0, 0) scale(1.02);
+}
+
+/* ---------- text ---------- */
+.cards-promo .cards-promo-body p {
+  margin: 0;
+}
+
+.cards-promo .cards-promo-body .cards-promo-eyebrow {
+  padding-top: 0.75rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: var(--cards-promo-primary);
+}
+
+.cards-promo .cards-promo-body .cards-promo-title {
+  position: relative;
+  margin: 0;
+  padding-top: 0.5rem;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  color: inherit;
+}
+
+.cards-promo .cards-promo-title-text {
+  display: inline;
+  background-image: linear-gradient(to right, currentcolor, currentcolor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0% 1px;
+  transition: background-size 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cards-promo .cards-promo-card:hover .cards-promo-title,
+.cards-promo .cards-promo-card:focus-visible .cards-promo-title {
+  color: var(--cards-promo-primary);
+}
+
+.cards-promo .cards-promo-card:hover .cards-promo-title-text,
+.cards-promo .cards-promo-card:focus-visible .cards-promo-title-text {
+  background-size: 100% 1px;
+}
+
+@media (width >= 640px) {
+  .cards-promo > ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 1.5rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .cards-promo > ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-promo .cards-promo-image::before {
+    animation: none;
+  }
+
+  .cards-promo .cards-promo-image img,
+  .cards-promo .cards-promo-title-text {
+    transition: none;
+  }
+
+  .cards-promo .cards-promo-card:hover .cards-promo-image img,
+  .cards-promo .cards-promo-card:focus-visible .cards-promo-image img {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+@keyframes cards-promo-pulse {
+  50% {
+    opacity: 0.5;
+  }
+}

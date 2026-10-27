@@ -1,0 +1,38 @@
+{
+  "variantName": "hero-curved-panel",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "behaviour": {
+      "animations": "panel heroBodyAnimate .4s ease (opacity 0->1, translateX 10%->0) at >=640; h1 text reveal slideIn .5s ease, delay .5s (translateY 100%->0 in an overflow-hidden mask); intro slideInLeft .9s ease, delay 1.2s (opacity + translateX 10%->0) at >=768, slideInFromBottom (translateY 10%->0) below. CSS-only, run once on load; add prefers-reduced-motion.",
+      "layout": ">=640 image absolute left (7/12 sm, 2/3 lg) + panel right (6/12 sm, 5/12 lg) with clip-path circle(800px at 800px 50%); <640 stacked, panel -15% overlap, clip-path circle(600px at 50% 600px), centred text.",
+      "lcp": "eager, high fetch priority"
+    },
+    "sectionVisual": null,
+    "purpose": "Page-opening hero: photo left, red gradient panel with a curved edge right, h1 + intro with CSS load animations"
+  },
+  "contentPattern": {
+    "baseBlock": "hero",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "image (reference) + imageAlt"
+        ]
+      },
+      {
+        "row": 2,
+        "cells": [
+          "text (richtext): h1, intro paragraph"
+        ]
+      }
+    ],
+    "maxRows": 2,
+    "structure": "row 1: image (+ alt); row 2: rich text with h1 and intro paragraph"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "First section of the mybeckman.in home page.",
+  "reuseGuidance": "Use for a page-opening photo + headline + intro on mybeckman.in-styled pages. Not for /en/ beckmancoulter.com pages (use hero).",
+  "sourceUrl": "https://www.mybeckman.in/"
+}

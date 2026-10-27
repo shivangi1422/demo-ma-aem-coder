@@ -1,0 +1,194 @@
+/*
+ * Cards (service icon) — mybeckman.in home "Service & technical support".
+ * 2 columns at every width (gap 16px, 24px >= 1024px).
+ * Below 768px only the icon and the title show, centred.
+ */
+
+.cards-service-icon {
+  --cards-service-icon-primary: #d52331;
+  --cards-service-icon-icon-color: var(--cards-service-icon-primary);
+  --cards-service-icon-arrow-color: #e0e0e0;
+  --cards-service-icon-text-color: var(--mb-color-text, #4d4d4d);
+
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--cards-service-icon-text-color);
+}
+
+/* Tailwind-like box model, as on the live site (scoped to the block) */
+.cards-service-icon,
+.cards-service-icon *,
+.cards-service-icon *::before,
+.cards-service-icon *::after {
+  box-sizing: border-box;
+}
+
+.cards-service-icon > ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 1rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-service-icon .cards-service-icon-item {
+  display: flex;
+  margin: 0;
+}
+
+.cards-service-icon .cards-service-icon-card,
+.cards-service-icon .cards-service-icon-card:any-link {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  justify-content: space-between;
+  box-sizing: border-box;
+  border: 1px solid rgb(224 224 224 / 50%);
+  border-radius: 0.5rem;
+  padding: 1.5rem;
+  font-size: 1.25rem;
+  line-height: 1.5;
+  color: var(--cards-service-icon-text-color);
+  text-decoration: none;
+  background-color: #fff;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+  will-change: transform;
+}
+
+.cards-service-icon .cards-service-icon-card:hover,
+.cards-service-icon .cards-service-icon-card:focus-visible {
+  color: var(--cards-service-icon-text-color);
+  text-decoration: none;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px 0 rgb(2 0 0 / 8%);
+}
+
+.cards-service-icon .cards-service-icon-card:focus-visible {
+  outline: 2px solid var(--cards-service-icon-primary);
+  outline-offset: 2px;
+}
+
+.cards-service-icon .cards-service-icon-body > * {
+  margin: 0;
+}
+
+/* ---------- icon ---------- */
+.cards-service-icon .cards-service-icon-icon {
+  display: flex;
+  justify-content: center;
+  margin: 0;
+  color: var(--cards-service-icon-icon-color);
+  transition: color 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+/* image-cell fallback (uploaded SVG/PNG) */
+.cards-service-icon .cards-service-icon-icon picture,
+.cards-service-icon .cards-service-icon-icon > img {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.cards-service-icon .cards-service-icon-icon picture img {
+  width: 100%;
+  height: 100%;
+}
+
+.cards-service-icon .cards-service-icon-icon .icon {
+  display: block;
+  width: 1.5rem;
+  height: 1.5rem;
+  margin-bottom: 1rem;
+  background-color: currentcolor;
+  mask-image: var(--cards-service-icon-mask);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+/* the <img> only provides the source; the mask paints the icon */
+.cards-service-icon .cards-service-icon-icon .icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  opacity: 0;
+}
+
+/* ---------- text ---------- */
+.cards-service-icon .cards-service-icon-title {
+  width: 100%;
+  margin: 0;
+  font-family: inherit;
+  font-size: 1rem;
+  font-weight: 400;
+  line-height: 1.5;
+  text-align: center;
+  color: inherit;
+}
+
+.cards-service-icon .cards-service-icon-text {
+  display: none;
+  margin: 0;
+  font-size: 0.875rem;
+  line-height: 1.625;
+  color: #7a7979;
+}
+
+.cards-service-icon .cards-service-icon-arrow {
+  display: none;
+  margin-top: 1rem;
+  font-size: 1.563rem;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: right;
+  color: var(--cards-service-icon-arrow-color);
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cards-service-icon .cards-service-icon-card:hover .cards-service-icon-arrow,
+.cards-service-icon .cards-service-icon-card:focus-visible .cards-service-icon-arrow {
+  color: var(--cards-service-icon-primary);
+  transform: translateX(0.5rem);
+}
+
+@media (width >= 768px) {
+  .cards-service-icon .cards-service-icon-icon {
+    justify-content: flex-start;
+  }
+
+  .cards-service-icon .cards-service-icon-title {
+    margin-bottom: 0.5rem;
+    font-size: 1.25rem;
+    text-align: left;
+  }
+
+  .cards-service-icon .cards-service-icon-text,
+  .cards-service-icon .cards-service-icon-arrow {
+    display: block;
+  }
+}
+
+@media (width >= 1024px) {
+  .cards-service-icon > ul {
+    gap: 1.5rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-service-icon .cards-service-icon-card,
+  .cards-service-icon .cards-service-icon-card:any-link,
+  .cards-service-icon .cards-service-icon-arrow,
+  .cards-service-icon .cards-service-icon-icon {
+    transition: none;
+  }
+
+  .cards-service-icon .cards-service-icon-card:hover,
+  .cards-service-icon .cards-service-icon-card:focus-visible,
+  .cards-service-icon .cards-service-icon-card:hover .cards-service-icon-arrow,
+  .cards-service-icon .cards-service-icon-card:focus-visible .cards-service-icon-arrow {
+    transform: none;
+  }
+}

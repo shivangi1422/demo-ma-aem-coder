@@ -1,0 +1,238 @@
+/*
+ * Jump nav — mybeckman.in home in-page navigation.
+ * The block sits in its own section; that section is made sticky so the nav
+ * stays pinned (top 2rem) for the whole page, as on the live site.
+ */
+
+main > .section.jump-nav-container {
+  position: sticky;
+  top: 2rem;
+  z-index: 20;
+  margin: 0;
+}
+
+main > .section.jump-nav-container > .jump-nav-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.jump-nav {
+  --jump-nav-primary: var(--mb-color-primary, #d52331);
+
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+
+  /* live site: the pill and the select inherit the body text colour */
+  color: var(--mb-color-text, #4d4d4d);
+}
+
+/* Tailwind-like box model, as on the live site (scoped to the block) */
+.jump-nav,
+.jump-nav *,
+.jump-nav *::before,
+.jump-nav *::after {
+  box-sizing: border-box;
+}
+
+.jump-nav.is-empty {
+  display: none;
+}
+
+.jump-nav .jump-nav-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* ---------- mobile: native select ---------- */
+.jump-nav .jump-nav-select-wrap {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 1rem;
+  box-sizing: border-box;
+}
+
+.jump-nav .jump-nav-select {
+  display: block;
+  width: 83.3333%;
+  margin: 0;
+  border: 0;
+  border-radius: 9999px;
+  padding: 0.75rem 1.25rem;
+  font: inherit;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  color: inherit;
+  background-color: rgb(255 255 255 / 90%);
+  background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke-width='1.5' stroke='currentColor'%3e%3cpath stroke-linecap='round' stroke-linejoin='round' d='M19.5 8.25l-7.5 7.5-7.5-7.5'/%3e%3c/svg%3e");
+  background-position: calc(100% - 16px) center;
+  background-repeat: no-repeat;
+  background-size: 16px;
+  box-shadow: 0 4px 8px 2px rgb(2 0 0 / 10%);
+  backdrop-filter: blur(4px);
+  appearance: none;
+  cursor: pointer;
+  opacity: 0;
+  transform: translateY(-50%);
+  animation: jump-nav-fade-in 675ms ease 1.85s forwards;
+}
+
+.jump-nav .jump-nav-select:focus-visible {
+  outline: 2px solid var(--jump-nav-primary);
+  outline-offset: 2px;
+}
+
+/* ---------- desktop: pill of links (shown from 768px) ---------- */
+.jump-nav .jump-nav-nav {
+  display: none;
+  align-items: center;
+}
+
+.jump-nav .jump-nav-list {
+  position: relative;
+  display: inline-flex;
+  flex-direction: row;
+  align-items: center;
+  margin: 0 auto;
+  border-radius: 9999px;
+  padding: 0.25rem;
+  list-style: none;
+  vertical-align: middle;
+  background-color: rgb(255 255 255 / 85%);
+  box-shadow: 0 4px 8px 0 rgb(2 0 0 / 8%);
+  backdrop-filter: blur(4px);
+  opacity: 0;
+  transform: translateY(-50%);
+  animation: jump-nav-fade-in 675ms ease 1.85s forwards;
+}
+
+.jump-nav .jump-nav-list li {
+  margin: 0;
+}
+
+.jump-nav .jump-nav-link:any-link {
+  display: flex;
+  align-items: center;
+  border-radius: 9999px;
+  padding: 0.75rem;
+  font-size: 0.8rem;
+  line-height: 1.333;
+  color: var(--jump-nav-primary);
+  text-decoration: none;
+  white-space: nowrap;
+  transition-property: color, background-color;
+  transition-duration: 0.3s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jump-nav .jump-nav-link:hover,
+.jump-nav .jump-nav-link:focus-visible {
+  text-decoration: none;
+  background-color: var(--mb-color-gray-100, #e0e0e0);
+}
+
+.jump-nav .jump-nav-link:focus-visible {
+  outline: 2px solid var(--jump-nav-primary);
+  outline-offset: 2px;
+}
+
+.jump-nav .jump-nav-icon {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  border-radius: 9999px;
+  padding: 2px;
+  color: #fff;
+  background-color: var(--jump-nav-primary);
+}
+
+/*
+ * The live site's arrow is an <img> of an SVG with no intrinsic size, so it
+ * collapses to 0x0 and each link shows only the 2px-padded red disc (4x4px).
+ * Match that: keep the arrow in the DOM but render it at 0x0.
+ */
+.jump-nav .jump-nav-icon svg {
+  display: block;
+  width: 0;
+  height: 0;
+}
+
+.jump-nav .jump-nav-label {
+  padding-left: 0.25rem;
+  color: var(--mb-color-black, #0e0e0e);
+  transition: color 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.jump-nav .jump-nav-link:hover .jump-nav-label,
+.jump-nav .jump-nav-link:focus-visible .jump-nav-label {
+  color: var(--jump-nav-primary);
+}
+
+@media (width >= 425px) {
+  .jump-nav .jump-nav-select-wrap {
+    max-width: 425px;
+  }
+}
+
+@media (width >= 640px) {
+  .jump-nav .jump-nav-select-wrap {
+    max-width: 640px;
+  }
+}
+
+@media (width >= 768px) {
+  .jump-nav .jump-nav-select-wrap {
+    display: none;
+  }
+
+  .jump-nav .jump-nav-nav {
+    display: flex;
+  }
+}
+
+@media (width >= 1024px) {
+  .jump-nav .jump-nav-link:any-link {
+    padding: 0.75rem 1.25rem;
+    font-size: 14px;
+  }
+}
+
+@media (width >= 1280px) {
+  .jump-nav .jump-nav-list li:not(:first-child, :last-child) {
+    margin: 0 0.25rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .jump-nav .jump-nav-select,
+  .jump-nav .jump-nav-list {
+    animation: none;
+    opacity: 1;
+  }
+
+  .jump-nav .jump-nav-link:any-link,
+  .jump-nav .jump-nav-label {
+    transition: none;
+  }
+}
+
+@keyframes jump-nav-fade-in {
+  0% {
+    opacity: 0;
+    transform: translateY(-25%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(-50%);
+  }
+}

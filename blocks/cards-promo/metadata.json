@@ -1,0 +1,33 @@
+{
+  "variantName": "cards-promo",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "behaviour": {
+      "grid": "4 cols >=1024, 2 cols >=640 (gap 24px), 1 col below (gap 40px)",
+      "hover": "image saturate 0->1 + scale 1.02 (500ms ease-out); title -> #d52331 with a left-to-right 1px underline (background-size 0%->100%, 500ms)",
+      "loading": "lazy images; grey pulse skeleton behind each image while loading (optional)",
+      "dataSource": "static in delivered HTML; no endpoint"
+    },
+    "sectionVisual": null,
+    "purpose": "Promotional cards: greyscale 3:2 image that colours and zooms on hover, red eyebrow, linked title; whole card clickable; 4/2/1 columns"
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "rows": [
+      {
+        "row": "1..N (one per card)",
+        "cells": [
+          "image (reference)",
+          "text (richtext): eyebrow p, title p with the link"
+        ]
+      }
+    ],
+    "structure": "one row per card: cell 1 image (+ alt); cell 2 rich text with eyebrow paragraph and a title paragraph containing the link"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home 'Fresh insights' section (heading is default content in the same section).",
+  "reuseGuidance": "Any grid of promo / teaser links with an image.",
+  "sourceUrl": "https://www.mybeckman.in/"
+}

@@ -1,0 +1,38 @@
+{
+  "variantName": "hero-photo-card",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "behaviour": {
+      "image": "absolute inset 0, object-cover, filter saturate(0), lazy",
+      "card": "xl 7/12 of a 1280 container, md 3/4, else 11/12; rgba(255,255,255,.95); border-left 8px lg / 4px #d52331; padding 64px lg / 24px; section padding 128px lg / 64px",
+      "hover": "button #d52331 -> #bb1623 (300ms) + arrow translateX 4px"
+    },
+    "sectionVisual": null,
+    "purpose": "Full-bleed greyscale photo with a centred translucent white card (red left border) holding eyebrow, h2, text and a primary button"
+  },
+  "contentPattern": {
+    "baseBlock": "hero",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "image (reference) + imageAlt: background photo"
+        ]
+      },
+      {
+        "row": 2,
+        "cells": [
+          "text (richtext): eyebrow p, h2, p, <strong><a> button"
+        ]
+      }
+    ],
+    "maxRows": 2,
+    "structure": "row 1: background image (+ alt); row 2: rich text with eyebrow paragraph, h2, paragraph and a bold link (button)"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home 'Our company' section.",
+  "reuseGuidance": "Closing call-to-action panels over a photo.",
+  "sourceUrl": "https://www.mybeckman.in/"
+}

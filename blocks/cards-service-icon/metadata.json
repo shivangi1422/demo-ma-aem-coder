@@ -1,0 +1,32 @@
+{
+  "variantName": "cards-service-icon",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "behaviour": {
+      "grid": "2 cols at every width (gap 24px lg / 16px)",
+      "hover": "card translateY(-2px) + shadow 0 4px 8px rgba(2,0,0,.08) (300ms ease-out); arrow #e0e0e0 -> #d52331 and translateX 8px",
+      "mobile (<768)": "description and arrow hidden; icon and 16px title centred",
+      "click": "whole card is the link"
+    },
+    "sectionVisual": null,
+    "purpose": "Icon + h3 + description link cards in a fixed 2-column grid, lift and arrow-move on hover; mobile shows icon and title only"
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "rows": [
+      {
+        "row": "1..N",
+        "cells": [
+          "text (richtext): icon token paragraph (:heroicons-<name>:), h3 with the link, description p"
+        ]
+      }
+    ],
+    "structure": "one row per card, one rich-text cell: icon token paragraph (:heroicons-user-plus:), h3 containing the link, description paragraph"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home 'Service & technical support' section (section style off-white split).",
+  "reuseGuidance": "Service / feature link cards with a Heroicon. Icons live in /icons as heroicons-<name>.svg.",
+  "sourceUrl": "https://www.mybeckman.in/"
+}

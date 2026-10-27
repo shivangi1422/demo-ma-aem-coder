@@ -1,0 +1,354 @@
+/*
+ * Hero (curved panel) — mybeckman.in home hero.
+ * Values taken from the live page (Tailwind, 1 spacing unit = 0.5rem).
+ * Breakpoints: 425 (xs) / 640 / 768 / 1024 / 1280 / 1536 / 1800.
+ */
+
+/* full-bleed: the section wrapper carries no max-width, padding or margin */
+main > .section.hero-curved-panel-container {
+  margin: 0;
+}
+
+main > .section.hero-curved-panel-container > .hero-curved-panel-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.hero-curved-panel {
+  --hero-curved-panel-gradient: linear-gradient(45deg, #762858, #d52331 34.62%, #d52331 82.86%, #ee4956);
+  --hero-curved-panel-band: linear-gradient(90deg, #ec334100, #ec334133 20%, #ec334166 80%, #ec334100);
+
+  position: relative;
+  overflow: hidden;
+
+  /* self-hosted Inter (styles/fonts.css); plain `inter` is not a loaded face */
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mb-color-text, #4d4d4d);
+}
+
+/* Tailwind-like box model, as on the live site (scoped to the block) */
+.hero-curved-panel,
+.hero-curved-panel *,
+.hero-curved-panel *::before,
+.hero-curved-panel *::after {
+  box-sizing: border-box;
+}
+
+/* ---------- image ---------- */
+.hero-curved-panel .hero-curved-panel-media {
+  width: 100%;
+}
+
+.hero-curved-panel .hero-curved-panel-media > div {
+  background-color: #f4f4f4;
+}
+
+.hero-curved-panel .hero-curved-panel-media picture {
+  display: block;
+  width: 100%;
+}
+
+.hero-curved-panel .hero-curved-panel-media img {
+  display: block;
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+/* ---------- curved gradient panel ---------- */
+.hero-curved-panel .hero-curved-panel-body {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  align-items: center;
+  margin-top: -15%;
+  overflow: visible;
+  color: #fff;
+  background: var(--hero-curved-panel-gradient);
+  clip-path: circle(600px at 50% 600px);
+}
+
+.hero-curved-panel.no-image .hero-curved-panel-body {
+  margin-top: 0;
+}
+
+.hero-curved-panel .hero-curved-panel-content {
+  width: 100%;
+  max-width: 100%;
+  padding: 3rem 0;
+}
+
+/* heading: text slides up out of a translucent red band */
+.hero-curved-panel .hero-curved-panel-heading {
+  display: inline-block;
+  width: 100%;
+  margin: 0 0 1.5rem;
+  font-family: inherit;
+  font-size: 2.441rem;
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  text-align: center;
+  color: inherit;
+}
+
+.hero-curved-panel .hero-curved-panel-heading-band {
+  display: block;
+  overflow: hidden;
+  padding: 0 3rem 7px;
+  background: var(--hero-curved-panel-band);
+}
+
+.hero-curved-panel .hero-curved-panel-heading-text {
+  display: block;
+  transform: translateY(100%);
+  animation: hero-curved-panel-slide-in 0.5s ease 0.5s forwards;
+  will-change: transform;
+}
+
+.hero-curved-panel .hero-curved-panel-intro {
+  width: 100%;
+  margin: 0;
+  padding: 0 1.5rem;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  text-align: center;
+  color: #fff;
+  opacity: 0;
+  animation: hero-curved-panel-slide-in-bottom 0.9s ease 1.2s forwards;
+  will-change: transform;
+}
+
+.hero-curved-panel .hero-curved-panel-intro + .hero-curved-panel-intro {
+  margin-top: 1em;
+}
+
+.hero-curved-panel .hero-curved-panel-content a:any-link {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.hero-curved-panel .hero-curved-panel-content a:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+
+@media (width >= 425px) {
+  .hero-curved-panel .hero-curved-panel-heading-band {
+    padding-left: 4.2rem;
+    padding-right: 4.2rem;
+  }
+}
+
+@media (width >= 640px) {
+  .hero-curved-panel {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .hero-curved-panel .hero-curved-panel-media {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    width: 58.3333%;
+  }
+
+  .hero-curved-panel .hero-curved-panel-media > div {
+    position: absolute;
+    inset: 0;
+  }
+
+  .hero-curved-panel .hero-curved-panel-media picture,
+  .hero-curved-panel .hero-curved-panel-media img {
+    height: 100%;
+  }
+
+  .hero-curved-panel .hero-curved-panel-body {
+    width: 50%;
+    margin-top: 0;
+    padding-left: 2.5rem;
+    overflow: hidden;
+    clip-path: circle(800px at 800px 50%);
+    opacity: 0;
+    transform: translateX(20%);
+    animation: hero-curved-panel-body-in 0.4s ease forwards;
+  }
+
+  .hero-curved-panel.no-image .hero-curved-panel-body {
+    width: 100%;
+  }
+
+  .hero-curved-panel .hero-curved-panel-content {
+    max-width: 640px;
+    padding: 4rem 0;
+  }
+
+  .hero-curved-panel .hero-curved-panel-heading {
+    text-align: left;
+  }
+
+  .hero-curved-panel .hero-curved-panel-heading-band {
+    margin-bottom: -0.5rem;
+    padding-left: 1.4rem;
+    padding-right: 1.4rem;
+    transform: translateX(-1.4rem);
+  }
+
+  .hero-curved-panel .hero-curved-panel-intro {
+    width: 58.3333%;
+    padding: 0;
+    font-weight: 300;
+    line-height: 1.5rem;
+    text-align: left;
+    color: #fde8ea;
+  }
+}
+
+@media (width >= 768px) {
+  .hero-curved-panel .hero-curved-panel-body {
+    padding-left: 4rem;
+  }
+
+  .hero-curved-panel .hero-curved-panel-intro {
+    width: 75%;
+    animation-name: hero-curved-panel-slide-in-left;
+  }
+}
+
+@media (width >= 1024px) {
+  .hero-curved-panel .hero-curved-panel-media {
+    width: 66.6667%;
+  }
+
+  .hero-curved-panel .hero-curved-panel-body {
+    width: 41.6667%;
+  }
+
+  .hero-curved-panel .hero-curved-panel-content {
+    padding: 7rem 0;
+  }
+
+  .hero-curved-panel .hero-curved-panel-heading {
+    font-size: 3.052rem;
+  }
+
+  .hero-curved-panel .hero-curved-panel-heading-band {
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+    transform: translateX(-1.5rem);
+  }
+
+  .hero-curved-panel .hero-curved-panel-intro {
+    width: 83.3333%;
+    line-height: 1.625;
+  }
+}
+
+@media (width >= 1280px) {
+  .hero-curved-panel .hero-curved-panel-body {
+    padding-left: 6rem;
+  }
+
+  .hero-curved-panel .hero-curved-panel-heading {
+    margin-bottom: 2rem;
+    font-size: 3.815rem;
+  }
+
+  .hero-curved-panel .hero-curved-panel-heading-band {
+    padding-left: 1.6rem;
+    padding-right: 1.6rem;
+    transform: translateX(-1.6rem);
+  }
+
+  .hero-curved-panel .hero-curved-panel-intro {
+    width: 75%;
+    font-size: 1rem;
+    line-height: 1.5;
+  }
+}
+
+@media (width >= 1536px) {
+  .hero-curved-panel .hero-curved-panel-body {
+    padding-left: 5.5rem;
+    padding-right: 5.5rem;
+  }
+
+  .hero-curved-panel .hero-curved-panel-heading-band {
+    padding-left: 4.5rem;
+    padding-right: 4.5rem;
+    transform: translateX(-4.5rem);
+  }
+
+  .hero-curved-panel .hero-curved-panel-intro {
+    width: 91.6667%;
+    font-size: 1.25rem;
+  }
+}
+
+@media (width >= 1800px) {
+  .hero-curved-panel .hero-curved-panel-heading-band {
+    padding-left: 6rem;
+    padding-right: 6rem;
+    transform: translateX(-6rem);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-curved-panel .hero-curved-panel-body,
+  .hero-curved-panel .hero-curved-panel-heading-text,
+  .hero-curved-panel .hero-curved-panel-intro {
+    animation: none;
+    opacity: 1;
+    transform: none;
+    will-change: auto;
+  }
+}
+
+@keyframes hero-curved-panel-body-in {
+  0% {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-curved-panel-slide-in {
+  0% {
+    transform: translateY(100%);
+  }
+
+  100% {
+    transform: translateY(0);
+  }
+}
+
+@keyframes hero-curved-panel-slide-in-left {
+  0% {
+    opacity: 0;
+    transform: translateX(10%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes hero-curved-panel-slide-in-bottom {
+  0% {
+    opacity: 0;
+    transform: translateY(10%);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

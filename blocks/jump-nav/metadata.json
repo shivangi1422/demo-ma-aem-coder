@@ -1,0 +1,35 @@
+{
+  "variantName": "jump-nav",
+  "baseBlock": "jump-nav",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "behaviour": {
+      "sticky": "pinned at top 32px (z-index 20) for the whole page scroll; overlaps the hero bottom by half its height (translateY(-50%)). In EDS the block sits in its own section, so stickiness must be page-level (e.g. sticky on main or fixed after it scrolls past), not section-level.",
+      "desktop (>=768)": "centred pill, rgba(255,255,255,.85) + backdrop blur, shadow; each link = 16px red circle with a white arrow-down icon + label. Hover: bg #e0e0e0 (300ms), label #d52331, arrow plays scrollArrow .5s once.",
+      "mobile (<768)": "native <select> built from the same links, placeholder option 'Jump to section:', sr-only label 'Jump to:'; on change -> target.scrollIntoView({behavior:'smooth'}).",
+      "click": "in-page anchors with smooth scroll (html{scroll-behavior:smooth}); no scroll-spy / active state.",
+      "anchorsRequired": "Sections 3, 4, 6, 7 need ids latest, topics, service, about. The xwalk section model (models/_section.json) has only name + style; aem.js turns other section-metadata keys into data-* attributes, not ids. Needs either a section model field (e.g. `anchor`) that block or section JS turns into an id, or the jump-nav resolving targets by section name. This is a model change and needs approval (no-code-changes memory)."
+    },
+    "sectionVisual": null,
+    "purpose": "Sticky in-page navigation: pill of anchor links on desktop, a native select below 768px, smooth scroll to the section whose id matches"
+  },
+  "contentPattern": {
+    "baseBlock": null,
+    "newBlock": true,
+    "rows": [
+      {
+        "row": "1..N",
+        "cells": [
+          "link (aem-content) + linkText (text): <a href=\"#anchor\">Label</a>"
+        ]
+      }
+    ],
+    "notes": "Placeholder 'Jump to section:' and the sr-only label 'Jump to:' are UI strings in the block code (or an optional first config row).",
+    "structure": "one row per link: a link whose URL is the target section anchor (#latest) and whose text is the label"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Own section directly after the home hero.",
+  "reuseGuidance": "Any long page whose sections have Anchor ids. Only in-page anchors are scrolled; other URLs navigate normally.",
+  "sourceUrl": "https://www.mybeckman.in/"
+}

@@ -24,13 +24,37 @@
       "content-product-detail",
       "content-product-form",
       "product-banner",
-      "quote"
+      "quote",
+      "hero-curved-panel",
+      "jump-nav",
+      "cards-promo",
+      "cards-topic-tiles",
+      "cards-service-icon",
+      "hero-photo-card"
     ]
   },
   {
     "id": "cards-grid",
     "components": [
       "cards-grid-item"
+    ]
+  },
+  {
+    "id": "cards-promo",
+    "components": [
+      "cards-promo-item"
+    ]
+  },
+  {
+    "id": "cards-service-icon",
+    "components": [
+      "cards-service-icon-item"
+    ]
+  },
+  {
+    "id": "cards-topic-tiles",
+    "components": [
+      "cards-topic-tiles-item"
     ]
   },
   {
@@ -70,6 +94,12 @@
     "id": "form-request",
     "components": [
       "form-request-item"
+    ]
+  },
+  {
+    "id": "jump-nav",
+    "components": [
+      "jump-nav-link"
     ]
   },
   {

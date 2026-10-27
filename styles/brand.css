@@ -1,0 +1,526 @@
+/*
+ * Theme: mybeckman (mybeckman.in, Beckman Coulter Life Sciences)
+ *
+ * Applies ONLY to pages whose metadata sets `theme: theme-mybeckman`
+ * (aem.js turns that into <body class="theme-mybeckman">). Every rule below is
+ * scoped to body.theme-mybeckman, so the beckmancoulter.com pages under /en/
+ * keep the :root tokens and the unscoped rules in styles.css.
+ *
+ * Values are the computed styles of the live home page (Tailwind build,
+ * media.beckman.com/assets/css/revised/index.css). Breakpoints follow the
+ * source's Tailwind screens: 640 (sm), 768 (md), 1024 (lg), 1280 (xl), 1536 (2xl).
+ *
+ * Specificity: styles.css comes after this file, so a theme rule has to beat the
+ * matching unscoped rule there (e.g. `h2` 0,0,1), but should not beat block rules
+ * (`.block h2` 0,1,1, which load later and win ties). For that reason the element
+ * part is wrapped in :where() where possible.
+ */
+
+/* fallback face sized to Inter's metrics, to limit layout shift while the font loads */
+@font-face {
+  font-family: mybeckman-inter-fallback;
+  size-adjust: 107.06%;
+  ascent-override: 90.44%;
+  descent-override: 22.52%;
+  line-gap-override: 0%;
+  src: local('Arial');
+}
+
+/* ---------- tokens ---------- */
+body.theme-mybeckman {
+  /* brand palette */
+  --mb-color-primary: #d52331;
+  --mb-color-primary-dark: #bb1623;
+  --mb-color-primary-25: #fde8ea;
+  --mb-color-red: #ea1c2c;
+  --mb-color-black: #0e0e0e;
+  --mb-color-text: #4d4d4d;
+  --mb-color-text-light: #3e3e3e;
+  --mb-color-text-lighter: #807f7f;
+  --mb-color-gray-50: #f4f4f4;
+  --mb-color-gray-100: #e0e0e0;
+  --mb-color-gray-200: #cbcbcb;
+  --mb-color-gray-300: #b7b6b6;
+  --mb-color-gray-600: #7a7979;
+  --mb-color-off-white: #fafafa;
+  --mb-color-white: #fff;
+  --mb-gradient-light-grey: linear-gradient(#fff, #f7f7f7);
+
+  /* typography */
+  --mb-font-family: mybeckman-inter, mybeckman-inter-fallback, system-ui, sans-serif;
+  --mb-font-size-sm: 0.8rem; /* 12.8px */
+  --mb-font-size-14: 0.875rem; /* 14px */
+  --mb-font-size-base: 1rem; /* 16px */
+  --mb-font-size-lg: 1.25rem; /* 20px */
+  --mb-font-size-xl: 1.563rem; /* 25.008px */
+  --mb-font-size-2xl: 1.953rem; /* 31.248px */
+  --mb-font-size-3xl: 2.441rem; /* 39.056px */
+  --mb-font-size-4xl: 3.052rem; /* 48.832px */
+  --mb-font-size-5xl: 3.815rem; /* 61.04px */
+  --mb-ease-out: cubic-bezier(0, 0, 0.2, 1);
+
+  /* layout */
+  --mb-container-max-width: 1536px;
+  --mb-gutter: 16px;
+  --mb-gutter-xl: 32px;
+  --mb-container-padding-inline: max(var(--mb-gutter), calc((100% - var(--mb-container-max-width)) / 2 + var(--mb-gutter)));
+  --mb-section-padding: 40px; /* py-5 */
+  --mb-section-padding-l: 64px; /* py-8 */
+  --mb-section-padding-xl: 128px; /* xl:py-16 */
+  --mb-section-padding-xxl: 160px; /* xl:py-20 */
+
+  /* boilerplate tokens, re-pointed for this theme (styles.css rules read them) */
+  --background-color: var(--mb-color-white);
+  --light-color: var(--mb-color-gray-50);
+  --dark-color: var(--mb-color-text-light);
+  --text-color: var(--mb-color-text);
+  --link-color: var(--mb-color-primary);
+  --link-hover-color: var(--mb-color-primary);
+  --body-font-family: var(--mb-font-family);
+  --heading-font-family: var(--mb-font-family);
+
+  /* header-mybeckman: two rows (logo/search/tools + menu bar); 120px from 1120px */
+  --nav-height: 117px;
+
+  /* the source body copy does not scale with the viewport */
+  --body-font-size-m: var(--mb-font-size-base);
+  --body-font-size-s: var(--mb-font-size-14);
+  --body-font-size-xs: var(--mb-font-size-sm);
+
+  /* heading sizes, mobile first (h1 / h2 / h3 / h4 / h5 / h6) */
+  --heading-font-size-xxl: var(--mb-font-size-3xl);
+  --heading-font-size-xl: var(--mb-font-size-xl);
+  --heading-font-size-l: var(--mb-font-size-base);
+  --heading-font-size-m: var(--mb-font-size-lg);
+  --heading-font-size-s: var(--mb-font-size-base);
+  --heading-font-size-xs: var(--mb-font-size-14);
+
+  line-height: 1.5;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@media (width >= 768px) {
+  body.theme-mybeckman {
+    --heading-font-size-xl: var(--mb-font-size-2xl);
+    --heading-font-size-l: var(--mb-font-size-lg);
+  }
+}
+
+@media (width >= 1024px) {
+  body.theme-mybeckman {
+    --heading-font-size-xxl: var(--mb-font-size-4xl);
+    --heading-font-size-xl: var(--mb-font-size-3xl);
+  }
+}
+
+/* header-mybeckman: full-size logo row from 1025px, desktop layout from 1120px */
+@media (width >= 1025px) {
+  body.theme-mybeckman {
+    --nav-height: 119px;
+  }
+}
+
+@media (width >= 1120px) {
+  body.theme-mybeckman {
+    --nav-height: 120px;
+  }
+}
+
+@media (width >= 1280px) {
+  body.theme-mybeckman {
+    --heading-font-size-xxl: var(--mb-font-size-5xl);
+  }
+}
+
+/* ---------- base typography ---------- */
+
+/* Tailwind preflight on the source: headings and paragraphs carry no margins */
+body.theme-mybeckman :where(h1, h2, h3, h4, h5, h6) {
+  margin: 0;
+  font-weight: 400;
+  line-height: 1.5;
+}
+
+body.theme-mybeckman :where(h1) {
+  font-weight: 200;
+  line-height: 1;
+  letter-spacing: -0.05em;
+}
+
+body.theme-mybeckman :where(h2) {
+  font-weight: 300;
+  line-height: 1.2;
+}
+
+@media (width >= 768px) {
+  body.theme-mybeckman :where(h2) {
+    line-height: 1.3333;
+  }
+}
+
+body.theme-mybeckman :where(p) {
+  margin: 0;
+}
+
+/*
+ * Links: colour and hover come from the re-pointed --link-color /
+ * --link-hover-color tokens (red, underline on hover, no colour change).
+ * Focus uses the browser's default focus ring, as on the source.
+ */
+
+/* ---------- buttons / CTAs ---------- */
+
+/* <strong><a> = primary: red pill (source "About Beckman Coulter Life Sciences ->") */
+body.theme-mybeckman a.button:any-link,
+body.theme-mybeckman button.button {
+  display: inline-block;
+  border: 0;
+  border-radius: 9999px;
+  padding: 12px 20px;
+  font-size: var(--mb-font-size-14);
+  font-weight: 400;
+  line-height: 1.5;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  transition: color 0.3s var(--mb-ease-out), background-color 0.3s var(--mb-ease-out), border-color 0.3s var(--mb-ease-out);
+}
+
+body.theme-mybeckman a.button.primary,
+body.theme-mybeckman button.button.primary,
+body.theme-mybeckman a.button.primary:focus-visible,
+body.theme-mybeckman button.button.primary:focus-visible {
+  background-color: var(--mb-color-primary);
+  color: var(--mb-color-white);
+}
+
+body.theme-mybeckman a.button.primary:hover,
+body.theme-mybeckman button.button.primary:hover {
+  background-color: var(--mb-color-primary-dark);
+  color: var(--mb-color-white);
+  text-decoration: none;
+}
+
+/* <em><a> = secondary: red outline pill (no instance on the home page; derived from the palette) */
+body.theme-mybeckman a.button.secondary,
+body.theme-mybeckman button.button.secondary,
+body.theme-mybeckman a.button.secondary:focus-visible,
+body.theme-mybeckman button.button.secondary:focus-visible {
+  padding: 11px 19px;
+  border: 1px solid var(--mb-color-primary);
+  background-color: transparent;
+  color: var(--mb-color-primary);
+}
+
+body.theme-mybeckman a.button.secondary:hover,
+body.theme-mybeckman button.button.secondary:hover {
+  border-color: var(--mb-color-primary);
+  background-color: var(--mb-color-primary);
+  color: var(--mb-color-white);
+  text-decoration: none;
+}
+
+/* <strong><em><a> = accent: the source's #ea1c2c form button (footer "Submit") */
+body.theme-mybeckman a.button.accent,
+body.theme-mybeckman button.button.accent,
+body.theme-mybeckman a.button.accent:focus-visible,
+body.theme-mybeckman button.button.accent:focus-visible {
+  padding: 8px 20px;
+  background-color: var(--mb-color-red);
+  color: var(--mb-color-white);
+  font-weight: 500;
+}
+
+body.theme-mybeckman a.button.accent:hover,
+body.theme-mybeckman button.button.accent:hover {
+  background-color: var(--mb-color-primary-dark);
+  color: var(--mb-color-white);
+  text-decoration: none;
+}
+
+/* ---------- containers ---------- */
+
+/*
+ * Section content: max-w-screen-2xl (1536px, border-box) with 16px gutters,
+ * 32px from 1280px (#latest "lx:px-4 ... xl:px-4"). Sections without a style keep
+ * the 40px vertical margin from styles.css, which matches the source's py-5.
+ */
+body.theme-mybeckman main > :where(.section) > div {
+  box-sizing: border-box;
+  max-width: var(--mb-container-max-width);
+  padding: 0 var(--mb-gutter);
+}
+
+@media (width >= 1280px) {
+  body.theme-mybeckman main > :where(.section) > div {
+    padding: 0 var(--mb-gutter-xl);
+  }
+}
+
+/* section title above a block (#latest h2: mb-4, lg:mb-7) */
+body.theme-mybeckman main .section .default-content-wrapper > h2 {
+  margin-bottom: 32px;
+}
+
+@media (width >= 1024px) {
+  body.theme-mybeckman main .section .default-content-wrapper > h2 {
+    margin-bottom: 56px;
+  }
+}
+
+/* ---------- section styles ---------- */
+
+/* light grey gradient (#topics: .gradient-section-background, py-8 xl:py-20) */
+body.theme-mybeckman main .section.light-grey-gradient {
+  margin: 0;
+  padding-top: var(--mb-section-padding-l);
+  padding-bottom: var(--mb-section-padding-l);
+  background: var(--mb-gradient-light-grey);
+}
+
+/* light grey (diagnostics bar: bg-brand-gray-50) */
+body.theme-mybeckman main .section.light-grey {
+  margin: 0;
+  padding-top: var(--mb-section-padding);
+  padding-bottom: var(--mb-section-padding);
+  background-color: var(--mb-color-gray-50);
+}
+
+/* off-white (#service: bg-brand-off-white, py-8 xl:py-16) */
+body.theme-mybeckman main .section.off-white {
+  margin: 0;
+  padding-top: var(--mb-section-padding-l);
+  padding-bottom: var(--mb-section-padding-l);
+  background-color: var(--mb-color-off-white);
+}
+
+@media (width >= 1280px) {
+  body.theme-mybeckman main .section.off-white {
+    padding-top: var(--mb-section-padding-xl);
+    padding-bottom: var(--mb-section-padding-xl);
+  }
+
+  body.theme-mybeckman main .section.light-grey-gradient {
+    padding-top: var(--mb-section-padding-xxl);
+    padding-bottom: var(--mb-section-padding-xxl);
+  }
+}
+
+/*
+ * centered: the full-width diagnostics bar (bg-brand-gray-50 p-2; text-sm md:text-14,
+ * centred; link on its own line on mobile, inline from 768px; 16px logo).
+ * The bar is a one-cell columns block; it is styled here, blocks/columns is untouched.
+ */
+body.theme-mybeckman main .section.centered {
+  padding: 16px;
+  text-align: center;
+}
+
+body.theme-mybeckman main .section.centered > div {
+  max-width: none;
+  padding: 0;
+}
+
+body.theme-mybeckman main .section.centered :where(.columns) > div {
+  display: block;
+}
+
+body.theme-mybeckman main .section.centered :where(.columns > div) > div {
+  font-size: var(--mb-font-size-sm);
+  line-height: 1.333;
+}
+
+body.theme-mybeckman main .section.centered .columns a:any-link {
+  display: block;
+}
+
+body.theme-mybeckman main .section.centered .columns img {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  vertical-align: text-top;
+}
+
+@media (width >= 768px) {
+  body.theme-mybeckman main .section.centered :where(.columns > div) > div {
+    font-size: var(--mb-font-size-14);
+    line-height: 1.5;
+  }
+
+  body.theme-mybeckman main .section.centered .columns a:any-link {
+    display: inline;
+    margin-left: 0.25em;
+  }
+}
+
+/*
+ * split: default-content intro beside the block from 1024px.
+ * Default = #service (intro lg:w-5/12, block lg:w-7/12, gap 24 / lg 64 / xl 96).
+ * With light-grey-gradient = #topics (narrow intro lg:w-3/12 + lg:pr-2, block lg:w-9/12, no gap).
+ * The section itself becomes the 1536px container, so the wrappers lose their own box.
+ */
+body.theme-mybeckman main .section.split {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+  padding-left: var(--mb-container-padding-inline);
+  padding-right: var(--mb-container-padding-inline);
+}
+
+body.theme-mybeckman main .section.split > div {
+  box-sizing: border-box;
+  max-width: none;
+  margin: 0;
+  padding: 0;
+}
+
+body.theme-mybeckman main .section.split > .default-content-wrapper + div {
+  padding-top: 16px;
+}
+
+body.theme-mybeckman main .section.split.light-grey-gradient {
+  gap: 0;
+}
+
+body.theme-mybeckman main .section.split.light-grey-gradient > .default-content-wrapper + div {
+  padding-top: 0;
+  margin-top: 32px;
+}
+
+@media (width >= 1024px) {
+  body.theme-mybeckman main .section.split {
+    flex-direction: row;
+    gap: 64px;
+  }
+
+  body.theme-mybeckman main .section.split > .default-content-wrapper {
+    flex: 0 1 41.6667%;
+  }
+
+  body.theme-mybeckman main .section.split > .default-content-wrapper + div {
+    flex: 0 1 58.3333%;
+    padding-top: 0;
+  }
+
+  body.theme-mybeckman main .section.split.light-grey-gradient {
+    gap: 0;
+  }
+
+  body.theme-mybeckman main .section.split.light-grey-gradient > .default-content-wrapper {
+    flex-basis: 25%;
+    padding-right: 16px;
+  }
+
+  body.theme-mybeckman main .section.split.light-grey-gradient > .default-content-wrapper + div {
+    flex-basis: 75%;
+    margin-top: 0;
+  }
+}
+
+@media (width >= 1280px) {
+  body.theme-mybeckman main .section.split {
+    gap: 96px;
+  }
+
+  body.theme-mybeckman main .section.split.light-grey-gradient {
+    gap: 0;
+  }
+
+  body.theme-mybeckman main .section.split.light-grey-gradient > .default-content-wrapper {
+    padding-right: 0;
+  }
+}
+
+/* split intro: eyebrow / heading / lead text / text CTA (#service left column) */
+body.theme-mybeckman main .section.split .default-content-wrapper > p:first-child:has(+ h2) {
+  margin-bottom: 16px;
+  font-size: var(--mb-font-size-sm);
+  line-height: 1.333;
+  color: var(--mb-color-primary);
+}
+
+body.theme-mybeckman main .section.split .default-content-wrapper > h2 {
+  margin-bottom: 16px;
+  color: var(--mb-color-text-light);
+}
+
+body.theme-mybeckman main .section.split .default-content-wrapper > h2 + p:not(:last-child) {
+  padding-bottom: 16px;
+  line-height: 1.625;
+  color: var(--mb-color-text-lighter);
+}
+
+/*
+ * On the source the link sits in a 16px/24px line, so the line is 24px tall even
+ * while the link text is 14px. A fixed 24px line-height keeps that in quirks mode too.
+ */
+body.theme-mybeckman main .section.split .default-content-wrapper > p:last-child > a:only-child:not(.button) {
+  font-size: var(--mb-font-size-14);
+  line-height: 24px;
+}
+
+/* text CTA arrow ("Service ->"): moves 4px right on hover; hidden from assistive tech */
+body.theme-mybeckman main .section.split .default-content-wrapper > p:last-child > a:only-child:not(.button)::after {
+  content: '\00a0->' / '';
+  display: inline-block;
+  transition: transform 0.3s var(--mb-ease-out);
+}
+
+body.theme-mybeckman main .section.split .default-content-wrapper > p:last-child > a:only-child:not(.button):hover {
+  text-decoration: none;
+}
+
+body.theme-mybeckman main .section.split .default-content-wrapper > p:last-child > a:only-child:not(.button):hover::after {
+  transform: translateX(4px);
+}
+
+/* narrow intro (#topics): heading + subtitle */
+body.theme-mybeckman main .section.split.light-grey-gradient .default-content-wrapper > h2 {
+  margin-bottom: 8px;
+  color: inherit;
+}
+
+body.theme-mybeckman main .section.split.light-grey-gradient .default-content-wrapper > h2 + p:last-child {
+  font-size: var(--mb-font-size-sm);
+  line-height: 1.333;
+  color: var(--mb-color-primary);
+}
+
+@media (width >= 768px) {
+  body.theme-mybeckman main .section.split.light-grey-gradient .default-content-wrapper > h2 + p:last-child {
+    font-size: var(--mb-font-size-14);
+    line-height: 1.5;
+  }
+}
+
+@media (width >= 1024px) {
+  body.theme-mybeckman main .section.split .default-content-wrapper > p:first-child:has(+ h2) {
+    font-size: var(--mb-font-size-14);
+    line-height: 1.5;
+  }
+
+  body.theme-mybeckman main .section.split .default-content-wrapper > h2 {
+    margin-bottom: 48px;
+  }
+
+  body.theme-mybeckman main .section.split .default-content-wrapper > h2 + p:not(:last-child) {
+    padding-bottom: 24px;
+  }
+
+  body.theme-mybeckman main .section.split .default-content-wrapper > p:last-child > a:only-child:not(.button) {
+    font-size: var(--mb-font-size-base);
+  }
+
+  body.theme-mybeckman main .section.split.light-grey-gradient .default-content-wrapper > h2 {
+    margin-bottom: 16px;
+  }
+}
+
+@media (width >= 1280px) {
+  body.theme-mybeckman main .section.split .default-content-wrapper > h2 + p:not(:last-child) {
+    font-size: var(--mb-font-size-lg);
+    line-height: 1.5;
+  }
+}

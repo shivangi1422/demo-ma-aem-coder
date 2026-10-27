@@ -1,0 +1,918 @@
+/*
+ * Header (mybeckman theme). Values are the computed styles of the mybeckman.in header.
+ * Mobile first, on the live site's own breakpoints: 601px (wider gutters), 1025px (full-size
+ * logo, quote button, utility panels on hover) and 1120px (desktop menu).
+ */
+
+.header-mybeckman {
+  --mbh-text: #001726;
+  --mbh-blue: #007acb;
+  --mbh-red: #ea1c2c;
+  --mbh-red-hover: #cf1322;
+  --mbh-border: #ddd;
+  --mbh-hover-bg: #f2f5f7;
+  --mbh-chevron: #afafaf;
+  --mbh-gutter: 10px;
+  --mbh-tabs-width: 20vw;
+  --mbh-list-width: 70vw;
+
+  position: relative;
+  z-index: 25;
+  background: #fff;
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 10px;
+  line-height: 1.5;
+  color: #4d4d4d;
+}
+
+.header-mybeckman ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.header-mybeckman a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.header-mybeckman button {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  color: inherit;
+  cursor: pointer;
+}
+
+.header-mybeckman-icon {
+  display: inline-block;
+  width: 1em;
+  height: 1em;
+  background-color: currentcolor;
+  mask: var(--icon) center / contain no-repeat;
+  vertical-align: middle;
+}
+
+/* ---------- row 0: logo, search, tools ---------- */
+
+.header-mybeckman-bar {
+  display: flex;
+  align-items: center;
+  padding: 12px var(--mbh-gutter);
+  border-bottom: 1px solid var(--mbh-border);
+  background: #fff;
+}
+
+/* below 601px the logo and the search box share the space (both shrink) */
+.header-mybeckman-brand {
+  display: flex;
+  flex: 0 1 115px;
+  align-items: center;
+  justify-content: center;
+  min-width: 0;
+  height: 42px;
+}
+
+.header-mybeckman-brand img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.header-mybeckman-search {
+  position: relative;
+  flex: 0 1 65%;
+  box-sizing: border-box;
+  min-width: 0;
+  height: 42px;
+  margin: 0 0 0 11px;
+  border: 1px solid #e5e5e5;
+  border-radius: 50px;
+  background: #f5f5f5;
+}
+
+.header-mybeckman-search input {
+  box-sizing: border-box;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 6px 16px 6px 50px;
+  border: 0;
+  border-radius: 50px;
+  background: transparent;
+  font: inherit;
+  font-size: 14px;
+  line-height: 28px;
+  color: #212121;
+  outline-offset: 2px;
+  appearance: none;
+}
+
+.header-mybeckman-search input::placeholder {
+  color: #67768b;
+  opacity: 1;
+}
+
+.header-mybeckman-search input::-webkit-search-cancel-button {
+  appearance: none;
+}
+
+.header-mybeckman-search button {
+  position: absolute;
+  top: 2px;
+  left: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  font-size: 16px;
+  color: #67768b;
+}
+
+.header-mybeckman-tools {
+  display: flex;
+  flex: 0 0 auto;
+  align-items: center;
+  gap: 40px;
+  padding-left: 15px;
+}
+
+.header-mybeckman-tools a.header-mybeckman-tool:any-link {
+  font-size: 13px;
+  line-height: 1.5;
+  color: var(--mbh-blue);
+  text-decoration: underline;
+}
+
+.header-mybeckman-tools a.header-mybeckman-tool:hover {
+  text-decoration: none;
+}
+
+.header-mybeckman-tools a.header-mybeckman-cta:any-link {
+  display: none;
+  align-items: center;
+  padding: 12px 20px;
+  border-radius: 2px;
+  background-color: var(--mbh-red);
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+  white-space: nowrap;
+  transition: 0.3s;
+}
+
+.header-mybeckman-tools a.header-mybeckman-cta:hover {
+  background-color: var(--mbh-red-hover);
+}
+
+/* ---------- row 1: menu button, menu, utility ---------- */
+
+.header-mybeckman-menubar {
+  position: relative;
+  display: flex;
+  align-items: stretch;
+  min-height: 50px;
+  padding: 0 0 0 var(--mbh-gutter);
+  background: #fff;
+}
+
+.header-mybeckman-menubar > .header-mybeckman-hamburger {
+  display: flex;
+  flex: 0 0 35%;
+  align-items: center;
+  padding: 10px 0;
+  font-size: 15px;
+  line-height: 1.5;
+  color: var(--mbh-text);
+}
+
+.header-mybeckman-hamburger .header-mybeckman-icon {
+  width: 26px;
+  height: 30px;
+  margin-right: 7px;
+}
+
+/* slide-in menu: navy tab column + white list */
+.header-mybeckman-sections {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  z-index: 30;
+  width: var(--mbh-tabs-width);
+  height: 100vh;
+  transition: left 0.2s cubic-bezier(0.61, 0, 0.71, 0.48);
+}
+
+.header-mybeckman nav.is-mobile-open .header-mybeckman-sections {
+  left: 0;
+  transition: left 0.4s cubic-bezier(0.29, 0.52, 0.39, 1);
+}
+
+.header-mybeckman-menu {
+  height: 100%;
+  overflow-y: auto;
+  background: var(--mbh-text);
+}
+
+.header-mybeckman-menu > li {
+  padding: 15px 1px;
+}
+
+.header-mybeckman-menu > li.is-active {
+  background: var(--mbh-blue);
+}
+
+.header-mybeckman-menu > li > button {
+  display: block;
+  width: 100%;
+  font-size: 11px;
+  font-weight: 500;
+  line-height: 1.85;
+  text-align: center;
+  color: #fff;
+}
+
+.header-mybeckman-chevron {
+  display: none;
+  font-size: 15px;
+  opacity: 0.25;
+  transition: transform 0.15s, color 0.15s, opacity 0.15s;
+}
+
+.header-mybeckman-menu > li > .header-mybeckman-panel {
+  position: absolute;
+  top: 0;
+  left: var(--mbh-tabs-width);
+  display: none;
+  box-sizing: border-box;
+  width: var(--mbh-list-width);
+  height: 100vh;
+  overflow: hidden scroll;
+  background: #fff;
+}
+
+.header-mybeckman-menu > li.is-active > .header-mybeckman-panel {
+  display: block;
+}
+
+/* ---------- panel content (mobile) ---------- */
+
+.header-mybeckman-level {
+  position: relative;
+  transition: transform 0.25s ease-in-out;
+}
+
+.header-mybeckman-cascade > .header-mybeckman-level,
+.header-mybeckman-level .header-mybeckman-level {
+  padding-bottom: 88px;
+}
+
+/* deeper levels sit to the right and slide in when their row is tapped */
+.header-mybeckman-level .header-mybeckman-level {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  display: none;
+  width: 100%;
+}
+
+.header-mybeckman-level.is-visible {
+  display: block;
+}
+
+.header-mybeckman-level.is-moved {
+  transform: translateX(-100%);
+}
+
+.header-mybeckman-level > ul {
+  padding: 12px 15px 15px;
+}
+
+.header-mybeckman-title {
+  padding: 10px 0 8px;
+  font-size: 10px;
+  font-weight: 600;
+  line-height: 1.5;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--mbh-text);
+}
+
+.header-mybeckman-link + .header-mybeckman-title {
+  margin-top: 15px;
+}
+
+.header-mybeckman-link > a:any-link {
+  position: relative;
+  display: block;
+  padding: 15px 10px 15px 0;
+  border-bottom: 1px solid var(--mbh-border);
+  font-size: 13px;
+  line-height: 1.35;
+  color: var(--mbh-text);
+}
+
+.header-mybeckman-link:where(:last-child) > a:any-link {
+  border-bottom: 0;
+}
+
+.header-mybeckman-link > a:hover,
+.header-mybeckman-link > a:focus-visible {
+  color: var(--mbh-blue);
+  text-decoration: underline;
+}
+
+.header-mybeckman-link > a .header-mybeckman-icon {
+  margin-left: 5px;
+}
+
+.header-mybeckman-has-sub > a:any-link {
+  padding-right: 35px;
+}
+
+.header-mybeckman-has-sub > a::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 6px);
+  right: 0;
+  width: 12px;
+  height: 12px;
+  background-color: var(--mbh-chevron);
+  mask: url('../../icons/fa-chevron-right.svg') center / contain no-repeat;
+}
+
+/* the source back row grows with each level (its font size compounds): 33px, then 42px */
+.header-mybeckman-level-2 > ul > .header-mybeckman-back {
+  padding-top: 5px;
+}
+
+.header-mybeckman-level-3 > ul > .header-mybeckman-back {
+  padding-top: 14px;
+}
+
+.header-mybeckman-level .header-mybeckman-back > button {
+  position: relative;
+  padding: 0 0 5px 17px;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.75;
+  color: var(--mbh-blue);
+}
+
+.header-mybeckman-level .header-mybeckman-back > button::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 10px;
+  height: 11px;
+  background-color: currentcolor;
+  mask: url('../../icons/fa-chevron-left.svg') center / contain no-repeat;
+}
+
+/* ---------- utility drop panels ---------- */
+
+.header-mybeckman-menubar > .header-mybeckman-utility {
+  display: flex;
+  margin-left: auto;
+}
+
+.header-mybeckman-utility-item {
+  position: relative;
+  border-left: 1px solid var(--mbh-border);
+}
+
+.header-mybeckman-utility-item:last-child {
+  border-right: 1px solid var(--mbh-border);
+}
+
+.header-mybeckman-utility a.header-mybeckman-utility-trigger:any-link {
+  display: block;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 12px 20px;
+  font-size: 13.5px;
+  line-height: 26px;
+  color: var(--mbh-text);
+  transition: color 0.15s, background-color 0.15s;
+}
+
+.header-mybeckman-utility .header-mybeckman-utility-trigger .header-mybeckman-icon {
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+}
+
+.header-mybeckman-utility .header-mybeckman-utility-item.is-open > a.header-mybeckman-utility-trigger,
+.header-mybeckman-utility .header-mybeckman-utility-item > a.header-mybeckman-utility-trigger:hover {
+  background-color: var(--mbh-hover-bg);
+  color: var(--mbh-blue);
+}
+
+.header-mybeckman-flag {
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  vertical-align: -2px;
+}
+
+.header-mybeckman-drop {
+  position: absolute;
+  top: 100%;
+  left: calc(50% - 115px);
+  z-index: 5;
+  display: none;
+  box-sizing: border-box;
+  width: 230px;
+  padding: 17.5px;
+  border: 1px solid var(--mbh-border);
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 2px 2px 0 rgb(0 0 0 / 20%);
+  font-size: 14px;
+  line-height: 1.5;
+  color: #4d4d4d;
+  cursor: default;
+}
+
+.header-mybeckman-utility-item:nth-child(2) > .header-mybeckman-drop {
+  right: -40.5px;
+  left: auto;
+  width: 260px;
+}
+
+.header-mybeckman-utility-item:last-child > .header-mybeckman-drop {
+  right: 0;
+  left: auto;
+  width: 320px;
+}
+
+.header-mybeckman-utility-item.is-open > .header-mybeckman-drop {
+  display: block;
+}
+
+.header-mybeckman-drop-body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding-top: 16.8px;
+}
+
+/* pointer arrow above the panel (hover panels only, from 1025px) */
+.header-mybeckman-drop::before,
+.header-mybeckman-drop::after {
+  content: '';
+  position: absolute;
+  right: 22px;
+  display: none;
+  border-right: 10px solid transparent;
+  border-bottom: 10px solid var(--mbh-border);
+  border-left: 10px solid transparent;
+}
+
+.header-mybeckman-drop::before {
+  top: -10.5px;
+}
+
+.header-mybeckman-drop::after {
+  top: -8.5px;
+  right: 24px;
+  border-right-width: 8px;
+  border-bottom: 8px solid #fff;
+  border-left-width: 8px;
+}
+
+.header-mybeckman-drop p {
+  margin: 0;
+}
+
+.header-mybeckman-drop .header-mybeckman-drop-title {
+  padding-bottom: 7.5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mbh-text);
+}
+
+.header-mybeckman-drop-title + p {
+  margin-bottom: 17.5px;
+  font-size: 12.6px;
+}
+
+.header-mybeckman-drop a:any-link:not(.header-mybeckman-button) {
+  font-size: 12.6px;
+  color: var(--mbh-blue);
+}
+
+.header-mybeckman-drop a:not(.header-mybeckman-button):hover {
+  text-decoration: underline;
+}
+
+.header-mybeckman-drop a.header-mybeckman-button:any-link {
+  display: block;
+  margin-top: 5px;
+  padding: 13px 20px;
+  border-radius: 2px;
+  background-color: var(--mbh-blue);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.5;
+  text-align: center;
+  color: #fff;
+  transition: 0.3s;
+}
+
+.header-mybeckman-drop a.header-mybeckman-button:hover {
+  background-color: #0d5280;
+}
+
+.header-mybeckman-drop-body > a.header-mybeckman-button:first-child {
+  margin-top: 0;
+}
+
+.header-mybeckman-drop a.header-mybeckman-button-secondary:any-link {
+  margin-top: 10px;
+  padding: 12px 20px;
+  border: 1px solid var(--mbh-blue);
+  background-color: transparent;
+  color: var(--mbh-blue);
+}
+
+.header-mybeckman-drop a.header-mybeckman-button-secondary:hover {
+  background-color: var(--mbh-blue);
+  color: #fff;
+}
+
+.header-mybeckman-drop .header-mybeckman-drop-list {
+  margin-top: 14px;
+}
+
+.header-mybeckman-drop .header-mybeckman-drop-list a:any-link {
+  display: inline-block;
+  padding-top: 6.3px;
+}
+
+.header-mybeckman-field {
+  position: relative;
+  margin-bottom: 17.5px;
+}
+
+.header-mybeckman-field label {
+  display: block;
+  margin-bottom: 5px;
+  font-size: 12px;
+  font-weight: 700;
+  color: var(--mbh-text);
+}
+
+.header-mybeckman-field select {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px 40px 10px 15px;
+  border: 1px solid #ccc;
+  border-radius: 2px;
+  background: #fff;
+  font: inherit;
+  font-size: 14px;
+  color: #4d4d4d;
+  cursor: pointer;
+  appearance: none;
+}
+
+.header-mybeckman-caret {
+  position: absolute;
+  right: 15px;
+  bottom: 15px;
+  font-size: 21px;
+  pointer-events: none;
+}
+
+.header-mybeckman-field + a.header-mybeckman-button:any-link {
+  margin-top: 0;
+  font-size: 14px;
+}
+
+/* ---------- page overlays ---------- */
+
+.header-mybeckman-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  background: rgb(0 0 0 / 50%);
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.25s ease 0.1s;
+}
+
+.header-mybeckman-overlay.is-open {
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.25s ease;
+}
+
+.header-mybeckman-overlay-mobile {
+  z-index: 29;
+  background: rgb(0 0 0 / 65%);
+}
+
+body.header-mybeckman-scroll-lock {
+  overflow: hidden;
+}
+
+/* ---------- from 601px ---------- */
+
+/* breakpoint-exception: the live header widens its gutters above 600px */
+@media (width >= 601px) {
+  .header-mybeckman {
+    --mbh-gutter: 25px;
+    --mbh-tabs-width: 85px;
+    --mbh-list-width: 300px;
+  }
+
+  .header-mybeckman-bar {
+    justify-content: space-between;
+  }
+
+  .header-mybeckman-brand {
+    flex: 0 0 115px;
+  }
+
+  .header-mybeckman-search {
+    flex: 0 0 55%;
+    min-width: 400px;
+    margin: 0;
+  }
+
+  .header-mybeckman-menubar {
+    padding: 0 var(--mbh-gutter);
+  }
+
+  .header-mybeckman-menubar > .header-mybeckman-hamburger {
+    flex: 0 0 auto;
+    padding-right: 15px;
+    border-right: 1px solid var(--mbh-border);
+  }
+
+  .header-mybeckman-utility-item:last-child > .header-mybeckman-drop {
+    width: 350px;
+  }
+}
+
+/* ---------- from 1025px ---------- */
+
+/* breakpoint-exception: the live header shows the full logo + quote button and opens the utility panels on hover from 1025px */
+@media (width >= 1025px) {
+  .header-mybeckman-brand {
+    flex-basis: 164px;
+    height: 44px;
+  }
+
+  .header-mybeckman-search {
+    height: 44px;
+  }
+
+  .header-mybeckman-tools {
+    padding-left: 0;
+  }
+
+  .header-mybeckman-tools a.header-mybeckman-cta:any-link {
+    display: flex;
+  }
+
+  .header-mybeckman-utility-item:nth-child(2) > .header-mybeckman-drop {
+    right: auto;
+    left: calc(50% - 130px);
+  }
+
+  .header-mybeckman-utility-item:last-child > .header-mybeckman-drop {
+    right: -1px;
+  }
+
+  .header-mybeckman-drop::before,
+  .header-mybeckman-drop::after {
+    display: block;
+  }
+
+  .header-mybeckman-utility-item:not(:last-child) > .header-mybeckman-drop::before {
+    right: calc(50% - 10px);
+  }
+
+  .header-mybeckman-utility-item:not(:last-child) > .header-mybeckman-drop::after {
+    right: calc(50% - 8px);
+  }
+}
+
+/* ---------- desktop ---------- */
+
+/* breakpoint-exception: the live header switches to the desktop menu at 1120px */
+@media (width >= 1120px) {
+  .header-mybeckman {
+    --mbh-gutter: 50px;
+
+    box-shadow: 0 8px 6px -6px rgb(0 0 0 / 20%);
+  }
+
+  .header-mybeckman-menubar {
+    align-items: center;
+    justify-content: space-between;
+    min-height: 51px;
+  }
+
+  .header-mybeckman-menubar > .header-mybeckman-hamburger {
+    display: none;
+  }
+
+  .header-mybeckman-sections,
+  .header-mybeckman nav.is-mobile-open .header-mybeckman-sections {
+    position: static;
+    width: auto;
+    height: auto;
+    transition: none;
+  }
+
+  .header-mybeckman-menu {
+    display: flex;
+    align-items: stretch;
+    height: auto;
+    min-height: 51px;
+    overflow: visible;
+    background: none;
+  }
+
+  .header-mybeckman-menu > li,
+  .header-mybeckman-menu > li.is-active {
+    padding: 13px 18px;
+    background: none;
+  }
+
+  .header-mybeckman-menu > li:first-child {
+    padding-left: 0;
+  }
+
+  .header-mybeckman-menu > li > button {
+    position: relative;
+    display: inline-block;
+    width: auto;
+    padding: 0 3px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    text-align: left;
+    color: var(--mbh-text);
+    transition: color 0.15s;
+  }
+
+  .header-mybeckman-menu > li > button .header-mybeckman-chevron {
+    position: absolute;
+    top: 6.5px;
+    left: calc(100% + 3px);
+    display: block;
+    width: 9px;
+    height: 15px;
+    color: #4d4d4d;
+  }
+
+  .header-mybeckman-menu > li.is-open > button,
+  .header-mybeckman-menu > li > button:hover {
+    color: var(--mbh-blue);
+  }
+
+  .header-mybeckman-menu > li.is-open > button .header-mybeckman-chevron {
+    color: var(--mbh-blue);
+    opacity: 1;
+    transform: rotate(180deg);
+  }
+
+  /* panel: full-width (columns) or a 300px cascading flyout, 450px tall */
+  .header-mybeckman-menu > li > .header-mybeckman-panel,
+  .header-mybeckman-menu > li.is-active > .header-mybeckman-panel {
+    top: 100%;
+    left: 0;
+    z-index: 30;
+    display: flex;
+    width: 100%;
+    height: 450px;
+    max-height: calc(100vh - 100px);
+    overflow: hidden auto;
+    border-top: 1px solid var(--mbh-border);
+    box-shadow: 0 8px 10px 0 rgb(0 0 0 / 20%);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.15s ease;
+  }
+
+  .header-mybeckman-menu > li.is-open > .header-mybeckman-panel {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+  }
+
+  .header-mybeckman-level,
+  .header-mybeckman-level.is-moved {
+    transform: none;
+    transition: none;
+  }
+
+  .header-mybeckman-column,
+  .header-mybeckman-cascade .header-mybeckman-level {
+    flex: 0 0 300px;
+    box-sizing: border-box;
+    width: 300px;
+    min-height: 100%;
+    padding-bottom: 0;
+    border-left: 1px solid var(--mbh-border);
+    background: #fff;
+  }
+
+  .header-mybeckman-level > ul {
+    padding: 15px 0;
+  }
+
+  .header-mybeckman-title {
+    padding: 9px 30px 3px 25px;
+  }
+
+  .header-mybeckman-link > a:any-link {
+    padding: 9px 25px;
+    border-bottom: 0;
+  }
+
+  .header-mybeckman-has-sub > a:any-link {
+    padding-right: 35px;
+  }
+
+  .header-mybeckman-has-sub > a::after {
+    right: 15px;
+    display: none;
+    background-color: currentcolor;
+  }
+
+  .header-mybeckman-cascade .header-mybeckman-has-sub > a:any-link:hover,
+  .header-mybeckman-cascade .header-mybeckman-has-sub.is-open > a:any-link {
+    background-color: var(--mbh-hover-bg);
+    color: var(--mbh-blue);
+    text-decoration: underline;
+  }
+
+  .header-mybeckman-column:first-child .header-mybeckman-title,
+  .header-mybeckman-column:first-child .header-mybeckman-link > a:any-link,
+  .header-mybeckman-cascade > .header-mybeckman-level-1 > ul > .header-mybeckman-title,
+  .header-mybeckman-cascade > .header-mybeckman-level-1 > ul > .header-mybeckman-link > a:any-link {
+    padding-left: 50px;
+  }
+
+  .header-mybeckman-menu > li > .header-mybeckman-cascade {
+    width: 300px;
+    overflow: visible;
+  }
+
+  .header-mybeckman-menu > li > .header-mybeckman-cascade[data-depth="2"] {
+    width: 600px;
+  }
+
+  .header-mybeckman-menu > li > .header-mybeckman-cascade[data-depth="3"] {
+    width: 900px;
+  }
+
+  .header-mybeckman-cascade .header-mybeckman-level .header-mybeckman-level,
+  .header-mybeckman-cascade .header-mybeckman-level .header-mybeckman-level.is-visible {
+    top: -1px;
+    left: 300px;
+    display: none;
+    width: 300px;
+    height: calc(100% + 1px);
+    border-top: 1px solid var(--mbh-border);
+  }
+
+  .header-mybeckman-cascade .header-mybeckman-has-sub.is-open > .header-mybeckman-level {
+    display: block;
+  }
+
+  .header-mybeckman-cascade .header-mybeckman-has-sub > a:hover::after,
+  .header-mybeckman-cascade .header-mybeckman-has-sub.is-open > a::after {
+    display: block;
+  }
+
+  .header-mybeckman-back,
+  .header-mybeckman-mobile-only {
+    display: none;
+  }
+
+  .header-mybeckman-menubar > .header-mybeckman-utility {
+    min-height: 51px;
+    margin-left: 0;
+  }
+
+  .header-mybeckman-utility a.header-mybeckman-utility-trigger:any-link {
+    padding: 15px 25px;
+    line-height: 1.5;
+  }
+
+  .header-mybeckman-overlay-mobile {
+    display: none;
+  }
+}

@@ -26,6 +26,12 @@
           "description": "The label shown for this section in the Content Tree"
         },
         {
+          "component": "text",
+          "name": "anchor",
+          "label": "Anchor ID",
+          "description": "Optional id for in-page links (e.g. latest). Jump navigation links to #<anchor id>."
+        },
+        {
           "component": "multiselect",
           "name": "style",
           "label": "Style",
@@ -33,6 +39,26 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Light Grey Gradient",
+              "value": "light-grey-gradient"
+            },
+            {
+              "name": "Light Grey",
+              "value": "light-grey"
+            },
+            {
+              "name": "Off White",
+              "value": "off-white"
+            },
+            {
+              "name": "Split (intro beside block)",
+              "value": "split"
+            },
+            {
+              "name": "Centered",
+              "value": "centered"
             }
           ]
         }
@@ -59,7 +85,13 @@
         "content-product-detail",
         "content-product-form",
         "product-banner",
-        "quote"
+        "quote",
+        "hero-curved-panel",
+        "jump-nav",
+        "cards-promo",
+        "cards-topic-tiles",
+        "cards-service-icon",
+        "hero-photo-card"
       ]
     }
   ]

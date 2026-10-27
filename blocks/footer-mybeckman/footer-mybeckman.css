@@ -1,0 +1,401 @@
+/*
+ * Footer (mybeckman theme). Values and breakpoints are the mybeckman.in footer's own
+ * (640 / 768 / 900 / 1024 / 1280px), mobile first.
+ */
+
+.footer-mybeckman {
+  --mbf-text: #4d4d4d;
+  --mbf-muted: #8e8d8d;
+  --mbf-red: #ea1c2c;
+  --mbf-red-hover: #bb1623;
+
+  background: #fff;
+  box-shadow: 0 4px 8px 2px rgb(2 0 0 / 10%);
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mbf-text);
+}
+
+.footer-mybeckman *,
+.footer-mybeckman *::before,
+.footer-mybeckman *::after {
+  box-sizing: border-box;
+}
+
+.footer-mybeckman ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* no global underline: text links draw their own, image links have none */
+.footer-mybeckman a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.footer-mybeckman p {
+  margin: 0 0 16px;
+  font-size: 14px;
+  line-height: 1.625;
+  color: var(--mbf-muted);
+}
+
+.footer-mybeckman-icon {
+  display: inline-block;
+  background-color: currentcolor;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+/* ---------- newsletter + link columns ---------- */
+
+.footer-mybeckman-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 96px 16px 48px;
+}
+
+.footer-mybeckman-form {
+  width: 100%;
+}
+
+.footer-mybeckman .footer-mybeckman-heading {
+  margin: 0 0 16px;
+  font-size: 20px;
+  font-weight: 400;
+  line-height: 1.5;
+  color: var(--mbf-text);
+}
+
+/* the source sign-up form is set in Gotham (falls back to Arial where Gotham is not licensed) */
+
+/* below 481px the source form is inset 10px and its field is taller */
+.footer-mybeckman-form form {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 10px;
+  font-family: 'Gotham A', 'Gotham B', arial, sans-serif;
+}
+
+/* each form row ends with 15px of space, as in the source form */
+.footer-mybeckman-field {
+  margin-bottom: 15px;
+}
+
+.footer-mybeckman-field label {
+  display: block;
+  margin-bottom: 5px;
+  padding: 2.56px 0 3.84px;
+  font-size: 12.8px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--mbf-muted);
+}
+
+.footer-mybeckman-required {
+  padding-right: 3px;
+  color: #bf0000;
+}
+
+.footer-mybeckman-field input {
+  display: block;
+  width: 100%;
+  margin: 0;
+  padding: 16px 32px;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #f4f4f4;
+  font: inherit;
+  font-size: 19.2px;
+  line-height: 1.5;
+  color: #333;
+}
+
+.footer-mybeckman .footer-mybeckman-note {
+  margin: 0 0 15px;
+  font-size: 12.8px;
+  line-height: 1.5;
+  color: var(--mbf-muted);
+}
+
+.footer-mybeckman-note a:any-link {
+  padding: 0;
+  color: var(--mbf-muted);
+  text-decoration: underline;
+}
+
+.footer-mybeckman-form button {
+  display: inline-block;
+  margin-left: 0;
+  padding: 8px 20px;
+  border: 0;
+  border-radius: 9999px;
+  background: var(--mbf-red);
+  box-shadow: none;
+  font: inherit;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.5;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.footer-mybeckman-form button:hover {
+  background: var(--mbf-red-hover);
+}
+
+.footer-mybeckman-columns {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px 0;
+}
+
+.footer-mybeckman-column {
+  position: relative;
+  width: 50%;
+}
+
+.footer-mybeckman .footer-mybeckman-links {
+  margin-top: 32px;
+  font-size: 14px;
+}
+
+.footer-mybeckman-links li {
+  padding: 8px 0;
+  line-height: 1.5;
+}
+
+/* underline grows from the left on hover */
+.footer-mybeckman-links a:any-link {
+  display: inline;
+  background-image: linear-gradient(to right, currentcolor, currentcolor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  color: inherit;
+  text-decoration: none;
+  transition: background-size 0.3s;
+}
+
+.footer-mybeckman-links a:hover {
+  background-size: 100% 1px;
+}
+
+.footer-mybeckman-column-primary .footer-mybeckman-links a:any-link {
+  color: var(--mbf-red);
+}
+
+.footer-mybeckman .footer-mybeckman-social {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.footer-mybeckman-social li {
+  margin-right: 20px;
+}
+
+.footer-mybeckman .footer-mybeckman-social a:any-link {
+  display: inline-flex;
+  color: inherit;
+}
+
+.footer-mybeckman .footer-mybeckman-social a:hover {
+  color: var(--mbf-red);
+}
+
+.footer-mybeckman-social svg {
+  display: block;
+  height: 1.25em;
+}
+
+.footer-mybeckman-top {
+  position: absolute;
+  top: 32px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  width: auto;
+  padding: 4px 12px;
+  border: 1px solid #e0e0e0;
+  border-radius: 9999px;
+  background-color: transparent;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1;
+  color: inherit;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.footer-mybeckman-top:hover {
+  border-color: var(--mbf-muted);
+}
+
+.footer-mybeckman-top-icon {
+  width: 20px;
+  height: 20px;
+}
+
+/* ---------- legal ---------- */
+
+.footer-mybeckman-legal {
+  max-width: 1536px;
+  margin: 0 auto;
+  font-size: 10.24px;
+  color: #b7b6b6;
+}
+
+.footer-mybeckman-legal-inner {
+  padding: 16px;
+}
+
+.footer-mybeckman-legal-row {
+  display: flex;
+  flex-direction: column-reverse;
+  gap: 32px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+}
+
+.footer-mybeckman-legal-row:last-child {
+  margin-bottom: 0;
+}
+
+.footer-mybeckman .footer-mybeckman-legal-row p:last-of-type {
+  margin-bottom: 0;
+}
+
+.footer-mybeckman-legal-logo-link {
+  display: block;
+  width: 106.1px;
+}
+
+.footer-mybeckman-legal-logo {
+  display: block;
+  width: 60px;
+  max-width: 100%;
+  height: auto;
+}
+
+.footer-mybeckman .footer-mybeckman-fineprint {
+  font-size: 12px;
+}
+
+/* ---------- company logos ---------- */
+
+.footer-mybeckman .footer-mybeckman-logos ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  margin-bottom: 0;
+  padding: 0 5%;
+}
+
+.footer-mybeckman-logos li {
+  margin: 0 10px 10px;
+}
+
+.footer-mybeckman .footer-mybeckman-logos a:any-link,
+.footer-mybeckman .footer-mybeckman-logos span {
+  display: block;
+  max-width: 5.5em;
+}
+
+.footer-mybeckman-logos img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* breakpoint-exception: the source sign-up form (Marketo) drops its mobile inset above 480px */
+@media (width >= 481px) {
+  .footer-mybeckman-form form {
+    padding: 0;
+  }
+
+  .footer-mybeckman-field input {
+    line-height: 1.2;
+  }
+}
+
+/* breakpoint-exception: the source footer's legal row goes horizontal at 640px */
+@media (width >= 640px) {
+  .footer-mybeckman-legal-row {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+/* breakpoint-exception: the source footer switches to two columns at 768px */
+@media (width >= 768px) {
+  .footer-mybeckman-inner {
+    flex-direction: row;
+  }
+
+  .footer-mybeckman-form {
+    width: 41.6667%;
+  }
+
+  .footer-mybeckman-columns {
+    width: 50%;
+    padding: 0 0 48px;
+  }
+
+  .footer-mybeckman .footer-mybeckman-social {
+    justify-content: flex-start;
+  }
+
+  .footer-mybeckman-legal {
+    font-size: 12.8px;
+  }
+
+  .footer-mybeckman-legal-inner {
+    padding: 24px 16px;
+  }
+
+  .footer-mybeckman-legal-row {
+    margin-bottom: 80px;
+    gap: 80px;
+  }
+}
+
+/* the logos band fits on one row from 900px */
+@media (width >= 900px) {
+  .footer-mybeckman .footer-mybeckman-logos ul {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+  }
+
+  .footer-mybeckman .footer-mybeckman-logos a:any-link,
+  .footer-mybeckman .footer-mybeckman-logos span {
+    max-width: 66%;
+  }
+}
+
+/* breakpoint-exception: the source footer widens the newsletter column at 1024px */
+@media (width >= 1024px) {
+  .footer-mybeckman-form {
+    width: 50%;
+    padding-right: 48px;
+  }
+
+  .footer-mybeckman-legal-row {
+    gap: 124px;
+  }
+}
+
+/* breakpoint-exception: the source footer adds space after the newsletter at 1280px */
+@media (width >= 1280px) {
+  .footer-mybeckman-form {
+    padding-right: 192px;
+  }
+}

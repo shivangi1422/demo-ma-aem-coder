@@ -129,6 +129,12 @@
         "description": "The label shown for this section in the Content Tree"
       },
       {
+        "component": "text",
+        "name": "anchor",
+        "label": "Anchor ID",
+        "description": "Optional id for in-page links (e.g. latest). Jump navigation links to #<anchor id>."
+      },
+      {
         "component": "multiselect",
         "name": "style",
         "label": "Style",
@@ -136,6 +142,26 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Light Grey Gradient",
+            "value": "light-grey-gradient"
+          },
+          {
+            "name": "Light Grey",
+            "value": "light-grey"
+          },
+          {
+            "name": "Off White",
+            "value": "off-white"
+          },
+          {
+            "name": "Split (intro beside block)",
+            "value": "split"
+          },
+          {
+            "name": "Centered",
+            "value": "centered"
           }
         ]
       }
@@ -204,6 +230,63 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-promo-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (eyebrow, linked title)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-service-icon-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (:icon-name:, linked h3, description)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-topic-tiles-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image (unused, leave empty)",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Linked title",
         "valueType": "string"
       }
     ]
@@ -466,6 +549,58 @@
     ]
   },
   {
+    "id": "hero-curved-panel",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "hero-photo-card",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
@@ -521,6 +656,25 @@
             "value": "split-left"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "jump-nav-link",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Anchor",
+        "description": "In-page anchor of the target section, e.g. #latest (matches the section's Anchor id)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Label",
+        "value": ""
       }
     ]
   },

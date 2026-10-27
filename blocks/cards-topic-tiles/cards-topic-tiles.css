@@ -1,0 +1,162 @@
+/*
+ * Cards (topic tiles) — mybeckman.in home "Popular topics".
+ * 1 column of horizontal tiles (gap 8px) / 3 columns >= 768px (gap 16px, 24px >= 1024px).
+ */
+
+.cards-topic-tiles {
+  font-family: var(--mb-font-family, inter, system-ui, sans-serif);
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--mb-color-text, #4d4d4d);
+}
+
+/* Tailwind-like box model, as on the live site (scoped to the block) */
+.cards-topic-tiles,
+.cards-topic-tiles *,
+.cards-topic-tiles *::before,
+.cards-topic-tiles *::after {
+  box-sizing: border-box;
+}
+
+.cards-topic-tiles > ul {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.5rem;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-topic-tiles .cards-topic-tiles-item {
+  display: flex;
+  margin: 0;
+}
+
+.cards-topic-tiles .cards-topic-tiles-tile,
+.cards-topic-tiles .cards-topic-tiles-tile:any-link {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: row;
+  justify-content: space-between;
+  overflow: hidden;
+  border-radius: 0.5rem;
+  padding: 1rem;
+  color: var(--mb-color-text, #4d4d4d);
+  text-decoration: none;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgb(2 0 0 / 8%);
+}
+
+/* animated gradient layer, revealed on hover */
+.cards-topic-tiles .cards-topic-tiles-tile::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: 8px;
+  opacity: 0;
+  transform: scale(0.935);
+  background: linear-gradient(60deg, #762858 8%, #d52331 25%, #ee4956 45%, #f2abb1 53%, #fff 70%);
+  background-attachment: fixed;
+  background-size: 300% 300%;
+  transition: all 0.3s ease-out;
+}
+
+.cards-topic-tiles .cards-topic-tiles-tile:hover {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* hover only, as on the source; keyboard focus keeps the browser's default focus ring */
+.cards-topic-tiles .cards-topic-tiles-tile:hover::before {
+  opacity: 1;
+  transform: scale(1);
+  animation: cards-topic-tiles-gradient-shift 0.45s ease forwards;
+}
+
+.cards-topic-tiles .cards-topic-tiles-label {
+  line-height: 2;
+}
+
+.cards-topic-tiles .cards-topic-tiles-tile:hover .cards-topic-tiles-label {
+  text-decoration: underline;
+}
+
+.cards-topic-tiles .cards-topic-tiles-arrow {
+  font-size: 1.563rem;
+  font-weight: 300;
+  line-height: 1.2;
+  text-align: right;
+  color: #e0e0e0;
+  transition: all 0.3s cubic-bezier(0, 0, 0.2, 1);
+}
+
+.cards-topic-tiles .cards-topic-tiles-tile:hover .cards-topic-tiles-arrow {
+  color: #fff;
+  transform: translateX(0.5rem);
+}
+
+@media (width >= 768px) {
+  .cards-topic-tiles > ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 1rem;
+  }
+
+  .cards-topic-tiles .cards-topic-tiles-tile,
+  .cards-topic-tiles .cards-topic-tiles-tile:any-link {
+    flex-direction: column;
+    font-size: 1.25rem;
+    line-height: 1.5;
+  }
+
+  .cards-topic-tiles .cards-topic-tiles-label {
+    line-height: 1.375;
+  }
+
+  .cards-topic-tiles .cards-topic-tiles-arrow {
+    margin-top: 0.5rem;
+  }
+}
+
+@media (width >= 1024px) {
+  .cards-topic-tiles > ul {
+    gap: 1.5rem;
+  }
+
+  .cards-topic-tiles .cards-topic-tiles-tile,
+  .cards-topic-tiles .cards-topic-tiles-tile:any-link {
+    padding: 1.5rem;
+  }
+
+  .cards-topic-tiles .cards-topic-tiles-arrow {
+    margin-top: 2rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-topic-tiles .cards-topic-tiles-tile::before,
+  .cards-topic-tiles .cards-topic-tiles-arrow {
+    transition: none;
+  }
+
+  .cards-topic-tiles .cards-topic-tiles-tile:hover::before {
+    animation: none;
+    background-position: 0 0;
+  }
+
+  .cards-topic-tiles .cards-topic-tiles-tile:hover .cards-topic-tiles-arrow {
+    transform: none;
+  }
+}
+
+@keyframes cards-topic-tiles-gradient-shift {
+  0% {
+    background-position: 100% 100%;
+  }
+
+  100% {
+    background-position: 0% 0%;
+  }
+}

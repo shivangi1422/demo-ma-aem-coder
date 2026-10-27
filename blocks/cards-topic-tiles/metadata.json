@@ -1,0 +1,31 @@
+{
+  "variantName": "cards-topic-tiles",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "behaviour": {
+      "grid": "3 cols >=768 (gap 24px lg / 16px md); 1 col below (gap 8px) with horizontal tiles (label left, arrow right, 64px tall)",
+      "hover": "::before gradient layer linear-gradient(60deg,#762858 8%,#d52331 25%,#ee4956 45%,#f2abb1 53%,#fff 70%), 300% size, fixed attachment: opacity 0->1, scale .935->1 (300ms ease-out) + gradient-shift .45s (background-position 100% 100% -> 0 0); text white + label underline; arrow white, translateX 8px"
+    },
+    "sectionVisual": null,
+    "purpose": "Text-only link tiles with a decorative arrow and an animated red gradient fill on hover; 3 columns >= 768px, stacked horizontal tiles below"
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "rows": [
+      {
+        "row": "1..N",
+        "cells": [
+          "image (empty)",
+          "text (richtext): one linked title"
+        ]
+      }
+    ],
+    "structure": "one row per tile: cell 1 image (leave empty); cell 2 rich text with one linked title"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "Home 'Popular topics' section (section style split; heading and subtitle are default content).",
+  "reuseGuidance": "Short lists of topic / resource links.",
+  "sourceUrl": "https://www.mybeckman.in/"
+}

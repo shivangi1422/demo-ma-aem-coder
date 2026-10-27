@@ -1,4 +1,7 @@
 import {
+  buildBlock,
+  decorateBlock,
+  loadBlock,
   loadHeader,
   loadFooter,
   decorateIcons,
@@ -9,6 +12,7 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  toClassName,
 } from './aem.js';
 
 /**
@@ -118,6 +122,10 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  // Section "Anchor ID" (section metadata `anchor`) becomes the section's id for in-page links.
+  main.querySelectorAll('.section[data-anchor]').forEach((section) => {
+    section.id = toClassName(section.dataset.anchor);
+  });
   decorateBlocks(main);
   decorateButtons(main);
 }
@@ -147,11 +155,37 @@ async function loadEager(doc) {
 }
 
 /**
+ * Site themes (page metadata `theme`) that bring their own header/footer block,
+ * named `<part>-<theme>`, e.g. theme-mybeckman -> header-mybeckman.
+ * Pages without one of these themes keep the default header and footer.
+ */
+const THEMED_BLOCKS = {
+  header: ['mybeckman'],
+  footer: ['mybeckman'],
+};
+
+/**
+ * Loads the header or footer block for the page's theme.
+ * @param {Element} el header or footer element
+ * @param {string} part 'header' or 'footer'
+ * @param {Function} loadDefault default loader from aem.js
+ * @returns {Promise}
+ */
+function loadThemedBlock(el, part, loadDefault) {
+  const theme = THEMED_BLOCKS[part].find((t) => document.body.classList.contains(`theme-${t}`));
+  if (!theme) return loadDefault(el);
+  const block = buildBlock(`${part}-${theme}`, '');
+  el.append(block);
+  decorateBlock(block);
+  return loadBlock(block);
+}
+
+/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadHeader(doc.querySelector('header'));
+  loadThemedBlock(doc.querySelector('header'), 'header', loadHeader);
 
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -160,7 +194,7 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadFooter(doc.querySelector('footer'));
+  loadThemedBlock(doc.querySelector('footer'), 'footer', loadFooter);
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();

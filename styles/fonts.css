@@ -34,3 +34,20 @@
   src: url('../fonts/roboto-regular.woff2') format('woff2');
   unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
+/*
+ * Inter (SIL OFL 1.1), latin subset, variable weight 100-900 (opsz 14-32).
+ * Self-hosted copy of the Google Fonts file used by mybeckman.in.
+ * Registered under a theme-specific family name on purpose: several /en/ blocks
+ * already ask for `inter` (e.g. --bc-brand-font) and currently fall back to roboto.
+ * A face named "Inter" would silently switch those pages to Inter.
+ * Only body.theme-mybeckman (styles/brand.css) references this family.
+ */
+@font-face {
+  font-family: mybeckman-inter;
+  font-style: normal;
+  font-weight: 100 900;
+  font-display: swap;
+  src: url('../fonts/inter-variable-latin.woff2') format('woff2');
+  unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+}
