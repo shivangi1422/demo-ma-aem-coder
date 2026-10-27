@@ -1,0 +1,22 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/solutions/hematology-solution",
+  "path": "en/solutions/hematology-solution",
+  "timestamp": "2026-10-23T07:09:08.759Z",
+  "title": "Digital Hematology | Beckman Coulter",
+  "template": "solutions-hematology",
+  "blocks": [
+    "hero-left-video",
+    "embed-vidyard",
+    "quote-customer-testimonial",
+    "quote-customer-testimonial",
+    "quote-customer-testimonial",
+    "columns",
+    "columns",
+    "columns-hematology",
+    "columns-hematology",
+    "columns-hematology",
+    "columns-hematology",
+    "quote-photo-carousel"
+  ]
+}

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/resources/technologies/analytical-ultracentrifugation",
+  "path": "resources/technologies/analytical-ultracentrifugation",
+  "timestamp": "2026-10-27T09:26:40.893Z",
+  "title": "",
+  "template": "mybeckman-analytical-ultracentrifugation",
+  "blocks": [
+    "hero-home-mb",
+    "embed-mb",
+    "embed-mb",
+    "columns-mb",
+    "columns-mb",
+    "cards-grid-photo-mb",
+    "cards-grid-photo-mb",
+    "cards-grid-products-mb",
+    "form-mb"
+  ]
+}

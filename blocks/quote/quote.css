@@ -96,3 +96,175 @@ main > .section > .quote-wrapper:has(> .quote.banner) {
     line-height: 65px;
   }
 }
+
+/*
+ * TESTIMONIAL — centred upright black quote framed by large red quotation
+ * marks, attribution as stacked uppercase lines (source: .testimonial on the
+ * REMISOL Advance page). Values are source computed styles; the band spans
+ * the source's 1400px container so the 60% quote width resolves the same.
+ * Source font MontserratRegular only ships a 400 face, so the requested 300
+ * weights render as 400 there; 400 is used here to match the rendering.
+ */
+main > .section > .quote-wrapper:has(> .quote.testimonial) {
+  max-width: 1400px;
+  padding: 0;
+}
+
+.quote.testimonial {
+  gap: 0;
+  justify-content: center;
+  align-items: center;
+  margin: 50px 0;
+  padding: 0 14px;
+  background-color: transparent;
+  color: #000;
+  letter-spacing: 0.128px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.quote.testimonial .quote-text {
+  box-sizing: border-box;
+  width: 60%;
+  max-width: 800px;
+  margin: 0;
+  padding: 0;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 33.8px;
+  letter-spacing: 0.128px;
+  text-align: center;
+}
+
+/*
+ * Quotation marks: absolutely positioned with no offsets, so they sit at their
+ * static position (start of the first line / end of the last line) and are
+ * nudged by the source transforms. Source translateY values (35px / 45px) are
+ * reduced by 8px: the self-hosted Montserrat sits the 150px glyphs ~8px lower
+ * than the source's MontserratRegular face.
+ */
+.quote.testimonial .quote-text > :first-child::before,
+.quote.testimonial .quote-text > :last-child::after {
+  position: absolute;
+  color: #ea1c2c;
+  font-size: 150px;
+  font-weight: 400;
+  line-height: 33.8px;
+}
+
+.quote.testimonial .quote-text > :first-child::before {
+  content: '\201C';
+  transform: translateX(-70px) translateY(27px);
+}
+
+.quote.testimonial .quote-text > :last-child::after {
+  content: '\201D';
+  transform: translateY(37px) translateX(15px);
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.quote.testimonial .quote-attribution {
+  margin: 0;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.128px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.quote.testimonial .quote-attribution-line {
+  display: block;
+}
+
+/*
+ * TESTIMONIAL PURPLE — purple band (source: .testimonial-slim with inline
+ * background on the DxA 5000 Fit page) spanning the source's 1400px
+ * container, upright white quote between 34.5px quotation-mark columns,
+ * attribution as stacked uppercase white lines. Percentage paddings mirror
+ * the source (resolved against the band's content width).
+ */
+main > .section > .quote-wrapper:has(> .quote.testimonial-purple) {
+  max-width: 1400px;
+  padding: 0;
+}
+
+.quote.testimonial-purple {
+  display: block;
+  margin: 0;
+  padding: 0 14px;
+  background-color: #811167;
+  color: #fff;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.quote.testimonial-purple .quote-text {
+  display: flex;
+  flex-direction: row;
+  box-sizing: border-box;
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4% 0 0;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-style: normal;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 33.8px;
+  letter-spacing: 0.128px;
+  text-align: center;
+}
+
+.quote.testimonial-purple .quote-text > * {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.quote.testimonial-purple .quote-text::before,
+.quote.testimonial-purple .quote-text::after {
+  flex: 0 0 34.5px;
+
+  /* source 18px, less 4.5px for the self-hosted font's lower 90px glyphs */
+  padding-top: 13.5px;
+  font-size: 90px;
+  font-weight: 400;
+  line-height: 33.8px;
+}
+
+.quote.testimonial-purple .quote-text::before {
+  content: '\201C';
+}
+
+.quote.testimonial-purple .quote-text::after {
+  content: '\201D';
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.quote.testimonial-purple .quote-attribution {
+  margin: 0;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 18px;
+  letter-spacing: 0.128px;
+  text-align: center;
+  text-transform: uppercase;
+}
+
+.quote.testimonial-purple .quote-attribution-line {
+  display: block;
+}
+
+.quote.testimonial-purple .quote-attribution-line:first-child {
+  padding-top: 2%;
+}
+
+.quote.testimonial-purple .quote-attribution-line:last-child {
+  padding-bottom: 4%;
+}

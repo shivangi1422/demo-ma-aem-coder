@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/resources/methods/cell-line-development",
+  "path": "resources/methods/cell-line-development",
+  "timestamp": "2026-10-27T09:26:56.331Z",
+  "title": "",
+  "template": "mybeckman-cell-line-development",
+  "blocks": [
+    "hero-home-mb",
+    "tabs-workflow-mb",
+    "embed-mb",
+    "cards-grid-products-mb",
+    "columns-mb",
+    "cards-grid-photo-mb",
+    "form-mb"
+  ]
+}

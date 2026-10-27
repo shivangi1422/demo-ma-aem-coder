@@ -524,6 +524,2175 @@
           ]
         }
       ]
+    },
+    {
+      "name": "product-category",
+      "urls": [
+        "https://www.beckmancoulter.com/en/products/advanced-informatics"
+      ],
+      "representativeUrl": "https://www.beckmancoulter.com/en/products/advanced-informatics",
+      "description": "Product category landing pages: intro copy, article/video media rows, grey product portfolio grid, centered intro, photo cards to related disciplines, promo banner, footnotes.",
+      "blocks": [
+        {
+          "name": "cards-media-list",
+          "instances": [
+            "div.media-showcase-simple"
+          ]
+        },
+        {
+          "name": "cards-grid-products",
+          "instances": [
+            "div.product-list"
+          ]
+        },
+        {
+          "name": "cards-grid-photo",
+          "instances": [
+            "div.col-3-default-padding"
+          ]
+        },
+        {
+          "name": "hero-promo",
+          "instances": [
+            "div.photo-hero-promotional-banner"
+          ]
+        }
+      ],
+      "urlPattern": "/en/products/*",
+      "sections": [
+        {
+          "id": "intro",
+          "name": "Advanced Informatics Solutions",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.intro-content"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "h1",
+            "h2",
+            "div",
+            "ul"
+          ]
+        },
+        {
+          "id": "article",
+          "name": "Article",
+          "selector": [
+            "div.media-showcase-simple"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-media-list"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "video",
+          "name": "Video",
+          "selector": [
+            "div.media-showcase-simple"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-media-list"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "portfolio",
+          "name": "Full Portfolio of Advanced Informatics Solutions",
+          "selector": [
+            "#main-container > div.sublayout.ui.aligned.segment.grid:has(div.product-list)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "cards-grid-products"
+          ],
+          "defaultContent": [
+            "h2"
+          ]
+        },
+        {
+          "id": "tools",
+          "name": "Clinical Informatics Tools Enhance Diagnostics Solutions",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.intro-content"
+          ],
+          "style": "centered",
+          "blocks": [],
+          "defaultContent": [
+            "h2",
+            "div"
+          ]
+        },
+        {
+          "id": "disciplines",
+          "name": "Hematology",
+          "selector": [
+            "div.col-3-default-padding"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-photo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "promo",
+          "name": "Articles and Stories",
+          "selector": [
+            "div.photo-hero-promotional-banner"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-promo"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "disclaimer",
+          "name": "Not available in all regions",
+          "selector": [
+            "div.disclaimer-text"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "product-detail-informatics",
+      "urls": [
+        "https://www.beckmancoulter.com/en/products/advanced-informatics/remisol-advance"
+      ],
+      "representativeUrl": "https://www.beckmancoulter.com/en/products/advanced-informatics/remisol-advance",
+      "description": "Advanced Informatics product detail pages: split product hero, tabbed product details, media rows (video/brochure), resources showcase over background, testimonial, related products slider, footnotes.",
+      "blocks": [
+        {
+          "name": "hero-split-left",
+          "instances": [
+            "div.sublayout-two-column-dynamic"
+          ]
+        },
+        {
+          "name": "tabs-underline",
+          "instances": [
+            "div.product-tabs"
+          ]
+        },
+        {
+          "name": "cards-media-list",
+          "instances": [
+            "div.media-showcase-simple"
+          ]
+        },
+        {
+          "name": "cards-grid-showcase",
+          "instances": [
+            "div.double-showcase-feature",
+            "div.tripple-showcase-feature"
+          ]
+        },
+        {
+          "name": "quote-testimonial",
+          "instances": [
+            "div.testimonial:not(.testimonial-slim)"
+          ]
+        },
+        {
+          "name": "carousel-products",
+          "instances": [
+            "div.related-products:has(h3)"
+          ]
+        }
+      ],
+      "urlPattern": "/en/products/advanced-informatics/*",
+      "sections": [
+        {
+          "id": "hero",
+          "name": "REMISOL Advance",
+          "selector": [
+            "div.sublayout-two-column-dynamic"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-split-left"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "overview",
+          "name": "Overview",
+          "selector": [
+            "div.product-tabs"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "tabs-underline"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "video-showcase",
+          "name": "Video",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.media-showcase-simple"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-media-list"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "brochure-showcase",
+          "name": "Brochure",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.media-showcase-simple"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-media-list"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "resources",
+          "name": "REMISOL Advance Resources",
+          "selector": [
+            "div.double-showcase-feature"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-showcase"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "testimonial",
+          "name": "Because of our entire solution",
+          "selector": [
+            "div.testimonial:not(.testimonial-slim)"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-testimonial"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "related-heading",
+          "name": "Additional Advanced Informatics tools",
+          "selector": [
+            "div.related-products:has(h2)"
+          ],
+          "style": "centered",
+          "blocks": [],
+          "defaultContent": [
+            "h2"
+          ]
+        },
+        {
+          "id": "related-products",
+          "name": "Remote Services",
+          "selector": [
+            "div.related-products:has(h3)"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-products"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "disclaimer",
+          "name": "REMISOL Advance is a trademark",
+          "selector": [
+            "div.disclaimer-text"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "product-detail-automation",
+      "urls": [
+        "https://www.beckmancoulter.com/en/products/automation/workflow-automation-system-dxa-5000-fit"
+      ],
+      "representativeUrl": "https://www.beckmancoulter.com/en/products/automation/workflow-automation-system-dxa-5000-fit",
+      "description": "Automation product detail pages: media-gallery product hero, image-panel feature, purple feature band, interactive embed, product tabs, purple testimonial, text/image rows, related products slider, footnotes.",
+      "blocks": [
+        {
+          "name": "carousel-gallery",
+          "instances": [
+            "#main-container > div.sublayout-two-column-dynamic"
+          ]
+        },
+        {
+          "name": "cards-grid-features-purple",
+          "instances": [
+            "div.data-visualization-container"
+          ]
+        },
+        {
+          "name": "embed",
+          "instances": [
+            "iframe[src*=\"genial.ly\"]",
+            "iframe[src*=\"genially\"]"
+          ]
+        },
+        {
+          "name": "tabs-underline",
+          "instances": [
+            "div.product-tabs"
+          ]
+        },
+        {
+          "name": "quote-testimonial-purple",
+          "instances": [
+            "div.testimonial-slim"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "div.adjustable-two-column-display"
+          ]
+        },
+        {
+          "name": "carousel-products",
+          "instances": [
+            "div.related-products:has(h3)"
+          ]
+        }
+      ],
+      "urlPattern": "/en/products/automation/*",
+      "sections": [
+        {
+          "id": "hero",
+          "name": "The DxA 5000 Fit Workflow Automation System",
+          "selector": [
+            "#main-container > div.sublayout-two-column-dynamic"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-gallery"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "focus",
+          "name": "Focus on what matters",
+          "selector": [
+            "div.photo-feature"
+          ],
+          "style": "image-panel",
+          "blocks": [],
+          "defaultContent": [
+            "h2",
+            "p",
+            "a"
+          ]
+        },
+        {
+          "id": "automation-for-all",
+          "name": "Automation for All",
+          "selector": [
+            "div.data-visualization-container"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-features-purple"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "explore-features",
+          "name": "Explore DxA 5000 Fit Features",
+          "selector": [
+            "div.page-content:has(iframe)"
+          ],
+          "style": "centered",
+          "blocks": [
+            "embed"
+          ],
+          "defaultContent": [
+            "h2",
+            "p"
+          ]
+        },
+        {
+          "id": "product-tabs",
+          "name": "Endless Benefits",
+          "selector": [
+            "div.product-tabs"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "tabs-underline"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "testimonial",
+          "name": "From its compact footprint",
+          "selector": [
+            "div.testimonial-slim"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-testimonial-purple"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "webinars",
+          "name": "Watch our latest automation webinars",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.adjustable-two-column-display"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "routing",
+          "name": "Intelligent routing in a compact footprint",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.adjustable-two-column-display"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "demo",
+          "name": "Watch the DxA 5000 Fit Demo",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.adjustable-two-column-display"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "related-heading",
+          "name": "Related Solutions",
+          "selector": [
+            "div.related-products:has(h2)"
+          ],
+          "style": "centered",
+          "blocks": [],
+          "defaultContent": [
+            "h2"
+          ]
+        },
+        {
+          "id": "related-products",
+          "name": "Hematology",
+          "selector": [
+            "div.related-products:has(h3)"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-products"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "disclaimer",
+          "name": "REMISOL Advance is a trademark",
+          "selector": [
+            "div.disclaimer-text"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "solutions-hematology",
+      "description": "Solution story page: video hero, intro with inline Vidyard player, coloured testimonial bands, three pillar sections (heading, text+image columns, video+text columns, statement + button), testimonial slider, contact heading (Marketo form not migrated).",
+      "urls": [
+        "https://www.beckmancoulter.com/en/solutions/hematology-solution"
+      ],
+      "blocks": [
+        {
+          "name": "hero-left-video",
+          "instances": [
+            "div.video-hero-carousel"
+          ]
+        },
+        {
+          "name": "embed-vidyard",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content p.VideoAdj"
+          ]
+        },
+        {
+          "name": "quote-customer-testimonial",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.customer-testimonial"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.adjustable-two-column-display"
+          ]
+        },
+        {
+          "name": "columns-hematology",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.social-proof-section",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.sublayout-two-column-dynamic"
+          ]
+        },
+        {
+          "name": "quote-photo-carousel",
+          "instances": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.photo-hero-carousel"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero",
+          "selector": [
+            "div.video-hero-carousel"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-left-video"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Find more answers in a single blood draw",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content:has(#WatchVideo)"
+          ],
+          "style": "centered",
+          "blocks": [
+            "embed-vidyard"
+          ],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content:has(#WatchVideo)"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Testimonial Joe Meyer",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.customer-testimonial:has(#Intel)"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-customer-testimonial"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Intelligent Efficiency",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ],
+          "style": "centered",
+          "blocks": [
+            "columns",
+            "columns-hematology"
+          ],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.intro-content"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "Testimonial John Waugh",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.customer-testimonial:has(#Clinical)"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-customer-testimonial"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-6",
+          "name": "Clinical Confidence",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ],
+          "style": "centered",
+          "blocks": [
+            "columns",
+            "columns-hematology"
+          ],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.intro-content"
+          ]
+        },
+        {
+          "id": "section-7",
+          "name": "Testimonial Nima Sarani",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.customer-testimonial:has(#Adapt)"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-customer-testimonial"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-8",
+          "name": "Adaptive Collaboration",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ],
+          "style": "centered",
+          "blocks": [
+            "columns-hematology"
+          ],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content",
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.intro-content"
+          ]
+        },
+        {
+          "id": "section-9",
+          "name": "Testimonial slider",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.photo-hero-carousel"
+          ],
+          "style": null,
+          "blocks": [
+            "quote-photo-carousel"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-10",
+          "name": "Let’s talk digital hematology solutions",
+          "selector": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ],
+          "style": "centered",
+          "blocks": [],
+          "defaultContent": [
+            "#main-container > div.sublayout.ui.one.column.stackable.grid.container > div.page-content"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-clinical-trials",
+      "urls": [
+        "https://www.mybeckman.in/flow-cytometry/clinical-trials"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/flow-cytometry/clinical-trials",
+      "urlPattern": "/flow-cytometry/clinical-trials",
+      "description": "Flow cytometry clinical-trials landing page: banner hero (image_wrapper_vk), gradient jump-link strip, ebook columns, three chapter bands (two-columns-holder video|text columns, product-series-callouts card grids, wrap-collabsible \"Related products\" toggles).",
+      "blocks": [
+        {
+          "name": "hero-left-mb",
+          "instances": [
+            "div.image_wrapper_vk"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "div.width90cta",
+            "div.two-columns-holder"
+          ]
+        },
+        {
+          "name": "cards-grid-photo-mb",
+          "instances": [
+            "div.product-series-callouts:not(.collapsible-content *)"
+          ]
+        },
+        {
+          "name": "accordion-toggle-mb",
+          "instances": [
+            "div.wrap-collabsible:not(div.wrap-collabsible + div.wrap-collabsible)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Hero banner",
+          "selector": [
+            "div.image_wrapper_vk"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-left-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "intro",
+          "name": "Intro + workflow graphic",
+          "selector": [
+            "div.bc-rich-text:has(> div.image_wrapper_vk) > p:first-of-type"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.bc-rich-text:has(> div.image_wrapper_vk) > p:first-of-type",
+            "div.bc-rich-text:has(> div.image_wrapper_vk) > img"
+          ]
+        },
+        {
+          "id": "jump-nav",
+          "name": "Chapter jump links",
+          "selector": [
+            "div.container-overlay-full-width:has(div.sticky)"
+          ],
+          "style": "spectrum-gradient",
+          "blocks": [],
+          "defaultContent": [
+            "div.container-overlay-full-width div.sticky"
+          ]
+        },
+        {
+          "id": "ebook",
+          "name": "We wrote the book",
+          "selector": [
+            "div:has(> div.width90cta)"
+          ],
+          "style": "divider",
+          "blocks": [
+            "columns-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "chapter-1",
+          "name": "Chapter 1",
+          "selector": [
+            "div.two-columns-holder:has(#multicenter)"
+          ],
+          "style": "divider",
+          "blocks": [
+            "columns-mb",
+            "cards-grid-photo-mb",
+            "accordion-toggle-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "chapter-2",
+          "name": "Chapter 2",
+          "selector": [
+            "div.two-columns-holder:has(#resources)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-mb",
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.two-columns-holder:has(#resources) + div.bc-test-layout div.bc-rich-text > h3"
+          ]
+        },
+        {
+          "id": "chapter-3",
+          "name": "Chapter 3",
+          "selector": [
+            "div.two-columns-holder:has(#efficiency)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-mb",
+            "cards-grid-photo-mb",
+            "accordion-toggle-mb"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-leukemia-and-lymphoma",
+      "urls": [
+        "https://www.mybeckman.in/resources/disease-research/leukemia-and-lymphoma"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/disease-research/leukemia-and-lymphoma",
+      "urlPattern": "/resources/disease-research/leukemia-and-lymphoma",
+      "description": "Disease-research gateway page: plain H1 intro, sticky jump links, five chapter banners (image_wrapper_vk with H2) followed by body copy, product-series-callouts card grids, a two-column infographic row and a run of wrap-collabsible toggles; references list.",
+      "blocks": [
+        {
+          "name": "hero-left-mb",
+          "instances": [
+            "div.image_wrapper_vk"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "div.bc-rich-text:has(> #laboratory-challenges) > div.row"
+          ]
+        },
+        {
+          "name": "cards-grid-photo-mb",
+          "instances": [
+            "div.product-series-callouts"
+          ]
+        },
+        {
+          "name": "accordion-toggle-mb",
+          "instances": [
+            "div.wrap-collabsible:not(div.wrap-collabsible + div.wrap-collabsible)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "intro",
+          "name": "Page title and intro",
+          "selector": [
+            "#content-holder"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#content-holder > h1",
+            "#content-holder > p"
+          ]
+        },
+        {
+          "id": "jump-nav",
+          "name": "Sticky chapter jump links",
+          "selector": [
+            "div.bc-rich-text > div.sticky"
+          ],
+          "style": "jump-links",
+          "blocks": [],
+          "defaultContent": [
+            "div.bc-rich-text > div.sticky"
+          ]
+        },
+        {
+          "id": "overview",
+          "name": "Overview and Statistics",
+          "selector": [
+            "#overview-and-statistics"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-left-mb",
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(> #overview-and-statistics) > p",
+            "div.bc-rich-text:has(> #overview-and-statistics) > h3"
+          ]
+        },
+        {
+          "id": "diagnostic-tool",
+          "name": "Flow Cytometry as a Diagnostic Tool",
+          "selector": [
+            "#diagnostic-tool"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-left-mb",
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(> #diagnostic-tool) > p",
+            "div.bc-rich-text:has(> #diagnostic-tool) > ul"
+          ]
+        },
+        {
+          "id": "lab-challenges",
+          "name": "Laboratory Challenges",
+          "selector": [
+            "#laboratory-challenges"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-left-mb",
+            "columns-mb",
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(> #laboratory-challenges) > h3",
+            "div.bc-rich-text:has(> #laboratory-challenges) + div.product-series-callouts + div.bc-rich-text > h3"
+          ]
+        },
+        {
+          "id": "standardized-reagents",
+          "name": "Advantages of Standardized Reagents",
+          "selector": [
+            "#standardized-reagents"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-left-mb",
+            "accordion-toggle-mb",
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(> #standardized-reagents) > h3",
+            "div.bc-rich-text:has(> #standardized-reagents) > p",
+            "div.bc-rich-text:has(> #standardized-reagents) > div.container-overlay-full-width > img",
+            "div.bc-rich-text:has(> #standardized-reagents) + div.product-series-callouts + div.bc-rich-text > h3"
+          ]
+        },
+        {
+          "id": "additional-resources",
+          "name": "Additional Resources",
+          "selector": [
+            "#additional-resources"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-left-mb",
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "references",
+          "name": "Footnote and references",
+          "selector": [
+            "div.bc-rich-text:has(li#ref1)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.bc-rich-text:has(li#ref1) > p",
+            "div.bc-rich-text:has(li#ref1) > h2",
+            "div.bc-rich-text:has(li#ref1) > ol"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-monoclonal-antibodies",
+      "urls": [
+        "https://www.mybeckman.in/resources/disease-research/monoclonal-antibodies"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/disease-research/monoclonal-antibodies",
+      "urlPattern": "/resources/disease-research/monoclonal-antibodies",
+      "description": "Disease-research landing page (Sitecore bc-rich-text family): top-banner hero, intro, grey mission band, Wistia channel video gallery, related-content panels, application-note resource cards, Marketo contact form (3797), references.",
+      "blocks": [
+        {
+          "name": "hero-home-mb",
+          "instances": [
+            "div.top-banner"
+          ]
+        },
+        {
+          "name": "cards-grid-video-mb",
+          "instances": [
+            "div.wistia_channel"
+          ]
+        },
+        {
+          "name": "cards-grid-photo-mb",
+          "instances": [
+            "div.row:has(> div.panel-wrapper)"
+          ]
+        },
+        {
+          "name": "cards-grid-products-mb",
+          "instances": [
+            "div.cards-row:has(div.badge-resources):not(div.cards-row + div.cards-row)"
+          ]
+        },
+        {
+          "name": "form-mb",
+          "instances": [
+            "#main div.formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Top photo banner",
+          "selector": [
+            "div.outimg:has(> div.top-banner)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-home-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "intro",
+          "name": "Intro",
+          "selector": [
+            "div.bc-rich-text > div:has(> h1)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.bc-rich-text > div:has(> h1) > h1",
+            "div.bc-rich-text > div:has(> h1) > p",
+            "div.bc-rich-text > div:has(> h1) > a.primary-btn"
+          ]
+        },
+        {
+          "id": "mission",
+          "name": "The Mission",
+          "selector": [
+            "div.bc-rich-text > div.row:has(a.primary-btn)"
+          ],
+          "style": "highlight",
+          "blocks": [],
+          "defaultContent": [
+            "div.bc-rich-text > div.row:has(a.primary-btn) > div > div > p",
+            "div.bc-rich-text > div.row:has(a.primary-btn) div.container-overlay-full-width > img",
+            "div.bc-rich-text > div.row:has(a.primary-btn) a.primary-btn"
+          ]
+        },
+        {
+          "id": "videos",
+          "name": "Wistia video gallery",
+          "selector": [
+            "div.bc-rich-text > div:has(> div.wistia_channel)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-video-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "related",
+          "name": "Related Content",
+          "selector": [
+            "div.col-md-12.text-center:has(> h3)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.col-md-12.text-center > h3"
+          ]
+        },
+        {
+          "id": "resources",
+          "name": "Learn more with our resources",
+          "selector": [
+            "div.section-resources"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-products-mb"
+          ],
+          "defaultContent": [
+            "div.section-resources > h2"
+          ]
+        },
+        {
+          "id": "contact",
+          "name": "Our Team is Ready to Help (contact form)",
+          "selector": [
+            "div.bc-rich-text:has(> #anchor)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "form-mb"
+          ],
+          "defaultContent": [
+            "#anchor > p.formtitle",
+            "#anchor > p.formtext"
+          ]
+        },
+        {
+          "id": "references",
+          "name": "References",
+          "selector": [
+            "div.bc-rich-text:has(h2 + h5)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.bc-rich-text div:has(> h2 + h5) > h2",
+            "div.bc-rich-text div:has(> h2 + h5) > h5"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-biomanufacturing",
+      "urls": [
+        "https://www.mybeckman.in/resources/industries/biomanufacturing"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/industries/biomanufacturing",
+      "urlPattern": "/resources/industries/biomanufacturing",
+      "description": "Industry landing page (Sitecore bc-rich-text family): Wistia background-video hero, intro with two-column list, tab-scroll interactive workflow, grey ebook columns band, Wistia testimonial player, Marketo contact form (3101) with disclaimer.",
+      "blocks": [
+        {
+          "name": "hero-home-mb",
+          "instances": [
+            "div.bc-rich-text > div.section:has(iframe.responsive-iframe)"
+          ]
+        },
+        {
+          "name": "tabs-workflow-mb",
+          "instances": [
+            "div.tab-scroll"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "div.containercustom > div.row:has(> div.col-md-8)"
+          ]
+        },
+        {
+          "name": "embed-mb",
+          "instances": [
+            "div.embeded-video__wrapper"
+          ]
+        },
+        {
+          "name": "form-mb",
+          "instances": [
+            "#main div.formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Top video banner",
+          "selector": [
+            "div.bc-rich-text > div.section:has(iframe.responsive-iframe)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-home-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "intro",
+          "name": "A World Of Possibilities",
+          "selector": [
+            "div.containercustom:has(ul.fields):not(:has(div.col-md-8))"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.containercustom:has(> div.row > div.col-sm-6) > h2",
+            "div.containercustom:has(> div.row > div.col-sm-6) > p",
+            "div.containercustom > div.row > div.col-sm-6 > ul.fields"
+          ]
+        },
+        {
+          "id": "workflow",
+          "name": "Interactive Biomanufacturing Workflow",
+          "selector": [
+            "div.containercustom:has(> div.tab-scroll)"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-workflow-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.tab-scroll) > h2",
+            "div.containercustom:has(> div.tab-scroll) > p",
+            "div.containercustom:has(> div.tab-scroll) > div:last-child"
+          ]
+        },
+        {
+          "id": "ebook",
+          "name": "A Must-Have Resource on Biomanufacturing",
+          "selector": [
+            "div.containercustom:has(> div.row > div.col-md-8)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "columns-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "testimonial",
+          "name": "What Customers Are Saying",
+          "selector": [
+            "div.bc-rich-text:has(+ div.embeded-video)"
+          ],
+          "style": "centered",
+          "blocks": [
+            "embed-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(+ div.embeded-video) h2"
+          ]
+        },
+        {
+          "id": "contact",
+          "name": "Our team is ready to help (contact form)",
+          "selector": [
+            "div.bc-rich-text:has(> a[name=form])"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "form-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom > div.formtitle",
+            "div.containercustom > div.formtext",
+            "div.formassembly-container + div.bc-rich-text div.containercustom > p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-synthetic-biology",
+      "urls": [
+        "https://www.mybeckman.in/resources/industries/synthetic-biology"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/industries/synthetic-biology",
+      "urlPattern": "/resources/industries/synthetic-biology",
+      "description": "Industry landing page (Sitecore bc-rich-text family): photo hero (largebanner/smallbanner), intro text|graphic columns, tab-scroll interactive workflow, featured-resources accordion, Wistia channel video gallery, testimonial video|cover columns, Marketo contact form (3101), disclaimer.",
+      "blocks": [
+        {
+          "name": "hero-home-mb",
+          "instances": [
+            "div.outimg:has(> div.largebanner)"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "div.intro",
+            "div.containercustom > div.row:has(wistia-player)"
+          ]
+        },
+        {
+          "name": "tabs-workflow-mb",
+          "instances": [
+            "div.tab-scroll"
+          ]
+        },
+        {
+          "name": "accordion-toggle-mb",
+          "instances": [
+            "div.containercustom > div.row:has(div.accordion-item)"
+          ]
+        },
+        {
+          "name": "cards-grid-video-mb",
+          "instances": [
+            "div.wistia_channel"
+          ]
+        },
+        {
+          "name": "form-mb",
+          "instances": [
+            "#main div.formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Top photo banner",
+          "selector": [
+            "div.outimg:has(> div.largebanner)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-home-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "intro",
+          "name": "Intro + Design-Build-Test-Learn graphic",
+          "selector": [
+            "div.containercustom:has(> div.intro)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "workflow",
+          "name": "Interactive Synthetic Biology Workflow",
+          "selector": [
+            "div.containercustom:has(> div.tab-scroll)"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-workflow-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.tab-scroll) > h2",
+            "div.containercustom:has(> div.tab-scroll) > p",
+            "div.containercustom:has(> div.tab-scroll) > div:last-child"
+          ]
+        },
+        {
+          "id": "featured-resources",
+          "name": "Synthetic Biology Featured Resources",
+          "selector": [
+            "div.containercustom:has(div.accordion-item)"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion-toggle-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(div.accordion-item) > h2"
+          ]
+        },
+        {
+          "id": "video-gallery",
+          "name": "Synthetic Biology Video Gallery",
+          "selector": [
+            "div.containercustom:has(> div.wistia_channel)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-video-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.wistia_channel) > h2"
+          ]
+        },
+        {
+          "id": "testimonial",
+          "name": "Customer Testimonial",
+          "selector": [
+            "div.containercustom:has(wistia-player)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(wistia-player) > h2"
+          ]
+        },
+        {
+          "id": "contact",
+          "name": "Our team is ready to help (contact form)",
+          "selector": [
+            "div.bc-rich-text:has(> a[name=form])"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "form-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(> a[name=form]) div.containercustom > h2",
+            "div.bc-rich-text:has(> a[name=form]) div.containercustom > p"
+          ]
+        },
+        {
+          "id": "disclaimer",
+          "name": "Disclaimer",
+          "selector": [
+            "div.formassembly-container + div.bc-rich-text"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.formassembly-container + div.bc-rich-text div.containercustom > p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-cell-line-development",
+      "urls": [
+        "https://www.mybeckman.in/resources/methods/cell-line-development"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/methods/cell-line-development",
+      "urlPattern": "/resources/methods/cell-line-development",
+      "description": "Methods landing page (Sitecore bc-rich-text family): top-banner hero, intro, grey wf-row workflow stepper, centred Wistia player, application-note resource cards, \"watch a story\" GIF|text columns, related panels, trademark disclaimer, Marketo contact form (3797).",
+      "blocks": [
+        {
+          "name": "hero-home-mb",
+          "instances": [
+            "div.top-banner"
+          ]
+        },
+        {
+          "name": "tabs-workflow-mb",
+          "instances": [
+            "div.workflow-container > div.wf-row"
+          ]
+        },
+        {
+          "name": "embed-mb",
+          "instances": [
+            "div.embeded-video__wrapper"
+          ]
+        },
+        {
+          "name": "cards-grid-products-mb",
+          "instances": [
+            "div.cards-row:has(div.badge-resources):not(div.cards-row + div.cards-row)"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "div.row:has(> div.column2)"
+          ]
+        },
+        {
+          "name": "cards-grid-photo-mb",
+          "instances": [
+            "div.row:has(> div.panel-wrapper)"
+          ]
+        },
+        {
+          "name": "form-mb",
+          "instances": [
+            "#main div.formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Top photo banner",
+          "selector": [
+            "div.outimg:has(> div.top-banner)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-home-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "intro",
+          "name": "Automated Solutions for Cell Line Development",
+          "selector": [
+            "div.bc-rich-text > div:has(> h2 + p)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.bc-rich-text > div:has(> h2 + p) > h2",
+            "div.bc-rich-text > div:has(> h2 + p) > p"
+          ]
+        },
+        {
+          "id": "workflow",
+          "name": "Cell line development workflow stepper",
+          "selector": [
+            "div.workflow-section"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "tabs-workflow-mb"
+          ],
+          "defaultContent": [
+            "div.workflow-container > div:has(> a.primary-btn)"
+          ]
+        },
+        {
+          "id": "video",
+          "name": "Learn More About Our Solutions (Wistia video)",
+          "selector": [
+            "div.bc-rich-text:has(+ div.embeded-video)"
+          ],
+          "style": "centered",
+          "blocks": [
+            "embed-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(+ div.embeded-video) h2.row"
+          ]
+        },
+        {
+          "id": "resources",
+          "name": "Learn more with our resources",
+          "selector": [
+            "div.section-resources"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-products-mb"
+          ],
+          "defaultContent": [
+            "div.section-resources > h2"
+          ]
+        },
+        {
+          "id": "story",
+          "name": "Watch A Story (ExcellGene / Valita Titer)",
+          "selector": [
+            "div.bc-rich-text:has(> div.section-resources) + div.bc-rich-text"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(> div.section-resources) + div.bc-rich-text h2.row"
+          ]
+        },
+        {
+          "id": "related",
+          "name": "Related topic panels",
+          "selector": [
+            "div.row:has(> div.panel-wrapper)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "disclaimer",
+          "name": "Trademark disclaimer",
+          "selector": [
+            "section#disclaimer"
+          ],
+          "style": "centered",
+          "blocks": [],
+          "defaultContent": [
+            "section#disclaimer > p"
+          ]
+        },
+        {
+          "id": "contact",
+          "name": "Want To Bring Your Cell Line Development Workflow To The Next Level? (contact form)",
+          "selector": [
+            "section#anchor"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "form-mb"
+          ],
+          "defaultContent": [
+            "section#anchor > p.formtitle",
+            "section#anchor > p.formtext"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-protein-production",
+      "urls": [
+        "https://www.mybeckman.in/resources/product-applications/process-development-manufacturing/protein-production"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/product-applications/process-development-manufacturing/protein-production",
+      "urlPattern": "/resources/product-applications/process-development-manufacturing/protein-production",
+      "description": "AEO article page (two-columns-holder article + sidebar): H1 + published date, Key Takeaways and at-a-glance callouts, expression-host table, benefit and related-topic card grids, View References details, always-open FAQ, sidebar with author box and Marketo \"Talk to an Expert\" form (1024).",
+      "blocks": [
+        {
+          "name": "table-striped-mb",
+          "instances": [
+            "div.table-wrapper"
+          ]
+        },
+        {
+          "name": "cards-grid-accent-mb",
+          "instances": [
+            "div.benefits-grid",
+            "section.related-cleanroom-topics"
+          ]
+        },
+        {
+          "name": "accordion-toggle-mb",
+          "instances": [
+            "details.references-details"
+          ]
+        },
+        {
+          "name": "accordion-toggle-open-mb",
+          "instances": [
+            "div.bcls-aeo-faq:not(div.bcls-aeo-faq + div.bcls-aeo-faq)"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "div.bcls-aeo-author__card"
+          ]
+        },
+        {
+          "name": "form-mb",
+          "instances": [
+            "#main div.formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "intro",
+          "name": "Article title, published date and intro",
+          "selector": [
+            "#content-holder"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#content-holder > h1",
+            "#content-holder div.bcls-aeo-published > p",
+            "div.cleanroom-content-block > p:first-child"
+          ]
+        },
+        {
+          "id": "key-takeaways",
+          "name": "Key Takeaways callout box",
+          "selector": [
+            "div.summary-box"
+          ],
+          "style": "callout",
+          "blocks": [],
+          "defaultContent": [
+            "div.summary-box > h2",
+            "div.summary-box > ul"
+          ]
+        },
+        {
+          "id": "recombinant",
+          "name": "Why it matters / What is recombinant protein production + expression host table",
+          "selector": [
+            "div.summary-box + h2"
+          ],
+          "style": null,
+          "blocks": [
+            "table-striped-mb"
+          ],
+          "defaultContent": [
+            "div.cleanroom-content-block > h2:nth-of-type(1)",
+            "div.cleanroom-content-block > p:nth-of-type(2)",
+            "div.cleanroom-content-block > h2:nth-of-type(2)",
+            "div.cleanroom-content-block > p:nth-of-type(3)",
+            "div.cleanroom-content-block > p:nth-of-type(4)",
+            "div.table-wrapper + p"
+          ]
+        },
+        {
+          "id": "at-a-glance",
+          "name": "Protein production at a glance callout",
+          "selector": [
+            "div.process-flow"
+          ],
+          "style": "callout",
+          "blocks": [],
+          "defaultContent": [
+            "div.process-flow > strong",
+            "div.process-flow > p"
+          ]
+        },
+        {
+          "id": "benefits",
+          "name": "Benefits of Scalable Protein Production Systems + advantages cards",
+          "selector": [
+            "div.process-flow + h2"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-accent-mb"
+          ],
+          "defaultContent": [
+            "div.process-flow + h2",
+            "div.process-flow + h2 + p",
+            "div.cleanroom-content-block > h3"
+          ]
+        },
+        {
+          "id": "references",
+          "name": "View References collapsible",
+          "selector": [
+            "details.references-details"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion-toggle-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "related-topics",
+          "name": "Explore Related Protein Production Topics",
+          "selector": [
+            "details.references-details + h2"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-accent-mb"
+          ],
+          "defaultContent": [
+            "details.references-details + h2",
+            "details.references-details + h2 + p"
+          ]
+        },
+        {
+          "id": "faq",
+          "name": "FAQ on Protein Production Workflow and Process",
+          "selector": [
+            "div.bcls-aeo-faqs"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion-toggle-open-mb"
+          ],
+          "defaultContent": [
+            "div.bcls-aeo-faqs > h2"
+          ]
+        },
+        {
+          "id": "sidebar",
+          "name": "Sidebar: author box + Talk to an Expert form",
+          "selector": [
+            "div.two-columns-holder__right > div.bcls-aeo-author",
+            "div.two-columns-holder__right"
+          ],
+          "style": "sidebar",
+          "blocks": [
+            "columns-mb",
+            "form-mb"
+          ],
+          "defaultContent": [
+            "div.bcls-aeo-author__bio > h6",
+            "div.bcls-aeo-author__bio > p",
+            "div.two-columns-holder__right > div.bc-rich-text > h3"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-analytical-ultracentrifugation",
+      "urls": [
+        "https://www.mybeckman.in/resources/technologies/analytical-ultracentrifugation"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/technologies/analytical-ultracentrifugation",
+      "urlPattern": "/resources/technologies/analytical-ultracentrifugation",
+      "description": "Technology landing page (Sitecore bc-rich-text family): dark-overlay top-banner hero, quick-nav jump buttons, introduction, Wistia intro video, benefits and methods text|photo columns, grey applications band with photo cards, resource cards, testimonial Wistia player, related panels, Marketo contact form (3101).",
+      "blocks": [
+        {
+          "name": "hero-home-mb",
+          "instances": [
+            "div.top-banner"
+          ]
+        },
+        {
+          "name": "embed-mb",
+          "instances": [
+            "div.embeded-video__wrapper"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "#benefits > div.copy.row",
+            "#methods > div.copy.row"
+          ]
+        },
+        {
+          "name": "cards-grid-photo-mb",
+          "instances": [
+            "#applications div.cards-row",
+            "div.col-md-12.text-center + div.row:has(> div.panel-wrapper)"
+          ]
+        },
+        {
+          "name": "cards-grid-products-mb",
+          "instances": [
+            "div.cards-row:has(div.badge-resources)"
+          ]
+        },
+        {
+          "name": "form-mb",
+          "instances": [
+            "#main div.formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Top photo banner (AUC)",
+          "selector": [
+            "div.outimg:has(> div.top-banner)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-home-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "jump-nav",
+          "name": "Contents jump links",
+          "selector": [
+            "#quick-nav"
+          ],
+          "style": "jump-links",
+          "blocks": [],
+          "defaultContent": [
+            "#quick-nav > h2",
+            "#quick-nav > div.quick-nav-row"
+          ]
+        },
+        {
+          "id": "introduction",
+          "name": "Introduction",
+          "selector": [
+            "#introduction"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#introduction > h2",
+            "#introduction > p",
+            "#introduction > a.primary-btn"
+          ]
+        },
+        {
+          "id": "intro-video",
+          "name": "Introduction to AUC video",
+          "selector": [
+            "div.bc-rich-text:has(#quick-nav) + div.embeded-video"
+          ],
+          "style": "divider",
+          "blocks": [
+            "embed-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "benefits",
+          "name": "Key Benefits of AUC",
+          "selector": [
+            "#benefits"
+          ],
+          "style": "divider",
+          "blocks": [
+            "columns-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "applications",
+          "name": "Applications of Analytical Ultracentrifugation",
+          "selector": [
+            "#applications"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "#applications > div.copy > h2",
+            "#applications > div.copy > p",
+            "#applications > div.copy > a.primary-btn"
+          ]
+        },
+        {
+          "id": "methods",
+          "name": "Optima AUC: Multiple Methods in One + SV / SE / DGE methods",
+          "selector": [
+            "#methods"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-mb",
+            "cards-grid-products-mb"
+          ],
+          "defaultContent": [
+            "#methods > div.copy:not(.row) > h2",
+            "#methods > div.copy:not(.row) > p",
+            "#methods div.cards-row:has(> a.resources-no-img)"
+          ]
+        },
+        {
+          "id": "testimonial",
+          "name": "Testimonial video",
+          "selector": [
+            "div.bc-rich-text:has(#methods) + div.embeded-video"
+          ],
+          "style": "centered",
+          "blocks": [
+            "embed-mb"
+          ],
+          "defaultContent": [
+            "div.bc-rich-text:has(#methods) + div.embeded-video > h2",
+            "div.bc-rich-text:has(#methods) + div.embeded-video > p.embeded-video__caption"
+          ]
+        },
+        {
+          "id": "related",
+          "name": "Related Content",
+          "selector": [
+            "div.col-md-12.text-center:has(> h3)"
+          ],
+          "style": "centered",
+          "blocks": [
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.col-md-12.text-center > h3"
+          ]
+        },
+        {
+          "id": "contact",
+          "name": "Talk to an Expert on Analytical Ultracentrifugation (contact form)",
+          "selector": [
+            "div.bc-rich-text:has(> #anchor)"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "form-mb"
+          ],
+          "defaultContent": [
+            "#anchor > p.formtitle",
+            "#anchor > p.formtext"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "mybeckman-next-generation-sequencing",
+      "urls": [
+        "https://www.mybeckman.in/resources/technologies/next-generation-sequencing"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/technologies/next-generation-sequencing",
+      "urlPattern": "/resources/technologies/next-generation-sequencing",
+      "description": "Technology landing page (Sitecore bc-rich-text family): Wistia background-video hero with CTAs, intro text|photo columns, red instruction bar + tab-scroll workflow, benefit icon cards, partners list band, featured resource cards, insightful article cards, testimonial slideshow, Marketo contact form (3101) with disclaimers.",
+      "blocks": [
+        {
+          "name": "hero-home-mb",
+          "instances": [
+            "div.bc-rich-text > div.section:has(iframe.responsive-iframe)"
+          ]
+        },
+        {
+          "name": "columns-mb",
+          "instances": [
+            "div.containercustom > div.row:has(p.introimg)"
+          ]
+        },
+        {
+          "name": "tabs-workflow-mb",
+          "instances": [
+            "div.tab-scroll"
+          ]
+        },
+        {
+          "name": "cards-grid-icons-mb",
+          "instances": [
+            "div.containercustom > div.row:has(> div.col-sm-3 > p > img)"
+          ]
+        },
+        {
+          "name": "cards-grid-products-mb",
+          "instances": [
+            "div.featres"
+          ]
+        },
+        {
+          "name": "cards-grid-photo-mb",
+          "instances": [
+            "div.row.InsArt"
+          ]
+        },
+        {
+          "name": "carousel-testimonials-mb",
+          "instances": [
+            "div.slideshow-container"
+          ]
+        },
+        {
+          "name": "form-mb",
+          "instances": [
+            "#main div.formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "hero",
+          "name": "Top video banner",
+          "selector": [
+            "div.bc-rich-text > div.section:has(iframe.responsive-iframe)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-home-mb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "intro",
+          "name": "Generate High-Quality Data Faster (text beside image)",
+          "selector": [
+            "div.containercustom:has(> div.row p.introimg)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.row p.introimg) > h2"
+          ]
+        },
+        {
+          "id": "solutions",
+          "name": "Our NGS Library Prep Automated Solutions (intro)",
+          "selector": [
+            "div.containercustom:has(> h2#Solutions)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "div.containercustom > h2#Solutions",
+            "div.containercustom:has(> h2#Solutions) > p"
+          ]
+        },
+        {
+          "id": "workflow-callout",
+          "name": "Red instruction bar",
+          "selector": [
+            "div.containercustom:has(> div.tab-scroll) > div:first-child"
+          ],
+          "style": "red",
+          "blocks": [],
+          "defaultContent": [
+            "div.containercustom:has(> div.tab-scroll) > div:first-child"
+          ]
+        },
+        {
+          "id": "workflow",
+          "name": "NGS library prep workflow stage tabs",
+          "selector": [
+            "div.containercustom > div.tab-scroll"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-workflow-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.tab-scroll) > div:last-child"
+          ]
+        },
+        {
+          "id": "benefits",
+          "name": "Benefits of Our NGS Library Prep Automated Solutions",
+          "selector": [
+            "div.containercustom:has(> div.row > div.col-sm-3 > p > img)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-icons-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.row > div.col-sm-3 > p > img) > h2"
+          ]
+        },
+        {
+          "id": "partners",
+          "name": "Our NGS Library Prep Automation Partners",
+          "selector": [
+            "div.containercustom:has(ul.partners)"
+          ],
+          "style": "highlight",
+          "blocks": [],
+          "defaultContent": [
+            "div.containercustom:has(ul.partners) > h2",
+            "ul.partners"
+          ]
+        },
+        {
+          "id": "featured-resources",
+          "name": "Featured Resources",
+          "selector": [
+            "div.containercustom:has(> div.featres)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-products-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.featres) > h2"
+          ]
+        },
+        {
+          "id": "articles",
+          "name": "Insightful Articles",
+          "selector": [
+            "div.containercustom:has(> div.row.InsArt)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-photo-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.row.InsArt) > h2",
+            "div.containercustom.buttflex > a"
+          ]
+        },
+        {
+          "id": "testimonials",
+          "name": "Hear from Our Customers (testimonial carousel)",
+          "selector": [
+            "div.containercustom:has(> div.slideshow-container)"
+          ],
+          "style": null,
+          "blocks": [
+            "carousel-testimonials-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom:has(> div.slideshow-container) > h2"
+          ]
+        },
+        {
+          "id": "contact",
+          "name": "Ready to get started? (contact form)",
+          "selector": [
+            "div.bc-rich-text:has(> a[name=form])"
+          ],
+          "style": "highlight",
+          "blocks": [
+            "form-mb"
+          ],
+          "defaultContent": [
+            "div.containercustom > div.formtitle",
+            "div.containercustom > div.formtext",
+            "div.formassembly-container + div.bc-rich-text div.containercustom > p"
+          ]
+        }
+      ]
     }
   ],
   "metadata": {

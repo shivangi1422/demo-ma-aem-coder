@@ -1,0 +1,26 @@
+{
+  "variantName": "tabs-underline",
+  "baseBlock": "tabs",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "Product detail tabs (e.g. Overview / Features / Specifications / Resources) with one panel per tab",
+    "description": "Centered horizontal tab bar of uppercase labels; the active tab carries a thick underline. Below 900px the tab bar becomes a 'Filter By' select. Each panel is a rich-text column; an optional image sits beside the text on desktop (stacked on mobile). Panel tables without images (e.g. Specifications label | list, Connections name | description | link) render as row-separated data tables; image tables keep the side-by-side layout. Vidyard links in a panel render as a poster with a play overlay and play inline on click."
+  },
+  "contentPattern": {
+    "structure": "One row per tab item: title (plain text) | image (optional reference + alt) | text (rich text: headings, paragraphs, lists). Accessible ARIA tabs pattern (tablist/tab/tabpanel, arrow/Home/End keys). In the text, a paragraph holding only a play.vidyard.com link becomes an inline video (an image-only paragraph right before it is used as the poster). A URL hash or in-page link matching the slug of a tab title (#overview, #specifications, ...) activates that tab and scrolls to the block."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "tabs-underline"
+  ],
+  "usage": {
+    "description": "REMISOL Advance product page (Overview tab); DxA 5000 Fit product page (Overview / Specifications / Documents / Connections / Configurations, reached from the hero jump links); intended for product detail pages with several tabs.",
+    "pagesUsing": [
+      "/en/products/advanced-informatics/remisol-advance",
+      "/en/products/automation/workflow-automation-system-dxa-5000-fit"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-22"
+  },
+  "reuseGuidance": "Use for product detail tab sets with rich-text panels. Use tabs-products for the Figma-style label/text/image product tabs with eyebrow and CTA."
+}

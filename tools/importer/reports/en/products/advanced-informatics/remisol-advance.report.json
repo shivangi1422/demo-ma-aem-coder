@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/products/advanced-informatics/remisol-advance",
+  "path": "en/products/advanced-informatics/remisol-advance",
+  "timestamp": "2026-10-22T11:02:46.548Z",
+  "title": "Clinical Lab Data Management System REMISOL Advance | Beckman Coulter",
+  "template": "product-detail-informatics",
+  "blocks": [
+    "hero-split-left",
+    "tabs-underline",
+    "cards-media-list",
+    "cards-media-list",
+    "cards-grid-showcase",
+    "quote-testimonial",
+    "carousel-products"
+  ]
+}

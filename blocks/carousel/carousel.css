@@ -1,4 +1,4 @@
-/* Carousel — one block, two styles via "Style": instruments | split */
+/* Carousel — one block, several styles via "Style": instruments | split | resources | products | gallery */
 
 /* ============================================================
    INSTRUMENTS — dark thumbnail slider (default)
@@ -162,14 +162,20 @@
 .carousel.instruments .carousel-thumbs {
   flex: 1;
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+
+  /* minmax(0, 1fr) + min-width: 0 let the rail shrink so the arrows stay in view on narrow phones */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 12px;
+  min-width: 0;
 }
 
 .carousel.instruments .carousel-thumb {
   display: flex;
   flex-direction: column;
   gap: 6px;
+  min-width: 0;
+  overflow-wrap: break-word;
+  hyphens: auto;
   padding: 16px;
   border: 1px solid transparent;
   border-radius: 6px;
@@ -204,6 +210,21 @@
 /* compact thumbnail shows only the category + title, not the description */
 .carousel.instruments .carousel-thumb p:last-child {
   display: none;
+}
+
+/* phones: tighten the rail so both arrows and the thumbnail copy fit (no horizontal page scroll) */
+@media (width < 600px) {
+  .carousel.instruments .carousel-controls {
+    gap: 8px;
+  }
+
+  .carousel.instruments .carousel-thumbs {
+    gap: 8px;
+  }
+
+  .carousel.instruments .carousel-thumb {
+    padding: 12px;
+  }
 }
 
 /* ============================================================
@@ -631,3 +652,791 @@ main .carousel.resources .carousel-card-cta a.button:any-link:focus-visible {
     font-size: 24px;
   }
 }
+
+/* ============================================================
+   PRODUCTS — related-product card slider (4-up desktop) with dot
+   pagination, no arrows (values from source div.related-products)
+   ============================================================ */
+.carousel.products {
+  --carousel-per-view: 1;
+  --carousel-gap: 20px;
+
+  /* source title scales 21.25px @375 -> 26.752px @768 -> 32px cap */
+  --carousel-title-size: min(32px, calc(16px + 1.4vw));
+
+  box-sizing: border-box;
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 14px 0;
+  color: rgb(0 0 0 / 87%);
+  font-family: var(--body-font-family);
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.carousel.products .carousel-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+/* 20px above/below the cards plus the 10px card inset (source .owl-item .item padding) */
+.carousel.products .carousel-track {
+  position: relative;
+  display: flex;
+  gap: var(--carousel-gap);
+  margin: 0;
+  padding: 30px 10px;
+  scroll-padding-inline: 10px;
+  list-style: none;
+  overflow-x: auto;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.carousel.products .carousel-track::-webkit-scrollbar {
+  display: none;
+}
+
+.carousel.products .carousel-card {
+  display: flex;
+  flex-direction: column;
+  flex: 0 0 calc((100% - (var(--carousel-per-view) - 1) * var(--carousel-gap)) / var(--carousel-per-view));
+  min-width: 0;
+  scroll-snap-align: start;
+  background-color: #fff;
+  box-shadow: 0 0 2px rgb(0 0 0 / 30%);
+}
+
+.carousel.products .carousel-card-image {
+  display: block;
+  aspect-ratio: 563 / 480;
+  overflow: hidden;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.products .carousel-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.carousel.products .carousel-card-body {
+  flex: 1;
+  padding: 25px;
+}
+
+/* source pulls the title up as it grows: margin-top = 28px - font-size */
+.carousel.products .carousel-card-body h3 {
+  margin: calc(28px - var(--carousel-title-size)) 0 14px;
+  color: #000;
+  font-family: var(--heading-font-family);
+  font-size: var(--carousel-title-size);
+  font-weight: var(--heading-font-weight);
+  line-height: 1.2857;
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.carousel.products .carousel-card-body h3 sup {
+  font-size: 0.75em;
+  line-height: 0;
+}
+
+/* description clamped to three lines */
+.carousel.products .carousel-card-body > p:not(.carousel-card-cta) {
+  display: -webkit-box;
+  margin: 0 0 16px;
+  overflow: hidden;
+  color: rgb(0 0 0 / 87%);
+  font-size: 16px;
+  line-height: 24px;
+  max-height: 68.8px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+/* "Learn more" text link follows the copy; source centres it in a 64px line box */
+.carousel.products .carousel-card-cta {
+  margin: 0;
+  padding: 24px 0;
+  line-height: 16px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.products .carousel-card-cta a:any-link {
+  position: relative;
+  display: inline-block;
+  padding-right: 20px;
+  color: #08c;
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 16px;
+  transition: color var(--button-transition);
+}
+
+.carousel.products .carousel-card-cta a:any-link:hover,
+.carousel.products .carousel-card-cta a:any-link:focus-visible {
+  color: var(--link-hover-color);
+}
+
+/* chevron (source: Linearicons chevron-right, 15.75px) */
+.carousel.products .carousel-card-cta a::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 0;
+  width: 15.75px;
+  height: 15.75px;
+  transform: translateY(-50%);
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M7 3l7 7-7 7'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* dots sit in the 20px band under the cards (source .owl-dots) */
+.carousel.products .carousel-dots {
+  position: relative;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  height: 24px;
+  margin-top: -22px;
+}
+
+/* 24px tap target around a 10px visual dot */
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.products .carousel-dot {
+  position: relative;
+  flex: 0 0 24px;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.carousel.products .carousel-dot::before {
+  content: '';
+  position: absolute;
+  inset: 7px;
+  box-sizing: border-box;
+  border: 1px solid var(--divider-color);
+  border-radius: 500px;
+  background-color: #fff;
+  transition: background-color 0.3s;
+}
+
+.carousel.products .carousel-dot.is-active::before {
+  background-color: var(--divider-color);
+}
+
+.carousel.products .carousel-dot:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 0;
+  border-radius: 500px;
+}
+
+/* every card fits in view: no paging needed */
+.carousel.products .carousel-dots[hidden] {
+  display: none;
+}
+
+@media (width >= 600px) {
+  .carousel.products {
+    --carousel-per-view: 2;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel.products {
+    --carousel-per-view: 3;
+  }
+}
+
+@media (width >= 1200px) {
+  .carousel.products {
+    --carousel-per-view: 4;
+  }
+}
+
+/* ============================================================
+   GALLERY — product hero: main slide + thumbnail strip (images and
+   inline Vidyard videos) beside the product text panel
+   (values from source div.sublayout-two-column-dynamic)
+   ============================================================ */
+
+/* the carousel wrapper is full-bleed; the gallery stays contained */
+.carousel.gallery {
+  box-sizing: content-box;
+  max-width: 1340px;
+  margin: 35px auto 60px;
+  padding: 0 30px;
+  color: rgb(0 0 0 / 87%);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 22.856px;
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+.carousel.gallery .carousel-inner {
+  display: flex;
+  flex-direction: column;
+}
+
+.carousel.gallery .carousel-gallery {
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+/* stage = tallest slide (563x480 artwork); shorter slides centre in it */
+.carousel.gallery .carousel-stage {
+  position: relative;
+  aspect-ratio: 563 / 480;
+  overflow: hidden;
+}
+
+.carousel.gallery .carousel-slide {
+  display: none;
+  position: absolute;
+  inset: 0;
+}
+
+.carousel.gallery .carousel-slide.is-active {
+  display: block;
+}
+
+.carousel.gallery .carousel-slide picture,
+.carousel.gallery .carousel-video-poster {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.gallery .carousel-slide img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.carousel.gallery .carousel-video-poster {
+  position: relative;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.gallery .carousel-video-poster img {
+  opacity: 0.8;
+}
+
+.carousel.gallery .carousel-video-poster:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: -2px;
+}
+
+/* play overlay: 80px white ring with a white triangle */
+.carousel.gallery .carousel-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  box-sizing: border-box;
+  width: 80px;
+  height: 80px;
+  border: 2px solid #fff;
+  border-radius: 1000px;
+
+  /* the source's inline Vidyard player paints a dark disc behind the ring */
+  background-color: rgb(0 0 0 / 50%);
+  transform: translate(-50%, -50%);
+}
+
+.carousel.gallery .carousel-video-play::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 15px);
+  left: calc(50% - 10px);
+  border-style: solid;
+  border-width: 15px 0 15px 25px;
+  border-color: transparent transparent transparent #fff;
+}
+
+.carousel.gallery .carousel-video-frame {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+/* thumbnail strip: centred, wrapping rows (no active/hover change on source) */
+.carousel.gallery .carousel-thumbs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+
+.carousel.gallery .carousel-thumb {
+  position: relative;
+  box-sizing: border-box;
+  flex: 0 0 80px;
+  width: 80px;
+  margin: 0;
+  padding: 5px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  line-height: 0;
+  cursor: pointer;
+}
+
+.carousel.gallery .carousel-thumb:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: -2px;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.gallery .carousel-thumb img {
+  display: block;
+  width: 70px;
+  height: auto;
+}
+
+/* small play glyph on video thumbnails: 30px ring + triangle */
+.carousel.gallery .carousel-thumb-video::before,
+.carousel.gallery .carousel-thumb-video::after {
+  content: '';
+  position: absolute;
+  z-index: 1;
+}
+
+.carousel.gallery .carousel-thumb-video::before {
+  top: calc(50% - 18px);
+  left: calc(50% - 15px);
+  box-sizing: border-box;
+  width: 30px;
+  height: 30px;
+  border: 2px solid #fff;
+  border-radius: 1000px;
+}
+
+.carousel.gallery .carousel-thumb-video::after {
+  top: calc(50% - 8px);
+  left: calc(50% - 3px);
+  border-style: solid;
+  border-width: 5px 0 5px 10px;
+  border-color: transparent transparent transparent #fff;
+}
+
+/* product text panel: H1, intro, variant, availability notice, CTA, jump links */
+.carousel.gallery .carousel-panel {
+  min-width: 0;
+  padding-top: 10px;
+}
+
+.carousel.gallery .carousel-panel > * {
+  margin: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.gallery .carousel-panel > h1 {
+  margin: 0 5% 14px;
+  color: #000;
+  font-family: var(--heading-font-family);
+
+  /* source: 27.0625px @375, 33.7px @600, 38.656px @768, 48px desktop */
+  font-size: calc(16px + 2.95vw);
+  font-weight: var(--heading-font-weight);
+  line-height: 1.2857;
+  letter-spacing: var(--heading-letter-spacing);
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.gallery .carousel-panel > p {
+  margin: 0 5%;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+/* variant line: rendered like the source's product-variant select box */
+.carousel.gallery .carousel-panel > h1 + p + p:not(.button-wrapper) {
+  box-sizing: border-box;
+
+  /* source select is 400px wide; the authored line also carries its label, so let it fit one line */
+  width: fit-content;
+  max-width: 100%;
+  margin-top: 20px;
+  padding: 12.5714px 33.6px 12.5714px 16px;
+  border: 1px solid var(--divider-color);
+  border-radius: 4px;
+  background-color: #fff;
+  line-height: 16px;
+}
+
+/* availability notice */
+.carousel.gallery .carousel-panel > h1 + p + p + p:not(.button-wrapper) {
+  margin: 10px 0 0;
+  padding: 20px;
+  color: #000;
+}
+
+.carousel.gallery .carousel-panel > p.button-wrapper {
+  margin: 25px 5%;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+main .carousel.gallery .carousel-panel a.button:any-link {
+  padding: 12.5714px 24px;
+  border-radius: 8px;
+  background-color: var(--brand-red);
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 16px;
+}
+
+main .carousel.gallery .carousel-panel a.button:any-link:hover,
+main .carousel.gallery .carousel-panel a.button:any-link:focus-visible {
+  background-color: #b31521;
+  color: #fff;
+}
+
+/* in-page jump links (tab shortcuts): 150px icon cells in one outlined strip */
+.carousel.gallery .carousel-panel > .carousel-jump-links {
+  display: flex;
+  flex-wrap: wrap;
+  max-width: 750px;
+  padding: 0 0 1px 1px;
+  list-style: none;
+}
+
+.carousel.gallery .carousel-jump-links li {
+  box-sizing: border-box;
+  flex: 0 0 150px;
+
+  /* mobile: wrapped cells form a collapsed 1px grid (source) */
+  margin: 0 0 -1px -1px;
+  border: 1px solid #a9a9a9;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.gallery .carousel-jump-links a:any-link {
+  display: block;
+  padding: 8px;
+  color: rgb(0 0 0 / 87%);
+  font-size: 16px;
+  line-height: 22.856px;
+  text-align: center;
+}
+
+.carousel.gallery .carousel-jump-links a:any-link:hover,
+.carousel.gallery .carousel-jump-links a:any-link:focus-visible {
+  color: #983cc9;
+}
+
+/* line icons (source: Linearicons 30px) for the known product-page tabs */
+.carousel.gallery .carousel-jump-links a[href='#overview'] {
+  --carousel-jump-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M15.5 1.5h-10A1.5 1.5 0 0 0 4 3v14a1.5 1.5 0 0 0 1.5 1.5h10zM4 16.5A1.5 1.5 0 0 1 5.5 15h10M7 1.5V15'/%3E%3C/svg%3E");
+}
+
+.carousel.gallery .carousel-jump-links a[href='#specifications'] {
+  --carousel-jump-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M4.5 1.5H12l3.5 3.5v13.5h-11zM12 1.5V5h3.5M10 8.5v6M7 11.5h6'/%3E%3C/svg%3E");
+}
+
+.carousel.gallery .carousel-jump-links a[href='#documents'] {
+  --carousel-jump-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M13.5 8V1.5h-12v12H8M9.5 9.5l2.5 9 1.6-3.9 3.6 3.6 1.3-1.3-3.6-3.6 3.9-1.6z'/%3E%3C/svg%3E");
+}
+
+.carousel.gallery .carousel-jump-links a[href='#connections'] {
+  --carousel-jump-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M17 10a7 7 0 0 1-12.5 4.3M3 10a7 7 0 0 1 12.5-4.3M15.5 1.5v4.2h-4.2M4.5 18.5v-4.2h4.2'/%3E%3C/svg%3E");
+}
+
+.carousel.gallery .carousel-jump-links a[href='#configurations'] {
+  --carousel-jump-icon: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' stroke='%23000' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M10 2.5l8 4-8 4-8-4zM2 10l8 4 8-4M2 13.5l8 4 8-4'/%3E%3C/svg%3E");
+}
+
+.carousel.gallery .carousel-jump-links a:is([href='#overview'], [href='#specifications'], [href='#documents'], [href='#connections'], [href='#configurations'])::before {
+  content: '';
+  display: block;
+  width: 30px;
+  height: 30px;
+  margin: 0 auto 4.856px;
+  background-color: currentcolor;
+  mask: var(--carousel-jump-icon) center / contain no-repeat;
+}
+
+@media (width >= 900px) {
+  /* source 768-1199: two equal columns, no gutter */
+  .carousel.gallery .carousel-inner {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .carousel.gallery .carousel-gallery {
+    flex: 0 0 50%;
+  }
+
+  .carousel.gallery .carousel-panel {
+    flex: 1 1 0;
+  }
+
+  .carousel.gallery .carousel-panel > h1 {
+    margin-inline: 0;
+    font-size: 48px;
+  }
+
+  .carousel.gallery .carousel-panel > p,
+  .carousel.gallery .carousel-panel > p.button-wrapper {
+    margin-inline: 0;
+  }
+
+  /* desktop: one outlined strip, no dividers between cells */
+  .carousel.gallery .carousel-panel > .carousel-jump-links {
+    padding-left: 0;
+  }
+
+  .carousel.gallery .carousel-jump-links li {
+    margin-left: 0;
+    border-width: 1px 0;
+  }
+
+  .carousel.gallery .carousel-jump-links li:first-child {
+    border-left-width: 1px;
+  }
+
+  .carousel.gallery .carousel-jump-links li:last-child {
+    border-right-width: 1px;
+  }
+}
+
+@media (width >= 1200px) {
+  /* source: media column 35% + 30px gutter, text column takes the rest */
+  .carousel.gallery .carousel-gallery {
+    flex-basis: 35%;
+    margin-right: 30px;
+  }
+}
+
+/* ============================================================
+   TESTIMONIALS — one quote slide at a time in a light grey card:
+   bold name + italic role above the quote (red quote mark), optional
+   cover image and CTA; prev/next arrows at the sides, dots below.
+   (mybeckman.in NGS "Hear from Our Customers")
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+.carousel.testimonials {
+  box-sizing: border-box;
+  max-width: 1048px;
+  margin: 0 auto;
+  padding: 8px 16px 40px;
+}
+
+.carousel.testimonials .carousel-heading {
+  text-align: center;
+}
+
+.carousel.testimonials .carousel-stage {
+  display: grid;
+  grid-template-columns: 32px minmax(0, 1fr) 32px;
+  align-items: center;
+  gap: 4px;
+}
+
+.carousel.testimonials .carousel-stage > .carousel-slides:only-child {
+  grid-column: 1 / -1;
+}
+
+.carousel.testimonials .carousel-slides {
+  grid-column: 2;
+}
+
+.carousel.testimonials .carousel-slide {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 20px;
+  background-color: #efefef;
+  color: #333;
+}
+
+.carousel.testimonials .carousel-slide[hidden] {
+  display: none;
+}
+
+.carousel.testimonials .carousel-testimonial {
+  margin: 0;
+}
+
+.carousel.testimonials .carousel-testimonial-author {
+  margin-bottom: 16px;
+}
+
+.carousel.testimonials .carousel-testimonial-author p {
+  margin: 0;
+}
+
+.carousel.testimonials .carousel-testimonial-name {
+  color: #333;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.carousel.testimonials .carousel-testimonial-name strong {
+  font-weight: 700;
+}
+
+.carousel.testimonials .carousel-testimonial-role {
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.carousel.testimonials .carousel-testimonial-quote {
+  margin: 0;
+  padding: 0;
+  font-size: 15px;
+  line-height: 1.65;
+}
+
+.carousel.testimonials .carousel-testimonial-quote p {
+  margin: 0 0 12px;
+}
+
+.carousel.testimonials .carousel-testimonial-quote p:last-child {
+  margin-bottom: 0;
+}
+
+/* red opening quote mark before the quote */
+.carousel.testimonials .carousel-testimonial-quote > p:first-child::before {
+  content: '\201C' / '';
+  float: left;
+  margin: -2px 6px 0 0;
+  color: var(--brand-red);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 52px;
+  font-weight: 700;
+  line-height: 0.8;
+}
+
+.carousel.testimonials .carousel-testimonial-cta {
+  margin: 16px 0 0;
+}
+
+.carousel.testimonials .carousel-testimonial-image img {
+  display: block;
+  width: 100%;
+  max-width: 260px;
+  height: auto;
+  margin: 0 auto;
+  border: 1px solid #b3b3b3;
+}
+
+/* arrows: 44px hit area, chevron glyph drawn with borders */
+.carousel.testimonials .carousel-arrow {
+  position: relative;
+  width: 32px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 4px;
+  background: none;
+  color: #595959;
+  cursor: pointer;
+}
+
+.carousel.testimonials .carousel-arrow::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 10px;
+  height: 10px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+}
+
+.carousel.testimonials .carousel-arrow-prev::before {
+  transform: translate(-30%, -50%) rotate(-135deg);
+}
+
+.carousel.testimonials .carousel-arrow-next::before {
+  transform: translate(-70%, -50%) rotate(45deg);
+}
+
+.carousel.testimonials .carousel-arrow:hover {
+  color: var(--brand-red);
+}
+
+.carousel.testimonials .carousel-arrow:focus-visible,
+.carousel.testimonials .carousel-dot:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.carousel.testimonials .carousel-dots {
+  display: flex;
+  justify-content: center;
+  gap: 4px;
+  margin-top: 16px;
+}
+
+/* 24px target around a 12px dot; #8a8a8a = 3.4:1 against white */
+.carousel.testimonials .carousel-dot {
+  position: relative;
+  width: 24px;
+  height: 24px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.carousel.testimonials .carousel-dot::before {
+  content: '';
+  position: absolute;
+  inset: 6px;
+  border-radius: 50%;
+  background-color: #8a8a8a;
+}
+
+.carousel.testimonials .carousel-dot.is-active::before {
+  background-color: var(--brand-red);
+}
+
+@media (width >= 600px) {
+  .carousel.testimonials .carousel-stage {
+    grid-template-columns: 44px minmax(0, 1fr) 44px;
+    gap: 8px;
+  }
+
+  .carousel.testimonials .carousel-arrow {
+    width: 44px;
+  }
+
+  .carousel.testimonials .carousel-slide {
+    padding: 24px 32px;
+  }
+}
+
+@media (width >= 900px) {
+  .carousel.testimonials .carousel-slide.carousel-slide-has-image {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .carousel.testimonials .carousel-slide-has-image .carousel-testimonial-body {
+    flex: 1 1 auto;
+  }
+
+  .carousel.testimonials .carousel-slide-has-image .carousel-testimonial-image {
+    flex: 0 0 220px;
+  }
+
+  .carousel.testimonials .carousel-testimonial-quote {
+    font-size: 16px;
+  }
+}
+/* stylelint-enable no-descending-specificity */

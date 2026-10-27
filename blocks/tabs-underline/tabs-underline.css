@@ -1,0 +1,386 @@
+/*
+ * Tabs Underline: centred uppercase tab bar with a purple underline on the
+ * active/hovered tab ("Filter By" select on small screens), one panel per tab.
+ * Values from beckmancoulter.com product pages (div.product-tabs).
+ */
+
+/* source: 64px above the tab bar and below the panel; the highlight section supplies 40px */
+.tabs-underline {
+  padding: 24px 0;
+}
+
+/* tab bar (desktop) */
+.tabs-underline .tabs-underline-list {
+  display: none;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: flex-start;
+  min-height: 40px;
+  margin-bottom: 30px;
+}
+
+.tabs-underline .tabs-underline-tab {
+  position: relative;
+  margin: 0 0 -2px;
+  padding: 0 30px 19px 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: color 0.1s;
+}
+
+/* underline spans the label only (not the 30px trailing space) */
+.tabs-underline .tabs-underline-tab::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 30px;
+  height: 5px;
+  background-color: #983cc9;
+  opacity: 0;
+  transition: opacity 0.4s;
+}
+
+.tabs-underline .tabs-underline-tab:hover,
+.tabs-underline .tabs-underline-tab[aria-selected='true'] {
+  color: #983cc9;
+}
+
+.tabs-underline .tabs-underline-tab:hover::after,
+.tabs-underline .tabs-underline-tab[aria-selected='true']::after {
+  opacity: 1;
+}
+
+.tabs-underline .tabs-underline-tab:focus-visible {
+  outline: 2px solid #983cc9;
+  outline-offset: 4px;
+}
+
+/* mobile: "Filter By" select replaces the tab bar */
+.tabs-underline .tabs-underline-filter {
+  margin-bottom: 30px;
+}
+
+/* the source label sits hidden under the dropdown: keep it for screen readers only */
+.tabs-underline .tabs-underline-filter label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  border: 0;
+  white-space: nowrap;
+}
+
+.tabs-underline .tabs-underline-filter select {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  padding: 11px 29.4px 11px 14px;
+  border: 1px solid var(--divider-color);
+  border-radius: 4px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' fill='none' stroke='%23000' stroke-width='1.5'/%3E%3C/svg%3E") no-repeat right 18px center;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 14px;
+  letter-spacing: 0.128px;
+  appearance: none;
+  cursor: pointer;
+}
+
+.tabs-underline .tabs-underline-filter select:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+/* panels */
+.tabs-underline .tabs-underline-panel[hidden] {
+  display: none;
+}
+
+.tabs-underline .tabs-underline-panel:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 4px;
+}
+
+.tabs-underline .tabs-underline-text {
+  color: #000;
+}
+
+.tabs-underline .tabs-underline-text > :first-child {
+  margin-top: 0;
+}
+
+.tabs-underline .tabs-underline-text h2 {
+  margin: 24.5164px 0 14px;
+  font-size: 24.385px;
+  font-weight: var(--heading-font-weight);
+  line-height: 31.3521px;
+}
+
+.tabs-underline .tabs-underline-text h3 {
+  margin: 24.9343px 0 14px;
+  font-size: 21.46px;
+  font-weight: var(--heading-font-weight);
+  line-height: 27.5914px;
+}
+
+.tabs-underline .tabs-underline-text h4 {
+  margin: 25.38px 0 14px;
+  color: #621b4a;
+  font-size: 18.34px;
+  font-weight: var(--heading-font-weight);
+  line-height: 23.58px;
+}
+
+.tabs-underline .tabs-underline-text a:any-link {
+  font-weight: 600;
+}
+
+.tabs-underline .tabs-underline-text strong {
+  font-weight: 600;
+}
+
+/* images: the authored image cell, plus image-link paragraphs in the text */
+.tabs-underline .tabs-underline-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.tabs-underline .tabs-underline-panel-has-image {
+  display: grid;
+  gap: 24px;
+}
+
+/* small screens: text first, then the image (as on the source) */
+.tabs-underline .tabs-underline-panel-has-image > .tabs-underline-image {
+  order: 1;
+}
+
+/*
+ * Image cell + image-link paragraph in the text (e.g. pre/post-analytical
+ * diagrams): text runs full width, then the two images sit side by side.
+ */
+.tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) {
+  gap: 0;
+}
+
+.tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) > .tabs-underline-text {
+  display: contents;
+}
+
+.tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) > .tabs-underline-text > * {
+  grid-column: 1 / -1;
+}
+
+.tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) > .tabs-underline-text > h2 {
+  margin-top: 0;
+}
+
+.tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) > .tabs-underline-image {
+  margin: 19px 0 16px;
+}
+
+.tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) > .tabs-underline-text > p.tabs-underline-image {
+  order: 2;
+  margin: 0 0 16px;
+}
+
+/* data tables (Specifications, Connections): celled rows, stacked on phones */
+.tabs-underline .tabs-underline-text table {
+  width: 100%;
+  margin: 16px 0;
+  border-collapse: separate;
+  border-spacing: 0;
+  border-radius: 4px;
+  font-size: 16px;
+  line-height: 24px;
+  text-align: left;
+}
+
+.tabs-underline .tabs-underline-text > table:first-child {
+  margin-top: 0;
+}
+
+.tabs-underline .tabs-underline-text .tabs-underline-data-table tr {
+  display: block;
+  padding: 16px 0;
+  border-bottom: 1px solid rgb(0 0 0 / 10%);
+}
+
+.tabs-underline .tabs-underline-text .tabs-underline-data-table td {
+  display: block;
+  padding: 4px 12px;
+  border-left: 1px solid rgb(34 36 38 / 10%);
+  vertical-align: middle;
+}
+
+.tabs-underline .tabs-underline-text .tabs-underline-data-table td:last-child {
+  border-right: 1px solid rgb(34 36 38 / 10%);
+}
+
+.tabs-underline .tabs-underline-text .tabs-underline-data-table td h4 {
+  display: inline-block;
+  margin: 0;
+  color: #000;
+}
+
+.tabs-underline .tabs-underline-text .tabs-underline-data-table ul {
+  margin: 16px 0;
+  padding-left: 40px;
+}
+
+/* comparison tables (no headings in the cells) get striped rows */
+.tabs-underline .tabs-underline-text .tabs-underline-data-table:not(:has(h1, h2, h3, h4, h5, h6)) tr:nth-child(odd) {
+  background-color: rgb(222 234 246);
+}
+
+/* Vidyard video: poster with a play overlay, inline player on click */
+.tabs-underline .tabs-underline-video {
+  max-width: 700px;
+  margin: 0 auto 16px;
+}
+
+.tabs-underline .tabs-underline-video-poster {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct sub-element, ordering intentional */
+.tabs-underline .tabs-underline-video-poster img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.tabs-underline .tabs-underline-video-play {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 112px;
+  height: 112px;
+  border-radius: 50%;
+  background-color: rgb(0 0 0 / 60%);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s;
+}
+
+.tabs-underline .tabs-underline-video-poster:hover .tabs-underline-video-play {
+  background-color: rgb(0 0 0 / 80%);
+}
+
+.tabs-underline .tabs-underline-video-play::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 54%;
+  border-style: solid;
+  border-width: 22px 0 22px 36px;
+  border-color: transparent transparent transparent #fff;
+  transform: translate(-50%, -50%);
+}
+
+.tabs-underline .tabs-underline-video-frame {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  border: 0;
+}
+
+@media (width >= 600px) {
+  .tabs-underline .tabs-underline-text .tabs-underline-data-table tr {
+    display: table-row;
+    padding: 0;
+  }
+
+  .tabs-underline .tabs-underline-text .tabs-underline-data-table td {
+    display: table-cell;
+    padding: 12.5714px;
+    border-top: 1px solid rgb(34 36 38 / 10%);
+  }
+
+  .tabs-underline .tabs-underline-text .tabs-underline-data-table:has(h1, h2, h3, h4, h5, h6) tr:first-child td {
+    border-top: 0;
+  }
+
+  .tabs-underline .tabs-underline-text .tabs-underline-data-table:not(:has(h1, h2, h3, h4, h5, h6)) tr:last-child td {
+    border-bottom: 1px solid rgb(34 36 38 / 10%);
+  }
+
+  /* label | details tables (Specifications) */
+  .tabs-underline .tabs-underline-text .tabs-underline-data-table td:first-child:nth-last-child(2) {
+    width: 25%;
+  }
+}
+
+@media (width >= 900px) {
+  .tabs-underline .tabs-underline-list {
+    display: flex;
+  }
+
+  .tabs-underline .tabs-underline-filter {
+    display: none;
+  }
+
+  .tabs-underline .tabs-underline-text h2 {
+    margin-top: 22.2857px;
+    font-size: 40px;
+    line-height: 51.4286px;
+  }
+
+  .tabs-underline .tabs-underline-text h3 {
+    margin-top: 23.4286px;
+    font-size: 32px;
+    line-height: 41.1429px;
+  }
+
+  .tabs-underline .tabs-underline-text h4 {
+    margin-top: 23.4286px;
+    font-size: 24px;
+    line-height: 30.8571px;
+  }
+
+  /* image beside the text */
+  .tabs-underline .tabs-underline-panel-has-image {
+    grid-template-columns: 1fr 1fr;
+    align-items: start;
+    gap: 40px;
+  }
+
+  .tabs-underline .tabs-underline-panel-has-image > .tabs-underline-image {
+    order: 0;
+  }
+
+  /* two diagrams side by side under the full-width text */
+  .tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) {
+    gap: 0 30px;
+  }
+
+  .tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) > .tabs-underline-image {
+    order: 1;
+    grid-column: 1;
+    margin: 19px 0 98px 30px;
+  }
+
+  .tabs-underline .tabs-underline-panel-has-image:has(> .tabs-underline-text > .tabs-underline-image) > .tabs-underline-text > p.tabs-underline-image {
+    grid-column: 2;
+    margin: 19px 30px 98px 0;
+  }
+}

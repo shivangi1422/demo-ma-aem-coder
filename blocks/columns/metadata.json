@@ -16,10 +16,21 @@
   "usage": {
     "description": "Footer (link columns); Host Response to Infection (text + image split); Remote Services and Diagnostics (IntelliServe text + Vidyard video).",
     "pagesUsing": [
-      "/footer",
+      "/en/products/automation/workflow-automation-system-dxa-5000-fit",
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics",
       "/en/solutions/host-response-infection",
-      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
-    ]
+      "/flow-cytometry/clinical-trials",
+      "/footer",
+      "/resources/disease-research/leukemia-and-lymphoma",
+      "/resources/industries/biomanufacturing",
+      "/resources/industries/synthetic-biology",
+      "/resources/methods/cell-line-development",
+      "/resources/product-applications/process-development-manufacturing/protein-production",
+      "/resources/technologies/analytical-ultracentrifugation",
+      "/resources/technologies/next-generation-sequencing"
+    ],
+    "reuseCount": 12,
+    "lastUsed": "2026-10-27"
   },
   "reuseGuidance": "Use for generic side-by-side text/media splits, including text beside an inline Vidyard video. Use content-reversed for the image-left feature split, and cards-grid video for a grid of several video posters."
 }

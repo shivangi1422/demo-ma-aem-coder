@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/products/advanced-informatics",
+  "path": "en/products/advanced-informatics",
+  "timestamp": "2026-10-22T11:02:39.348Z",
+  "title": "Advanced Informatics | Beckman Coulter",
+  "template": "product-category",
+  "blocks": [
+    "cards-media-list",
+    "cards-media-list",
+    "cards-grid-products",
+    "cards-grid-photo",
+    "hero-promo"
+  ]
+}

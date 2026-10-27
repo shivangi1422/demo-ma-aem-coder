@@ -1,19 +1,26 @@
-/* Hero — one block, several styles via the "Style" dropdown: home | left | banner | plain | gradient | split | split-left */
+/* Hero — one block, several styles via the "Style" dropdown: home | left | banner | plain | gradient | split | split-left | promo */
 
 .hero-container .hero-wrapper {
   max-width: unset;
   padding: 0;
 }
 
-/* shared button styling across variants */
+/* shared button styling across variants; a darker orange than --bc-orange
+   so white text passes WCAG AA (4.7:1 vs 2.86:1) */
 .hero a.button:any-link {
   margin: 0;
   border-radius: 4px;
   font-family: var(--bc-brand-font);
   font-weight: 700;
-  background-color: var(--bc-orange);
-  border-color: var(--bc-orange);
+  background-color: #c25100;
+  border-color: #c25100;
   color: #fff;
+}
+
+.hero a.button:any-link:hover,
+.hero a.button:any-link:focus-visible {
+  background-color: #a94700;
+  border-color: #a94700;
 }
 
 /* ============================================================
@@ -621,3 +628,126 @@
     margin-right: 30px;
   }
 }
+
+/* ============================================================
+   PROMO — contained 250px promotional banner: cover background
+   photo, dark bottom gradient, centred white heading/subtitle and
+   a red primary button
+   (source: /en/products/advanced-informatics, div.photo-hero-promotional-banner)
+   source <=768px: heading 36.208px, details 11.2px; above: 56px / 16px
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+.hero.promo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  max-width: 1400px;
+  min-height: 250px;
+  margin: 0 auto;
+  padding: 0 14px;
+  overflow: hidden;
+  background-color: #1a1a1a;
+  text-align: center;
+}
+
+.hero.promo > picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero.promo > picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+.hero.promo::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(to bottom, rgb(26 26 26 / 0%) 0%, rgb(26 26 26 / 75%) 100%);
+}
+
+/* source .content-container (max 1370px) + .heading-container (40px 0) */
+.hero.promo > div {
+  position: relative;
+  z-index: 2;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1370px;
+  padding: 40px 0;
+}
+
+/* source .banner-heading: MontserratLight, "normal" line box = 1em,
+   12.6px top margin and a -20px translate (shared with the details line) */
+.hero.promo h1,
+.hero.promo h2,
+.hero.promo h3 {
+  margin: 12.6px 0 0;
+  color: #fff;
+  font-family: var(--heading-font-family);
+  font-size: 36.208px;
+  font-weight: 300;
+  line-height: 1;
+  letter-spacing: 0.5px;
+  translate: 0 -20px;
+}
+
+/* source .banner-details */
+.hero.promo p {
+  margin: 0;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 11.2px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: var(--heading-letter-spacing);
+  translate: 0 -20px;
+}
+
+/* source .carousel-button-wrapper: not translated, so it sits 20px below the details */
+.hero.promo p.button-wrapper {
+  margin: 0;
+  font-size: 16px;
+  line-height: 22.856px;
+  translate: none;
+}
+
+/* source primary CTA: red, 8px radius; overrides the shared hero orange button */
+.hero.promo a.button:any-link {
+  border: 0;
+  border-radius: var(--button-radius);
+  margin: 0 3.9375px 0 0;
+  padding: 12.375px 23.625px;
+  background-color: var(--brand-red);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
+  font-weight: var(--button-font-weight);
+  line-height: 16px;
+}
+
+.hero.promo a.button:any-link:hover,
+.hero.promo a.button:any-link:focus-visible {
+  background-color: var(--brand-red-hover);
+  color: #fff;
+}
+
+@media (width >= 900px) {
+  .hero.promo h1,
+  .hero.promo h2,
+  .hero.promo h3 {
+    font-size: 56px;
+  }
+
+  .hero.promo p {
+    font-size: 16px;
+  }
+}
+/* stylelint-enable no-descending-specificity */

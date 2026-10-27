@@ -20,6 +20,7 @@
       "cards-media-list",
       "carousel",
       "tabs-products",
+      "tabs-underline",
       "content-reversed",
       "form-request",
       "content-product-detail",
@@ -27,8 +28,18 @@
       "product-banner",
       "quote",
       "table-grouped",
+      "table-striped",
+      "accordion-toggle",
+      "tabs-workflow",
       "form",
-      "form-file"
+      "form-file",
+      "embed"
+    ]
+  },
+  {
+    "id": "accordion-toggle",
+    "components": [
+      "accordion-toggle-item"
     ]
   },
   {
@@ -119,9 +130,27 @@
     ]
   },
   {
+    "id": "table-striped",
+    "components": [
+      "table-striped-row"
+    ]
+  },
+  {
     "id": "tabs-products",
     "components": [
       "tabs-products-item"
+    ]
+  },
+  {
+    "id": "tabs-underline",
+    "components": [
+      "tabs-underline-item"
+    ]
+  },
+  {
+    "id": "tabs-workflow",
+    "components": [
+      "tabs-workflow-item"
     ]
   }
 ]

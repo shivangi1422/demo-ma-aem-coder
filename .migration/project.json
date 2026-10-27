@@ -10,7 +10,8 @@
       "aemAssetsFolderPath": "/content/dam/demo-ma-aem-coder",
       "aemSiteName": "demo-ma-aem-coder",
       "aemSiteTitle": "Site Beckman",
-      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json"
+      "libraryUrl": "https://main--sta-xwalk-boilerplate--aemysites.aem.page/tools/sidekick/library.json",
+      "botProtected": true
     }
   }
 }

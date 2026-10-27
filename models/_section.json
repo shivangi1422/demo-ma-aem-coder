@@ -41,6 +41,30 @@
             {
               "name": "Centered",
               "value": "centered"
+            },
+            {
+              "name": "Image panel",
+              "value": "image-panel"
+            },
+            {
+              "name": "Spectrum gradient",
+              "value": "spectrum-gradient"
+            },
+            {
+              "name": "Jump links (sticky link bar)",
+              "value": "jump-links"
+            },
+            {
+              "name": "Callout box",
+              "value": "callout"
+            },
+            {
+              "name": "Sidebar (beside the article on desktop)",
+              "value": "sidebar"
+            },
+            {
+              "name": "Red band",
+              "value": "red"
             }
           ]
         },
@@ -70,6 +94,7 @@
         "cards-media-list",
         "carousel",
         "tabs-products",
+        "tabs-underline",
         "content-reversed",
         "form-request",
         "content-product-detail",
@@ -77,8 +102,12 @@
         "product-banner",
         "quote",
         "table-grouped",
+        "table-striped",
+        "accordion-toggle",
+        "tabs-workflow",
         "form",
-        "form-file"
+        "form-file",
+        "embed"
       ]
     }
   ]

@@ -1,0 +1,28 @@
+{
+  "variantName": "tabs-workflow",
+  "baseBlock": "tabs",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "Interactive process workflow: chevron stage tabs revealing the products for each stage",
+    "description": "A row of chevron/arrow-shaped stage buttons (ARIA tablist): brand red with white text for the active stage, grey with dark text for selectable stages, light grey for disabled stages (no content, aria-disabled, not selectable). A stage may carry a subtitle under its title. The panel shows an optional row of smaller grey step chevrons (ordered list), text and a responsive grid of product thumbnails with linked names below. On phones the stages stack vertically as down-pointing bars."
+  },
+  "contentPattern": {
+    "structure": "one row per stage: title (plain text) | image (optional reference + alt) | text (rich text). Empty text and image = disabled stage. In the text, a lead paragraph directly followed by an ordered list = stage subtitle (moved into the stage button) + step chevrons; each product = a paragraph that only links to the image file (link text = alt) followed by the linked product name"
+  },
+  "options": [],
+  "memberVariantIds": [
+    "tabs-workflow"
+  ],
+  "usage": {
+    "description": "mybeckman.in interactive workflows: biomanufacturing and synthetic-biology (5 stages, first/last disabled), cell-line-development (6 stages), next-generation-sequencing (3 stages).",
+    "pagesUsing": [
+      "/resources/industries/biomanufacturing",
+      "/resources/industries/synthetic-biology",
+      "/resources/methods/cell-line-development",
+      "/resources/technologies/next-generation-sequencing"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-10-27"
+  },
+  "reuseGuidance": "Use for sequential stage/step selectors whose panels list products. Use tabs-underline for product-detail tabs with rich-text panels."
+}

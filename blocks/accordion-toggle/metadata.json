@@ -1,0 +1,34 @@
+{
+  "variantName": "accordion-toggle",
+  "baseBlock": "accordion",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "Collapsible one-line toggles (related products, benefit details, featured resources, references, FAQs)",
+    "description": "Native details/summary toggles, closed by default, separated by thin rules; a small caret before a light 20-24px label rotates when open. Panels hold rich text (paragraphs, lists, CTA buttons); product items (image-file link + linked name + short text) render as a responsive grid of centred cards. Option open: every item starts expanded and the label is a 16px semibold question (FAQs)."
+  },
+  "contentPattern": {
+    "structure": "one row per item: title (plain text) | content (rich text). Product items in the content: a paragraph that only links to the image file (link text = alt), then the product name (heading or paragraph, usually linked), then an optional link-free description paragraph"
+  },
+  "options": [
+    {
+      "class": "open",
+      "label": "Open (all items expanded)"
+    }
+  ],
+  "memberVariantIds": [
+    "accordion-toggle",
+    "accordion-toggle (open)"
+  ],
+  "usage": {
+    "description": "mybeckman.in resource pages: clinical-trials 'Related products', leukemia-and-lymphoma benefit toggles, synthetic-biology Featured Resources, protein-production 'View References' and FAQ (open).",
+    "pagesUsing": [
+      "/flow-cytometry/clinical-trials",
+      "/resources/disease-research/leukemia-and-lymphoma",
+      "/resources/industries/synthetic-biology",
+      "/resources/product-applications/process-development-manufacturing/protein-production"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-10-27"
+  },
+  "reuseGuidance": "Use for any title | content collapsible list, including FAQs (option open). Use tabs-underline or tabs-workflow when only one panel should be visible at a time."
+}

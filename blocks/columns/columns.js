@@ -1,17 +1,35 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
-const VIDYARD_RE = /(?:play|embed|share)\.vidyard\.com\/(?:watch\/)?([A-Za-z0-9_-]+)/i;
+/** inline video players: link pattern -> player / fallback poster URLs */
+const VIDEO_PROVIDERS = [
+  {
+    re: /(?:play|embed|share)\.vidyard\.com\/(?:watch\/)?([A-Za-z0-9_-]+)/i,
+    player: (id) => `https://play.vidyard.com/${id}?autoplay=1&type=inline&disable_popouts=1`,
+    poster: (id) => `https://play.vidyard.com/${id}.jpg`,
+  },
+  {
+    // fast.wistia.net/embed/iframe/{id}, {account}.wistia.com/medias/{id}
+    re: /wistia\.(?:net|com)\/(?:embed\/(?:iframe|medias)|medias)\/([A-Za-z0-9]+)/i,
+    player: (id) => `https://fast.wistia.net/embed/iframe/${id}?autoPlay=true&videoFoam=true`,
+    poster: (id) => `https://fast.wistia.com/embed/medias/${id}/swatch`,
+  },
+];
+
+function matchVideo(href) {
+  const provider = VIDEO_PROVIDERS.find((p) => p.re.test(href));
+  return provider ? { provider, id: href.match(provider.re)[1] } : null;
+}
 
 /**
- * Turns a column holding a Vidyard link (optionally with a poster image above
- * it) into a poster with a play overlay; clicking swaps in the inline player.
- * Columns without a Vidyard link are left untouched.
+ * Turns a column holding a Vidyard or Wistia link (optionally with a poster
+ * image above it) into a poster with a play overlay; clicking swaps in the
+ * inline player. Columns without a video link are left untouched.
  * @param {Element} col
  */
 function decorateVideo(col) {
-  const link = [...col.querySelectorAll('a[href]')].find((a) => VIDYARD_RE.test(a.href));
+  const link = [...col.querySelectorAll('a[href]')].find((a) => matchVideo(a.href));
   if (!link) return;
-  const [, uuid] = link.href.match(VIDYARD_RE);
+  const { provider, id } = matchVideo(link.href);
   const title = link.textContent.trim() && link.textContent.trim() !== link.href
     ? link.textContent.trim() : '';
 
@@ -28,7 +46,7 @@ function decorateVideo(col) {
     if (wrapper !== col && wrapper.textContent.trim() === '' && !wrapper.children.length) wrapper.remove();
   } else {
     const img = document.createElement('img');
-    img.src = `https://play.vidyard.com/${uuid}.jpg`;
+    img.src = provider.poster(id);
     img.alt = title;
     img.loading = 'lazy';
     poster.append(img);
@@ -50,7 +68,7 @@ function decorateVideo(col) {
   poster.addEventListener('click', (e) => {
     e.preventDefault();
     const iframe = document.createElement('iframe');
-    iframe.src = `https://play.vidyard.com/${uuid}?autoplay=1&type=inline&disable_popouts=1`;
+    iframe.src = provider.player(id);
     iframe.title = title || 'Video player';
     iframe.allow = 'autoplay; fullscreen; picture-in-picture';
     iframe.className = 'columns-video-frame';

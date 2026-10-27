@@ -127,10 +127,19 @@ main .columns > div:has(> .columns-video-col) h2 {
   text-transform: capitalize;
 }
 
-/* text + image row, image authored last (adjustable two-column display) */
+/*
+ * text + image row, image authored last (adjustable two-column display).
+ * Source default (.content-container): text left, image right on desktop,
+ * image stacked above the text on mobile. The source "image-alignment"
+ * option (image left) maps to the `image-left` block variant.
+ */
 main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) {
   max-width: 550px;
   margin: 0 auto;
+}
+
+main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) > div {
+  box-sizing: border-box;
 }
 
 main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) > div:not(.columns-img-col) {
@@ -177,8 +186,9 @@ main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) p
   }
 
   main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) {
-    flex-direction: row-reverse;
+    flex-direction: row;
     justify-content: space-around;
+    align-items: center;
     max-width: 1100px;
     gap: 0;
   }
@@ -189,13 +199,29 @@ main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) p
   }
 
   main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) > div:not(.columns-img-col) {
-    align-self: flex-start;
-    margin: 0;
-    padding: 54px 45px 0;
+    padding: 14px 14px 0;
   }
 
   main .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) h2 {
     font-size: 35px;
     line-height: 45px;
+  }
+
+  /* image left (source .content-container.image-alignment) */
+  /* stylelint-disable-next-line no-descending-specificity */
+  main .columns.image-left > div:has(> .columns-img-col:last-child:not(.columns-video-col)),
+  main .section.divider .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) {
+    flex-direction: row-reverse;
+  }
+
+  /*
+   * Interim: host-response "Collaborative Research" row (divider section) is
+   * image-left on the source but authored without the image-left variant.
+   * Its source text panel is top-aligned with 45px side padding.
+   */
+  main .section.divider .columns > div:has(> .columns-img-col:last-child:not(.columns-video-col)) > div:not(.columns-img-col) {
+    align-self: flex-start;
+    margin: 0;
+    padding: 54px 45px 0;
   }
 }

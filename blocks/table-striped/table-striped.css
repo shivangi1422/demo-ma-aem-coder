@@ -1,0 +1,85 @@
+/*
+ * Table Striped: data table with a red header row (white bold labels),
+ * zebra-striped light-grey body rows and thin cell borders; scrolls
+ * horizontally on narrow screens (mybeckman.in table.aeo-table).
+ */
+.table-striped {
+  margin: 16px 0;
+}
+
+.table-striped .table-striped-scroll {
+  overflow-x: auto;
+}
+
+.table-striped .table-striped-scroll:focus-visible {
+  outline: 2px solid var(--link-color);
+  outline-offset: 2px;
+}
+
+.table-striped table {
+  width: 100%;
+  border-collapse: collapse;
+  color: var(--text-color);
+  font-size: 14px;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.table-striped table.table-striped-wide {
+  min-width: 540px;
+}
+
+.table-striped th,
+.table-striped td {
+  padding: 10px 12px;
+  border: 1px solid #ddd;
+  vertical-align: top;
+}
+
+/* #e81b2b with white text: 4.54:1 */
+.table-striped thead th {
+  border-color: var(--brand-red);
+  background-color: var(--brand-red);
+  color: #fff;
+  font-weight: 700;
+}
+
+.table-striped tbody tr:nth-child(even) {
+  background-color: var(--light-color);
+}
+
+.table-striped th > p,
+.table-striped td > p {
+  margin: 0;
+}
+
+.table-striped td > p + p {
+  margin-top: 8px;
+}
+
+.table-striped sup {
+  line-height: 0;
+}
+
+/* caption repeats the visible heading above: screen readers only */
+.table-striped .table-striped-caption {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+@media (width >= 900px) {
+  .table-striped table {
+    font-size: 15px;
+  }
+
+  .table-striped th,
+  .table-striped td {
+    padding: 12px 16px;
+  }
+}

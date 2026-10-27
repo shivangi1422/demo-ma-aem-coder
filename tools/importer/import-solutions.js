@@ -15,6 +15,8 @@ import solutionsCleanupTransformer from './transformers/beckmancoulter-solutions
 import solutionsSectionsTransformer from './transformers/beckmancoulter-solutions-sections.js';
 import dxsCleanupTransformer from './transformers/beckmancoulter-dxs-cleanup.js';
 import dxsSectionsTransformer from './transformers/beckmancoulter-dxs-sections.js';
+import productCleanupTransformer from './transformers/beckmancoulter-product-cleanup.js';
+import productSectionsTransformer from './transformers/beckmancoulter-product-sections.js';
 
 const PAGE_TEMPLATE = {
   "name": "solutions",
@@ -282,7 +284,7 @@ const parsers = {
 
 // every template's transformers are registered; each guards on PAGE_TEMPLATE.name.
 // cleanup must run before sections within each template.
-const transformers = [cleanupTransformer, sectionsTransformer, solutionsCleanupTransformer, solutionsSectionsTransformer, dxsCleanupTransformer, dxsSectionsTransformer];
+const transformers = [cleanupTransformer, sectionsTransformer, solutionsCleanupTransformer, solutionsSectionsTransformer, dxsCleanupTransformer, dxsSectionsTransformer, productCleanupTransformer, productSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };

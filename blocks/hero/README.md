@@ -19,8 +19,9 @@ Single block table. Content: optional image row (image + alt) and a rich text ro
 | Split (text left, image right) | `split` |
 | Split (image left, text right) | `split-left` |
 | Left (background image, left-aligned text) | `left` |
+| Promo banner | `promo` |
 
 ## Universal Editor fields
 
 - Content fields derived from the block's decorate contract.
-- `classes` select for options: Home (background image), Banner (solid, no image), Plain (white, dark text, no image), Gradient (banner, white text, image bleeds right), Split (text left, image right), Split (image left, text right), Left (background image, left-aligned text).
+- `classes` select for options: Home (background image), Banner (solid, no image), Plain (white, dark text, no image), Gradient (banner, white text, image bleeds right), Split (text left, image right), Split (image left, text right), Left (background image, left-aligned text), Promo banner.

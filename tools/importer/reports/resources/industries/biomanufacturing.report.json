@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/resources/industries/biomanufacturing",
+  "path": "resources/industries/biomanufacturing",
+  "timestamp": "2026-10-27T09:26:48.598Z",
+  "title": "",
+  "template": "mybeckman-biomanufacturing",
+  "blocks": [
+    "hero-home-mb",
+    "tabs-workflow-mb",
+    "columns-mb",
+    "embed-mb",
+    "form-mb"
+  ]
+}

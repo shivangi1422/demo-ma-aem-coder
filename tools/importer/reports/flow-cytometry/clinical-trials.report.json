@@ -1,0 +1,21 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/flow-cytometry/clinical-trials",
+  "path": "flow-cytometry/clinical-trials",
+  "timestamp": "2026-10-27T09:27:04.278Z",
+  "title": "",
+  "template": "mybeckman-clinical-trials",
+  "blocks": [
+    "hero-left-mb",
+    "columns-mb",
+    "columns-mb",
+    "columns-mb",
+    "columns-mb",
+    "cards-grid-photo-mb",
+    "cards-grid-photo-mb",
+    "cards-grid-photo-mb",
+    "cards-grid-photo-mb",
+    "accordion-toggle-mb",
+    "accordion-toggle-mb"
+  ]
+}

@@ -20,6 +20,14 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false,
+        "description": "Social sharing image (og:image)"
       }
     ]
   },
@@ -144,6 +152,30 @@
           {
             "name": "Centered",
             "value": "centered"
+          },
+          {
+            "name": "Image panel",
+            "value": "image-panel"
+          },
+          {
+            "name": "Spectrum gradient",
+            "value": "spectrum-gradient"
+          },
+          {
+            "name": "Jump links (sticky link bar)",
+            "value": "jump-links"
+          },
+          {
+            "name": "Callout box",
+            "value": "callout"
+          },
+          {
+            "name": "Sidebar (beside the article on desktop)",
+            "value": "sidebar"
+          },
+          {
+            "name": "Red band",
+            "value": "red"
           }
         ]
       },
@@ -153,6 +185,44 @@
         "name": "background",
         "label": "Background Image",
         "multi": false
+      }
+    ]
+  },
+  {
+    "id": "accordion-toggle",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "value": "",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Open (all items expanded)",
+            "value": "open"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "accordion-toggle-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title"
+      },
+      {
+        "component": "richtext",
+        "name": "content",
+        "value": "",
+        "label": "Content",
+        "description": "Rich text. For a product item add a paragraph that only links to the image file (link text = alt), then the product name (linked) and an optional short description.",
+        "valueType": "string"
       }
     ]
   },
@@ -204,6 +274,22 @@
           {
             "name": "Showcase (white cards over background image)",
             "value": "showcase"
+          },
+          {
+            "name": "Products (tagged product cards)",
+            "value": "products"
+          },
+          {
+            "name": "Photo (centred photo cards)",
+            "value": "photo"
+          },
+          {
+            "name": "Accent (text cards, red top border)",
+            "value": "accent"
+          },
+          {
+            "name": "Icons (large icon, title, text)",
+            "value": "icons"
           }
         ]
       }
@@ -294,6 +380,7 @@
         "name": "text",
         "value": "",
         "label": "Heading",
+        "description": "Gallery: the product text panel (H1, intro, notice, CTA, jump links)",
         "valueType": "string"
       },
       {
@@ -314,6 +401,18 @@
           {
             "name": "Resources (filter pills + 3-up card slider)",
             "value": "resources"
+          },
+          {
+            "name": "Products (4-up product card slider)",
+            "value": "products"
+          },
+          {
+            "name": "Gallery (product hero)",
+            "value": "gallery"
+          },
+          {
+            "name": "Testimonials (quote slides)",
+            "value": "testimonials"
           }
         ]
       }
@@ -451,6 +550,26 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "embed",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "url",
+        "label": "URL",
+        "description": "URL of the content to embed (Genially, YouTube, Vimeo, Vidyard or any page that allows iframe embedding)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Title",
+        "description": "Accessible title of the embedded frame"
       }
     ]
   },
@@ -5305,6 +5424,10 @@
           {
             "name": "Left (background image, left-aligned text)",
             "value": "left"
+          },
+          {
+            "name": "Promo banner",
+            "value": "promo"
           }
         ]
       }
@@ -5367,6 +5490,14 @@
           {
             "name": "Banner (dark band, upright white text)",
             "value": "banner"
+          },
+          {
+            "name": "Testimonial (large quotation marks, multi-line attribution)",
+            "value": "testimonial"
+          },
+          {
+            "name": "Testimonial (purple band)",
+            "value": "testimonial-purple"
           }
         ]
       }
@@ -5387,6 +5518,40 @@
         "name": "description",
         "value": "",
         "label": "Description (leave empty for a group label row)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-striped-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "column1",
+        "value": "",
+        "label": "Column 1",
+        "description": "The first row of the table is the header row.",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "column2",
+        "value": "",
+        "label": "Column 2",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "column3",
+        "value": "",
+        "label": "Column 3 (optional)",
+        "valueType": "string"
+      },
+      {
+        "component": "richtext",
+        "name": "column4",
+        "value": "",
+        "label": "Column 4 (optional)",
         "valueType": "string"
       }
     ]
@@ -5425,6 +5590,73 @@
         "name": "imageAlt",
         "label": "Panel Image Alt",
         "value": ""
+      }
+    ]
+  },
+  {
+    "id": "tabs-underline-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Tab Title"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image (optional, shown beside the text)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "tabs-workflow-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "value": "",
+        "label": "Stage Title"
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image (optional, shown above the text)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "value": "",
+        "label": "Image Alt"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Leave empty to show the stage as disabled. A lead paragraph followed by an ordered list = stage subtitle + step chevrons. Products: a paragraph that only links to the image file (link text = alt), then the linked product name.",
+        "valueType": "string"
       }
     ]
   }

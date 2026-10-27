@@ -41,6 +41,7 @@
           "name": "text",
           "value": "",
           "label": "Heading",
+          "description": "Gallery: the product text panel (H1, intro, notice, CTA, jump links)",
           "valueType": "string"
         },
         {
@@ -52,7 +53,10 @@
           "options": [
             { "name": "Instruments (thumbnail slider)", "value": "instruments" },
             { "name": "Split (image + text panel)", "value": "split" },
-            { "name": "Resources (filter pills + 3-up card slider)", "value": "resources" }
+            { "name": "Resources (filter pills + 3-up card slider)", "value": "resources" },
+            { "name": "Products (4-up product card slider)", "value": "products" },
+            { "name": "Gallery (product hero)", "value": "gallery" },
+            { "name": "Testimonials (quote slides)", "value": "testimonials" }
           ]
         }
       ]

@@ -8,6 +8,14 @@
   "memberVariantIds": [
     "cards-media-list"
   ],
-  "usage": "Lists of case studies, videos, posters, and webinars grouped under a category heading, e.g. the Case Studies page laboratory segments (high-volume, mid-volume, reference lab, other clinical labs).",
+  "usage": {
+    "description": "Lists of case studies, videos, posters, and webinars grouped under a category heading, e.g. the Case Studies page laboratory segments (high-volume, mid-volume, reference lab, other clinical labs).",
+    "pagesUsing": [
+      "/en/products/advanced-informatics/remisol-advance",
+      "/en/products/advanced-informatics"
+    ],
+    "reuseCount": 2,
+    "lastUsed": "2026-10-22"
+  },
   "reuseGuidance": "Use for vertical lists of resource/media items with a small thumbnail beside text. Use cards-grid instead for multi-column card grids with bordered cards."
 }

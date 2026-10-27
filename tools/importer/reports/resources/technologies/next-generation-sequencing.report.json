@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/resources/technologies/next-generation-sequencing",
+  "path": "resources/technologies/next-generation-sequencing",
+  "timestamp": "2026-10-27T09:27:27.028Z",
+  "title": "",
+  "template": "mybeckman-next-generation-sequencing",
+  "blocks": [
+    "hero-home-mb",
+    "columns-mb",
+    "tabs-workflow-mb",
+    "cards-grid-icons-mb",
+    "cards-grid-products-mb",
+    "cards-grid-photo-mb",
+    "carousel-testimonials-mb",
+    "form-mb"
+  ]
+}

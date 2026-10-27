@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/resources/industries/synthetic-biology",
+  "path": "resources/industries/synthetic-biology",
+  "timestamp": "2026-10-27T09:27:41.684Z",
+  "title": "",
+  "template": "mybeckman-synthetic-biology",
+  "blocks": [
+    "hero-home-mb",
+    "columns-mb",
+    "columns-mb",
+    "tabs-workflow-mb",
+    "accordion-toggle-mb",
+    "cards-grid-video-mb",
+    "form-mb"
+  ]
+}

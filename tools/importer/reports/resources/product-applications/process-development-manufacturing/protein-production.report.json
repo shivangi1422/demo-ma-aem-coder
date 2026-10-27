@@ -1,0 +1,17 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/resources/product-applications/process-development-manufacturing/protein-production",
+  "path": "resources/product-applications/process-development-manufacturing/protein-production",
+  "timestamp": "2026-10-27T09:27:34.360Z",
+  "title": "",
+  "template": "mybeckman-protein-production",
+  "blocks": [
+    "table-striped-mb",
+    "cards-grid-accent-mb",
+    "cards-grid-accent-mb",
+    "accordion-toggle-mb",
+    "accordion-toggle-open-mb",
+    "columns-mb",
+    "form-mb"
+  ]
+}

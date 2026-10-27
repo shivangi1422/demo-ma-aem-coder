@@ -2,13 +2,15 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
- * Decorates the hero block. One block, three styles selected via the "Style"
+ * Decorates the hero block. One block, several styles selected via the "Style"
  * dropdown (which adds a variant class):
  *   - .hero.home       background image behind centered text (default)
  *   - .hero.left       background image behind left-aligned text (no CTA needed)
  *   - .hero.banner     solid colour, text only, no image
  *   - .hero.split      text left, image right
  *   - .hero.split-left image left, text right
+ *   - .hero.promo      contained ~250px banner: background image, bottom
+ *                      gradient, centred white text, red primary button
  * Authored structure: an optional image row and a text row.
  * @param {Element} block
  */

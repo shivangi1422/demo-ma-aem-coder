@@ -19,12 +19,13 @@
   gap: 40px;
 }
 
-/* row: stacked on mobile, image above text */
+/* row: stacked on mobile, image above text (inset 15px within the 14px gutter) */
 .cards-media-list .cards-media-list-item {
   display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  padding: 0 5px;
 }
 
 /* media column */
@@ -46,13 +47,11 @@
   display: block;
 }
 
-/* fixed 10:7 frame (source thumbnails are 500x350) reserves space before load */
+/* thumbnails keep their natural ratio (case studies 10:7, videos ~16:9, brochures 5:3) */
 .cards-media-list .cards-media-list-media img {
   display: block;
   width: 100%;
   height: auto;
-  aspect-ratio: 10 / 7;
-  object-fit: cover;
   transform: scale(1);
   transition: 0.3s;
 }
@@ -232,6 +231,7 @@ main .cards-media-list .cards-media-list-cta a:focus-visible::after {
 @media (width >= 768px) {
   .cards-media-list .cards-media-list-item {
     flex-direction: row;
+    padding: 0;
   }
 
   .cards-media-list .cards-media-list-media {

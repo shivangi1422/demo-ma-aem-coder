@@ -4,10 +4,10 @@
   "canonicalModel": "collection",
   "visualCharacteristics": {
     "purpose": "Multi-column card grid with an optional heading/intro row; the Style option picks the card treatment",
-    "description": "solutions: bordered 3-up cards with image, category eyebrow, title, Learn More link. productlines: white cards on a grey band. insights: intro panel beside stacked text cards. simple: 4-up cards with tag pill and NEW ribbon. features: centered borderless 3-up columns (title, icon, description) on a lavender band. features-purple: same layout as features on a full-width purple #811167 band with white heading, titles, descriptions and white line icons. video: 3-up 16:9 Vidyard posters with a play overlay, no text body; clicking inlines the player. showcase: white cards over a full-bleed background image with a centered white heading/subheading; cards with or without images and a Learn more button."
+    "description": "solutions: bordered 3-up cards with image, category eyebrow, title, Learn More link. productlines: white cards on a grey band. insights: intro panel beside stacked text cards. simple: 4-up cards with tag pill and NEW ribbon. features: centered borderless 3-up columns (title, icon, description) on a lavender band. features-purple: same layout as features on a full-width purple #811167 band with white heading, titles, descriptions and white line icons. video: 3-up 16:9 Vidyard posters with a play overlay, no text body; clicking inlines the player. showcase: white cards over a full-bleed background image with a centered white heading/subheading; cards with or without images and a Learn more button. products: 4-up (wrapping) white square-cornered cards with a soft 0 2px 2px shadow, image on top, optional light-blue #d8e3f7 tag pill, 28px light title, 14px description and a blue \"Learn more >\" chevron link; sits in a highlight section. photo: 3-up white photo cards with a 0 2px 2px shadow and 5px hover lift, image on top, centred 30px light title and 18px description, blue \"Explore >\" chevron link; no background band. accent: white text-only cards with a 4px brand-red top border and thin grey border, left-aligned 16px bold red title, 14px description and an optional outlined red pill link; 1-up mobile, 2-up from 600px. icons: no card chrome, 64-80px icon on top, bold centred 18px title, left-aligned 16px text; 1-up / 2-up (600px) / 4-up (900px)."
   },
   "contentPattern": {
-    "structure": "row 0 = heading/intro (rich text; showcase: optional heading + subheading and optional background image, in the heading row or the container Background Image field); rows 1..N = one card each: image cell + rich text cell (title, description, link). video: poster image + paragraph with a link to the video (link text = video title). features/features-purple: card title is a heading or a leading bold-only paragraph; it renders above the icon"
+    "structure": "row 0 = heading/intro (rich text; showcase: optional heading + subheading and optional background image, in the heading row or the container Background Image field); rows 1..N = one card each: image cell + rich text cell (title, description, link). video: poster image + paragraph with a link to the video (link text = video title). features/features-purple: card title is a heading or a leading bold-only paragraph; it renders above the icon. products/photo: optional heading row (no image, no link); each card = image cell + text cell (products: optional tag paragraph before the H3 title, description, link-only paragraph for the Learn more link; photo: H3 title, description, link-only paragraph). accent/icons: optional single-cell heading row; each card = image cell (accent: usually empty; icons: the icon) + rich text cell (title = first heading or a leading bold-only paragraph, description, accent: trailing link-only paragraph = pill link)"
   },
   "options": [
     {
@@ -41,6 +41,22 @@
     {
       "class": "showcase",
       "label": "Showcase (white cards over background image)"
+    },
+    {
+      "class": "products",
+      "label": "Products (tagged product cards)"
+    },
+    {
+      "class": "photo",
+      "label": "Photo (centred photo cards)"
+    },
+    {
+      "class": "accent",
+      "label": "Accent (text cards, red top border)"
+    },
+    {
+      "class": "icons",
+      "label": "Icons (large icon, title, text)"
     }
   ],
   "memberVariantIds": [
@@ -52,15 +68,30 @@
     "cards-grid (features)",
     "cards-grid (features-purple)",
     "cards-grid (video)",
-    "cards-grid (showcase)"
+    "cards-grid (showcase)",
+    "cards-grid (products)",
+    "cards-grid (photo)",
+    "cards-grid (accent)",
+    "cards-grid (icons)"
   ],
   "usage": {
-    "description": "Home, About Us, Products and Chemistry pages (solutions, productlines, insights, simple, features); Host Response to Infection solution page (features, video, showcase).",
+    "description": "Home, About Us, Products and Chemistry pages (solutions, productlines, insights, simple, features); Host Response to Infection solution page (features, video, showcase). Advanced Informatics product page (products, photo).",
     "pagesUsing": [
-      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
+      "/en/products/advanced-informatics",
+      "/en/products/advanced-informatics/remisol-advance",
+      "/en/products/automation/workflow-automation-system-dxa-5000-fit",
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics",
+      "/flow-cytometry/clinical-trials",
+      "/resources/disease-research/leukemia-and-lymphoma",
+      "/resources/disease-research/monoclonal-antibodies",
+      "/resources/industries/synthetic-biology",
+      "/resources/methods/cell-line-development",
+      "/resources/product-applications/process-development-manufacturing/protein-production",
+      "/resources/technologies/analytical-ultracentrifugation",
+      "/resources/technologies/next-generation-sequencing"
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-22"
+    "reuseCount": 12,
+    "lastUsed": "2026-10-27"
   },
   "reuseGuidance": "Use for multi-column card grids. Use cards-media-list for vertical image-left/text-right resource lists. Use carousel resources when cards must be filterable and paged."
 }

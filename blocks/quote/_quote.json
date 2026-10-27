@@ -48,6 +48,14 @@
             {
               "name": "Banner (dark band, upright white text)",
               "value": "banner"
+            },
+            {
+              "name": "Testimonial (large quotation marks, multi-line attribution)",
+              "value": "testimonial"
+            },
+            {
+              "name": "Testimonial (purple band)",
+              "value": "testimonial-purple"
             }
           ]
         }

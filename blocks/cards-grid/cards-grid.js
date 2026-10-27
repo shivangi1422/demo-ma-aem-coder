@@ -2,9 +2,21 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 const VIDYARD_RE = /(?:play|embed|share)\.vidyard\.com\/(?:watch\/)?([A-Za-z0-9_-]+)/i;
+// fast.wistia.net/embed/iframe/{id}, {account}.wistia.com/medias/{id}
+const WISTIA_RE = /wistia\.(?:net|com)\/(?:embed\/(?:iframe|medias)|medias)\/([A-Za-z0-9]+)/i;
 
 function isVideoUrl(href = '') {
-  return VIDYARD_RE.test(href) || /youtube\.com|youtu\.be|vimeo\.com|\.mp4(\?|$)/i.test(href);
+  return VIDYARD_RE.test(href) || WISTIA_RE.test(href)
+    || /youtube\.com|youtu\.be|vimeo\.com|\.mp4(\?|$)/i.test(href);
+}
+
+/** inline player URL for Vidyard / Wistia links, else null */
+function inlinePlayerUrl(href = '') {
+  const vidyard = href.match(VIDYARD_RE);
+  if (vidyard) return `https://play.vidyard.com/${vidyard[1]}?autoplay=1&type=inline&disable_popouts=1`;
+  const wistia = href.match(WISTIA_RE);
+  if (wistia) return `https://fast.wistia.net/embed/iframe/${wistia[1]}?autoPlay=true&videoFoam=true`;
+  return null;
 }
 
 /**
@@ -35,8 +47,8 @@ function buildHeading(headingRow) {
 
 /**
  * VIDEO: 3-up grid of 16:9 posters. Each row = poster image + a link to the
- * video (link text = video title, used as the accessible label). Vidyard
- * links inline the player on click; other links open normally.
+ * video (link text = video title, used as the accessible label). Vidyard and
+ * Wistia links inline the player on click; other links open normally.
  */
 function decorateVideo(block, rows) {
   const headingRow = rows[0] && !rows[0].querySelector('picture, a[href]') ? rows[0] : null;
@@ -61,12 +73,12 @@ function decorateVideo(block, rows) {
         play.setAttribute('aria-hidden', 'true');
         media.append(play);
       }
-      const match = link.href.match(VIDYARD_RE);
-      if (match) {
+      const playerUrl = inlinePlayerUrl(link.href);
+      if (playerUrl) {
         media.addEventListener('click', (e) => {
           e.preventDefault();
           const iframe = document.createElement('iframe');
-          iframe.src = `https://play.vidyard.com/${match[1]}?autoplay=1&type=inline&disable_popouts=1`;
+          iframe.src = playerUrl;
           iframe.title = title || 'Video player';
           iframe.allow = 'autoplay; fullscreen; picture-in-picture';
           iframe.className = 'cards-grid-video-frame';
@@ -154,6 +166,128 @@ function decorateShowcase(block, rows) {
 }
 
 /**
+ * PRODUCTS / PHOTO: white shadowed cards (beckmancoulter.com .product-card and
+ * .photo-card). Optional heading row (no picture, no link), then one card per
+ * row: image cell + text cell. In the text cell, a leading link-free paragraph
+ * directly before the title becomes a tag pill; a trailing link-only
+ * paragraph becomes the "Learn more" / "Explore" text link.
+ */
+function decorateTileCards(block, rows) {
+  const headingRow = rows[0] && !rows[0].querySelector('picture, a[href]') ? rows[0] : null;
+  const ul = document.createElement('ul');
+  rows.filter((r) => r !== headingRow).forEach((row) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    [...row.children].forEach((cell) => {
+      const img = cell.querySelector('img');
+      if (img && cell.textContent.trim() === '') {
+        const image = document.createElement('div');
+        image.className = 'cards-grid-image';
+        image.append(optimize(img, '750'));
+        li.append(image);
+      } else if (cell.textContent.trim() !== '') {
+        cell.className = 'cards-grid-body';
+        li.append(cell);
+      }
+    });
+
+    const body = li.querySelector('.cards-grid-body');
+    if (body) {
+      const first = body.firstElementChild;
+      if (first && first.tagName === 'P' && !first.querySelector('a, picture')
+        && first.nextElementSibling && /^H[1-6]$/.test(first.nextElementSibling.tagName)) {
+        first.className = 'cards-grid-tag';
+      }
+      const last = body.lastElementChild;
+      const cta = last && last.tagName === 'P' && last.querySelector('a[href]');
+      if (cta && last.textContent.trim() === cta.textContent.trim()) {
+        // always a text link in these styles, even if authored bold/italic
+        last.className = 'cards-grid-cta';
+        cta.className = 'cards-grid-link';
+        last.replaceChildren(cta);
+      }
+    }
+    ul.append(li);
+  });
+
+  const heading = buildHeading(headingRow);
+  block.replaceChildren(...(heading ? [heading, ul] : [ul]));
+}
+
+/**
+ * Heading row for styles whose cards may have no image: row 0 when it is a
+ * single-cell row (the container "Heading / Intro" field) while the cards
+ * are image + text rows, or when it is empty.
+ * @param {Element[]} rows
+ * @returns {Element|null}
+ */
+function findHeadingRow(rows) {
+  const [first] = rows;
+  if (!first || first.querySelector('picture')) return null;
+  if (first.textContent.trim() === '') return first;
+  if (first.children.length <= 1 && rows.slice(1).some((r) => r.children.length > 1)) return first;
+  return null;
+}
+
+/**
+ * ACCENT / ICONS: simple text cards.
+ *   accent: white text cards with a red top border; title, description and an
+ *           optional outlined pill link (trailing link-only paragraph); 2-up.
+ *   icons:  no card chrome; large icon on top, bold title, text; 4-up.
+ * Optional heading row, then one card per row: image cell (accent: usually
+ * empty; icons: the icon) + rich text cell. The title is the first heading,
+ * or a leading bold-only paragraph.
+ * @param {Element} block
+ * @param {Element[]} rows
+ */
+function decorateTextCards(block, rows) {
+  const icons = block.classList.contains('icons');
+  const headingRow = findHeadingRow(rows);
+  const ul = document.createElement('ul');
+  rows.filter((r) => r !== headingRow).forEach((row) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    [...row.children].forEach((cell) => {
+      const img = cell.querySelector('img');
+      if (img && cell.textContent.trim() === '') {
+        const image = document.createElement('div');
+        image.className = 'cards-grid-image';
+        image.append(optimize(img, icons ? '150' : '750'));
+        li.append(image);
+      } else if (cell.textContent.trim() !== '') {
+        cell.className = 'cards-grid-body';
+        li.append(cell);
+      }
+    });
+    if (!li.children.length) return;
+
+    const body = li.querySelector('.cards-grid-body');
+    if (body) {
+      let title = body.querySelector(':scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
+      if (!title) {
+        const first = body.firstElementChild;
+        const strong = first && first.tagName === 'P' && first.querySelector(':scope > strong');
+        if (strong && first.textContent.trim() === strong.textContent.trim()) title = first;
+      }
+      if (title) title.classList.add('cards-grid-title');
+
+      // trailing link-only paragraph = pill link (plain link, whatever the authored emphasis)
+      const last = body.lastElementChild;
+      const cta = last && last !== title && last.tagName === 'P' && last.querySelector('a[href]');
+      if (cta && last.textContent.trim() === cta.textContent.trim()) {
+        last.className = 'cards-grid-cta';
+        cta.className = 'cards-grid-pill';
+        last.replaceChildren(cta);
+      }
+    }
+    ul.append(li);
+  });
+
+  const heading = buildHeading(headingRow);
+  block.replaceChildren(...(heading ? [heading, ul] : [ul]));
+}
+
+/**
  * Decorates the cards-grid block. One block, several styles via the "Style"
  * dropdown (variant class):
  *   - .cards-grid.solutions    heading + 3-up cards (image, category, title, link)
@@ -164,6 +298,10 @@ function decorateShowcase(block, rows) {
  *   - .cards-grid.features-purple  features layout on a purple band, white text
  *   - .cards-grid.video        3-up 16:9 video posters with a play overlay
  *   - .cards-grid.showcase     white cards over a full-bleed background image
+ *   - .cards-grid.products     4-up product cards (image, tag pill, title, desc, link)
+ *   - .cards-grid.photo        3-up centred photo cards (image, title, desc, link)
+ *   - .cards-grid.accent       2-up text cards, red top border, outlined pill link
+ *   - .cards-grid.icons        4-up borderless items (large icon, bold title, text)
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
  * Showcase takes its background image from the section's "Background Image"
  * property (section-metadata "background"), or a picture in the heading row.
@@ -179,6 +317,14 @@ export default function decorate(block) {
   }
   if (block.classList.contains('showcase')) {
     decorateShowcase(block, rows);
+    return;
+  }
+  if (block.classList.contains('products') || block.classList.contains('photo')) {
+    decorateTileCards(block, rows);
+    return;
+  }
+  if (block.classList.contains('accent') || block.classList.contains('icons')) {
+    decorateTextCards(block, rows);
     return;
   }
 

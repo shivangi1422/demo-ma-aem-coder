@@ -1,0 +1,29 @@
+{
+  "variantName": "embed",
+  "baseBlock": "embed",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Embed external interactive content or video in a responsive iframe",
+    "description": "Centered, responsive 16:9 iframe (max ~1000px wide) with an accessible title, lazy-created when the block nears the viewport, allowfullscreen. Genially (view.genially.com / view.genial.ly) and generic URLs load as is; YouTube, Vimeo and Vidyard page URLs are converted to their player URLs."
+  },
+  "contentPattern": {
+    "structure": "row 1 = URL (link or plain text); row 2 = optional title (plain text, used as the iframe title; defaults to the link text or 'Embedded content')."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "embed",
+    "embed-genially"
+  ],
+  "usage": {
+    "description": "DxA 5000 Fit product page: Genially interactive feature image in the 'Explore DxA 5000 Fit Features' section.",
+    "pagesUsing": [
+      "/en/products/automation/workflow-automation-system-dxa-5000-fit",
+      "/resources/industries/biomanufacturing",
+      "/resources/methods/cell-line-development",
+      "/resources/technologies/analytical-ultracentrifugation"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-10-27"
+  },
+  "reuseGuidance": "Use for third-party iframe content (Genially, YouTube, Vimeo, Vidyard). Use columns or cards-grid video for a Vidyard video with a poster that plays on click inside a layout."
+}

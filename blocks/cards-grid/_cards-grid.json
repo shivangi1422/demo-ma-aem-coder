@@ -81,6 +81,22 @@
             {
               "name": "Showcase (white cards over background image)",
               "value": "showcase"
+            },
+            {
+              "name": "Products (tagged product cards)",
+              "value": "products"
+            },
+            {
+              "name": "Photo (centred photo cards)",
+              "value": "photo"
+            },
+            {
+              "name": "Accent (text cards, red top border)",
+              "value": "accent"
+            },
+            {
+              "name": "Icons (large icon, title, text)",
+              "value": "icons"
             }
           ]
         }

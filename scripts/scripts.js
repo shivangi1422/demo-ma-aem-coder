@@ -137,6 +137,28 @@ export function describeGenericLinks(main) {
 }
 
 /**
+ * Image-panel and spectrum-gradient sections: exposes the section's "Background Image" property
+ * (section metadata "background", read into section.dataset.background) as
+ * the --section-background-image custom property used by styles.css.
+ * Other sections (e.g. cards-grid showcase) read dataset.background
+ * themselves and are left untouched.
+ * @param {Element} main The main element
+ */
+export function decorateSectionBackgrounds(main) {
+  main.querySelectorAll(':scope > .section:is(.image-panel, .spectrum-gradient)[data-background]').forEach((section) => {
+    const { background } = section.dataset;
+    let url;
+    try {
+      url = new URL(background, window.location.href);
+    } catch {
+      return;
+    }
+    if (!/^https?:$/.test(url.protocol)) return;
+    section.style.setProperty('--section-background-image', `url("${url.href.replace(/"/g, '%22')}")`);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -145,6 +167,7 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionBackgrounds(main);
   decorateBlocks(main);
   decorateButtons(main);
 }

@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.beckmancoulter.com/en/products/automation/workflow-automation-system-dxa-5000-fit",
+  "path": "en/products/automation/workflow-automation-system-dxa-5000-fit",
+  "timestamp": "2026-10-22T11:02:56.595Z",
+  "title": "Workflow Automation System DxA 5000 Fit | Beckman Coulter",
+  "template": "product-detail-automation",
+  "blocks": [
+    "carousel-gallery",
+    "cards-grid-features-purple",
+    "embed",
+    "tabs-underline",
+    "quote-testimonial-purple",
+    "columns",
+    "columns",
+    "columns",
+    "carousel-products"
+  ]
+}

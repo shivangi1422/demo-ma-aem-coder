@@ -4,7 +4,7 @@
   "canonicalModel": "standalone",
   "visualCharacteristics": {
     "purpose": "Page-top hero; the Style option picks the treatment",
-    "description": "home: full-bleed background image, blue tint, centered white heading/text/CTAs. left: same as home but left-aligned text, CTA optional. banner: solid blue, centered text. plain: white, dark left text. gradient: indigo-to-teal banner with image bleeding right. split / split-left: text and image side by side."
+    "description": "home: full-bleed background image, blue tint, centered white heading/text/CTAs. left: same as home but left-aligned text, CTA optional. banner: solid blue, centered text. plain: white, dark left text. gradient: indigo-to-teal banner with image bleeding right. split / split-left: text and image side by side. promo: contained ~250px promotional banner, cover background photo with a transparent-to-dark bottom gradient, centred white light heading (56px desktop), 16px subtitle, red 8px-radius primary button."
   },
   "contentPattern": {
     "structure": "optional image row (image + alt) and a rich text row (heading, subtitle, optional CTA links)"
@@ -37,6 +37,10 @@
     {
       "class": "left",
       "label": "Left (background image, left-aligned text)"
+    },
+    {
+      "class": "promo",
+      "label": "Promo banner"
     }
   ],
   "memberVariantIds": [
@@ -47,15 +51,26 @@
     "hero (gradient)",
     "hero (split)",
     "hero (split-left)",
-    "hero (left)"
+    "hero (left)",
+    "hero (promo)"
   ],
   "usage": {
-    "description": "Home, Products, About Us, Chemistry pages; Host Response to Infection solution page header (left).",
+    "description": "Home, Products, About Us, Chemistry pages; Host Response to Infection solution page header (left). Advanced Informatics product page promotional banner (promo).",
     "pagesUsing": [
-      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
+      "/en/products/advanced-informatics",
+      "/en/products/advanced-informatics/remisol-advance",
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics",
+      "/flow-cytometry/clinical-trials",
+      "/resources/disease-research/leukemia-and-lymphoma",
+      "/resources/disease-research/monoclonal-antibodies",
+      "/resources/industries/biomanufacturing",
+      "/resources/industries/synthetic-biology",
+      "/resources/methods/cell-line-development",
+      "/resources/technologies/analytical-ultracentrifugation",
+      "/resources/technologies/next-generation-sequencing"
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-22"
+    "reuseCount": 11,
+    "lastUsed": "2026-10-27"
   },
   "reuseGuidance": "Use left for solution/landing page headers with a photo background and left-aligned title + subtitle; use home when text should be centered with CTAs."
 }

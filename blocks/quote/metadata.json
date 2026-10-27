@@ -4,27 +4,41 @@
   "canonicalModel": "standalone",
   "visualCharacteristics": {
     "purpose": "Pull quote / testimonial with optional attribution",
-    "description": "default: centered navy italic quote (22-28px) on a light surface band with a bold grey attribution. banner: full-width dark slate #474c55 band with upright white ~26px centered text, typically no attribution."
+    "description": "default: centered navy italic quote (22-28px) on a light surface band with a bold grey attribution. banner: full-width dark slate #474c55 band with upright white ~26px centered text, typically no attribution. testimonial: centred upright quote (max ~800px) framed by large opening/closing quotation marks, attribution split into stacked uppercase lines (name / title / organization). testimonial-purple: full-width #811167 purple band, upright white ~26px centered quote (max ~600px) between white opening/closing quotation marks, attribution split into three centered uppercase white lines (name / title / organization)."
   },
   "contentPattern": {
-    "structure": "row 1 = quote (rich text); row 2 = attribution (plain text, optional; omitted when empty). Style select (classes) picks the option."
+    "structure": "row 1 = quote (rich text); row 2 = attribution (plain text, optional; omitted when empty). Style select (classes) picks the option. testimonial: the attribution is split into lines on line breaks, or on commas when there are none. testimonial-purple: the attribution is split on line breaks only (no comma fallback, since organizations contain commas)."
   },
   "options": [
     {
       "class": "banner",
       "label": "Banner (dark band, upright white text)"
+    },
+    {
+      "class": "testimonial",
+      "label": "Testimonial (large quotation marks, multi-line attribution)"
+    },
+    {
+      "class": "testimonial-purple",
+      "label": "Testimonial (purple band)"
     }
   ],
   "memberVariantIds": [
     "quote",
-    "quote (banner)"
+    "quote (banner)",
+    "quote (testimonial)",
+    "quote (testimonial-purple)"
   ],
   "usage": {
-    "description": "Chemistry page (default testimonial); Remote Services and Diagnostics page (banner tagline).",
+    "description": "Chemistry page (default testimonial); Remote Services and Diagnostics page (banner tagline); REMISOL Advance page (testimonial); DxA 5000 Fit page (testimonial-purple).",
     "pagesUsing": [
       "/home/chemistry",
-      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics"
-    ]
+      "/en/products/dxs-service-and-supports/remote-services-and-diagnostics",
+      "/en/products/advanced-informatics/remisol-advance",
+      "/en/products/automation/workflow-automation-system-dxa-5000-fit"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-10-22"
   },
-  "reuseGuidance": "Use for a single standalone quote or tagline. Use banner for a full-width statement band without attribution. Use hero or default content for headings with CTAs."
+  "reuseGuidance": "Use for a single standalone quote or tagline. Use banner for a full-width statement band without attribution. Use testimonial for a customer quote with a name / title / organization attribution. Use hero or default content for headings with CTAs. Use testimonial-purple for a customer quote on a full-width purple band."
 }
