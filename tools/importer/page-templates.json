@@ -1,0 +1,285 @@
+{
+  "templates": [
+    {
+      "name": "reagents",
+      "urls": [
+        "https://www.mybeckman.in/reagents",
+        "https://www.mybeckman.in/reagents/cell-culture",
+        "https://www.mybeckman.in/reagents/centrifugation",
+        "https://www.mybeckman.in/reagents/coulter-flow-cytometry",
+        "https://www.mybeckman.in/reagents/genomic",
+        "https://www.mybeckman.in/reagents/particle"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/reagents",
+      "description": "Reagents landing and reagent category pages: intro, grid of linked product/category cards, disclaimer notes",
+      "blocks": [
+        {
+          "name": "cards-grid",
+          "instances": [
+            ".product-series-selector-wrapper .product-series-callouts"
+          ]
+        }
+      ],
+      "urlPattern": "/*",
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Page intro",
+          "selector": [
+            ".product-series-selector-wrapper > .product-content-wrap"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".product-content-wrap .product-heading-wrap"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Reagent category cards",
+          "selector": [
+            ".product-series-selector-wrapper .product-series-callouts"
+          ],
+          "style": "light-grey",
+          "blocks": [
+            "cards-grid"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Disclaimer",
+          "selector": [
+            ".product-series-selector-wrapper > div > .bc-rich-text"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".product-series-selector-wrapper > div > .bc-rich-text"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "reagent-product",
+      "urls": [
+        "https://www.mybeckman.in/reagents/particle/valita-aggregation-pure",
+        "https://www.mybeckman.in/reagents/particle/valita-titer-assays"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/reagents/particle/valita-titer-assays",
+      "description": "Reagent product detail pages (Valita kits): product spotlight intro, rich-text features, embedded video, product callouts, disclaimers",
+      "blocks": [
+        {
+          "name": "content-product-detail",
+          "instances": [
+            ".product-spotlight-wrapper > .product-intro-wrapper"
+          ]
+        },
+        {
+          "name": "columns-features",
+          "instances": [
+            "#features-wrapper .bc-columns"
+          ]
+        },
+        {
+          "name": "hero",
+          "instances": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper .banner-container"
+          ]
+        },
+        {
+          "name": "embed-video",
+          "instances": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .embeded-video"
+          ]
+        },
+        {
+          "name": "columns-icon-list",
+          "instances": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text > .row"
+          ]
+        },
+        {
+          "name": "cards-grid",
+          "instances": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .product-series-callouts"
+          ]
+        },
+        {
+          "name": "content-reversed",
+          "instances": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper .custom-container"
+          ]
+        },
+        {
+          "name": "cards-resource-list",
+          "instances": [
+            "#product-documentation-wrapper .content-resource-list-wrapper"
+          ]
+        },
+        {
+          "name": "cards-doc-table",
+          "instances": [
+            "#techdocs-wrapper .techdocs-table"
+          ]
+        }
+      ],
+      "urlPattern": "/reagents/particle/valita-*",
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Product intro",
+          "selector": [
+            ".product-spotlight-wrapper > .product-intro-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "content-product-detail"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Features",
+          "selector": [
+            "#features-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-features"
+          ],
+          "defaultContent": [
+            "#features-wrapper > .product-page-sub-heading-wrapper",
+            "#features-wrapper > p"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Promo banner",
+          "selector": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(.banner-container)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Video",
+          "selector": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(+ .embeded-video)",
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .embeded-video"
+          ],
+          "style": null,
+          "blocks": [
+            "embed-video"
+          ],
+          "defaultContent": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(+ .embeded-video) .product-page-sub-heading-wrapper",
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(+ .embeded-video) > p"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "Quantify IgG in minutes",
+          "selector": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(> .row)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-icon-list"
+          ],
+          "defaultContent": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(> .row) > .product-page-sub-heading-wrapper",
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(> .row) > p"
+          ]
+        },
+        {
+          "id": "section-6",
+          "name": "Learn more callouts",
+          "selector": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(+ .product-series-callouts)",
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .product-series-callouts"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid"
+          ],
+          "defaultContent": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(+ .product-series-callouts) .product-page-sub-heading-wrapper"
+          ]
+        },
+        {
+          "id": "section-7",
+          "name": "Explore product table",
+          "selector": [
+            "#product-table-wrapper"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#product-table-wrapper .product-page-sub-heading-wrapper"
+          ]
+        },
+        {
+          "id": "section-8",
+          "name": "Plate reader bundle banner",
+          "selector": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(> .custom-container)"
+          ],
+          "style": null,
+          "blocks": [
+            "content-reversed"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-9",
+          "name": "Content and Resources",
+          "selector": [
+            "#product-documentation-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-resource-list"
+          ],
+          "defaultContent": [
+            "#product-documentation-wrapper .product-page-sub-heading-wrapper"
+          ]
+        },
+        {
+          "id": "section-10",
+          "name": "Technical Documents",
+          "selector": [
+            "#techdocs-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-doc-table"
+          ],
+          "defaultContent": [
+            "#techdocs-wrapper > .product-page-sub-heading-wrapper",
+            "#coveo-techdocs-more-results"
+          ]
+        },
+        {
+          "id": "section-11",
+          "name": "Disclaimer",
+          "selector": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(> h5)"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text:has(> h5)"
+          ]
+        }
+      ]
+    }
+  ],
+  "metadata": {
+    "projectType": "xwalk"
+  }
+}

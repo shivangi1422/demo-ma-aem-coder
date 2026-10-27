@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents/particle/valita-titer-assays",
+  "path": "reagents/particle/valita-titer-assays",
+  "timestamp": "2026-10-27T08:31:47.747Z",
+  "title": "Valita Titer Assays for IgG Quantification",
+  "template": "reagent-product",
+  "blocks": [
+    "content-product-detail",
+    "columns-features",
+    "hero",
+    "embed-video",
+    "columns-icon-list",
+    "cards-grid",
+    "content-reversed",
+    "cards-resource-list",
+    "cards-doc-table"
+  ]
+}

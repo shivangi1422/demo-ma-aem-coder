@@ -1,0 +1,46 @@
+{
+  "variantName": "hero",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Hero / promo banner with heading, tagline and CTA",
+    "description": "Full-width banner. Default (home) style: photo promoted to a full-bleed background behind heading, tagline and CTA. Other styles via the Style select: solid banner without image, plain white, gradient with image bleeding right, and split layouts (text/image side by side, either order)."
+  },
+  "contentPattern": {
+    "structure": "Row 1: optional image (image + imageAlt). Row 2: richtext (heading, tagline paragraph, CTA link). Style select adds the option class"
+  },
+  "options": [
+    {
+      "class": "home",
+      "label": "Home (background image)"
+    },
+    {
+      "class": "banner",
+      "label": "Banner (solid, no image)"
+    },
+    {
+      "class": "plain",
+      "label": "Plain (white, dark text, no image)"
+    },
+    {
+      "class": "gradient",
+      "label": "Gradient (banner, white text, image bleeds right)"
+    },
+    {
+      "class": "split",
+      "label": "Split (text left, image right)"
+    },
+    {
+      "class": "split-left",
+      "label": "Split (image left, text right)"
+    }
+  ],
+  "memberVariantIds": [],
+  "reuseGuidance": "Use for page-top heroes and promo banners with a heading, short tagline and CTA. Pick the Style that matches the image treatment.",
+  "usage": {
+    "pagesUsing": [
+      "/reagents/particle/valita-titer-assays"
+    ],
+    "reuseCount": 1
+  }
+}

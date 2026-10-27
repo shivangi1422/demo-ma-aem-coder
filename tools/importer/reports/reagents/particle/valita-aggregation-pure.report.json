@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents/particle/valita-aggregation-pure",
+  "path": "reagents/particle/valita-aggregation-pure",
+  "timestamp": "2026-10-27T08:31:50.377Z",
+  "title": "Valita Aggregation Pure Assays to determine Protein Aggregation",
+  "template": "reagent-product",
+  "blocks": [
+    "content-product-detail",
+    "columns-features",
+    "embed-video",
+    "cards-grid",
+    "cards-resource-list",
+    "cards-doc-table"
+  ]
+}

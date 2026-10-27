@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents/cell-culture",
+  "path": "reagents/cell-culture",
+  "timestamp": "2026-10-27T07:46:56.521Z",
+  "title": "Automated Cell Culture and Clone Ranking Reagents",
+  "template": "reagents",
+  "blocks": [
+    "cards-grid"
+  ]
+}

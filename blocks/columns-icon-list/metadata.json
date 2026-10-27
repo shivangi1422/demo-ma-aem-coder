@@ -1,0 +1,22 @@
+{
+  "variantName": "columns-icon-list",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "Large image next to a stacked list of icon + label + link items",
+    "description": "Two 50/50 columns on desktop (stacked on mobile): left a large full-width image, right a vertical list of rows, each a small outline icon beside a grey label line and a bold link with an arrow."
+  },
+  "contentPattern": {
+    "structure": "Row 0: one cell with the large image (block field image + imageAlt). Rows 1..N: one Icon Item each: icon image cell | richtext cell (label line, line break, bold link)",
+    "items": "Icon Item: image (icon), imageAlt, text"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "reuseGuidance": "Use when one large image sits next to a short stack (2-4) of icon + text + link items. For purely textual side-by-side groups use columns-features.",
+  "usage": {
+    "pagesUsing": [
+      "/reagents/particle/valita-titer-assays"
+    ],
+    "reuseCount": 1
+  }
+}

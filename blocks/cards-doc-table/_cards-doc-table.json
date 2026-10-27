@@ -1,0 +1,96 @@
+{
+  "definitions": [
+    {
+      "title": "Cards Doc Table",
+      "id": "cards-doc-table",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards Doc Table",
+              "model": "cards-doc-table",
+              "filter": "cards-doc-table"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Document",
+      "id": "cards-doc-table-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Document",
+              "model": "cards-doc-table-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-doc-table",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "headings",
+          "label": "Column Headings (comma-separated, optional)",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "cards-doc-table-item",
+      "fields": [
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "link",
+          "label": "Document Link"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "linkText",
+          "label": "Title",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "category",
+          "label": "Document Type",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "documentId",
+          "label": "Doc Id",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "lotNumbers",
+          "label": "Lot Number(s)",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-doc-table",
+      "components": [
+        "cards-doc-table-item"
+      ]
+    }
+  ]
+}

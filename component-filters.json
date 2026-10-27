@@ -24,13 +24,30 @@
       "content-product-detail",
       "content-product-form",
       "product-banner",
-      "quote"
+      "quote",
+      "columns-features",
+      "embed-video",
+      "columns-icon-list",
+      "cards-resource-list",
+      "cards-doc-table"
+    ]
+  },
+  {
+    "id": "cards-doc-table",
+    "components": [
+      "cards-doc-table-item"
     ]
   },
   {
     "id": "cards-grid",
     "components": [
       "cards-grid-item"
+    ]
+  },
+  {
+    "id": "cards-resource-list",
+    "components": [
+      "cards-resource-list-item"
     ]
   },
   {
@@ -43,6 +60,18 @@
     "id": "carousel",
     "components": [
       "carousel-item"
+    ]
+  },
+  {
+    "id": "columns-features",
+    "components": [
+      "columns-features-item"
+    ]
+  },
+  {
+    "id": "columns-icon-list",
+    "components": [
+      "columns-icon-list-item"
     ]
   },
   {

@@ -135,8 +135,25 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimized);
   });
 
+  // Product Lines: the title link (h2-h5 > a) also makes the image clickable.
+  // The image link is hidden from AT/keyboard so the card has a single link stop.
+  if (block.classList.contains('productlines')) {
+    ul.querySelectorAll(':scope > li').forEach((li) => {
+      const titleLink = li.querySelector('.cards-grid-body :is(h2, h3, h4, h5) a[href]');
+      const picture = li.querySelector('.cards-grid-image picture');
+      if (!titleLink || !picture || picture.closest('a')) return;
+      const imgLink = document.createElement('a');
+      imgLink.href = titleLink.href;
+      imgLink.tabIndex = -1;
+      imgLink.setAttribute('aria-hidden', 'true');
+      picture.replaceWith(imgLink);
+      imgLink.append(picture);
+    });
+  }
+
   const children = [];
-  if (headingRow) {
+  // Skip an empty heading row (unused "Heading / Intro" field).
+  if (headingRow && (headingRow.textContent.trim() !== '' || headingRow.querySelector('picture, img'))) {
     const heading = document.createElement('div');
     heading.className = 'cards-grid-heading';
     while (headingRow.firstElementChild) heading.append(headingRow.firstElementChild);
