@@ -100,9 +100,26 @@ async function loadFonts() {
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+/**
+ * mybeckman.in inner pages below a hub (e.g. /en-in/service/plans) start with a breadcrumb,
+ * as on the source; `breadcrumb` metadata "off" / "on" overrides that.
+ * @param {Element} main The container element
+ */
+function buildBreadcrumb(main) {
+  if (!document.body.classList.contains('mybeckman-inner')) return;
+  const setting = getMetadata('breadcrumb').toLowerCase();
+  const path = window.location.pathname.replace(/\.html$/, '');
+  const [, below = ''] = path.split('/en-in/');
+  const depth = below.split('/').filter(Boolean).length;
+  if (setting === 'off' || (setting !== 'on' && depth < 2)) return;
+  const section = document.createElement('div');
+  section.append(buildBlock('breadcrumb-mybeckman', ''));
+  main.prepend(section);
+}
+
+function buildAutoBlocks(main) {
   try {
-    // TODO: add auto block, if needed
+    buildBreadcrumb(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -173,8 +190,8 @@ export function decorateMain(main) {
 const PATH_THEMES = [
   // mybeckman.in home page
   [/^(\/content(\/[^/]+)?)?\/en-in(\.html|\/(index(\.html)?)?)?$/, 'theme-mybeckman'],
-  // mybeckman.in service hub (inner-page design)
-  [/^(\/content(\/[^/]+)?)?\/en-in\/service(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
+  // mybeckman.in inner pages (inner-page design): service hub, service plans
+  [/^(\/content(\/[^/]+)?)?\/en-in\/service(\/plans)?(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
 ];
 
 function applyPathTheme() {

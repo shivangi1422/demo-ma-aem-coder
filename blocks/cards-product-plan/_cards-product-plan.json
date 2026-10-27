@@ -1,0 +1,70 @@
+{
+  "definitions": [
+    {
+      "title": "Cards Product Plan",
+      "id": "cards-product-plan",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards Product Plan",
+              "filter": "cards-product-plan"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Product Plan Card",
+      "id": "cards-product-plan-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Product Plan Card",
+              "model": "cards-product-plan-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-product-plan-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "imageAlt",
+          "label": "Image Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text (h3 title, bold Read More link)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-product-plan",
+      "components": [
+        "cards-product-plan-item"
+      ]
+    }
+  ]
+}

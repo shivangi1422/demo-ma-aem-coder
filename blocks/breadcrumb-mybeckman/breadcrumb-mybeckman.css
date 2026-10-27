@@ -1,0 +1,94 @@
+/*
+ * Breadcrumb (mybeckman.in inner pages), from the source .block-holder / .breadcrumbs:
+ * hidden below 768px; 25px above, 10px below; full-width row with the page gutter
+ * (0, 50px from 1200px); 12px/24px; links #5c5c5c weight 300 at 90% opacity
+ * (hover #0099ab); current page bold; 9px #dcdcdc chevron 12px left of each 30px gap
+ * (28px below 1024px).
+ */
+main > .section.breadcrumb-mybeckman-container {
+  display: none;
+}
+
+/* breakpoint-exception: source uses 768/1024/1200 */
+@media (width >= 768px) {
+  body.mybeckman-inner main > .section.breadcrumb-mybeckman-container {
+    display: block;
+    margin: 0;
+    padding: 25px 0 0;
+    background: none;
+  }
+
+  body.mybeckman-inner main > .section.breadcrumb-mybeckman-container > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* breakpoint-exception: source uses 768/1024/1200 */
+@media (width >= 1200px) {
+  body.mybeckman-inner main > .section.breadcrumb-mybeckman-container {
+    padding: 25px 50px 0;
+  }
+}
+
+.breadcrumb-mybeckman nav {
+  width: fit-content;
+  max-width: 100vw;
+  margin: 0 0 10px;
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 12px;
+  line-height: 24px;
+  color: #4d4d4d;
+}
+
+.breadcrumb-mybeckman ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumb-mybeckman li {
+  position: relative;
+  margin: 0;
+  padding: 0 28px 0 0;
+}
+
+.breadcrumb-mybeckman li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 5px;
+  height: 9px;
+  background-color: #dcdcdc;
+  mask: url('../../icons/fa-chevron-right.svg') center / contain no-repeat;
+  transform: translateY(-50%);
+}
+
+.breadcrumb-mybeckman a:any-link {
+  font-weight: 300;
+  color: #5c5c5c;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: color 0.2s ease-in-out;
+}
+
+.breadcrumb-mybeckman a:hover {
+  color: #0099ab;
+  text-decoration: none;
+}
+
+.breadcrumb-mybeckman li[aria-current='page'] {
+  font-weight: 700;
+  color: #5c5c5c;
+}
+
+/* breakpoint-exception: source uses 768/1024/1200 */
+@media (width >= 1024px) {
+  .breadcrumb-mybeckman li {
+    padding-right: 30px;
+  }
+}

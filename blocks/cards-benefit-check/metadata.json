@@ -1,0 +1,37 @@
+{
+  "variantName": "cards-benefit-check",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "sourceCss": "Source CSS = the page's inline <style> on top of media.beckman.com/assets/css/styles.css (Bootstrap 3; html font-size 10px so 1rem = 10px; body Gotham \u2192 Montserrat stand-in var(--mb-font-family), 16px/1.65 #4d4d4d; .btn: inline-block, padding 13px 20px, 13.5px/22.275px weight 500 \u2192 var(--mb-weight-medium, 500), radius 2px, transition .3s; .btn-primary bg #007acb, hover #0065a7; links #007acb, no underline). Source breakpoints 768 and 992 (mark media queries with /* breakpoint-exception: source uses 768/992 */). Font weights in CSS must use var(--mb-weight-regular, 400) / var(--mb-weight-medium, 500) (inner-page tokens).",
+    "layout": "Six items in TWO columns of three, filled column by column (items 1-3 left, 4-6 right). Source: .Intro__body {display:flex; flex: 2 1 0; justify-content: space-between} (\u2265768) with two .Intro__body-item columns; first column margin-right 10px. Below 768 the columns stack (one list, items in order 1..6). At 1440 the block box is 767px wide (beside the section intro, see section style split), columns 399px and 358px (content-sized by flex).",
+    "item": "item: title line (26.4px tall: 16px white check-circle FA regular icon with margin-right 20px, then the title in <strong> 16px weight 700) followed by the description paragraph 16px/1.65 margin 16px 0 (block margin-top 16 below the title line). Item blocks: 1440 heights 122/122/148 (left), 122/148/148 (right); vertical rhythm from the paragraph margins.",
+    "color": "all text white (sits in the blue section); icon white via CSS mask on /icons/fa-check-circle-regular.svg (black fill SVG).",
+    "order": "Authoring order is items 1..6; the block splits them into two columns (ceil(n/2) in the first) at \u2265768 to reproduce the source column-major order. Use CSS columns or two lists \u2014 the source uses two flex columns with content width; to match: CSS grid with grid-auto-flow: column; grid-template-rows: repeat(3, auto) and column gap 10px works."
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "source": "get_block_details /block-collection/cards + local blocks/cards/_cards.json (card model: image, text)",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "cards-benefit-check (block name)"
+        ]
+      },
+      {
+        "row": "2..7",
+        "cells": [
+          "image (empty)",
+          "text: <p>:fa-check-circle-regular: <strong>title</strong></p><p>description</p>"
+        ]
+      }
+    ],
+    "structure": "One item per row, one rich-text cell: <p>:fa-check-circle-regular: <strong>Title</strong></p><p>Description</p>. The token may arrive as text or span.icon, in the title paragraph or its own paragraph. Items 1..ceil(n/2) form the first column at >=768px."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service/plans \"Why choose a service plan\" benefit list (6 items) on the blue band beside the section intro (section style \"blue, split\").",
+  "reuseGuidance": "Use for icon-led benefit/feature lists (bold title + description) on mybeckman.in blue bands. The icon token is optional; other FA icons work if /icons/fa-<name>.svg exists.",
+  "sourceUrl": "https://www.mybeckman.in/service/plans"
+}

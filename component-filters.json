@@ -34,7 +34,15 @@
       "hero-dim-photo",
       "cards-stats",
       "cards-icon-border",
-      "cards-button-caption"
+      "cards-button-caption",
+      "cards-benefit-check",
+      "cards-product-plan"
+    ]
+  },
+  {
+    "id": "cards-benefit-check",
+    "components": [
+      "cards-benefit-check-item"
     ]
   },
   {
@@ -53,6 +61,12 @@
     "id": "cards-icon-border",
     "components": [
       "cards-icon-border-item"
+    ]
+  },
+  {
+    "id": "cards-product-plan",
+    "components": [
+      "cards-product-plan-item"
     ]
   },
   {

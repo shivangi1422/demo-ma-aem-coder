@@ -1,0 +1,247 @@
+/*
+ * Columns, variant "media" (class .columns.media; loaded by columns.js only for
+ * that variant) — mybeckman.in /service/plans .Section__two-column
+ * (image | list, text | Wistia video, image | text). Values are the source's
+ * inline \3c style> (html font-size 10px, so 1rem = 10px) on top of
+ * Bootstrap 3 (border-box, body 16px/1.65, h2/h3 2.5rem, ul margin 0 0 10px).
+ * Measured at 1440 (1170px content): left column 600px incl. 30px padding,
+ * right 570px; image rows 350px; video 570 x 320.6 (16:9).
+ */
+
+.columns.media {
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  font-weight: var(--mb-weight-regular, 400);
+  line-height: 1.65;
+  color: #4d4d4d;
+}
+
+.columns.media,
+.columns.media *,
+.columns.media *::before,
+.columns.media *::after {
+  box-sizing: border-box;
+}
+
+/* .Section__two-column (also resets the default columns row: direction, gap, order) */
+.columns.media > .columns-media-text-row {
+  display: flex;
+  flex-flow: row wrap;
+  align-items: normal;
+  gap: 0;
+}
+
+.columns.media .columns-media-text-col {
+  flex: 0 0 100%;
+  order: 0;
+  min-width: 0;
+}
+
+/* ---------- image cell ---------- */
+.columns.media .columns-media-text-img-col p {
+  margin: 0;
+}
+
+.columns.media .columns-media-text-img-col picture {
+  display: block;
+}
+
+.columns.media .columns-media-text-img-col img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---------- text cell ---------- */
+.columns.media .columns-media-text-text-col :is(h2, h3, h4) {
+  font-family: inherit;
+  letter-spacing: normal;
+  color: #4d4d4d;
+}
+
+/* h2: 2.5rem / 500, browser-default 0.83em margin */
+.columns.media .columns-media-text-text-col h2 {
+  margin: 20.75px 0;
+  font-size: 25px;
+  font-weight: var(--mb-weight-medium, 500);
+  line-height: 1.1;
+}
+
+/* h3: 2.5rem / 300, margin 2.5rem 0 */
+.columns.media .columns-media-text-text-col h3 {
+  margin: 25px 0;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.columns.media .columns-media-text-text-col p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.columns.media .columns-media-text-text-col :is(ul, ol) {
+  margin: 0 0 10px;
+  padding-left: 17px;
+}
+
+.columns.media .columns-media-text-text-col ul {
+  list-style: disc;
+}
+
+.columns.media .columns-media-text-text-col li {
+  margin: 0;
+  padding: 0;
+}
+
+.columns.media .columns-media-text-text-col a:any-link {
+  text-decoration: none;
+  color: #007acb;
+}
+
+.columns.media .columns-media-text-text-col picture,
+.columns.media .columns-media-text-text-col img {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+/* the .btn sits directly in the column on the source: no paragraph box */
+.columns.media .columns-media-text-text-col p.columns-media-text-cta {
+  display: flex;
+  margin: 0;
+}
+
+/* .btn.btn-primary */
+.columns.media a.columns-media-text-button:any-link {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: var(--mb-weight-medium, 500);
+  line-height: 1.65;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  color: #fff;
+  background-color: #007acb;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.columns.media a.columns-media-text-button:hover,
+.columns.media a.columns-media-text-button:focus-visible,
+.columns.media a.columns-media-text-button:active {
+  text-decoration: none;
+  color: #fff;
+  background-color: #0065a7;
+}
+
+/* ---------- video cell: click-to-play 16:9 Wistia ---------- */
+.columns.media .columns-media-text-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background-color: #000;
+}
+
+.columns.media .columns-media-text-video iframe,
+.columns.media .columns-media-text-play {
+  position: absolute;
+  inset: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.columns.media .columns-media-text-play {
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+}
+
+.columns.media .columns-media-text-play picture,
+.columns.media .columns-media-text-play img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Wistia big play button: 111 x 71 at a 570px player, player colour #ea1c2c */
+.columns.media .columns-media-text-play-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 19.53%;
+  min-width: 64px;
+  aspect-ratio: 125 / 80;
+  background-color: rgb(234 28 44 / 70%);
+  transform: translate(-50%, -50%);
+  transition: background-color 0.2s;
+}
+
+.columns.media .columns-media-text-play-icon::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 24%;
+  aspect-ratio: 26 / 30;
+  background-color: #fff;
+  clip-path: polygon(0 0, 100% 50%, 0 100%);
+  transform: translate(-40%, -50%);
+}
+
+.columns.media .columns-media-text-play:hover .columns-media-text-play-icon,
+.columns.media .columns-media-text-play:focus-visible .columns-media-text-play-icon {
+  background-color: rgb(234 28 44);
+}
+
+.columns.media .columns-media-text-play:focus-visible {
+  outline: 2px solid #007acb;
+  outline-offset: 2px;
+}
+
+/* .Section__two-column-right img */
+.columns.media .columns-media-text-col:nth-child(2):not(.columns-media-text-video-col) img {
+  margin-top: 10px;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  .columns.media > .columns-media-text-row {
+    flex-wrap: nowrap;
+    align-items: center;
+  }
+
+  .columns.media .columns-media-text-col {
+    flex: 1 1 0;
+  }
+
+  .columns.media .columns-media-text-col:first-child {
+    padding-right: 30px;
+  }
+
+  /* .Section__two-column img: 350px, cover */
+  .columns.media .columns-media-text-col:not(.columns-media-text-video-col) img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .columns.media a.columns-media-text-button:any-link,
+  .columns.media .columns-media-text-play-icon {
+    transition: none;
+  }
+}

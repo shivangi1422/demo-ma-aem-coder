@@ -1,4 +1,16 @@
-export default function decorate(block) {
+import { loadCSS } from '../../scripts/aem.js';
+
+export default async function decorate(block) {
+  // variant "media" (mybeckman.in inner pages: media + text): own decoration and styles
+  if (block.classList.contains('media')) {
+    const [{ default: decorateMediaText }] = await Promise.all([
+      import('./media-text.js'),
+      loadCSS(`${window.hlx.codeBasePath}/blocks/columns/media-text.css`),
+    ]);
+    decorateMediaText(block);
+    return;
+  }
+
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 

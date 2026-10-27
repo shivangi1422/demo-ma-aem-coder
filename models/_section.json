@@ -57,6 +57,10 @@
               "value": "blue"
             },
             {
+              "name": "Wide (full content column)",
+              "value": "wide"
+            },
+            {
               "name": "Split (intro beside block)",
               "value": "split"
             },
@@ -99,7 +103,9 @@
         "hero-dim-photo",
         "cards-stats",
         "cards-icon-border",
-        "cards-button-caption"
+        "cards-button-caption",
+        "cards-benefit-check",
+        "cards-product-plan"
       ]
     }
   ]

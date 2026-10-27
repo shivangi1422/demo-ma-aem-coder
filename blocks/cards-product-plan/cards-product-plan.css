@@ -1,0 +1,134 @@
+/*
+ * Cards (product plan) — mybeckman.in /service/plans "Product Specific Service
+ * Plans" (.ProductCards). INTENDED source design (the live markup uses
+ * .productCard so its .ProductCard rules never apply; this block applies them).
+ * Values are the source's inline \3c style> (html font-size 10px, so 1rem =
+ * 10px) on top of Bootstrap 3 (border-box, body 16px/1.65, h3 margin 2.5rem 0,
+ * .btn 13.5px/500 padding 13px 20px).
+ */
+
+.cards-product-plan {
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  font-weight: var(--mb-weight-regular, 400);
+  line-height: 1.65;
+  color: #4d4d4d;
+}
+
+.cards-product-plan,
+.cards-product-plan *,
+.cards-product-plan *::before,
+.cards-product-plan *::after {
+  box-sizing: border-box;
+}
+
+/* .ProductCards */
+.cards-product-plan > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* .ProductCard */
+.cards-product-plan .cards-product-plan-item {
+  display: flex;
+  flex: 1 1 0;
+  flex-direction: column;
+  justify-content: space-between;
+  min-width: 180px;
+  margin: 10px;
+  padding: 24px;
+  box-shadow: 0 4px 8px 4px rgb(0 0 0 / 20%);
+  transition: 0.3s;
+}
+
+.cards-product-plan .cards-product-plan-item:hover {
+  box-shadow: 0 8px 16px 0 rgb(0 0 0 / 20%);
+}
+
+/* .ProductCard__img: 280px box, 10px padding, contained; kept when empty */
+.cards-product-plan .cards-product-plan-image {
+  height: 280px;
+}
+
+.cards-product-plan .cards-product-plan-image picture {
+  display: block;
+  height: 100%;
+}
+
+.cards-product-plan .cards-product-plan-image img {
+  display: block;
+  width: 100%;
+  height: 280px;
+  padding: 10px;
+  object-fit: contain;
+}
+
+/* .ProductCard__body h3: 1.8rem / 500, Bootstrap h3 line-height 1.1, browser margin 1em 0 */
+.cards-product-plan .cards-product-plan-title {
+  margin: 1em 0;
+  font-family: inherit;
+  font-size: 18px;
+  font-weight: var(--mb-weight-medium, 500);
+  line-height: 1.1;
+  letter-spacing: normal;
+  color: #4d4d4d;
+}
+
+.cards-product-plan .cards-product-plan-text {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+/* the .btn sits directly in the card body on the source: no paragraph box */
+.cards-product-plan .cards-product-plan-cta {
+  display: flex;
+  margin: 0;
+}
+
+/* .btn.btn-primary */
+.cards-product-plan a.cards-product-plan-button:any-link {
+  display: inline-block;
+  max-width: 100%;
+  margin: 0;
+  border: 0;
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: var(--mb-weight-medium, 500);
+  line-height: 1.65;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+  color: #fff;
+  background-color: #007acb;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.cards-product-plan a.cards-product-plan-button:hover,
+.cards-product-plan a.cards-product-plan-button:focus-visible,
+.cards-product-plan a.cards-product-plan-button:active {
+  text-decoration: none;
+  color: #fff;
+  background-color: #0065a7;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  .cards-product-plan .cards-product-plan-item {
+    max-width: 214px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-product-plan .cards-product-plan-item,
+  .cards-product-plan a.cards-product-plan-button:any-link {
+    transition: none;
+  }
+}

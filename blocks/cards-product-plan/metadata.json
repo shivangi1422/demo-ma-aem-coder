@@ -1,0 +1,35 @@
+{
+  "variantName": "cards-product-plan",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "sourceCss": "Source CSS = the page's inline <style> on top of media.beckman.com/assets/css/styles.css (Bootstrap 3; html font-size 10px so 1rem = 10px; body Gotham \u2192 Montserrat stand-in var(--mb-font-family), 16px/1.65 #4d4d4d; .btn: inline-block, padding 13px 20px, 13.5px/22.275px weight 500 \u2192 var(--mb-weight-medium, 500), radius 2px, transition .3s; .btn-primary bg #007acb, hover #0065a7; links #007acb, no underline). Source breakpoints 768 and 992 (mark media queries with /* breakpoint-exception: source uses 768/992 */). Font weights in CSS must use var(--mb-weight-regular, 400) / var(--mb-weight-medium, 500) (inner-page tokens).",
+    "layout": "INTENDED design (live markup bug: .productCard vs CSS .ProductCard, so live shows one card per row at natural image size \u2014 DO NOT copy the bug). Source CSS: .ProductCards {display:flex; flex-wrap:wrap; justify-content:center} .ProductCard {box-shadow: 0 4px 8px 4px rgba(0,0,0,.2); transition: .3s; margin: 10px; padding: 24px; display:flex; flex: 1 1 0; flex-direction: column; justify-content: space-between; min-width: 180px} .ProductCard:hover {box-shadow: 0 8px 16px 0 rgba(0,0,0,.2)} .ProductCard__img {height: 280px; padding: 10px; object-fit: contain} .ProductCard__body h3 {font-size: 1.8rem (18px); font-weight: 500} \u2265768: .ProductCard {max-width: 214px}. So at 1440: 4 cards of 214px in one centred row; at 390 cards wrap (each min 180px, flex 1 \u2192 one or two per row; with 358px content: 1 per row full width minus 20px margins).",
+    "content": "card: image (product photo, contain in 280px box with 10px padding; card may have NO image \u2014 Particle Analysis image is missing: keep the 280px image area empty so card heights stay equal), h3 title 18px weight 500 (h3 base line-height 1.1, margin 25px 0 \u2192 with 18px use the source h3 margins: browser default 1em = 18px top/bottom), Read More = blue .btn-primary button (authored as <p><strong><a>\u2026</a></strong></p>, may arrive as p.button-container > a.button(.primary)). Card is NOT a whole-card link; only the button links."
+  },
+  "contentPattern": {
+    "baseBlock": "cards",
+    "source": "get_block_details /block-collection/cards + blocks/cards/_cards.json",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "cards-product-plan (block name)"
+        ]
+      },
+      {
+        "row": "2..5",
+        "cells": [
+          "image (product photo)",
+          "text: <h3>title</h3><p><strong><a>Read More</a></strong></p>"
+        ]
+      }
+    ],
+    "structure": "One card per row: image cell (optional) | text cell <h3>Title</h3><p><strong><a>Read More</a></strong></p>. Only the button links; the card is not a link."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service/plans \"Product Specific Service Plans\" (4 product cards).",
+  "reuseGuidance": "Use for product/category cards with a contained product photo, short h3 title and one Read More button. Leave the image empty when there is none; the 280px area is kept.",
+  "sourceUrl": "https://www.mybeckman.in/service/plans"
+}

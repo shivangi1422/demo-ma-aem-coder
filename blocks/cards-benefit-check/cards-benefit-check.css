@@ -1,0 +1,98 @@
+/*
+ * Cards (benefit check) — mybeckman.in /service/plans "Why choose a service
+ * plan" (.Intro__body). Values are the source's inline \3c style> (html
+ * font-size 10px, so 1rem = 10px) on top of Bootstrap 3 (body 16px/1.65).
+ * Sits on the blue band beside the section intro (section style "blue, split").
+ * Measured at 1440: two content-sized columns (399.9 / 356.8px, 10px apart),
+ * title line 26.4px, items 121.6 / 148px with 16px collapsed paragraph margins.
+ */
+
+.cards-benefit-check {
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  font-weight: var(--mb-weight-regular, 400);
+  line-height: 1.65;
+  color: #fff;
+}
+
+.cards-benefit-check,
+.cards-benefit-check *,
+.cards-benefit-check *::before,
+.cards-benefit-check *::after {
+  box-sizing: border-box;
+}
+
+/* .Intro__body-item */
+.cards-benefit-check > .cards-benefit-check-column {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-benefit-check .cards-benefit-check-item {
+  margin: 0;
+  padding: 0;
+}
+
+/* title line: <p><span.far.fa-check-circle><strong> */
+.cards-benefit-check .cards-benefit-check-title {
+  margin: 16px 0;
+  font-family: inherit;
+  font-size: 16px;
+  font-weight: var(--mb-weight-regular, 400);
+  line-height: 1.65;
+  letter-spacing: normal;
+  color: #fff;
+}
+
+.cards-benefit-check .cards-benefit-check-title strong,
+.cards-benefit-check .cards-benefit-check-title b {
+  font-weight: 700;
+}
+
+/* span.fa-check-circle: 16px white glyph, margin-right 20px */
+.cards-benefit-check .cards-benefit-check-title .icon {
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin: 0 20px 0 0;
+  vertical-align: -2px;
+  background-color: currentcolor;
+  mask-image: var(--cards-benefit-check-mask);
+  mask-position: center;
+  mask-repeat: no-repeat;
+  mask-size: contain;
+}
+
+/* the <img> only reserves the box; the mask paints the glyph */
+.cards-benefit-check .cards-benefit-check-title .icon img {
+  display: block;
+  width: 16px;
+  height: 16px;
+  opacity: 0;
+}
+
+.cards-benefit-check .cards-benefit-check-text {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #fff;
+}
+
+.cards-benefit-check .cards-benefit-check-item a:any-link {
+  color: #fff;
+  text-decoration: none;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  /* .Intro__body: two flex columns, content-sized */
+  .cards-benefit-check {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cards-benefit-check > .cards-benefit-check-column:first-child {
+    margin-right: 10px;
+  }
+}

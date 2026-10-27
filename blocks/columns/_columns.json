@@ -33,6 +33,17 @@
           "name": "rows",
           "value": "",
           "label": "Rows"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Style",
+          "value": "",
+          "options": [
+            { "name": "Default", "value": "" },
+            { "name": "Media + text (mybeckman.in: 350px images, click-to-play video)", "value": "media" }
+          ]
         }
       ]
     }

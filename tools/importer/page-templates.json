@@ -4,13 +4,13 @@
   },
   "templates": [
     {
-      "name": "mybeckman-service-hub",
+      "name": "mybeckman-plans",
       "urls": [
-        "https://www.mybeckman.in/service"
+        "https://www.mybeckman.in/service/plans"
       ],
-      "representativeUrl": "https://www.mybeckman.in/service",
-      "description": "mybeckman.in service hub page (exact match: photo hero, stats band, service cards, Get in Touch band)",
-      "urlPattern": "/service",
+      "representativeUrl": "https://www.mybeckman.in/service/plans",
+      "description": "mybeckman.in service plans page (exact match)",
+      "urlPattern": "/service/plans",
       "siteOrigin": "https://www.mybeckman.in",
       "pathMap": {
         "/service": "/en-in/service",
@@ -24,87 +24,130 @@
         "/": "/en-in/"
       },
       "metaOverrides": {
-        "/service": {
-          "description": "Comprehensive service plans, remote connectivity, instrument optimization, repairs, technical support and qualification & calibration from Beckman Coulter Life Sciences.",
-          "image": "https://media.beckman.com/-/media/service/media/service_hub_home-2022-09.jpg"
+        "/service/plans": {
+          "title": "Service Plans",
+          "description": "Beckman Coulter Life Sciences service plans: priority response, certified parts and labor, technology updates and compliance support to minimize instrument downtime.",
+          "image": "https://media.beckman.com/-/media/service/media/service_images_call_center.jpg"
         }
       },
       "blocks": [
         {
-          "name": "hero-dim-photo",
+          "name": "cards-benefit-check",
           "instances": [
-            ".bc-rich-text > .hero",
-            ".hero"
+            "#main .Intro__body"
           ]
         },
         {
-          "name": "cards-stats",
+          "name": "cards-product-plan",
           "instances": [
-            ".Section--blue .Section__intro",
-            ".Section__intro"
+            "#main .productCards"
           ]
         },
         {
-          "name": "cards-icon-border",
+          "name": "columns-media-text",
           "instances": [
-            ".ServiceCards"
+            "#main .Section__two-column"
           ]
         },
         {
           "name": "cards-button-caption",
           "instances": [
             "#getInTouch .Contact__body",
-            ".Contact__body"
+            "#main .Contact__body"
           ]
         }
       ],
       "sections": [
         {
           "id": "section-1",
-          "name": "Service-hub photo hero",
+          "name": "Page title + Get Help Now",
           "selector": [
-            ".bc-rich-text:has(> .hero)",
-            ".bc-rich-text:nth-of-type(1)"
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
           ],
-          "style": null,
-          "blocks": [
-            "hero-dim-photo"
-          ],
-          "defaultContent": []
+          "style": "wide",
+          "blocks": [],
+          "defaultContent": [
+            ".Section__header > h1",
+            ".Section__header > h2",
+            ".Section__header .callout > p",
+            ".Section__header .callout > a"
+          ]
         },
         {
           "id": "section-2",
-          "name": "Stats band",
+          "name": "Why choose a service plan",
           "selector": [
-            ".bc-rich-text:has(.Section__intro)",
-            ".bc-rich-text:nth-of-type(2)"
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Intro)"
           ],
-          "style": "blue",
+          "style": "blue, split, wide",
           "blocks": [
-            "cards-stats"
+            "cards-benefit-check"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            ".Intro__title > h2",
+            ".Intro__title > p"
+          ]
         },
         {
           "id": "section-3",
-          "name": "Service cards",
+          "name": "Product Specific Service Plans",
           "selector": [
-            ".bc-rich-text:has(.ServiceCards)",
-            ".bc-rich-text:nth-of-type(3)"
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.productCards)"
           ],
-          "style": null,
+          "style": "wide",
           "blocks": [
-            "cards-icon-border"
+            "cards-product-plan"
+          ],
+          "defaultContent": [
+            ".Section:has(> .productCards) > h2"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Count on our team of experts",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-right > ul)"
+          ],
+          "style": "wide",
+          "blocks": [
+            "columns-media-text"
+          ],
+          "defaultContent": [
+            ".Section:has(> .Section__two-column) > h2",
+            ".Section:has(> .Section__two-column) > p"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "BeckmanConnect Remote Service",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.wistia_responsive_padding)"
+          ],
+          "style": "wide",
+          "blocks": [
+            "columns-media-text"
           ],
           "defaultContent": []
         },
         {
-          "id": "section-4",
-          "name": "Get in Touch band",
+          "id": "section-6",
+          "name": "Training",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-left > img):has(.Section__two-column-right > h3)"
+          ],
+          "style": "wide",
+          "blocks": [
+            "columns-media-text"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-7",
+          "name": "Get in Touch",
           "selector": [
             "#getInTouch"
           ],
-          "style": "blue, centered",
+          "style": "blue, centered, wide",
           "blocks": [
             "cards-button-caption"
           ],
