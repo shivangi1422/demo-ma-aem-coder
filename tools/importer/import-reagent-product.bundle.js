@@ -992,7 +992,6 @@ var CustomImportScript = (() => {
       }
     ]
   };
-  var PAGE_THEME = "mybeckman";
   var parsers = {
     "content-product-detail": parse,
     "columns-features": parse2,
@@ -1045,21 +1044,6 @@ var CustomImportScript = (() => {
       executeTransformers("afterTransform", main, payload);
       main.appendChild(document.createElement("hr"));
       WebImporter.rules.createMetadata(main, document);
-      const metaTable = [...main.querySelectorAll("table")].find((t) => {
-        var _a;
-        return ((_a = t.querySelector("th, td")) == null ? void 0 : _a.textContent.trim().toLowerCase()) === "metadata";
-      });
-      if (metaTable) {
-        const tr = document.createElement("tr");
-        ["theme", PAGE_THEME].forEach((v) => {
-          const td = document.createElement("td");
-          td.textContent = v;
-          tr.append(td);
-        });
-        (metaTable.querySelector("tbody") || metaTable).append(tr);
-      } else {
-        main.append(WebImporter.Blocks.createBlock(document, { name: "Metadata", cells: { theme: PAGE_THEME } }));
-      }
       WebImporter.rules.transformBackgroundImages(main, document);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");

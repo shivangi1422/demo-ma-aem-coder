@@ -103,24 +103,57 @@
 }
 
 /* ============================================================
-   PRODUCT LINES — grey section, image + title/desc
+   PRODUCT LINES — mybeckman.in callout cards: light-grey band,
+   white bordered cards, centered image + title, description below
    ============================================================ */
 .cards-grid.productlines {
-  padding: 40px 24px;
-  background-color: var(--bc-surface);
+  padding: 30px 15px;
+  background-color: #f5f7fa;
+}
+
+.cards-grid.productlines > ul {
+  gap: 24px 20px;
 }
 
 .cards-grid.productlines > ul > li {
-  border-radius: 6px;
+  border: 1px solid #dadada;
+  border-radius: 0;
+  padding: 12px 0;
   background-color: #fff;
+  transition: box-shadow 0.2s ease-out;
+}
+
+.cards-grid.productlines > ul > li:hover {
+  box-shadow: 0 2px 15px 0 rgb(0 0 0 / 10%);
+}
+
+.cards-grid.productlines .cards-grid-image {
+  padding: 0 1em;
+  text-align: center;
 }
 
 .cards-grid.productlines .cards-grid-image img {
-  aspect-ratio: 2 / 1;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
 }
 
 .cards-grid.productlines .cards-grid-image a {
   display: block;
+}
+
+.cards-grid.productlines .cards-grid-body {
+  gap: 0;
+  padding: 0 31px 12px;
+}
+
+.cards-grid.productlines .cards-grid-body h4 {
+  margin: 28px 0;
+  color: #003040;
+  font-weight: 300;
+  font-size: 28px;
+  line-height: 1.25;
+  text-align: center;
 }
 
 /* linked title keeps the heading look */
@@ -129,20 +162,24 @@
   text-decoration: none;
 }
 
-/* rich-text description: sub-headings, bullet lists, notes */
-.cards-grid.productlines .cards-grid-body h5,
-.cards-grid.productlines .cards-grid-body h6 {
-  margin: 0;
-  color: var(--bc-navy);
+/* rich-text description: paragraphs, sub-headings, bullet lists, notes */
+.cards-grid.productlines .cards-grid-body :is(p, ul, ol) {
+  margin: 0 0 1em;
+  color: #4a4a4a;
   font-size: 16px;
-  line-height: 1.25;
+  line-height: 1.65;
 }
 
 .cards-grid.productlines .cards-grid-body :is(ul, ol) {
-  margin: 0;
   padding-left: 20px;
-  color: var(--bc-grey);
-  font-size: 14px;
+}
+
+.cards-grid.productlines .cards-grid-body h5,
+.cards-grid.productlines .cards-grid-body h6 {
+  margin: 0;
+  color: #4a4a4a;
+  font-weight: 500;
+  font-size: 16px;
   line-height: 1.25;
 }
 
@@ -245,6 +282,7 @@
   background-color: #fff;
 }
 
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
 .cards-grid.simple > ul > li {
   position: relative;
   border: 1px solid var(--bc-border);
@@ -323,6 +361,7 @@
   gap: 40px;
 }
 
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
 .cards-grid.features > ul > li {
   border: 0;
   background: none;
@@ -387,9 +426,12 @@
 }
 
 @media (width >= 900px) {
-  .cards-grid.solutions,
-  .cards-grid.productlines {
+  .cards-grid.solutions {
     padding: 80px;
+  }
+
+  .cards-grid.productlines {
+    padding: 50px 50px 30px;
   }
 
   .cards-grid.solutions .cards-grid-heading,
@@ -424,75 +466,5 @@
 
   .cards-grid.insights .cards-grid-list {
     flex: 1;
-  }
-}
-
-/* ============================================================
-   mybeckman.in theme (page metadata "Theme: mybeckman"):
-   Product Lines callouts as on the live site
-   ============================================================ */
-body.mybeckman .cards-grid.productlines {
-  padding: 30px 15px;
-  background-color: #f5f7fa;
-}
-
-body.mybeckman .cards-grid.productlines > ul {
-  gap: 24px 20px;
-}
-
-body.mybeckman .cards-grid.productlines > ul > li {
-  border: 1px solid #dadada;
-  border-radius: 0;
-  padding: 12px 0;
-  background-color: #fff;
-  transition: box-shadow 0.2s ease-out;
-}
-
-body.mybeckman .cards-grid.productlines > ul > li:hover {
-  box-shadow: 0 2px 15px 0 rgb(0 0 0 / 10%);
-}
-
-body.mybeckman .cards-grid.productlines .cards-grid-image {
-  padding: 0 1em;
-  text-align: center;
-}
-
-body.mybeckman .cards-grid.productlines .cards-grid-image img {
-  width: auto;
-  max-width: 100%;
-  aspect-ratio: auto;
-  object-fit: contain;
-}
-
-body.mybeckman .cards-grid.productlines .cards-grid-body {
-  gap: 0;
-  padding: 0 31px 12px;
-}
-
-body.mybeckman .cards-grid.productlines .cards-grid-body h4 {
-  margin: 28px 0;
-  color: #003040;
-  font-weight: 300;
-  font-size: 28px;
-  line-height: 1.25;
-  text-align: center;
-}
-
-body.mybeckman .cards-grid.productlines .cards-grid-body :is(p, ul, ol) {
-  margin: 0 0 1em;
-  color: #4a4a4a;
-  font-size: 16px;
-  line-height: 1.65;
-}
-
-body.mybeckman .cards-grid.productlines .cards-grid-body h5 {
-  color: #4a4a4a;
-  font-weight: 500;
-  font-size: 16px;
-}
-
-@media (width >= 900px) {
-  body.mybeckman .cards-grid.productlines {
-    padding: 50px 50px 30px;
   }
 }

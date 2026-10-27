@@ -294,9 +294,9 @@ button.button.accent:disabled:focus-visible {
   color: var(--dark-color);
 }
 
-/* mybeckman.in theme: pages migrated from mybeckman.in (page metadata "Theme: mybeckman").
-   Scoped to main so header, footer and other pages keep the default look. */
-body.mybeckman main {
+/* mybeckman.in look for page content: typography, colours and CTA buttons as on the live site.
+   Scoped to main so the header and footer keep their own styling. */
+main {
   --mybeckman-font: montserrat, montserrat-fallback, arial, sans-serif;
   --mybeckman-text: #4d4d4d;
   --mybeckman-heading: #001728;
@@ -315,28 +315,29 @@ body.mybeckman main {
   line-height: 1.65;
 }
 
-body.mybeckman main :is(h1, h2, h3, h4, h5, h6) {
+main :is(h1, h2, h3, h4, h5, h6) {
   color: var(--mybeckman-heading);
   font-weight: 300;
   line-height: 1.1;
 }
 
-body.mybeckman main h1 {
+main h1 {
   color: var(--mybeckman-text);
   font-size: 30px;
 }
 
-body.mybeckman main h2 {
+main h2 {
   color: var(--mybeckman-text);
   font-size: 25px;
   font-weight: 500;
 }
 
-body.mybeckman main h3 { font-size: 24px; }
-body.mybeckman main h4 { font-size: 18px; }
-body.mybeckman main h5 { font-size: 14px; }
+main h3 { font-size: 24px; }
+main h4 { font-size: 18px; }
+main h5 { font-size: 14px; }
 
-body.mybeckman main a.button:any-link {
+/* stylelint-disable no-descending-specificity -- main-content buttons override the generic button states */
+main a.button:any-link {
   border: 0;
   border-radius: 2px;
   padding: 13px 20px;
@@ -347,31 +348,33 @@ body.mybeckman main a.button:any-link {
   transition: background-color 0.3s;
 }
 
-body.mybeckman main a.button.primary {
+main a.button.primary {
   background-color: var(--mybeckman-red);
   color: #fff;
 }
 
-body.mybeckman main a.button.primary:hover,
-body.mybeckman main a.button.primary:focus-visible {
+main a.button.primary:hover,
+main a.button.primary:focus-visible {
   background-color: var(--mybeckman-red-hover);
   color: #fff;
 }
 
-body.mybeckman main a.button.secondary {
+main a.button.secondary {
   background-color: var(--mybeckman-blue);
   color: #fff;
 }
 
-body.mybeckman main a.button.secondary:hover,
-body.mybeckman main a.button.secondary:focus-visible {
+main a.button.secondary:hover,
+main a.button.secondary:focus-visible {
   background-color: var(--mybeckman-blue-hover);
   color: #fff;
 }
 
+/* stylelint-enable no-descending-specificity */
+
 @media (width >= 900px) {
-  body.mybeckman main h1 { font-size: 36px; }
-  body.mybeckman main h3 { font-size: 29px; }
+  main h1 { font-size: 36px; }
+  main h3 { font-size: 29px; }
 }
 
 main img {
