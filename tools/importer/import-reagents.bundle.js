@@ -260,6 +260,18 @@ var CustomImportScript = (() => {
       });
       element.querySelectorAll(".product-series-selector-wrapper > div > .bc-rich-text").forEach(convertDisclaimer);
       element.querySelectorAll(".product-spotlight-wrapper").forEach(cleanupProductPage);
+      element.querySelectorAll("#main a.btn").forEach((a) => {
+        if (isBlank(a) || a.closest("strong, b, em, i")) return;
+        const doc = a.ownerDocument;
+        const wrap = doc.createElement(a.classList.contains("btn-red") ? "strong" : "em");
+        a.replaceWith(wrap);
+        wrap.append(a);
+        if (wrap.parentElement.tagName !== "P") {
+          const p = doc.createElement("p");
+          wrap.replaceWith(p);
+          p.append(wrap);
+        }
+      });
     }
     if (hookName === "afterTransform") {
       element.querySelectorAll(".product-spotlight-wrapper .spotlight-content-wrapper > .bc-rich-text").forEach((rt) => {
@@ -412,6 +424,7 @@ var CustomImportScript = (() => {
       }
     ]
   };
+  var PAGE_THEME = "mybeckman";
   var parsers = { "cards-grid": parse };
   var transformers = [transform, transform2];
   function executeTransformers(hookName, element, payload) {
@@ -454,6 +467,21 @@ var CustomImportScript = (() => {
       executeTransformers("afterTransform", main, payload);
       main.appendChild(document.createElement("hr"));
       WebImporter.rules.createMetadata(main, document);
+      const metaTable = [...main.querySelectorAll("table")].find((t) => {
+        var _a;
+        return ((_a = t.querySelector("th, td")) == null ? void 0 : _a.textContent.trim().toLowerCase()) === "metadata";
+      });
+      if (metaTable) {
+        const tr = document.createElement("tr");
+        ["theme", PAGE_THEME].forEach((v) => {
+          const td = document.createElement("td");
+          td.textContent = v;
+          tr.append(td);
+        });
+        (metaTable.querySelector("tbody") || metaTable).append(tr);
+      } else {
+        main.append(WebImporter.Blocks.createBlock(document, { name: "Metadata", cells: { theme: PAGE_THEME } }));
+      }
       WebImporter.rules.transformBackgroundImages(main, document);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");

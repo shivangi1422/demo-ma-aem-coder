@@ -232,6 +232,8 @@ const PAGE_TEMPLATE = {
   ]
 };
 
+const PAGE_THEME = 'mybeckman';
+
 const parsers = {
   'content-product-detail': contentProductDetailParser,
   'columns-features': columnsFeaturesParser,
@@ -285,6 +287,20 @@ export default {
 
     main.appendChild(document.createElement('hr'));
     WebImporter.rules.createMetadata(main, document);
+    // Page theme: scopes the mybeckman.in look (fonts, buttons, cards) to migrated pages
+    const metaTable = [...main.querySelectorAll('table')]
+      .find((t) => t.querySelector('th, td')?.textContent.trim().toLowerCase() === 'metadata');
+    if (metaTable) {
+      const tr = document.createElement('tr');
+      ['theme', PAGE_THEME].forEach((v) => {
+        const td = document.createElement('td');
+        td.textContent = v;
+        tr.append(td);
+      });
+      (metaTable.querySelector('tbody') || metaTable).append(tr);
+    } else {
+      main.append(WebImporter.Blocks.createBlock(document, { name: 'Metadata', cells: { theme: PAGE_THEME } }));
+    }
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
 

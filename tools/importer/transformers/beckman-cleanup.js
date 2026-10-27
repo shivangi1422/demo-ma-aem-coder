@@ -133,6 +133,21 @@ export default function transform(hookName, element, payload) {
 
     // reagent-product page cleanup
     element.querySelectorAll('.product-spotlight-wrapper').forEach(cleanupProductPage);
+
+    // Source buttons (a.btn) -> formatted link in its own paragraph, which EDS decorates as a button:
+    // red .btn-red -> bold (primary), other .btn (blue) -> italic (secondary)
+    element.querySelectorAll('#main a.btn').forEach((a) => {
+      if (isBlank(a) || a.closest('strong, b, em, i')) return;
+      const doc = a.ownerDocument;
+      const wrap = doc.createElement(a.classList.contains('btn-red') ? 'strong' : 'em');
+      a.replaceWith(wrap);
+      wrap.append(a);
+      if (wrap.parentElement.tagName !== 'P') {
+        const p = doc.createElement('p');
+        wrap.replaceWith(p);
+        p.append(wrap);
+      }
+    });
   }
 
   if (hookName === 'afterTransform') {
