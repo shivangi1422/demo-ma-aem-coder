@@ -149,8 +149,9 @@
   object-fit: contain;
 }
 
+/* block flow (not flex) so heading margins collapse like the live site */
 .cards-grid.productlines .cards-grid-body {
-  gap: 0;
+  display: block;
   padding: 0;
 }
 
@@ -182,12 +183,29 @@
   line-height: 1.65;
 }
 
+/* bullet lists as on the live site: solid discs, 14px items, 15px indent */
 .cards-grid.productlines .cards-grid-body :is(ul, ol) {
-  padding-left: 20px;
+  margin-bottom: 10px;
+  padding-left: 15px;
+}
+
+.cards-grid.productlines .cards-grid-body ul {
+  list-style-type: disc;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
+.cards-grid.productlines .cards-grid-body li {
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 .cards-grid.productlines .cards-grid-body > :last-child {
   margin-bottom: 0;
+}
+
+/* live cards close a bullet list with list margin (10px) + an empty 14px paragraph (23px + 28px margin) */
+.cards-grid.productlines .cards-grid-body > :is(ul, ol):last-child {
+  margin-bottom: 61px;
 }
 
 .cards-grid.productlines .cards-grid-body h5,
@@ -373,6 +391,7 @@
   font-weight: 400;
 }
 
+/* stylelint-disable-next-line no-descending-specificity -- distinct variant, ordering intentional */
 .cards-grid.features > ul {
   gap: 40px;
 }
