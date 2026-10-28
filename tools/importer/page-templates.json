@@ -4,13 +4,13 @@
   },
   "templates": [
     {
-      "name": "mybeckman-plans",
+      "name": "mybeckman-centrifuge",
       "urls": [
-        "https://www.mybeckman.in/service/plans"
+        "https://www.mybeckman.in/service/plans/centrifuge"
       ],
-      "representativeUrl": "https://www.mybeckman.in/service/plans",
-      "description": "mybeckman.in service plans page (exact match)",
-      "urlPattern": "/service/plans",
+      "representativeUrl": "https://www.mybeckman.in/service/plans/centrifuge",
+      "description": "mybeckman.in centrifuge service plans page (exact match)",
+      "urlPattern": "/service/plans/centrifuge",
       "siteOrigin": "https://www.mybeckman.in",
       "pathMap": {
         "/service": "/en-in/service",
@@ -21,32 +21,32 @@
         "/support/technical-documents": "/en-in/support/technical-documents",
         "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
         "": "/en-in/index",
-        "/": "/en-in/"
+        "/": "/en-in/",
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge"
       },
       "metaOverrides": {
-        "/service/plans": {
-          "title": "Service Plans",
-          "description": "Beckman Coulter Life Sciences service plans: priority response, certified parts and labor, technology updates and compliance support to minimize instrument downtime.",
-          "image": "https://media.beckman.com/-/media/service/media/service_images_call_center.jpg"
+        "/service/plans/centrifuge": {
+          "theme": "theme-mybeckman, mybeckman-inner"
         }
       },
       "blocks": [
         {
-          "name": "cards-benefit-check",
+          "name": "hero-dim-buttons",
           "instances": [
-            "#main .Intro__body"
+            "#main .bc-rich-text > .hero",
+            "#main .hero"
           ]
         },
         {
-          "name": "cards-product-plan",
+          "name": "table-plan-compare",
           "instances": [
-            "#main .productCards"
+            "#main #service-plans-table"
           ]
         },
         {
-          "name": "columns-media-text",
+          "name": "columns-cta",
           "instances": [
-            "#main .Section__two-column"
+            "#main .Section > .row:has(> .col-md-6)"
           ]
         },
         {
@@ -60,94 +60,50 @@
       "sections": [
         {
           "id": "section-1",
-          "name": "Page title + Get Help Now",
+          "name": "Hero",
           "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .hero)",
+            "#main .bc-rich-text:has(> .hero)"
           ],
-          "style": "wide",
-          "blocks": [],
-          "defaultContent": [
-            ".Section__header > h1",
-            ".Section__header > h2",
-            ".Section__header .callout > p",
-            ".Section__header .callout > a"
-          ]
+          "style": null,
+          "blocks": [
+            "hero-dim-buttons"
+          ],
+          "defaultContent": []
         },
         {
           "id": "section-2",
-          "name": "Why choose a service plan",
+          "name": "Choose the plan",
           "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Intro)"
+            "#main .bc-rich-text:has(#service-plans-table)"
           ],
-          "style": "blue, split, wide",
+          "style": "wide-tall",
           "blocks": [
-            "cards-benefit-check"
+            "table-plan-compare"
           ],
           "defaultContent": [
-            ".Intro__title > h2",
-            ".Intro__title > p"
+            "#choosePlan .firstSection > h2"
           ]
         },
         {
           "id": "section-3",
-          "name": "Product Specific Service Plans",
+          "name": "Qualification Services | Rotor Repair",
           "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.productCards)"
+            "#main .bc-rich-text:has(.col-md-6)"
           ],
-          "style": "wide",
+          "style": "wide-tall",
           "blocks": [
-            "cards-product-plan"
+            "columns-cta"
           ],
-          "defaultContent": [
-            ".Section:has(> .productCards) > h2"
-          ]
+          "defaultContent": []
         },
         {
           "id": "section-4",
-          "name": "Count on our team of experts",
-          "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-right > ul)"
-          ],
-          "style": "wide",
-          "blocks": [
-            "columns-media-text"
-          ],
-          "defaultContent": [
-            ".Section:has(> .Section__two-column) > h2",
-            ".Section:has(> .Section__two-column) > p"
-          ]
-        },
-        {
-          "id": "section-5",
-          "name": "BeckmanConnect Remote Service",
-          "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.wistia_responsive_padding)"
-          ],
-          "style": "wide",
-          "blocks": [
-            "columns-media-text"
-          ],
-          "defaultContent": []
-        },
-        {
-          "id": "section-6",
-          "name": "Training",
-          "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-left > img):has(.Section__two-column-right > h3)"
-          ],
-          "style": "wide",
-          "blocks": [
-            "columns-media-text"
-          ],
-          "defaultContent": []
-        },
-        {
-          "id": "section-7",
           "name": "Get in Touch",
           "selector": [
             "#getInTouch"
           ],
-          "style": "blue, centered, wide",
+          "style": "blue, centered, wide-tall",
           "blocks": [
             "cards-button-caption"
           ],

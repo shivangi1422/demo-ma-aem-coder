@@ -1,0 +1,164 @@
+/*
+ * Hero (dim buttons) — mybeckman.in /service/plans/centrifuge hero.
+ * Values are the source's inline \3c style> (html font-size 10px, so 1rem = 10px)
+ * on top of Bootstrap 3 (box-sizing: border-box, body 16px/1.65 Gotham).
+ */
+
+/* full-bleed: the section and its wrapper carry no max-width, padding or margin */
+main > .section:has(> div > .hero-dim-buttons) {
+  margin: 0;
+  padding: 0;
+}
+
+main > .section:has(> div > .hero-dim-buttons) > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* source hero container: height 40vh, min-height 360px, black, flex centre */
+.hero-dim-buttons {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 40vh;
+  min-height: 360px;
+  overflow: hidden;
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: #fff;
+  background: #000;
+}
+
+.hero-dim-buttons,
+.hero-dim-buttons *,
+.hero-dim-buttons *::before,
+.hero-dim-buttons *::after {
+  box-sizing: border-box;
+}
+
+/* source hero img: absolute, full size, object-fit cover (centred), 50% opacity */
+.hero-dim-buttons .hero-dim-buttons-image {
+  display: contents;
+}
+
+.hero-dim-buttons .hero-dim-buttons-image img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+  opacity: 0.5;
+}
+
+/* source hero text box: absolute, no padding below 768 */
+.hero-dim-buttons .hero-dim-buttons-content {
+  position: absolute;
+  padding: 0;
+  text-align: center;
+  color: #fff;
+}
+
+/* source hero h1: 4rem, theme weight 300, Bootstrap line-height 1.1, margin .67em 0 0 */
+.hero-dim-buttons .hero-dim-buttons-content h1 {
+  margin: 26.8px 0 0;
+  font-family: inherit;
+  font-size: 40px;
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: normal;
+  color: #fff;
+}
+
+/* source hero h2 subtitle: 25px / 500, line-height 1.1, margin .83em 0 */
+.hero-dim-buttons .hero-dim-buttons-content :is(h2, h3, h4, h5, h6) {
+  margin: 20.75px 0;
+  font-family: inherit;
+  font-size: 25px;
+  font-weight: var(--mb-weight-medium, 500);
+  line-height: 1.1;
+  letter-spacing: normal;
+  color: #fff;
+}
+
+.hero-dim-buttons .hero-dim-buttons-content p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+  color: #fff;
+}
+
+/* the buttons sit inline in the text box on the source, ~5px apart */
+.hero-dim-buttons .hero-dim-buttons-actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 5px;
+}
+
+.hero-dim-buttons .hero-dim-buttons-content p.hero-dim-buttons-cta {
+  margin: 0;
+}
+
+/* source .btn.btn-primary */
+.hero-dim-buttons a.hero-dim-buttons-button:any-link {
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: var(--mb-weight-medium, 500);
+  line-height: 1.65;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  vertical-align: middle;
+  color: #fff;
+  background-color: #007acb;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.hero-dim-buttons a.hero-dim-buttons-button-filled:hover,
+.hero-dim-buttons a.hero-dim-buttons-button-filled:focus-visible,
+.hero-dim-buttons a.hero-dim-buttons-button-filled:active {
+  text-decoration: none;
+  color: #fff;
+  background-color: #0065a7;
+}
+
+/* source .btn.btn-secondary + hero override: transparent, 1px white border */
+.hero-dim-buttons a.hero-dim-buttons-button-outline:any-link {
+  border: 1px solid #fff;
+  padding: 12px 20px;
+  background-color: transparent;
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.hero-dim-buttons a.hero-dim-buttons-button-outline:hover,
+.hero-dim-buttons a.hero-dim-buttons-button-outline:focus-visible,
+.hero-dim-buttons a.hero-dim-buttons-button-outline:active {
+  text-decoration: none;
+  color: #fff;
+  background-color: #007acb;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  .hero-dim-buttons .hero-dim-buttons-content {
+    max-width: 1200px;
+    padding: 2vw;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .hero-dim-buttons a.hero-dim-buttons-button:any-link {
+    transition: none;
+  }
+}

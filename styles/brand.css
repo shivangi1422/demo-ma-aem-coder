@@ -687,10 +687,15 @@ body.mybeckman-inner button.button.secondary:focus-visible {
   background-color: transparent;
 }
 
+/* the variant selectors match the home rules' specificity (their hover is red) */
 body.mybeckman-inner a.button:hover,
 body.mybeckman-inner button.button:hover,
 body.mybeckman-inner a.button:active,
-body.mybeckman-inner button.button:active {
+body.mybeckman-inner button.button:active,
+body.mybeckman-inner a.button:is(.primary, .secondary, .accent):hover,
+body.mybeckman-inner button.button:is(.primary, .secondary, .accent):hover,
+body.mybeckman-inner a.button:is(.primary, .secondary, .accent):active,
+body.mybeckman-inner button.button:is(.primary, .secondary, .accent):active {
   border-color: var(--mb-color-blue-dark);
   color: var(--mb-color-white);
   background-color: var(--mb-color-blue-dark);
@@ -784,23 +789,41 @@ body.mybeckman-inner main > .section.wide {
   padding: 2vw 4vw;
 }
 
+/* wide-tall: the centrifuge plans page .Section — 4vw 2vw below 768px, then as wide */
+body.mybeckman-inner main > .section.wide-tall {
+  padding: 4vw 2vw;
+}
+
 /* breakpoint-exception: source uses 768/992 */
 @media (width >= 768px) {
-  body.mybeckman-inner main > .section.wide {
+  body.mybeckman-inner main > .section.wide,
+  body.mybeckman-inner main > .section.wide-tall {
     padding: 2vw max(2vw, calc((100% - var(--mb-inner-max-width)) / 2 + 2vw));
   }
 }
 
 /* breakpoint-exception: source uses 768/992 */
 @media (width >= 992px) {
-  body.mybeckman-inner main > .section.wide {
+  body.mybeckman-inner main > .section.wide,
+  body.mybeckman-inner main > .section.wide-tall {
     padding: 2vw max(0px, calc((100% - var(--mb-inner-max-width)) / 2));
   }
 }
 
-/* Get in Touch in a wide section: the .Section's own 2vw plus #getInTouch's 2vw below */
+/* Get in Touch in a wide section: the .Section's own padding plus #getInTouch's 2vw below */
 body.mybeckman-inner main > .section.blue.centered.wide {
   padding-bottom: 4vw;
+}
+
+body.mybeckman-inner main > .section.blue.centered.wide-tall {
+  padding-bottom: 6vw;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  body.mybeckman-inner main > .section.blue.centered.wide-tall {
+    padding-bottom: 4vw;
+  }
 }
 
 /*

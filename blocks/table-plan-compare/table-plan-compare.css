@@ -1,0 +1,183 @@
+/*
+ * Table (plan compare) — mybeckman.in /service/plans/centrifuge #service-plans-table.
+ * Values are the source's inline \3c style> on top of Bootstrap 3
+ * (box-sizing: border-box). Wrapper 16px; cells .7em (11.2px), padding .75em.
+ */
+
+.table-plan-compare {
+  display: flow-root;
+  width: 100%;
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  font-weight: var(--mb-weight-regular, 400);
+  line-height: 1.65;
+}
+
+.table-plan-compare,
+.table-plan-compare *,
+.table-plan-compare *::before,
+.table-plan-compare *::after {
+  box-sizing: border-box;
+}
+
+/* source div#service-plans-table: overflow-x auto (no stacking on mobile) */
+.table-plan-compare .table-plan-compare-scroll {
+  width: 100%;
+  overflow-x: auto;
+}
+
+.table-plan-compare table {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  border-collapse: collapse;
+  border-spacing: 0;
+  font-size: 16px;
+  line-height: 1.65;
+  background: transparent;
+}
+
+.table-plan-compare :is(th, td) {
+  vertical-align: middle;
+  text-align: center;
+  background: transparent;
+}
+
+/* group header row: source thead th / th.section-header */
+.table-plan-compare tr.table-plan-compare-groups > :is(th, td) {
+  border: 0;
+  border-bottom: 2px solid #000;
+  padding: 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.65;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: #fff;
+}
+
+.table-plan-compare tr.table-plan-compare-groups > th.table-plan-compare-group {
+  background: #004666;
+}
+
+/* column header row and body cells: source tbody tr td */
+.table-plan-compare tr:not(.table-plan-compare-groups) > :is(th, td) {
+  width: 80px;
+  border: 0;
+  border-left: 1px solid #778081;
+  border-bottom: 1px solid #778081;
+  padding: 0.75em;
+  font-size: 0.7em;
+  font-weight: var(--mb-weight-regular, 400);
+  line-height: 1.65;
+  color: #000;
+}
+
+/* source tbody tr:first-child td: bold, declared 150px */
+.table-plan-compare tr.table-plan-compare-columns > :is(th, td) {
+  width: 150px;
+  font-weight: 700;
+}
+
+/* first column: feature labels, left-aligned bold, no left border */
+.table-plan-compare tr:not(.table-plan-compare-groups) > .table-plan-compare-label {
+  border-left: 0;
+  text-align: left;
+  font-weight: 700;
+}
+
+/* source tr:first-child td:first-child: dark corner above the labels */
+.table-plan-compare tr.table-plan-compare-columns > .table-plan-compare-label {
+  color: #fff;
+  background: #004666;
+}
+
+/* spacer column between groups (source th.blank / td.blank: 10px) */
+.table-plan-compare tr:not(.table-plan-compare-groups) > td.table-plan-compare-spacer,
+.table-plan-compare tr.table-plan-compare-groups > td.table-plan-compare-spacer {
+  width: 10px;
+  border: 0;
+  padding: 0;
+  background: none;
+}
+
+/* the column right after a spacer has no left border (source td:nth-child(6)) */
+.table-plan-compare tr:not(.table-plan-compare-groups) > .table-plan-compare-after-spacer {
+  border-left: 0;
+}
+
+/* highlighted plan column: source td:nth-child(7) */
+.table-plan-compare tr:not(.table-plan-compare-groups) > .table-plan-compare-highlight {
+  border-left: 5px solid #0097ce;
+  border-right: 5px solid #0097ce;
+  color: #0097ce;
+}
+
+.table-plan-compare tr.table-plan-compare-columns > .table-plan-compare-highlight {
+  border-top: 5px solid #0097ce;
+  color: #000;
+}
+
+/* close the frame at the bottom (live bug: rule targets a row that does not exist) */
+.table-plan-compare tbody tr:last-child > .table-plan-compare-highlight {
+  border-bottom: 5px solid #0097ce;
+}
+
+/* markers: source .circle / .emptycircle */
+.table-plan-compare .table-plan-compare-marker {
+  display: block;
+  width: 10px;
+  height: 10px;
+  margin: auto;
+  border-radius: 10px;
+}
+
+.table-plan-compare .table-plan-compare-dot {
+  background: #000;
+}
+
+.table-plan-compare .table-plan-compare-dot-ring {
+  border: 2px solid #000;
+  background: transparent;
+}
+
+.table-plan-compare .table-plan-compare-highlight .table-plan-compare-dot {
+  background-color: #0097ce;
+}
+
+.table-plan-compare .table-plan-compare-highlight .table-plan-compare-dot-ring {
+  border-color: #0097ce;
+}
+
+.table-plan-compare .table-plan-compare-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* legend: source .footnotes (.825em, #888); its empty first paragraph is the top gap */
+.table-plan-compare .table-plan-compare-legend {
+  display: flow-root;
+  padding-top: 34.98px;
+  font-size: 13.2px;
+  line-height: 1.65;
+  color: #888;
+}
+
+.table-plan-compare .table-plan-compare-legend p {
+  margin: 13.2px 0;
+  font-size: inherit;
+  line-height: inherit;
+  color: inherit;
+}
+
+.table-plan-compare .table-plan-compare-legend .table-plan-compare-marker {
+  display: inline-block;
+  margin: 0 5px 0 0;
+}

@@ -1,0 +1,36 @@
+{
+  "variantName": "hero-dim-buttons",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "layout": "Full-bleed, 40vh (min 360px) at every width; black background, flex-centred content.",
+    "image": "Photo at 50% opacity, absolute, full size, object-fit cover centred (50% 50%). Eager LCP image (fetchpriority high).",
+    "text": "Centred white text box (no padding below 768; 2vw padding and max-width 1200px >= 768). h1 40px/1.1 weight 300, margin 26.8px 0 0; h2 subtitle 25px/1.1 500, margin 20.75px 0.",
+    "buttons": "Row of buttons 5px apart. Filled (bold link): #007acb, padding 13px 20px, 13.5px/500, radius 2px, hover #0065a7. Outline (italic link): transparent, 1px solid #fff, padding 12px 20px, hover background #007acb.",
+    "purpose": "Page-top hero with a dimmed photo, a heading, subtitle and two calls to action.",
+    "source": "Compared closely with hero-dim-photo (built from /service): same family (black backdrop, 50% photo, absolute centred white text, min-height 360px, 1200px text box with 2vw padding >= 768, photo full width >= 992) but six visible differences, too many for an additive tweak without changing /service: (1) height 40vh at every width vs 60vh / 50vh (>=768) / 40vh (>=992) - on a 390x844 phone this hero is 360px, hero-dim-photo 506px; (2) photo object-position 50% 50% vs 68% 25%; (3) text box padding 0 below 768 vs 10px; (4) h1 40px/44px weight 300 (theme default) with margin 26.8px 0 0 vs weight 400 margin 26.8px 0; (5) a subtitle h2 25px/27.5px 500 white margin 20.75px 0 instead of a 16px paragraph; (6) TWO buttons: 'Choose a Plan' filled #007acb, no border, padding 13px 20px, 13.5px/500, radius 2px (136x48) + 'Contact Support' outline transparent, 1px solid #fff, padding 12px 20px (155x48), inline with ~5px gap; hero-dim-photo has one outline CTA only. Same content model as hero-dim-photo (image, imageAlt, text), so the variant can share its JS structure."
+  },
+  "contentPattern": {
+    "baseBlock": "hero",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "image (reference) + imageAlt"
+        ]
+      },
+      {
+        "row": 2,
+        "cells": [
+          "text (richtext): h1, h2 subtitle, <p><strong><a>filled</a></strong></p>, <p><em><a>outline</a></em></p>"
+        ]
+      }
+    ],
+    "structure": "Image row then rich-text row. Consecutive paragraphs holding only one link render side by side as buttons: bold link = filled, italic link = outline (plain link = filled)."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service/plans/centrifuge hero (body.theme-mybeckman.mybeckman-inner).",
+  "reuseGuidance": "Use for mybeckman.in inner-page heroes with a dimmed photo, h1 + subtitle and one or two buttons. For a single outline CTA and 60/50/40vh height use hero-dim-photo.",
+  "sourceUrl": "https://www.mybeckman.in/service/plans/centrifuge"
+}

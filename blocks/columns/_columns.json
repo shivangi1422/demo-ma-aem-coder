@@ -42,7 +42,8 @@
           "value": "",
           "options": [
             { "name": "Default", "value": "" },
-            { "name": "Media + text (mybeckman.in: 350px images, click-to-play video)", "value": "media" }
+            { "name": "Media + text (mybeckman.in: 350px images, click-to-play video)", "value": "media" },
+            { "name": "Text + button (mybeckman.in: 2 columns from 992px, buttons aligned)", "value": "cta" }
           ]
         }
       ]

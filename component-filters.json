@@ -36,7 +36,9 @@
       "cards-icon-border",
       "cards-button-caption",
       "cards-benefit-check",
-      "cards-product-plan"
+      "cards-product-plan",
+      "hero-dim-buttons",
+      "table-plan-compare"
     ]
   },
   {
@@ -136,6 +138,12 @@
     "id": "jump-nav",
     "components": [
       "jump-nav-link"
+    ]
+  },
+  {
+    "id": "table-plan-compare",
+    "components": [
+      "table-plan-compare-row"
     ]
   },
   {

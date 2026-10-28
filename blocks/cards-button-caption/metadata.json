@@ -27,10 +27,11 @@
     "description": "mybeckman.in /service 'Get in Touch' contact band (section style 'blue, centered').",
     "pagesUsing": [
       "/en-in/service",
-      "/en-in/service/plans"
+      "/en-in/service/plans",
+      "/en-in/service/plans/centrifuge"
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-27"
+    "reuseCount": 2,
+    "lastUsed": "2026-10-28"
   },
   "reuseGuidance": "Use for 2-4 call-to-action buttons with captions on a blue mybeckman.in band (tel:/mailto:/page links).",
   "sourceUrl": "https://www.mybeckman.in/service"

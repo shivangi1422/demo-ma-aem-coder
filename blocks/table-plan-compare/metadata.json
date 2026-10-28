@@ -1,0 +1,172 @@
+{
+  "variantName": "table-plan-compare",
+  "baseBlock": "table",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "layout": "Full-width semantic table (border-collapse) in a horizontally scrollable wrapper; no stacking on mobile. Legend below.",
+    "groupHeader": "Group row: #004666, white 16px/700 uppercase, letter-spacing .05em, padding 16px 0, 2px #000 bottom border; 10px spacer column between groups.",
+    "cells": "11.2px/1.65, padding 8.4px, centred, 1px #778081 left/bottom borders; label column left-aligned 700 without left border; column-header row 700 with a #004666 corner cell.",
+    "highlight": "Highlighted plan column: 5px #0097ce left/right borders, top on its header cell and bottom on the last row; blue text and markers.",
+    "markers": ":dot: 10px filled circle (#000), :dot-ring: 10px ring with 2px border; visually-hidden text for screen readers.",
+    "legend": "13.2px/1.65 #888, paragraphs 13.2px apart, inline markers with a 5px gap.",
+    "purpose": "Feature x plan comparison grid with grouped plan columns and a recommended plan.",
+    "tableStructure": {
+      "wrapper": "#service-plans-table.wrapper: width 100%, overflow-x auto, font Gotham (-> Montserrat) 16px. table width 100%, border-collapse collapse, cellpadding/cellspacing 0.",
+      "columns": "7 grid columns: [feature label] [WA] [EW] [SU] [spacer] [PV1] [PT]. At 1440 (1170px table): label and each plan column 192px, spacer 13px (declared 10px). Declared widths (td 80px, header row 150px) are overridden by the 100% table, so columns share space evenly.",
+      "groupHeaderRow": {
+        "markup": "thead tr: th(colspan 1, empty) | th.section-header colspan 3 'WARRANTY PERIOD' | th.blank (spacer) | th.section-header colspan 2 'POST-WARRANTY PERIOD'",
+        "style": "th 16px/26.4px 700, white, letter-spacing .05em (0.8px), uppercase, centred, padding 16px 0, border-bottom 2px solid #000; .section-header background #004666; first (corner) th transparent but keeps the 2px #000 bottom border; spacer th 10px, transparent, no border. Height 61px at 1440."
+      },
+      "columnHeaderRow": {
+        "markup": "first tbody tr: td(empty) | 'WA - Warranty' | 'EW - Extension Warranty' | 'SU - StartUp Care*' | td.blank | 'PV1 - Preventative Plus' | 'PT - Protective'",
+        "style": "11.2px/18.48px 700 #000 centred, padding 8.4px; the empty label cell background #004666 (white text); highlighted PT cell gets border-top 5px solid #0097ce and black text. Height 38px at 1440."
+      },
+      "bodyRows": [
+        {
+          "label": "Labor and Travel for Repair",
+          "WA": "dot",
+          "EW": "dot",
+          "SU": "dot",
+          "PV1": "",
+          "PT": "dot"
+        },
+        {
+          "label": "Certified Parts for Repair",
+          "WA": "dot",
+          "EW": "dot",
+          "SU": "dot",
+          "PV1": "10% Off",
+          "PT": "dot"
+        },
+        {
+          "label": "Annual Preventive Maintenance",
+          "WA": "",
+          "EW": "",
+          "SU": "dot",
+          "PV1": "dot",
+          "PT": "dot"
+        },
+        {
+          "label": "Certified Parts for Preventative Maintenance",
+          "WA": "",
+          "EW": "",
+          "SU": "dot",
+          "PV1": "dot",
+          "PT": "dot"
+        },
+        {
+          "label": "Telephone / Email Technical Support",
+          "WA": "dot",
+          "EW": "dot",
+          "SU": "dot",
+          "PV1": "dot",
+          "PT": "dot"
+        },
+        {
+          "label": "Modification Type 1",
+          "WA": "dot",
+          "EW": "dot",
+          "SU": "dot",
+          "PV1": "dot",
+          "PT": "dot"
+        },
+        {
+          "label": "Modification Type 2",
+          "WA": "dot",
+          "EW": "dot",
+          "SU": "dot",
+          "PV1": "",
+          "PT": "dot"
+        },
+        {
+          "label": "Training",
+          "WA": "",
+          "EW": "",
+          "SU": "dot",
+          "PV1": "",
+          "PT": ""
+        },
+        {
+          "label": "Drive for Ultracentrifuge",
+          "WA": "dot",
+          "EW": "dot",
+          "SU": "dot",
+          "PV1": "10% off",
+          "PT": "10% off"
+        },
+        {
+          "label": "Operational Qualification",
+          "WA": "",
+          "EW": "",
+          "SU": "ring",
+          "PV1": "ring",
+          "PT": "ring"
+        },
+        {
+          "label": "Installation Qualification / Operational Qualification",
+          "WA": "ring",
+          "EW": "ring",
+          "SU": "ring",
+          "PV1": "ring",
+          "PT": "ring"
+        }
+      ],
+      "cellStyle": "td 11.2px (0.7em)/18.48px #000, padding 8.4px (0.75em), centred, border-left 1px solid #778081, border-bottom 1px solid #778081. Label column (first): left-aligned, 700, no left border. PV1 column (right of spacer): no left border. Spacer td: padding 0, no borders. Values 400. One-line rows 36px, two-line labels 55px at 1440.",
+      "markers": "dot = div.circle: 10x10, radius 10px, #000, display block, margin auto. ring = div.whiteCircle on source (UNSTYLED - live bug, renders nothing); intended style is the stylesheet's .emptycircle: 10x10, radius 10px, 2px solid #000, transparent. Text values ('10% Off', '10% off') are plain cell text (case as on source).",
+      "highlightedColumn": "PT (7th grid column): every body cell border-left 5px + border-right 5px solid #0097ce, text #0097ce (so '10% off' is blue), dots #0097ce, ring border #0097ce; column-header cell adds border-top 5px #0097ce, text stays #000 and 700. Intended border-bottom 5px #0097ce on the last row is never applied live (bug: rule targets tr:nth-child(15), table has 12 rows) -> column is open at the bottom live; recommend closing it.",
+      "legend": "div.footnotes inside the wrapper: 13.2px (0.825em)/21.78px #888; first p is empty (&nbsp;) and only adds spacing (p margins 13.2px 0); then p: inline-block 10px black dot directly followed by 'included' (no gap); p: 'optional at additional charge' with an unstyled span.whiteCircle (no symbol shown live; should show the ring). Legend top 12px below the table at 1440.",
+      "mobile": "No stacking: the wrapper scrolls horizontally (overflow-x auto). At 390 the wrapper is 374px wide, the table's min-content width 478px; group header text wraps (87px tall), column headers wrap to 4 lines (74px), label column ~102px, plan columns 61-90px. Breadcrumb hidden, section padding 15.6px 7.8px."
+    }
+  },
+  "contentPattern": {
+    "baseBlock": "table",
+    "rows": [
+      {
+        "row": 1,
+        "cells": [
+          "groups (multi text: 'LABEL | span')"
+        ]
+      },
+      {
+        "row": 2,
+        "cells": [
+          "highlight ('none' or 1..6)"
+        ]
+      },
+      {
+        "row": 3,
+        "cells": [
+          "legend (richtext)"
+        ]
+      },
+      {
+        "row": "4",
+        "cells": [
+          "(empty label)",
+          "plan1 header",
+          "plan2 header",
+          "...",
+          "plan6 header"
+        ]
+      },
+      {
+        "row": "5..n",
+        "cells": [
+          "feature label",
+          "plan1",
+          "plan2",
+          "plan3",
+          "plan4",
+          "plan5",
+          "plan6"
+        ]
+      }
+    ],
+    "structure": "xwalk container: three single-cell block-field rows (groups, highlight, legend), then one row per Plan Row item with 7 cells [label, plan1..plan6]. First item = column headers. Cell values ':dot:' / ':dot-ring:' / text / empty. Plan columns empty in all rows are dropped."
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": "mybeckman.in /service/plans/centrifuge 'Choose the plan' comparison table (body.theme-mybeckman.mybeckman-inner).",
+  "reuseGuidance": "Use for any mybeckman.in service-plan comparison (1-6 plans, grouped columns, optional highlighted plan). Keep the legend in the block.",
+  "sourceUrl": "https://www.mybeckman.in/service/plans/centrifuge"
+}

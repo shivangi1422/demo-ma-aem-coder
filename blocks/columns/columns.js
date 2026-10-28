@@ -1,4 +1,5 @@
 import { loadCSS } from '../../scripts/aem.js';
+import { rowContentCells } from '../../scripts/scripts.js';
 
 export default async function decorate(block) {
   // variant "media" (mybeckman.in inner pages: media + text): own decoration and styles
@@ -9,6 +10,17 @@ export default async function decorate(block) {
     ]);
     decorateMediaText(block);
     return;
+  }
+
+  // variant "cta" (mybeckman.in inner pages): column content delivered inside wrapper
+  // elements (authoring) is lifted into the column so the CSS can align the buttons
+  if (block.classList.contains('cta')) {
+    [...block.children].forEach((row) => {
+      const roots = rowContentCells(row);
+      [...row.children].forEach((col, i) => {
+        if (roots[i] && roots[i] !== col) col.replaceChildren(...roots[i].childNodes);
+      });
+    });
   }
 
   const cols = [...block.firstElementChild.children];

@@ -190,8 +190,8 @@ export function decorateMain(main) {
 const PATH_THEMES = [
   // mybeckman.in home page
   [/^(\/content(\/[^/]+)?)?\/en-in(\.html|\/(index(\.html)?)?)?$/, 'theme-mybeckman'],
-  // mybeckman.in inner pages (inner-page design): service hub, service plans
-  [/^(\/content(\/[^/]+)?)?\/en-in\/service(\/plans)?(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
+  // mybeckman.in inner pages (inner-page design): service hub, service plans, centrifuge plans
+  [/^(\/content(\/[^/]+)?)?\/en-in\/service(\/plans(\/centrifuge)?)?(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
 ];
 
 function applyPathTheme() {

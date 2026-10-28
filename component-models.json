@@ -185,6 +185,10 @@
             "value": "wide"
           },
           {
+            "name": "Wide, taller mobile padding (4vw 2vw below 768px)",
+            "value": "wide-tall"
+          },
+          {
             "name": "Split (intro beside block)",
             "value": "split"
           },
@@ -499,6 +503,10 @@
           {
             "name": "Media + text (mybeckman.in: 350px images, click-to-play video)",
             "value": "media"
+          },
+          {
+            "name": "Text + button (mybeckman.in: 2 columns from 992px, buttons aligned)",
+            "value": "cta"
           }
         ]
       }
@@ -695,6 +703,32 @@
     ]
   },
   {
+    "id": "hero-dim-buttons",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Background Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (h1, h2 subtitle, bold link = filled button, italic link = outline button)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "hero-dim-photo",
     "fields": [
       {
@@ -866,6 +900,116 @@
         "value": "",
         "label": "Attribution",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-plan-compare",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "groups",
+        "label": "Column groups (Label: number of plan columns, comma-separated)",
+        "description": "e.g. 'Warranty Period: 3, Post-Warranty Period: 2'. A spacer column is inserted between groups."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "highlight",
+        "label": "Highlighted plan column",
+        "value": "none",
+        "options": [
+          {
+            "name": "None",
+            "value": "none"
+          },
+          {
+            "name": "Plan 1",
+            "value": "1"
+          },
+          {
+            "name": "Plan 2",
+            "value": "2"
+          },
+          {
+            "name": "Plan 3",
+            "value": "3"
+          },
+          {
+            "name": "Plan 4",
+            "value": "4"
+          },
+          {
+            "name": "Plan 5",
+            "value": "5"
+          },
+          {
+            "name": "Plan 6",
+            "value": "6"
+          }
+        ]
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "legend",
+        "label": "Legend (:dot: included, :dot-ring: optional)",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "table-plan-compare-row",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Feature (leave empty on the first row = column headers)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "plan1",
+        "label": "Plan 1 (:dot:, :dot-ring:, text or empty)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "plan2",
+        "label": "Plan 2",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "plan3",
+        "label": "Plan 3",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "plan4",
+        "label": "Plan 4",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "plan5",
+        "label": "Plan 5",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "plan6",
+        "label": "Plan 6",
+        "value": ""
       }
     ]
   },

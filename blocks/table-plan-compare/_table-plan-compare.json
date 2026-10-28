@@ -1,0 +1,155 @@
+{
+  "definitions": [
+    {
+      "title": "Table Plan Compare",
+      "id": "table-plan-compare",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Table Plan Compare",
+              "model": "table-plan-compare",
+              "filter": "table-plan-compare"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Plan Row",
+      "id": "table-plan-compare-row",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Plan Row",
+              "model": "table-plan-compare-row"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "table-plan-compare",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "groups",
+          "label": "Column groups (Label: number of plan columns, comma-separated)",
+          "description": "e.g. 'Warranty Period: 3, Post-Warranty Period: 2'. A spacer column is inserted between groups."
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "highlight",
+          "label": "Highlighted plan column",
+          "value": "none",
+          "options": [
+            {
+              "name": "None",
+              "value": "none"
+            },
+            {
+              "name": "Plan 1",
+              "value": "1"
+            },
+            {
+              "name": "Plan 2",
+              "value": "2"
+            },
+            {
+              "name": "Plan 3",
+              "value": "3"
+            },
+            {
+              "name": "Plan 4",
+              "value": "4"
+            },
+            {
+              "name": "Plan 5",
+              "value": "5"
+            },
+            {
+              "name": "Plan 6",
+              "value": "6"
+            }
+          ]
+        },
+        {
+          "component": "richtext",
+          "valueType": "string",
+          "name": "legend",
+          "label": "Legend (:dot: included, :dot-ring: optional)",
+          "value": ""
+        }
+      ]
+    },
+    {
+      "id": "table-plan-compare-row",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "label",
+          "label": "Feature (leave empty on the first row = column headers)",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "plan1",
+          "label": "Plan 1 (:dot:, :dot-ring:, text or empty)",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "plan2",
+          "label": "Plan 2",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "plan3",
+          "label": "Plan 3",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "plan4",
+          "label": "Plan 4",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "plan5",
+          "label": "Plan 5",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "plan6",
+          "label": "Plan 6",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "table-plan-compare",
+      "components": [
+        "table-plan-compare-row"
+      ]
+    }
+  ]
+}
