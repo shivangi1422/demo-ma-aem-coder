@@ -322,8 +322,14 @@ main :is(h1, h2, h3, h4, h5, h6) {
 }
 
 main h1 {
+  margin: 24px 0;
   color: var(--mybeckman-text);
-  font-size: 30px;
+  font-size: 36px;
+}
+
+main .default-content-wrapper :is(p, ul, ol),
+main p.button-wrapper {
+  margin: 16px 0;
 }
 
 main h2 {
@@ -373,7 +379,6 @@ main a.button.secondary:focus-visible {
 /* stylelint-enable no-descending-specificity */
 
 @media (width >= 900px) {
-  main h1 { font-size: 36px; }
   main h3 { font-size: 29px; }
 }
 
@@ -399,19 +404,20 @@ main > .section {
   margin: 40px 0;
 }
 
+/* content column as on mybeckman.in: 1600px max, 15px gutters (65px from 768px) */
 main > .section > div {
-  max-width: 1200px;
+  max-width: 1600px;
   margin: auto;
-  padding: 0 24px;
+  padding: 0 15px;
 }
 
 main > .section:first-of-type {
   margin-top: 0;
 }
 
-@media (width >= 900px) {
+@media (width >= 768px) {
   main > .section > div {
-    padding: 0 32px;
+    padding: 0 65px;
   }
 }
 
