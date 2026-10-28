@@ -57,6 +57,11 @@
   line-height: 1.25;
 }
 
+/* bullet lists authored inside a card: solid dots (not the nested-list circle) */
+.cards-grid .cards-grid-body ul {
+  list-style-type: disc;
+}
+
 .cards-grid .cards-grid-body h3,
 .cards-grid .cards-grid-body h4 {
   margin: 0;
