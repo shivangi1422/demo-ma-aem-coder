@@ -1,0 +1,51 @@
+{
+  "definitions": [
+    {
+      "title": "Columns Anchor Nav",
+      "id": "columns-anchor-nav",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/columns/v1/columns",
+            "template": {
+              "name": "Columns Anchor Nav",
+              "model": "columns-anchor-nav",
+              "filter": "columns-anchor-nav",
+              "columns": "2",
+              "rows": "1"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "columns-anchor-nav",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "columns",
+          "value": "",
+          "label": "Columns"
+        },
+        {
+          "component": "text",
+          "valueType": "number",
+          "name": "rows",
+          "value": "",
+          "label": "Rows"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "columns-anchor-nav",
+      "components": [
+        "column"
+      ]
+    }
+  ]
+}

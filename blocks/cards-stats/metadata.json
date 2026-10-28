@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-stats",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "4-up white rounded tiles, large centered blue number with small '+', small grey label."
+  },
+  "contentPattern": {
+    "rows": "One row per card: [image cell (may be empty but present)] [text cell: richtext]",
+    "usedAs": "4 rows, empty image, text = p<strong>value</strong> + p label",
+    "reason": "4 repeating stat tiles that wrap responsively: Cards."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-stats"
+  ],
+  "usage": {
+    "description": "Impact stats row.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Use for 2-4 headline numbers with labels; first bold paragraph is the value."
+}

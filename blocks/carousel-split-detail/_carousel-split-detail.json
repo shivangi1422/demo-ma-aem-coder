@@ -1,0 +1,70 @@
+{
+  "definitions": [
+    {
+      "title": "Carousel Split Detail",
+      "id": "carousel-split-detail",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Carousel Split Detail",
+              "filter": "carousel-split-detail"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Split Detail Slide",
+      "id": "carousel-split-detail-slide",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Split Detail Slide",
+              "model": "carousel-split-detail-slide"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "carousel-split-detail-slide",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "media_image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "media_imageAlt",
+          "label": "Image Alt",
+          "value": ""
+        },
+        {
+          "component": "richtext",
+          "name": "content_text",
+          "value": "",
+          "label": "Text",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "carousel-split-detail",
+      "components": [
+        "carousel-split-detail-slide"
+      ]
+    }
+  ]
+}

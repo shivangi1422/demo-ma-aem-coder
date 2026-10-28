@@ -1,0 +1,26 @@
+{
+  "variantName": "carousel-split-detail",
+  "baseBlock": "carousel",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "Single wide rounded card: light grey text panel (H3, list, stat metrics row) left, dark image right; circular arrows with dots centered above."
+  },
+  "contentPattern": {
+    "rows": "One row per slide: [image cell] [text cell: richtext]",
+    "usedAs": "5 rows; text = H3 + p + H4 + ul + metric paragraphs",
+    "reason": "Interactive slider (prev/next arrows + 5 dots) of capability detail panels."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "carousel-split-detail"
+  ],
+  "usage": {
+    "description": "Capability detail slider.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Use for one-at-a-time detail panels with text, key-capability list and metrics beside an image."
+}

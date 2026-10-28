@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-capability",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "Text-only 3-column items, no borders/background, bold sans H3, grey text, small blue 'Learn More' link."
+  },
+  "contentPattern": {
+    "rows": "One row per card: [image cell (may be empty but present)] [text cell: richtext]",
+    "usedAs": "5 rows, empty image, text = H3 + p + link",
+    "reason": "5 look-alike capability items that flow and wrap (3+2): Cards without images."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-capability"
+  ],
+  "usage": {
+    "description": "Capabilities overview; Learn More opens the matching slide of carousel-split-detail in the same section.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Use for text-only capability teasers; pair with carousel-split-detail for detail panels."
+}

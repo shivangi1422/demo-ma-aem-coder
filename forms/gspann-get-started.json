@@ -1,0 +1,42 @@
+{
+  "name": "gspann-get-started",
+  "data": [
+    {
+      "Name": "email",
+      "Type": "email",
+      "Description": "",
+      "Placeholder": "Enter your email address",
+      "Label": "Email address",
+      "Read Only": "",
+      "Mandatory": true,
+      "Pattern": "",
+      "Step": "",
+      "Min": "",
+      "Max": "",
+      "Value": "",
+      "Options": "",
+      "OptionNames": "",
+      "Fieldset": "",
+      "Repeatable": ""
+    },
+    {
+      "Name": "submit",
+      "Type": "submit",
+      "Description": "",
+      "Placeholder": "",
+      "Label": "Get Started",
+      "Read Only": "",
+      "Mandatory": "",
+      "Pattern": "",
+      "Step": "",
+      "Min": "",
+      "Max": "",
+      "Value": "",
+      "Options": "",
+      "OptionNames": "",
+      "Fieldset": "",
+      "Repeatable": ""
+    }
+  ],
+  ":type": "sheet"
+}

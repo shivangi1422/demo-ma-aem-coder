@@ -1,0 +1,172 @@
+/*
+ * hero-overlay-left: values from the computed styles of
+ * https://www.gspann.com/services/application-services-and-modernization
+ * (section.service-hero.no-gradient). Source breakpoints: 375 / 480 / 768 / 992px (max-width),
+ * written mobile first as (width > N).
+ */
+
+.hero-overlay-left {
+  position: relative;
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  min-height: 400px;
+  padding: 100px 0 60px;
+  overflow: hidden;
+  background: var(--gspann-gradient-navy, linear-gradient(135deg, #0f122e 0%, #141b41 100%));
+}
+
+/* background image (no gradient overlay on the source: .no-gradient) */
+.hero-overlay-left .hero-overlay-left-media {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-overlay-left .hero-overlay-left-media > div,
+.hero-overlay-left .hero-overlay-left-media p,
+.hero-overlay-left .hero-overlay-left-media picture {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+}
+
+.hero-overlay-left .hero-overlay-left-media img {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: 50% 50%;
+}
+
+/* content column (source .container) */
+.hero-overlay-left .hero-overlay-left-content {
+  flex: 1 1 0%;
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+.hero-overlay-left .hero-overlay-left-content > div {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+}
+
+.hero-overlay-left .hero-overlay-left-content h1 {
+  margin: 0 0 24px;
+  color: var(--gspann-text-inverse, #fff);
+  font-family: var(--gspann-heading-font, 'Source Serif 4', serif);
+  font-size: clamp(28px, 5vw, 40px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+
+  /* the source serves static Source Serif 4 files (the opsz 14 instance); pin the variable font to it */
+  font-variation-settings: 'opsz' 14;
+}
+
+.hero-overlay-left .hero-overlay-left-content p {
+  max-width: 650px;
+  margin: 0;
+  color: rgb(255 255 255 / 90%);
+  font-family: inter, sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+/* CTA row (source .service-hero-ctas) */
+.hero-overlay-left .hero-overlay-left-content p.hero-overlay-left-cta {
+  display: flex;
+  flex-flow: column wrap;
+  gap: 16px;
+  max-width: none;
+  margin: 32px 0 0;
+}
+
+main .hero-overlay-left a.hero-overlay-left-button:any-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 100%;
+  min-height: 44px;
+  padding: 14px 32px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--gspann-primary, #005dff);
+  box-shadow: 0 4px 14px rgb(0 93 255 / 25%);
+  color: var(--gspann-text-inverse, #fff);
+  font-family: var(--gspann-body-font, inter, sans-serif);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.6;
+  text-align: center;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all var(--gspann-transition, 0.3s ease);
+}
+
+main .hero-overlay-left a.hero-overlay-left-button:hover {
+  background-color: var(--gspann-primary-hover, #0048cc);
+  box-shadow: 0 6px 20px rgb(0 93 255 / 35%);
+  color: var(--gspann-text-inverse, #fff);
+  transform: translateY(-2px);
+}
+
+/* the source keeps the browser focus ring */
+main .hero-overlay-left a.hero-overlay-left-button:focus-visible {
+  outline: revert;
+  outline-offset: revert;
+}
+
+@media (width > 375px) {
+  .hero-overlay-left .hero-overlay-left-content {
+    padding: 0 16px;
+  }
+}
+
+@media (width > 480px) {
+  .hero-overlay-left .hero-overlay-left-content {
+    padding: 0 20px;
+  }
+}
+
+@media (width > 768px) {
+  .hero-overlay-left {
+    min-height: 500px;
+    padding: 120px 0 80px;
+  }
+
+  .hero-overlay-left .hero-overlay-left-content {
+    padding: 0 24px;
+  }
+
+  .hero-overlay-left .hero-overlay-left-content h1 {
+    font-size: 44px;
+  }
+
+  .hero-overlay-left .hero-overlay-left-content p {
+    font-size: 20px;
+  }
+
+  .hero-overlay-left .hero-overlay-left-content p.hero-overlay-left-cta {
+    flex-direction: row;
+  }
+
+  main .hero-overlay-left a.hero-overlay-left-button:any-link {
+    width: auto;
+    min-height: auto;
+    text-align: start;
+  }
+}
+
+@media (width > 992px) {
+  .hero-overlay-left .hero-overlay-left-content h1 {
+    font-size: clamp(44px, 5vw, 52px);
+  }
+}

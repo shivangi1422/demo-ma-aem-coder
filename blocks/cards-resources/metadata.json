@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-resources",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "Horizontal scroll track (3 visible) with prev/next arrows; image-top white cards, purple type badge, serif title, clamped excerpt, right-aligned 'Read More ->'."
+  },
+  "contentPattern": {
+    "rows": "One row per card: [image cell (may be empty but present)] [text cell: richtext]",
+    "usedAs": "6 rows, image = article image, text = badge p + H3 + p + link",
+    "reason": "Dynamic list: each item links to an insight detail page with a type tag, and the track scrolls with prev/next. Cards (not Carousel) per the dynamic-list rule; the variant adds the horizontal scroller."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-resources"
+  ],
+  "usage": {
+    "description": "Insights/resources scroller.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Use for horizontally scrolling article/case-study cards with type badge."
+}

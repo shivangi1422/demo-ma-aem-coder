@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-leader",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "Narrow person card: portrait on light grey, serif name, title, blue 'Get In Touch ->' link, soft shadow; left-aligned grid."
+  },
+  "contentPattern": {
+    "rows": "One row per card: [image cell (may be empty but present)] [text cell: richtext]",
+    "usedAs": "1 row, image = portrait, text = H3 + p + link",
+    "reason": "Leadership grid of person cards; item count varies between service pages, so it is Cards even with one leader."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-leader"
+  ],
+  "usage": {
+    "description": "Leadership contact cards.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Use for person cards with portrait, name, title and contact link."
+}

@@ -1,0 +1,29 @@
+{
+  "variantName": "hero-overlay-left",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "Full-bleed photo with dark left overlay, left-aligned white serif H1, paragraph, blue pill button. Existing 'hero' is Beckman-styled, not reused."
+  },
+  "contentPattern": {
+    "rows": [
+      "Row 1: background image (image, imageAlt)",
+      "Row 2: text (richtext: H1, paragraph, CTA link)"
+    ],
+    "usedAs": "image = hero photo; text = H1 + paragraph + 'Talk to an Expert' link",
+    "reason": "Full-bleed background photo with overlaid H1, intro and CTA is a hero."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "hero-overlay-left"
+  ],
+  "usage": {
+    "description": "Service page hero.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Use for a full-bleed photo hero with left-aligned white text and one CTA."
+}

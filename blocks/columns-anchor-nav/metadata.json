@@ -1,0 +1,26 @@
+{
+  "variantName": "columns-anchor-nav",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "Sticky full-width gradient bar: page title left, horizontal anchor links right, active link pill."
+  },
+  "contentPattern": {
+    "rows": "One row per line of columns; every row has the same number of cells. Each cell holds rich text/images.",
+    "usedAs": "1 row x 2 cells: [title paragraph] [ul of anchor links]",
+    "reason": "Fixed side-by-side layout (page title left, anchor link row right) that never wraps into a grid; sticky behaviour and active-link highlighting need block code."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-anchor-nav"
+  ],
+  "usage": {
+    "description": "Sticky in-page anchor bar (page title + jump links) directly under the header.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Use for a sticky page-level \"on this page\" bar. Links resolve to an element with that id, or to the section whose eyebrow/heading contains the link label."
+}

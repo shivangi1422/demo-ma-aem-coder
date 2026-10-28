@@ -1,0 +1,271 @@
+/* Values from the computed styles of the GSPANN resource carousel (#insights .rc-track) */
+.cards-resources {
+  position: relative;
+}
+
+/* prev / next arrows */
+.cards-resources .cards-resources-nav {
+  display: flex;
+  gap: 12px;
+  margin: 0 0 40px;
+}
+
+/* below the section header: 20px under the subtitle, 40px above the track */
+.cards-resources.cards-resources-has-header .cards-resources-nav {
+  margin-top: -20px;
+}
+
+.cards-resources .cards-resources-nav[hidden] {
+  display: none;
+}
+
+.cards-resources .cards-resources-prev,
+.cards-resources .cards-resources-next {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  width: 44px;
+  height: 44px;
+  margin: 0;
+  padding: 0;
+  border: 1.5px solid #c5cad3;
+  border-radius: 50%;
+  background: none;
+  color: var(--gspann-heading, #0f122e);
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.cards-resources .cards-resources-prev svg,
+.cards-resources .cards-resources-next svg {
+  display: block;
+  width: 20px;
+  height: 20px;
+}
+
+.cards-resources .cards-resources-prev:disabled,
+.cards-resources .cards-resources-next:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.cards-resources .cards-resources-prev:focus-visible,
+.cards-resources .cards-resources-next:focus-visible {
+  outline: 2px solid var(--gspann-primary, #005dff);
+  outline-offset: 2px;
+}
+
+.cards-resources .cards-resources-prev:hover:not(:disabled),
+.cards-resources .cards-resources-next:hover:not(:disabled) {
+  border-color: var(--gspann-primary, #005dff);
+  color: var(--gspann-primary, #005dff);
+}
+
+/* track */
+.cards-resources .cards-resources-track {
+  position: relative;
+  display: flex;
+  align-items: flex-start;
+  gap: 24px;
+  margin: 0;
+  padding: 0 0 4px;
+  list-style: none;
+  overflow: auto hidden;
+  overscroll-behavior-x: contain;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.cards-resources .cards-resources-track::-webkit-scrollbar {
+  display: none;
+}
+
+/* card: the whole card is the link */
+.cards-resources .cards-resources-track > li {
+  position: relative;
+  display: flex;
+  flex: 0 0 85%;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 260px;
+  overflow: hidden;
+  border-radius: 16px;
+  background-color: var(--gspann-surface, #fff);
+  box-shadow: 0 4px 12px rgb(0 0 0 / 8%);
+  scroll-snap-align: start;
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.cards-resources .cards-resources-track > li:hover {
+  box-shadow: 0 12px 32px rgb(0 0 0 / 12%);
+  transform: translateY(-6px);
+}
+
+.cards-resources .cards-resources-track > li:has(.cards-resources-link a:focus-visible) {
+  outline: 2px solid var(--gspann-primary, #005dff);
+  outline-offset: -2px;
+}
+
+.cards-resources .cards-resources-card-empty {
+  display: none;
+}
+
+.cards-resources .cards-resources-card-image {
+  position: relative;
+  height: 220px;
+  overflow: hidden;
+  border-radius: 16px 16px 0 0;
+}
+
+.cards-resources .cards-resources-card-image p,
+.cards-resources .cards-resources-card-image picture {
+  display: block;
+  height: 100%;
+  margin: 0;
+}
+
+.cards-resources .cards-resources-card-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-resources .cards-resources-card-body {
+  display: flex;
+  flex: 1 1 0%;
+  flex-direction: column;
+  padding: 16px;
+  color: var(--gspann-text, #1a1a2e);
+  font-family: var(--gspann-body-font, inter, sans-serif);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cards-resources .cards-resources-card-body p {
+  margin: 0;
+}
+
+.cards-resources .cards-resources-card-body .cards-resources-badge {
+  align-self: flex-start;
+  margin: 0 0 18px;
+  padding: 8px 14px;
+  border-radius: 6px;
+  background: rgb(139 92 246 / 10%);
+  color: #7c3aed;
+  font-size: 10.4px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
+
+.cards-resources .cards-resources-card-body h3 {
+  display: -webkit-box;
+  margin: 0 0 14px;
+  overflow: hidden;
+  color: var(--gspann-heading, #0f122e);
+  font-family: var(--gspann-heading-font, 'Source Serif 4', serif);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: normal;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+}
+
+.cards-resources .cards-resources-card-body .cards-resources-excerpt {
+  display: -webkit-box;
+  flex: 1 1 0%;
+  margin: 0 0 20px;
+  overflow: hidden;
+  color: #525f7f;
+  font-size: 15.2px;
+  line-height: 1.65;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 3;
+  line-clamp: 3;
+}
+
+.cards-resources .cards-resources-card-body .cards-resources-link {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin: auto 0 0;
+  padding: 20px 0 0;
+}
+
+main .cards-resources .cards-resources-link a:any-link {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  color: #2563eb;
+  font-size: 14.4px;
+  font-weight: 600;
+  line-height: 1.6;
+  text-decoration: none;
+  transition: none;
+}
+
+/* stretches the link over the whole card */
+main .cards-resources .cards-resources-link a:any-link::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+}
+
+main .cards-resources .cards-resources-link a:any-link::after {
+  content: '\2192';
+  display: block;
+  transition: transform 0.2s;
+}
+
+main .cards-resources .cards-resources-link a:focus-visible {
+  outline: none;
+}
+
+.cards-resources .cards-resources-track > li:hover .cards-resources-link a::after {
+  transform: translate(4px);
+}
+
+@media (width > 480px) {
+  .cards-resources .cards-resources-track > li {
+    min-width: 300px;
+  }
+
+  .cards-resources .cards-resources-card-body {
+    padding: 24px;
+  }
+
+  .cards-resources .cards-resources-card-body h3 {
+    font-size: 21.6px;
+  }
+}
+
+@media (width > 768px) {
+  .cards-resources .cards-resources-nav {
+    justify-content: flex-end;
+  }
+
+  .cards-resources .cards-resources-track > li {
+    flex-basis: calc(50% - 12px);
+    min-width: 280px;
+  }
+
+  /* arrows at the right of the section header row, 40px below its top */
+  .cards-resources.cards-resources-has-header .cards-resources-nav {
+    position: absolute;
+    top: calc(40px - var(--cards-resources-header-offset, 0px));
+    right: 0;
+    margin: 0;
+  }
+}
+
+@media (width > 992px) {
+  .cards-resources .cards-resources-track > li {
+    flex-basis: calc(33.333% - 16px);
+    min-width: 300px;
+  }
+}

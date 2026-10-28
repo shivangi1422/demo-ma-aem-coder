@@ -1,0 +1,91 @@
+/* values from the computed styles of #results .impact-metrics-grid on gspann.com */
+.cards-stats > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin: 32px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-stats > ul > li {
+  padding: 32px;
+  border-radius: 16px;
+  background-color: var(--gspann-surface, #fff);
+  box-shadow: 0 4px 20px rgb(0 0 0 / 5%);
+  text-align: center;
+  transition: box-shadow 0.2s;
+}
+
+/* source applies this only to tiles that carry a link */
+.cards-stats > ul > li:has(a):hover {
+  box-shadow: 0 8px 30px rgb(0 93 255 / 12%);
+}
+
+.cards-stats .cards-stats-card-empty,
+.cards-stats .cards-stats-card-image {
+  display: none;
+}
+
+.cards-stats .cards-stats-value,
+.cards-stats .cards-stats-value strong {
+  display: flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  justify-content: center;
+  font-family: var(--gspann-body-font);
+  font-weight: inherit;
+  white-space: nowrap;
+}
+
+.cards-stats .cards-stats-card-body p {
+  margin: 0;
+}
+
+.cards-stats .cards-stats-card-body .cards-stats-value {
+  margin: 0 0 16px;
+}
+
+.cards-stats .cards-stats-number {
+  color: var(--gspann-primary, #005dff);
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.cards-stats .cards-stats-suffix {
+  margin-left: 4px;
+  color: var(--gspann-primary, #005dff);
+  font-size: 1.5rem;
+  font-weight: 600;
+  line-height: 1.6;
+  white-space: nowrap;
+}
+
+.cards-stats .cards-stats-card-body .cards-stats-label {
+  color: #555;
+  font-family: var(--gspann-body-font);
+  font-size: clamp(0.8rem, 1vw, 0.9rem);
+  line-height: 1.5;
+}
+
+@media (width > 768px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-stats .cards-stats-number {
+    font-size: clamp(1.75rem, 3.5vw, 3.5rem);
+  }
+
+  .cards-stats .cards-stats-suffix {
+    font-size: clamp(1rem, 1.8vw, 2rem);
+  }
+}
+
+@media (width > 1200px) {
+  .cards-stats > ul {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}

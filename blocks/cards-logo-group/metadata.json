@@ -1,0 +1,26 @@
+{
+  "variantName": "cards-logo-group",
+  "baseBlock": "cards",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "description": "White bordered rounded category cards, 3-up; title, description, 2x2 grid of grey logo tiles paginated with dots."
+  },
+  "contentPattern": {
+    "rows": "One row per card: [image cell (may be empty but present)] [text cell: richtext]",
+    "usedAs": "Category text row (H3 + p) followed by N image-only logo rows; JS regroups",
+    "reason": "10 look-alike category cards wrapping in a 3-column grid; each holds a logo set with pagination dots (interactive)."
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-logo-group"
+  ],
+  "usage": {
+    "description": "Technology partner categories with paginated logo grids.",
+    "pagesUsing": [
+      "/services/application-services-and-modernization"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-28"
+  },
+  "reuseGuidance": "Author a text row (H3 + p) per category followed by one image row per logo."
+}

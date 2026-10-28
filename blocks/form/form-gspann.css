@@ -1,0 +1,210 @@
+/*
+ * GSPANN overrides for the shared form block (body.gspann pages only).
+ * Values come from the source "cta-banner" subscribe form computed styles,
+ * see migration-work/form-gspann-extracted.css.
+ *
+ * This file is @imported at the top of form.css, before the vendored and
+ * Beckman rules, so every selector is prefixed with `body.gspann main .form.block`
+ * to outrank them. Beckman pages (no body.gspann) are unaffected.
+ *
+ * Layout: the email field wrapper uses display: contents so the input, the submit
+ * button and the validation message become grid items of the form. The source draws
+ * a 1px border around the input + button row (overflow hidden, 8px radius); here
+ * that outline is split across the input and the button so the error message can
+ * sit outside it, like the source .subscribe-form-error.
+ */
+
+/* stylelint-disable no-descending-specificity -- state rules follow their base rules per element */
+
+/*
+ * form-beckman.css zeroes the form-wrapper padding, which drops the GSPANN
+ * section side padding (styles/gspann.css: 12px, 16px > 375px, 20px > 480px,
+ * 24px > 768px); the block re-applies it.
+ */
+body.gspann main .form.block {
+  --gspann-form-border: 1px solid rgb(255 255 255 / 30%);
+
+  box-sizing: border-box;
+  padding: 0 12px;
+}
+
+@media (width > 375px) {
+  body.gspann main .form.block {
+    padding: 0 16px;
+  }
+}
+
+@media (width > 480px) {
+  body.gspann main .form.block {
+    padding: 0 20px;
+  }
+}
+
+@media (width > 768px) {
+  body.gspann main .form.block {
+    padding: 0 24px;
+  }
+}
+
+/* EDS puts the rendered <form> inside the authored reference paragraph */
+body.gspann main .form.block > div > div > p:has(> form) {
+  margin: 0;
+}
+
+body.gspann main .form.block form {
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+body.gspann main .form.block form .field-wrapper.field-email {
+  display: contents;
+}
+
+/* label kept for screen readers; the source only shows the placeholder */
+body.gspann main .form.block form .field-wrapper.field-email > label.field-label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+body.gspann main .form.block form .field-wrapper.field-email > input {
+  grid-row: 1;
+  grid-column: 1;
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  margin: 0;
+  padding: 16px 20px;
+  border: var(--gspann-form-border);
+  border-bottom: 0;
+  border-radius: 8px 8px 0 0;
+  outline: none;
+  background-color: rgb(255 255 255 / 5%);
+  background-clip: padding-box;
+  font-family: var(--gspann-body-font);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  color: var(--gspann-text-inverse);
+  text-align: start;
+  transition: color 0.2s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.2s cubic-bezier(0.4, 0, 0.2, 1), border-color 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+body.gspann main .form.block form .field-wrapper.field-email > input::placeholder {
+  color: rgb(255 255 255 / 50%);
+  opacity: 1;
+}
+
+body.gspann main .form.block form .field-wrapper.field-email > input:hover {
+  border-color: rgb(255 255 255 / 30%);
+}
+
+body.gspann main .form.block form .field-wrapper.field-email > input:focus {
+  outline: none;
+  background-color: rgb(255 255 255 / 8%);
+}
+
+/* validation message, styled like the source .subscribe-form-error */
+body.gspann main .form.block form .field-wrapper.field-email > .field-description {
+  grid-row: 3;
+  grid-column: 1 / -1;
+  margin: 12px 0 0;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 25.6px;
+  color: rgb(252 165 165);
+  text-align: center;
+}
+
+body.gspann main .form.block form .submit-wrapper {
+  grid-row: 2;
+  grid-column: 1;
+  width: 100%;
+  margin: 0;
+}
+
+body.gspann main .form.block form .submit-wrapper button {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: none;
+  height: 100%;
+  min-height: 0;
+  margin: 0;
+  padding: 16px 24px;
+  border: var(--gspann-form-border);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  background: var(--gspann-surface);
+  background-clip: padding-box;
+  font-family: var(--gspann-body-font);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 25.6px;
+  color: var(--gspann-navy);
+  white-space: nowrap;
+  cursor: pointer;
+  transition: var(--gspann-transition);
+}
+
+body.gspann main .form.block form .submit-wrapper button:hover {
+  border: var(--gspann-form-border);
+  border-top: 0;
+  background: rgb(255 255 255 / 90%);
+  background-clip: padding-box;
+  color: var(--gspann-navy);
+}
+
+body.gspann main .form.block form .submit-wrapper button:focus-visible {
+  border: var(--gspann-form-border);
+  border-top: 0;
+  background: var(--gspann-surface);
+  background-clip: padding-box;
+  color: var(--gspann-navy);
+}
+
+/* source: inline row above 640px */
+@media (width > 640px) {
+  body.gspann main .form.block form {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+
+  body.gspann main .form.block form .field-wrapper.field-email > input {
+    padding: 20px 24px;
+    border-bottom: var(--gspann-form-border);
+    border-right: 0;
+    border-radius: 8px 0 0 8px;
+  }
+
+  body.gspann main .form.block form .field-wrapper.field-email > .field-description {
+    grid-row: 2;
+  }
+
+  body.gspann main .form.block form .submit-wrapper {
+    grid-row: 1;
+    grid-column: 2;
+    width: auto;
+  }
+
+  body.gspann main .form.block form .submit-wrapper button,
+  body.gspann main .form.block form .submit-wrapper button:hover,
+  body.gspann main .form.block form .submit-wrapper button:focus-visible {
+    border: var(--gspann-form-border);
+    border-left: 0;
+  }
+
+  body.gspann main .form.block form .submit-wrapper button {
+    width: auto;
+    padding: 20px 40px;
+    border-radius: 0 8px 8px 0;
+  }
+}

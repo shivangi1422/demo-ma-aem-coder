@@ -1,0 +1,265 @@
+/*
+ * Values from the computed styles of nav.secondary-nav on
+ * https://www.gspann.com/services/application-services-and-modernization.
+ * The section gradient comes from the "blue-red-gradient" section style.
+ * Source breakpoints: <=375px, <=480px, <=768px (dropdown), desktop above.
+ */
+
+/* the section holding the bar sticks directly under the site header */
+main > .section.columns-anchor-nav-container {
+  position: sticky;
+  top: var(--nav-height);
+
+  /* above positioned block content (z-index 1-2) scrolling underneath */
+  z-index: 3;
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+/*
+ * drop below the fixed site header (z-index 2) while one of its menus is open
+ * (the header nav carries aria-expanded="true" permanently from 900px up)
+ */
+body:has(header .nav-drop[aria-expanded='true']) main > .section.columns-anchor-nav-container {
+  z-index: 1;
+}
+
+@media (width < 900px) {
+  body:has(header nav[aria-expanded='true']) main > .section.columns-anchor-nav-container {
+    z-index: 1;
+  }
+}
+
+main > .section.columns-anchor-nav-container > .columns-anchor-nav-wrapper {
+  max-width: 1280px;
+  margin-inline: auto;
+  padding: 0;
+}
+
+.columns-anchor-nav {
+  position: relative;
+  height: 52px;
+  color: var(--gspann-text-inverse);
+  font-family: var(--gspann-body-font);
+}
+
+/* mobile: the bar overlays the page when the dropdown opens */
+.columns-anchor-nav .columns-anchor-nav-bar {
+  position: absolute;
+  inset: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: space-between;
+  gap: 0;
+  padding: 0 12px;
+  background-image: var(--gspann-gradient-brand);
+}
+
+.columns-anchor-nav.is-open .columns-anchor-nav-bar {
+  box-shadow: 0 4px 12px rgb(0 0 0 / 15%);
+}
+
+.columns-anchor-nav .columns-anchor-nav-title {
+  position: relative;
+}
+
+.columns-anchor-nav .columns-anchor-nav-heading {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin: 0;
+  padding: 14px 0;
+  color: var(--gspann-text-inverse);
+  font-family: var(--gspann-body-font);
+  font-size: 14.4px;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: -0.01em;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.columns-anchor-nav .columns-anchor-nav-heading::after {
+  content: '\25BE';
+  color: rgb(255 255 255 / 80%);
+  font-size: 24px;
+  transition: transform 0.3s;
+}
+
+.columns-anchor-nav.is-open .columns-anchor-nav-heading::after {
+  transform: rotate(180deg);
+}
+
+/* invisible hit area over the title row that opens the dropdown */
+.columns-anchor-nav .columns-anchor-nav-toggle {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: inherit;
+  cursor: pointer;
+  appearance: none;
+}
+
+.columns-anchor-nav .columns-anchor-nav-toggle:focus-visible {
+  outline: 2px solid var(--gspann-text-inverse);
+  outline-offset: -2px;
+}
+
+.columns-anchor-nav .columns-anchor-nav-links ul,
+.columns-anchor-nav .columns-anchor-nav-links ol {
+  display: flex;
+  flex-flow: column;
+  align-items: stretch;
+  justify-content: flex-end;
+  gap: 0;
+  width: 100%;
+  max-height: 0;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style: none;
+  scrollbar-width: none;
+  visibility: hidden;
+  transition: max-height 0.3s, visibility 0s 0.3s;
+}
+
+.columns-anchor-nav .columns-anchor-nav-links ul::-webkit-scrollbar,
+.columns-anchor-nav .columns-anchor-nav-links ol::-webkit-scrollbar {
+  display: none;
+}
+
+.columns-anchor-nav.is-open .columns-anchor-nav-links ul,
+.columns-anchor-nav.is-open .columns-anchor-nav-links ol {
+  max-height: 400px;
+  visibility: visible;
+  transition: max-height 0.3s;
+}
+
+.columns-anchor-nav .columns-anchor-nav-links li {
+  display: flex;
+  align-items: stretch;
+  margin: 0;
+  white-space: nowrap;
+}
+
+.columns-anchor-nav .columns-anchor-nav-links a:any-link {
+  position: relative;
+  display: block;
+  padding: 14px 0;
+  border: none;
+  background: none;
+  color: rgb(255 255 255 / 90%);
+  font-size: 14.4px;
+  font-weight: 300;
+  line-height: 1;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.columns-anchor-nav .columns-anchor-nav-links a:hover {
+  background: rgb(255 255 255 / 15%);
+  color: var(--gspann-text-inverse);
+}
+
+.columns-anchor-nav .columns-anchor-nav-links a.is-active {
+  padding: 14px 12px;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 15%);
+  color: var(--gspann-text-inverse);
+  font-weight: 500;
+}
+
+.columns-anchor-nav .columns-anchor-nav-links a:focus-visible {
+  outline: 2px solid var(--gspann-text-inverse);
+  outline-offset: -2px;
+}
+
+@media (width > 375px) {
+  .columns-anchor-nav .columns-anchor-nav-bar {
+    padding: 0 16px;
+  }
+}
+
+@media (width > 480px) {
+  .columns-anchor-nav .columns-anchor-nav-bar {
+    padding: 0 20px;
+  }
+}
+
+/* desktop: title left, anchor links right in a 60px row */
+@media (width > 768px) {
+  .columns-anchor-nav {
+    position: static;
+    height: auto;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-bar,
+  .columns-anchor-nav.is-open .columns-anchor-nav-bar {
+    position: static;
+    flex-direction: row;
+    gap: 40px;
+    padding: 0 24px;
+    background-image: none;
+    box-shadow: none;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-title {
+    display: flex;
+    flex: 0 1 auto;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-heading {
+    justify-content: normal;
+    padding: 22px 0;
+    font-size: 16px;
+    cursor: auto;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-heading::after,
+  .columns-anchor-nav .columns-anchor-nav-toggle {
+    display: none;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-links {
+    display: flex;
+    flex: 0 1 auto;
+    justify-content: flex-end;
+    min-width: 0;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-links nav {
+    display: flex;
+    min-width: 0;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-links ul,
+  .columns-anchor-nav .columns-anchor-nav-links ol,
+  .columns-anchor-nav.is-open .columns-anchor-nav-links ul,
+  .columns-anchor-nav.is-open .columns-anchor-nav-links ol {
+    flex-flow: row nowrap;
+    width: auto;
+    max-height: none;
+    overflow: auto hidden;
+    visibility: visible;
+    transition: none;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-links a:any-link {
+    display: flex;
+    align-items: center;
+    padding: 22px 24px;
+    font-size: 16px;
+  }
+
+  .columns-anchor-nav .columns-anchor-nav-links a.is-active {
+    padding: 22px 24px;
+    border-radius: 0;
+    background: rgb(255 255 255 / 25%);
+  }
+}

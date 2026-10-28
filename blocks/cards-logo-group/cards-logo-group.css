@@ -1,0 +1,158 @@
+/* values from the computed styles of the GSPANN "Platforms" category grid */
+.cards-logo-group {
+  margin-top: 48px;
+}
+
+.cards-logo-group > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 20px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-logo-group .cards-logo-group-card {
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  min-width: 0;
+  padding: 24px;
+  overflow: hidden;
+  border: 1px solid var(--gspann-border);
+  border-radius: 16px;
+  background-color: var(--gspann-surface);
+}
+
+.cards-logo-group .cards-logo-group-card-body h3 {
+  min-width: 0;
+  margin: 0 0 6px;
+  color: var(--gspann-text);
+  font-family: var(--gspann-body-font);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: normal;
+  text-align: left;
+}
+
+.cards-logo-group .cards-logo-group-card-body p {
+  margin: 0 0 28px;
+  color: #666;
+  font-size: 13.6px;
+  line-height: 1.5;
+}
+
+/* 2-column logo grid (one per carousel page when paged) */
+.cards-logo-group .cards-logo-group-logos {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+  box-sizing: border-box;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-logo-group .cards-logo-group-logo {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  height: 68px;
+  padding: 12px;
+  overflow: hidden;
+  border-radius: 10px;
+  background-color: #f5f5f7;
+}
+
+.cards-logo-group .cards-logo-group-logo p,
+.cards-logo-group .cards-logo-group-logo picture {
+  display: contents;
+}
+
+.cards-logo-group .cards-logo-group-logo img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 40px;
+  object-fit: contain;
+}
+
+.cards-logo-group .cards-logo-group-logo-caption {
+  color: #1a1c1c;
+  font-size: 12.8px;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* carousel: viewport > track > slides */
+.cards-logo-group .cards-logo-group-viewport {
+  overflow: hidden;
+}
+
+.cards-logo-group .cards-logo-group-track {
+  display: flex;
+  transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cards-logo-group .cards-logo-group-slide {
+  flex: 0 0 100%;
+  align-self: flex-start;
+  min-width: 100%;
+}
+
+.cards-logo-group .cards-logo-group-dots {
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  margin-top: auto;
+  padding-top: 16px;
+}
+
+.cards-logo-group .cards-logo-group-dot {
+  display: block;
+  width: 8px;
+  height: 8px;
+  margin: 0;
+  padding: 0;
+  border: none;
+  border-radius: 50%;
+  background: #dadada;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+.cards-logo-group .cards-logo-group-dot.is-active {
+  background: var(--gspann-primary);
+}
+
+@media (width > 768px) {
+  .cards-logo-group > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .cards-logo-group .cards-logo-group-card {
+    padding: 32px;
+  }
+
+  .cards-logo-group .cards-logo-group-card-body h3 {
+    font-size: 17.6px;
+  }
+}
+
+@media (width > 1024px) {
+  .cards-logo-group > ul {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cards-logo-group .cards-logo-group-track {
+    transition: none;
+  }
+}

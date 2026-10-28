@@ -1,0 +1,262 @@
+/*
+ * GSPANN pages (page metadata "template: gspann", loaded by scripts.js for
+ * body.gspann). Values come from the computed styles of
+ * https://www.gspann.com/services/application-services-and-modernization.
+ * Everything is scoped to body.gspann so Beckman pages are unaffected.
+ */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,600&display=swap');
+
+/* stylelint-disable no-descending-specificity -- section and default-content rules, not overrides of each other */
+body.gspann {
+  /* tokens used by the GSPANN blocks */
+  --gspann-body-font: inter, -apple-system, blinkmacsystemfont, 'Segoe UI', sans-serif;
+  --gspann-heading-font: 'Source Serif 4', serif;
+  --gspann-primary: #005dff;
+  --gspann-primary-hover: #0048cc;
+  --gspann-text: #1a1a2e;
+  --gspann-heading: #0f122e;
+  --gspann-text-muted: #5a5a6e;
+  --gspann-text-inverse: #fff;
+  --gspann-surface: #fff;
+  --gspann-surface-muted: #f8f9fb;
+  --gspann-border: #e5e7eb;
+  --gspann-navy: #0f122e;
+  --gspann-navy-2: #141b41;
+  --gspann-gradient-brand: linear-gradient(135deg, #2244e7 0%, #6a1ccc 50%, #bc131f 100%);
+  --gspann-gradient-tag: linear-gradient(135deg, #6a1ccc 0%, #b71fa9 30%, #e91e63 70%, #bc131f 100%);
+  --gspann-gradient-navy: linear-gradient(135deg, #0f122e 0%, #141b41 100%);
+  --gspann-shadow-sm: 0 2px 4px #0000000f;
+  --gspann-shadow-md: 0 4px 12px #00000014;
+  --gspann-shadow-lg: 0 10px 30px #0000001f;
+  --gspann-transition: 0.3s ease;
+
+  /* global tokens re-pointed for this page */
+  --content-max-width: 1280px;
+  --body-font-family: var(--gspann-body-font);
+  --heading-font-family: var(--gspann-heading-font);
+  --text-color: var(--gspann-text);
+  --heading-color: var(--gspann-heading);
+  --link-color: var(--gspann-primary);
+  --link-hover-color: var(--gspann-primary-hover);
+  --background-color: #fff;
+
+  background-color: #fff;
+  color: var(--gspann-text);
+  font-family: var(--gspann-body-font);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* headings */
+body.gspann main :is(h1, h2, h3, h4, h5, h6) {
+  margin-top: 0;
+  color: var(--gspann-heading);
+  font-family: var(--gspann-heading-font);
+  font-weight: 600;
+}
+
+body.gspann main h1 {
+  margin-bottom: 24px;
+  font-size: 28px;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+}
+
+body.gspann main h2,
+body.gspann main .default-content-wrapper > h2 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 30px;
+  font-weight: 600;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+}
+
+body.gspann main a:any-link {
+  color: var(--gspann-primary);
+  transition: color var(--gspann-transition);
+}
+
+body.gspann main a:hover {
+  color: var(--gspann-primary-hover);
+}
+
+body.gspann main a:focus-visible {
+  outline: 2px solid var(--gspann-primary);
+  outline-offset: 2px;
+}
+
+/* sections: full-width bands, 1280px content column */
+body.gspann main > .section {
+  margin: 0;
+  padding: 60px 0;
+}
+
+/* capabilities section is tighter on small screens */
+body.gspann main > .section:has(> div > .cards-capability) {
+  padding: 32px 0;
+}
+
+body.gspann main > .section > div {
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
+  margin-inline: auto;
+  padding: 0 12px;
+}
+
+/* the hero and the anchor bar carry their own spacing */
+body.gspann main > .section:has(> div > .hero-overlay-left),
+body.gspann main > .section:has(> div > .columns-anchor-nav) {
+  padding: 0;
+}
+
+body.gspann main > .section > div:has(> .hero-overlay-left) {
+  max-width: none;
+  padding: 0;
+}
+
+/* section header: eyebrow, H2, subtitle */
+body.gspann main > .section > .default-content-wrapper {
+  margin-bottom: 40px;
+}
+
+body.gspann main > .section > .default-content-wrapper:last-child {
+  margin-bottom: 0;
+}
+
+body.gspann main > .section > .default-content-wrapper > * {
+  max-width: 800px;
+}
+
+body.gspann main > .section > .default-content-wrapper > p:first-child:has(+ h2) {
+  display: inline-block;
+  margin: 0 0 16px;
+  background-image: var(--gspann-gradient-tag);
+  background-clip: text;
+  color: transparent;
+  font-family: var(--gspann-body-font);
+  font-size: 14.4px;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  -webkit-text-fill-color: transparent;
+}
+
+body.gspann main > .section > .default-content-wrapper > h2 + p {
+  max-width: 600px;
+  margin-bottom: 0;
+  color: var(--gspann-text-muted);
+  font-size: 18px;
+  line-height: 1.6;
+}
+
+/* section styles */
+body.gspann main > .section.blue-red-gradient {
+  background-image: var(--gspann-gradient-brand);
+  color: var(--gspann-text-inverse);
+}
+
+body.gspann main > .section.light-blue {
+  padding: 60px 0;
+  background-color: #f8faff;
+}
+
+body.gspann main > .section.light-grey {
+  padding: 60px 0;
+  background-color: #f8fafc;
+}
+
+body.gspann main > .section.light-grey:has(.cards-resources) {
+  padding: 80px 0;
+  background-color: var(--gspann-surface-muted);
+}
+
+body.gspann main > .section.navy-gradient {
+  padding: 60px 0;
+  background-image: var(--gspann-gradient-navy);
+  color: var(--gspann-text-inverse);
+}
+
+body.gspann main > .section.navy-gradient :is(h1, h2, h3, h4) {
+  color: var(--gspann-text-inverse);
+  font-family: var(--gspann-body-font);
+}
+
+body.gspann main > .section.navy-gradient .default-content-wrapper > h2 {
+  font-size: 32px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+
+body.gspann main > .section.navy-gradient .default-content-wrapper > h2 + p {
+  max-width: 800px;
+  margin-bottom: 48px;
+  color: rgb(255 255 255 / 70%);
+}
+
+body.gspann main > .section.navy-gradient .default-content-wrapper {
+  margin-bottom: 0;
+}
+
+body.gspann main > .section.centered > .default-content-wrapper {
+  text-align: center;
+}
+
+body.gspann main > .section.centered > .default-content-wrapper > * {
+  margin-inline: auto;
+}
+
+/* source container side padding: 12px up to 375px, 16px to 480px, 20px to 768px, then 24px */
+@media (width > 375px) {
+  body.gspann main > .section > div {
+    padding: 0 16px;
+  }
+}
+
+@media (width > 480px) {
+  body.gspann main > .section > div {
+    padding: 0 20px;
+  }
+}
+
+@media (width > 768px) {
+  body.gspann main > .section > div {
+    padding: 0 24px;
+  }
+}
+
+@media (width >= 900px) {
+  body.gspann main h1 {
+    font-size: 44px;
+  }
+
+  body.gspann main > .section:has(> div > .cards-capability) {
+    padding: 60px 0;
+  }
+
+  body.gspann main > .section.light-blue {
+    padding: 80px 0;
+  }
+
+  body.gspann main > .section.navy-gradient {
+    padding: 100px 0;
+  }
+
+  body.gspann main > .section.navy-gradient .default-content-wrapper > h2 {
+    font-size: 48px;
+  }
+}
+
+@media (width >= 1200px) {
+  body.gspann main h1 {
+    font-size: 52px;
+  }
+
+  body.gspann main h2,
+  body.gspann main .default-content-wrapper > h2 {
+    font-size: 34px;
+  }
+}

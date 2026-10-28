@@ -1,0 +1,110 @@
+/*
+ * Values from the computed styles of .capabilities-flat-grid on
+ * https://www.gspann.com/services/application-services-and-modernization
+ * Source breakpoints: 1 column up to 768px, 2 columns 769-992px, 3 columns above.
+ */
+
+/* grid, plus the hr.capabilities-divider that follows it on the source */
+.cards-capability {
+  padding-bottom: 48px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.cards-capability > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 32px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-capability > ul > li {
+  margin: 0;
+  padding: 0;
+}
+
+.cards-capability .cards-capability-card-empty {
+  display: none;
+}
+
+.cards-capability .cards-capability-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cards-capability .cards-capability-card-body {
+  color: var(--gspann-text);
+  font-family: var(--gspann-body-font);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cards-capability .cards-capability-card-body h3 {
+  margin: 0 0 12px;
+  color: var(--gspann-text);
+  font-family: var(--gspann-body-font);
+  font-size: 1.2rem;
+  font-weight: 700;
+  line-height: 1.35;
+  letter-spacing: normal;
+}
+
+.cards-capability .cards-capability-card-body p {
+  margin: 0 0 16px;
+  color: #555;
+  font-size: 0.95rem;
+  line-height: 1.7;
+}
+
+/* "Learn More" is an inline-block button in the card's 16px / 1.6 line box on the source */
+.cards-capability .cards-capability-card-body p.cards-capability-link {
+  margin: 0;
+  color: var(--gspann-text);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cards-capability .cards-capability-link a:any-link {
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--gspann-primary);
+  font-size: 0.9rem;
+  font-weight: 600;
+  line-height: 1.6;
+  text-align: center;
+  text-decoration: none;
+  cursor: pointer;
+  transition: none;
+}
+
+.cards-capability .cards-capability-link a:hover {
+  color: var(--gspann-primary);
+  text-decoration: underline;
+}
+
+/* source keeps the browser's default focus ring on the button */
+.cards-capability .cards-capability-link a:focus-visible {
+  outline: revert;
+  outline-offset: revert;
+}
+
+@media (width > 768px) {
+  .cards-capability > ul {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 48px 40px;
+  }
+
+  .cards-capability .cards-capability-card-body h3 {
+    line-height: 1.4;
+  }
+}
+
+@media (width > 992px) {
+  .cards-capability > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

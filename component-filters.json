@@ -33,7 +33,15 @@
       "tabs-workflow",
       "form",
       "form-file",
-      "embed"
+      "embed",
+      "columns-anchor-nav",
+      "hero-overlay-left",
+      "cards-capability",
+      "carousel-split-detail",
+      "cards-logo-group",
+      "cards-stats",
+      "cards-resources",
+      "cards-leader"
     ]
   },
   {
@@ -43,9 +51,27 @@
     ]
   },
   {
+    "id": "cards-capability",
+    "components": [
+      "cards-capability-item"
+    ]
+  },
+  {
     "id": "cards-grid",
     "components": [
       "cards-grid-item"
+    ]
+  },
+  {
+    "id": "cards-leader",
+    "components": [
+      "cards-leader-item"
+    ]
+  },
+  {
+    "id": "cards-logo-group",
+    "components": [
+      "cards-logo-group-item"
     ]
   },
   {
@@ -55,15 +81,39 @@
     ]
   },
   {
+    "id": "cards-resources",
+    "components": [
+      "cards-resources-item"
+    ]
+  },
+  {
+    "id": "cards-stats",
+    "components": [
+      "cards-stats-item"
+    ]
+  },
+  {
     "id": "cards",
     "components": [
       "card"
     ]
   },
   {
+    "id": "carousel-split-detail",
+    "components": [
+      "carousel-split-detail-slide"
+    ]
+  },
+  {
     "id": "carousel",
     "components": [
       "carousel-item"
+    ]
+  },
+  {
+    "id": "columns-anchor-nav",
+    "components": [
+      "column"
     ]
   },
   {

@@ -110,7 +110,7 @@ export function decorateButtons(main) {
 }
 
 /** page templates with their own stylesheet in /styles/{template}.css */
-const TEMPLATE_STYLES = ['mybeckman'];
+const TEMPLATE_STYLES = ['mybeckman', 'gspann'];
 
 const GENERIC_LINK_TEXT = /^(learn more|read more|explore|explore now|download|watch video|watch now|read blog|read article|read case study)$/i;
 

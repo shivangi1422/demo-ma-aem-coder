@@ -115,7 +115,15 @@
         "tabs-workflow",
         "form",
         "form-file",
-        "embed"
+        "embed",
+        "columns-anchor-nav",
+        "hero-overlay-left",
+        "cards-capability",
+        "carousel-split-detail",
+        "cards-logo-group",
+        "cards-stats",
+        "cards-resources",
+        "cards-leader"
       ]
     }
   ]
