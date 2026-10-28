@@ -17,7 +17,7 @@
 }
 
 /* shared card grid */
-.cards-grid > ul {
+.cards-grid ul {
   list-style: none;
   margin: 0;
   padding: 0;
@@ -26,7 +26,7 @@
   gap: 24px;
 }
 
-.cards-grid > ul > li {
+.cards-grid ul > li {
   display: flex;
   flex-direction: column;
   border: 1px solid var(--bc-border);
@@ -57,11 +57,6 @@
   line-height: 1.25;
 }
 
-/* bullet lists authored inside a card: solid dots (not the nested-list circle) */
-.cards-grid .cards-grid-body ul {
-  list-style-type: disc;
-}
-
 .cards-grid .cards-grid-body h3,
 .cards-grid .cards-grid-body h4 {
   margin: 0;
@@ -78,7 +73,7 @@
   padding: 48px 24px;
 }
 
-.cards-grid.solutions > ul > li {
+.cards-grid.solutions ul > li {
   border-radius: 8px;
   background-color: var(--bc-surface);
 }
@@ -115,7 +110,7 @@
   background-color: var(--bc-surface);
 }
 
-.cards-grid.productlines > ul > li {
+.cards-grid.productlines ul > li {
   border-radius: 6px;
   background-color: #fff;
 }
@@ -223,7 +218,7 @@
   background-color: #fff;
 }
 
-.cards-grid.simple > ul > li {
+.cards-grid.simple ul > li {
   position: relative;
   border: 1px solid var(--bc-border);
   border-radius: 8px;
@@ -297,11 +292,11 @@
   font-weight: 400;
 }
 
-.cards-grid.features > ul {
+.cards-grid.features ul {
   gap: 40px;
 }
 
-.cards-grid.features > ul > li {
+.cards-grid.features ul > li {
   border: 0;
   background: none;
   display: flex;
@@ -347,19 +342,19 @@
 /* stylelint-enable no-descending-specificity */
 
 @media (width >= 600px) {
-  .cards-grid.solutions > ul,
-  .cards-grid.productlines > ul,
-  .cards-grid.features > ul {
+  .cards-grid.solutions ul,
+  .cards-grid.productlines ul,
+  .cards-grid.features ul {
     grid-template-columns: repeat(3, 1fr);
   }
 
-  .cards-grid.simple > ul {
+  .cards-grid.simple ul {
     grid-template-columns: repeat(2, 1fr);
   }
 }
 
 @media (width >= 900px) {
-  .cards-grid.simple > ul {
+  .cards-grid.simple ul {
     grid-template-columns: repeat(4, 1fr);
   }
 }
@@ -381,7 +376,7 @@
     font-size: 36px;
   }
 
-  .cards-grid.solutions > ul {
+  .cards-grid.solutions ul {
     gap: 32px;
   }
 
