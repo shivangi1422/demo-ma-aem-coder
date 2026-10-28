@@ -59,12 +59,7 @@
         "content-product-detail",
         "content-product-form",
         "product-banner",
-        "quote",
-        "columns-features",
-        "embed-video",
-        "columns-icon-list",
-        "cards-resource-list",
-        "cards-doc-table"
+        "quote"
       ]
     }
   ]

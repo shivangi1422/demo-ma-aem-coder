@@ -63,12 +63,6 @@
   src: local('Arial');
 }
 
-@font-face {
-  font-family: montserrat-fallback;
-  size-adjust: 113.4%;
-  src: local('Arial');
-}
-
 @media (width >= 900px) {
   :root {
     /* body sizes */
@@ -294,94 +288,6 @@ button.button.accent:disabled:focus-visible {
   color: var(--dark-color);
 }
 
-/* mybeckman.in look for page content: typography, colours and CTA buttons as on the live site.
-   Scoped to main so the header and footer keep their own styling. */
-main {
-  --mybeckman-font: montserrat, montserrat-fallback, arial, sans-serif;
-  --mybeckman-text: #4d4d4d;
-  --mybeckman-heading: #001728;
-  --mybeckman-blue: #007acb;
-  --mybeckman-blue-hover: #005a96;
-  --mybeckman-red: #ea1c2c;
-  --mybeckman-red-hover: #cf1322;
-  --heading-font-family: var(--mybeckman-font);
-  --bc-brand-font: var(--mybeckman-font);
-  --link-color: var(--mybeckman-blue);
-  --link-hover-color: var(--mybeckman-blue-hover);
-
-  color: var(--mybeckman-text);
-  font-family: var(--mybeckman-font);
-  font-size: 16px;
-  line-height: 1.65;
-}
-
-main :is(h1, h2, h3, h4, h5, h6) {
-  color: var(--mybeckman-heading);
-  font-weight: 300;
-  line-height: 1.1;
-}
-
-main h1 {
-  margin: 24px 0;
-  color: var(--mybeckman-text);
-  font-size: 36px;
-}
-
-main .default-content-wrapper :is(p, ul, ol),
-main p.button-wrapper {
-  margin: 16px 0;
-}
-
-main h2 {
-  color: var(--mybeckman-text);
-  font-size: 25px;
-  font-weight: 500;
-}
-
-main h3 { font-size: 24px; }
-main h4 { font-size: 18px; }
-main h5 { font-size: 14px; }
-
-/* stylelint-disable no-descending-specificity -- main-content buttons override the generic button states */
-main a.button:any-link {
-  border: 0;
-  border-radius: 2px;
-  padding: 13px 20px;
-  font-size: 13.5px;
-  font-weight: 500;
-  line-height: 1.65;
-  text-align: center;
-  transition: background-color 0.3s;
-}
-
-main a.button.primary {
-  background-color: var(--mybeckman-red);
-  color: #fff;
-}
-
-main a.button.primary:hover,
-main a.button.primary:focus-visible {
-  background-color: var(--mybeckman-red-hover);
-  color: #fff;
-}
-
-main a.button.secondary {
-  background-color: var(--mybeckman-blue);
-  color: #fff;
-}
-
-main a.button.secondary:hover,
-main a.button.secondary:focus-visible {
-  background-color: var(--mybeckman-blue-hover);
-  color: #fff;
-}
-
-/* stylelint-enable no-descending-specificity */
-
-@media (width >= 900px) {
-  main h3 { font-size: 29px; }
-}
-
 main img {
   max-width: 100%;
   width: auto;
@@ -404,20 +310,19 @@ main > .section {
   margin: 40px 0;
 }
 
-/* content column as on mybeckman.in: 1600px max, 15px gutters (65px from 768px) */
 main > .section > div {
-  max-width: 1600px;
+  max-width: 1200px;
   margin: auto;
-  padding: 0 15px;
+  padding: 0 24px;
 }
 
 main > .section:first-of-type {
   margin-top: 0;
 }
 
-@media (width >= 768px) {
+@media (width >= 900px) {
   main > .section > div {
-    padding: 0 65px;
+    padding: 0 32px;
   }
 }
 
