@@ -135,7 +135,8 @@ var CustomImportScript = (() => {
     } else {
       cells.push([""]);
     }
-    const block = WebImporter.Blocks.createBlock(document, { name: "hero (home)", cells });
+    const light = element.matches('[data-mb-tone="light"]') || !!element.querySelector('[data-mb-tone="light"]');
+    const block = WebImporter.Blocks.createBlock(document, { name: light ? "hero (light)" : "hero (home)", cells });
     element.replaceWith(block);
   }
 
@@ -829,7 +830,9 @@ var CustomImportScript = (() => {
       cells.push([imageCell.length ? imageCell : "", textCell.length ? textCell : ""]);
     });
     roots.slice(1).forEach((root) => root.remove());
-    const block = WebImporter.Blocks.createBlock(document, { name: "cards-grid (photo)", cells });
+    const compact = roots.some((root) => matchesSafe2(root, ROW_SELECTOR) || !!root.querySelector(".panel-wrapper, a.card"));
+    const name = compact ? "cards-grid (photo, compact)" : "cards-grid (photo)";
+    const block = WebImporter.Blocks.createBlock(document, { name, cells });
     element.replaceWith(block);
   }
 
@@ -3056,6 +3059,8 @@ var CustomImportScript = (() => {
     },
     biomanufacturing: {
       remove: [],
+      // source content is ~1300px wide (not the 1140px container): theme "wide"
+      theme: "wide",
       anchors: { form: "our-team-is-ready-to-help" }
     },
     "synthetic-biology": {
@@ -3087,6 +3092,8 @@ var CustomImportScript = (() => {
     },
     "next-generation-sequencing": {
       remove: [],
+      // source content is ~1300px wide (not the 1140px container): theme "wide"
+      theme: "wide",
       anchors: {
         form: "ready-to-get-started",
         Solutions: "our-ngs-library-prep-automated-solutions"
@@ -3254,6 +3261,11 @@ var CustomImportScript = (() => {
           if (image) image.remove();
         }
       });
+    });
+  }
+  function tagHeroTone(element) {
+    safeQueryAll7(element, "div.top-banner").forEach((banner) => {
+      if (!banner.querySelector(".dark-overlay")) banner.setAttribute("data-mb-tone", "light");
     });
   }
   function tagSections(element, template) {
@@ -3503,6 +3515,29 @@ var CustomImportScript = (() => {
       p.append(a);
     });
   }
+  var PRIMARY_BUTTON = /(^|\s)(primary-btn|btn-red|btn-primary)(\s|$)/;
+  var SECONDARY_BUTTON = /(^|\s)(btn-default|redbtn|related-topic-button|btn-secondary)(\s|$)/;
+  function emphasizeButtons(element, ctx) {
+    const doc = element.ownerDocument;
+    safeQueryAll7(contentRoot6(element), "a[href]").forEach((a) => {
+      if (ctx.isInstance(a) || ctx.insideInstance(a)) return;
+      const cls = a.className || "";
+      const tag = PRIMARY_BUTTON.test(cls) ? "strong" : SECONDARY_BUTTON.test(cls) ? "em" : null;
+      if (!tag || !clean9(a.textContent) || a.querySelector("img")) return;
+      if (a.closest("strong, em, b, i, li, h1, h2, h3, h4, h5, h6")) return;
+      let p = a.parentElement;
+      if (!p) return;
+      if (p.tagName !== "P" || clean9(p.textContent) !== clean9(a.textContent)) {
+        const wrap = doc.createElement("p");
+        a.replaceWith(wrap);
+        wrap.append(a);
+        p = wrap;
+      }
+      const emph = doc.createElement(tag);
+      a.replaceWith(emph);
+      emph.append(a);
+    });
+  }
   function translateDates(element) {
     safeQueryAll7(contentRoot6(element), "div.bcls-aeo-published p").forEach((p) => {
       let text = p.textContent;
@@ -3521,7 +3556,7 @@ var CustomImportScript = (() => {
     const head = doc.head || doc;
     return [...head.querySelectorAll(`meta[${attr}="${name}"]`)].map((m) => clean9(m.getAttribute("content"))).filter(Boolean).join(", ");
   }
-  function appendMetadata(element) {
+  function appendMetadata(element, config) {
     const doc = element.ownerDocument;
     const cells = {};
     const title = doc.querySelector("head title") || doc.querySelector("title");
@@ -3530,6 +3565,8 @@ var CustomImportScript = (() => {
     if (description) cells.Description = description;
     const keywords = headMeta(doc, "name", "keywords");
     if (keywords) cells.keywords = keywords;
+    cells.template = "mybeckman";
+    if (config && config.theme) cells.theme = config.theme;
     const ogImage = headMeta(doc, "property", "og:image") || headMeta(doc, "name", "og:image");
     if (ogImage) {
       const src = ogImage.split(", ")[0];
@@ -3562,12 +3599,14 @@ var CustomImportScript = (() => {
     if (hookName === "onLoad") {
       tagSections(element, template);
       recordBackgrounds(element, config);
+      tagHeroTone(element);
       return;
     }
     if (hookName === "beforeTransform") {
       tagSections(element, template);
       recordBackgrounds(element, config);
       const ctx = makeContext(element, template);
+      tagHeroTone(element);
       removeBackgroundImages(element, config);
       dedupeCalloutImages(element);
       removeChrome6(element, config, ctx);
@@ -3587,6 +3626,7 @@ var CustomImportScript = (() => {
       translateDates(element);
       removeNamedAnchors(element);
       wrapBareLinks(element, ctx);
+      emphasizeButtons(element, ctx);
       removeEmptyText(element, ctx);
       removeEmptyWrappers(element, ctx);
     }
@@ -3612,7 +3652,7 @@ var CustomImportScript = (() => {
       removeNamedAnchors(element);
       absolutizeSiteLinks(element);
       stripScriptAttributes(element);
-      appendMetadata(element);
+      appendMetadata(element, config);
       damifyImageLinks(element);
     }
   }
@@ -3620,15 +3660,15 @@ var CustomImportScript = (() => {
     "https://embed-ssl.wistia.com/deliveries/224144afcbc9d6ca19521b03e49533d5.jpg?image_crop_resized=960x480": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/224144afcbc9d6ca19521b03e49533d5.jpg",
     "https://embed-ssl.wistia.com/deliveries/3209e680127f6a5d15ce62a55bfc6498.jpg?image_crop_resized=960x480": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/3209e680127f6a5d15ce62a55bfc6498.jpg",
     "https://embed-ssl.wistia.com/deliveries/409cbdc255c1a944ebc233d2115f98e6a326cc45.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/409cbdc255c1a944ebc233d2115f98e6a326cc45.jpg",
+    "https://embed-ssl.wistia.com/deliveries/45e305cfc56cdabaa65169d0fa94af5e.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/45e305cfc56cdabaa65169d0fa94af5e.jpg",
     "https://embed-ssl.wistia.com/deliveries/4995dc25d6fa8976480ea4c9558f75dd.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/4995dc25d6fa8976480ea4c9558f75dd.jpg",
+    "https://embed-ssl.wistia.com/deliveries/50e244c00777190b1d68e625fcadf3e2.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/50e244c00777190b1d68e625fcadf3e2.jpg",
+    "https://embed-ssl.wistia.com/deliveries/5702af258835345953234a5891605f90a3af40e2.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/5702af258835345953234a5891605f90a3af40e2.jpg",
     "https://embed-ssl.wistia.com/deliveries/5dd736fef9e33dadee202947e3458ca8c4d58741.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/5dd736fef9e33dadee202947e3458ca8c4d58741.jpg",
     "https://embed-ssl.wistia.com/deliveries/c8c2e5649c0cfa1f9611c505461c2801.jpg?image_crop_resized=960x480": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/c8c2e5649c0cfa1f9611c505461c2801.jpg",
-    "https://fast.wistia.net/embed/medias/1nyrf4wf4x/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
-    "https://fast.wistia.net/embed/medias/4qgtx9nelf/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
-    "https://fast.wistia.net/embed/medias/6yc9dtf8jn/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
-    "https://fast.wistia.net/embed/medias/a7fwbsbm1x/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
-    "https://fast.wistia.net/embed/medias/isge0kog69/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
-    "https://fast.wistia.net/embed/medias/q1pgs93mew/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
+    "https://embed-ssl.wistia.com/deliveries/daddcd151acb3a5e63a6ec126dd0ff04.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/daddcd151acb3a5e63a6ec126dd0ff04.jpg",
+    "https://embed-ssl.wistia.com/deliveries/e6d1c6d874dbc935a49a5708a12b4e0e.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/e6d1c6d874dbc935a49a5708a12b4e0e.jpg",
+    "https://embed-ssl.wistia.com/deliveries/fc26b07f327410cfe988f88e29ae5da8.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/fc26b07f327410cfe988f88e29ae5da8.jpg",
     "https://media.beckman.com/-/media/app-note-support-items/a-rapid-flow-cytometry-data-analysis-workflow-using-machine-learning/figure-2.png?rev=03187d58c90f47d581431b3faf114d83": "/content/dam/demo-ma-aem-coder/mybeckman/app-note-support-items/a-rapid-flow-cytometry-data-analysis-workflow-using-machine-learning/figure-2.png",
     "https://media.beckman.com/-/media/app-note-support-items/automating-cell-based-processes/thumbnail.jpg?h=251&w=195&rev=eed4b5d101af41099f64a80d30aa1945&sc_lang=hi&hash=F9AC4C4D95353F62A7308D946260CCA1": "/content/dam/demo-ma-aem-coder/mybeckman/app-note-support-items/automating-cell-based-processes/thumbnail.jpg",
     "https://media.beckman.com/-/media/app-note-support-items/automating-cell-line-development/thumbnail.jpg?h=251&w=195&rev=cbf0d10c3ecc428086619bef6163c5cd&sc_lang=hi&hash=D17C102CE2FBF2BDEAC8C212074FAC47": "/content/dam/demo-ma-aem-coder/mybeckman/app-note-support-items/automating-cell-line-development/thumbnail.jpg",
@@ -4012,7 +4052,7 @@ var CustomImportScript = (() => {
         "selector": [
           "div.bc-rich-text > div:has(> h2 + p)"
         ],
-        "style": null,
+        "style": "centered, accent-headings",
         "blocks": [],
         "defaultContent": [
           "div.bc-rich-text > div:has(> h2 + p) > h2",
@@ -4025,7 +4065,7 @@ var CustomImportScript = (() => {
         "selector": [
           "div.workflow-section"
         ],
-        "style": "highlight",
+        "style": "highlight, centered",
         "blocks": [
           "tabs-workflow-mb"
         ],
@@ -4039,7 +4079,7 @@ var CustomImportScript = (() => {
         "selector": [
           "div.bc-rich-text:has(+ div.embeded-video)"
         ],
-        "style": "centered",
+        "style": "centered, accent-headings",
         "blocks": [
           "embed-mb"
         ],
@@ -4053,7 +4093,7 @@ var CustomImportScript = (() => {
         "selector": [
           "div.section-resources"
         ],
-        "style": null,
+        "style": "centered, accent-headings",
         "blocks": [
           "cards-grid-products-mb"
         ],
@@ -4067,7 +4107,7 @@ var CustomImportScript = (() => {
         "selector": [
           "div.bc-rich-text:has(> div.section-resources) + div.bc-rich-text"
         ],
-        "style": null,
+        "style": "centered, accent-headings",
         "blocks": [
           "columns-mb"
         ],
@@ -4105,7 +4145,7 @@ var CustomImportScript = (() => {
         "selector": [
           "section#anchor"
         ],
-        "style": "highlight",
+        "style": "highlight, centered",
         "blocks": [
           "form-mb"
         ],

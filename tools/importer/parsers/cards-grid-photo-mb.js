@@ -26,6 +26,8 @@
  * xwalk container model `cards-grid`: text (richtext), classes.
  * Item model `cards-grid-item`: image (reference, imageAlt collapsed), text (richtext).
  *
+ * Sources 2-4 (small tiles) are emitted as "cards-grid (photo, compact)".
+ *
  * Row 1: heading row - empty
  * Rows 2..N: image | <h3><a href>title</a></h3> [<p>description</p>]
  *   The source h4 / p.arttitle title becomes an H3 linked to the card href
@@ -132,6 +134,12 @@ export default function parse(element, { document }) {
 
   roots.slice(1).forEach((root) => root.remove());
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'cards-grid (photo)', cells });
+  // related-content panels (source 2), the AUC application tiles (source 3)
+  // and the NGS article tiles (source 4)
+  // are small tiles: Style "compact"
+  const compact = roots.some((root) => matchesSafe(root, ROW_SELECTOR)
+    || !!root.querySelector('.panel-wrapper, a.card, a.artlink'));
+  const name = compact ? 'cards-grid (photo, compact)' : 'cards-grid (photo)';
+  const block = WebImporter.Blocks.createBlock(document, { name, cells });
   element.replaceWith(block);
 }

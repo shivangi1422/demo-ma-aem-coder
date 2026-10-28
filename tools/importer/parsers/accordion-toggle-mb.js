@@ -358,6 +358,8 @@ export default function parse(element, { document }) {
 
   roots.slice(1).forEach((root) => root.remove());
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'accordion-toggle', cells });
+  // synthetic-biology grey bar accordion in two columns: Style "boxed"
+  const boxed = !!element.querySelector('.accordion-item');
+  const block = WebImporter.Blocks.createBlock(document, { name: boxed ? 'accordion-toggle (boxed)' : 'accordion-toggle', cells });
   element.replaceWith(block);
 }

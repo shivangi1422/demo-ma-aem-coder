@@ -18,6 +18,9 @@
  *   Row 2: title (heading), subheading, call-to-action
  * xwalk model `hero`: image (reference, imageAlt collapsed), text (richtext), classes.
  *
+ * Top banners without div.dark-overlay (tagged data-mb-tone="light" by the
+ * cleanup) are emitted as "hero (light)": centred red title, no overlay.
+ *
  * Row 1: banner image. Video banners have no poster in the DOM: the Wistia
  *        poster frame (oEmbed thumbnail_url, resolved once for the two known
  *        ids, else the Wistia swatch) is authored as the image. The hero has
@@ -96,7 +99,8 @@ export default function parse(element, { document }) {
   const iframe = element.querySelector('iframe.responsive-iframe, iframe[src*="wistia"]');
   const videoId = iframe && ((iframe.getAttribute('src') || '').match(WISTIA_RE) || [])[1];
   let imageSrc = '';
-  let imageAlt = '';  if (srcImg) {
+  let imageAlt = '';
+  if (srcImg) {
     imageSrc = srcImg.getAttribute('src');
     imageAlt = clean(srcImg.getAttribute('alt'));
   } else if (videoId) {
@@ -135,6 +139,8 @@ export default function parse(element, { document }) {
     cells.push(['']);
   }
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'hero (home)', cells });
+  // light banner photo with a red title (tagged by mybeckman-cleanup)
+  const light = element.matches('[data-mb-tone="light"]') || !!element.querySelector('[data-mb-tone="light"]');
+  const block = WebImporter.Blocks.createBlock(document, { name: light ? 'hero (light)' : 'hero (home)', cells });
   element.replaceWith(block);
 }

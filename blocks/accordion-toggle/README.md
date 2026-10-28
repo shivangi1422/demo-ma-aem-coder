@@ -13,11 +13,12 @@ Repeating rows — one row per item. Each item: one row per item: title (plain t
 | Variation | Option class |
 | --- | --- |
 | Open (all items expanded) | `open` |
+| Boxed (grey bars, 2-up) | `boxed` |
 
 ## Universal Editor fields
 
 - Content fields derived from the block's decorate contract.
-- `classes` select for options: Open (all items expanded).
+- `classes` multiselect for options: Open (all items expanded), Boxed (grey bars, 2-up).
 - A separate `-item` model defines one repeated item.
 
 ## Authored structure (Universal Editor / md2jcr)
@@ -37,3 +38,4 @@ Repeating rows — one row per item. Each item: one row per item: title (plain t
 
 - Native `details` / `summary` elements: keyboard (Tab, Enter, Space) and expanded state come from the browser. Closed by default.
 - `open` option: all items start expanded (FAQ lists).
+- `boxed` option: each item is a grey title bar with a gap between items, the open panel sits below its bar; two columns from 900px (synthetic-biology Featured Resources).

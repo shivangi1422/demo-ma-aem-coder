@@ -39,6 +39,7 @@
         {
           "component": "multiselect",
           "name": "classes",
+          "multi": true,
           "value": "",
           "label": "Style",
           "valueType": "string",
@@ -46,6 +47,10 @@
             {
               "name": "Open (all items expanded)",
               "value": "open"
+            },
+            {
+              "name": "Boxed (grey bars, 2-up)",
+              "value": "boxed"
             }
           ]
         }

@@ -99,7 +99,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(> div.row p.introimg)"
       ],
-      "style": null,
+      "style": "centered",
       "blocks": [
         "columns-mb"
       ],
@@ -113,7 +113,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(> h2#Solutions)"
       ],
-      "style": null,
+      "style": "centered",
       "blocks": [],
       "defaultContent": [
         "div.containercustom > h2#Solutions",
@@ -152,7 +152,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(> div.row > div.col-sm-3 > p > img)"
       ],
-      "style": null,
+      "style": "centered",
       "blocks": [
         "cards-grid-icons-mb"
       ],
@@ -166,7 +166,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(ul.partners)"
       ],
-      "style": "highlight",
+      "style": "highlight, centered, checklist",
       "blocks": [],
       "defaultContent": [
         "div.containercustom:has(ul.partners) > h2",
@@ -179,7 +179,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(> div.featres)"
       ],
-      "style": null,
+      "style": "centered",
       "blocks": [
         "cards-grid-products-mb"
       ],
@@ -193,7 +193,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(> div.row.InsArt)"
       ],
-      "style": null,
+      "style": "centered",
       "blocks": [
         "cards-grid-photo-mb"
       ],
@@ -208,7 +208,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(> div.slideshow-container)"
       ],
-      "style": null,
+      "style": "centered",
       "blocks": [
         "carousel-testimonials-mb"
       ],
@@ -222,7 +222,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(> a[name=form])"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [
         "form-mb"
       ],

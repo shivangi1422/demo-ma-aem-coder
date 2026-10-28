@@ -78,7 +78,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text > div:has(> h1)"
       ],
-      "style": null,
+      "style": "centered, accent-headings",
       "blocks": [],
       "defaultContent": [
         "div.bc-rich-text > div:has(> h1) > h1",
@@ -92,7 +92,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text > div.row:has(a.primary-btn)"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [],
       "defaultContent": [
         "div.bc-rich-text > div.row:has(a.primary-btn) > div > div > p",
@@ -118,7 +118,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.col-md-12.text-center:has(> h3)"
       ],
-      "style": null,
+      "style": "centered",
       "blocks": [
         "cards-grid-photo-mb"
       ],
@@ -132,7 +132,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.section-resources"
       ],
-      "style": null,
+      "style": "centered, accent-headings",
       "blocks": [
         "cards-grid-products-mb"
       ],
@@ -146,7 +146,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(> #anchor)"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [
         "form-mb"
       ],
@@ -161,7 +161,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(h2 + h5)"
       ],
-      "style": null,
+      "style": "accent-headings",
       "blocks": [],
       "defaultContent": [
         "div.bc-rich-text div:has(> h2 + h5) > h2",

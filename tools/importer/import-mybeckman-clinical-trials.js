@@ -85,7 +85,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.container-overlay-full-width:has(div.sticky)"
       ],
-      "style": "spectrum-gradient",
+      "style": "spectrum-gradient, jump-links",
       "blocks": [],
       "defaultContent": [
         "div.container-overlay-full-width div.sticky"

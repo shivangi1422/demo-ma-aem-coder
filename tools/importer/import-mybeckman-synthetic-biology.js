@@ -156,7 +156,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(> a[name=form])"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [
         "form-mb"
       ],

@@ -65,6 +65,14 @@
             {
               "name": "Red band",
               "value": "red"
+            },
+            {
+              "name": "Accent headings (brand red)",
+              "value": "accent-headings"
+            },
+            {
+              "name": "Check-mark lists",
+              "value": "checklist"
             }
           ]
         },

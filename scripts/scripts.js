@@ -109,6 +109,9 @@ export function decorateButtons(main) {
   });
 }
 
+/** page templates with their own stylesheet in /styles/{template}.css */
+const TEMPLATE_STYLES = ['mybeckman'];
+
 const GENERIC_LINK_TEXT = /^(learn more|read more|explore|explore now|download|watch video|watch now|read blog|read article|read case study)$/i;
 
 /**
@@ -179,9 +182,13 @@ export function decorateMain(main) {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
+  // template stylesheets (page metadata "template", e.g. mybeckman)
+  const templateStyles = TEMPLATE_STYLES.filter((name) => document.body.classList.contains(name))
+    .map((name) => loadCSS(`${window.hlx.codeBasePath}/styles/${name}.css`));
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
+    await Promise.allSettled(templateStyles);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);
   }

@@ -1,6 +1,4 @@
 {
- "https://fast.wistia.net/embed/medias/1nyrf4wf4x/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
- "https://fast.wistia.net/embed/medias/6yc9dtf8jn/thumbnail-640.webp": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/thumbnail-640.webp",
  "https://media.beckman.com/-/media/app-note-support-items/variability-analysis-of-the-vi-cell-blu-cell-viability-analyzer-against-3-automated-cell-counting/thumbnail.jpg?h=251&w=195&rev=ce6ad22af0a846d6a1efee30b992ca59&sc_lang=hi&hash=3E70F918AEC24674F9E767987A3393A0": "/content/dam/demo-ma-aem-coder/mybeckman/app-note-support-items/variability-analysis-of-the-vi-cell-blu-cell-viability-analyzer-against-3-automated-cell-counting/thumbnail.jpg",
  "https://media.beckman.com/-/media/research-areas/extracellular-vesicles/2024_future_ev.jpg?rev=b826cc1551f04f5d95625050bb84ccd6&sc_lang=hi": "/content/dam/demo-ma-aem-coder/mybeckman/research-areas/extracellular-vesicles/2024_future_ev.jpg",
  "https://media.beckman.com/-/media/research-areas/monoclonal-antibodies/chc_monoclonal_antibodies_antidrug_conjugates_final_2560x600.jpg": "/content/dam/demo-ma-aem-coder/mybeckman/research-areas/monoclonal-antibodies/chc_monoclonal_antibodies_antidrug_conjugates_final_2560x600.jpg",
@@ -13,5 +11,7 @@
  "https://media.beckman.com/-/media/app-note-support-items/the-vi-cell-blu-cell-viability-analyzer-cell-counter-performance-comparison-for-cho-and-hek-cells/thumbnail?rev=9ffc68c1e7ca4fa7bead012b1e1a7ccd": "/content/dam/demo-ma-aem-coder/mybeckman/app-note-support-items/the-vi-cell-blu-cell-viability-analyzer-cell-counter-performance-comparison-for-cho-and-hek-cells/thumbnail.jpg",
  "https://media.beckman.com/-/media/pdf-thumbnails/automating-the-valita-titer-igg-quantification-assay-on-a-biomek-i-series-liquid-handling-system/thumbnail_automating-valita-titer?rev=feb85a78d638420087db0fe934269979": "/content/dam/demo-ma-aem-coder/mybeckman/pdf-thumbnails/automating-the-valita-titer-igg-quantification-assay-on-a-biomek-i-series-liquid-handling-system/thumbnail_automating-valita-titer.jpg",
  "https://media.beckman.com/-/media/pdf-thumbnails/cydemvt/thumbnail_introducing-cydem-vt?rev=f794b31eda22467ca03f060bdea4feb0": "/content/dam/demo-ma-aem-coder/mybeckman/pdf-thumbnails/cydemvt/thumbnail_introducing-cydem-vt.jpg",
- "https://media.beckman.com/-/media/resources/disease-research/mabs-dev-ecosystem-v14?rev=af6420a01162440d805e645c4151e9a5": "/content/dam/demo-ma-aem-coder/mybeckman/resources/disease-research/mabs-dev-ecosystem-v14.jpg"
+ "https://media.beckman.com/-/media/resources/disease-research/mabs-dev-ecosystem-v14?rev=af6420a01162440d805e645c4151e9a5": "/content/dam/demo-ma-aem-coder/mybeckman/resources/disease-research/mabs-dev-ecosystem-v14.jpg",
+ "https://embed-ssl.wistia.com/deliveries/e6d1c6d874dbc935a49a5708a12b4e0e.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/e6d1c6d874dbc935a49a5708a12b4e0e.jpg",
+ "https://embed-ssl.wistia.com/deliveries/50e244c00777190b1d68e625fcadf3e2.jpg?image_crop_resized=960x540": "/content/dam/demo-ma-aem-coder/mybeckman/wistia/50e244c00777190b1d68e625fcadf3e2.jpg"
 }

@@ -78,7 +78,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(ul.fields):not(:has(div.col-md-8))"
       ],
-      "style": null,
+      "style": "checklist",
       "blocks": [],
       "defaultContent": [
         "div.containercustom:has(> div.row > div.col-sm-6) > h2",
@@ -108,7 +108,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.containercustom:has(> div.row > div.col-md-8)"
       ],
-      "style": "highlight",
+      "style": "highlight, checklist",
       "blocks": [
         "columns-mb"
       ],
@@ -134,7 +134,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(> a[name=form])"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [
         "form-mb"
       ],

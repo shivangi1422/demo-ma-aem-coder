@@ -22,6 +22,20 @@
         "label": "Keywords"
       },
       {
+        "component": "text",
+        "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "description": "Page template (adds a body class for template styles, e.g. mybeckman)"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "theme",
+        "label": "Theme",
+        "description": "Page theme (adds a body class, e.g. wide for a 1300px content column on mybeckman pages)"
+      },
+      {
         "component": "reference",
         "valueType": "string",
         "name": "image",
@@ -176,6 +190,14 @@
           {
             "name": "Red band",
             "value": "red"
+          },
+          {
+            "name": "Accent headings (brand red)",
+            "value": "accent-headings"
+          },
+          {
+            "name": "Check-mark lists",
+            "value": "checklist"
           }
         ]
       },
@@ -194,6 +216,7 @@
       {
         "component": "multiselect",
         "name": "classes",
+        "multi": true,
         "value": "",
         "label": "Style",
         "valueType": "string",
@@ -201,6 +224,10 @@
           {
             "name": "Open (all items expanded)",
             "value": "open"
+          },
+          {
+            "name": "Boxed (grey bars, 2-up)",
+            "value": "boxed"
           }
         ]
       }
@@ -237,9 +264,10 @@
         "valueType": "string"
       },
       {
-        "component": "select",
+        "component": "multiselect",
         "valueType": "string",
         "name": "classes",
+        "multi": true,
         "label": "Style",
         "value": "solutions",
         "options": [
@@ -290,6 +318,10 @@
           {
             "name": "Icons (large icon, title, text)",
             "value": "icons"
+          },
+          {
+            "name": "Compact (small photo tiles, 4-up)",
+            "value": "compact"
           }
         ]
       }
@@ -5428,6 +5460,10 @@
           {
             "name": "Promo banner",
             "value": "promo"
+          },
+          {
+            "name": "Light (centred red title, no overlay)",
+            "value": "light"
           }
         ]
       }

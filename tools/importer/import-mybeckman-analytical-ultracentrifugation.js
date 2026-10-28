@@ -87,7 +87,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "#quick-nav"
       ],
-      "style": "jump-links",
+      "style": "jump-links, accent-headings",
       "blocks": [],
       "defaultContent": [
         "#quick-nav > h2",
@@ -100,7 +100,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "#introduction"
       ],
-      "style": null,
+      "style": "accent-headings",
       "blocks": [],
       "defaultContent": [
         "#introduction > h2",
@@ -126,7 +126,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "#benefits"
       ],
-      "style": "divider",
+      "style": "divider, accent-headings",
       "blocks": [
         "columns-mb"
       ],
@@ -138,7 +138,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "#applications"
       ],
-      "style": "highlight",
+      "style": "highlight, accent-headings",
       "blocks": [
         "cards-grid-photo-mb"
       ],
@@ -154,7 +154,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "#methods"
       ],
-      "style": null,
+      "style": "accent-headings",
       "blocks": [
         "columns-mb",
         "cards-grid-products-mb"
@@ -171,7 +171,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(#methods) + div.embeded-video"
       ],
-      "style": "centered",
+      "style": "centered, accent-headings",
       "blocks": [
         "embed-mb"
       ],
@@ -200,7 +200,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(> #anchor)"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [
         "form-mb"
       ],

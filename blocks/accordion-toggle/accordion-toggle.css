@@ -154,3 +154,38 @@
     font-size: 16px;
   }
 }
+
+/* boxed: grey title bars with a gap between them, two columns on desktop */
+.accordion-toggle.boxed {
+  display: grid;
+  gap: 12px;
+  border-top: 0;
+}
+
+.accordion-toggle.boxed .accordion-toggle-item {
+  border-bottom: 0;
+  background-color: var(--light-color);
+}
+
+.accordion-toggle.boxed .accordion-toggle-title {
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  padding: 14px 16px;
+  font-size: 18px;
+  font-weight: 400;
+}
+
+.accordion-toggle.boxed .accordion-toggle-panel {
+  padding: 4px 16px 16px;
+  background-color: var(--background-color);
+  border: 1px solid var(--light-color);
+  border-top: 0;
+}
+
+@media (width >= 900px) {
+  .accordion-toggle.boxed {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    align-items: start;
+    column-gap: 24px;
+  }
+}

@@ -24,12 +24,17 @@ Repeating rows — one row per item. Each item: row 0 = heading/intro (rich text
 | Photo (centred photo cards) | `photo` |
 | Accent (text cards, red top border) | `accent` |
 | Icons (large icon, title, text) | `icons` |
+| Compact (small photo tiles, 4-up) | `compact` |
 
 ## Universal Editor fields
 
 - Content fields derived from the block's decorate contract.
-- `classes` select for options: Solutions (image + category + link), Product Lines (image + title), Insights (intro + text cards), Simple (4-up: image + tag + title + link), Features (centered, borderless, no image), Features (purple band), Video (3-up video posters, play overlay), Showcase (white cards over background image), Products (tagged product cards), Photo (centred photo cards), Accent (text cards, red top border), Icons (large icon, title, text).
+- `classes` select for options: Solutions (image + category + link), Product Lines (image + title), Insights (intro + text cards), Simple (4-up: image + tag + title + link), Features (centered, borderless, no image), Features (purple band), Video (3-up video posters, play overlay), Showcase (white cards over background image), Products (tagged product cards), Photo (centred photo cards), Accent (text cards, red top border), Icons (large icon, title, text), Compact (small photo tiles, 4-up). Style is a multiselect: `compact` is combined with `photo`.
 - A separate `-item` model defines one repeated item.
+
+## compact option
+
+- **compact** (Compact (small photo tiles, 4-up)), added to `photo`: same content as photo cards; small tiles with a 4:3 cover image and a short bold title, 2-up from 600px, 4-up from 900px (5-up when there are exactly five cards). Used for the mybeckman.in Related Content, AUC application and NGS article tiles.
 
 ## accent and icons options
 

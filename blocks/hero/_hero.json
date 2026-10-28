@@ -79,6 +79,10 @@
             {
               "name": "Promo banner",
               "value": "promo"
+            },
+            {
+              "name": "Light (centred red title, no overlay)",
+              "value": "light"
             }
           ]
         }

@@ -1275,7 +1275,7 @@
           "selector": [
             "div.container-overlay-full-width:has(div.sticky)"
           ],
-          "style": "spectrum-gradient",
+          "style": "spectrum-gradient, jump-links",
           "blocks": [],
           "defaultContent": [
             "div.container-overlay-full-width div.sticky"
@@ -1554,7 +1554,7 @@
           "selector": [
             "div.bc-rich-text > div:has(> h1)"
           ],
-          "style": null,
+          "style": "centered, accent-headings",
           "blocks": [],
           "defaultContent": [
             "div.bc-rich-text > div:has(> h1) > h1",
@@ -1568,7 +1568,7 @@
           "selector": [
             "div.bc-rich-text > div.row:has(a.primary-btn)"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [],
           "defaultContent": [
             "div.bc-rich-text > div.row:has(a.primary-btn) > div > div > p",
@@ -1594,7 +1594,7 @@
           "selector": [
             "div.col-md-12.text-center:has(> h3)"
           ],
-          "style": null,
+          "style": "centered",
           "blocks": [
             "cards-grid-photo-mb"
           ],
@@ -1608,7 +1608,7 @@
           "selector": [
             "div.section-resources"
           ],
-          "style": null,
+          "style": "centered, accent-headings",
           "blocks": [
             "cards-grid-products-mb"
           ],
@@ -1622,7 +1622,7 @@
           "selector": [
             "div.bc-rich-text:has(> #anchor)"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [
             "form-mb"
           ],
@@ -1637,7 +1637,7 @@
           "selector": [
             "div.bc-rich-text:has(h2 + h5)"
           ],
-          "style": null,
+          "style": "accent-headings",
           "blocks": [],
           "defaultContent": [
             "div.bc-rich-text div:has(> h2 + h5) > h2",
@@ -1705,7 +1705,7 @@
           "selector": [
             "div.containercustom:has(ul.fields):not(:has(div.col-md-8))"
           ],
-          "style": null,
+          "style": "checklist",
           "blocks": [],
           "defaultContent": [
             "div.containercustom:has(> div.row > div.col-sm-6) > h2",
@@ -1735,7 +1735,7 @@
           "selector": [
             "div.containercustom:has(> div.row > div.col-md-8)"
           ],
-          "style": "highlight",
+          "style": "highlight, checklist",
           "blocks": [
             "columns-mb"
           ],
@@ -1761,7 +1761,7 @@
           "selector": [
             "div.bc-rich-text:has(> a[name=form])"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [
             "form-mb"
           ],
@@ -1909,7 +1909,7 @@
           "selector": [
             "div.bc-rich-text:has(> a[name=form])"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [
             "form-mb"
           ],
@@ -2003,7 +2003,7 @@
           "selector": [
             "div.bc-rich-text > div:has(> h2 + p)"
           ],
-          "style": null,
+          "style": "centered, accent-headings",
           "blocks": [],
           "defaultContent": [
             "div.bc-rich-text > div:has(> h2 + p) > h2",
@@ -2016,7 +2016,7 @@
           "selector": [
             "div.workflow-section"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [
             "tabs-workflow-mb"
           ],
@@ -2030,7 +2030,7 @@
           "selector": [
             "div.bc-rich-text:has(+ div.embeded-video)"
           ],
-          "style": "centered",
+          "style": "centered, accent-headings",
           "blocks": [
             "embed-mb"
           ],
@@ -2044,7 +2044,7 @@
           "selector": [
             "div.section-resources"
           ],
-          "style": null,
+          "style": "centered, accent-headings",
           "blocks": [
             "cards-grid-products-mb"
           ],
@@ -2058,7 +2058,7 @@
           "selector": [
             "div.bc-rich-text:has(> div.section-resources) + div.bc-rich-text"
           ],
-          "style": null,
+          "style": "centered, accent-headings",
           "blocks": [
             "columns-mb"
           ],
@@ -2096,7 +2096,7 @@
           "selector": [
             "section#anchor"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [
             "form-mb"
           ],
@@ -2358,7 +2358,7 @@
           "selector": [
             "#quick-nav"
           ],
-          "style": "jump-links",
+          "style": "jump-links, accent-headings",
           "blocks": [],
           "defaultContent": [
             "#quick-nav > h2",
@@ -2371,7 +2371,7 @@
           "selector": [
             "#introduction"
           ],
-          "style": null,
+          "style": "accent-headings",
           "blocks": [],
           "defaultContent": [
             "#introduction > h2",
@@ -2397,7 +2397,7 @@
           "selector": [
             "#benefits"
           ],
-          "style": "divider",
+          "style": "divider, accent-headings",
           "blocks": [
             "columns-mb"
           ],
@@ -2409,7 +2409,7 @@
           "selector": [
             "#applications"
           ],
-          "style": "highlight",
+          "style": "highlight, accent-headings",
           "blocks": [
             "cards-grid-photo-mb"
           ],
@@ -2425,7 +2425,7 @@
           "selector": [
             "#methods"
           ],
-          "style": null,
+          "style": "accent-headings",
           "blocks": [
             "columns-mb",
             "cards-grid-products-mb"
@@ -2442,7 +2442,7 @@
           "selector": [
             "div.bc-rich-text:has(#methods) + div.embeded-video"
           ],
-          "style": "centered",
+          "style": "centered, accent-headings",
           "blocks": [
             "embed-mb"
           ],
@@ -2471,7 +2471,7 @@
           "selector": [
             "div.bc-rich-text:has(> #anchor)"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [
             "form-mb"
           ],
@@ -2559,7 +2559,7 @@
           "selector": [
             "div.containercustom:has(> div.row p.introimg)"
           ],
-          "style": null,
+          "style": "centered",
           "blocks": [
             "columns-mb"
           ],
@@ -2573,7 +2573,7 @@
           "selector": [
             "div.containercustom:has(> h2#Solutions)"
           ],
-          "style": null,
+          "style": "centered",
           "blocks": [],
           "defaultContent": [
             "div.containercustom > h2#Solutions",
@@ -2612,7 +2612,7 @@
           "selector": [
             "div.containercustom:has(> div.row > div.col-sm-3 > p > img)"
           ],
-          "style": null,
+          "style": "centered",
           "blocks": [
             "cards-grid-icons-mb"
           ],
@@ -2626,7 +2626,7 @@
           "selector": [
             "div.containercustom:has(ul.partners)"
           ],
-          "style": "highlight",
+          "style": "highlight, centered, checklist",
           "blocks": [],
           "defaultContent": [
             "div.containercustom:has(ul.partners) > h2",
@@ -2639,7 +2639,7 @@
           "selector": [
             "div.containercustom:has(> div.featres)"
           ],
-          "style": null,
+          "style": "centered",
           "blocks": [
             "cards-grid-products-mb"
           ],
@@ -2653,7 +2653,7 @@
           "selector": [
             "div.containercustom:has(> div.row.InsArt)"
           ],
-          "style": null,
+          "style": "centered",
           "blocks": [
             "cards-grid-photo-mb"
           ],
@@ -2668,7 +2668,7 @@
           "selector": [
             "div.containercustom:has(> div.slideshow-container)"
           ],
-          "style": null,
+          "style": "centered",
           "blocks": [
             "carousel-testimonials-mb"
           ],
@@ -2682,7 +2682,7 @@
           "selector": [
             "div.bc-rich-text:has(> a[name=form])"
           ],
-          "style": "highlight",
+          "style": "highlight, centered",
           "blocks": [
             "form-mb"
           ],

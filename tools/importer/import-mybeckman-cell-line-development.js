@@ -92,7 +92,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text > div:has(> h2 + p)"
       ],
-      "style": null,
+      "style": "centered, accent-headings",
       "blocks": [],
       "defaultContent": [
         "div.bc-rich-text > div:has(> h2 + p) > h2",
@@ -105,7 +105,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.workflow-section"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [
         "tabs-workflow-mb"
       ],
@@ -119,7 +119,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(+ div.embeded-video)"
       ],
-      "style": "centered",
+      "style": "centered, accent-headings",
       "blocks": [
         "embed-mb"
       ],
@@ -133,7 +133,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.section-resources"
       ],
-      "style": null,
+      "style": "centered, accent-headings",
       "blocks": [
         "cards-grid-products-mb"
       ],
@@ -147,7 +147,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "div.bc-rich-text:has(> div.section-resources) + div.bc-rich-text"
       ],
-      "style": null,
+      "style": "centered, accent-headings",
       "blocks": [
         "columns-mb"
       ],
@@ -185,7 +185,7 @@ const PAGE_TEMPLATE = {
       "selector": [
         "section#anchor"
       ],
-      "style": "highlight",
+      "style": "highlight, centered",
       "blocks": [
         "form-mb"
       ],

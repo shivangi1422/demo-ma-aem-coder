@@ -85,8 +85,10 @@ export default function parse(element, { document }) {
       const p = document.createElement('p');
       if (src) copyInline(src, p, document);
       tidy(p);
+      // the cell keeps its <p>: loose inline nodes (em + text + sup) would
+      // each become a paragraph of their own in the converted page
       row.push(clean(p.textContent)
-        ? [document.createComment(` field:column${i + 1} `), ...p.childNodes]
+        ? [document.createComment(` field:column${i + 1} `), p]
         : '');
     }
     cells.push(row);

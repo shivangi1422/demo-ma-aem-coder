@@ -1,4 +1,4 @@
-/* Hero — one block, several styles via the "Style" dropdown: home | left | banner | plain | gradient | split | split-left | promo */
+/* Hero — one block, several styles via the "Style" dropdown: home | left | banner | plain | gradient | split | split-left | promo | light */
 
 .hero-container .hero-wrapper {
   max-width: unset;
@@ -751,3 +751,70 @@
   }
 }
 /* stylelint-enable no-descending-specificity */
+
+/* ============================================================
+   LIGHT — light photo behind a centred brand-red title, no tint
+   (mybeckman.in top banners without a dark overlay)
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct style, own selectors */
+.hero.light {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  min-height: 220px;
+  padding: 48px 24px;
+  background-color: var(--light-color);
+  text-align: center;
+  overflow: hidden;
+}
+
+.hero.light picture {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero.light picture img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero.light > * {
+  position: relative;
+  z-index: 1;
+}
+
+.hero.light h1,
+.hero.light h2 {
+  max-width: 900px;
+  margin: 0;
+  color: var(--brand-red);
+  font-family: var(--heading-font-family);
+  font-size: 32px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.hero.light p {
+  max-width: 720px;
+  margin: 0;
+  color: var(--text-color);
+  font-size: 18px;
+}
+/* stylelint-enable no-descending-specificity */
+
+@media (width >= 900px) {
+  .hero.light {
+    min-height: 340px;
+    padding: 64px 80px;
+  }
+
+  .hero.light h1,
+  .hero.light h2 {
+    font-size: 50px;
+  }
+}

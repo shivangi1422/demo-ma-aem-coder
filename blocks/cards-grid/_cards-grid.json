@@ -44,9 +44,10 @@
           "valueType": "string"
         },
         {
-          "component": "select",
+          "component": "multiselect",
           "valueType": "string",
           "name": "classes",
+          "multi": true,
           "label": "Style",
           "value": "solutions",
           "options": [
@@ -97,6 +98,10 @@
             {
               "name": "Icons (large icon, title, text)",
               "value": "icons"
+            },
+            {
+              "name": "Compact (small photo tiles, 4-up)",
+              "value": "compact"
             }
           ]
         }

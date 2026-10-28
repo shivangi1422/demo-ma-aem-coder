@@ -23,6 +23,20 @@
           "label": "Keywords"
         },
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "template",
+          "label": "Template",
+          "description": "Page template (adds a body class for template styles, e.g. mybeckman)"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "theme",
+          "label": "Theme",
+          "description": "Page theme (adds a body class, e.g. wide for a 1300px content column on mybeckman pages)"
+        },
+        {
           "component": "reference",
           "valueType": "string",
           "name": "image",

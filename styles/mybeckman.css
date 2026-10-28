@@ -1,0 +1,342 @@
+/*
+ * mybeckman.in resource pages (page metadata "template: mybeckman", loaded by
+ * scripts.js for body.mybeckman). The source pages sit in a 1140px Bootstrap
+ * container: blocks that are full-bleed on the Beckman Coulter pages stay in
+ * the content column here, except the top banners (hero home / light).
+ */
+
+/* stylelint-disable no-descending-specificity -- rules for different blocks, not overrides of each other */
+body.mybeckman {
+  --content-max-width: 1110px;
+  --mb-border: #ddd;
+  --mb-title-color: #333;
+}
+
+/* theme "wide": pages whose source content runs ~1300px wide */
+body.mybeckman.wide {
+  --content-max-width: 1300px;
+}
+
+/* content column for blocks that are full-bleed elsewhere */
+body.mybeckman main > .section > div:is(.cards-grid-wrapper, .carousel-wrapper, .tabs-products-wrapper),
+body.mybeckman main > .section > .hero-wrapper:has(> .hero.left) {
+  max-width: var(--content-max-width);
+  margin-block: 24px;
+  padding-inline: 24px;
+}
+
+@media (width >= 900px) {
+  body.mybeckman main > .section > div:is(.cards-grid-wrapper, .carousel-wrapper, .tabs-products-wrapper),
+  body.mybeckman main > .section > .hero-wrapper:has(> .hero.left) {
+    padding-inline: 27px;
+  }
+}
+
+/* the chapter banners are not the first thing on the page: keep section spacing */
+body.mybeckman main > .section:not(:first-of-type):has(> div > .hero.left) {
+  margin-block: var(--section-spacing);
+}
+
+/* ---------------------------------------------------------------- headings */
+
+/* source: h2 24px bold black, h3 ~19px bold; "accent-headings" sections use
+   32px medium brand-red h2s */
+body.mybeckman main :is(.default-content-wrapper, .columns) h2 {
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+body.mybeckman main :is(.default-content-wrapper, .columns) h3 {
+  color: #000;
+  font-size: 19px;
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* text beside an image or video in columns (columns.css styles these rows for
+   the Beckman Coulter pages with more specific selectors) */
+body.mybeckman main .columns > div:has(> .columns-img-col, > .columns-video-col) > div:not(.columns-img-col) h2 {
+  margin: 0 0 12px;
+  color: #000;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 1.3;
+  text-transform: none;
+}
+
+body.mybeckman main .columns > div:has(> .columns-img-col, > .columns-video-col) > div:not(.columns-img-col) p {
+  margin: 0 0 12px;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+body.mybeckman main > .section.accent-headings .columns > div:has(> .columns-img-col, > .columns-video-col) > div:not(.columns-img-col) h2,
+body.mybeckman main > .section.accent-headings :is(.default-content-wrapper, .columns) h2 {
+  color: var(--brand-red);
+  font-size: 32px;
+  font-weight: 500;
+}
+
+/* centred sections: headings and buttons centred, running text stays left */
+body.mybeckman main > .section.centered > .default-content-wrapper {
+  text-align: left;
+}
+
+body.mybeckman main > .section.centered > .default-content-wrapper > :is(h1, h2, h3, h4, .button-wrapper) {
+  text-align: center;
+}
+
+body.mybeckman main > .section.centered > .default-content-wrapper > p.button-wrapper {
+  display: block;
+  margin-inline: auto;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+/* source .primary-btn: red, 4.8px corners */
+body.mybeckman main a.button:any-link {
+  border-radius: 4.8px;
+  padding: 10px 24px;
+  font-size: 16px;
+  font-weight: 400;
+}
+
+body.mybeckman main a.button.primary:any-link {
+  background-color: #ea1c2c;
+  color: #fff;
+}
+
+body.mybeckman main a.button.primary:hover,
+body.mybeckman main a.button.primary:focus-visible {
+  background-color: #c4121f;
+}
+
+/* source .btn-default / .redbtn / .related-topic-button: outlined */
+body.mybeckman main a.button.secondary:any-link {
+  border: 1px solid currentcolor;
+  background-color: transparent;
+  color: #c4121f;
+}
+
+body.mybeckman main a.button.secondary:hover,
+body.mybeckman main a.button.secondary:focus-visible {
+  background-color: #c4121f;
+  color: #fff;
+}
+
+/* ---------------------------------------------------------------- hero */
+
+/* top banners: neutral shade instead of the brand-blue tint */
+body.mybeckman .hero.home {
+  background-color: #222;
+}
+
+body.mybeckman .hero.home::after {
+  background-color: rgb(0 0 0 / 35%);
+}
+
+/* chapter banners: photo in the column, white title on a dark band */
+body.mybeckman .hero.left {
+  min-height: 0;
+}
+
+body.mybeckman .hero.left h1,
+body.mybeckman .hero.left h2 {
+  margin: 0;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+
+body.mybeckman .hero.left p {
+  margin: 4px 0 0;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+@media (width >= 900px) {
+  body.mybeckman .hero.left {
+    min-height: 320px;
+  }
+
+  body.mybeckman .hero.left > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  body.mybeckman .hero.left > div > div {
+    display: inline-block;
+    max-width: 70%;
+    padding: 12px 28px;
+    background-color: rgb(0 0 0 / 80%);
+  }
+
+  body.mybeckman .hero.left h1,
+  body.mybeckman .hero.left h2 {
+    font-size: 26px;
+    line-height: 1.3;
+  }
+
+  body.mybeckman .hero.left p {
+    margin-top: 4px;
+    font-size: 15px;
+    line-height: 1.4;
+  }
+}
+
+/* ---------------------------------------------------------------- cards */
+
+
+body.mybeckman .cards-grid:is(.photo, .products) {
+  max-width: none;
+  padding: 0;
+}
+
+body.mybeckman .cards-grid:is(.photo, .products) ul {
+  gap: 16px;
+  margin: 0;
+}
+
+body.mybeckman .cards-grid:is(.photo, .products) ul > li {
+  border: 1px solid var(--mb-border);
+  box-shadow: none;
+}
+
+/* whole image visible on a white tile (diagrams, product shots) */
+body.mybeckman .cards-grid.photo:not(.compact) .cards-grid-image {
+  padding: 16px 16px 0;
+}
+
+body.mybeckman .cards-grid.photo:not(.compact) .cards-grid-image img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: contain;
+}
+
+body.mybeckman .cards-grid:is(.photo, .products) .cards-grid-body {
+  padding: 12px 16px 16px;
+}
+
+body.mybeckman .cards-grid.photo:not(.compact) .cards-grid-body h3 {
+  margin: 8px 0;
+  font-size: 22px;
+  font-weight: 300;
+  line-height: 1.3;
+  text-align: center;
+}
+
+body.mybeckman .cards-grid:is(.photo, .products) .cards-grid-body h3 a:any-link {
+  color: var(--mb-title-color);
+  text-decoration: none;
+}
+
+body.mybeckman .cards-grid:is(.photo, .products) .cards-grid-body h3 a:hover,
+body.mybeckman .cards-grid:is(.photo, .products) .cards-grid-body h3 a:focus-visible {
+  color: #c4121f;
+  text-decoration: underline;
+}
+
+body.mybeckman .cards-grid.photo .cards-grid-body p {
+  padding: 0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* resource cards: small dark titles under the tag */
+body.mybeckman .cards-grid.products .cards-grid-image {
+  margin-bottom: 0;
+}
+
+body.mybeckman .cards-grid.products .cards-grid-image img {
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  object-position: top;
+}
+
+body.mybeckman .cards-grid.products .cards-grid-body .cards-grid-tag {
+  margin: 0 0 8px;
+  font-size: 11px;
+  line-height: 1.2;
+}
+
+body.mybeckman .cards-grid.products .cards-grid-body h3 {
+  margin: 0 0 8px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+
+body.mybeckman .cards-grid.products .cards-grid-body p {
+  font-size: 13px;
+}
+
+@media (width >= 900px) {
+  body.mybeckman .cards-grid.products ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  body.mybeckman .cards-grid.video ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    gap: 16px;
+  }
+}
+
+@media (width >= 1200px) {
+  body.mybeckman .cards-grid.products ul {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
+/* ---------------------------------------------------------------- columns */
+
+/* an image-only column next to text (ebook covers, diagrams): at most 40% */
+@media (width >= 900px) {
+  body.mybeckman .columns > div > .columns-img-col {
+    flex: 0 1 40%;
+  }
+
+  body.mybeckman .columns > div > .columns-img-col img {
+    width: auto;
+    max-width: 100%;
+    max-height: 340px;
+    margin-inline: auto;
+  }
+
+  body.mybeckman .columns > div > .columns-video-col {
+    flex: 0 0 50%;
+  }
+}
+
+/* ---------------------------------------------------------------- jump links */
+
+/* the spectrum strip sits in the content column like the source image band */
+body.mybeckman main > .section.spectrum-gradient {
+  box-sizing: border-box;
+  max-width: calc(var(--content-max-width) - 6px);
+  margin: 24px auto;
+}
+
+@media (width < 1164px) {
+  body.mybeckman main > .section.spectrum-gradient {
+    margin-inline: 24px;
+  }
+}
+
+body.mybeckman main > .section.jump-links.spectrum-gradient > .default-content-wrapper > :is(ul, ol) {
+  gap: 8px 48px;
+  padding: 8px 0;
+}
+
+body.mybeckman main > .section.jump-links.spectrum-gradient a:any-link {
+  font-size: 14px;
+  font-weight: 400;
+  text-decoration: underline;
+}
