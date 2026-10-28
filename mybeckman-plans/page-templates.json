@@ -9,7 +9,7 @@
         "https://www.mybeckman.in/service/plans"
       ],
       "representativeUrl": "https://www.mybeckman.in/service/plans",
-      "description": "mybeckman.in service plans page",
+      "description": "mybeckman.in service plans page (exact match)",
       "urlPattern": "/service/plans",
       "siteOrigin": "https://www.mybeckman.in",
       "pathMap": {
@@ -21,133 +21,142 @@
         "/support/technical-documents": "/en-in/support/technical-documents",
         "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
         "": "/en-in/index",
-        "/": "/en-in/"
+        "/": "/en-in/",
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge"
       },
       "metaOverrides": {
         "/service/plans": {
           "title": "Service Plans",
           "description": "Beckman Coulter Life Sciences service plans: priority response, certified parts and labor, technology updates and compliance support to minimize instrument downtime.",
-          "image": "https://media.beckman.com/-/media/service/media/service_images_call_center.jpg"
+          "image": "https://media.beckman.com/-/media/service/media/service_images_call_center.jpg",
+          "theme": "theme-mybeckman, mybeckman-inner"
         }
       },
       "blocks": [
         {
-          "name": "hero-plain",
+          "name": "cards-benefit-check",
           "instances": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
+            "#main .Intro__body"
           ]
         },
         {
-          "name": "cards-grid-benefits",
+          "name": "cards-product-plan",
           "instances": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Intro)"
+            "#main .productCards"
           ]
         },
         {
-          "name": "cards-grid-products",
+          "name": "columns-media-text",
           "instances": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.productCards)"
+            "#main .Section__two-column"
           ]
         },
         {
-          "name": "columns-two-column",
+          "name": "cards-button-caption",
           "instances": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-right > ul)",
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.wistia_responsive_padding)",
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-left > img):has(.Section__two-column-right > .btn)"
-          ]
-        },
-        {
-          "name": "columns-contact",
-          "instances": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Contact)"
+            "#getInTouch .Contact__body",
+            "#main .Contact__body"
           ]
         }
       ],
       "sections": [
         {
-          "id": "1",
-          "name": "hero-plain",
+          "id": "section-1",
+          "name": "Page title + Get Help Now",
           "selector": [
             "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)"
           ],
-          "style": null,
-          "blocks": [
-            "hero-plain"
-          ],
-          "defaultContent": []
+          "style": "wide",
+          "blocks": [],
+          "defaultContent": [
+            ".Section__header > h1",
+            ".Section__header > h2",
+            ".Section__header .callout > p",
+            ".Section__header .callout > a"
+          ]
         },
         {
-          "id": "2",
-          "name": "cards-grid-benefits",
+          "id": "section-2",
+          "name": "Why choose a service plan",
           "selector": [
             "#main .bc-test-layout > .block > .bc-rich-text:has(.Intro)"
           ],
-          "style": "highlight",
+          "style": "blue, split, wide",
           "blocks": [
-            "cards-grid-benefits"
+            "cards-benefit-check"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            ".Intro__title > h2",
+            ".Intro__title > p"
+          ]
         },
         {
-          "id": "3",
-          "name": "cards-grid-products",
+          "id": "section-3",
+          "name": "Product Specific Service Plans",
           "selector": [
             "#main .bc-test-layout > .block > .bc-rich-text:has(.productCards)"
           ],
-          "style": null,
+          "style": "wide",
           "blocks": [
-            "cards-grid-products"
+            "cards-product-plan"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            ".Section:has(> .productCards) > h2"
+          ]
         },
         {
-          "id": "4",
-          "name": "columns-two-column-1",
+          "id": "section-4",
+          "name": "Count on our team of experts",
           "selector": [
             "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-right > ul)"
           ],
-          "style": null,
+          "style": "wide",
           "blocks": [
-            "columns-two-column"
+            "columns-media-text"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            ".Section:has(> .Section__two-column) > h2",
+            ".Section:has(> .Section__two-column) > p"
+          ]
         },
         {
-          "id": "5",
-          "name": "columns-two-column-2",
+          "id": "section-5",
+          "name": "BeckmanConnect Remote Service",
           "selector": [
             "#main .bc-test-layout > .block > .bc-rich-text:has(.wistia_responsive_padding)"
           ],
-          "style": null,
+          "style": "wide",
           "blocks": [
-            "columns-two-column"
+            "columns-media-text"
           ],
           "defaultContent": []
         },
         {
-          "id": "6",
-          "name": "columns-two-column-3",
+          "id": "section-6",
+          "name": "Training",
           "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-left > img):has(.Section__two-column-right > .btn)"
+            "#main .bc-test-layout > .block > .bc-rich-text:has(.Section__two-column-left > img):has(.Section__two-column-right > h3)"
           ],
-          "style": null,
+          "style": "wide",
           "blocks": [
-            "columns-two-column"
+            "columns-media-text"
           ],
           "defaultContent": []
         },
         {
-          "id": "7",
-          "name": "columns-contact",
+          "id": "section-7",
+          "name": "Get in Touch",
           "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(.Contact)"
+            "#getInTouch"
           ],
-          "style": "highlight",
+          "style": "blue, centered, wide",
           "blocks": [
-            "columns-contact"
+            "cards-button-caption"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
         }
       ],
       "site": "mybeckman"

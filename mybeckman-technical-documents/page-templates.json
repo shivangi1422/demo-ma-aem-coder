@@ -21,7 +21,8 @@
         "/support/technical-documents": "/en-in/support/technical-documents",
         "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
         "": "/en-in/index",
-        "/": "/en-in/"
+        "/": "/en-in/",
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge"
       },
       "hrefOverrides": [
         {

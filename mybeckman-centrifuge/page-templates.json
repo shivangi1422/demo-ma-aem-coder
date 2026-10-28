@@ -1,0 +1,132 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "mybeckman-centrifuge",
+      "urls": [
+        "https://www.mybeckman.in/service/plans/centrifuge"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/plans/centrifuge",
+      "description": "mybeckman.in centrifuge service plans page (exact match)",
+      "urlPattern": "/service/plans/centrifuge",
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
+        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/support/technical-documents": "/en-in/support/technical-documents",
+        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
+        "": "/en-in/index",
+        "/": "/en-in/",
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge"
+      },
+      "metaOverrides": {
+        "/service/plans/centrifuge": {
+          "theme": "theme-mybeckman, mybeckman-inner"
+        }
+      },
+      "blocks": [
+        {
+          "name": "hero-dim-buttons",
+          "instances": [
+            "#main .bc-rich-text > .hero",
+            "#main .hero"
+          ]
+        },
+        {
+          "name": "table-plan-compare",
+          "instances": [
+            "#main #service-plans-table"
+          ]
+        },
+        {
+          "name": "columns-cta",
+          "instances": [
+            "#main .Section > .row:has(> .col-md-6)"
+          ]
+        },
+        {
+          "name": "cards-button-caption",
+          "instances": [
+            "#getInTouch .Contact__body",
+            "#main .Contact__body"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .hero)",
+            "#main .bc-rich-text:has(> .hero)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-dim-buttons"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Choose the plan",
+          "selector": [
+            "#main .bc-rich-text:has(#service-plans-table)"
+          ],
+          "style": "wide-tall",
+          "blocks": [
+            "table-plan-compare"
+          ],
+          "defaultContent": [
+            "#choosePlan .firstSection > h2"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Qualification Services | Rotor Repair",
+          "selector": [
+            "#main .bc-rich-text:has(.col-md-6)"
+          ],
+          "style": "wide-tall",
+          "blocks": [
+            "columns-cta"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Get in Touch",
+          "selector": [
+            "#getInTouch"
+          ],
+          "style": "blue, centered, wide-tall",
+          "blocks": [
+            "cards-button-caption"
+          ],
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
+        }
+      ],
+      "site": "mybeckman",
+      "sectionAnchors": {
+        "section-2": "choose-plan"
+      },
+      "hrefOverrides": [
+        {
+          "startsWith": "#choosePlan",
+          "to": "#choose-plan"
+        },
+        {
+          "startsWith": "#getInTouch",
+          "to": "#get-in-touch"
+        }
+      ]
+    }
+  ]
+}

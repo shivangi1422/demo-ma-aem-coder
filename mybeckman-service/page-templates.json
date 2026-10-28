@@ -9,7 +9,7 @@
         "https://www.mybeckman.in/service"
       ],
       "representativeUrl": "https://www.mybeckman.in/service",
-      "description": "mybeckman.in (Beckman Coulter Life Sciences India) service hub page",
+      "description": "mybeckman.in service hub page (exact match: photo hero, stats band, service cards, Get in Touch band)",
       "urlPattern": "/service",
       "siteOrigin": "https://www.mybeckman.in",
       "pathMap": {
@@ -21,88 +21,99 @@
         "/support/technical-documents": "/en-in/support/technical-documents",
         "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
         "": "/en-in/index",
-        "/": "/en-in/"
+        "/": "/en-in/",
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge"
       },
       "metaOverrides": {
         "/service": {
           "description": "Comprehensive service plans, remote connectivity, instrument optimization, repairs, technical support and qualification & calibration from Beckman Coulter Life Sciences.",
-          "image": "https://media.beckman.com/-/media/service/media/service_hub_home-2022-09.jpg"
+          "image": "https://media.beckman.com/-/media/service/media/service_hub_home-2022-09.jpg",
+          "theme": "theme-mybeckman, mybeckman-inner"
         }
       },
       "blocks": [
         {
-          "name": "hero-home",
+          "name": "hero-dim-photo",
           "instances": [
-            "#main .bc-rich-text:has(> .hero)"
+            "#main .bc-rich-text > .hero",
+            "#main .hero"
           ]
         },
         {
-          "name": "columns-stats",
+          "name": "cards-stats",
           "instances": [
-            "#main .bc-rich-text:has(.Section__intro)"
+            "#main .Section--blue .Section__intro",
+            "#main .Section__intro"
           ]
         },
         {
-          "name": "cards-grid-services",
+          "name": "cards-icon-border",
           "instances": [
-            "#main .bc-rich-text:has(.ServiceCards)"
+            "#main .ServiceCards"
           ]
         },
         {
-          "name": "columns-contact",
+          "name": "cards-button-caption",
           "instances": [
-            "#main .bc-rich-text:has(> #getInTouch)"
+            "#getInTouch .Contact__body",
+            "#main .Contact__body"
           ]
         }
       ],
       "sections": [
         {
-          "id": "1",
-          "name": "hero-home",
+          "id": "section-1",
+          "name": "Service-hub photo hero",
           "selector": [
-            "#main .bc-rich-text:has(> .hero)"
+            "#main .bc-rich-text:has(> .hero)",
+            "#main .bc-rich-text:nth-of-type(1)"
           ],
           "style": null,
           "blocks": [
-            "hero-home"
+            "hero-dim-photo"
           ],
           "defaultContent": []
         },
         {
-          "id": "2",
-          "name": "columns-stats",
+          "id": "section-2",
+          "name": "Stats band",
           "selector": [
-            "#main .bc-rich-text:has(.Section__intro)"
+            "#main .bc-rich-text:has(.Section__intro)",
+            "#main .bc-rich-text:nth-of-type(2)"
           ],
-          "style": "highlight",
+          "style": "blue",
           "blocks": [
-            "columns-stats"
+            "cards-stats"
           ],
           "defaultContent": []
         },
         {
-          "id": "3",
-          "name": "cards-grid-services",
+          "id": "section-3",
+          "name": "Service cards",
           "selector": [
-            "#main .bc-rich-text:has(.ServiceCards)"
+            "#main .bc-rich-text:has(.ServiceCards)",
+            "#main .bc-rich-text:nth-of-type(3)"
           ],
           "style": null,
           "blocks": [
-            "cards-grid-services"
+            "cards-icon-border"
           ],
           "defaultContent": []
         },
         {
-          "id": "4",
-          "name": "columns-contact",
+          "id": "section-4",
+          "name": "Get in Touch band",
           "selector": [
-            "#main .bc-rich-text:has(> #getInTouch)"
+            "#getInTouch"
           ],
-          "style": "highlight",
+          "style": "blue, centered",
           "blocks": [
-            "columns-contact"
+            "cards-button-caption"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
         }
       ],
       "site": "mybeckman"
