@@ -1,0 +1,25 @@
+{
+  "metadata": { "projectType": "xwalk" },
+  "templates": [
+    {
+      "name": "reagents-category",
+      "description": "mybeckman.in reagent category pages: intro (heading + copy), light-grey band of linked product cards, optional disclaimer notes",
+      "urls": [
+        "https://www.mybeckman.in/reagents",
+        "https://www.mybeckman.in/reagents/cell-culture",
+        "https://www.mybeckman.in/reagents/centrifugation",
+        "https://www.mybeckman.in/reagents/coulter-flow-cytometry",
+        "https://www.mybeckman.in/reagents/genomic",
+        "https://www.mybeckman.in/reagents/particle"
+      ],
+      "blocks": [
+        { "name": "cards-grid", "instances": [".product-series-selector-wrapper .product-series-callouts"] }
+      ],
+      "sections": [
+        { "id": "intro", "name": "Intro", "selector": [".product-series-selector-wrapper > .product-content-wrap"], "style": "intro", "blocks": [], "defaultContent": [".product-heading-wrap"] },
+        { "id": "cards", "name": "Product cards", "selector": [".product-series-selector-wrapper .product-series-callouts"], "style": "light-grey", "blocks": ["cards-grid"], "defaultContent": [] },
+        { "id": "disclaimer", "name": "Disclaimer", "selector": [".product-series-selector-wrapper > div > .bc-rich-text:has(h5, p)"], "style": "disclaimer", "insets": true, "blocks": [], "defaultContent": [".bc-rich-text"] }
+      ]
+    }
+  ]
+}

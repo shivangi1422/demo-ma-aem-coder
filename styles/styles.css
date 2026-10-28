@@ -364,3 +364,85 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* intro section (mybeckman.in category pages): page heading + intro copy on the live
+   content column (1600px max, 15px gutters, 65px from 768px) */
+main > .section.intro {
+  margin: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- section style overrides the generic column */
+main > .section.intro > div {
+  display: flow-root; /* keep the last paragraph's margin above the next section, as live */
+  max-width: 1600px;
+  padding: 0 15px;
+}
+
+main > .section.intro h1 {
+  margin: 24px 0;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.1;
+}
+
+main > .section.intro p {
+  margin: 16px 0;
+  color: #4d4d4d;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+main > .section.intro a:any-link {
+  color: #007acb;
+}
+
+/* intro call-to-action (bold link): live red button */
+main > .section.intro a.button.primary:any-link {
+  border: 0;
+  border-radius: 2px;
+  padding: 13px 20px;
+  background-color: #ea1c2c;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  transition: background-color 0.3s;
+}
+
+main > .section.intro a.button.primary:is(:hover, :focus-visible) {
+  background-color: #cf1322;
+  color: #fff;
+}
+
+/* disclaimer section: light 14px italic notes, inset from a full-width 15px-gutter
+   column by the authored percentages (styles inset-left-N / inset-right-N) */
+main > .section.disclaimer {
+  margin: 0;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- section style overrides the generic column */
+main > .section.disclaimer > div {
+  max-width: none;
+  padding: 0 15px;
+}
+
+main > .section.disclaimer p {
+  margin: 23px 0;
+  color: #4d4d4d;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+main > .section.disclaimer.inset-left-12 > div > * { margin-left: 12%; }
+main > .section.disclaimer.inset-left-17 > div > * { margin-left: 17%; }
+main > .section.disclaimer.inset-right-12 > div > * { margin-right: 12%; }
+main > .section.disclaimer.inset-right-30 > div > * { margin-right: 30%; }
+
+@media (width >= 768px) {
+  main > .section.intro > div {
+    padding: 0 65px;
+  }
+}

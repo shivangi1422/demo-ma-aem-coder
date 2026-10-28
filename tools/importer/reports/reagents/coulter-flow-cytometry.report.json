@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents/coulter-flow-cytometry",
+  "path": "reagents/coulter-flow-cytometry",
+  "timestamp": "2026-10-28T09:20:12.109Z",
+  "title": "Flow Cytometry Reagents, DuraClone IM",
+  "template": "reagents-category",
+  "blocks": [
+    "cards-grid"
+  ]
+}

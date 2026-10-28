@@ -9,6 +9,8 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  buildBlock,
+  getMetadata,
 } from './aem.js';
 
 /**
@@ -61,9 +63,23 @@ async function loadFonts() {
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+/**
+ * Adds the breadcrumb trail as the first section of inner pages
+ * (opt out with page metadata "breadcrumbs: off").
+ * @param {Element} main The container element
+ */
+function buildBreadcrumbs(main) {
+  // page content only (header/footer fragments are decorated with the same pipeline)
+  if (main !== document.querySelector('body > main')) return;
+  if (getMetadata('breadcrumbs').toLowerCase() === 'off') return;
+  const section = document.createElement('div');
+  section.append(buildBlock('breadcrumbs', ''));
+  main.prepend(section);
+}
+
+function buildAutoBlocks(main) {
   try {
-    // TODO: add auto block, if needed
+    buildBreadcrumbs(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

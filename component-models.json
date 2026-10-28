@@ -20,6 +20,13 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "breadcrumb-title",
+        "label": "Breadcrumb title",
+        "description": "Label for this page in the breadcrumb (defaults to the page title)"
       }
     ]
   },
@@ -136,6 +143,34 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Intro (page heading + intro copy)",
+            "value": "intro"
+          },
+          {
+            "name": "Light grey band",
+            "value": "light-grey"
+          },
+          {
+            "name": "Disclaimer note",
+            "value": "disclaimer"
+          },
+          {
+            "name": "Inset left 12%",
+            "value": "inset-left-12"
+          },
+          {
+            "name": "Inset left 17%",
+            "value": "inset-left-17"
+          },
+          {
+            "name": "Inset right 12%",
+            "value": "inset-right-12"
+          },
+          {
+            "name": "Inset right 30%",
+            "value": "inset-right-30"
           }
         ]
       }

@@ -2,6 +2,19 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
+ * Builds the heading / intro panel from row 0, or null when that row is empty
+ * (an unused "Text" field still produces an empty first row).
+ * @param {Element} headingRow
+ */
+function buildHeading(headingRow) {
+  if (!headingRow || (headingRow.textContent.trim() === '' && !headingRow.querySelector('picture, img'))) return null;
+  const heading = document.createElement('div');
+  heading.className = 'cards-grid-heading';
+  while (headingRow.firstElementChild) heading.append(headingRow.firstElementChild);
+  return heading;
+}
+
+/**
  * Decorates the cards-grid block. One block, three styles via the "Style"
  * dropdown (variant class):
  *   - .cards-grid.solutions    heading + 3-up cards (image, category, title, link)
@@ -58,15 +71,7 @@ export default function decorate(block) {
       ul.append(li);
     });
 
-    const children = [];
-    if (headingRow) {
-      const heading = document.createElement('div');
-      heading.className = 'cards-grid-heading';
-      while (headingRow.firstElementChild) heading.append(headingRow.firstElementChild);
-      children.push(heading);
-    }
-    children.push(ul);
-    block.replaceChildren(...children);
+    block.replaceChildren(...[buildHeading(headingRow), ul].filter(Boolean));
     return;
   }
 
@@ -135,13 +140,21 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimized);
   });
 
-  const children = [];
-  if (headingRow) {
-    const heading = document.createElement('div');
-    heading.className = 'cards-grid-heading';
-    while (headingRow.firstElementChild) heading.append(headingRow.firstElementChild);
-    children.push(heading);
+  // Product Lines: the whole card is clickable — the image links to the title's page.
+  // The image link is hidden from AT/keyboard so each card has a single link stop.
+  if (block.classList.contains('productlines')) {
+    ul.querySelectorAll(':scope > li').forEach((li) => {
+      const titleLink = li.querySelector('.cards-grid-body :is(h2, h3, h4, h5) a[href]');
+      const picture = li.querySelector('.cards-grid-image picture');
+      if (!titleLink || !picture || picture.closest('a')) return;
+      const imgLink = document.createElement('a');
+      imgLink.href = titleLink.href;
+      imgLink.tabIndex = -1;
+      imgLink.setAttribute('aria-hidden', 'true');
+      picture.replaceWith(imgLink);
+      imgLink.append(picture);
+    });
   }
-  children.push(ul);
-  block.replaceChildren(...children);
+
+  block.replaceChildren(...[buildHeading(headingRow), ul].filter(Boolean));
 }

@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents/genomic",
+  "path": "reagents/genomic",
+  "timestamp": "2026-10-28T09:20:14.304Z",
+  "title": "Nucleic Acid Sample Prep, Reagent Kits",
+  "template": "reagents-category",
+  "blocks": [
+    "cards-grid"
+  ]
+}

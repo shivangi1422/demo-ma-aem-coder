@@ -1,0 +1,87 @@
+/* Breadcrumbs as on mybeckman.in: 12px trail, light links, bold current page, light-grey
+   chevron separators; hidden on phones, container widths follow the live site */
+main > .section.breadcrumbs-container {
+  margin: 0;
+}
+
+main > .section.breadcrumbs-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+.breadcrumbs {
+  display: none;
+}
+
+.breadcrumbs ul {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.breadcrumbs li {
+  position: relative;
+  padding: 0 28px 0 0;
+  color: #5c5c5c;
+  font-size: 12px;
+  line-height: 24px;
+}
+
+.breadcrumbs li[aria-current='page'] {
+  font-weight: 700;
+}
+
+.breadcrumbs li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 12px;
+  width: 6px;
+  height: 9px;
+  transform: translateY(-50%);
+  background: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 6 9'%3E%3Cpath d='M1 1l3.5 3.5L1 8' fill='none' stroke='%23dcdcdc' stroke-width='1.6'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.breadcrumbs a:any-link {
+  color: #5c5c5c;
+  font-weight: 300;
+  text-decoration: none;
+  opacity: 0.9;
+  transition: color 0.2s ease-in-out;
+}
+
+.breadcrumbs a:hover {
+  color: #0099ab;
+  text-decoration: none;
+}
+
+@media (width >= 768px) {
+  .breadcrumbs {
+    display: block;
+    box-sizing: border-box;
+    width: 750px;
+    margin: 0 auto;
+    padding: 25px 15px 10px;
+  }
+}
+
+@media (width >= 992px) {
+  .breadcrumbs {
+    width: 970px;
+  }
+}
+
+@media (width >= 1024px) {
+  .breadcrumbs li {
+    padding-right: 30px;
+  }
+}
+
+@media (width >= 1200px) {
+  .breadcrumbs {
+    width: 100%;
+    padding: 25px 50px 10px;
+  }
+}

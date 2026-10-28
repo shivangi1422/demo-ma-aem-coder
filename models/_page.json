@@ -21,6 +21,13 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "breadcrumb-title",
+          "label": "Breadcrumb title",
+          "description": "Label for this page in the breadcrumb (defaults to the page title)"
         }
       ]
     }

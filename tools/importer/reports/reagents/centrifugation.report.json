@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents/centrifugation",
+  "path": "reagents/centrifugation",
+  "timestamp": "2026-10-28T09:20:09.183Z",
+  "title": "Centrifugation",
+  "template": "reagents-category",
+  "blocks": [
+    "cards-grid"
+  ]
+}

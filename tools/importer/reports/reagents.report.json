@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents",
+  "path": "reagents",
+  "timestamp": "2026-10-28T09:24:27.584Z",
+  "title": "Reagents - Beckman Coulter Life Sciences",
+  "template": "reagents-category",
+  "blocks": [
+    "cards-grid"
+  ]
+}

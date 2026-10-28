@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/reagents/particle",
+  "path": "reagents/particle",
+  "timestamp": "2026-10-28T09:20:16.978Z",
+  "title": "Particle, Cell Counter & Analyzer Reagents",
+  "template": "reagents-category",
+  "blocks": [
+    "cards-grid"
+  ]
+}
