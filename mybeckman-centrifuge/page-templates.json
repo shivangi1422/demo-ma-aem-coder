@@ -15,11 +15,6 @@
       "pathMap": {
         "/service": "/en-in/service",
         "/service/plans": "/en-in/service/plans",
-        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
-        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
-        "/service/tech-support": "/en-in/service/tech-support",
-        "/support/technical-documents": "/en-in/support/technical-documents",
-        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
         "": "/en-in/index",
         "/": "/en-in/",
         "/service/plans/centrifuge": "/en-in/service/plans/centrifuge"
