@@ -12,19 +12,9 @@
       "image",
       "button",
       "title",
-      "hero",
       "cards",
       "columns",
       "fragment",
-      "cards-grid",
-      "carousel",
-      "tabs-products",
-      "content-reversed",
-      "form-request",
-      "content-product-detail",
-      "content-product-form",
-      "product-banner",
-      "quote",
       "hero-curved-panel",
       "jump-nav",
       "cards-promo",
@@ -51,12 +41,6 @@
     "id": "cards-button-caption",
     "components": [
       "cards-button-caption-item"
-    ]
-  },
-  {
-    "id": "cards-grid",
-    "components": [
-      "cards-grid-item"
     ]
   },
   {
@@ -102,12 +86,6 @@
     ]
   },
   {
-    "id": "carousel",
-    "components": [
-      "carousel-item"
-    ]
-  },
-  {
     "id": "columns",
     "components": [
       "column"
@@ -123,18 +101,6 @@
     ]
   },
   {
-    "id": "content-product-detail",
-    "components": [
-      "content-product-detail-item"
-    ]
-  },
-  {
-    "id": "form-request",
-    "components": [
-      "form-request-item"
-    ]
-  },
-  {
     "id": "jump-nav",
     "components": [
       "jump-nav-link"
@@ -144,12 +110,6 @@
     "id": "table-plan-compare",
     "components": [
       "table-plan-compare-row"
-    ]
-  },
-  {
-    "id": "tabs-products",
-    "components": [
-      "tabs-products-item"
     ]
   }
 ]

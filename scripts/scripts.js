@@ -2,8 +2,6 @@ import {
   buildBlock,
   decorateBlock,
   loadBlock,
-  loadHeader,
-  loadFooter,
   decorateIcons,
   decorateSections,
   decorateBlocks,
@@ -228,7 +226,7 @@ async function loadEager(doc) {
 /**
  * Site themes (page metadata `theme`) that bring their own header/footer block,
  * named `<part>-<theme>`, e.g. theme-mybeckman -> header-mybeckman.
- * Pages without one of these themes keep the default header and footer.
+ * The first theme is also used for pages without a theme (the site has no other header/footer).
  */
 const THEMED_BLOCKS = {
   header: ['mybeckman'],
@@ -239,12 +237,11 @@ const THEMED_BLOCKS = {
  * Loads the header or footer block for the page's theme.
  * @param {Element} el header or footer element
  * @param {string} part 'header' or 'footer'
- * @param {Function} loadDefault default loader from aem.js
  * @returns {Promise}
  */
-function loadThemedBlock(el, part, loadDefault) {
-  const theme = THEMED_BLOCKS[part].find((t) => document.body.classList.contains(`theme-${t}`));
-  if (!theme) return loadDefault(el);
+function loadThemedBlock(el, part) {
+  const theme = THEMED_BLOCKS[part].find((t) => document.body.classList.contains(`theme-${t}`))
+    || THEMED_BLOCKS[part][0];
   const block = buildBlock(`${part}-${theme}`, '');
   el.append(block);
   decorateBlock(block);
@@ -256,7 +253,7 @@ function loadThemedBlock(el, part, loadDefault) {
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadThemedBlock(doc.querySelector('header'), 'header', loadHeader);
+  loadThemedBlock(doc.querySelector('header'), 'header');
 
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -265,7 +262,7 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadThemedBlock(doc.querySelector('footer'), 'footer', loadFooter);
+  loadThemedBlock(doc.querySelector('footer'), 'footer');
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();
