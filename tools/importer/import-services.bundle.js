@@ -313,7 +313,8 @@ var CustomImportScript = (() => {
     });
     byTitle.forEach((s) => slides.push(s));
     const known = domSlides.some((s) => FALLBACK_SLIDES.some((fb) => fb.title.toLowerCase() === s.title.toLowerCase()));
-    const finalSlides = domSlides.length && !known ? domSlides : slides;
+    const useFallback = !domSlides.length || domSlides.length === 1 && known;
+    const finalSlides = useFallback ? slides : domSlides;
     const cells = finalSlides.map((s) => buildRow(s, document));
     const block = WebImporter.Blocks.createBlock(document, { name: "carousel-split-detail", cells });
     element.replaceWith(block);

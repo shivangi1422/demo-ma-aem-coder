@@ -19,9 +19,13 @@ function resolveTarget(hash, label, ownSection) {
   if (!word) return null;
   const sections = [...document.querySelectorAll('main > .section')]
     .filter((section) => section !== ownSection && !section.id);
-  const match = sections.find((section) => [...section.querySelectorAll(
+  const mentions = (el) => el?.textContent.toLowerCase().includes(word);
+  // the section eyebrow ("Connect with Us") wins over headings/subtitles mentioning the word
+  const match = sections.find((section) => mentions(section.querySelector(
+    ':scope > .default-content-wrapper > p:first-child:has(+ h2)',
+  ))) || sections.find((section) => [...section.querySelectorAll(
     ':scope > .default-content-wrapper > :is(p, h1, h2, h3)',
-  )].slice(0, 3).some((el) => el.textContent.toLowerCase().includes(word)));
+  )].slice(0, 3).some(mentions));
   if (match) match.id = id;
   return match || null;
 }

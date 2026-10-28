@@ -2698,7 +2698,9 @@
       "name": "services",
       "urls": [
         "https://www.gspann.com/services/application-services-and-modernization",
-        "https://www.gspann.com/services/managed-services-operations"
+        "https://www.gspann.com/services/managed-services-operations",
+        "https://www.gspann.com/services/data-analytics",
+        "https://www.gspann.com/services/devops"
       ],
       "representativeUrl": "https://www.gspann.com/services/application-services-and-modernization",
       "urlPattern": "/services/*",

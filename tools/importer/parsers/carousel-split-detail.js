@@ -175,9 +175,12 @@ export default function parse(element, { document }) {
   // any DOM slide not known to the fallback list (other service pages) keeps DOM order at the end
   byTitle.forEach((s) => slides.push(s));
 
-  // other service pages with a different carousel: use only what the DOM has
+  // the fallback only fills in when the live capture failed (a single rendered slide) on the
+  // application-services page; other service pages share titles (e.g. "Cloud Migration")
+  // and must keep exactly the slides captured from their own carousel
   const known = domSlides.some((s) => FALLBACK_SLIDES.some((fb) => fb.title.toLowerCase() === s.title.toLowerCase()));
-  const finalSlides = domSlides.length && !known ? domSlides : slides;
+  const useFallback = !domSlides.length || (domSlides.length === 1 && known);
+  const finalSlides = useFallback ? slides : domSlides;
 
   const cells = finalSlides.map((s) => buildRow(s, document));
   const block = WebImporter.Blocks.createBlock(document, { name: 'carousel-split-detail', cells });

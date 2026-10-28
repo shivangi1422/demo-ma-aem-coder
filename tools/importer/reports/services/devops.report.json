@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.gspann.com/services/devops",
+  "path": "services/devops",
+  "timestamp": "2026-10-28T17:19:34.530Z",
+  "title": "",
+  "template": "services",
+  "blocks": [
+    "columns-anchor-nav",
+    "hero-overlay-left",
+    "cards-capability",
+    "carousel-split-detail",
+    "cards-logo-group",
+    "form",
+    "cards-stats",
+    "cards-resources",
+    "cards-leader"
+  ]
+}
