@@ -12,9 +12,10 @@
  *   [ <!-- field:media_image --> img | <!-- field:content_text --> H3, p, H4, ul, p(<strong>value</strong> label)... ]
  *
  * The site renders only the active slide into the DOM (the rest are swapped in by JS on
- * "Next capability"). Slides found in the DOM are used as-is; any of the five known slides
- * that are missing are filled from FALLBACK_SLIDES (captured from the live page by clicking
- * through the carousel — migration-work/authoring-analysis.json).
+ * "Next capability"). The import script's onLoad clicks through the live carousel and keeps a
+ * copy of every slide in .capability-carousel-captured; those are used as-is. For the
+ * application-services page, any known slide still missing is filled from FALLBACK_SLIDES.
+ * Metrics that link to a case study keep the link on their label.
  */
 
 const SANITY = 'https://cdn.sanity.io/images/l19qdyr5/production/';
@@ -82,6 +83,7 @@ function readSlide(card) {
     metrics: [...content.querySelectorAll('.carousel-metric')].map((m) => [
       norm(m.querySelector('.carousel-metric-value')?.textContent),
       norm(m.querySelector('.carousel-metric-label')?.textContent),
+      m.querySelector('a[href]')?.getAttribute('href') || '',
     ]),
   };
 }
@@ -117,7 +119,7 @@ function buildRow(slide, document) {
     });
     text.push(h4, ul);
   }
-  (slide.metrics || []).forEach(([value, label]) => {
+  (slide.metrics || []).forEach(([value, label, href]) => {
     if (!value && !label) return;
     const p = document.createElement('p');
     if (value) {
@@ -125,7 +127,15 @@ function buildRow(slide, document) {
       strong.textContent = value;
       p.append(strong);
     }
-    if (label) p.append(document.createTextNode(value ? ` ${label}` : label));
+    if (label && href) {
+      if (value) p.append(document.createTextNode(' '));
+      const a = document.createElement('a');
+      a.href = href;
+      a.textContent = label;
+      p.append(a);
+    } else if (label) {
+      p.append(document.createTextNode(value ? ` ${label}` : label));
+    }
     text.push(p);
   });
 
@@ -136,9 +146,19 @@ function buildRow(slide, document) {
 }
 
 export default function parse(element, { document }) {
-  const domSlides = [...element.querySelectorAll('.capability-carousel-card')]
+  // captured copies (all slides, in order) first, then whatever the live DOM still shows
+  const seen = new Set();
+  const domSlides = [
+    ...element.querySelectorAll('.capability-carousel-captured > .capability-carousel-card'),
+    ...element.querySelectorAll(':scope > .capability-carousel-card'),
+  ]
     .map(readSlide)
-    .filter((s) => s.title);
+    .filter((s) => {
+      const key = s.title.toLowerCase();
+      if (!s.title || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
 
   // merge: DOM slides win, fallback fills the slides the carousel did not render
   const byTitle = new Map(domSlides.map((s) => [s.title.toLowerCase(), s]));

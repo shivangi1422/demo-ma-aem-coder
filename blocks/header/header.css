@@ -1,3 +1,5 @@
+@import url('header-gspann.css');
+
 /* header and nav layout */
 header .nav-wrapper {
   background-color: var(--background-color);

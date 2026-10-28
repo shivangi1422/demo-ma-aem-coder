@@ -235,7 +235,52 @@ function findBlocksOnPage(document, template) {
   return pageBlocks;
 }
 
+const wait = (ms) => new Promise((resolve) => { setTimeout(resolve, ms); });
+
+/**
+ * Live page only: the capability carousel renders just the active slide, so click
+ * "Next capability" through every slide and keep a hidden copy of each one inside the
+ * carousel for the carousel-split-detail parser.
+ */
+async function captureCarouselSlides(document) {
+  const carousel = document.querySelector('#services .capability-carousel');
+  if (!carousel) return;
+  const next = carousel.querySelector('button[aria-label="Next capability"]')
+    || carousel.querySelectorAll('.capability-carousel-btn')[1];
+  const count = carousel.querySelectorAll('.capability-carousel-dots .carousel-dot').length || 1;
+  const captured = document.createElement('div');
+  captured.className = 'capability-carousel-captured';
+  captured.hidden = true;
+  const seen = new Set();
+  const grabNew = () => {
+    const card = [...carousel.querySelectorAll(':scope > .capability-carousel-card')]
+      .find((c) => {
+        const title = c.querySelector('h3')?.textContent.trim();
+        return title && !seen.has(title);
+      });
+    if (!card) return false;
+    seen.add(card.querySelector('h3').textContent.trim());
+    captured.append(card.cloneNode(true));
+    return true;
+  };
+  grabNew();
+  for (let i = 1; i < count && next; i += 1) {
+    next.click();
+    // wait for the next slide to render (up to ~3s)
+    for (let t = 0; t < 30 && !grabNew(); t += 1) {
+      // eslint-disable-next-line no-await-in-loop
+      await wait(100);
+    }
+  }
+  carousel.append(captured);
+}
+
 export default {
+  onLoad: async ({ document }) => {
+    try { await captureCarouselSlides(document); }
+    catch (e) { console.error('Carousel capture failed:', e); }
+  },
+
   transform: (payload) => {
     const { document, url, params } = payload;
     const main = document.body;

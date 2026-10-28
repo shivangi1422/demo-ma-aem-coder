@@ -1,3 +1,5 @@
+@import url('footer-gspann.css');
+
 footer {
   background-color: var(--bc-navy);
   color: #fff;

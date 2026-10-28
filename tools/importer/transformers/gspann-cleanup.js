@@ -29,7 +29,9 @@
  * afterTransform:
  *  - final sweep of non-authorable leftovers (scripts, styles, chrome)
  *  - appends the page Metadata block incl. "template: gspann" (body class
- *    "gspann" -> styles/gspann.css), mirroring mybeckman-cleanup.js, and
+ *    "gspann" -> styles/gspann.css), "nav: /content/gspann/nav" (GSPANN
+ *    header fragment) and "footer: /content/gspann/footer" (GSPANN footer
+ *    fragment), mirroring mybeckman-cleanup.js, and
  *    removes the head entries WebImporter.rules.createMetadata would read so
  *    no second Metadata block is created.
  *
@@ -38,6 +40,10 @@
 
 const TEMPLATE_NAME = 'services';
 const PAGE_TEMPLATE_STYLE = 'gspann';
+// GSPANN header fragment (content/gspann/nav.plain.html), read by blocks/header
+const PAGE_NAV = '/content/gspann/nav';
+// GSPANN footer fragment (content/gspann/footer.plain.html), read by blocks/footer
+const PAGE_FOOTER = '/content/gspann/footer';
 
 const CHROME_SELECTORS = [
   'body > div.ch2',
@@ -151,6 +157,10 @@ function appendMetadata(element) {
   if (keywords) cells.keywords = keywords;
   // body class "gspann" -> styles/gspann.css (page model "template" field)
   cells.template = PAGE_TEMPLATE_STYLE;
+  // site-folder nav: blocks/header loads the GSPANN header instead of the default nav
+  cells.nav = PAGE_NAV;
+  // site-folder footer: blocks/footer loads the GSPANN footer instead of the default footer
+  cells.footer = PAGE_FOOTER;
   const ogImage = headMeta(doc, 'property', 'og:image') || headMeta(doc, 'name', 'og:image');
   if (ogImage) {
     // the page model's "image" reference field is mapped only from a link

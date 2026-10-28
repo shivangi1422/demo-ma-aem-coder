@@ -36,9 +36,16 @@ function decorateMetrics(body) {
     strong.remove();
     const label = document.createElement('span');
     label.className = 'carousel-split-detail-metric-label';
-    label.append(...p.childNodes);
-    label.textContent = label.textContent.trim();
-    p.replaceChildren(value, label);
+    // a metric linking to a case study keeps its link, wrapped around value and label
+    const link = p.querySelector('a[href]');
+    label.textContent = (link || p).textContent.trim();
+    if (link) {
+      link.classList.add('carousel-split-detail-metric-link');
+      link.replaceChildren(value, label);
+      p.replaceChildren(link);
+    } else {
+      p.replaceChildren(value, label);
+    }
     row.append(p);
   });
 }

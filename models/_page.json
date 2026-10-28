@@ -37,6 +37,20 @@
           "description": "Page theme (adds a body class, e.g. wide for a 1300px content column on mybeckman pages)"
         },
         {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "nav",
+          "label": "Navigation",
+          "description": "Header fragment for this page (e.g. /content/gspann/nav); empty uses the default nav"
+        },
+        {
+          "component": "aem-content",
+          "valueType": "string",
+          "name": "footer",
+          "label": "Footer",
+          "description": "Footer fragment for this page (e.g. /content/gspann/footer); empty uses the default footer"
+        },
+        {
           "component": "reference",
           "valueType": "string",
           "name": "image",

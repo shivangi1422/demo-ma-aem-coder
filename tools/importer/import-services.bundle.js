@@ -34,6 +34,26 @@ var CustomImportScript = (() => {
     return to;
   };
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
+  var __async = (__this, __arguments, generator) => {
+    return new Promise((resolve, reject) => {
+      var fulfilled = (value) => {
+        try {
+          step(generator.next(value));
+        } catch (e) {
+          reject(e);
+        }
+      };
+      var rejected = (value) => {
+        try {
+          step(generator.throw(value));
+        } catch (e) {
+          reject(e);
+        }
+      };
+      var step = (x) => x.done ? resolve(x.value) : Promise.resolve(x.value).then(fulfilled, rejected);
+      step((generator = generator.apply(__this, __arguments)).next());
+    });
+  };
 
   // tools/importer/import-services.js
   var import_services_exports = {};
@@ -206,10 +226,11 @@ var CustomImportScript = (() => {
       featuresTitle: norm((_c = content.querySelector(".capability-carousel-features h4")) == null ? void 0 : _c.textContent),
       list: [...content.querySelectorAll(".capability-carousel-features li")].map((li) => norm(li.textContent).replace(/^[•·]\s*/, "")),
       metrics: [...content.querySelectorAll(".carousel-metric")].map((m) => {
-        var _a2, _b2;
+        var _a2, _b2, _c2;
         return [
           norm((_a2 = m.querySelector(".carousel-metric-value")) == null ? void 0 : _a2.textContent),
-          norm((_b2 = m.querySelector(".carousel-metric-label")) == null ? void 0 : _b2.textContent)
+          norm((_b2 = m.querySelector(".carousel-metric-label")) == null ? void 0 : _b2.textContent),
+          ((_c2 = m.querySelector("a[href]")) == null ? void 0 : _c2.getAttribute("href")) || ""
         ];
       })
     };
@@ -244,7 +265,7 @@ var CustomImportScript = (() => {
       });
       text.push(h4, ul);
     }
-    (slide.metrics || []).forEach(([value, label]) => {
+    (slide.metrics || []).forEach(([value, label, href]) => {
       if (!value && !label) return;
       const p = document.createElement("p");
       if (value) {
@@ -252,7 +273,15 @@ var CustomImportScript = (() => {
         strong.textContent = value;
         p.append(strong);
       }
-      if (label) p.append(document.createTextNode(value ? ` ${label}` : label));
+      if (label && href) {
+        if (value) p.append(document.createTextNode(" "));
+        const a = document.createElement("a");
+        a.href = href;
+        a.textContent = label;
+        p.append(a);
+      } else if (label) {
+        p.append(document.createTextNode(value ? ` ${label}` : label));
+      }
       text.push(p);
     });
     return [
@@ -261,7 +290,16 @@ var CustomImportScript = (() => {
     ];
   }
   function parse4(element, { document }) {
-    const domSlides = [...element.querySelectorAll(".capability-carousel-card")].map(readSlide).filter((s) => s.title);
+    const seen = /* @__PURE__ */ new Set();
+    const domSlides = [
+      ...element.querySelectorAll(".capability-carousel-captured > .capability-carousel-card"),
+      ...element.querySelectorAll(":scope > .capability-carousel-card")
+    ].map(readSlide).filter((s) => {
+      const key = s.title.toLowerCase();
+      if (!s.title || seen.has(key)) return false;
+      seen.add(key);
+      return true;
+    });
     const byTitle = new Map(domSlides.map((s) => [s.title.toLowerCase(), s]));
     const slides = [];
     FALLBACK_SLIDES.forEach((fb) => {
@@ -371,7 +409,7 @@ var CustomImportScript = (() => {
   function parse7(element, { document }) {
     const cells = [];
     element.querySelectorAll(".impact-metric-item").forEach((item) => {
-      var _a;
+      var _a, _b;
       const valueEl = item.querySelector(".impact-metric-value");
       const value = valueEl ? [...valueEl.querySelectorAll("span")].map((s) => s.textContent.trim()).join("") || valueEl.textContent.replace(/\s+/g, "") : "";
       const label = ((_a = item.querySelector(".impact-label")) == null ? void 0 : _a.textContent.trim()) || "";
@@ -386,6 +424,15 @@ var CustomImportScript = (() => {
       if (label) {
         const p = document.createElement("p");
         p.textContent = label;
+        text.push(p);
+      }
+      const link = item.querySelector("a.impact-metric-link[href], a[href]");
+      if (link) {
+        const p = document.createElement("p");
+        const a = document.createElement("a");
+        a.href = link.getAttribute("href");
+        a.textContent = ((_b = item.querySelector(".impact-cta")) == null ? void 0 : _b.textContent.trim()) || "Read Case Study \u2192";
+        p.append(a);
         text.push(p);
       }
       if (!text.length) return;
@@ -514,6 +561,8 @@ var CustomImportScript = (() => {
   // tools/importer/transformers/gspann-cleanup.js
   var TEMPLATE_NAME = "services";
   var PAGE_TEMPLATE_STYLE = "gspann";
+  var PAGE_NAV = "/content/gspann/nav";
+  var PAGE_FOOTER = "/content/gspann/footer";
   var CHROME_SELECTORS = [
     "body > div.ch2",
     "div.ch2.ch2-region-c3",
@@ -601,6 +650,8 @@ var CustomImportScript = (() => {
     const keywords = headMeta(doc, "name", "keywords");
     if (keywords) cells.keywords = keywords;
     cells.template = PAGE_TEMPLATE_STYLE;
+    cells.nav = PAGE_NAV;
+    cells.footer = PAGE_FOOTER;
     const ogImage = headMeta(doc, "property", "og:image") || headMeta(doc, "name", "og:image");
     if (ogImage) {
       const src = ogImage.split(", ")[0];
@@ -955,7 +1006,48 @@ var CustomImportScript = (() => {
     });
     return pageBlocks;
   }
+  var wait = (ms) => new Promise((resolve) => {
+    setTimeout(resolve, ms);
+  });
+  function captureCarouselSlides(document) {
+    return __async(this, null, function* () {
+      const carousel = document.querySelector("#services .capability-carousel");
+      if (!carousel) return;
+      const next = carousel.querySelector('button[aria-label="Next capability"]') || carousel.querySelectorAll(".capability-carousel-btn")[1];
+      const count = carousel.querySelectorAll(".capability-carousel-dots .carousel-dot").length || 1;
+      const captured = document.createElement("div");
+      captured.className = "capability-carousel-captured";
+      captured.hidden = true;
+      const seen = /* @__PURE__ */ new Set();
+      const grabNew = () => {
+        const card = [...carousel.querySelectorAll(":scope > .capability-carousel-card")].find((c) => {
+          var _a;
+          const title = (_a = c.querySelector("h3")) == null ? void 0 : _a.textContent.trim();
+          return title && !seen.has(title);
+        });
+        if (!card) return false;
+        seen.add(card.querySelector("h3").textContent.trim());
+        captured.append(card.cloneNode(true));
+        return true;
+      };
+      grabNew();
+      for (let i = 1; i < count && next; i += 1) {
+        next.click();
+        for (let t = 0; t < 30 && !grabNew(); t += 1) {
+          yield wait(100);
+        }
+      }
+      carousel.append(captured);
+    });
+  }
   var import_services_default = {
+    onLoad: (_0) => __async(null, [_0], function* ({ document }) {
+      try {
+        yield captureCarouselSlides(document);
+      } catch (e) {
+        console.error("Carousel capture failed:", e);
+      }
+    }),
     transform: (payload) => {
       const { document, url, params } = payload;
       const main = document.body;

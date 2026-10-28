@@ -1,0 +1,233 @@
+/*
+ * GSPANN footer (pages with body.gspann and a site-folder footer fragment).
+ * Values come from the computed styles of footer.footer on
+ * https://www.gspann.com/services/application-services-and-modernization.
+ * Everything is scoped to body.gspann so Beckman footers are unaffected.
+ * Mobile first (source values at 375px), then:
+ *  - 600px: 3 link columns under a full-width logo row (source: 641-1024px)
+ *  - 900px: desktop spacing, bottom bar in one row (source: from 769px)
+ *  - 1025px: logo + 4 link columns in one row (source: from 1025px)
+ */
+
+/* stylelint-disable no-descending-specificity -- separate footer parts, not overrides of each other */
+body.gspann footer {
+  padding: 32px 0 20px;
+  background-color: var(--gspann-navy);
+  color: var(--gspann-text-inverse);
+  font-family: var(--gspann-body-font);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+body.gspann footer .footer .footer-main {
+  box-sizing: border-box;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 12px;
+}
+
+body.gspann footer .footer p,
+body.gspann footer .footer ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* brand + link columns */
+body.gspann footer .footer .footer-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin-bottom: 24px;
+}
+
+body.gspann footer .footer .footer-brand {
+  display: flex;
+  align-items: flex-start;
+  grid-column: 1 / -1;
+  margin-bottom: 8px;
+}
+
+body.gspann footer .footer .footer-brand img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: 28px;
+}
+
+body.gspann footer .footer .footer-heading {
+  margin: 0 0 12px;
+  color: var(--gspann-text-inverse);
+  font-family: var(--gspann-body-font);
+  font-size: 1rem;
+  font-weight: 600;
+  line-height: 1.6;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+body.gspann footer .footer .footer-links {
+  display: block;
+}
+
+/* mobile touch rows: 36px links, 4px row padding */
+body.gspann footer .footer .footer-links li {
+  margin-bottom: 12px;
+  padding: 4px 0;
+}
+
+body.gspann footer .footer a:any-link {
+  color: rgb(255 255 255 / 70%);
+  text-decoration: none;
+}
+
+body.gspann footer .footer .footer-links a:any-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  font-size: 0.95rem;
+  transition: color 0.2s;
+}
+
+body.gspann footer .footer .footer-links a:hover {
+  color: var(--gspann-text-inverse);
+}
+
+/* bottom bar: social icons, legal links, copyright (stacked, centered) */
+body.gspann footer .footer .footer-bar {
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px;
+  padding-top: 20px;
+  border-top: 1px solid rgb(255 255 255 / 10%);
+  text-align: center;
+}
+
+body.gspann footer .footer .footer-social ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 16px;
+}
+
+body.gspann footer .footer .footer-social a:any-link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: rgb(255 255 255 / 10%);
+  color: var(--gspann-text-inverse);
+  transition: all 0.2s;
+}
+
+body.gspann footer .footer .footer-social a:hover {
+  background-color: var(--gspann-primary);
+  transform: translateY(-4px);
+}
+
+body.gspann footer .footer .footer-social img {
+  display: block;
+  width: 24px;
+  height: 24px;
+}
+
+body.gspann footer .footer .footer-legal ul {
+  display: flex;
+  flex-flow: row wrap;
+  gap: 24px;
+}
+
+body.gspann footer .footer .footer-legal a:any-link {
+  display: block;
+  color: rgb(255 255 255 / 60%);
+  font-size: 0.875rem;
+  line-height: 1.6;
+  transition: color 0.2s;
+}
+
+body.gspann footer .footer .footer-legal a:hover {
+  color: var(--gspann-text-inverse);
+}
+
+body.gspann footer .footer .footer-copyright {
+  color: rgb(255 255 255 / 50%);
+  font-size: 0.875rem;
+  line-height: 1.6;
+}
+
+@media (width >= 600px) {
+  body.gspann footer {
+    padding: 40px 0 24px;
+  }
+
+  body.gspann footer .footer .footer-main {
+    padding: 0 20px;
+  }
+
+  body.gspann footer .footer .footer-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px 24px;
+    margin-bottom: 32px;
+  }
+
+  body.gspann footer .footer .footer-brand {
+    margin-bottom: 0;
+  }
+
+  body.gspann footer .footer .footer-bar {
+    gap: 32px;
+    padding-top: 40px;
+  }
+}
+
+@media (width >= 900px) {
+  body.gspann footer {
+    padding: 60px 0 40px;
+  }
+
+  body.gspann footer .footer .footer-main {
+    padding: 0 24px;
+  }
+
+  body.gspann footer .footer .footer-grid {
+    margin-bottom: 60px;
+  }
+
+  body.gspann footer .footer .footer-heading {
+    margin-bottom: 24px;
+  }
+
+  body.gspann footer .footer .footer-links li {
+    padding: 0;
+  }
+
+  body.gspann footer .footer .footer-links a:any-link {
+    display: inline;
+    min-height: 0;
+  }
+
+  body.gspann footer .footer .footer-bar {
+    flex-direction: row;
+    text-align: start;
+  }
+
+  body.gspann footer .footer .footer-social ul {
+    justify-content: flex-start;
+  }
+}
+
+/* breakpoint-exception: the source switches to its one-row desktop grid at 1025px; at 900px the 4 link columns would be 123px wide and wrap, at 1200px 1025-1199px would show 3 columns instead of 5 */
+@media (width >= 1025px) {
+  body.gspann footer .footer .footer-grid {
+    grid-template-columns: 200px repeat(4, 1fr);
+    gap: 40px;
+  }
+
+  body.gspann footer .footer .footer-brand {
+    grid-column: auto;
+  }
+}

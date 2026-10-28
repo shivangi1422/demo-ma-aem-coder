@@ -33,6 +33,16 @@ export default function parse(element, { document }) {
       p.textContent = label;
       text.push(p);
     }
+    // linked tiles (.has-link): keep the case-study link and its "Read Case Study →" text
+    const link = item.querySelector('a.impact-metric-link[href], a[href]');
+    if (link) {
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.href = link.getAttribute('href');
+      a.textContent = item.querySelector('.impact-cta')?.textContent.trim() || 'Read Case Study →';
+      p.append(a);
+      text.push(p);
+    }
     if (!text.length) return;
     cells.push(['', [document.createComment(' field:text '), ...text]]);
   });

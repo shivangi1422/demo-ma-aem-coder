@@ -2697,7 +2697,8 @@
     {
       "name": "services",
       "urls": [
-        "https://www.gspann.com/services/application-services-and-modernization"
+        "https://www.gspann.com/services/application-services-and-modernization",
+        "https://www.gspann.com/services/managed-services-operations"
       ],
       "representativeUrl": "https://www.gspann.com/services/application-services-and-modernization",
       "urlPattern": "/services/*",

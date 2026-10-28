@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.gspann.com/services/managed-services-operations",
+  "path": "services/managed-services-operations",
+  "timestamp": "2026-10-28T11:13:30.175Z",
+  "title": "",
+  "template": "services",
+  "blocks": [
+    "columns-anchor-nav",
+    "hero-overlay-left",
+    "cards-capability",
+    "carousel-split-detail",
+    "cards-logo-group",
+    "form",
+    "cards-stats",
+    "cards-resources",
+    "cards-leader"
+  ]
+}

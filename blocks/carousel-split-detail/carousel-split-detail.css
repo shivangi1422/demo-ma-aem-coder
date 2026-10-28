@@ -217,6 +217,20 @@
   line-height: 1.4;
 }
 
+/* metric linking to a case study (source .carousel-metric-link) */
+.carousel-split-detail .carousel-split-detail-metric-link:any-link {
+  display: flex;
+  flex-direction: column;
+  color: inherit;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.carousel-split-detail .carousel-split-detail-metric-link:hover {
+  color: inherit;
+  opacity: 0.8;
+}
+
 /* image panel */
 .carousel-split-detail .carousel-split-detail-image {
   position: relative;

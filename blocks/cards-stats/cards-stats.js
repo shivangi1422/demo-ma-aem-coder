@@ -7,10 +7,15 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 function splitSuffix(el) {
   const text = el.textContent.trim();
   const match = text.match(/^(.*?)([+%]+)$/);
-  if (!match || !match[1]) return;
-  const [, number, sign] = match;
   const value = document.createElement('span');
   value.className = 'cards-stats-number';
+  // values without a suffix (e.g. "10") still get the number styling
+  if (!match || !match[1]) {
+    value.textContent = text;
+    el.replaceChildren(value);
+    return;
+  }
+  const [, number, sign] = match;
   value.textContent = number;
   const suffix = document.createElement('span');
   suffix.className = 'cards-stats-suffix';
@@ -40,7 +45,15 @@ export default function decorate(block) {
       if (valueP) {
         valueP.classList.add('cards-stats-value');
         splitSuffix(valueP.querySelector('strong') || valueP);
-        paragraphs.filter((p) => p !== valueP).forEach((p) => p.classList.add('cards-stats-label'));
+        paragraphs.filter((p) => p !== valueP).forEach((p) => {
+          // a link paragraph ("Read Case Study →") makes the whole tile clickable
+          if (p.querySelector('a[href]')) {
+            p.classList.add('cards-stats-cta');
+            li.classList.add('cards-stats-linked');
+          } else {
+            p.classList.add('cards-stats-label');
+          }
+        });
       }
     }
     ul.append(li);
