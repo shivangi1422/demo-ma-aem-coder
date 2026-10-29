@@ -854,4 +854,22 @@ body.mybeckman-inner main > .section.blue.centered.wide-tall {
   }
 }
 
+/*
+ * headline (inner pages, /service/tech-support .Section__header): centred text,
+ * 3em (48px) h1; default .Section padding.
+ */
+body.mybeckman-inner main > .section.headline {
+  text-align: center;
+  overflow-wrap: break-word;
+}
+
+body.mybeckman-inner main > .section.headline h1 {
+  font-size: 48px;
+}
+
+/* grey (inner pages, .Section--grey): full-width #f0f3f5 band; default .Section padding */
+body.mybeckman-inner main > .section.grey {
+  background-color: var(--mb-color-grey-light);
+}
+
 /* stylelint-enable no-descending-specificity */

@@ -71,6 +71,14 @@
             {
               "name": "Centered",
               "value": "centered"
+            },
+            {
+              "name": "Headline (inner pages: centred, 48px h1)",
+              "value": "headline"
+            },
+            {
+              "name": "Grey (inner pages: #f0f3f5 band)",
+              "value": "grey"
             }
           ]
         }
@@ -101,7 +109,9 @@
         "cards-benefit-check",
         "cards-product-plan",
         "hero-dim-buttons",
-        "table-plan-compare"
+        "table-plan-compare",
+        "callout-bar",
+        "cards-link-tile"
       ]
     }
   ]

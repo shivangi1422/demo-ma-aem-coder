@@ -28,7 +28,9 @@
       "cards-benefit-check",
       "cards-product-plan",
       "hero-dim-buttons",
-      "table-plan-compare"
+      "table-plan-compare",
+      "callout-bar",
+      "cards-link-tile"
     ]
   },
   {
@@ -47,6 +49,12 @@
     "id": "cards-icon-border",
     "components": [
       "cards-icon-border-item"
+    ]
+  },
+  {
+    "id": "cards-link-tile",
+    "components": [
+      "cards-link-tile-item"
     ]
   },
   {
