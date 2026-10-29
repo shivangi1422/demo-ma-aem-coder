@@ -1,0 +1,58 @@
+/*
+ * Callout bar — mybeckman.in /service/tech-support ".Header__callout" (the page's
+ * 2023 stylesheet, selectors matched to the markup .callout). Bootstrap 3 base:
+ * border-box, body 16px/1.65. Measured at 1440: 600 x 78px bar, 10px 20px
+ * padding, prompt 16px/500, 136 x 48px button; 390: 328 x 127px, stacked.
+ */
+
+.callout-bar {
+  position: relative;
+  top: 18px;
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  text-align: center;
+  color: #4d4d4d;
+}
+
+.callout-bar .callout-bar-body {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border-radius: 4px;
+  padding: 10px 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 4px rgb(0 0 0 / 20%);
+}
+
+.callout-bar .callout-bar-text {
+  margin: 16px 0;
+  font-weight: var(--mb-weight-medium, 500);
+}
+
+.callout-bar .callout-bar-cta {
+  margin: 0;
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 768px) {
+  .callout-bar {
+    top: 40px;
+  }
+
+  .callout-bar .callout-bar-body {
+    justify-content: space-between;
+    width: 600px;
+    max-width: 100%;
+    margin: auto;
+  }
+}
+
+/* breakpoint-exception: source uses 768/992 */
+@media (width >= 992px) {
+  .callout-bar {
+    top: 54px;
+  }
+}

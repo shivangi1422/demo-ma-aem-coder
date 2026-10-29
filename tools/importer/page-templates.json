@@ -4,49 +4,39 @@
   },
   "templates": [
     {
-      "name": "mybeckman-centrifuge",
+      "name": "mybeckman-tech-support",
       "urls": [
-        "https://www.mybeckman.in/service/plans/centrifuge"
+        "https://www.mybeckman.in/service/tech-support"
       ],
-      "representativeUrl": "https://www.mybeckman.in/service/plans/centrifuge",
-      "description": "mybeckman.in centrifuge service plans page (exact match)",
-      "urlPattern": "/service/plans/centrifuge",
+      "representativeUrl": "https://www.mybeckman.in/service/tech-support",
+      "description": "mybeckman.in technical support page (exact match of the intended design)",
+      "urlPattern": "/service/tech-support",
       "siteOrigin": "https://www.mybeckman.in",
       "pathMap": {
         "/service": "/en-in/service",
         "/service/plans": "/en-in/service/plans",
-        "/service/instrument-optimization": "/en-in/service/instrument-optimization",
-        "/service/instrument-optimization/preventive-maintenance": "/en-in/service/instrument-optimization/preventive-maintenance",
-        "/service/tech-support": "/en-in/service/tech-support",
-        "/support/technical-documents": "/en-in/support/technical-documents",
-        "/service/instrument-qualification-calibration": "/en-in/service/instrument-qualification-calibration",
         "": "/en-in/index",
         "/": "/en-in/",
-        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge"
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge",
+        "/service/tech-support": "/en-in/service/tech-support"
       },
       "metaOverrides": {
-        "/service/plans/centrifuge": {
+        "/service/tech-support": {
           "theme": "theme-mybeckman, mybeckman-inner"
         }
       },
       "blocks": [
         {
-          "name": "hero-dim-buttons",
+          "name": "callout-bar",
           "instances": [
-            "#main .bc-rich-text > .hero",
-            "#main .hero"
+            "#main .Section__header > .callout",
+            "#main .callout"
           ]
         },
         {
-          "name": "table-plan-compare",
+          "name": "cards-link-tile",
           "instances": [
-            "#main #service-plans-table"
-          ]
-        },
-        {
-          "name": "columns-cta",
-          "instances": [
-            "#main .Section > .row:has(> .col-md-6)"
+            "#main .serviceCards"
           ]
         },
         {
@@ -60,50 +50,51 @@
       "sections": [
         {
           "id": "section-1",
-          "name": "Hero",
+          "name": "Technical Support",
           "selector": [
-            "#main .bc-test-layout > .block > .bc-rich-text:has(> .hero)",
-            "#main .bc-rich-text:has(> .hero)"
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)",
+            "#main .bc-rich-text:has(> .Section__header)"
           ],
-          "style": null,
+          "style": "headline",
           "blocks": [
-            "hero-dim-buttons"
+            "callout-bar"
           ],
-          "defaultContent": []
+          "defaultContent": [
+            "#main .Section__header > h1",
+            "#main .Section__header > h2"
+          ]
         },
         {
           "id": "section-2",
-          "name": "Choose the plan",
+          "name": "Intro",
           "selector": [
-            "#main .bc-rich-text:has(#service-plans-table)"
+            "#main .bc-rich-text:has(.Section--grey)"
           ],
-          "style": "wide-tall",
-          "blocks": [
-            "table-plan-compare"
-          ],
+          "style": "grey",
+          "blocks": [],
           "defaultContent": [
-            "#choosePlan .firstSection > h2"
+            "#main .Section--grey .Intro > p"
           ]
         },
         {
           "id": "section-3",
-          "name": "Qualification Services | Rotor Repair",
+          "name": "Support tiles",
           "selector": [
-            "#main .bc-rich-text:has(.col-md-6)"
+            "#main .bc-rich-text:has(.serviceCards)"
           ],
-          "style": "wide-tall",
+          "style": null,
           "blocks": [
-            "columns-cta"
+            "cards-link-tile"
           ],
           "defaultContent": []
         },
         {
           "id": "section-4",
-          "name": "Get in Touch",
+          "name": "Get in Touch band",
           "selector": [
             "#getInTouch"
           ],
-          "style": "blue, centered, wide-tall",
+          "style": "blue, centered",
           "blocks": [
             "cards-button-caption"
           ],
@@ -111,6 +102,17 @@
             "#getInTouch .Contact > h2",
             "#getInTouch .Contact > p"
           ]
+        }
+      ],
+      "site": "mybeckman",
+      "hrefOverrides": [
+        {
+          "startsWith": "/sitecore/service/notfound.aspx",
+          "to": "https://www.mybeckman.in/contact-us"
+        },
+        {
+          "startsWith": "https://sso.beckmancoulter.com/",
+          "to": "https://www.mybeckman.in/register"
         }
       ]
     }

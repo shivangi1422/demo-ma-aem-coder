@@ -199,8 +199,28 @@
           {
             "name": "Centered",
             "value": "centered"
+          },
+          {
+            "name": "Headline (inner pages: centred, 48px h1)",
+            "value": "headline"
+          },
+          {
+            "name": "Grey (inner pages: #f0f3f5 band)",
+            "value": "grey"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "callout-bar",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (prompt paragraph, then a bold link for the button)",
+        "valueType": "string"
       }
     ]
   },
@@ -236,6 +256,18 @@
         "name": "text",
         "value": "",
         "label": "Text (:fa-icon-name:, linked h4, linked description)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-link-tile-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (linked h4 title, linked description)",
         "valueType": "string"
       }
     ]

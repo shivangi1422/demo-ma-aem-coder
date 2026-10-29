@@ -190,6 +190,8 @@ const PATH_THEMES = [
   [/^(\/content(\/[^/]+)?)?\/en-in(\.html|\/(index(\.html)?)?)?$/, 'theme-mybeckman'],
   // mybeckman.in inner pages (inner-page design): service hub, service plans, plan pages
   [/^(\/content(\/[^/]+)?)?\/en-in\/service(\/plans(\/(centrifuge|flow-cytometry))?)?(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
+  // mybeckman.in technical support (inner-page design)
+  [/^(\/content(\/[^/]+)?)?\/en-in\/service\/tech-support(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
 ];
 
 function applyPathTheme() {

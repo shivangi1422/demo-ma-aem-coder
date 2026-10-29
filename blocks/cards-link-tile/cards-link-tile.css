@@ -1,0 +1,77 @@
+/*
+ * Cards (link tile) — mybeckman.in /service/tech-support "serviceCards" (the page's
+ * 2023 stylesheet, selectors matched to the markup .serviceCard). Bootstrap 3 base:
+ * border-box, body 16px/1.65, h4 margin 1.33em 0. Measured at 1440: 320 x 320px
+ * tiles, margin 0 10px 10px 0, 3 + 2 centred; 390: one per row, 318px wide.
+ */
+
+.cards-link-tile {
+  --cards-link-tile-blue: #007acb;
+  --cards-link-tile-grey: #f0f3f5;
+
+  font-family: var(--mb-font-family, montserrat, arial, sans-serif);
+  font-size: 16px;
+  line-height: 1.65;
+  color: #4d4d4d;
+}
+
+.cards-link-tile,
+.cards-link-tile *,
+.cards-link-tile *::before,
+.cards-link-tile *::after {
+  box-sizing: border-box;
+}
+
+/* .serviceCards */
+.cards-link-tile > ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+/* .serviceCard (fixed 320px on the source; min-height lets longer copy grow) */
+.cards-link-tile .cards-link-tile-item {
+  width: 320px;
+  min-height: 320px;
+  margin: 0 10px 10px 0;
+  border: 2px solid var(--cards-link-tile-grey);
+  padding: 40px;
+  background-color: transparent;
+}
+
+.cards-link-tile .cards-link-tile-item:hover {
+  background-color: var(--cards-link-tile-grey);
+}
+
+/* title: h4 1.5rem / 500 / 1.3 */
+.cards-link-tile .cards-link-tile-title {
+  margin: 19.95px 0;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: var(--mb-weight-medium, 500);
+  line-height: 1.3;
+  letter-spacing: normal;
+  color: #4d4d4d;
+}
+
+.cards-link-tile .cards-link-tile-text {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.cards-link-tile .cards-link-tile-item a:any-link {
+  font-weight: inherit;
+  text-decoration: none;
+  color: var(--cards-link-tile-blue);
+}
+
+/* source: no underline on hover or focus (the tile background changes instead) */
+.cards-link-tile .cards-link-tile-item a:hover,
+.cards-link-tile .cards-link-tile-item a:focus-visible {
+  text-decoration: none;
+  color: var(--cards-link-tile-blue);
+}
