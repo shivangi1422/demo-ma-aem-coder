@@ -1,0 +1,107 @@
+[
+ [
+  "hero",
+  ".hero",
+  "main .hero-dim-buttons"
+ ],
+ [
+  "hero-box",
+  ".hero > div",
+  "main .hero-dim-buttons-content"
+ ],
+ [
+  "hero-h1",
+  ".hero h1",
+  "main .hero-dim-buttons h1"
+ ],
+ [
+  "hero-h2",
+  ".hero h2",
+  "main .hero-dim-buttons h2"
+ ],
+ [
+  "hero-btn",
+  ".hero .btn",
+  "main .hero-dim-buttons a"
+ ],
+ [
+  "plan-h2",
+  "#choosePlan h2",
+  "#choose-the-plan-thats-right-for-you"
+ ],
+ [
+  "table",
+  "#service-plans-table table",
+  ".table-plan-compare table"
+ ],
+ [
+  "groups",
+  "#service-plans-table thead th",
+  ".table-plan-compare tr.table-plan-compare-groups > *"
+ ],
+ [
+  "row1",
+  "#service-plans-table tbody tr:nth-child(1) td",
+  ".table-plan-compare tr.table-plan-compare-columns > *"
+ ],
+ [
+  "row2",
+  "#service-plans-table tbody tr:nth-child(2) td",
+  ".table-plan-compare tbody tr:nth-child(1) > *"
+ ],
+ [
+  "row3",
+  "#service-plans-table tbody tr:nth-child(3) td",
+  ".table-plan-compare tbody tr:nth-child(2) > *"
+ ],
+ [
+  "rowlast",
+  "#service-plans-table tbody tr:last-child td",
+  ".table-plan-compare tbody tr:last-child > *"
+ ],
+ [
+  "dots",
+  "#service-plans-table tbody .circle",
+  ".table-plan-compare tbody .table-plan-compare-dot"
+ ],
+ [
+  "legend-p",
+  "#service-plans-table .footnotes div p",
+  ".table-plan-compare-legend p"
+ ],
+ [
+  "git",
+  "#getInTouch",
+  "main > .section.blue"
+ ],
+ [
+  "git-h2",
+  "#getInTouch h2",
+  "main > .section.blue h2"
+ ],
+ [
+  "git-p",
+  "#getInTouch .Contact > p",
+  "main > .section.blue .default-content-wrapper p"
+ ],
+ [
+  "git-item",
+  ".Contact__body > div",
+  ".cards-button-caption li"
+ ],
+ [
+  "git-btn",
+  ".Contact__body .btn",
+  ".cards-button-caption a"
+ ],
+ [
+  "git-cap",
+  ".Contact__body p",
+  ".cards-button-caption p:not(:has(a))"
+ ],
+ [
+  "footer",
+  ".footer2023",
+  "footer"
+ ]
+]

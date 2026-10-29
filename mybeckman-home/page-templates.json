@@ -159,7 +159,9 @@
         "/": "/en-in/",
         "/service/plans/centrifuge": "/en-in/service/plans/centrifuge",
         "/service/plans/flow-cytometry": "/en-in/service/plans/flow-cytometry",
-        "/service/tech-support": "/en-in/service/tech-support"
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/service/plans/liquid-handling": "/en-in/service/plans/liquid-handling",
+        "/service/plans/particle-analysis": "/en-in/service/plans/particle-analysis"
       },
       "metaOverrides": {
         "": {
