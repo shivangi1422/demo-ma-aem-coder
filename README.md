@@ -21,6 +21,10 @@ Pages covered:
 | `lib/mybeckman/parsers/` | one parser per block (hero-curved-panel, jump-nav, cards-promo, cards-topic-tiles, cards-service-icon, hero-photo-card, columns-diagnostics-bar, hero-dim-photo, cards-stats, cards-icon-border, cards-button-caption, cards-benefit-check, cards-product-plan, columns-media-text → `Columns (media)`, hero-dim-buttons, table-plan-compare, columns-cta → `Columns (cta)`) |
 | `lib/mybeckman/transformers/` | cleanup (removes chrome, keeps Font Awesome icons for icon cards, wraps bare source buttons as `<p><strong><a>`) and sections (section styles and `sectionAnchors`) |
 | `<template>/` | `page-templates.json` (`site: mybeckman`, blocks, sections, `pathMap`, `metaOverrides` incl. theme, optional `sectionAnchors`, `hrefOverrides`), `image-map.json`, optional `link-overrides.json`; the home template has its own transformers |
+| `bd-snapshots/` | saved renders the imports read (`www.mybeckman.in/<path>.html`, scripts stripped) |
+| `raw-snapshots/` | full saved renders per page (`raw-snapshot-<name>.html`) for analysis and side-by-side checks |
+| `verify/` | verification scripts, e.g. `style-dump.mjs` (computed-style dump/diff for regression checks) |
+| `MIGRATION-BRIEF.md` | the standing brief to attach in a new chat with each page URL: goal, design system, blocks, workflow, rules |
 
 ## Rules the tooling applies
 
@@ -38,7 +42,14 @@ mkdir -p migration-work/importer-tooling
 git archive origin/migration-tooling | tar -x -C migration-work/importer-tooling
 ```
 
-`migration-work/` should be git-ignored (add `/migration-work` to `.git/info/exclude`).
+`migration-work/` should be git-ignored (add `/migration-work` to `.git/info/exclude`). Then put the snapshots and
+verify scripts where the tools expect them:
+
+```bash
+cp -a migration-work/importer-tooling/bd-snapshots migration-work/
+cp -a migration-work/importer-tooling/raw-snapshots/. migration-work/
+cp -a migration-work/importer-tooling/verify migration-work/
+```
 
 mybeckman.in is Cloudflare-protected, so imports run from saved renders:
 
@@ -46,9 +57,10 @@ mybeckman.in is Cloudflare-protected, so imports run from saved renders:
 BD_SNAPSHOT_DIR=$PWD/migration-work/bd-snapshots bash migration-work/importer-tooling/shared/run-import.sh <template>
 ```
 
-- Snapshots live at `migration-work/bd-snapshots/www.mybeckman.in/<path>.html` (scripts stripped); they are not
-  in this branch. Capture a new page with the Bright Data scrape (needs `BD_ENDPOINT`), which writes
-  `tools/importer/bd-snapshots/...`; copy it to `migration-work/bd-snapshots/`.
+- Snapshots live at `migration-work/bd-snapshots/www.mybeckman.in/<path>.html` (scripts stripped). Capture a new
+  page with the Bright Data scrape (needs `BD_ENDPOINT`), which writes `tools/importer/bd-snapshots/...`; copy it to
+  `migration-work/bd-snapshots/` and add it to this branch's `bd-snapshots/` (and `raw-snapshots/`) with the page's
+  template when you share it.
 - Afterwards clear the protection flag the importer sets: `node <excat>/utils/site-protection.js --clear`.
 - `run-import.sh` deletes `tools/importer/`: back up `tools/importer/page-templates.json` first.
 - The home template now also picks up an "Upcoming events" section from the saved home render that the
