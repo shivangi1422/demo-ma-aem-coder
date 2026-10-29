@@ -1,0 +1,112 @@
+/*
+ * Values from the computed styles of #verticals .verticals-grid on
+ * https://www.gspann.com/services/business-operations
+ * Source breakpoints: 1 column, 3 columns from 992px.
+ */
+.cards-vertical > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  margin: 48px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-vertical > ul > li {
+  margin: 0;
+  padding: 32px;
+  border: 1px solid var(--gspann-border, #e5e7eb);
+  border-radius: 16px;
+  background-color: var(--gspann-surface, #fff);
+  box-shadow: var(--gspann-shadow-sm, 0 2px 4px #0000000f);
+}
+
+.cards-vertical .cards-vertical-card-empty {
+  display: none;
+}
+
+.cards-vertical .cards-vertical-card-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 24px;
+  border-radius: 12px;
+}
+
+.cards-vertical .cards-vertical-card-body {
+  color: var(--gspann-text, #1a1a2e);
+  font-family: var(--gspann-body-font);
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+.cards-vertical .cards-vertical-card-body > :is(h2, h3, h4) {
+  margin: 0 0 8px;
+  color: var(--gspann-heading, #0f122e);
+  font-family: var(--gspann-body-font);
+  font-size: 20px;
+  font-weight: 600;
+  line-height: 1.35;
+  letter-spacing: normal;
+}
+
+.cards-vertical .cards-vertical-card-body > p {
+  margin: 0 0 20px;
+  color: #555;
+  font-size: 15.2px;
+  line-height: 1.5;
+}
+
+.cards-vertical .cards-vertical-card-body > .cards-vertical-tagline {
+  font-style: italic;
+}
+
+.cards-vertical .cards-vertical-card-body > ul {
+  margin: 0 0 20px;
+  padding: 0 0 0 20px;
+  list-style: disc;
+}
+
+.cards-vertical .cards-vertical-card-body > ul > li {
+  margin: 0 0 10px;
+  color: #444;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.cards-vertical .cards-vertical-card-body > ul > li strong {
+  color: var(--gspann-heading, #0f122e);
+  font-weight: 700;
+}
+
+.cards-vertical .cards-vertical-card-body > .cards-vertical-channels {
+  margin: 0;
+  padding-top: 16px;
+  border-top: 1px solid #e2e8f0;
+  color: #555;
+  font-size: 14px;
+  line-height: 1.7;
+}
+
+.cards-vertical .cards-vertical-channels-label {
+  margin-right: 8px;
+  color: var(--gspann-heading, #0f122e);
+  font-weight: 600;
+}
+
+.cards-vertical .cards-vertical-channel + .cards-vertical-channel::before {
+  content: '|';
+  margin: 0 8px;
+  color: #cbd5e1;
+}
+
+.cards-vertical .cards-vertical-card-body > :last-child {
+  margin-bottom: 0;
+}
+
+/* breakpoint-exception: source switches to 3 columns at 992px */
+@media (width >= 992px) {
+  .cards-vertical > ul {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}

@@ -3,3 +3,6 @@ https://www.gspann.com/services/managed-services-operations
 https://www.gspann.com/services/data-analytics
 https://www.gspann.com/services/devops
 https://www.gspann.com/services/digital-commerce
+https://www.gspann.com/services/quality-engineering
+https://www.gspann.com/services/mobility
+https://www.gspann.com/services/business-operations

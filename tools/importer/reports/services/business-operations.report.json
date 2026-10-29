@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.gspann.com/services/business-operations",
+  "path": "services/business-operations",
+  "timestamp": "2026-10-28T18:10:14.751Z",
+  "title": "",
+  "template": "services",
+  "blocks": [
+    "columns-anchor-nav",
+    "hero-overlay-left",
+    "cards-capability",
+    "cards-vertical",
+    "form",
+    "cards-stats",
+    "cards-resources",
+    "cards-leader"
+  ]
+}

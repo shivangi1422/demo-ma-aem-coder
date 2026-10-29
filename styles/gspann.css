@@ -201,6 +201,85 @@ body.gspann main > .section.navy-gradient .default-content-wrapper {
   margin-bottom: 0;
 }
 
+/* sections with 80px bands at every width (source #verticals) */
+body.gspann main > .section.spacious {
+  padding: 80px 0;
+}
+
+/* intro spans the full content width (source .full-width-intro) */
+body.gspann main > .section.full-width-intro > .default-content-wrapper > *,
+body.gspann main > .section.full-width-intro > .default-content-wrapper > h2 + p {
+  max-width: none;
+}
+
+/* full-width figure + caption in default content (source .sol-how-figure) */
+body.gspann main > .section > .default-content-wrapper > p:has(> picture:only-child) {
+  margin: 40px 0 0;
+}
+
+body.gspann main > .section > .default-content-wrapper > p > picture img {
+  display: block;
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+body.gspann main > .section > .default-content-wrapper > p:has(> picture:only-child) + p {
+  margin: 24px 0 0;
+  color: var(--gspann-text-muted);
+  font-size: 15px;
+  line-height: 1.7;
+}
+
+/* note under a block (source .capabilities-note) */
+body.gspann main > .section > div + .default-content-wrapper {
+  margin-top: 32px;
+  margin-bottom: 0;
+}
+
+body.gspann main > .section > div + .default-content-wrapper > p {
+  margin: 0;
+  color: #444;
+  font-size: 16px;
+  line-height: 1.6;
+}
+
+/* heading + list under a block (source .impact-report "Metrics we report") */
+body.gspann main > .section > div + .default-content-wrapper:has(> h3:first-child) {
+  margin-top: 48px;
+}
+
+body.gspann main > .section > div + .default-content-wrapper > h3 {
+  margin: 0 0 16px;
+  color: var(--gspann-heading);
+  font-family: var(--gspann-body-font);
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.6;
+}
+
+body.gspann main > .section > div + .default-content-wrapper > ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 8px 32px;
+  max-width: none;
+  margin: 0;
+  padding-left: 20px;
+}
+
+body.gspann main > .section > div + .default-content-wrapper > ul > li {
+  color: #444;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+/* breakpoint-exception: source list goes to 2 columns at 768px */
+@media (width >= 768px) {
+  body.gspann main > .section > div + .default-content-wrapper > ul {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 body.gspann main > .section.centered > .default-content-wrapper {
   text-align: center;
 }

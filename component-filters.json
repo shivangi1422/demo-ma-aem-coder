@@ -41,7 +41,8 @@
       "cards-logo-group",
       "cards-stats",
       "cards-resources",
-      "cards-leader"
+      "cards-leader",
+      "cards-vertical"
     ]
   },
   {
@@ -90,6 +91,12 @@
     "id": "cards-stats",
     "components": [
       "cards-stats-item"
+    ]
+  },
+  {
+    "id": "cards-vertical",
+    "components": [
+      "cards-vertical-item"
     ]
   },
   {

@@ -6,7 +6,8 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
  */
 function splitSuffix(el) {
   const text = el.textContent.trim();
-  const match = text.match(/^(.*?)([+%]+)$/);
+  // suffixes: "+", "%" and multipliers like "7x"
+  const match = text.match(/^(.*?\d)\s*([+%]+|[x×])$/i);
   const value = document.createElement('span');
   value.className = 'cards-stats-number';
   // values without a suffix (e.g. "10") still get the number styling

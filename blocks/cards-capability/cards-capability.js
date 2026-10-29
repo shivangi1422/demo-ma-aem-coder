@@ -17,9 +17,16 @@ export default function decorate(block) {
       else if (cell.textContent.trim()) cell.className = 'cards-capability-card-body';
       else cell.className = 'cards-capability-card-empty';
     });
+    // a short paragraph before the title is a step label ("01")
+    const heading = li.querySelector('.cards-capability-card-body > :is(h2, h3, h4)');
+    const label = heading?.previousElementSibling;
+    if (label?.tagName === 'P') label.classList.add('cards-capability-label');
     ul.append(li);
   });
   block.replaceChildren(ul);
+
+  // the divider under the grid only separates it from a detail carousel
+  if (block.closest('.section')?.querySelector('.carousel-split-detail')) block.classList.add('has-detail');
 
   // "Learn More" on card N opens slide N of the detail carousel in this section
   [...ul.children].forEach((li, index) => {

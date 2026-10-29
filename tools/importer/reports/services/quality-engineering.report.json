@@ -1,0 +1,19 @@
+{
+  "status": "success",
+  "url": "https://www.gspann.com/services/quality-engineering",
+  "path": "services/quality-engineering",
+  "timestamp": "2026-10-28T17:56:18.766Z",
+  "title": "",
+  "template": "services",
+  "blocks": [
+    "columns-anchor-nav",
+    "hero-overlay-left",
+    "cards-capability",
+    "carousel-split-detail",
+    "cards-logo-group",
+    "form",
+    "cards-stats",
+    "cards-resources",
+    "cards-leader"
+  ]
+}

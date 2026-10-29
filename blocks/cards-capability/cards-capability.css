@@ -4,10 +4,21 @@
  * Source breakpoints: 1 column up to 768px, 2 columns 769-992px, 3 columns above.
  */
 
-/* grid, plus the hr.capabilities-divider that follows it on the source */
-.cards-capability {
+/* grid, plus the hr.capabilities-divider that follows it on the source (only before a carousel) */
+.cards-capability.has-detail {
   padding-bottom: 48px;
   border-bottom: 1px solid #e2e8f0;
+}
+
+/* step label above the title (process pages, span.sol-cap-label) */
+.cards-capability .cards-capability-card-body > .cards-capability-label {
+  margin: 0 0 4px;
+  color: #8a8a9e;
+  font-size: 12px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .cards-capability > ul {

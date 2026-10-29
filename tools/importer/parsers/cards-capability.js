@@ -15,6 +15,13 @@ export default function parse(element, { document }) {
 
   element.querySelectorAll('.capability-flat-item').forEach((item) => {
     const text = [];
+    // step number above the title on process-style pages (span.sol-cap-label "01")
+    const labelEl = item.querySelector('.sol-cap-label');
+    if (labelEl && labelEl.textContent.trim()) {
+      const p = document.createElement('p');
+      p.textContent = labelEl.textContent.trim();
+      text.push(p);
+    }
     const titleEl = item.querySelector('.capability-flat-title');
     if (titleEl) {
       const h3 = document.createElement('h3');

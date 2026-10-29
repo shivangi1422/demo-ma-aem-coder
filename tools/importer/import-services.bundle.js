@@ -139,6 +139,12 @@ var CustomImportScript = (() => {
     const cells = [];
     element.querySelectorAll(".capability-flat-item").forEach((item) => {
       const text = [];
+      const labelEl = item.querySelector(".sol-cap-label");
+      if (labelEl && labelEl.textContent.trim()) {
+        const p = document.createElement("p");
+        p.textContent = labelEl.textContent.trim();
+        text.push(p);
+      }
       const titleEl = item.querySelector(".capability-flat-title");
       if (titleEl) {
         const h3 = document.createElement("h3");
@@ -559,6 +565,62 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/parsers/cards-vertical.js
+  var norm2 = (s) => (s || "").replace(/\s+/g, " ").trim();
+  function parse10(element, { document }) {
+    const cells = [];
+    element.querySelectorAll(".vertical-column").forEach((col) => {
+      var _a;
+      const text = [];
+      const title = col.querySelector(".vertical-title, h3, h4");
+      if (title) {
+        const h3 = document.createElement("h3");
+        h3.textContent = norm2(title.textContent);
+        text.push(h3);
+      }
+      const positioning = col.querySelector(".vertical-positioning");
+      if (positioning && norm2(positioning.textContent)) {
+        const p = document.createElement("p");
+        p.textContent = norm2(positioning.textContent);
+        text.push(p);
+      }
+      const items = [...col.querySelectorAll(".vertical-items > li")];
+      if (items.length) {
+        const ul = document.createElement("ul");
+        items.forEach((item) => {
+          const li = document.createElement("li");
+          const lead = item.querySelector("strong");
+          if (lead) {
+            const strong = document.createElement("strong");
+            strong.textContent = norm2(lead.textContent);
+            li.append(strong);
+            const rest = norm2([...item.childNodes].filter((n) => n !== lead).map((n) => n.textContent).join(""));
+            if (rest) li.append(document.createTextNode(` ${rest}`));
+          } else {
+            li.textContent = norm2(item.textContent);
+          }
+          ul.append(li);
+        });
+        text.push(ul);
+      }
+      const channels = col.querySelector(".vertical-channels");
+      if (channels) {
+        const names = [...channels.querySelectorAll(".vertical-channel")].map((c) => norm2(c.textContent)).filter(Boolean);
+        if (names.length) {
+          const p = document.createElement("p");
+          const strong = document.createElement("strong");
+          strong.textContent = norm2((_a = channels.querySelector(".vertical-channels-label")) == null ? void 0 : _a.textContent) || "Channels:";
+          p.append(strong, document.createTextNode(` ${names.join(", ")}`));
+          text.push(p);
+        }
+      }
+      if (!text.length) return;
+      cells.push(["", [document.createComment(" field:text "), ...text]]);
+    });
+    const block = WebImporter.Blocks.createBlock(document, { name: "cards-vertical", cells });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/gspann-cleanup.js
   var TEMPLATE_NAME = "services";
   var PAGE_TEMPLATE_STYLE = "gspann";
@@ -695,6 +757,8 @@ var CustomImportScript = (() => {
   var MARKER_ATTR = "data-excat-section-id";
   var FIRST_ATTR = "data-excat-section-first";
   var END_ATTR = "data-excat-section-end";
+  var STYLE_ATTR = "data-excat-section-style";
+  var CLASS_STYLES = { "full-width-intro": "full-width-intro" };
   function safeQuery(root, selector) {
     try {
       return root.querySelector(selector);
@@ -714,6 +778,15 @@ var CustomImportScript = (() => {
     if (!style) return "";
     const list = Array.isArray(style) ? style : String(style).split(",");
     return list.map((s) => String(s).trim()).filter(Boolean).join(", ");
+  }
+  function effectiveStyle(section, start) {
+    const styles = styleOf(section).split(",").map((v) => v.trim()).filter(Boolean);
+    Object.keys(CLASS_STYLES).forEach((cls) => {
+      if (start.classList && start.classList.contains(cls) && !styles.includes(CLASS_STYLES[cls])) {
+        styles.push(CLASS_STYLES[cls]);
+      }
+    });
+    return styles.join(", ");
   }
   function findSectionStart(element, section) {
     const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
@@ -742,11 +815,12 @@ var CustomImportScript = (() => {
       const found = sections.map((section) => ({ section, start: findSectionStart(element, section) })).filter((s) => s.start).sort((a, b) => docOrder(a.start, b.start));
       for (let k = found.length - 1; k >= 0; k -= 1) {
         const { section, start } = found[k];
-        const style = styleOf(section);
+        const style = effectiveStyle(section, start);
         const isFirst = k === 0;
         if (style) {
           const end = document.createElement("div");
           end.setAttribute(END_ATTR, idOf(section));
+          end.setAttribute(STYLE_ATTR, style);
           start.after(end);
         }
         if (isFirst && !style) continue;
@@ -759,12 +833,12 @@ var CustomImportScript = (() => {
     if (hookName === "afterTransform") {
       for (let i = sections.length - 1; i >= 0; i -= 1) {
         const section = sections[i];
-        const style = styleOf(section);
-        if (!style) continue;
         const id = idOf(section);
         const marker = safeQuery(element, `hr[${MARKER_ATTR}="${id}"]`);
         const end = safeQuery(element, `[${END_ATTR}="${id}"]`);
         if (!marker && !end) continue;
+        const style = end && end.getAttribute(STYLE_ATTR) || styleOf(section);
+        if (!style) continue;
         const metadata = WebImporter.Blocks.createBlock(document, {
           name: "Section Metadata",
           cells: { style }
@@ -791,7 +865,13 @@ var CustomImportScript = (() => {
   var PAGE_TEMPLATE = {
     "name": "services",
     "urls": [
-      "https://www.gspann.com/services/application-services-and-modernization"
+      "https://www.gspann.com/services/application-services-and-modernization",
+      "https://www.gspann.com/services/managed-services-operations",
+      "https://www.gspann.com/services/data-analytics",
+      "https://www.gspann.com/services/devops",
+      "https://www.gspann.com/services/digital-commerce",
+      "https://www.gspann.com/services/quality-engineering",
+      "https://www.gspann.com/services/mobility"
     ],
     "representativeUrl": "https://www.gspann.com/services/application-services-and-modernization",
     "urlPattern": "/services/*",
@@ -825,6 +905,12 @@ var CustomImportScript = (() => {
         "name": "cards-logo-group",
         "instances": [
           "#platforms div.platforms-categories-wrapper"
+        ]
+      },
+      {
+        "name": "cards-vertical",
+        "instances": [
+          "#verticals div.verticals-grid"
         ]
       },
       {
@@ -911,6 +997,37 @@ var CustomImportScript = (() => {
         ]
       },
       {
+        "id": "section-operating-model",
+        "name": "Operating Model",
+        "selector": [
+          "#operating-model"
+        ],
+        "style": "light-blue",
+        "blocks": [],
+        "defaultContent": [
+          "#operating-model .section-tag",
+          "#operating-model h2",
+          "#operating-model h2 + p",
+          "#operating-model figure"
+        ]
+      },
+      {
+        "id": "section-verticals",
+        "name": "Verticals",
+        "selector": [
+          "#verticals"
+        ],
+        "style": "spacious",
+        "blocks": [
+          "cards-vertical"
+        ],
+        "defaultContent": [
+          "#verticals .section-tag",
+          "#verticals h2",
+          "#verticals h2 + p"
+        ]
+      },
+      {
         "id": "section-5",
         "name": "Modernization partner CTA",
         "selector": [
@@ -983,7 +1100,8 @@ var CustomImportScript = (() => {
     "form": parse6,
     "cards-stats": parse7,
     "cards-resources": parse8,
-    "cards-leader": parse9
+    "cards-leader": parse9,
+    "cards-vertical": parse10
   };
   var transformers = [transform, transform2];
   function executeTransformers(hookName, element, payload) {

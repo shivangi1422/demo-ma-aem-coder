@@ -2701,7 +2701,10 @@
         "https://www.gspann.com/services/managed-services-operations",
         "https://www.gspann.com/services/data-analytics",
         "https://www.gspann.com/services/devops",
-        "https://www.gspann.com/services/digital-commerce"
+        "https://www.gspann.com/services/digital-commerce",
+        "https://www.gspann.com/services/quality-engineering",
+        "https://www.gspann.com/services/mobility",
+        "https://www.gspann.com/services/business-operations"
       ],
       "representativeUrl": "https://www.gspann.com/services/application-services-and-modernization",
       "urlPattern": "/services/*",
@@ -2735,6 +2738,12 @@
           "name": "cards-logo-group",
           "instances": [
             "#platforms div.platforms-categories-wrapper"
+          ]
+        },
+        {
+          "name": "cards-vertical",
+          "instances": [
+            "#verticals div.verticals-grid"
           ]
         },
         {
@@ -2818,6 +2827,37 @@
             "#platforms .section-tag",
             "#platforms h2",
             "#platforms h2 + p"
+          ]
+        },
+        {
+          "id": "section-operating-model",
+          "name": "Operating Model",
+          "selector": [
+            "#operating-model"
+          ],
+          "style": "light-blue",
+          "blocks": [],
+          "defaultContent": [
+            "#operating-model .section-tag",
+            "#operating-model h2",
+            "#operating-model h2 + p",
+            "#operating-model figure"
+          ]
+        },
+        {
+          "id": "section-verticals",
+          "name": "Verticals",
+          "selector": [
+            "#verticals"
+          ],
+          "style": "spacious",
+          "blocks": [
+            "cards-vertical"
+          ],
+          "defaultContent": [
+            "#verticals .section-tag",
+            "#verticals h2",
+            "#verticals h2 + p"
           ]
         },
         {

@@ -30,6 +30,9 @@ const TEMPLATE_NAME = 'services';
 const MARKER_ATTR = 'data-excat-section-id';
 const FIRST_ATTR = 'data-excat-section-first';
 const END_ATTR = 'data-excat-section-end';
+const STYLE_ATTR = 'data-excat-section-style';
+// source section classes that map to an extra section style
+const CLASS_STYLES = { 'full-width-intro': 'full-width-intro' };
 
 function safeQuery(root, selector) {
   try {
@@ -52,6 +55,16 @@ function styleOf(section) {
   if (!style) return '';
   const list = Array.isArray(style) ? style : String(style).split(',');
   return list.map((s) => String(s).trim()).filter(Boolean).join(', ');
+}
+
+function effectiveStyle(section, start) {
+  const styles = styleOf(section).split(',').map((v) => v.trim()).filter(Boolean);
+  Object.keys(CLASS_STYLES).forEach((cls) => {
+    if (start.classList && start.classList.contains(cls) && !styles.includes(CLASS_STYLES[cls])) {
+      styles.push(CLASS_STYLES[cls]);
+    }
+  });
+  return styles.join(', ');
 }
 
 function findSectionStart(element, section) {
@@ -90,12 +103,13 @@ export default function transform(hookName, element, payload) {
 
     for (let k = found.length - 1; k >= 0; k -= 1) {
       const { section, start } = found[k];
-      const style = styleOf(section);
+      const style = effectiveStyle(section, start);
       const isFirst = k === 0;
 
       if (style) {
         const end = document.createElement('div');
         end.setAttribute(END_ATTR, idOf(section));
+        end.setAttribute(STYLE_ATTR, style);
         start.after(end);
       }
 
@@ -110,12 +124,13 @@ export default function transform(hookName, element, payload) {
   if (hookName === 'afterTransform') {
     for (let i = sections.length - 1; i >= 0; i -= 1) {
       const section = sections[i];
-      const style = styleOf(section);
-      if (!style) continue;
       const id = idOf(section);
       const marker = safeQuery(element, `hr[${MARKER_ATTR}="${id}"]`);
       const end = safeQuery(element, `[${END_ATTR}="${id}"]`);
       if (!marker && !end) continue;
+      // style decided in beforeTransform (template style + source-class styles)
+      const style = (end && end.getAttribute(STYLE_ATTR)) || styleOf(section);
+      if (!style) continue;
 
       const metadata = WebImporter.Blocks.createBlock(document, {
         name: 'Section Metadata',

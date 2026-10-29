@@ -10,13 +10,20 @@ import formParser from './parsers/form.js';
 import cardsStatsParser from './parsers/cards-stats.js';
 import cardsResourcesParser from './parsers/cards-resources.js';
 import cardsLeaderParser from './parsers/cards-leader.js';
+import cardsVerticalParser from './parsers/cards-vertical.js';
 import gspannCleanupTransformer from './transformers/gspann-cleanup.js';
 import gspannSectionsTransformer from './transformers/gspann-sections.js';
 
 const PAGE_TEMPLATE = {
   "name": "services",
   "urls": [
-    "https://www.gspann.com/services/application-services-and-modernization"
+    "https://www.gspann.com/services/application-services-and-modernization",
+    "https://www.gspann.com/services/managed-services-operations",
+    "https://www.gspann.com/services/data-analytics",
+    "https://www.gspann.com/services/devops",
+    "https://www.gspann.com/services/digital-commerce",
+    "https://www.gspann.com/services/quality-engineering",
+    "https://www.gspann.com/services/mobility"
   ],
   "representativeUrl": "https://www.gspann.com/services/application-services-and-modernization",
   "urlPattern": "/services/*",
@@ -50,6 +57,12 @@ const PAGE_TEMPLATE = {
       "name": "cards-logo-group",
       "instances": [
         "#platforms div.platforms-categories-wrapper"
+      ]
+    },
+    {
+      "name": "cards-vertical",
+      "instances": [
+        "#verticals div.verticals-grid"
       ]
     },
     {
@@ -136,6 +149,37 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
+      "id": "section-operating-model",
+      "name": "Operating Model",
+      "selector": [
+        "#operating-model"
+      ],
+      "style": "light-blue",
+      "blocks": [],
+      "defaultContent": [
+        "#operating-model .section-tag",
+        "#operating-model h2",
+        "#operating-model h2 + p",
+        "#operating-model figure"
+      ]
+    },
+    {
+      "id": "section-verticals",
+      "name": "Verticals",
+      "selector": [
+        "#verticals"
+      ],
+      "style": "spacious",
+      "blocks": [
+        "cards-vertical"
+      ],
+      "defaultContent": [
+        "#verticals .section-tag",
+        "#verticals h2",
+        "#verticals h2 + p"
+      ]
+    },
+    {
       "id": "section-5",
       "name": "Modernization partner CTA",
       "selector": [
@@ -210,6 +254,7 @@ const parsers = {
   'cards-stats': cardsStatsParser,
   'cards-resources': cardsResourcesParser,
   'cards-leader': cardsLeaderParser,
+  'cards-vertical': cardsVerticalParser,
 };
 
 // GSPANN only: cleanup must run before sections within each hook
