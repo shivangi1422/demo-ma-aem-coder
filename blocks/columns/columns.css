@@ -82,3 +82,61 @@
     gap: 20px;
   }
 }
+
+/*
+ * Variant "spread" (mybeckman.in inner pages; authored as "Columns (spread)"): two text columns
+ * (h2, text, optional list, button), from the flow cytometry plans page (.Section__two-column).
+ * Stacked below 700px with 40px after the first column; from 700px two equal columns 10px
+ * apart, each a flex column with its content spread over the height (space-between), so the
+ * buttons line up at the bottom. Buttons are 200px wide; list indent 17px (.bc-rich-text ul).
+ * (Scoped to .spread, so the order against the .cta rules above does not matter.)
+ */
+
+/* stylelint-disable no-descending-specificity */
+.columns.spread > div {
+  display: block;
+}
+
+.columns.spread > div > div + div {
+  margin-top: 40px;
+}
+
+.columns.spread ul {
+  margin: 0 0 10px;
+  padding-left: 17px;
+}
+
+.columns.spread p.button-wrapper {
+  margin: 0;
+}
+
+.columns.spread a.button:any-link {
+  display: block;
+  width: 200px;
+  margin: 0;
+}
+
+/* breakpoint-exception: source uses 700 */
+@media (width >= 700px) {
+  .columns.spread > div {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 10px;
+  }
+
+  .columns.spread > div > div {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: space-between;
+    order: unset;
+    min-width: 0;
+  }
+
+  .columns.spread > div > div + div {
+    margin-top: 0;
+  }
+}
+
+/* stylelint-enable no-descending-specificity */

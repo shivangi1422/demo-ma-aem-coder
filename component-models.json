@@ -189,6 +189,10 @@
             "value": "wide-tall"
           },
           {
+            "name": "Roomy (4vw padding, 1170px column from 700px)",
+            "value": "roomy"
+          },
+          {
             "name": "Split (intro beside block)",
             "value": "split"
           },
@@ -385,6 +389,10 @@
           {
             "name": "Text + button (mybeckman.in: 2 columns from 992px, buttons aligned)",
             "value": "cta"
+          },
+          {
+            "name": "Text + button, spread (mybeckman.in: 2 columns from 700px, content spread over the column)",
+            "value": "spread"
           }
         ]
       }
@@ -449,6 +457,23 @@
         "value": "",
         "label": "Text (h1, h2 subtitle, bold link = filled button, italic link = outline button)",
         "valueType": "string"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Style",
+        "value": "",
+        "options": [
+          {
+            "name": "Default (min-height 360px)",
+            "value": ""
+          },
+          {
+            "name": "Tall (min-height 450px)",
+            "value": "tall"
+          }
+        ]
       }
     ]
   },
@@ -576,6 +601,23 @@
         "name": "legend",
         "label": "Legend (:dot: included, :dot-ring: optional)",
         "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Style",
+        "value": "",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Large (1.15em headers, .9em cells, no dark corner)",
+            "value": "large"
+          }
+        ]
       }
     ]
   },

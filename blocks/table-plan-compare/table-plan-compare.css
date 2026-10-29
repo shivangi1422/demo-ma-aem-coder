@@ -181,3 +181,58 @@
   display: inline-block;
   margin: 0 5px 0 0;
 }
+
+/*
+ * Variant "large" (/service/plans/flow-cytometry): group headers 1.15em (18.4px) with 1.15em
+ * padding, cells .9em (14.4px) declared 90px wide, header row 150px, label column at least
+ * 174px, no dark corner; the two legend lines sit together (first p no bottom margin).
+ */
+.table-plan-compare.large tr.table-plan-compare-groups > :is(th, td) {
+  padding: 18.4px 0;
+  font-size: 18.4px;
+}
+
+.table-plan-compare.large tr:not(.table-plan-compare-groups) > :is(th, td) {
+  width: 90px;
+  font-size: 0.9em;
+}
+
+.table-plan-compare.large tr.table-plan-compare-columns > :is(th, td) {
+  width: 150px;
+}
+
+.table-plan-compare.large tr:not(.table-plan-compare-groups) > .table-plan-compare-label {
+  min-width: 174px;
+}
+
+.table-plan-compare.large tr.table-plan-compare-columns > .table-plan-compare-label {
+  color: #000;
+  background: none;
+}
+
+.table-plan-compare.large tr.table-plan-compare-groups > td.table-plan-compare-spacer {
+  padding: 0;
+}
+
+/* source td.blank keeps the .75em cell padding (only th.blank drops it) */
+.table-plan-compare.large tr:not(.table-plan-compare-groups) > td.table-plan-compare-spacer {
+  width: 10px;
+  padding: 0.75em;
+}
+
+.table-plan-compare.large .table-plan-compare-legend p:first-child {
+  margin-bottom: 0;
+}
+
+.table-plan-compare.large .table-plan-compare-legend p:nth-child(2) {
+  margin-top: 0;
+}
+
+/* source .whiteCircle: 1px ring in the text colour (black in cells, #888 in the legend) */
+.table-plan-compare.large .table-plan-compare-dot-ring {
+  border: 1px solid currentcolor;
+}
+
+.table-plan-compare.large .table-plan-compare-legend .table-plan-compare-marker {
+  margin-right: 10px;
+}

@@ -157,6 +157,22 @@ main > .section:has(> div > .hero-dim-buttons) > div {
   }
 }
 
+/*
+ * Variant "tall" (/service/plans/flow-cytometry): min-height 450px, the text box gets its
+ * 2vw padding from 700px.
+ */
+.hero-dim-buttons.tall {
+  min-height: 450px;
+}
+
+/* breakpoint-exception: source uses 700 */
+@media (width >= 700px) {
+  .hero-dim-buttons.tall .hero-dim-buttons-content {
+    max-width: 1200px;
+    padding: 2vw;
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .hero-dim-buttons a.hero-dim-buttons-button:any-link {
     transition: none;

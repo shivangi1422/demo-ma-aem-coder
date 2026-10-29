@@ -86,6 +86,23 @@
           "name": "legend",
           "label": "Legend (:dot: included, :dot-ring: optional)",
           "value": ""
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Style",
+          "value": "",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Large (1.15em headers, .9em cells, no dark corner)",
+              "value": "large"
+            }
+          ]
         }
       ]
     },
