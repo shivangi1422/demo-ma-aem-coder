@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "mybeckman-tech-support",
+      "urls": [
+        "https://www.mybeckman.in/service/tech-support"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/tech-support",
+      "description": "mybeckman.in technical support page (exact match of the intended design)",
+      "urlPattern": "/service/tech-support",
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "": "/en-in/index",
+        "/": "/en-in/",
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/service/plans/flow-cytometry": "/en-in/service/plans/flow-cytometry"
+      },
+      "metaOverrides": {
+        "/service/tech-support": {
+          "theme": "theme-mybeckman, mybeckman-inner"
+        }
+      },
+      "blocks": [
+        {
+          "name": "callout-bar",
+          "instances": [
+            "#main .Section__header > .callout",
+            "#main .callout"
+          ]
+        },
+        {
+          "name": "cards-link-tile",
+          "instances": [
+            "#main .serviceCards"
+          ]
+        },
+        {
+          "name": "cards-button-caption",
+          "instances": [
+            "#getInTouch .Contact__body",
+            "#main .Contact__body"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Technical Support",
+          "selector": [
+            "#main .bc-test-layout > .block > .bc-rich-text:has(> .Section__header)",
+            "#main .bc-rich-text:has(> .Section__header)"
+          ],
+          "style": "headline",
+          "blocks": [
+            "callout-bar"
+          ],
+          "defaultContent": [
+            "#main .Section__header > h1",
+            "#main .Section__header > h2"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Intro",
+          "selector": [
+            "#main .bc-rich-text:has(.Section--grey)"
+          ],
+          "style": "grey",
+          "blocks": [],
+          "defaultContent": [
+            "#main .Section--grey .Intro > p"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Support tiles",
+          "selector": [
+            "#main .bc-rich-text:has(.serviceCards)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-link-tile"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Get in Touch band",
+          "selector": [
+            "#getInTouch"
+          ],
+          "style": "blue, centered",
+          "blocks": [
+            "cards-button-caption"
+          ],
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
+        }
+      ],
+      "site": "mybeckman",
+      "hrefOverrides": [
+        {
+          "startsWith": "/sitecore/service/notfound.aspx",
+          "to": "https://www.mybeckman.in/contact-us"
+        },
+        {
+          "startsWith": "https://sso.beckmancoulter.com/",
+          "to": "https://www.mybeckman.in/register"
+        }
+      ]
+    }
+  ]
+}
