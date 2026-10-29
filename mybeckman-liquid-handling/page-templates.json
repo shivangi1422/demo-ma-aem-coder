@@ -1,0 +1,98 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "mybeckman-liquid-handling",
+      "urls": [
+        "https://www.mybeckman.in/service/plans/liquid-handling"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/plans/liquid-handling",
+      "description": "mybeckman.in liquid handling service plans page (exact match; the live page has no hero)",
+      "urlPattern": "/service/plans/liquid-handling",
+      "siteOrigin": "https://www.mybeckman.in",
+      "pathMap": {
+        "/service": "/en-in/service",
+        "/service/plans": "/en-in/service/plans",
+        "": "/en-in/index",
+        "/": "/en-in/",
+        "/service/plans/centrifuge": "/en-in/service/plans/centrifuge",
+        "/service/plans/flow-cytometry": "/en-in/service/plans/flow-cytometry",
+        "/service/tech-support": "/en-in/service/tech-support",
+        "/service/plans/liquid-handling": "/en-in/service/plans/liquid-handling",
+        "/service/plans/particle-analysis": "/en-in/service/plans/particle-analysis"
+      },
+      "metaOverrides": {
+        "/service/plans/liquid-handling": {
+          "theme": "theme-mybeckman, mybeckman-inner"
+        }
+      },
+      "blocks": [
+        {
+          "name": "table-plan-compare",
+          "instances": [
+            "#main #service-plans-table"
+          ],
+          "options": {
+            "variant": "large",
+            "highlightNthChild": null
+          }
+        },
+        {
+          "name": "cards-button-caption",
+          "instances": [
+            "#getInTouch .Contact__body",
+            "#main .Contact__body"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-2",
+          "name": "Choose the plan",
+          "selector": [
+            "#main .bc-rich-text:has(#service-plans-table)"
+          ],
+          "style": "roomy",
+          "blocks": [
+            "table-plan-compare"
+          ],
+          "defaultContent": [
+            "#choosePlan .firstSection > h2"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Get in Touch",
+          "selector": [
+            "#main .bc-rich-text:has(> #getInTouch)",
+            "#getInTouch"
+          ],
+          "style": "blue, centered, roomy",
+          "blocks": [
+            "cards-button-caption"
+          ],
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
+        }
+      ],
+      "site": "mybeckman",
+      "sectionAnchors": {
+        "section-2": "choose-plan"
+      },
+      "hrefOverrides": [
+        {
+          "startsWith": "#choosePlan",
+          "to": "#choose-plan"
+        },
+        {
+          "startsWith": "#getInTouch",
+          "to": "#get-in-touch"
+        }
+      ]
+    }
+  ]
+}
