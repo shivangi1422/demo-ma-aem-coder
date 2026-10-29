@@ -1,0 +1,157 @@
+[
+ [
+  "hero",
+  "main .hero-dim-buttons",
+  "main .hero-dim-buttons"
+ ],
+ [
+  "hero-box",
+  "main .hero-dim-buttons-content",
+  "main .hero-dim-buttons-content"
+ ],
+ [
+  "hero-h1",
+  "main .hero-dim-buttons h1",
+  "main .hero-dim-buttons h1"
+ ],
+ [
+  "hero-h2",
+  "main .hero-dim-buttons h2",
+  "main .hero-dim-buttons h2"
+ ],
+ [
+  "hero-btn",
+  "main .hero-dim-buttons a",
+  "main .hero-dim-buttons a"
+ ],
+ [
+  "plan-h2",
+  "#choose-the-plan-thats-right-for-you",
+  "#choose-the-plan-thats-right-for-you"
+ ],
+ [
+  "table",
+  ".table-plan-compare table",
+  ".table-plan-compare table"
+ ],
+ [
+  "groups",
+  ".table-plan-compare tr.table-plan-compare-groups > *",
+  ".table-plan-compare tr.table-plan-compare-groups > *"
+ ],
+ [
+  "row1",
+  ".table-plan-compare tr.table-plan-compare-columns > *",
+  ".table-plan-compare tr.table-plan-compare-columns > *"
+ ],
+ [
+  "row2",
+  ".table-plan-compare tbody tr:nth-child(1) > *",
+  ".table-plan-compare tbody tr:nth-child(1) > *"
+ ],
+ [
+  "row3",
+  ".table-plan-compare tbody tr:nth-child(2) > *",
+  ".table-plan-compare tbody tr:nth-child(2) > *"
+ ],
+ [
+  "rowlast",
+  ".table-plan-compare tbody tr:last-child > *",
+  ".table-plan-compare tbody tr:last-child > *"
+ ],
+ [
+  "dots",
+  ".table-plan-compare tbody .table-plan-compare-dot",
+  ".table-plan-compare tbody .table-plan-compare-dot"
+ ],
+ [
+  "legend-p",
+  ".table-plan-compare-legend p",
+  ".table-plan-compare-legend p"
+ ],
+ [
+  "cols",
+  ".columns.spread > div",
+  ".columns.spread > div"
+ ],
+ [
+  "col",
+  ".columns.spread > div > div",
+  ".columns.spread > div > div"
+ ],
+ [
+  "col-h2",
+  ".columns.spread h2",
+  ".columns.spread h2"
+ ],
+ [
+  "col-p",
+  ".columns.spread p:not(.button-wrapper)",
+  ".columns.spread p:not(.button-wrapper)"
+ ],
+ [
+  "col-ul",
+  ".columns.spread ul",
+  ".columns.spread ul"
+ ],
+ [
+  "col-li",
+  ".columns.spread li",
+  ".columns.spread li"
+ ],
+ [
+  "col-btn",
+  ".columns.spread a",
+  ".columns.spread a"
+ ],
+ [
+  "git",
+  "main > .section.blue",
+  "main > .section.blue"
+ ],
+ [
+  "git-h2",
+  "main > .section.blue h2",
+  "main > .section.blue h2"
+ ],
+ [
+  "git-p",
+  "main > .section.blue .default-content-wrapper p",
+  "main > .section.blue .default-content-wrapper p"
+ ],
+ [
+  "git-item",
+  ".cards-button-caption li",
+  ".cards-button-caption li"
+ ],
+ [
+  "git-btn",
+  ".cards-button-caption a",
+  ".cards-button-caption a"
+ ],
+ [
+  "git-cap",
+  ".cards-button-caption p:not(:has(a))",
+  ".cards-button-caption p:not(:has(a))"
+ ],
+ [
+  "footer",
+  "footer",
+  "footer"
+ ],
+ [
+  "table-label",
+  ".table-plan-compare tbody th",
+  ".table-plan-compare tbody th"
+ ],
+ [
+  "ring",
+  ".table-plan-compare-dot-ring",
+  ".table-plan-compare-dot-ring"
+ ],
+ [
+  "breadcrumb",
+  "main .breadcrumb-mybeckman a, main .breadcrumb-mybeckman li",
+  "main .breadcrumb-mybeckman a, main .breadcrumb-mybeckman li"
+ ]
+]

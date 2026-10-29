@@ -10,6 +10,7 @@ const walk = (d) => fs.readdirSync(d, { withFileTypes: true }).flatMap((e) => (e
 //   siteOrigin: live site origin (default beckmancoulter.com)
 //   pathMap: { '/live/path': '/our/path' }   (page lands at our path; links to it become relative)
 //   metaOverrides: { '/live/path': { description, image } }
+//   blocks[].options: passed to that block's parser as `options` (e.g. { variant: 'tall' })
 const SITE_ORIGIN = t.siteOrigin || 'https://www.beckmancoulter.com';
 const PATH_MAP = t.pathMap || {};
 const sameSiteAsContent = SITE_ORIGIN === 'https://www.beckmancoulter.com';
@@ -67,7 +68,7 @@ function findBlocksOnPage(document, template) {
       document.querySelectorAll(selector).forEach((element) => {
         if (seen.has(element)) return;
         seen.add(element);
-        pageBlocks.push({ name: blockDef.name, selector, element });
+        pageBlocks.push({ name: blockDef.name, selector, element, options: blockDef.options || {} });
       });
     });
   });
@@ -90,7 +91,7 @@ export default {
       if (!block.element.parentNode) return;
       const parser = parsers[block.name];
       if (!parser) return;
-      try { parser(block.element, { document, url, params }); } catch (e) { console.error(\`Failed to parse \${block.name} (\${block.selector}):\`, e); }
+      try { parser(block.element, { document, url, params, options: block.options }); } catch (e) { console.error(\`Failed to parse \${block.name} (\${block.selector}):\`, e); }
     });
 
     executeTransformers('afterTransform', main, payload);

@@ -12,18 +12,19 @@ Pages covered:
 | `mybeckman-service` | https://www.mybeckman.in/service | `/en-in/service` |
 | `mybeckman-plans` | https://www.mybeckman.in/service/plans | `/en-in/service/plans` |
 | `mybeckman-centrifuge` | https://www.mybeckman.in/service/plans/centrifuge | `/en-in/service/plans/centrifuge` |
+| `mybeckman-flow-cytometry` | https://www.mybeckman.in/service/plans/flow-cytometry | `/en-in/service/plans/flow-cytometry` |
 
 ## Layout
 
 | Folder | Contents |
 |---|---|
 | `shared/` | `run-import.sh` (copies a template into `tools/importer`, imports, deletes `tools/importer`), `gen-import.cjs` (builds the import script: link rules, path map, image map, metadata overrides), `beckmancoulter-0-links.js` (link step, runs first), `make-image-map.cjs` |
-| `lib/mybeckman/parsers/` | one parser per block (hero-curved-panel, jump-nav, cards-promo, cards-topic-tiles, cards-service-icon, hero-photo-card, columns-diagnostics-bar, hero-dim-photo, cards-stats, cards-icon-border, cards-button-caption, cards-benefit-check, cards-product-plan, columns-media-text → `Columns (media)`, hero-dim-buttons, table-plan-compare, columns-cta → `Columns (cta)`) |
+| `lib/mybeckman/parsers/` | one parser per block (hero-curved-panel, jump-nav, cards-promo, cards-topic-tiles, cards-service-icon, hero-photo-card, columns-diagnostics-bar, hero-dim-photo, cards-stats, cards-icon-border, cards-button-caption, cards-benefit-check, cards-product-plan, columns-media-text → `Columns (media)`, hero-dim-buttons, table-plan-compare, columns-cta → `Columns (cta)`, columns-spread → `Columns (spread)`) |
 | `lib/mybeckman/transformers/` | cleanup (removes chrome, keeps Font Awesome icons for icon cards, wraps bare source buttons as `<p><strong><a>`) and sections (section styles and `sectionAnchors`) |
-| `<template>/` | `page-templates.json` (`site: mybeckman`, blocks, sections, `pathMap`, `metaOverrides` incl. theme, optional `sectionAnchors`, `hrefOverrides`), `image-map.json`, optional `link-overrides.json`; the home template has its own transformers |
+| `<template>/` | `page-templates.json` (`site: mybeckman`, blocks, sections, `pathMap`, `metaOverrides` incl. theme, optional `sectionAnchors`, `hrefOverrides`, per-block `options` passed to the parser, e.g. `{ "variant": "tall" }` or `{ "highlightNthChild": null }`), `image-map.json`, optional `link-overrides.json`; the home template has its own transformers |
 | `bd-snapshots/` | saved renders the imports read (`www.mybeckman.in/<path>.html`, scripts stripped) |
 | `raw-snapshots/` | full saved renders per page (`raw-snapshot-<name>.html`) for analysis and side-by-side checks |
-| `verify/` | verification scripts, e.g. `style-dump.mjs` (computed-style dump/diff for regression checks) |
+| `verify/` | verification scripts: `style-dump.mjs` (computed-style dump/diff for regression checks), `clean-source.cjs` (cleaned copy of a raw snapshot to serve locally), `main-outline.cjs` / `inline-styles.cjs` (source structure and inline `<style>`), `measure.mjs`, `compare-boxes.mjs` + `pairs-<page>.json` (source vs ours boxes and styles per widths), `shot.mjs` + `pixel-compare.sh` (screenshots, ImageMagick AE fuzz 8%), `hover-check.mjs`, `overflow.mjs`, `to-jcr.mjs` (html2md + md2jcr output), `authoring-sim.mjs` (serves a page the way authoring delivers it, for comparison with the preview) |
 | `MIGRATION-BRIEF.md` | the standing brief to attach in a new chat with each page URL: goal, design system, blocks, workflow, rules |
 
 ## Rules the tooling applies
