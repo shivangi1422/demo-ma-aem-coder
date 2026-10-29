@@ -65,6 +65,10 @@
               "value": "wide-tall"
             },
             {
+              "name": "Roomy (4vw padding, 1170px column from 700px)",
+              "value": "roomy"
+            },
+            {
               "name": "Split (intro beside block)",
               "value": "split"
             },

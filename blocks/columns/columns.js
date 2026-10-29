@@ -12,9 +12,9 @@ export default async function decorate(block) {
     return;
   }
 
-  // variant "cta" (mybeckman.in inner pages): column content delivered inside wrapper
-  // elements (authoring) is lifted into the column so the CSS can align the buttons
-  if (block.classList.contains('cta')) {
+  // variants "cta" and "spread" (mybeckman.in inner pages): column content delivered inside
+  // wrapper elements (authoring) is lifted into the column so the CSS can align the buttons
+  if (block.classList.contains('cta') || block.classList.contains('spread')) {
     [...block.children].forEach((row) => {
       const roots = rowContentCells(row);
       [...row.children].forEach((col, i) => {

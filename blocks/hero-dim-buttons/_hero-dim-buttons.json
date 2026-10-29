@@ -40,6 +40,23 @@
           "value": "",
           "label": "Text (h1, h2 subtitle, bold link = filled button, italic link = outline button)",
           "valueType": "string"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "classes",
+          "label": "Style",
+          "value": "",
+          "options": [
+            {
+              "name": "Default (min-height 360px)",
+              "value": ""
+            },
+            {
+              "name": "Tall (min-height 450px)",
+              "value": "tall"
+            }
+          ]
         }
       ]
     }

@@ -827,6 +827,47 @@ body.mybeckman-inner main > .section.blue.centered.wide-tall {
 }
 
 /*
+ * roomy: the flow cytometry plans page .Section — 4vw 8vw 0 below 700px, 4vw inside a
+ * 1170px column from 700px, no side or bottom padding from 992px.
+ */
+body.mybeckman-inner main > .section.roomy {
+  padding: 4vw 8vw 0;
+}
+
+/* breakpoint-exception: source uses 700/992 */
+@media (width >= 700px) {
+  body.mybeckman-inner main > .section.roomy {
+    padding: 4vw max(2vw, calc((100% - var(--mb-inner-max-width)) / 2 + 2vw));
+  }
+}
+
+/* breakpoint-exception: source uses 700/992 */
+@media (width >= 992px) {
+  body.mybeckman-inner main > .section.roomy {
+    padding: 4vw max(0px, calc((100% - var(--mb-inner-max-width)) / 2)) 0;
+  }
+}
+
+/* Get in Touch in a roomy section: the .Section's own bottom padding plus #getInTouch's 2vw */
+body.mybeckman-inner main > .section.blue.centered.roomy {
+  padding-bottom: 2vw;
+}
+
+/* breakpoint-exception: source uses 700/992 */
+@media (width >= 700px) {
+  body.mybeckman-inner main > .section.blue.centered.roomy {
+    padding-bottom: 6vw;
+  }
+}
+
+/* breakpoint-exception: source uses 700/992 */
+@media (width >= 992px) {
+  body.mybeckman-inner main > .section.blue.centered.roomy {
+    padding-bottom: 2vw;
+  }
+}
+
+/*
  * split (inner pages, /service/plans .Intro): from 992px the intro sits beside the block,
  * 1 : 2 (flex 1 1 0 / 2 1 0) with 20px between; stacked below.
  */
