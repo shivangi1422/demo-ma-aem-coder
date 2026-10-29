@@ -1,0 +1,107 @@
+[
+ [
+  "header",
+  "#main .Section__header",
+  "main > .section.headline"
+ ],
+ [
+  "h1",
+  "#main .Section__header h1",
+  "main .headline h1"
+ ],
+ [
+  "h2",
+  "#main .Section__header h2",
+  "main .headline h2"
+ ],
+ [
+  "callout",
+  "#main .callout",
+  "main .callout-bar .callout-bar-body"
+ ],
+ [
+  "calloutP",
+  "#main .callout p",
+  "main .callout-bar-text"
+ ],
+ [
+  "calloutBtn",
+  "#main .callout a",
+  "main .callout-bar a"
+ ],
+ [
+  "grey",
+  "#main .Section--grey",
+  "main > .section.grey"
+ ],
+ [
+  "introP1",
+  "#main .Intro p",
+  "main .grey .default-content-wrapper p"
+ ],
+ [
+  "introLink",
+  "#main .Intro a[href]",
+  "main .grey a"
+ ],
+ [
+  "cardsSection",
+  "#main .Section:has(> .serviceCards)",
+  "main > .section.cards-link-tile-container"
+ ],
+ [
+  "cards",
+  "#main .serviceCards",
+  "main .cards-link-tile > ul"
+ ],
+ [
+  "card1",
+  "#main .serviceCard",
+  "main .cards-link-tile-item"
+ ],
+ [
+  "card1h4",
+  "#main .serviceCard h4",
+  "main .cards-link-tile-item h4"
+ ],
+ [
+  "card1h4a",
+  "#main .serviceCard h4 a",
+  "main .cards-link-tile-item h4 a"
+ ],
+ [
+  "card1p",
+  "#main .serviceCard p",
+  "main .cards-link-tile-item p"
+ ],
+ [
+  "card1pa",
+  "#main .serviceCard p a",
+  "main .cards-link-tile-item p a"
+ ],
+ [
+  "blue",
+  "#getInTouch",
+  "main > .section.blue"
+ ],
+ [
+  "blueH2",
+  "#getInTouch h2",
+  "main .blue h2"
+ ],
+ [
+  "blueP",
+  "#getInTouch .Contact > p",
+  "main .blue .default-content-wrapper > p"
+ ],
+ [
+  "blueBtn1",
+  "#getInTouch .Contact__body a",
+  "main .blue .cards-button-caption a"
+ ],
+ [
+  "blueCap1",
+  "#getInTouch .Contact__body p",
+  "main .blue .cards-button-caption-text"
+ ]
+]

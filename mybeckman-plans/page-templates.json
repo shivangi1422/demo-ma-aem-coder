@@ -18,7 +18,8 @@
         "": "/en-in/index",
         "/": "/en-in/",
         "/service/plans/centrifuge": "/en-in/service/plans/centrifuge",
-        "/service/plans/flow-cytometry": "/en-in/service/plans/flow-cytometry"
+        "/service/plans/flow-cytometry": "/en-in/service/plans/flow-cytometry",
+        "/service/tech-support": "/en-in/service/tech-support"
       },
       "metaOverrides": {
         "/service/plans": {
