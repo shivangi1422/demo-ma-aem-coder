@@ -1,0 +1,42 @@
+{
+  "variantName": "cards-grid",
+  "baseBlock": "cards",
+  "visualCharacteristics": "Grid of bordered tiles (3-up desktop), image or icon on top, title and text below; optional heading/intro row; Style options solutions, productlines, insights, simple, features.",
+  "reuseGuidance": "Use for wrapping grids of look-alike linked items with an image or icon.",
+  "usage": {
+    "pagesUsing": [
+      "/service"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-30"
+  },
+  "canonicalModel": "collection",
+  "contentPattern": {
+    "structure": "row 1: optional heading/intro text; then one row per card: image or icon cell, text cell with linked title (H3/H4) and description"
+  },
+  "options": [
+    {
+      "class": "solutions",
+      "label": "Solutions (image + category + link)"
+    },
+    {
+      "class": "productlines",
+      "label": "Product Lines (image + title)"
+    },
+    {
+      "class": "insights",
+      "label": "Insights (intro + text cards)"
+    },
+    {
+      "class": "simple",
+      "label": "Simple (4-up: image + tag + title + link)"
+    },
+    {
+      "class": "features",
+      "label": "Features (centered, borderless, no image)"
+    }
+  ],
+  "memberVariantIds": [
+    "cards-grid"
+  ]
+}

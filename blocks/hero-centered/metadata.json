@@ -1,0 +1,33 @@
+{
+  "variantName": "hero-centered",
+  "baseBlock": "hero",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "page-opening banner with a full-bleed photo behind a centered heading, intro text and call to action",
+    "layout": "full-bleed background image with dark overlay; centered white H1, paragraph and outlined button",
+    "background": "photo"
+  },
+  "contentPattern": {
+    "structure": "row 1: background image (with alt); row 2: text cell with H1, intro paragraph and one CTA link",
+    "rows": [
+      [
+        "image"
+      ],
+      [
+        "heading, paragraph, link"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "hero-centered"
+  ],
+  "usage": {
+    "pagesUsing": [
+      "/service"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-30"
+  },
+  "reuseGuidance": "Use for a page-top banner with a photo background and centered text plus CTA. For split or solid banners use hero (Style: split, banner)."
+}

@@ -1,0 +1,79 @@
+/* Hero Centered: full-bleed background photo, centered heading, text and CTA.
+   Structural only; brand colour and type come from the design pass. */
+
+.hero-centered-container .hero-centered-wrapper {
+  max-width: unset;
+  padding: 0;
+}
+
+.hero-centered {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 320px;
+  padding: 48px 24px;
+  overflow: hidden;
+  text-align: center;
+}
+
+.hero-centered .hero-centered-background {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-centered .hero-centered-background picture,
+.hero-centered .hero-centered-background img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* dark overlay keeps the white text legible over any photo */
+.hero-centered.hero-centered-has-image::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background-color: rgb(0 0 0 / 45%);
+}
+
+.hero-centered .hero-centered-content {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  max-width: 900px;
+}
+
+.hero-centered.hero-centered-has-image .hero-centered-content {
+  color: #fff;
+}
+
+.hero-centered .hero-centered-content h1,
+.hero-centered .hero-centered-content h2,
+.hero-centered .hero-centered-content p {
+  margin: 0;
+  color: inherit;
+}
+
+.hero-centered .hero-centered-content .button-wrapper {
+  margin: 8px 0 0;
+}
+
+.hero-centered.hero-centered-has-image .hero-centered-content a.button:any-link {
+  border: 1px solid currentcolor;
+  background-color: transparent;
+  color: inherit;
+}
+
+@media (width >= 900px) {
+  .hero-centered {
+    min-height: 440px;
+    padding: 64px 80px;
+  }
+}

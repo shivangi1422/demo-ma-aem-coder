@@ -2,6 +2,17 @@ import { createOptimizedPicture } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
+ * Only same-origin, non-SVG images can be optimized; migrated images still point
+ * at the source site until uploaded, and SVGs can't be transcoded.
+ * @param {HTMLImageElement} img
+ * @returns {boolean}
+ */
+function canOptimize(img) {
+  const url = new URL(img.src, window.location.href);
+  return url.origin === window.location.origin && !/\.svg$/i.test(url.pathname);
+}
+
+/**
  * Decorates the cards-grid block. One block, three styles via the "Style"
  * dropdown (variant class):
  *   - .cards-grid.solutions    heading + 3-up cards (image, category, title, link)
@@ -40,7 +51,9 @@ export default function decorate(block) {
         const icon = document.createElement('div');
         icon.className = 'cards-grid-image';
         const img = imgCell.querySelector('img');
-        if (img) {
+        if (img && !canOptimize(img)) {
+          icon.append(img.closest('picture') || img);
+        } else if (img) {
           const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '150' }]);
           moveInstrumentation(img, optimized.querySelector('img'));
           icon.append(optimized);
@@ -130,6 +143,7 @@ export default function decorate(block) {
   });
 
   ul.querySelectorAll('picture > img').forEach((img) => {
+    if (!canOptimize(img)) return;
     const optimized = createOptimizedPicture(img.src, img.alt, false, [{ width: '750' }]);
     moveInstrumentation(img, optimized.querySelector('img'));
     img.closest('picture').replaceWith(optimized);
