@@ -1,0 +1,32 @@
+{
+  "variantName": "columns-cta",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "side-by-side contact or action options, each a button above a short description",
+    "layout": "3 equal centered columns on desktop, stacked on mobile; outlined button over short text",
+    "background": "inherits section style (blue, centered on /service)"
+  },
+  "contentPattern": {
+    "structure": "one row; each cell: a paragraph with a single link (becomes the button) followed by a description paragraph",
+    "rows": [
+      [
+        "<p><a>CTA</a></p><p>description</p>",
+        "...",
+        "..."
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "columns-cta"
+  ],
+  "usage": {
+    "pagesUsing": [
+      "/service"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-30"
+  },
+  "reuseGuidance": "Use for a fixed set of 2-4 parallel calls to action (phone, email, form). For content columns with images use columns."
+}

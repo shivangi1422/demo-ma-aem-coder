@@ -1,0 +1,30 @@
+{
+  "variantName": "cards-stats",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "row of key figures, each a bold value over a short label",
+    "layout": "borderless 4-up row on desktop, wraps on smaller screens; left-aligned text-only items",
+    "background": "inherits section style (blue band on /service)"
+  },
+  "contentPattern": {
+    "structure": "one text cell: bold value paragraph (<strong>) followed by a label paragraph",
+    "rows": [
+      [
+        "<p><strong>value</strong></p><p>label</p>"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-stats"
+  ],
+  "usage": {
+    "pagesUsing": [
+      "/service"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-10-30"
+  },
+  "reuseGuidance": "Use for text-only statistics or key figures. Put it in a colored section (Style: blue) for white-on-blue. For image or icon cards use cards-grid."
+}
