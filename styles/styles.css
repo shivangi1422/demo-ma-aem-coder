@@ -80,6 +80,13 @@
   }
 }
 
+@media (width >= 1200px) {
+  :root {
+    /* two-row desktop header: 70px top bar + 1px divider + 52px nav bar */
+    --nav-height: 123px;
+  }
+}
+
 body {
   display: none;
   margin: 0;

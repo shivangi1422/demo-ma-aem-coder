@@ -1,0 +1,40 @@
+/* Columns CTA: equal centered columns, each an outlined button over short text.
+   Structural only; colours come from the section style and the design pass. */
+
+.columns-cta .columns-cta-row {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+}
+
+.columns-cta .columns-cta-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 16px;
+  text-align: center;
+}
+
+.columns-cta .columns-cta-col p {
+  margin: 0;
+}
+
+.columns-cta .columns-cta-action a.button:any-link {
+  margin: 0;
+  min-width: 200px;
+  border: 1px solid currentcolor;
+  background-color: transparent;
+  color: inherit;
+}
+
+@media (width >= 900px) {
+  .columns-cta .columns-cta-row {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 32px;
+  }
+
+  .columns-cta .columns-cta-col {
+    flex: 1 1 0;
+  }
+}

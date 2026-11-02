@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service",
+  "path": "service",
+  "timestamp": "2026-10-30T06:41:34.660Z",
+  "title": "Service",
+  "template": "service",
+  "blocks": [
+    "hero-centered",
+    "cards-stats",
+    "cards-grid",
+    "columns-cta"
+  ]
+}

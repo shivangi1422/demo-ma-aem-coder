@@ -1,0 +1,103 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "service",
+      "urls": [
+        "https://www.mybeckman.in/service"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service",
+      "description": "Service landing page: photo hero, blue stats band, service offering cards and a blue Get in Touch contact band",
+      "urlPattern": "/*",
+      "blocks": [
+        {
+          "name": "hero-centered",
+          "instances": [
+            ".bc-rich-text > .hero",
+            "div.hero"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".Section--blue .Section__intro",
+            ".Section__intro"
+          ]
+        },
+        {
+          "name": "cards-grid",
+          "instances": [
+            ".Section .ServiceCards",
+            ".ServiceCards"
+          ]
+        },
+        {
+          "name": "columns-cta",
+          "instances": [
+            "#getInTouch .Contact__body",
+            ".Contact .Contact__body"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Hero",
+          "selector": [
+            ".bc-rich-text:has(> .hero)",
+            "div.hero"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-centered"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Service stats",
+          "selector": [
+            ".Section--blue:has(.Section__intro)",
+            ".bc-rich-text:has(.Section__intro)"
+          ],
+          "style": "blue",
+          "blocks": [
+            "cards-stats"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Service offerings",
+          "selector": [
+            ".bc-rich-text:has(.ServiceCards)",
+            ".Section:has(> .ServiceCards)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-4",
+          "name": "Get in Touch",
+          "selector": [
+            "#getInTouch",
+            ".Section--blue:has(.Contact)"
+          ],
+          "style": "blue, centered",
+          "blocks": [
+            "columns-cta"
+          ],
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
+        }
+      ]
+    }
+  ]
+}

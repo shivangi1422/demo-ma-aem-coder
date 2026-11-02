@@ -33,6 +33,14 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Blue",
+              "value": "blue"
+            },
+            {
+              "name": "Centered",
+              "value": "centered"
             }
           ]
         }
@@ -59,7 +67,10 @@
         "content-product-detail",
         "content-product-form",
         "product-banner",
-        "quote"
+        "quote",
+        "hero-centered",
+        "cards-stats",
+        "columns-cta"
       ]
     }
   ]

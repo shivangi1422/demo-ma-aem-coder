@@ -24,13 +24,22 @@
       "content-product-detail",
       "content-product-form",
       "product-banner",
-      "quote"
+      "quote",
+      "hero-centered",
+      "cards-stats",
+      "columns-cta"
     ]
   },
   {
     "id": "cards-grid",
     "components": [
       "cards-grid-item"
+    ]
+  },
+  {
+    "id": "cards-stats",
+    "components": [
+      "cards-stats-item"
     ]
   },
   {
@@ -43,6 +52,12 @@
     "id": "carousel",
     "components": [
       "carousel-item"
+    ]
+  },
+  {
+    "id": "columns-cta",
+    "components": [
+      "column"
     ]
   },
   {
