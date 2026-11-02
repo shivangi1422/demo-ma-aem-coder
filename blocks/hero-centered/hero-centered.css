@@ -136,3 +136,84 @@
     min-height: 360px;
   }
 }
+
+/*
+ * Service plan heroes (page template "service-plans", body class .service-plans).
+ * Source .hero: height 40vh with a 360px floor at every width, photo at 50% opacity
+ * on black cropped from the centre, shrink-wrapped content box, light H1 and a
+ * 25px subheading, solid + outlined buttons of equal height. Scoped so /service
+ * keeps its own look.
+ */
+.service-plans .hero-centered {
+  min-height: max(40vh, 360px);
+}
+
+.service-plans .hero-centered .hero-centered-background picture,
+.service-plans .hero-centered .hero-centered-background img {
+  object-position: 50% 50%;
+}
+
+.service-plans .hero-centered .hero-centered-content {
+  width: auto;
+  padding: 0;
+}
+
+.service-plans .hero-centered .hero-centered-content h1 {
+  margin: 26.8px 0 0;
+  font-weight: 300;
+}
+
+.service-plans .hero-centered .hero-centered-content h1 + h2 {
+  margin: 20.75px 0;
+  font-size: 25px;
+  font-weight: 500;
+  letter-spacing: normal;
+  line-height: 1.1;
+}
+
+/* source buttons are inline-blocks separated by a space */
+.service-plans .hero-centered .hero-centered-content .hero-centered-actions {
+  gap: 0 4.82px;
+}
+
+/* outlined button: 12px padding + 1px border = the solid button's 48.27px */
+.service-plans .hero-centered .hero-centered-content a.button:any-link {
+  padding: 12px 20px;
+  transition: color 0.3s, background 0.3s, transform 0.3s;
+}
+
+.service-plans .hero-centered .hero-centered-content a.button:hover,
+.service-plans .hero-centered .hero-centered-content a.button:focus-visible {
+  background-color: #007acb;
+  color: #fff;
+}
+
+.service-plans .hero-centered .hero-centered-content a.button.primary:any-link {
+  padding: 13px 20px;
+  border: 0;
+  transition: all 0.3s ease;
+}
+
+.service-plans .hero-centered .hero-centered-content a.button.primary:hover,
+.service-plans .hero-centered .hero-centered-content a.button.primary:focus-visible {
+  background-color: #0065a7;
+}
+
+/* source .hero div gets its 2vw padding from 768px (breakpoint mirrors the source) */
+@media (width >= 768px) {
+  .service-plans .hero-centered .hero-centered-content {
+    padding: 2vw;
+  }
+}
+
+/* option "tall": source .hero { height: 40vh; min-height: 450px } at every width */
+.hero-centered.tall {
+  min-height: max(40vh, 450px);
+}
+
+/* tall heroes come from the flow-family source pages, whose padding starts at 700px */
+@media (width >= 700px) {
+  .service-plans .hero-centered.tall .hero-centered-content {
+    padding: 2vw;
+  }
+}

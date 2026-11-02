@@ -42,6 +42,24 @@ var CustomImportScript = (() => {
   });
 
   // tools/importer/parsers/hero-centered.js
+  function isTall(document2, ctx) {
+    const css = Array.from(document2.querySelectorAll("style")).map((s) => s.textContent || "").join("\n").replace(/\/\*[\s\S]*?\*\//g, "");
+    const re = /([^{}]+)\{([^{}]*)\}/g;
+    let found = false;
+    let tall = false;
+    let m;
+    while (m = re.exec(css)) {
+      const selectors = m[1].split(",").map((x) => x.replace(/\s+/g, " ").trim().toLowerCase());
+      if (selectors.includes(".hero")) {
+        found = true;
+        if (/min-height\s*:\s*450px\b/i.test(m[2])) tall = true;
+      }
+    }
+    if (found) return tall;
+    const params = ctx && ctx.params || {};
+    const url = String(params.originalURL || ctx && ctx.url || "");
+    return /\/service\/plans\/(?:flow-cytometry|particle-analysis)(?:[/?#.]|$)/i.test(url);
+  }
   function parse(element, { document: document2 }) {
     const img = element.querySelector(":scope > img, :scope > picture img, img");
     const content = element.querySelector(":scope > div") || element;
@@ -84,7 +102,8 @@ var CustomImportScript = (() => {
       textFrag.appendChild(p);
     });
     cells.push([textFrag]);
-    const block = WebImporter.Blocks.createBlock(document2, { name: "hero-centered", cells });
+    const name = isTall(document2, arguments[1]) ? "Hero Centered (tall)" : "hero-centered";
+    const block = WebImporter.Blocks.createBlock(document2, { name, cells });
     element.replaceWith(block);
   }
 
@@ -108,6 +127,17 @@ var CustomImportScript = (() => {
     } catch (e) {
     }
     return candidates.filter(Boolean).map(String).join(" ");
+  }
+  function planTableRules(document2) {
+    const css = Array.from(document2.querySelectorAll("style")).map((s) => s.textContent || "").join("\n").replace(/\/\*[\s\S]*?\*\//g, "");
+    const rules = [];
+    const re = /([^{}]+)\{([^{}]*)\}/g;
+    let m;
+    while (m = re.exec(css)) {
+      const selectors = m[1].split(",").map((x) => x.replace(/\s+/g, " ").trim().toLowerCase());
+      if (selectors.some((x) => x.includes("#service-plans-table"))) rules.push({ selectors, body: m[2] });
+    }
+    return rules;
   }
   function parse2(element, { document: document2 }) {
     const ctx = arguments[1] || {};
@@ -160,8 +190,16 @@ var CustomImportScript = (() => {
       if (rowIndex > 0 && !values.some(Boolean)) return;
       cells.push(toRow(values));
     });
-    const highlight = /\/service\/plans\/centrifuge(?:[/?#.]|\s|$)/i.test(pageUrl(document2, ctx));
-    const name = highlight ? "Table Comparison (highlight)" : "Table Comparison";
+    const isCentrifuge = /\/service\/plans\/centrifuge(?:[/?#.]|\s|$)/i.test(pageUrl(document2, ctx));
+    const rules = planTableRules(document2);
+    let highlight = isCentrifuge;
+    let compact = isCentrifuge;
+    if (rules.length) {
+      highlight = rules.some((r) => r.selectors.includes("#service-plans-table tbody tr td:nth-child(7)") && /border(?:-left|-right)?\s*:[^;]*\b5px\b/i.test(r.body));
+      compact = rules.some((r) => r.selectors.includes("#service-plans-table tbody tr td") && /font-size\s*:\s*0?\.7em\b/i.test(r.body));
+    }
+    const options = [highlight && "highlight", compact && "compact"].filter(Boolean);
+    const name = options.length ? `Table Comparison (${options.join(", ")})` : "Table Comparison";
     const block = WebImporter.Blocks.createBlock(document2, { name, cells });
     const wrapper = element.parentElement;
     const footnotes = wrapper ? wrapper.querySelector(":scope > .footnotes") : null;

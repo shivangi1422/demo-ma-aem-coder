@@ -19,6 +19,10 @@
     {
       "class": "highlight",
       "label": "Highlight last column"
+    },
+    {
+      "class": "compact",
+      "label": "Compact (smaller text)"
     }
   ],
   "memberVariantIds": [

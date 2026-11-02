@@ -65,8 +65,7 @@ export default function decorate(block) {
     children.push(intro);
   }
 
-  const ul = document.createElement('ul');
-  ul.className = 'cards-benefits-list';
+  const items = [];
   itemRows.forEach((row) => {
     const li = document.createElement('li');
     moveInstrumentation(row, li);
@@ -86,10 +85,23 @@ export default function decorate(block) {
     if (title) title.classList.add('cards-benefits-title');
     // icons are decorative; the title text carries the meaning
     li.querySelectorAll('span.icon').forEach((icon) => icon.setAttribute('aria-hidden', 'true'));
-    ul.append(li);
+    items.push(li);
   });
 
-  decorateIcons(ul);
-  children.push(ul);
+  // Benefits are split into two content-sized columns (first half left, rest right),
+  // matching the source layout where each column is laid out independently.
+  const body = document.createElement('div');
+  body.className = 'cards-benefits-body';
+  const perColumn = Math.ceil(items.length / 2);
+  [items.slice(0, perColumn), items.slice(perColumn)].forEach((columnItems) => {
+    if (!columnItems.length) return;
+    const ul = document.createElement('ul');
+    ul.className = 'cards-benefits-list';
+    ul.append(...columnItems);
+    body.append(ul);
+  });
+
+  decorateIcons(body);
+  children.push(body);
   block.replaceChildren(...children);
 }

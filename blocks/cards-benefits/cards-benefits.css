@@ -1,17 +1,9 @@
-/* Cards Benefits — intro panel + icon/title/description benefit list.
+/* Cards Benefits — intro panel + two columns of icon/title/description benefits.
    Text colour comes from the section style (e.g. white on the blue section). */
-.cards-benefits {
-  display: flex;
-  flex-direction: column;
-  gap: 24px;
-}
 
-.cards-benefits .cards-benefits-intro > :first-child {
-  margin-top: 0;
-}
-
+/* mobile: everything stacks as plain blocks; vertical margins collapse (source) */
 .cards-benefits .cards-benefits-intro h2 {
-  margin: 0 0 20px;
+  margin: 20.75px 0;
   font-size: 25px;
   font-weight: 500;
   line-height: 1.1;
@@ -30,8 +22,7 @@
 }
 
 .cards-benefits .cards-benefits-list > li {
-  margin: 0 0 24px;
-  break-inside: avoid;
+  margin: 0;
 }
 
 .cards-benefits .cards-benefits-list > li > p {
@@ -44,7 +35,6 @@
   display: flex;
   align-items: center;
   gap: 20px;
-  margin: 0;
 }
 
 .cards-benefits .cards-benefits-title .icon {
@@ -60,26 +50,35 @@
   height: 100%;
 }
 
-@media (width >= 600px) {
-  /* column-major flow: items fill the left column first, then the right */
-  .cards-benefits .cards-benefits-list {
-    column-count: 2;
-    column-gap: 40px;
+/* breakpoints mirror the source page CSS: the benefit columns sit side by side
+   from 768px (.Intro__body), the intro moves beside them from 992px (.Intro) */
+@media (width >= 768px) {
+  /* flex items keep their children's margins inside */
+  .cards-benefits .cards-benefits-intro {
+    margin-right: 20px;
+  }
+
+  .cards-benefits .cards-benefits-body {
+    display: flex;
+    justify-content: space-between;
+  }
+
+  .cards-benefits .cards-benefits-list:first-child {
+    margin-right: 10px;
   }
 }
 
-@media (width >= 900px) {
+@media (width >= 992px) {
+  /* intro 1/3, benefits 2/3 */
   .cards-benefits {
-    flex-direction: row;
-    align-items: flex-start;
-    gap: 40px;
+    display: flex;
   }
 
   .cards-benefits .cards-benefits-intro {
     flex: 1 1 0;
   }
 
-  .cards-benefits .cards-benefits-list {
+  .cards-benefits .cards-benefits-body {
     flex: 2 1 0;
   }
 }

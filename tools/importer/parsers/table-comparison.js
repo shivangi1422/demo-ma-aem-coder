@@ -11,7 +11,9 @@
  *   Row 1: group headers - empty, label, (span-1) empties, label, ...
  *   Row 2: plan names (first cell empty)
  *   Rows 3+: feature label + one value per plan (● included, ○ optional, text, empty)
- * .blank spacer columns are dropped (group span = colspan, else plan columns up to the next .blank). Option (highlight) only on the centrifuge page.
+ * .blank spacer columns are dropped (group span = colspan, else plan columns up to the next .blank).
+ * Options from the page's inline CSS: highlight = `td:nth-child(7)` 5px border,
+ * compact = `tbody tr td` font-size 0.7em (centrifuge only); URL fallback if no plan-table CSS.
  * The legend (.footnotes) is rewritten as "● included" / "○ optional ..."
  * paragraphs placed right after the block as default content.
  */
@@ -35,6 +37,21 @@ function pageUrl(document, ctx) {
   if (meta) candidates.push(meta.getAttribute('content') || meta.getAttribute('href'));
   try { candidates.push(document.location && document.location.href); } catch (e) { /* no location */ }
   return candidates.filter(Boolean).map(String).join(' ');
+}
+
+// CSS rules from the page's inline <style> elements that target #service-plans-table
+// (the cleanup transformer removes <style> only in afterTransform, after parsers run).
+function planTableRules(document) {
+  const css = Array.from(document.querySelectorAll('style'))
+    .map((s) => s.textContent || '').join('\n').replace(/\/\*[\s\S]*?\*\//g, '');
+  const rules = [];
+  const re = /([^{}]+)\{([^{}]*)\}/g;
+  let m;
+  while ((m = re.exec(css))) {
+    const selectors = m[1].split(',').map((x) => x.replace(/\s+/g, ' ').trim().toLowerCase());
+    if (selectors.some((x) => x.includes('#service-plans-table'))) rules.push({ selectors, body: m[2] });
+  }
+  return rules;
 }
 
 export default function parse(element, { document }) {
@@ -100,8 +117,19 @@ export default function parse(element, { document }) {
     cells.push(toRow(values));
   });
 
-  const highlight = /\/service\/plans\/centrifuge(?:[/?#.]|\s|$)/i.test(pageUrl(document, ctx));
-  const name = highlight ? 'Table Comparison (highlight)' : 'Table Comparison';
+  // Options follow the page's own inline CSS; URL check only when the page has no plan-table CSS.
+  const isCentrifuge = /\/service\/plans\/centrifuge(?:[/?#.]|\s|$)/i.test(pageUrl(document, ctx));
+  const rules = planTableRules(document);
+  let highlight = isCentrifuge;
+  let compact = isCentrifuge;
+  if (rules.length) {
+    highlight = rules.some((r) => r.selectors.includes('#service-plans-table tbody tr td:nth-child(7)')
+      && /border(?:-left|-right)?\s*:[^;]*\b5px\b/i.test(r.body));
+    compact = rules.some((r) => r.selectors.includes('#service-plans-table tbody tr td')
+      && /font-size\s*:\s*0?\.7em\b/i.test(r.body));
+  }
+  const options = [highlight && 'highlight', compact && 'compact'].filter(Boolean);
+  const name = options.length ? `Table Comparison (${options.join(', ')})` : 'Table Comparison';
   const block = WebImporter.Blocks.createBlock(document, { name, cells });
 
   // Legend: rewrite the footnotes as default content right after the block.

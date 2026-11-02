@@ -42,6 +42,24 @@ var CustomImportScript = (() => {
   });
 
   // tools/importer/parsers/hero-centered.js
+  function isTall(document2, ctx) {
+    const css = Array.from(document2.querySelectorAll("style")).map((s) => s.textContent || "").join("\n").replace(/\/\*[\s\S]*?\*\//g, "");
+    const re = /([^{}]+)\{([^{}]*)\}/g;
+    let found = false;
+    let tall = false;
+    let m;
+    while (m = re.exec(css)) {
+      const selectors = m[1].split(",").map((x) => x.replace(/\s+/g, " ").trim().toLowerCase());
+      if (selectors.includes(".hero")) {
+        found = true;
+        if (/min-height\s*:\s*450px\b/i.test(m[2])) tall = true;
+      }
+    }
+    if (found) return tall;
+    const params = ctx && ctx.params || {};
+    const url = String(params.originalURL || ctx && ctx.url || "");
+    return /\/service\/plans\/(?:flow-cytometry|particle-analysis)(?:[/?#.]|$)/i.test(url);
+  }
   function parse(element, { document: document2 }) {
     const img = element.querySelector(":scope > img, :scope > picture img, img");
     const content = element.querySelector(":scope > div") || element;
@@ -54,25 +72,38 @@ var CustomImportScript = (() => {
     cells.push([imageFrag]);
     const textFrag = document2.createDocumentFragment();
     const heading = content.querySelector("h1, h2, h3");
+    const next = heading ? heading.nextElementSibling : null;
+    const subheading = next && /^H[2-6]$/.test(next.tagName) ? next : null;
     const paragraphs = Array.from(content.querySelectorAll(":scope > p"));
     const ctas = Array.from(content.querySelectorAll(":scope > a[href], :scope > p > a.btn[href]"));
     if (heading || paragraphs.length || ctas.length) {
       textFrag.appendChild(document2.createComment(" field:text "));
     }
     if (heading) textFrag.appendChild(heading);
+    if (subheading) textFrag.appendChild(subheading);
     paragraphs.forEach((p) => {
       if (!ctas.some((a) => p.contains(a))) textFrag.appendChild(p);
     });
+    const multi = ctas.length > 1;
     ctas.forEach((a) => {
       const link = document2.createElement("a");
       link.setAttribute("href", a.getAttribute("href"));
       link.textContent = a.textContent.trim();
       const p = document2.createElement("p");
-      p.appendChild(link);
+      let wrapper = null;
+      if (multi && a.classList.contains("btn-primary")) wrapper = document2.createElement("strong");
+      else if (multi && a.classList.contains("btn-secondary")) wrapper = document2.createElement("em");
+      if (wrapper) {
+        wrapper.appendChild(link);
+        p.appendChild(wrapper);
+      } else {
+        p.appendChild(link);
+      }
       textFrag.appendChild(p);
     });
     cells.push([textFrag]);
-    const block = WebImporter.Blocks.createBlock(document2, { name: "hero-centered", cells });
+    const name = isTall(document2, arguments[1]) ? "Hero Centered (tall)" : "hero-centered";
+    const block = WebImporter.Blocks.createBlock(document2, { name, cells });
     element.replaceWith(block);
   }
 
@@ -181,7 +212,7 @@ var CustomImportScript = (() => {
       row.push(content.length ? content : "");
     });
     const cells = [row];
-    const block = WebImporter.Blocks.createBlock(document2, { name: "columns-cta", cells });
+    const block = WebImporter.Blocks.createBlock(document2, { name: "Columns (cta)", cells });
     element.replaceWith(block);
   }
 
@@ -216,6 +247,20 @@ var CustomImportScript = (() => {
         'input[type="hidden"]'
       ]);
       element.querySelectorAll("div.container.custome-container").forEach((el) => {
+        if (el.querySelector("nav.breadcrumbs")) el.remove();
+      });
+      removeAll(element, ["nav.breadcrumbs"]);
+      element.querySelectorAll('.wistia_embed, [class*="wistia_async_"]').forEach((embed) => {
+        const thumb = embed.querySelector('.w-chrome img[src*="wistia"], img[alt="Video Thumbnail"]');
+        embed.querySelectorAll('.w-chrome, [id^="wistia_chrome_"], [id^="wistia_grid_"], video, .w-vulcan-v2').forEach((el) => el.remove());
+        if (thumb && !embed.contains(thumb)) embed.appendChild(thumb);
+      });
+      removeAll(element, [".wistia_video_foam_dummy", "wistia-tag-manager"]);
+      element.querySelectorAll(".footnotes > p").forEach((p) => {
+        if (!p.textContent.replace(/ /g, " ").trim() && !p.querySelector("img, a[href]")) p.remove();
+      });
+      element.querySelectorAll(".col-md-6 br").forEach((br) => br.remove());
+      element.querySelectorAll("div.container.custome-container").forEach((el) => {
         if (isEmpty(el)) el.remove();
       });
       element.querySelectorAll("div.row.js-component").forEach((el) => {
@@ -246,6 +291,17 @@ var CustomImportScript = (() => {
         "form",
         "button"
       ]);
+      element.querySelectorAll("a.btn-primary, a.btn-secondary").forEach((a) => {
+        if (a.closest("table, strong, em")) return;
+        const wrap = element.ownerDocument.createElement(a.classList.contains("btn-secondary") ? "em" : "strong");
+        a.replaceWith(wrap);
+        wrap.append(a);
+        if (!wrap.parentElement || wrap.parentElement.tagName !== "P") {
+          const p = element.ownerDocument.createElement("p");
+          wrap.replaceWith(p);
+          p.append(wrap);
+        }
+      });
       element.querySelectorAll("*").forEach((el) => {
         [...el.attributes].forEach((attr) => {
           if (attr.name.startsWith("data-") && !attr.name.startsWith("data-excat-") || attr.name.startsWith("on") || attr.name === "aria-hidden") {
@@ -258,6 +314,8 @@ var CustomImportScript = (() => {
 
   // tools/importer/transformers/mybeckman-sections.js
   var MARKER = "data-excat-section-id";
+  var ANCHOR = "data-excat-section-anchor";
+  var FIRST = "data-excat-section-first";
   var findSectionEl = (root, section) => {
     const selectors = Array.isArray(section.selector) ? section.selector : [section.selector];
     for (const sel of selectors) {
@@ -270,43 +328,62 @@ var CustomImportScript = (() => {
     }
     return null;
   };
+  var escapeAttr = (value) => value.replace(/\\/g, "\\\\").replace(/"/g, '\\"');
+  var findAnchor = (root, el) => {
+    const candidates = [el, el.firstElementChild].filter(Boolean);
+    for (const candidate of candidates) {
+      const { id } = candidate;
+      if (id && root.querySelector(`a[href="#${escapeAttr(id)}"]`)) return id;
+    }
+    return "";
+  };
+  var nextBreak = (root, node) => [...root.querySelectorAll(`hr[${MARKER}]`)].find((hr) => hr !== node && node.compareDocumentPosition(hr) & 4);
   function transform2(hookName, element, payload) {
     const sections = payload && payload.template && payload.template.sections;
     if (!sections || sections.length < 2) return;
     const doc = element.ownerDocument || document;
     if (hookName === "beforeTransform") {
-      for (let i = sections.length - 1; i >= 0; i -= 1) {
-        const section = sections[i];
-        const el = findSectionEl(element, section);
-        if (!el) continue;
-        if (i > 0 || section.style) {
-          const hr = doc.createElement("hr");
-          if (section.style) hr.setAttribute(MARKER, section.id);
-          el.before(hr);
-        }
+      const found = sections.map((section) => ({ section, el: findSectionEl(element, section) })).filter(({ el }) => el);
+      found.forEach((entry) => {
+        entry.anchor = findAnchor(element, entry.el);
+      });
+      for (let i = found.length - 1; i >= 0; i -= 1) {
+        const { section, el, anchor } = found[i];
+        if (i === 0 && !section.style && !anchor) continue;
+        const hr = doc.createElement("hr");
+        hr.setAttribute(MARKER, section.id);
+        if (anchor) hr.setAttribute(ANCHOR, anchor);
+        if (i === 0) hr.setAttribute(FIRST, "true");
+        el.before(hr);
       }
     }
     if (hookName === "afterTransform") {
       for (let i = sections.length - 1; i >= 0; i -= 1) {
         const section = sections[i];
-        if (!section.style) continue;
         const marker = element.querySelector(`hr[${MARKER}="${section.id}"]`);
-        const sectionEl = marker ? null : findSectionEl(element, section);
-        const meta = WebImporter.Blocks.createBlock(doc, {
-          name: "Section Metadata",
-          cells: { style: section.style }
-        });
+        const anchor = marker ? marker.getAttribute(ANCHOR) || "" : "";
+        if (!section.style && !anchor) continue;
+        const cells = {};
+        if (section.style) cells.style = section.style;
+        if (anchor) cells.anchor = anchor;
+        const meta = WebImporter.Blocks.createBlock(doc, { name: "Section Metadata", cells });
         if (marker) {
-          let end = marker.nextElementSibling;
-          while (end && end.tagName !== "HR") end = end.nextElementSibling;
+          const end = nextBreak(element, marker);
           if (end) end.before(meta);
           else marker.parentNode.appendChild(meta);
-          if (i === 0) marker.remove();
-          else marker.removeAttribute(MARKER);
-        } else if (sectionEl) {
-          sectionEl.after(meta);
+        } else {
+          const sectionEl = findSectionEl(element, section);
+          if (sectionEl) sectionEl.after(meta);
         }
       }
+      element.querySelectorAll(`hr[${MARKER}]`).forEach((hr) => {
+        if (hr.hasAttribute(FIRST)) {
+          hr.remove();
+        } else {
+          hr.removeAttribute(MARKER);
+          hr.removeAttribute(ANCHOR);
+        }
+      });
     }
   }
 

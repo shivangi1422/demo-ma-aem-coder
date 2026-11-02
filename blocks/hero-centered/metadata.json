@@ -18,16 +18,23 @@
       ]
     ]
   },
-  "options": [],
+  "options": [
+    {
+      "name": "tall",
+      "description": "min-height max(40vh, 450px) at every width (source flow-cytometry / particle-analysis plan heroes); default is the 360px floor"
+    }
+  ],
   "memberVariantIds": [
     "hero-centered"
   ],
   "usage": {
     "pagesUsing": [
       "/service",
-      "/service/plans/centrifuge"
+      "/service/plans/centrifuge",
+      "/service/plans/flow-cytometry",
+      "/service/plans/particle-analysis"
     ],
-    "reuseCount": 2,
+    "reuseCount": 4,
     "lastUsed": "2026-11-02"
   },
   "reuseGuidance": "Use for a page-top banner with a photo background and centered text plus CTA. For split or solid banners use hero (Style: split, banner)."

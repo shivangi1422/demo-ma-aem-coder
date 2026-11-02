@@ -583,6 +583,18 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      },
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Tall (450px)",
+            "value": "tall"
+          }
+        ]
       }
     ]
   },
@@ -702,6 +714,10 @@
           {
             "name": "Highlight last column",
             "value": "highlight"
+          },
+          {
+            "name": "Compact (smaller text)",
+            "value": "compact"
           }
         ]
       }

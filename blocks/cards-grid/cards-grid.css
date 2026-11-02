@@ -494,28 +494,33 @@
    ============================================================ */
 /* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
 
-/* products sits in the normal content column (excluded from the full-bleed rule in styles.css) */
+/* products sits in the normal content column (excluded from the full-bleed rule in styles.css);
+   source cards are plain stacked blocks: image, title, button, no gap between cards */
 .cards-grid.products ul {
-  display: flex;
-  flex-direction: column;
-  align-items: flex-start;
-  gap: 40px;
+  display: block;
 }
 
 .cards-grid.products ul > li {
+  display: block;
   border: 0;
   overflow: visible;
 }
 
+.cards-grid.products .cards-grid-image p {
+  margin: 0;
+}
+
+/* images render at their natural size, capped to the column on small screens */
 .cards-grid.products .cards-grid-image img {
+  display: block;
   width: auto;
-  max-width: min(100%, 422px);
+  max-width: 100%;
   height: auto;
-  object-fit: contain;
+  object-fit: fill;
 }
 
 .cards-grid.products .cards-grid-body {
-  gap: 0;
+  display: block;
   padding: 0;
   font-family: var(--body-font-family);
 }
@@ -536,9 +541,11 @@
 
 .cards-grid.products .cards-grid-body p.cards-grid-action {
   margin: 0;
+  line-height: 0;
 }
 
-.cards-grid.products .cards-grid-action a.button:any-link {
+main .cards-grid.products .cards-grid-action a.button:any-link {
+  display: inline-block;
   margin: 0;
   padding: 13px 20px;
   border: 0;
@@ -547,9 +554,11 @@
   color: #fff;
   font-size: 13.5px;
   font-weight: 500;
+  line-height: 1.65;
+  transition: all 0.3s ease;
 }
 
-.cards-grid.products .cards-grid-action a.button:hover {
-  background-color: #005f9e;
+main .cards-grid.products .cards-grid-action a.button:any-link:hover {
+  background-color: #0065a7;
 }
 /* stylelint-enable no-descending-specificity */

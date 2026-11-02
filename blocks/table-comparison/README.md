@@ -13,9 +13,10 @@ Repeating rows — one row per item. Each item: every row has the same number of
 | Variation | Option class |
 | --- | --- |
 | Highlight last column | `highlight` |
+| Compact (smaller text, equal-width columns) | `compact` |
 
 ## Universal Editor fields
 
 - Content fields derived from the block's decorate contract.
-- `classes` select for options: Highlight last column.
+- `classes` select for options: Highlight last column, Compact (smaller text).
 - A separate `-item` model defines one repeated item.

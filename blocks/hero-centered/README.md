@@ -10,7 +10,9 @@ Single block table. Content: row 1: background image (with alt); row 2: text cel
 
 ## Supported variations
 
-No variations.
+- `tall` (Universal Editor Style "Tall (450px)"): hero is at least 450px tall at every width (source `height: 40vh; min-height: 450px`). Default floor is 360px.
+
+On pages with the `service-plans` template the hero follows the source plan-page styling (light H1, 25px subheading, shrink-wrapped content, equal-height solid/outlined buttons); other pages such as /service are unchanged.
 
 ## Universal Editor fields
 

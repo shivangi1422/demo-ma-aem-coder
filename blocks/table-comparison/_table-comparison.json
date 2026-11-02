@@ -45,6 +45,10 @@
             {
               "name": "Highlight last column",
               "value": "highlight"
+            },
+            {
+              "name": "Compact (smaller text)",
+              "value": "compact"
             }
           ]
         }

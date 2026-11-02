@@ -1,5 +1,15 @@
 /* Table Comparison — feature-by-plan comparison table with group header bars,
-   ●/○ markers and an optional highlighted last column. */
+   ●/○ markers, an optional highlighted last column and a compact (smaller text) option.
+   Values mirror the source #service-plans-table (th 1.15em / td 0.9em, compact 1em / 0.7em).
+   Column widths use the source's own hints (150px plan/label columns, 10px blank
+   gap column, 174px minimum label column) so the auto table layout distributes,
+   shrinks and wraps exactly like the source at every width; it only scrolls when
+   its min-content width exceeds the column. */
+.table-comparison {
+  --tc-rule: 1px solid #778081;
+  --tc-highlight: #0097ce;
+}
+
 .table-comparison .table-comparison-scroll {
   overflow-x: auto;
   -webkit-overflow-scrolling: touch;
@@ -12,81 +22,143 @@
 
 .table-comparison table {
   width: 100%;
-  min-width: 700px;
   border-collapse: collapse;
-  font-size: 13px;
-  line-height: 1.4;
+  border-spacing: 0;
+  color: #000;
+  font-size: 14.4px;
+  line-height: 1.65;
+}
+
+.table-comparison.compact table {
+  font-size: 11.2px;
 }
 
 .table-comparison th,
 .table-comparison td {
-  padding: 10px 8px;
+  box-sizing: border-box;
+  padding: 10.8px;
   border: 0;
+  color: #000;
+  font-weight: 400;
   text-align: center;
   vertical-align: middle;
 }
 
-/* group header bars */
+.table-comparison.compact tr > * {
+  padding: 8.4px;
+}
+
+/* group header bars (WARRANTY PERIOD / POST-WARRANTY PERIOD) */
+.table-comparison thead tr:has(> .table-comparison-group) > * {
+  padding: 18.4px 0;
+  border-bottom: 2px solid #000;
+  font-size: 18.4px;
+  font-weight: 700;
+  line-height: 1.65;
+  letter-spacing: 0.05em;
+}
+
+.table-comparison.compact thead tr:has(> .table-comparison-group) > * {
+  padding: 16px 0;
+  font-size: 16px;
+}
+
 .table-comparison thead th.table-comparison-group {
-  padding: 8px;
   background-color: #004666;
   color: #fff;
-  font-size: 16px;
-  font-weight: 700;
-  letter-spacing: 0.05em;
   text-transform: uppercase;
 }
 
-/* plan names */
-.table-comparison thead th[scope="col"] {
-  border-bottom: 2px solid #000;
+/* plan names and feature labels */
+.table-comparison thead th[scope="col"],
+.table-comparison tbody th[scope="row"] {
   font-weight: 700;
 }
 
-.table-comparison .table-comparison-corner {
-  border-bottom: 2px solid #000;
+.table-comparison thead th[scope="col"],
+.table-comparison tbody td {
+  border-bottom: var(--tc-rule);
+  border-left: var(--tc-rule);
 }
 
-/* feature labels */
 .table-comparison tbody th[scope="row"] {
-  min-width: 170px;
+  border-bottom: var(--tc-rule);
+  text-align: left;
+}
+
+/* stylelint-disable no-descending-specificity -- width rules sit apart from the padding/border rules above */
+
+/* column widths (source: tbody td 90px, compact 80px; plan-name row 150px;
+   standard label column at least 174px) */
+.table-comparison tbody > tr > * {
+  width: 90px;
+}
+
+.table-comparison.compact tbody > tr > * {
+  width: 80px;
+}
+
+.table-comparison thead tr:last-child > * {
+  width: 150px;
+}
+
+.table-comparison thead tr:last-child > .table-comparison-corner {
+  border-bottom: var(--tc-rule);
   font-weight: 700;
   text-align: left;
 }
 
-.table-comparison tbody th,
-.table-comparison tbody td {
-  border-bottom: 1px solid #778081;
+.table-comparison thead tr:last-child > .table-comparison-corner,
+.table-comparison tbody th[scope="row"] {
+  min-width: 174px;
 }
 
-.table-comparison tbody td {
-  border-left: 1px solid #778081;
+.table-comparison.compact thead tr:last-child > .table-comparison-corner,
+.table-comparison.compact tbody th[scope="row"] {
+  min-width: 0;
 }
 
-/* white gap between plan groups */
-.table-comparison .table-comparison-group-start,
+.table-comparison.compact thead tr:last-child > .table-comparison-corner {
+  background-color: #004666;
+}
+
+/* white gap column between plan groups (source td.blank: 10px, no borders;
+   its padding is 0 in the group row and in the compact table) */
+.table-comparison tr > td.table-comparison-gap {
+  width: 10px;
+  border: 0;
+  background: none;
+}
+
+.table-comparison thead tr:has(> .table-comparison-group) > .table-comparison-gap,
+.table-comparison.compact tr > .table-comparison-gap {
+  padding: 0;
+  border: 0;
+}
+
+/* stylelint-enable no-descending-specificity */
+
+/* the first plan of a further group has no rule on its left */
+.table-comparison thead th.table-comparison-group-start,
 .table-comparison tbody td.table-comparison-group-start {
-  border-left: 12px solid #fff;
+  border-left: 0;
 }
 
 /* ● included / ○ optional */
-.table-comparison .table-comparison-marker,
-.table-comparison-wrapper + .default-content-wrapper .table-comparison-marker {
-  display: inline-block;
+.table-comparison .table-comparison-marker {
+  display: block;
   box-sizing: border-box;
   width: 10px;
   height: 10px;
-  border-radius: 50%;
-  vertical-align: middle;
+  margin: 0 auto;
+  border-radius: 10px;
 }
 
-.table-comparison .table-comparison-dot,
-.table-comparison-wrapper + .default-content-wrapper .table-comparison-dot {
+.table-comparison .table-comparison-dot {
   background-color: currentcolor;
 }
 
-.table-comparison .table-comparison-circle,
-.table-comparison-wrapper + .default-content-wrapper .table-comparison-circle {
+.table-comparison .table-comparison-circle {
   border: 1px solid currentcolor;
 }
 
@@ -102,34 +174,59 @@
   border: 0;
 }
 
-/* legend paragraphs (default content right after the block) */
-.table-comparison-wrapper + .default-content-wrapper p.table-comparison-legend {
-  margin: 4px 0;
-  color: #888;
-  font-size: 13px;
-  line-height: 1.3;
-}
-
-/* Highlight option: frame the last plan column */
+/* Highlight option: frame the last plan column on top and sides (plan name stays
+   black); the source leaves the bottom open */
 .table-comparison.highlight thead tr:last-child > th:last-child {
-  border-top: 5px solid #0097ce;
-  border-right: 5px solid #0097ce;
-  border-left: 5px solid #0097ce;
-  color: #0097ce;
+  border-top: 5px solid var(--tc-highlight);
+  border-right: 5px solid var(--tc-highlight);
+  border-left: 5px solid var(--tc-highlight);
 }
 
-.table-comparison.highlight tbody td:last-child {
-  border-right: 5px solid #0097ce;
-  border-left: 5px solid #0097ce;
-  color: #0097ce;
+.table-comparison.highlight tbody tr > td:last-child {
+  border-right: 5px solid var(--tc-highlight);
+  border-left: 5px solid var(--tc-highlight);
+  color: var(--tc-highlight);
 }
 
-.table-comparison.highlight tbody tr:last-child > td:last-child {
-  border-bottom: 5px solid #0097ce;
+/* legend paragraphs (default content right after the block); the source has an
+   empty 13.2px paragraph above them, hence the 48.2px gap below the table */
+.table-comparison-wrapper + .default-content-wrapper p.table-comparison-legend {
+  margin: 0;
+  color: #888;
+  font-size: 13.2px;
+  line-height: 1.65;
 }
 
-@media (width >= 900px) {
-  .table-comparison table {
-    font-size: 14px;
-  }
+.table-comparison-wrapper + .default-content-wrapper p.table-comparison-legend:first-child {
+  margin-top: 48.2px;
+}
+
+.table-comparison-wrapper + .default-content-wrapper p.table-comparison-legend:last-child {
+  margin-bottom: 13.2px;
+}
+
+/* compact (centrifuge source): the legend lines are spaced 13.2px apart */
+.table-comparison-wrapper:has(> .table-comparison.compact) + .default-content-wrapper p.table-comparison-legend {
+  margin: 13.2px 0;
+}
+
+.table-comparison-wrapper:has(> .table-comparison.compact) + .default-content-wrapper p.table-comparison-legend:first-child {
+  margin-top: 48.2px;
+}
+
+.table-comparison-wrapper + .default-content-wrapper .table-comparison-marker {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  margin-right: 10px;
+  border-radius: 10px;
+}
+
+.table-comparison-wrapper + .default-content-wrapper .table-comparison-dot {
+  background-color: #000;
+}
+
+.table-comparison-wrapper + .default-content-wrapper .table-comparison-circle {
+  border: 1px solid currentcolor;
 }

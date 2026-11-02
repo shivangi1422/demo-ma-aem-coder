@@ -77,7 +77,11 @@ function decorateLegend(block) {
     textNodes.forEach((node) => {
       const parts = node.textContent.split(/([●○])/);
       if (parts.length === 1) return;
-      node.replaceWith(...parts.filter((part) => part !== '').flatMap((part) => (
+      // the marker's own margin is the gap to its text, so drop the authored space
+      const trimmed = parts.map((part, i) => (
+        i > 0 && MARKERS[parts[i - 1]] ? part.trimStart() : part
+      ));
+      node.replaceWith(...trimmed.filter((part) => part !== '').flatMap((part) => (
         MARKERS[part] ? buildMarker(part, false) : [document.createTextNode(part)]
       )));
     });
@@ -92,7 +96,9 @@ function decorateLegend(block) {
  *   row 2  = plan names, first cell empty
  *   rows 3+ = feature label + one value per plan: "●" included, "○" optional at
  *            additional charge, free text (e.g. "10% Off") or empty
- * Option `highlight` frames the last plan column.
+ * Option `highlight` frames the last plan column; option `compact` uses smaller text,
+ * narrower cells and a label column as wide as the plan columns. An aria-hidden
+ * gap column separates further groups.
  * @param {Element} block
  */
 export default function decorate(block) {
@@ -113,6 +119,15 @@ export default function decorate(block) {
   const table = document.createElement('table');
   const thead = document.createElement('thead');
   const tbody = document.createElement('tbody');
+
+  // empty presentational column before each further group: the white gap between
+  // groups, sized by the table algorithm like the source's blank column
+  const gapCell = () => {
+    const td = document.createElement('td');
+    td.className = 'table-comparison-gap';
+    td.setAttribute('aria-hidden', 'true');
+    return td;
+  };
 
   if (hasGroups) {
     const groupRow = rows[0];
@@ -140,6 +155,7 @@ export default function decorate(block) {
         if (firstGroupSeen) {
           groupStarts.add(i);
           th.classList.add('table-comparison-group-start');
+          tr.append(gapCell());
         }
         firstGroupSeen = true;
         // keep instrumentation of the spanned (empty) cells on the group header
@@ -155,6 +171,10 @@ export default function decorate(block) {
 
   const markGroupStart = (el, index) => {
     if (groupStarts.has(index)) el.classList.add('table-comparison-group-start');
+  };
+  const appendCell = (tr, el, index) => {
+    if (groupStarts.has(index)) tr.append(gapCell());
+    tr.append(el);
   };
 
   rows.slice(hasGroups ? 1 : 0).forEach((row, rowIndex) => {
@@ -175,7 +195,7 @@ export default function decorate(block) {
       }
       if (cell) fillCell(cell, el);
       markGroupStart(el, i);
-      tr.append(el);
+      appendCell(tr, el, i);
     }
     (isHeader ? thead : tbody).append(tr);
   });

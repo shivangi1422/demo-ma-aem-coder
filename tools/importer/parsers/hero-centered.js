@@ -7,8 +7,32 @@
  * Selectors: .bc-rich-text > .hero, div.hero
  * Model (hero-centered): image (reference, imageAlt collapsed), text (richtext).
  * Source: https://www.mybeckman.in/service/plans/<product-line> (h1 + h2 + 2 CTAs)
+ * Option tall: inline CSS `.hero { min-height: 450px }`; otherwise plain hero-centered.
  * Row 1: background image. Row 2: H1 (+ H2 subheading) + paragraph + CTA link(s).
  */
+// Option "tall": the page's inline CSS sets `.hero { min-height: 450px }` (flow-cytometry,
+// particle-analysis). <style> is removed only in afterTransform, after parsers run.
+// URL fallback only when the page has no `.hero` CSS rule at all.
+function isTall(document, ctx) {
+  const css = Array.from(document.querySelectorAll('style'))
+    .map((s) => s.textContent || '').join('\n').replace(/\/\*[\s\S]*?\*\//g, '');
+  const re = /([^{}]+)\{([^{}]*)\}/g;
+  let found = false;
+  let tall = false;
+  let m;
+  while ((m = re.exec(css))) {
+    const selectors = m[1].split(',').map((x) => x.replace(/\s+/g, ' ').trim().toLowerCase());
+    if (selectors.includes('.hero')) {
+      found = true;
+      if (/min-height\s*:\s*450px\b/i.test(m[2])) tall = true;
+    }
+  }
+  if (found) return tall;
+  const params = (ctx && ctx.params) || {};
+  const url = String(params.originalURL || (ctx && ctx.url) || '');
+  return /\/service\/plans\/(?:flow-cytometry|particle-analysis)(?:[/?#.]|$)/i.test(url);
+}
+
 export default function parse(element, { document }) {
   const img = element.querySelector(':scope > img, :scope > picture img, img');
   const content = element.querySelector(':scope > div') || element;
@@ -61,6 +85,7 @@ export default function parse(element, { document }) {
   });
   cells.push([textFrag]);
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'hero-centered', cells });
+  const name = isTall(document, arguments[1]) ? 'Hero Centered (tall)' : 'hero-centered';
+  const block = WebImporter.Blocks.createBlock(document, { name, cells });
   element.replaceWith(block);
 }

@@ -338,8 +338,8 @@ main > .breadcrumbs {
 @media (width >= 600px) {
   main > .breadcrumbs {
     display: block;
-    padding: 10px 50px;
-    color: #5c5c5c;
+    padding: 25px 50px 10px;
+    color: #4d4d4d;
     font-size: 12px;
     line-height: 24px;
   }
@@ -357,7 +357,7 @@ main > .breadcrumbs {
     display: inline-block;
     width: 4px;
     height: 4px;
-    margin: 0 14px 1px 12px;
+    margin: 0 12px 1px;
     border-top: 2px solid #dcdcdc;
     border-right: 2px solid #dcdcdc;
     transform: rotate(45deg);
@@ -367,6 +367,7 @@ main > .breadcrumbs {
     color: #5c5c5c;
     font-weight: 300;
     text-decoration: none;
+    transition: color 0.2s ease-in-out;
   }
 
   main > .breadcrumbs a:hover {
@@ -374,69 +375,8 @@ main > .breadcrumbs {
   }
 
   main > .breadcrumbs [aria-current="page"] {
+    color: #5c5c5c;
     font-weight: 700;
-  }
-}
-
-/* Pages with template "service-plans" (page metadata): the source site's type
-   scale, text colour, brand-blue buttons and 1170px content column. Block styles
-   (hero-centered, cards-benefits, columns cta, ...) are more specific and win. */
-.service-plans main {
-  color: #4d4d4d;
-}
-
-.service-plans main > .section > div {
-  max-width: 1234px;
-}
-
-.service-plans main h1 {
-  font-size: 36px;
-  font-weight: 300;
-  line-height: 1.1;
-}
-
-.service-plans main h2 {
-  font-size: 25px;
-  font-weight: 500;
-  line-height: 1.1;
-}
-
-.service-plans main h3 {
-  font-size: 25px;
-  font-weight: 300;
-  line-height: 1.1;
-}
-
-.service-plans main a.button.primary:any-link {
-  padding: 13px 20px;
-  border: 0;
-  border-radius: 2px;
-  background-color: #007acb;
-  color: #fff;
-  font-size: 13.5px;
-  font-weight: 500;
-  line-height: 1.65;
-}
-
-.service-plans main a.button.primary:hover,
-.service-plans main a.button.primary:focus-visible {
-  background-color: #005f9e;
-}
-
-@media (width >= 900px) {
-  /* two-column image cells are cropped to the source's 350px band */
-  .service-plans main .columns:not(.cta) .columns-img-col img {
-    height: 350px;
-    object-fit: cover;
-  }
-
-  .service-plans main .columns:not(.cta) > div {
-    gap: 30px;
-  }
-
-  /* text-only column pairs line up at the top, like the source */
-  .service-plans main .columns:not(.cta) > div:not(:has(.columns-img-col, .columns-video-col)) {
-    align-items: flex-start;
   }
 }
 
@@ -579,3 +519,323 @@ main .section.highlight {
   margin: 0;
   padding: 40px 0;
 }
+
+/* stylelint-disable no-descending-specificity -- template overrides must follow the shared rules they override */
+
+/*
+ * Template "service-plans" (page metadata "template", body class .service-plans).
+ * Mirrors the source site's own page CSS for /service/plans and its product
+ * plan pages: .Section boxes (viewport-relative padding, 1170px column), Gotham-like
+ * type scale with browser-default heading margins, brand-blue buttons. Scoped so other
+ * pages using the same blocks (/service, homepage, ...) are unaffected.
+ *
+ * Breakpoints deliberately mirror the source page CSS (768px / 992px; the flow
+ * cytometry, liquid handling and particle analysis pages use 700px / 992px)
+ * instead of the project's 600px / 900px, so every width matches the source.
+ * Page families: landing = no comparison table, centrifuge = compact table,
+ * flow family = standard table.
+ */
+.service-plans main {
+  /* source .Section padding: top, bottom, sides (landing phones: 2vw 4vw) */
+  --sp-section-top: 2vw;
+  --sp-section-bottom: 2vw;
+  --sp-section-x: 4vw;
+
+  /* Get in Touch adds its own 2vw below the .Section */
+  --sp-git-bottom: 4vw;
+
+  color: #4d4d4d;
+}
+
+/* centrifuge phones: 4vw 2vw */
+.service-plans main:has(.table-comparison.compact) {
+  --sp-section-top: 4vw;
+  --sp-section-bottom: 4vw;
+  --sp-section-x: 2vw;
+  --sp-git-bottom: 6vw;
+}
+
+/* flow family phones: 4vw 8vw 0 */
+.service-plans main:has(.table-comparison:not(.compact)) {
+  --sp-section-top: 4vw;
+  --sp-section-bottom: 0;
+  --sp-section-x: 8vw;
+  --sp-git-bottom: 2vw;
+}
+
+/* source >= 700px (flow family): 4vw 2vw in a 1170px box */
+@media (width >= 700px) {
+  .service-plans main:has(.table-comparison:not(.compact)) {
+    --sp-section-bottom: 4vw;
+    --sp-section-x: 2vw;
+    --sp-git-bottom: 6vw;
+  }
+}
+
+/* source >= 768px (landing, centrifuge): 2vw in a 1170px box */
+@media (width >= 768px) {
+  .service-plans main,
+  .service-plans main:has(.table-comparison.compact) {
+    --sp-section-top: 2vw;
+    --sp-section-bottom: 2vw;
+    --sp-section-x: 2vw;
+    --sp-git-bottom: 4vw;
+  }
+}
+
+/* source >= 992px: no side padding (flow family 4vw 0 0) */
+@media (width >= 992px) {
+  .service-plans main,
+  .service-plans main:has(.table-comparison.compact) {
+    --sp-section-x: 0;
+  }
+
+  .service-plans main:has(.table-comparison:not(.compact)) {
+    --sp-section-bottom: 0;
+    --sp-section-x: 0;
+    --sp-git-bottom: 2vw;
+  }
+}
+
+.service-plans main > .section,
+.service-plans main > .section:has(> div > .cards-grid.products) {
+  margin: 0;
+  padding: var(--sp-section-top) 0 var(--sp-section-bottom);
+}
+
+.service-plans main > .section > div,
+.service-plans main > .section:has(> div > .cards-grid.products) > div,
+.service-plans main > .section.blue:has(.columns.cta) > div {
+  box-sizing: border-box;
+  max-width: 1170px;
+  padding: 0 var(--sp-section-x);
+}
+
+/* Get in Touch band (#getInTouch): 40px above, its own extra 2vw below the .Section */
+.service-plans main > .section.blue:has(.columns.cta) {
+  margin: 40px 0 0;
+  padding: var(--sp-section-top) 0 var(--sp-git-bottom);
+}
+
+/* hero sections stay full-bleed with no section padding */
+.service-plans main > .section.hero-centered-container {
+  padding: 0;
+}
+
+.service-plans main > .section.hero-centered-container > div {
+  max-width: none;
+  padding: 0;
+}
+
+/* default content: source type scale and browser-default margins */
+.service-plans main h1 {
+  margin: 24.12px 0;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.service-plans main h2 {
+  margin: 20.75px 0;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.service-plans main h3 {
+  margin: 25px 0;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.service-plans main p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.service-plans main .default-content-wrapper ul,
+.service-plans main .columns ul {
+  margin: 0 0 10px;
+  padding-left: 17px;
+}
+
+/* a button follows its paragraph directly (the paragraph's 16px margin is the gap) */
+.service-plans main p.button-wrapper {
+  margin: 16px 0 0;
+}
+
+/* ...or a list directly (the list's 10px margin is the gap) */
+.service-plans main ul + p.button-wrapper {
+  margin-top: 0;
+}
+
+.service-plans main a.button.primary:any-link {
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 2px;
+  background-color: #007acb;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.service-plans main a.button.primary:hover,
+.service-plans main a.button.primary:focus-visible {
+  background-color: #0065a7;
+}
+
+/* Get in Touch band: full 1170px column, buttons darken on hover */
+.service-plans main .section.blue .default-content-wrapper {
+  max-width: none;
+}
+
+.service-plans main .columns.cta .columns-cta-col > p {
+  align-self: stretch;
+}
+
+.service-plans main .columns.cta .columns-cta-action a.button:any-link {
+  transition: all 0.3s ease;
+}
+
+.service-plans main .columns.cta .columns-cta-action a.button:hover {
+  background-color: #0065a7;
+  color: #fff;
+}
+
+/* source .Contact__body stays a centred stack until 768px */
+@media (width >= 600px) and (width < 768px) {
+  .service-plans main .columns.cta {
+    margin-top: 0;
+  }
+
+  .service-plans main .columns.cta .columns-cta-row {
+    flex-flow: column nowrap;
+    align-items: center;
+  }
+
+  .service-plans main .columns.cta .columns-cta-col {
+    flex: 0 1 auto;
+  }
+}
+
+@media (width >= 900px) {
+  /* Get in Touch: three equal 390px columns, as the source flex row */
+  .service-plans main .columns.cta .columns-cta-row {
+    justify-content: space-between;
+  }
+
+  .service-plans main .columns.cta .columns-cta-col {
+    flex: 1 1 0;
+    padding: 0 19.5px;
+  }
+}
+
+/* landing two-column rows (source .Section__two-column, >= 768px): side by side in
+   DOM order, vertically centred, 30px gutter after the left column, 350px cropped images */
+@media (width >= 768px) {
+  .service-plans main:not(:has(.table-comparison)) .columns:not(.cta) > div {
+    flex-direction: row;
+    align-items: center;
+    gap: 0;
+  }
+
+  .service-plans main:not(:has(.table-comparison)) .columns:not(.cta) > div > div {
+    flex: 1 1 0;
+    order: 0;
+  }
+
+  .service-plans main:not(:has(.table-comparison)) .columns:not(.cta) > div > div:first-child {
+    padding-right: 30px;
+  }
+
+  /* the video is centred beside the text too, not stretched to the row */
+  .service-plans main:not(:has(.table-comparison)) .columns:not(.cta) > div > .columns-video-col {
+    align-self: auto;
+  }
+
+  .service-plans main:not(:has(.table-comparison)) .columns:not(.cta) .columns-img-col img {
+    height: 350px;
+    object-fit: cover;
+  }
+}
+
+/* Product plan pages: two-column rows are text pairs */
+
+/* flow family (source .Section__two-column-item): stacked blocks with 40px after the
+   first on phones; from 700px equal-height columns, buttons pushed to the bottom,
+   10px gutter */
+.service-plans main:has(.table-comparison:not(.compact)) .columns:not(.cta) > div {
+  display: block;
+}
+
+.service-plans main:has(.table-comparison:not(.compact)) .columns:not(.cta) > div > div:first-child {
+  margin-bottom: 40px;
+}
+
+/* source .Section__two-column-item .btn { width: 200px } */
+.service-plans main:has(.table-comparison:not(.compact)) .columns:not(.cta) a.button:any-link {
+  width: 200px;
+}
+
+@media (width >= 700px) {
+  .service-plans main:has(.table-comparison:not(.compact)) .columns:not(.cta) > div {
+    display: flex;
+    flex-direction: row;
+    align-items: stretch;
+    gap: 0;
+  }
+
+  .service-plans main:has(.table-comparison:not(.compact)) .columns:not(.cta) > div > div {
+    display: flex;
+    flex: 1 1 0;
+    flex-direction: column;
+    justify-content: space-between;
+    order: 0;
+  }
+
+  .service-plans main:has(.table-comparison:not(.compact)) .columns:not(.cta) > div > div:first-child {
+    margin-bottom: 0;
+    padding-right: 10px;
+  }
+
+  /* flex items don't collapse margins: the paragraph's 16px is the whole gap */
+  .service-plans main:has(.table-comparison:not(.compact)) .columns:not(.cta) p.button-wrapper {
+    margin-top: 0;
+  }
+}
+
+/* centrifuge (compact table): a bootstrap row — stacked blocks below 992px, then
+   575px columns with a 20px gutter, top-aligned */
+.service-plans main:has(.table-comparison.compact) .columns:not(.cta) > div {
+  display: block;
+}
+
+@media (width >= 992px) {
+  .service-plans main:has(.table-comparison.compact) .columns:not(.cta) > div {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .service-plans main:has(.table-comparison.compact) .columns:not(.cta) > div > div {
+    flex: 1 1 0;
+    order: 0;
+  }
+
+  .service-plans main:has(.table-comparison.compact) .columns:not(.cta) > div > div:first-child {
+    padding-right: 20px;
+  }
+}
+
+/* the legend sits inside the source's scrolling table wrapper, so its last
+   13.2px margin stays inside the section instead of collapsing away */
+.service-plans main .table-comparison-wrapper + .default-content-wrapper {
+  display: flow-root;
+}
+/* stylelint-enable no-descending-specificity */
