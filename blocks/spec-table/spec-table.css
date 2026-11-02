@@ -35,6 +35,7 @@
 .spec-table th {
   justify-content: center;
   flex: 0 0 35%;
+  min-width: 0;
   border-right: 1px solid var(--border-spec);
   background-color: var(--surface-spec);
   font-weight: 700;

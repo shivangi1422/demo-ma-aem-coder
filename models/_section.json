@@ -85,7 +85,8 @@
         "feature-columns",
         "spec-table",
         "resource-list",
-        "related-products"
+        "related-products",
+        "product-table"
       ]
     }
   ]

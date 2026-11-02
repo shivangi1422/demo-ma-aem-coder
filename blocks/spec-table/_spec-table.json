@@ -1,14 +1,14 @@
 {
   "definitions": [
     {
-      "title": "Specification Table",
+      "title": "Spec Table",
       "id": "spec-table",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Specification Table",
+              "name": "Spec Table",
               "filter": "spec-table"
             }
           }

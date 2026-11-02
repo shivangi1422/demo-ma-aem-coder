@@ -461,7 +461,12 @@ main > .section.fine-print p {
 /*
  * software-product-detail template (body class from the page's Template metadata).
  * Bootstrap container: 15px gutters, fixed 750/970px widths, then full width with 50px gutters.
+ * The product area ends 28px (phones) / 57px below its last line, before the footer.
  */
+body.software-product-detail main {
+  padding-bottom: 16px;
+}
+
 body.software-product-detail main > .section > div {
   max-width: none;
   padding: 0 var(--content-padding-mobile);
@@ -494,6 +499,10 @@ body.software-product-detail main .default-content-wrapper h3::after {
 }
 
 @media (width >= 768px) {
+  body.software-product-detail main {
+    padding-bottom: 45px;
+  }
+
   /* :where keeps these below block-level section rules (e.g. full-width page tabs) */
   :where(body.software-product-detail) main > .section {
     width: 750px;

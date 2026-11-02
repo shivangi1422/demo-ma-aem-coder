@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/liquid-handlers/software",
+  "path": "sai/liquid-handlers/software",
+  "timestamp": "2026-11-02T07:25:34.358Z",
+  "title": "Biomek, SAMI, DART, Echo Software",
+  "template": "software-category",
+  "blocks": [
+    "product-tiles",
+    "product-tiles"
+  ]
+}

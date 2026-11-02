@@ -101,7 +101,8 @@ export default {
     const rawPath = new URL(params.originalURL).pathname
       .replace(/\/$/, '')
       .replace(/\.html?$/, '');
-    const path = WebImporter.FileUtils.sanitizePath(rawPath === '' ? '/index' : rawPath);
+    // migrated pages live under the "sai" site root (with its own nav and footer)
+    const path = WebImporter.FileUtils.sanitizePath(`/sai${rawPath === '' ? '/index' : rawPath}`);
 
     return [{
       element: main,

@@ -14,7 +14,14 @@ import {
 } from './aem.js';
 
 // path prefixes that map to the site root (AEM author, local preview)
-const ROOT_PREFIXES = ['/content/demo-ma-aem-coder', '/content'];
+// site roots, most specific first: pages under "sai" use the sai nav, footer and home
+const ROOT_PREFIXES = [
+  '/content/demo-ma-aem-coder/sai',
+  '/content/demo-ma-aem-coder',
+  '/content/sai',
+  '/content',
+  '/sai',
+];
 
 /**
  * Returns the current page path below the site root, split into segments.

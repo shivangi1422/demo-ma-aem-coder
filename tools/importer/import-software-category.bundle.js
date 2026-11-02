@@ -130,9 +130,37 @@ var CustomImportScript = (() => {
         element.ownerDocument.documentElement.dataset.breadcrumbLabels = crumbs.join(" | ");
       }
       WebImporter.DOMUtils.remove(element, [
-        "#main .main-holder > .container.custome-container",
+        "#main .main-holder > .container.custome-container:not(.product-spotlight-wrapper)",
         "nav.breadcrumbs"
       ]);
+      WebImporter.DOMUtils.remove(element, [
+        ".product-spotlight-wrapper .rt-holder > div:has(> .product-table-link-btn)",
+        ".product-spotlight-wrapper .twobuttons > div:not(:has(a))",
+        '.product-spotlight-wrapper input[type="hidden"]',
+        ".product-spotlight-wrapper .CoveoSearchInterface",
+        ".product-spotlight-wrapper .product-table",
+        "#coveo-center-column",
+        "#multiselect__container",
+        "#resource-table-pagination",
+        ".related-parts .slick-cloned",
+        ".related-parts > button"
+      ]);
+      const iconClasses = [];
+      (payload && payload.html || "").replace(
+        /content-resource-list-icon"[^>]*>\s*<(?:i|em|svg)[^>]*class="([^"]*)"/g,
+        (m, cls) => {
+          iconClasses.push(cls);
+          return m;
+        }
+      );
+      element.querySelectorAll(".content-resource-list-child").forEach((item, i) => {
+        if (iconClasses[i]) item.dataset.icon = iconClasses[i];
+      });
+      element.querySelectorAll("#coveo-techdocs-more-results").forEach((div) => {
+        const p = element.ownerDocument.createElement("p");
+        p.append(...div.childNodes);
+        div.replaceWith(p);
+      });
       element.querySelectorAll(".product-series-callouts").forEach((band) => {
         if (!band.querySelector(".product-series-callouts__item")) band.remove();
       });
@@ -202,6 +230,19 @@ var CustomImportScript = (() => {
         'img[width="1"][height="1"]'
         // tracking pixels
       ]);
+      const SITE_ROOT = "/sai";
+      const MIGRATED = [
+        "/software",
+        "/flow-cytometry/software",
+        "/flow-cytometry/software/cytobank-enterprise",
+        "/liquid-handlers/software",
+        "/microbioreactor/biolector-xt/software"
+      ];
+      element.querySelectorAll('a[href^="/"]').forEach((a) => {
+        const href = a.getAttribute("href");
+        const [, pathname, rest] = href.match(/^([^?#]*)(.*)$/);
+        if (MIGRATED.includes(pathname.replace(/\/$/, ""))) a.setAttribute("href", `${SITE_ROOT}${pathname}${rest}`);
+      });
       element.querySelectorAll("*").forEach((el) => {
         [...el.attributes].forEach(({ name }) => {
           if (/^on/i.test(name) || /^data-(track|gtm|analytics|ga)/i.test(name)) {
@@ -366,7 +407,7 @@ var CustomImportScript = (() => {
       WebImporter.rules.transformBackgroundImages(main, document);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
-      const path = WebImporter.FileUtils.sanitizePath(rawPath === "" ? "/index" : rawPath);
+      const path = WebImporter.FileUtils.sanitizePath(`/sai${rawPath === "" ? "/index" : rawPath}`);
       return [{
         element: main,
         path,

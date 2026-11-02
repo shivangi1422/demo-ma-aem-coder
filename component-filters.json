@@ -34,7 +34,8 @@
       "feature-columns",
       "spec-table",
       "resource-list",
-      "related-products"
+      "related-products",
+      "product-table"
     ]
   },
   {
@@ -92,6 +93,12 @@
     "id": "form-request",
     "components": [
       "form-request-item"
+    ]
+  },
+  {
+    "id": "product-table",
+    "components": [
+      "product-table-item"
     ]
   },
   {

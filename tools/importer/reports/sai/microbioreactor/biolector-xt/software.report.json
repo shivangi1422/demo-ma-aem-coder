@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/microbioreactor/biolector-xt/software",
+  "path": "sai/microbioreactor/biolector-xt/software",
+  "timestamp": "2026-11-02T07:25:42.399Z",
+  "title": "BioLector XT Software",
+  "template": "software-product",
+  "blocks": [
+    "link-list",
+    "marketo-form"
+  ]
+}

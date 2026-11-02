@@ -47,6 +47,14 @@
   --arrow-grey: #7d868c;
   --tab-shadow: rgb(0 0 0 / 20%) 0 8px 6px -6px;
 
+  /* product table (filterable product grid) */
+  --text-dark-slate: #313a45;
+  --border-checkbox: #bcc3ca;
+  --text-product-number: #8c8c8c;
+  --surface-pager: #efefef;
+  --text-pager-current: #cddee9;
+  --pager-arrow: #1d4f76;
+
   /* fonts: Gotham is the licensed brand face (served by cloud.typography for
      whitelisted domains); Montserrat is a metrically close open-source fallback */
   --brand-font: 'Gotham A', 'Gotham B', gotham, montserrat, montserrat-fallback, arial, sans-serif;

@@ -1,0 +1,323 @@
+/* Product Table — "Results 1-8 of 13", a filter panel (checkbox groups with counts)
+   beside a bordered grid of product cards, paged eight at a time */
+.product-table {
+  --product-table-cols: 1;
+
+  display: flow-root;
+  scroll-margin-top: 60px;
+  color: var(--text-dark-slate);
+}
+
+.product-table *,
+.product-table *::before,
+.product-table *::after {
+  box-sizing: border-box;
+}
+
+.product-table-summary {
+  margin: 8px 0 14px;
+  color: var(--brand-navy);
+  font-size: var(--body-font-size-s);
+  line-height: 1.65;
+}
+
+/* ---- filter panel ---- */
+.product-table-facets {
+  margin-bottom: 30px;
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: rgb(0 0 0 / 10%) 0 2px 5px 0;
+}
+
+.product-table-facet {
+  position: relative;
+  border: 1px solid var(--border-color);
+  border-bottom: 0;
+  border-radius: 2px;
+  padding: 15px;
+}
+
+.product-table-facet-header {
+  display: flex;
+}
+
+.product-table-facet-title {
+  margin: 0 0 10px;
+  color: var(--brand-navy);
+  font-size: var(--body-font-size-m);
+  font-weight: 500;
+  line-height: 18px;
+}
+
+/* collapse toggle: a blue minus, which becomes a plus when the group is closed */
+.product-table-facet-toggle {
+  position: absolute;
+  top: 15px;
+  right: 20px;
+  width: 13px;
+  height: 27px;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.product-table-facet-toggle::before,
+.product-table-facet-toggle::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 13px;
+  height: 2.5px;
+  margin-top: -1.25px;
+  background-color: var(--brand-blue);
+}
+
+.product-table-facet-toggle::after {
+  transform: rotate(90deg);
+  opacity: 0;
+}
+
+.product-table-facet-toggle[aria-expanded='false']::after {
+  opacity: 1;
+}
+
+.product-table-facet.is-collapsed .product-table-facet-title {
+  margin-bottom: 0;
+}
+
+.product-table-facet-values {
+  margin: 0;
+  padding: 5px 0 0;
+  list-style: none;
+}
+
+.product-table-facet-values[hidden],
+.product-table-facet-values li[hidden] {
+  display: none;
+}
+
+.product-table-facet-values li {
+  margin-bottom: 5px;
+}
+
+.product-table-facet-values label {
+  display: flex;
+  align-items: flex-start;
+  padding: 5px 0;
+  color: var(--brand-navy);
+  font-size: var(--body-font-size-s);
+  line-height: 18px;
+  cursor: pointer;
+}
+
+/* square checkbox with a dark tick, as on the live filter panel */
+.product-table-facet-values input {
+  flex: 0 0 18px;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 2px 15px 0 0;
+  border: 1px solid var(--border-checkbox);
+  border-radius: 2px;
+  background: #fff center / 12px 10px no-repeat;
+  cursor: pointer;
+}
+
+.product-table-facet-values input:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath fill='%23313a45' d='M10.6.4a.9.9 0 0 0-1.3 0L4.4 5.4 2.2 3.4a.9.9 0 0 0-1.3.1.9.9 0 0 0 0 1.2l2.9 2.7a.9.9 0 0 0 1.3 0l5.4-5.4a.9.9 0 0 0 .1-1.3z'/%3E%3C/svg%3E");
+}
+
+.product-table-facet-values input:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+
+.product-table-facet-caption {
+  flex: 1 1 auto;
+  padding-top: 2px;
+}
+
+.product-table-facet-count {
+  margin: 0 5px;
+}
+
+/* ---- results grid: cell borders collapse, as in the live table ---- */
+.product-table-grid {
+  display: grid;
+  grid-template-columns: repeat(var(--product-table-cols), minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-table-card {
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  border-right: 1px solid var(--border-color);
+  border-bottom: 1px solid var(--border-color);
+  padding: 10px;
+}
+
+.product-table-card.is-first-row {
+  border-top: 1px solid var(--border-color);
+}
+
+.product-table-card.is-row-start {
+  border-left: 1px solid var(--border-color);
+}
+
+.product-table-card[hidden] {
+  display: none;
+}
+
+.product-table-card-image {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 180px;
+  margin-bottom: 10px;
+}
+
+.product-table-card-image img {
+  display: block;
+  max-width: 100%;
+  max-height: 180px;
+  width: auto;
+  height: auto;
+}
+
+.product-table-card-content {
+  flex: 1 1 auto;
+  margin-bottom: 18px;
+}
+
+.product-table-card-title {
+  margin: 0 0 10px;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.product-table-card-title a:any-link,
+.product-table-card-title a:hover {
+  color: var(--heading-navy);
+  text-decoration: none;
+}
+
+.product-table-card-number {
+  margin: 0 0 15px;
+  color: var(--text-product-number);
+  font-size: 10px;
+  line-height: 1.65;
+}
+
+.product-table-card-footer {
+  min-height: 64px;
+  text-align: center;
+}
+
+.product-table-card-quote:any-link {
+  display: block;
+  height: 40px;
+  border: 1px solid var(--brand-blue);
+  border-radius: 2px;
+  padding: 9px 12px;
+  color: var(--brand-blue);
+  font-size: 10.5px;
+  font-weight: 300;
+  line-height: 1.65;
+  text-decoration: none;
+  transition: background-color 0.15s ease, color 0.15s ease;
+}
+
+.product-table-card-quote:hover,
+.product-table-card-quote:focus-visible {
+  background-color: var(--brand-blue);
+  color: #fff;
+  text-decoration: none;
+}
+
+/* ---- pager: right-aligned page boxes, the current page in plain grey ---- */
+.product-table-pager ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin: 25px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-table-pager button {
+  position: relative;
+  min-width: 30px;
+  height: 35px;
+  border: 1px solid rgb(0 0 0 / 15%);
+  padding: 5px 10px;
+  background-color: var(--surface-pager);
+  color: var(--brand-blue);
+  font-size: var(--body-font-size-s);
+  line-height: 1.65;
+  cursor: pointer;
+}
+
+.product-table-pager button[aria-current] {
+  border-color: transparent;
+  background: none;
+  color: var(--text-pager-current);
+  cursor: default;
+}
+
+.product-table-pager-prev::before,
+.product-table-pager-next::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 7px;
+  height: 13px;
+  background-color: var(--pager-arrow);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 13'%3E%3Cpath d='M.6 12.6a.6.6 0 0 1-.4-1L5.3 6.5.2 1.4A.6.6 0 0 1 1 .5l5.6 5.6a.6.6 0 0 1 0 .9L1 12.5a.6.6 0 0 1-.4.1z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.product-table-pager-prev::before {
+  transform: scaleX(-1);
+}
+
+@media (width >= 480px) {
+  .product-table {
+    --product-table-cols: 2;
+  }
+}
+
+@media (width >= 768px) {
+  .product-table {
+    --product-table-cols: 3;
+  }
+}
+
+@media (width >= 992px) {
+  .product-table-main {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .product-table-facets {
+    flex: 0 0 285px;
+    margin-bottom: 0;
+  }
+
+  .product-table-results {
+    flex: 1 1 auto;
+    min-width: 0;
+    margin-left: 30px;
+  }
+}
+
+@media (width >= 1200px) {
+  .product-table {
+    --product-table-cols: 4;
+  }
+}

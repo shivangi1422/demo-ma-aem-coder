@@ -26,10 +26,43 @@ export default function transform(hookName, element, payload) {
     if (crumbs.length) {
       element.ownerDocument.documentElement.dataset.breadcrumbLabels = crumbs.join(' | ');
     }
+    // (product pages reuse the container class for the product spotlight, which stays)
     WebImporter.DOMUtils.remove(element, [
-      '#main .main-holder > .container.custome-container',
+      '#main .main-holder > .container.custome-container:not(.product-spotlight-wrapper)',
       'nav.breadcrumbs',
     ]);
+
+    // Product spotlight pages: live search (Coveo) widgets, hidden duplicates and the
+    // resource-type filter, which the resource-list block rebuilds from the resources
+    WebImporter.DOMUtils.remove(element, [
+      '.product-spotlight-wrapper .rt-holder > div:has(> .product-table-link-btn)',
+      '.product-spotlight-wrapper .twobuttons > div:not(:has(a))',
+      '.product-spotlight-wrapper input[type="hidden"]',
+      // (the licence table's search widget is kept: the product-table parser replaces it)
+      '.product-spotlight-wrapper .CoveoSearchInterface:not(:has(.product-table))',
+      '#coveo-center-column',
+      '#multiselect__container',
+      '#resource-table-pagination',
+      '.related-parts .slick-cloned',
+      '.related-parts > button',
+    ]);
+    // Resource icons are empty <i> elements the importer drops before parsing: record
+    // each icon's class (in source order) on its resource item for the resource-list parser
+    const iconClasses = [];
+    ((payload && payload.html) || '').replace(
+      /content-resource-list-icon"[^>]*>\s*<(?:i|em|svg)[^>]*class="([^"]*)"/g,
+      (m, cls) => { iconClasses.push(cls); return m; },
+    );
+    element.querySelectorAll('.content-resource-list-child').forEach((item, i) => {
+      if (iconClasses[i]) item.dataset.icon = iconClasses[i];
+    });
+
+    // "Didn't find what you are looking for? … click here." is plain copy
+    element.querySelectorAll('#coveo-techdocs-more-results').forEach((div) => {
+      const p = element.ownerDocument.createElement('p');
+      p.append(...div.childNodes);
+      div.replaceWith(p);
+    });
 
     // Empty spacer containers inside the main content area
     element.querySelectorAll('.product-series-callouts').forEach((band) => {
@@ -116,6 +149,21 @@ export default function transform(hookName, element, payload) {
       'link',
       'img[width="1"][height="1"]', // tracking pixels
     ]);
+
+    // The migrated pages live under the "sai" site root: links to them point there
+    const SITE_ROOT = '/sai';
+    const MIGRATED = [
+      '/software',
+      '/flow-cytometry/software',
+      '/flow-cytometry/software/cytobank-enterprise',
+      '/liquid-handlers/software',
+      '/microbioreactor/biolector-xt/software',
+    ];
+    element.querySelectorAll('a[href^="/"]').forEach((a) => {
+      const href = a.getAttribute('href');
+      const [, pathname, rest] = href.match(/^([^?#]*)(.*)$/);
+      if (MIGRATED.includes(pathname.replace(/\/$/, ''))) a.setAttribute('href', `${SITE_ROOT}${pathname}${rest}`);
+    });
 
     // Strip tracking / event attributes
     element.querySelectorAll('*').forEach((el) => {

@@ -716,6 +716,54 @@
     ]
   },
   {
+    "id": "product-table-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Product Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Product Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Name and Product Number",
+        "value": "",
+        "description": "The product name as a linked heading (the link opens the product page), then a line such as Product No: C47400."
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "filters",
+        "label": "Filter Values",
+        "value": "",
+        "description": "A bulleted list of Filter: Value pairs, e.g. Number of Users: 10, License Term: 3 years. Each filter name becomes a filter group; leave out filters that don't apply."
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "quoteLink",
+        "label": "Quote Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "quoteLinkText",
+        "label": "Quote Button Label",
+        "value": "Add to Quote"
+      }
+    ]
+  },
+  {
     "id": "product-tile",
     "fields": [
       {

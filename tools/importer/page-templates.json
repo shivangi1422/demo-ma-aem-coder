@@ -136,3 +136,177 @@
       ]
     },
     {
+      "name": "software-product-detail",
+      "urls": [
+        "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise"
+      ],
+      "coverageGaps": [],
+      "description": "Software product spotlight: product image beside title, intro, highlights, buttons and resource links; sticky in-page tabs; feature columns, licenses, specification table, resources list, technical documents and a related-products carousel",
+      "blocks": [
+        {
+          "name": "product-hero",
+          "instances": [
+            ".product-spotlight-wrapper .product-intro-wrapper"
+          ]
+        },
+        {
+          "name": "page-tabs",
+          "instances": [
+            "#intrenal-page-link-wrapper"
+          ]
+        },
+        {
+          "name": "feature-columns",
+          "instances": [
+            "#features-wrapper .bc-columns"
+          ]
+        },
+        {
+          "name": "product-table",
+          "instances": [
+            ".product-spotlight-wrapper .CoveoSearchInterface:has(.product-table)"
+          ]
+        },
+        {
+          "name": "spec-table",
+          "instances": [
+            "#product-specification-wrapper .specification-holder"
+          ]
+        },
+        {
+          "name": "resource-list",
+          "instances": [
+            "#product-documentation-wrapper .content-resource-list-wrapper"
+          ]
+        },
+        {
+          "name": "related-products",
+          "instances": [
+            "#related-parts-wrapper .related-parts"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "s1",
+          "name": "Product hero",
+          "selector": [
+            ".product-spotlight-wrapper .product-intro-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "product-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s2",
+          "name": "Page tabs",
+          "selector": [
+            "#intrenal-page-link-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "page-tabs"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s3",
+          "name": "Features",
+          "selector": [
+            "#features-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "feature-columns"
+          ],
+          "defaultContent": [
+            "#features-wrapper h3"
+          ]
+        },
+        {
+          "id": "s4",
+          "name": "Licenses",
+          "selector": [
+            "div.product-page-sub-heading-wrapper#product-table-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "product-table"
+          ],
+          "defaultContent": [
+            "div.product-page-sub-heading-wrapper#product-table-wrapper h3"
+          ]
+        },
+        {
+          "id": "s5",
+          "name": "Specifications",
+          "selector": [
+            "#product-specification-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "spec-table"
+          ],
+          "defaultContent": [
+            "#product-specification-wrapper h3"
+          ]
+        },
+        {
+          "id": "s6",
+          "name": "Content and Resources",
+          "selector": [
+            "#product-documentation-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "resource-list"
+          ],
+          "defaultContent": [
+            "#product-documentation-wrapper h3"
+          ]
+        },
+        {
+          "id": "s7",
+          "name": "Technical Documents",
+          "selector": [
+            "#techdocs-wrapper"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#techdocs-wrapper h3",
+            "#coveo-techdocs-more-results"
+          ]
+        },
+        {
+          "id": "s8",
+          "name": "Related products",
+          "selector": [
+            "#related-parts-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "related-products"
+          ],
+          "defaultContent": [
+            "#related-parts-wrapper h3"
+          ]
+        },
+        {
+          "id": "s9",
+          "name": "Disclaimer",
+          "selector": [
+            "#related-parts-wrapper + .bc-rich-text"
+          ],
+          "style": "fine-print",
+          "blocks": [],
+          "defaultContent": [
+            "#related-parts-wrapper + .bc-rich-text p"
+          ]
+        }
+      ]
+    }
+  ]
+}
