@@ -273,7 +273,11 @@
   margin: 0 0 15px;
 }
 
-.hero-centered.left .hero-centered-content a.button:any-link {
+/* every link in the left hero is a solid red button, also when authors put
+   both links in one paragraph (no button decoration) */
+.hero-centered.left .hero-centered-content a:any-link {
+  display: inline-block;
+  margin: 0;
   padding: 13px 20px;
   border: 0;
   border-radius: 2px;
@@ -284,10 +288,15 @@
   line-height: 1.2;
 }
 
-.hero-centered.left .hero-centered-content a.button:hover,
-.hero-centered.left .hero-centered-content a.button:focus-visible {
+.hero-centered.left .hero-centered-content a:hover,
+.hero-centered.left .hero-centered-content a:focus-visible {
   background-color: #cf1322;
   color: #fff;
+  text-decoration: none;
+}
+
+.hero-centered.left .hero-centered-content p:not(.button-wrapper) > a + a {
+  margin-left: 4px;
 }
 
 @media (width >= 500px) and (width < 768px) {
@@ -295,7 +304,7 @@
     margin-top: 20px;
   }
 
-  .hero-centered.left .hero-centered-content a.button:any-link {
+  .hero-centered.left .hero-centered-content a:any-link {
     padding: 15px 20px;
     font-size: 18px;
   }
@@ -323,7 +332,7 @@
     margin: 0;
   }
 
-  .hero-centered.left .hero-centered-content a.button:any-link {
+  .hero-centered.left .hero-centered-content a:any-link {
     padding: 12px 17px;
     font-size: 16px;
   }
@@ -334,7 +343,7 @@
     margin-left: calc(50% - 470px);
   }
 
-  .hero-centered.left .hero-centered-content a.button:any-link {
+  .hero-centered.left .hero-centered-content a:any-link {
     padding: 15px 20px;
     font-size: 18px;
   }
@@ -345,7 +354,7 @@
     margin-left: calc(50% - 570px);
   }
 
-  .hero-centered.left .hero-centered-content a.button:any-link {
+  .hero-centered.left .hero-centered-content a:any-link {
     padding: 18px 23px;
     font-size: 20px;
   }
@@ -356,7 +365,7 @@
     margin-top: 20px;
   }
 
-  .hero-centered.left .hero-centered-content a.button:any-link {
+  .hero-centered.left .hero-centered-content a:any-link {
     padding: 20px 25px;
     font-size: 22px;
   }

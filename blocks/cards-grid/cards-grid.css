@@ -727,8 +727,8 @@ main .cards-grid.icon-left .cards-grid-action a.button:any-link {
   padding: 15px 25px;
   border: 1px solid #ea1c2c;
   border-radius: 2px;
-  background-color: #fff;
-  color: #ea1c2c;
+  background-color: #ea1c2c;
+  color: #fff;
   font-size: 14px;
   font-weight: 500;
   line-height: 23.1px;
@@ -738,7 +738,8 @@ main .cards-grid.icon-left .cards-grid-action a.button:any-link {
 
 main .cards-grid.icon-left .cards-grid-action a.button:hover,
 main .cards-grid.icon-left .cards-grid-action a.button:focus-visible {
-  background-color: #ea1c2c;
+  border-color: #cf1322;
+  background-color: #cf1322;
   color: #fff;
 }
 

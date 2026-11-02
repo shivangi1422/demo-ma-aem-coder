@@ -117,7 +117,7 @@ function buildContentList(cardRows) {
 }
 
 /**
- * Icon left: small icon beside a bold title, text and an outlined button
+ * Icon left: small icon beside a bold title, text and a solid red button
  * (the lone link in its own paragraph).
  * @param {Element[]} cardRows
  * @returns {Element}
@@ -216,7 +216,7 @@ function buildButtons(cardRows) {
  *   - .cards-grid.insights     intro panel + stacked text cards (two-column)
  *   - .cards-grid.products     single column: large product image, H3 title, Read More button
  *   - .cards-grid.contentlist  3-up: bordered 4:3 linked image, light H3, linked text
- *   - .cards-grid.icon-left    2-up: small icon beside bold title, text, outlined button
+ *   - .cards-grid.icon-left    2-up: small icon beside bold title, text, red button
  *   - .cards-grid.buttons      red link tiles with a white icon
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
  * @param {Element} block
