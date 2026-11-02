@@ -17,6 +17,30 @@
       {
         "component": "text",
         "valueType": "string",
+        "name": "breadcrumb-labels",
+        "label": "Breadcrumb Labels",
+        "description": "Optional. Labels for the breadcrumb trail below Home, separated by |, e.g. Flow Cytometry | Flow Cytometry Software"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "description": "Page layout. Software Product Detail sets the product page container widths and section title styling.",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Software Product Detail",
+            "value": "software-product-detail"
+          }
+        ]
+      },
+      {
+        "component": "text",
+        "valueType": "string",
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
@@ -136,6 +160,22 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Light Grey Band",
+            "value": "light-grey"
+          },
+          {
+            "name": "Contained",
+            "value": "contained"
+          },
+          {
+            "name": "Sidebar",
+            "value": "sidebar"
+          },
+          {
+            "name": "Fine Print",
+            "value": "fine-print"
           }
         ]
       }
@@ -283,6 +323,38 @@
     ]
   },
   {
+    "id": "category-card",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Link Text",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "columns",
     "fields": [
       {
@@ -388,6 +460,19 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "feature-column",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Heading and Features",
+        "value": "",
+        "description": "A Heading 4 followed by a bulleted list of features."
       }
     ]
   },
@@ -525,6 +610,51 @@
     ]
   },
   {
+    "id": "link-list",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Heading and Links",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "marketo-form",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Heading",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "formUrl",
+        "label": "Marketo Form URL",
+        "description": "e.g. https://pages.beckman.com/index.php/form/getForm?munchkinId=682-XWP-826&form=1361",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "page-tabs",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "links",
+        "label": "Section Links",
+        "value": "",
+        "description": "A bulleted list of links to headings on this page, e.g. #cytobank-enterprise-features. The bar sticks to the top of the window and highlights the section in view."
+      }
+    ]
+  },
+  {
     "id": "product-banner",
     "fields": [
       {
@@ -551,6 +681,91 @@
     ]
   },
   {
+    "id": "product-hero",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Product Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Product Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Title, Description and Buttons",
+        "value": "",
+        "description": "Start with the product name as Heading 1. Links on their own line become buttons: italic for the outline button, bold for the solid button."
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "resources",
+        "label": "Resources and Tools",
+        "value": "",
+        "description": "A short heading line followed by a bulleted list of links, shown as a two-column grid."
+      }
+    ]
+  },
+  {
+    "id": "product-tile",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Title and Description",
+        "value": "",
+        "description": "Start with a heading for the tile title, then the description."
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "textSize",
+        "label": "Description Text Size",
+        "value": "small",
+        "options": [
+          {
+            "name": "Small (14px)",
+            "value": "small"
+          },
+          {
+            "name": "Regular (16px)",
+            "value": "regular"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {
@@ -566,6 +781,112 @@
         "value": "",
         "label": "Attribution",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "related-product",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image Alt Text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Product Name",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Product Link"
+      }
+    ]
+  },
+  {
+    "id": "resource",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "type",
+        "label": "Resource Type",
+        "value": "video",
+        "description": "Sets the icon and the Resource Type filter option.",
+        "options": [
+          {
+            "name": "Video",
+            "value": "video"
+          },
+          {
+            "name": "Document",
+            "value": "document"
+          },
+          {
+            "name": "Web Page",
+            "value": "web-page"
+          }
+        ]
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description",
+        "value": "",
+        "description": "Optional. Shown on one line below the title."
+      }
+    ]
+  },
+  {
+    "id": "spec-row",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "value",
+        "label": "Value",
+        "value": ""
       }
     ]
   },

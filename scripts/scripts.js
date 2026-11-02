@@ -9,7 +9,26 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  buildBlock,
+  getMetadata,
 } from './aem.js';
+
+// path prefixes that map to the site root (AEM author, local preview)
+const ROOT_PREFIXES = ['/content/demo-ma-aem-coder', '/content'];
+
+/**
+ * Returns the current page path below the site root, split into segments.
+ * The home page returns an empty array.
+ * @returns {{ root: string, segments: string[] }}
+ */
+export function getPagePath() {
+  let path = window.location.pathname.replace(/\.html$/, '').replace(/\/$/, '');
+  const root = ROOT_PREFIXES.find((prefix) => path === prefix || path.startsWith(`${prefix}/`)) || '';
+  path = path.slice(root.length);
+  const segments = path.split('/').filter(Boolean);
+  if (segments.length === 1 && segments[0] === 'index') segments.pop();
+  return { root, segments };
+}
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -58,12 +77,27 @@ async function loadFonts() {
 }
 
 /**
+ * Prepends a breadcrumbs section, built from the page path, to every page
+ * except the home page. Authors can opt out with "breadcrumbs: off" metadata.
+ * @param {Element} main The container element
+ */
+function buildBreadcrumbs(main) {
+  // fragments (nav, footer) are decorated detached from the page; skip them
+  if (!main.isConnected) return;
+  if (getMetadata('breadcrumbs').toLowerCase() === 'off') return;
+  if (!getPagePath().segments.length) return;
+  const section = document.createElement('div');
+  section.append(buildBlock('breadcrumbs', ''));
+  main.prepend(section);
+}
+
+/**
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-function buildAutoBlocks() {
+function buildAutoBlocks(main) {
   try {
-    // TODO: add auto block, if needed
+    buildBreadcrumbs(main);
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);

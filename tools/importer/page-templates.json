@@ -1,0 +1,138 @@
+{
+  "metadata": {
+    "projectType": "xwalk"
+  },
+  "templates": [
+    {
+      "name": "software",
+      "urls": [
+        "https://www.mybeckman.in/software"
+      ],
+      "coverageGaps": [],
+      "description": "Breadcrumb trail, page title, then a row of text-only category cards with a Learn more button each",
+      "blocks": [
+        {
+          "name": "category-cards",
+          "instances": [
+            ".product-series-selector-wrapper .softwareContainer",
+            ".softwareContainer"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "rc3",
+          "name": "Software categories",
+          "selector": [
+            "#main .main-holder > .container.product-series-selector-wrapper",
+            ".product-series-selector-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "category-cards"
+          ],
+          "defaultContent": [
+            ".product-heading-wrap > h1"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "software-category",
+      "urls": [
+        "https://www.mybeckman.in/flow-cytometry/software",
+        "https://www.mybeckman.in/liquid-handlers/software"
+      ],
+      "coverageGaps": [],
+      "description": "Breadcrumb trail, page title and intro text, then a grey band of bordered linked product tiles (image, title, description) in a wrapping grid",
+      "blocks": [
+        {
+          "name": "product-tiles",
+          "instances": [
+            ".product-series-selector-wrapper .product-series-callouts > .row",
+            ".product-series-callouts > .row"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "s1",
+          "name": "Title and intro",
+          "selector": [
+            ".product-series-selector-wrapper > .product-content-wrap"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".product-heading-wrap > h1",
+            ".product-heading-wrap > p",
+            ".product-heading-wrap > ul"
+          ]
+        },
+        {
+          "id": "s2",
+          "name": "Product tiles",
+          "selector": [
+            ".product-series-selector-wrapper .product-series-callouts"
+          ],
+          "style": "light-grey",
+          "blocks": [
+            "product-tiles"
+          ],
+          "defaultContent": []
+        }
+      ]
+    },
+    {
+      "name": "software-product",
+      "urls": [
+        "https://www.mybeckman.in/microbioreactor/biolector-xt/software"
+      ],
+      "coverageGaps": [],
+      "description": "Breadcrumb trail and title in a narrow container, then a wide rich-content column beside a sidebar of related links and a lead form",
+      "blocks": [
+        {
+          "name": "link-list",
+          "instances": [
+            ".two-columns-holder__right > .bc-rich-text:has(ul)"
+          ]
+        },
+        {
+          "name": "marketo-form",
+          "instances": [
+            ".two-columns-holder__right .formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "s1",
+          "name": "Title",
+          "selector": [
+            "#content-holder",
+            ".generic-content-heading"
+          ],
+          "style": "contained",
+          "blocks": [],
+          "defaultContent": [
+            "#content-holder > h1"
+          ]
+        },
+        {
+          "id": "s2",
+          "name": "Content with sidebar",
+          "selector": [
+            ".two-columns-holder"
+          ],
+          "style": "contained, sidebar",
+          "blocks": [
+            "link-list",
+            "marketo-form"
+          ],
+          "defaultContent": [
+            ".two-columns-holder__left .bc-rich-text"
+          ]
+        }
+      ]
+    },
+    {

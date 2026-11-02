@@ -1,0 +1,247 @@
+/* Product Hero — product image (with lightbox) beside the title, intro copy,
+   check-mark highlights, buttons and a "Resources + Tools" link grid */
+.product-hero {
+  display: grid;
+  grid-template-areas:
+    'content'
+    'media';
+  box-sizing: border-box;
+  margin-bottom: 48px;
+  padding: 24px 0 19px;
+}
+
+.product-hero *,
+.product-hero *::before,
+.product-hero *::after {
+  box-sizing: border-box;
+}
+
+/* ---- content column ---- */
+.product-hero-content {
+  grid-area: content;
+  padding: 0 14px 10px;
+  font-size: var(--body-font-size-s);
+  line-height: 22px;
+}
+
+.product-hero-content h1 {
+  margin: 0.67em 0;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-color);
+}
+
+.product-hero-content p {
+  font-size: var(--body-font-size-m);
+  line-height: 1.65;
+}
+
+/* highlights: green check-circle bullets */
+.product-hero-content ul {
+  margin: 0 0 10px 8px;
+  padding-left: 15px;
+  list-style: none;
+  font-size: var(--body-font-size-m);
+  line-height: 1.65;
+}
+
+.product-hero-content li {
+  position: relative;
+}
+
+.product-hero-content li:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.product-hero-content li::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: -20px;
+  width: 15px;
+  height: 15px;
+  background-color: var(--check-green);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 512 512'%3E%3Cpath d='M256 8C119 8 8 119 8 256s111 248 248 248 248-111 248-248S393 8 256 8zm0 48c110.5 0 200 89.5 200 200 0 110.5-89.5 200-200 200-110.5 0-200-89.5-200-200 0-110.5 89.5-200 200-200m140.2 130.3-22.5-22.7c-4.7-4.7-12.3-4.7-17-.1L215.3 303.7l-59.8-60.3c-4.7-4.7-12.3-4.7-17-.1l-22.7 22.5c-4.7 4.7-4.7 12.3-.1 17l90.8 91.5c4.7 4.7 12.3 4.7 17 .1l172.6-171.2c4.7-4.7 4.7-12.3.1-17z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* buttons: outline "explore" + solid "quote", side by side */
+.product-hero-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 8.4px;
+  margin: 20px 0;
+}
+
+.product-hero-buttons p.button-wrapper {
+  display: flex;
+  margin: 0 0 20px;
+}
+
+.product-hero-buttons a.button.secondary {
+  padding: 13px 20px;
+  line-height: 21px;
+  background-color: #fff;
+}
+
+.product-hero-buttons a.button.secondary:hover,
+.product-hero-buttons a.button.secondary:focus-visible {
+  border-color: var(--brand-blue);
+  background-color: var(--brand-blue);
+  color: #fff;
+}
+
+/* in-page links ("Explore Licenses") get a double chevron */
+.product-hero-buttons a.button[href^='#']::after {
+  content: '';
+  width: 8.4px;
+  height: 13.5px;
+  margin-left: 4px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M143 256.3 7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192 136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* resources + tools: uppercase label over a two-column grid of links */
+.product-hero-resources {
+  margin-bottom: 20px;
+}
+
+.product-hero-resources .product-hero-resources-title {
+  margin: 0 0 10px;
+  font-size: var(--body-font-size-s);
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.product-hero-resources ul {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.product-hero-resources li a:any-link {
+  display: block;
+  height: 100%;
+  border-top: 1px solid var(--border-faint);
+  border-left: 1px solid var(--border-faint);
+  padding: 10px;
+  font-size: var(--body-font-size-m);
+  line-height: 24px;
+  text-decoration: underline;
+}
+
+.product-hero-resources li:nth-child(even) a:any-link {
+  border-right: 1px solid var(--border-faint);
+}
+
+.product-hero-resources li:nth-last-child(-n + 2) a:any-link {
+  border-bottom: 1px solid var(--border-faint);
+}
+
+.product-hero-resources li a:any-link:hover,
+.product-hero-resources li a:any-link:focus-visible {
+  box-shadow: inset -1px -1px 0 var(--brand-blue);
+}
+
+/* ---- media column ---- */
+.product-hero-media {
+  grid-area: media;
+  padding-top: 25px;
+  margin-bottom: 22px;
+  text-align: center;
+}
+
+.product-hero-zoom {
+  display: inline-block;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: zoom-in;
+}
+
+.product-hero-media img {
+  display: block;
+  width: 260px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* ---- lightbox ---- */
+.product-hero-lightbox {
+  max-width: 90vw;
+  max-height: 90vh;
+  border: 0;
+  padding: 0;
+  background: #fff;
+  overflow: visible;
+}
+
+.product-hero-lightbox::backdrop {
+  background: rgb(0 0 0 / 80%);
+}
+
+.product-hero-lightbox img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.product-hero-lightbox-close {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  border: 0;
+  padding: 0 4px;
+  background: none;
+  color: #fff;
+  font-size: 32px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+@media (width >= 768px) {
+  .product-hero {
+    grid-template-areas: 'media content';
+    grid-template-columns: 5fr 7fr;
+    align-items: start;
+    padding: 0;
+  }
+
+  .product-hero-content {
+    padding: 0 0 0 10px;
+  }
+
+  .product-hero-content ul {
+    padding-left: 20px;
+  }
+
+  .product-hero-media {
+    margin-bottom: 0;
+    padding: 49px 10px 0 0;
+  }
+
+  /* the live gallery's link carries 43px of right padding, which offsets the image */
+  .product-hero-zoom {
+    padding-right: 43px;
+  }
+
+  .product-hero-media img {
+    width: 400px;
+  }
+}
+
+@media (width >= 1024px) {
+  .product-hero {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .product-hero-content h1 {
+    color: var(--heading-navy);
+    font-size: 42px;
+  }
+}

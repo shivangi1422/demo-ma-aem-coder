@@ -1,0 +1,59 @@
+/* Page Tabs — full-width bar of in-page links that sticks to the top when scrolled past.
+   The section keeps a 60px slot; the bar overlays it, as on the live product pages. */
+main > .section.page-tabs-container {
+  position: relative;
+  width: auto;
+  height: 60px;
+  margin: 0;
+}
+
+main > .section.page-tabs-container > .page-tabs-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.page-tabs-bar {
+  position: absolute;
+  top: 0;
+  right: 0;
+  left: 0;
+  z-index: 999;
+  border-top: 2px solid var(--border-color);
+  background-color: #fff;
+  box-shadow: var(--tab-shadow);
+  text-align: center;
+}
+
+.page-tabs-bar.is-stuck {
+  position: fixed;
+}
+
+.page-tabs-bar ul {
+  display: inline;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.page-tabs-bar li {
+  display: inline;
+}
+
+.page-tabs-bar a:any-link {
+  display: inline-flex;
+  border-bottom: 2px solid transparent;
+  padding: 10px 28px;
+  color: #000;
+  font-size: var(--body-font-size-s);
+  line-height: 1.65;
+  text-decoration: none;
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.page-tabs-bar a:hover,
+.page-tabs-bar a:focus-visible,
+.page-tabs-bar a[aria-current] {
+  border-bottom-color: var(--brand-blue);
+  color: var(--brand-blue);
+  text-decoration: none;
+}

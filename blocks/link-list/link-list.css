@@ -1,0 +1,29 @@
+/* Link List — bold label + small related links (product page sidebar) */
+.link-list .link-list-title {
+  margin: 16px 0;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.65;
+  letter-spacing: -0.2px;
+}
+
+.link-list ul {
+  margin: 0;
+  padding-left: 17px;
+  list-style: disc;
+}
+
+.link-list li {
+  font-size: 13.6px;
+  line-height: 22.44px;
+}
+
+.link-list a:any-link {
+  color: var(--link-color);
+  text-decoration: none;
+}
+
+.link-list a:hover {
+  color: var(--link-hover-color);
+  text-decoration: underline;
+}

@@ -1,0 +1,69 @@
+/* Specification Table — grey right-aligned labels beside values; two specifications
+   per line from 1024px (each row 48% wide), stacked below */
+.spec-table table {
+  display: block;
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--body-font-size-s);
+  line-height: 20px;
+}
+
+.spec-table tbody {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.spec-table tr {
+  display: flex;
+  width: 100%;
+  border-bottom: 1px solid var(--border-spec);
+}
+
+.spec-table tr:nth-child(-n + 2) {
+  border-top: 1px solid var(--border-spec);
+}
+
+.spec-table th,
+.spec-table td {
+  display: flex;
+  align-items: center;
+  box-sizing: border-box;
+  padding: 14px 17.5px;
+}
+
+.spec-table th {
+  justify-content: center;
+  flex: 0 0 35%;
+  border-right: 1px solid var(--border-spec);
+  background-color: var(--surface-spec);
+  font-weight: 700;
+  text-align: right;
+}
+
+.spec-table td {
+  flex: 0 0 58%;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  text-align: left;
+}
+
+.spec-table td > p {
+  margin: 0;
+}
+
+.spec-table td ul {
+  margin: 0 0 10px;
+  padding-left: 17px;
+}
+
+@media (width >= 1024px) {
+  .spec-table tr {
+    width: 48%;
+  }
+
+  .spec-table th {
+    justify-content: flex-end;
+  }
+}

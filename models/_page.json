@@ -18,6 +18,30 @@
         {
           "component": "text",
           "valueType": "string",
+          "name": "breadcrumb-labels",
+          "label": "Breadcrumb Labels",
+          "description": "Optional. Labels for the breadcrumb trail below Home, separated by |, e.g. Flow Cytometry | Flow Cytometry Software"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "template",
+          "label": "Template",
+          "description": "Page layout. Software Product Detail sets the product page container widths and section title styling.",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Software Product Detail",
+              "value": "software-product-detail"
+            }
+          ]
+        },
+        {
+          "component": "text",
+          "valueType": "string",
           "name": "keywords",
           "multi": true,
           "label": "Keywords"

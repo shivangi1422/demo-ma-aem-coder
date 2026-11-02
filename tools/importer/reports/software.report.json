@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/software",
+  "path": "software",
+  "timestamp": "2026-10-30T09:47:05.142Z",
+  "title": "Software",
+  "template": "software",
+  "blocks": [
+    "category-cards",
+    "category-cards"
+  ]
+}

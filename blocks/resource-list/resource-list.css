@@ -1,0 +1,172 @@
+/* Resource List — "Filter by: Resource Type" dropdown over a list of resources
+   (type icon, bold title link, one-line description) */
+.resource-list {
+  padding-bottom: 20px;
+}
+
+/* ---- filter ---- */
+.resource-list-filter {
+  display: flex;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.resource-list-filter-label {
+  margin-right: 10px;
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  line-height: 1.65;
+}
+
+.resource-list-dropdown {
+  position: relative;
+  width: 250px;
+}
+
+.resource-list-dropdown-toggle {
+  display: flex;
+  align-items: center;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--link-bright);
+  font-size: var(--body-font-size-s);
+  line-height: 20px;
+  cursor: pointer;
+}
+
+.resource-list-caret {
+  width: 0;
+  height: 0;
+  margin-left: 5px;
+  border-top: 4px solid currentcolor;
+  border-right: 4px solid transparent;
+  border-left: 4px solid transparent;
+}
+
+.resource-list-dropdown-panel {
+  position: absolute;
+  top: calc(100% + 4px);
+  left: 0;
+  z-index: 10;
+  box-sizing: border-box;
+  width: 100%;
+  border: 1px solid var(--border-color);
+  padding: 10px 15px;
+  background-color: #fff;
+  box-shadow: 0 6px 12px rgb(0 0 0 / 17.5%);
+}
+
+.resource-list-dropdown-panel[hidden] {
+  display: none;
+}
+
+.resource-list-dropdown-panel fieldset {
+  margin: 0;
+  border: 0;
+  padding: 0;
+}
+
+.resource-list-dropdown-panel legend {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+}
+
+.resource-list-dropdown-panel label {
+  display: block;
+  font-size: var(--body-font-size-s);
+  line-height: 2;
+  cursor: pointer;
+}
+
+.resource-list-dropdown-done {
+  margin-top: 8px;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--link-bright);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* ---- items ---- */
+.resource-list-items {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.resource-list-items li {
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 15px;
+}
+
+.resource-list-items li[hidden] {
+  display: none;
+}
+
+.resource-list-icon {
+  flex: 0 0 19px;
+  height: 17px;
+  margin-top: 3px;
+  background-color: var(--link-bright);
+  mask: center / contain no-repeat;
+}
+
+.resource-list-icon-video {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 576 512'%3E%3Cpath d='M336.2 64H47.8C21.4 64 0 85.4 0 111.8v288.4C0 426.6 21.4 448 47.8 448h288.4c26.4 0 47.8-21.4 47.8-47.8V111.8c0-26.4-21.4-47.8-47.8-47.8zm189.4 37.7L416 177.3v157.4l109.6 75.5c21.2 14.6 50.4-.3 50.4-25.8V127.5c0-25.4-29.1-40.4-50.4-25.8z'/%3E%3C/svg%3E");
+}
+
+.resource-list-icon-document,
+.resource-list-icon-web-page {
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 384 512'%3E%3Cpath d='M224 136V0H24C10.7 0 0 10.7 0 24v464c0 13.3 10.7 24 24 24h336c13.3 0 24-10.7 24-24V160H248c-13.2 0-24-10.8-24-24zm160-14.1v6.1H256V0h6.1c6.4 0 12.5 2.5 17 7l97.9 98c4.5 4.5 7 10.6 7 16.9z'/%3E%3C/svg%3E");
+}
+
+.resource-list-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  margin-left: 15px;
+}
+
+.resource-list-title:any-link {
+  display: block;
+  color: var(--link-bright);
+  font-weight: 600;
+  line-height: 1.65;
+}
+
+.resource-list-description {
+  margin: 0;
+  overflow: hidden;
+  font-size: 15px;
+  line-height: 1.65;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* ---- pagination ---- */
+.resource-list-pagination {
+  display: flex;
+  gap: 6px;
+}
+
+.resource-list-pagination button {
+  min-width: 30px;
+  border: 1px solid var(--border-color);
+  padding: 2px 8px;
+  background: #fff;
+  color: var(--link-bright);
+  cursor: pointer;
+}
+
+.resource-list-pagination button[aria-current] {
+  border-color: var(--link-bright);
+  background: var(--link-bright);
+  color: #fff;
+}

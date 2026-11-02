@@ -1,0 +1,68 @@
+/* Category Cards — title, description and a "Learn more" button per card.
+   Phones stack plain blocks (heading/paragraph margins collapse, as on the live site);
+   from 768px the cards are equal-height flex columns. */
+.category-cards {
+  padding-bottom: 112px;
+}
+
+.category-cards ul {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.category-cards li {
+  margin: 10px;
+}
+
+.category-cards h2 {
+  margin: 20.75px 0;
+  color: var(--text-color);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.category-cards .category-cards-description p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.category-cards a.category-cards-cta:any-link {
+  box-sizing: border-box;
+  display: block;
+  width: 150px;
+  padding: 13px 20px;
+  border-radius: 2px;
+  background-color: var(--brand-blue);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 0.15s ease;
+}
+
+.category-cards a.category-cards-cta:hover,
+.category-cards a.category-cards-cta:focus-visible {
+  background-color: var(--brand-blue-hover);
+  color: #fff;
+}
+
+@media (width >= 768px) {
+  .category-cards ul {
+    flex-flow: row wrap;
+    justify-content: space-between;
+  }
+
+  .category-cards li {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30%;
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/flow-cytometry/software",
+  "path": "flow-cytometry/software",
+  "timestamp": "2026-10-30T10:16:25.022Z",
+  "title": "Flow Cytometry Analysis Software",
+  "template": "software-category",
+  "blocks": [
+    "product-tiles",
+    "product-tiles"
+  ]
+}

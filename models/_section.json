@@ -33,6 +33,22 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Light Grey Band",
+              "value": "light-grey"
+            },
+            {
+              "name": "Contained",
+              "value": "contained"
+            },
+            {
+              "name": "Sidebar",
+              "value": "sidebar"
+            },
+            {
+              "name": "Fine Print",
+              "value": "fine-print"
             }
           ]
         }
@@ -59,7 +75,17 @@
         "content-product-detail",
         "content-product-form",
         "product-banner",
-        "quote"
+        "quote",
+        "category-cards",
+        "product-tiles",
+        "link-list",
+        "marketo-form",
+        "product-hero",
+        "page-tabs",
+        "feature-columns",
+        "spec-table",
+        "resource-list",
+        "related-products"
       ]
     }
   ]

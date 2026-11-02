@@ -24,7 +24,17 @@
       "content-product-detail",
       "content-product-form",
       "product-banner",
-      "quote"
+      "quote",
+      "category-cards",
+      "product-tiles",
+      "link-list",
+      "marketo-form",
+      "product-hero",
+      "page-tabs",
+      "feature-columns",
+      "spec-table",
+      "resource-list",
+      "related-products"
     ]
   },
   {
@@ -43,6 +53,12 @@
     "id": "carousel",
     "components": [
       "carousel-item"
+    ]
+  },
+  {
+    "id": "category-cards",
+    "components": [
+      "category-card"
     ]
   },
   {
@@ -67,9 +83,39 @@
     ]
   },
   {
+    "id": "feature-columns",
+    "components": [
+      "feature-column"
+    ]
+  },
+  {
     "id": "form-request",
     "components": [
       "form-request-item"
+    ]
+  },
+  {
+    "id": "product-tiles",
+    "components": [
+      "product-tile"
+    ]
+  },
+  {
+    "id": "related-products",
+    "components": [
+      "related-product"
+    ]
+  },
+  {
+    "id": "resource-list",
+    "components": [
+      "resource"
+    ]
+  },
+  {
+    "id": "spec-table",
+    "components": [
+      "spec-row"
     ]
   },
   {

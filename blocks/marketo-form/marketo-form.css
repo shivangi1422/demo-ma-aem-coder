@@ -1,0 +1,194 @@
+/* Marketo Form — heading + grey panel holding the embedded Marketo form.
+   Values follow the live product page; selectors are doubled up where Marketo's own
+   forms2 stylesheets would otherwise win. */
+
+/* Marketo's generated markup uses camelCase class names we cannot change */
+/* stylelint-disable selector-class-pattern, declaration-no-important */
+.marketo-form .marketo-form-title {
+  margin: 25px 0;
+  color: var(--text-color);
+  font-size: 25px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-align: center;
+}
+
+.marketo-form .marketo-form-panel {
+  min-height: 200px;
+  padding: 30px;
+  border-radius: 3px;
+  background-color: var(--surface-form);
+}
+
+.marketo-form .marketo-form-panel .mktoForm {
+  width: 100% !important;
+  margin: 0 !important;
+  padding: 0 !important;
+  color: var(--text-input);
+  font-family: var(--body-font-family) !important;
+  font-size: 13px !important;
+  line-height: 21.45px;
+}
+
+.marketo-form .mktoForm .mktoOffset,
+.marketo-form .mktoForm .mktoGutter,
+.marketo-form .mktoForm .mktoClear,
+.marketo-form .mktoForm .mktoCaptchaDisclaimer {
+  display: none !important;
+}
+
+.marketo-form .mktoForm .mktoFormRow,
+.marketo-form .mktoForm .mktoFormCol,
+.marketo-form .mktoForm .mktoFieldWrap {
+  float: none !important;
+  width: 100% !important;
+  min-height: 0 !important;
+}
+
+.marketo-form .mktoForm .mktoFormCol {
+  margin-bottom: 15px !important;
+}
+
+.marketo-form .mktoForm .mktoLabel {
+  position: relative;
+  display: block !important;
+  float: none !important;
+  width: fit-content !important;
+  margin-bottom: 5px;
+  padding: 2.6px 12.5px 3.9px 0 !important;
+  color: #3b363b;
+  font-family: var(--body-font-family) !important;
+  font-size: 13px !important;
+  font-weight: 500 !important;
+  line-height: 11.7px !important;
+}
+
+/* required marker sits after the label text in red (required fields only) */
+.marketo-form .mktoForm .mktoLabel .mktoAsterix {
+  display: none !important;
+}
+
+.marketo-form .mktoForm .mktoRequiredField .mktoLabel .mktoAsterix {
+  position: absolute;
+  top: 5px;
+  right: 2px;
+  display: block !important;
+  float: none !important;
+  padding: 0 !important;
+  color: var(--brand-red) !important;
+  font-weight: 700;
+}
+
+.marketo-form .mktoForm input[type='text'],
+.marketo-form .mktoForm input[type='email'],
+.marketo-form .mktoForm input[type='tel'],
+.marketo-form .mktoForm input[type='number'],
+.marketo-form .mktoForm select.mktoField,
+.marketo-form .mktoForm textarea.mktoField {
+  box-sizing: border-box !important;
+  float: none !important;
+  width: 100% !important;
+  height: 32px;
+  margin: 0;
+  padding: 5px 10px !important;
+  border: 1px solid #d9d9d1 !important;
+  border-radius: 0 !important;
+  background-color: #fff;
+  box-shadow: none !important;
+  color: var(--text-input);
+  font-family: var(--body-font-family) !important;
+  font-size: 12px !important;
+  line-height: 14.4px !important;
+}
+
+.marketo-form .mktoForm select.mktoField {
+  background-color: var(--surface-form);
+  font-size: 16px !important;
+}
+
+.marketo-form .mktoForm textarea.mktoField {
+  height: 70px !important;
+  border-color: #9fa4aa !important;
+}
+
+.marketo-form .mktoForm .mktoHtmlText {
+  width: 100% !important;
+  color: var(--text-color);
+  font-size: 13px;
+  line-height: 19.5px;
+}
+
+.marketo-form .mktoForm .mktoHtmlText a:any-link {
+  color: var(--link-color);
+}
+
+/* consent radios: label on the left, options to its right */
+.marketo-form .mktoForm .mktoFieldWrap:has(.mktoRadioList) {
+  display: flex;
+  align-items: flex-start;
+}
+
+.marketo-form .mktoForm .mktoFieldWrap:has(.mktoRadioList) > .mktoLabel {
+  flex: 0 0 auto;
+  white-space: nowrap;
+}
+
+.marketo-form .mktoForm .mktoRadioList {
+  flex: 1 1 auto;
+  float: none !important;
+  width: auto !important;
+  margin-left: 5px;
+  padding: 3.9px !important;
+}
+
+.marketo-form .mktoForm .mktoRadioList > input {
+  float: left;
+  width: 13px;
+  height: 13px;
+  margin: 0;
+}
+
+.marketo-form .mktoForm .mktoRadioList > label {
+  margin: 1.2px 0 10px 18px !important;
+  white-space: nowrap;
+  color: var(--text-input);
+  font-size: 12px !important;
+  line-height: 10.8px !important;
+}
+
+.marketo-form .mktoForm .mktoButtonRow {
+  display: flex !important;
+  justify-content: flex-end;
+}
+
+.marketo-form .mktoForm .mktoButtonWrap {
+  margin-left: 0 !important;
+}
+
+.marketo-form .mktoForm .mktoButtonWrap .mktoButton {
+  padding: 13px 20px !important;
+  border: 0 !important;
+  border-radius: 3px !important;
+  background: var(--brand-blue) !important;
+  box-shadow: rgb(0 0 0 / 25%) 1.25px 2.5px 5px 0 !important;
+  color: #fff !important;
+  font-family: var(--body-font-family) !important;
+  font-size: 13.5px !important;
+  font-weight: 500;
+  line-height: 22.275px !important;
+  cursor: pointer;
+}
+
+.marketo-form .mktoForm .mktoButtonWrap .mktoButton:hover {
+  background: var(--brand-blue-hover) !important;
+}
+
+@media (width >= 992px) {
+  .marketo-form .marketo-form-panel {
+    padding: 20px;
+  }
+}
+
+.marketo-form .mktoForm .mktoError .mktoErrorMsg {
+  font-family: var(--body-font-family);
+}

@@ -1,0 +1,68 @@
+/* Breadcrumbs — auto block built from the page path; hidden on phones like the live site */
+main > .section.breadcrumbs-container {
+  display: none;
+}
+
+main > .section.breadcrumbs-container > .breadcrumbs-wrapper {
+  padding-top: 25px;
+  padding-bottom: 10px;
+}
+
+.breadcrumbs ol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: 12px;
+  line-height: 24px;
+  color: var(--text-color);
+}
+
+.breadcrumbs li {
+  position: relative;
+  padding-right: 30px;
+}
+
+/* light chevron between items */
+.breadcrumbs li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  width: 5px;
+  height: 5px;
+  border-top: 1.5px solid var(--chevron-light);
+  border-right: 1.5px solid var(--chevron-light);
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.breadcrumbs a:any-link {
+  color: var(--text-muted);
+  font-weight: 300;
+  opacity: 0.9;
+  text-decoration: none;
+  transition: color 0.2s ease-in-out;
+}
+
+.breadcrumbs a:hover,
+.breadcrumbs a:focus-visible {
+  color: var(--brand-teal);
+  text-decoration: none;
+}
+
+.breadcrumbs li[aria-current='page'] {
+  color: var(--text-muted);
+  font-weight: 700;
+}
+
+@media (width >= 768px) {
+  main > .section.breadcrumbs-container {
+    display: block;
+  }
+
+  main > .section.breadcrumbs-container > .breadcrumbs-wrapper {
+    padding-left: 50px;
+    padding-right: 50px;
+  }
+}

@@ -1,0 +1,61 @@
+/*
+ * Beckman Coulter Life Sciences (mybeckman.in) design tokens,
+ * taken from the computed styles of the live site.
+ */
+
+:root {
+  /* brand colors */
+  --brand-blue: #007acb;
+  --brand-blue-hover: #0065a7;
+  --brand-blue-active: #204d74;
+  --brand-red: #ea1c2c;
+  --brand-red-hover: #cf1322;
+  --brand-red-dark: #bb1623;
+  --brand-navy: #001726;
+  --brand-teal: #0099ab;
+
+  /* neutrals */
+  --text-color: #4d4d4d;
+  --text-muted: #5c5c5c;
+  --text-subtle: #8e8d8d;
+  --text-faint: #b7b6b6;
+  --text-input: #333;
+  --border-color: #ddd;
+  --border-light: #e0e0e0;
+  --border-input: #ccc;
+  --surface-hover: #f2f5f7;
+  --surface-input: #f4f4f4;
+  --surface-search: #f5f5f5;
+  --surface-band: #f5f7fa;
+  --surface-form: #f0f0f0;
+  --border-tile: #dadada;
+  --tile-title: #003040;
+  --tile-text: #4a4a4a;
+  --chevron-light: #dcdcdc;
+  --chevron-grey: #afafaf;
+  --overlay-color: rgb(0 0 0 / 50%);
+  --overlay-mobile: rgb(0 0 0 / 65%);
+
+  /* product detail pages (software-product-detail template) */
+  --heading-navy: #001728;
+  --heading-accent: #59baff;
+  --link-bright: #168cdb;
+  --check-green: #05a379;
+  --border-faint: #f0f0f0;
+  --border-spec: #dedede;
+  --surface-spec: #fafafa;
+  --arrow-grey: #7d868c;
+  --tab-shadow: rgb(0 0 0 / 20%) 0 8px 6px -6px;
+
+  /* fonts: Gotham is the licensed brand face (served by cloud.typography for
+     whitelisted domains); Montserrat is a metrically close open-source fallback */
+  --brand-font: 'Gotham A', 'Gotham B', gotham, montserrat, montserrat-fallback, arial, sans-serif;
+
+  /* layout */
+  --content-max-width: 1600px;
+  --content-padding-mobile: 15px;
+  --content-padding-desktop: 65px;
+  --product-padding-desktop: 50px;
+  --header-height-mobile: 113px;
+  --header-height-desktop: 123px;
+}
