@@ -797,6 +797,11 @@ var CustomImportScript = (() => {
         'img[width="1"][height="1"]'
         // tracking pixels
       ]);
+      element.querySelectorAll('img[src*="/pimassets/"]').forEach((img) => {
+        const src = img.getAttribute("src");
+        const path = src.replace(/^(https?:)?(\/\/www\.mybeckman\.in)?\/pimassets\//, "/");
+        if (path !== src) img.setAttribute("src", `https://plytix-files.com${path}`);
+      });
       const SITE_ROOT = "/sai";
       const MIGRATED = [
         "/software",

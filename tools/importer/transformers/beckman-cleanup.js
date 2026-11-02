@@ -150,6 +150,15 @@ export default function transform(hookName, element, payload) {
       'img[width="1"][height="1"]', // tracking pixels
     ]);
 
+    // Product images under www.mybeckman.in/pimassets only redirect to the PIM file host,
+    // and the site's bot protection blocks server-side fetches, so AEM preview can't
+    // ingest them: point them at the file host directly
+    element.querySelectorAll('img[src*="/pimassets/"]').forEach((img) => {
+      const src = img.getAttribute('src');
+      const path = src.replace(/^(https?:)?(\/\/www\.mybeckman\.in)?\/pimassets\//, '/');
+      if (path !== src) img.setAttribute('src', `https://plytix-files.com${path}`);
+    });
+
     // The migrated pages live under the "sai" site root: links to them point there
     const SITE_ROOT = '/sai';
     const MIGRATED = [
