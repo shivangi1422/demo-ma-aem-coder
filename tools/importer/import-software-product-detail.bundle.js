@@ -802,6 +802,15 @@ var CustomImportScript = (() => {
         const path = src.replace(/^(https?:)?(\/\/www\.mybeckman\.in)?\/pimassets\//, "/");
         if (path !== src) img.setAttribute("src", `https://plytix-files.com${path}`);
       });
+      element.querySelectorAll('img[src*="media.beckman.com"]').forEach((img) => {
+        try {
+          const url = new URL(img.getAttribute("src"));
+          const rev = url.searchParams.get("rev");
+          url.search = rev ? `?rev=${rev}` : "";
+          img.setAttribute("src", url.href);
+        } catch (e) {
+        }
+      });
       const SITE_ROOT = "/sai";
       const MIGRATED = [
         "/software",

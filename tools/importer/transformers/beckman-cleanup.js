@@ -159,6 +159,18 @@ export default function transform(hookName, element, payload) {
       if (path !== src) img.setAttribute('src', `https://plytix-files.com${path}`);
     });
 
+    // media.beckman.com images: keep only the required ?rev= version. The AEM package
+    // conversion turns image URLs into AEM Assets paths and keeps anything after the first
+    // query parameter (&la=hi&h=600&w=600&hash=…) in the file name, which then can't be found
+    element.querySelectorAll('img[src*="media.beckman.com"]').forEach((img) => {
+      try {
+        const url = new URL(img.getAttribute('src'));
+        const rev = url.searchParams.get('rev');
+        url.search = rev ? `?rev=${rev}` : '';
+        img.setAttribute('src', url.href);
+      } catch (e) { /* leave unparsable sources alone */ }
+    });
+
     // The migrated pages live under the "sai" site root: links to them point there
     const SITE_ROOT = '/sai';
     const MIGRATED = [
