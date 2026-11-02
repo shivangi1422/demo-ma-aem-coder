@@ -1,0 +1,38 @@
+{
+  "variantName": "table-comparison",
+  "baseBlock": "table",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "feature-by-plan comparison rendered as an accessible table with grouped plan headers and included/optional markers",
+    "layout": "group header bars spanning their plan columns, plan-name row, feature rows with a left label column; horizontal scroll below ~700px",
+    "markers": "● solid dot = included, ○ outlined circle = optional at additional charge (visually-hidden text labels)"
+  },
+  "contentPattern": {
+    "structure": "every row has the same number of cells (6 in the UE model); row 1: group headers (first cell empty, a group label followed by empty cells for each further column it spans; optional); row 2: plan names (first cell empty); rows 3+: feature label + one value per plan (● included, ○ optional at additional charge, free text such as 10% Off, or empty)",
+    "rows": [
+      ["", "Warranty Period", "", "", "Post-Warranty Period", ""],
+      ["", "WA - Warranty", "EW - Extension Warranty", "SU - StartUp Care*", "PV1 - Preventative Plus", "PT - Protective"],
+      ["Labor and Travel for Repair", "●", "●", "●", "", "●"]
+    ]
+  },
+  "options": [
+    {
+      "class": "highlight",
+      "label": "Highlight last column"
+    }
+  ],
+  "memberVariantIds": [
+    "table-comparison"
+  ],
+  "usage": {
+    "pagesUsing": [
+      "/service/plans/centrifuge",
+      "/service/plans/flow-cytometry",
+      "/service/plans/liquid-handling",
+      "/service/plans/particle-analysis"
+    ],
+    "reuseCount": 4,
+    "lastUsed": "2026-11-02"
+  },
+  "reuseGuidance": "Use for tabular feature-by-plan (or feature-by-product) comparisons with ●/○ markers. Legend paragraphs (\"● included\", \"○ optional at additional charge\") go as default content directly after the block in the same section."
+}

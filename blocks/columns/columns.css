@@ -105,3 +105,22 @@
     min-width: 0;
   }
 }
+
+/* Video column: a lone link to a supported video host becomes a 16:9 iframe */
+.columns > div > .columns-video-col {
+  align-self: stretch;
+}
+
+.columns .columns-video {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+}
+
+.columns .columns-video iframe {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}

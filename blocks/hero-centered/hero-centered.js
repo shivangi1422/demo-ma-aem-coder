@@ -19,7 +19,9 @@ function optimizedPicture(img) {
 /**
  * Decorates the hero-centered block: a full-bleed background photo behind a
  * centered heading, intro text and CTA.
- * Authored structure: row 1 = image (optional), row 2 = text (heading, paragraph, link).
+ * Authored structure: row 1 = image (optional), row 2 = text (heading, optional
+ * subheading or paragraph, one or more links; bold link = solid primary button,
+ * italic or plain link = outlined button).
  * @param {Element} block
  */
 export default function decorate(block) {
@@ -52,6 +54,18 @@ export default function decorate(block) {
     if (a && p.children.length === 1 && p.textContent.trim() === a.textContent.trim()) {
       a.classList.add('button');
       p.classList.add('button-wrapper');
+    }
+  });
+
+  // Consecutive buttons (e.g. "Choose a Plan" + "Contact Support") sit side by side.
+  content.querySelectorAll(':scope > .button-wrapper').forEach((p) => {
+    if (p.previousElementSibling?.classList.contains('hero-centered-actions')) {
+      p.previousElementSibling.append(p);
+    } else if (p.nextElementSibling?.classList.contains('button-wrapper')) {
+      const actions = document.createElement('div');
+      actions.className = 'hero-centered-actions';
+      p.replaceWith(actions);
+      actions.append(p);
     }
   });
 

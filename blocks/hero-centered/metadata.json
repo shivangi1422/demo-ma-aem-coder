@@ -24,10 +24,11 @@
   ],
   "usage": {
     "pagesUsing": [
-      "/service"
+      "/service",
+      "/service/plans/centrifuge"
     ],
-    "reuseCount": 1,
-    "lastUsed": "2026-10-30"
+    "reuseCount": 2,
+    "lastUsed": "2026-11-02"
   },
   "reuseGuidance": "Use for a page-top banner with a photo background and centered text plus CTA. For split or solid banners use hero (Style: split, banner)."
 }

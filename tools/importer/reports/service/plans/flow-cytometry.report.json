@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service/plans/flow-cytometry",
+  "path": "service/plans/flow-cytometry",
+  "timestamp": "2026-11-02T10:01:30.405Z",
+  "title": "Flow Cytometry",
+  "template": "service-plan-detail",
+  "blocks": [
+    "hero-centered",
+    "table-comparison",
+    "columns",
+    "columns-cta"
+  ]
+}

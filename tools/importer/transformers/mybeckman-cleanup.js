@@ -44,6 +44,31 @@ export default function transform(hookName, element, payload) {
       'input[type="hidden"]',
     ]);
 
+    // Breadcrumb container (breadcrumbs are rebuilt from the URL via page metadata)
+    element.querySelectorAll('div.container.custome-container').forEach((el) => {
+      if (el.querySelector('nav.breadcrumbs')) el.remove();
+    });
+    removeAll(element, ['nav.breadcrumbs']);
+
+    // Wistia player chrome: keep the .wistia_embed element (and its
+    // wistia_async_<id> class) so the columns parser can read the media id.
+    element.querySelectorAll('.wistia_embed, [class*="wistia_async_"]').forEach((embed) => {
+      const thumb = embed.querySelector('.w-chrome img[src*="wistia"], img[alt="Video Thumbnail"]');
+      embed.querySelectorAll('.w-chrome, [id^="wistia_chrome_"], [id^="wistia_grid_"], video, .w-vulcan-v2')
+        .forEach((el) => el.remove());
+      // Preserve the poster thumbnail as a direct child for optional use by the parser
+      if (thumb && !embed.contains(thumb)) embed.appendChild(thumb);
+    });
+    removeAll(element, ['.wistia_video_foam_dummy', 'wistia-tag-manager']);
+
+    // Plan table footnote spacer: <p><span>&nbsp;</span></p>
+    element.querySelectorAll('.footnotes > p').forEach((p) => {
+      if (!p.textContent.replace(/ /g, ' ').trim() && !p.querySelector('img, a[href]')) p.remove();
+    });
+
+    // <br> spacers in two-column .col-md-6 cells (centrifuge additional services)
+    element.querySelectorAll('.col-md-6 br').forEach((br) => br.remove());
+
     // Empty layout spacers
     element.querySelectorAll('div.container.custome-container').forEach((el) => {
       if (isEmpty(el)) el.remove();
@@ -54,6 +79,8 @@ export default function transform(hookName, element, payload) {
     element.querySelectorAll('#content-holder').forEach((el) => {
       if (isEmpty(el)) el.remove();
     });
+    // Empty .bc-rich-text spacers (liquid-handling / particle-analysis) must not
+    // become empty sections
     element.querySelectorAll('.bc-rich-text').forEach((el) => {
       if (isEmpty(el)) el.remove();
     });
@@ -80,6 +107,21 @@ export default function transform(hookName, element, payload) {
       'form',
       'button',
     ]);
+
+    // Default-content buttons (e.g. "Get Help Now"): parsers have already turned
+    // block content into tables, so remaining .btn links are default content.
+    // Bold = primary button, italic = secondary (project decorateButtons).
+    element.querySelectorAll('a.btn-primary, a.btn-secondary').forEach((a) => {
+      if (a.closest('table, strong, em')) return;
+      const wrap = element.ownerDocument.createElement(a.classList.contains('btn-secondary') ? 'em' : 'strong');
+      a.replaceWith(wrap);
+      wrap.append(a);
+      if (!wrap.parentElement || wrap.parentElement.tagName !== 'P') {
+        const p = element.ownerDocument.createElement('p');
+        wrap.replaceWith(p);
+        p.append(wrap);
+      }
+    });
 
     // Tracking / data attributes (keep data-excat-* markers for the sections transformer)
     element.querySelectorAll('*').forEach((el) => {

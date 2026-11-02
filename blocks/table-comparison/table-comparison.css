@@ -1,0 +1,135 @@
+/* Table Comparison — feature-by-plan comparison table with group header bars,
+   ●/○ markers and an optional highlighted last column. */
+.table-comparison .table-comparison-scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.table-comparison .table-comparison-scroll:focus-visible {
+  outline: 2px solid #0097ce;
+  outline-offset: 2px;
+}
+
+.table-comparison table {
+  width: 100%;
+  min-width: 700px;
+  border-collapse: collapse;
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.table-comparison th,
+.table-comparison td {
+  padding: 10px 8px;
+  border: 0;
+  text-align: center;
+  vertical-align: middle;
+}
+
+/* group header bars */
+.table-comparison thead th.table-comparison-group {
+  padding: 8px;
+  background-color: #004666;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* plan names */
+.table-comparison thead th[scope="col"] {
+  border-bottom: 2px solid #000;
+  font-weight: 700;
+}
+
+.table-comparison .table-comparison-corner {
+  border-bottom: 2px solid #000;
+}
+
+/* feature labels */
+.table-comparison tbody th[scope="row"] {
+  min-width: 170px;
+  font-weight: 700;
+  text-align: left;
+}
+
+.table-comparison tbody th,
+.table-comparison tbody td {
+  border-bottom: 1px solid #778081;
+}
+
+.table-comparison tbody td {
+  border-left: 1px solid #778081;
+}
+
+/* white gap between plan groups */
+.table-comparison .table-comparison-group-start,
+.table-comparison tbody td.table-comparison-group-start {
+  border-left: 12px solid #fff;
+}
+
+/* ● included / ○ optional */
+.table-comparison .table-comparison-marker,
+.table-comparison-wrapper + .default-content-wrapper .table-comparison-marker {
+  display: inline-block;
+  box-sizing: border-box;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+.table-comparison .table-comparison-dot,
+.table-comparison-wrapper + .default-content-wrapper .table-comparison-dot {
+  background-color: currentcolor;
+}
+
+.table-comparison .table-comparison-circle,
+.table-comparison-wrapper + .default-content-wrapper .table-comparison-circle {
+  border: 1px solid currentcolor;
+}
+
+.table-comparison .table-comparison-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* legend paragraphs (default content right after the block) */
+.table-comparison-wrapper + .default-content-wrapper p.table-comparison-legend {
+  margin: 4px 0;
+  color: #888;
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+/* Highlight option: frame the last plan column */
+.table-comparison.highlight thead tr:last-child > th:last-child {
+  border-top: 5px solid #0097ce;
+  border-right: 5px solid #0097ce;
+  border-left: 5px solid #0097ce;
+  color: #0097ce;
+}
+
+.table-comparison.highlight tbody td:last-child {
+  border-right: 5px solid #0097ce;
+  border-left: 5px solid #0097ce;
+  color: #0097ce;
+}
+
+.table-comparison.highlight tbody tr:last-child > td:last-child {
+  border-bottom: 5px solid #0097ce;
+}
+
+@media (width >= 900px) {
+  .table-comparison table {
+    font-size: 14px;
+  }
+}

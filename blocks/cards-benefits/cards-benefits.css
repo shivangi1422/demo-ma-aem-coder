@@ -1,0 +1,85 @@
+/* Cards Benefits — intro panel + icon/title/description benefit list.
+   Text colour comes from the section style (e.g. white on the blue section). */
+.cards-benefits {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.cards-benefits .cards-benefits-intro > :first-child {
+  margin-top: 0;
+}
+
+.cards-benefits .cards-benefits-intro h2 {
+  margin: 0 0 20px;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.cards-benefits .cards-benefits-intro p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.cards-benefits .cards-benefits-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-benefits .cards-benefits-list > li {
+  margin: 0 0 24px;
+  break-inside: avoid;
+}
+
+.cards-benefits .cards-benefits-list > li > p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.cards-benefits .cards-benefits-list > li > p.cards-benefits-title {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin: 0;
+}
+
+.cards-benefits .cards-benefits-title .icon {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 16px;
+  height: 16px;
+}
+
+.cards-benefits .cards-benefits-title .icon img {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+@media (width >= 600px) {
+  /* column-major flow: items fill the left column first, then the right */
+  .cards-benefits .cards-benefits-list {
+    column-count: 2;
+    column-gap: 40px;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-benefits {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 40px;
+  }
+
+  .cards-benefits .cards-benefits-intro {
+    flex: 1 1 0;
+  }
+
+  .cards-benefits .cards-benefits-list {
+    flex: 2 1 0;
+  }
+}

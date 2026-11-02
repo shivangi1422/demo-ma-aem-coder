@@ -135,6 +135,59 @@ export function decorateButtons(main) {
 }
 
 /**
+ * Gives sections an id from their "anchor" section metadata, so in-page links
+ * (e.g. a hero CTA pointing at #getInTouch) can target them.
+ * @param {Element} main The main element
+ */
+function decorateSectionAnchors(main) {
+  main.querySelectorAll(':scope > .section[data-anchor]').forEach((section) => {
+    const id = section.dataset.anchor.trim().replace(/^#/, '');
+    if (id) section.id = id;
+  });
+}
+
+/**
+ * Prepends a breadcrumb trail built from the URL path (Home > Service > Plans)
+ * when the page metadata "breadcrumbs" is true. Built eagerly from the path
+ * alone, so it needs no fetch and causes no layout shift.
+ * @param {Element} main The main element
+ */
+function buildBreadcrumbs(main) {
+  if (getMetadata('breadcrumbs').toLowerCase() !== 'true') return;
+  const segments = window.location.pathname.replace(/(\.plain)?\.html$/, '').split('/').filter(Boolean);
+  if (!segments.length) return;
+
+  const label = (segment) => decodeURIComponent(segment)
+    .split('-')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+  const crumbs = [{ text: 'Home', href: '/' }, ...segments.map((segment, i) => ({
+    text: label(segment),
+    href: `/${segments.slice(0, i + 1).join('/')}`,
+  }))];
+
+  const nav = document.createElement('nav');
+  nav.className = 'breadcrumbs';
+  nav.setAttribute('aria-label', 'Breadcrumb');
+  const ol = document.createElement('ol');
+  crumbs.forEach((crumb, i) => {
+    const li = document.createElement('li');
+    if (i === crumbs.length - 1) {
+      li.textContent = crumb.text;
+      li.setAttribute('aria-current', 'page');
+    } else {
+      const a = document.createElement('a');
+      a.href = crumb.href;
+      a.textContent = crumb.text;
+      li.append(a);
+    }
+    ol.append(li);
+  });
+  nav.append(ol);
+  main.prepend(nav);
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -143,8 +196,10 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  decorateSectionAnchors(main);
   decorateBlocks(main);
   decorateButtons(main);
+  buildBreadcrumbs(main);
 }
 
 /**

@@ -26,7 +26,15 @@
       "product-banner",
       "quote",
       "hero-centered",
-      "cards-stats"
+      "cards-stats",
+      "cards-benefits",
+      "table-comparison"
+    ]
+  },
+  {
+    "id": "cards-benefits",
+    "components": [
+      "cards-benefits-item"
     ]
   },
   {
@@ -78,6 +86,12 @@
     "id": "form-request",
     "components": [
       "form-request-item"
+    ]
+  },
+  {
+    "id": "table-comparison",
+    "components": [
+      "table-comparison-row"
     ]
   },
   {

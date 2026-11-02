@@ -17,9 +17,10 @@ Repeating rows — one row per item. Each item: row 1: optional heading/intro te
 | Insights (intro + text cards) | `insights` |
 | Simple (4-up: image + tag + title + link) | `simple` |
 | Features (centered, borderless, no image) | `features` |
+| Products (large image + H3 title + Read More button) | `products` |
 
 ## Universal Editor fields
 
 - Content fields derived from the block's decorate contract.
-- `classes` select for options: Solutions (image + category + link), Product Lines (image + title), Insights (intro + text cards), Simple (4-up: image + tag + title + link), Features (centered, borderless, no image).
+- `classes` select for options: Solutions (image + category + link), Product Lines (image + title), Insights (intro + text cards), Simple (4-up: image + tag + title + link), Features (centered, borderless, no image), Products (large image + H3 title + Read More button).
 - A separate `-item` model defines one repeated item.

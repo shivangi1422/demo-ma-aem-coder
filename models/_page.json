@@ -21,6 +21,30 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "boolean",
+          "valueType": "boolean",
+          "name": "breadcrumbs",
+          "label": "Show Breadcrumbs",
+          "description": "Shows a Home > … breadcrumb trail built from the page URL"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "template",
+          "label": "Template",
+          "description": "Page-level styling preset",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Service Plans",
+              "value": "service-plans"
+            }
+          ]
         }
       ]
     }

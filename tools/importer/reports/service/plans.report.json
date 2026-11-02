@@ -1,0 +1,16 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service/plans",
+  "path": "service/plans",
+  "timestamp": "2026-11-02T10:01:20.576Z",
+  "title": "Plans",
+  "template": "service-plans",
+  "blocks": [
+    "cards-benefits",
+    "cards-grid-products",
+    "columns",
+    "columns",
+    "columns",
+    "columns-cta"
+  ]
+}

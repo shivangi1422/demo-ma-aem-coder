@@ -1,0 +1,33 @@
+{
+  "variantName": "cards-benefits",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "intro panel beside a list of short benefits, each an icon + bold title + description",
+    "layout": "desktop: intro in the left third, benefits flowing column-first in two columns on the right; tablet: intro above two benefit columns; mobile: single column stack",
+    "background": "inherits the section style (blue section with white text on /service/plans)"
+  },
+  "contentPattern": {
+    "structure": "row 1: intro cell (H2 + paragraph), optional; then one row per benefit: one cell with a title paragraph (:check-circle: icon token + bold title) and a description paragraph",
+    "rows": [
+      [
+        "heading, paragraph"
+      ],
+      [
+        ":check-circle: **title** paragraph, description paragraph"
+      ]
+    ]
+  },
+  "options": [],
+  "memberVariantIds": [
+    "cards-benefits"
+  ],
+  "usage": {
+    "pagesUsing": [
+      "/service/plans"
+    ],
+    "reuseCount": 1,
+    "lastUsed": "2026-11-02"
+  },
+  "reuseGuidance": "Use for a short list of icon + bold title + description benefits next to an intro. For linked tiles with images or icons use cards-grid; for numeric highlights use cards-stats."
+}

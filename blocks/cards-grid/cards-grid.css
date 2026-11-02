@@ -487,3 +487,69 @@
     margin: 10px;
   }
 }
+
+/* ============================================================
+   PRODUCTS — single left-aligned column: large product photo,
+   H3 title, Read More button; no borders or shadows
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+
+/* products sits in the normal content column (excluded from the full-bleed rule in styles.css) */
+.cards-grid.products ul {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+}
+
+.cards-grid.products ul > li {
+  border: 0;
+  overflow: visible;
+}
+
+.cards-grid.products .cards-grid-image img {
+  width: auto;
+  max-width: min(100%, 422px);
+  height: auto;
+  object-fit: contain;
+}
+
+.cards-grid.products .cards-grid-body {
+  gap: 0;
+  padding: 0;
+  font-family: var(--body-font-family);
+}
+
+.cards-grid.products .cards-grid-body h3 {
+  margin: 25px 0;
+  color: #4d4d4d;
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.cards-grid.products .cards-grid-body p {
+  margin: 0 0 12px;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.cards-grid.products .cards-grid-body p.cards-grid-action {
+  margin: 0;
+}
+
+.cards-grid.products .cards-grid-action a.button:any-link {
+  margin: 0;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 2px;
+  background-color: #007acb;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+}
+
+.cards-grid.products .cards-grid-action a.button:hover {
+  background-color: #005f9e;
+}
+/* stylelint-enable no-descending-specificity */

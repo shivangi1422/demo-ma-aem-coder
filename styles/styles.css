@@ -329,6 +329,117 @@ main > .section:first-of-type {
   margin-top: 0;
 }
 
+/* breadcrumb trail built from the URL (page metadata "breadcrumbs: true"),
+   hidden on phones like the source site */
+main > .breadcrumbs {
+  display: none;
+}
+
+@media (width >= 600px) {
+  main > .breadcrumbs {
+    display: block;
+    padding: 10px 50px;
+    color: #5c5c5c;
+    font-size: 12px;
+    line-height: 24px;
+  }
+
+  main > .breadcrumbs ol {
+    display: flex;
+    flex-wrap: wrap;
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+
+  main > .breadcrumbs li + li::before {
+    content: '';
+    display: inline-block;
+    width: 4px;
+    height: 4px;
+    margin: 0 14px 1px 12px;
+    border-top: 2px solid #dcdcdc;
+    border-right: 2px solid #dcdcdc;
+    transform: rotate(45deg);
+  }
+
+  main > .breadcrumbs a:any-link {
+    color: #5c5c5c;
+    font-weight: 300;
+    text-decoration: none;
+  }
+
+  main > .breadcrumbs a:hover {
+    color: #0099ab;
+  }
+
+  main > .breadcrumbs [aria-current="page"] {
+    font-weight: 700;
+  }
+}
+
+/* Pages with template "service-plans" (page metadata): the source site's type
+   scale, text colour, brand-blue buttons and 1170px content column. Block styles
+   (hero-centered, cards-benefits, columns cta, ...) are more specific and win. */
+.service-plans main {
+  color: #4d4d4d;
+}
+
+.service-plans main > .section > div {
+  max-width: 1234px;
+}
+
+.service-plans main h1 {
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.service-plans main h2 {
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.service-plans main h3 {
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.service-plans main a.button.primary:any-link {
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 2px;
+  background-color: #007acb;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+.service-plans main a.button.primary:hover,
+.service-plans main a.button.primary:focus-visible {
+  background-color: #005f9e;
+}
+
+@media (width >= 900px) {
+  /* two-column image cells are cropped to the source's 350px band */
+  .service-plans main .columns:not(.cta) .columns-img-col img {
+    height: 350px;
+    object-fit: cover;
+  }
+
+  .service-plans main .columns:not(.cta) > div {
+    gap: 30px;
+  }
+
+  /* text-only column pairs line up at the top, like the source */
+  .service-plans main .columns:not(.cta) > div:not(:has(.columns-img-col, .columns-video-col)) {
+    align-items: flex-start;
+  }
+}
+
 @media (width >= 900px) {
   main > .section > div {
     padding: 0 32px;
@@ -366,6 +477,22 @@ main > .section:has(> div > .content-product-form) > div,
 main > .section:has(> div > .product-banner) > div {
   max-width: none;
   padding: 0;
+}
+
+/* product plan cards are not full-bleed: keep the normal section spacing and content column */
+main > .section:has(> div > .cards-grid.products) {
+  margin: 40px 0;
+}
+
+main > .section:has(> div > .cards-grid.products) > div {
+  max-width: 1200px;
+  padding: 0 24px;
+}
+
+@media (width >= 900px) {
+  main > .section:has(> div > .cards-grid.products) > div {
+    padding: 0 32px;
+  }
 }
 
 /* section metadata */

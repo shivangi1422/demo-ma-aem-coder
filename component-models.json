@@ -20,6 +20,30 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "boolean",
+        "valueType": "boolean",
+        "name": "breadcrumbs",
+        "label": "Show Breadcrumbs",
+        "description": "Shows a Home > … breadcrumb trail built from the page URL"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "description": "Page-level styling preset",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Service Plans",
+            "value": "service-plans"
+          }
+        ]
       }
     ]
   },
@@ -129,6 +153,12 @@
         "description": "The label shown for this section in the Content Tree"
       },
       {
+        "component": "text",
+        "name": "anchor",
+        "label": "Anchor",
+        "description": "Optional id for in-page links, e.g. getInTouch for a #getInTouch link"
+      },
+      {
         "component": "multiselect",
         "name": "style",
         "label": "Style",
@@ -146,6 +176,30 @@
             "value": "centered"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "cards-benefits",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Intro (heading + text)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-benefits-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text (first paragraph: :check-circle: + bold title; then description)",
+        "valueType": "string"
       }
     ]
   },
@@ -185,6 +239,10 @@
           {
             "name": "Features (centered, borderless, no image)",
             "value": "features"
+          },
+          {
+            "name": "Products (large image + H3 title + Read More button)",
+            "value": "products"
           }
         ]
       }
@@ -629,6 +687,70 @@
         "value": "",
         "label": "Attribution",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-comparison",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Highlight last column",
+            "value": "highlight"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "table-comparison-row",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column1",
+        "label": "Column 1 (feature label; empty in header rows)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column2",
+        "label": "Column 2 (● included, ○ optional, text or empty)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column3",
+        "label": "Column 3 (● included, ○ optional, text or empty)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column4",
+        "label": "Column 4 (● included, ○ optional, text or empty)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column5",
+        "label": "Column 5 (● included, ○ optional, text or empty)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column6",
+        "label": "Column 6 (● included, ○ optional, text or empty)",
+        "value": ""
       }
     ]
   },

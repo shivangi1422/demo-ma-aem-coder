@@ -1,0 +1,37 @@
+{
+  "variantName": "columns",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "fixed set of different content pieces side by side (image | text, text | text, text | video, contact CTAs)",
+    "layout": "stacked on mobile, equal-width columns from 900px; image columns sit first on mobile; a video column is a responsive 16:9 iframe filling the column width"
+  },
+  "contentPattern": {
+    "structure": "one row, one cell per column; a cell holding only a picture is an image column; a cell holding only a link to fast.wistia.net / fast.wistia.com / youtube.com / youtu.be / player.vimeo.com becomes a lazy-loaded video embed; other cells are text (headings, paragraphs, lists, links). Style cta: each cell = lone link (rendered as button) + short paragraph",
+    "rows": [
+      [
+        "image | text | video link",
+        "text"
+      ]
+    ]
+  },
+  "options": [
+    {
+      "class": "cta",
+      "label": "Call to action (button over text, centered)"
+    }
+  ],
+  "memberVariantIds": [
+    "columns"
+  ],
+  "usage": {
+    "pagesUsing": [
+      "/service",
+      "/service/plans",
+      "/service/plans/centrifuge"
+    ],
+    "reuseCount": 3,
+    "lastUsed": "2026-11-02"
+  },
+  "reuseGuidance": "Use for a fixed set of 2-3 different content pieces side by side that do not repeat as a list. Use Style cta for contact/action buttons over short text. For repeating look-alike items use cards-grid."
+}

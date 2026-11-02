@@ -26,6 +26,12 @@
           "description": "The label shown for this section in the Content Tree"
         },
         {
+          "component": "text",
+          "name": "anchor",
+          "label": "Anchor",
+          "description": "Optional id for in-page links, e.g. getInTouch for a #getInTouch link"
+        },
+        {
           "component": "multiselect",
           "name": "style",
           "label": "Style",
@@ -69,7 +75,9 @@
         "product-banner",
         "quote",
         "hero-centered",
-        "cards-stats"
+        "cards-stats",
+        "cards-benefits",
+        "table-comparison"
       ]
     }
   ]

@@ -37,6 +37,7 @@ function decorateIconCell(cell) {
  *   - .cards-grid.solutions    heading + 3-up cards (image, category, title, link)
  *   - .cards-grid.productlines heading + 3-up cards (image, title, desc)
  *   - .cards-grid.insights     intro panel + stacked text cards (two-column)
+ *   - .cards-grid.products     single column: large product image, H3 title, Read More button
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
  * @param {Element} block
  */
@@ -172,6 +173,18 @@ export default function decorate(block) {
   });
 
   decorateIcons(ul);
+
+  // Products: a lone link in its own paragraph ("Read More") is the card's button,
+  // even when it was authored without bold/italic formatting.
+  if (block.classList.contains('products')) {
+    ul.querySelectorAll('.cards-grid-body > p').forEach((p) => {
+      const a = p.querySelector(':scope > a');
+      if (a && p.children.length === 1 && p.textContent.trim() === a.textContent.trim()) {
+        a.classList.add('button');
+        p.classList.add('button-wrapper', 'cards-grid-action');
+      }
+    });
+  }
 
   const children = [];
   // an empty heading row (icon-card grids have none) renders nothing

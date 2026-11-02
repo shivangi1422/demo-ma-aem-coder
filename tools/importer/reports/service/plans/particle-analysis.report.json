@@ -1,0 +1,13 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service/plans/particle-analysis",
+  "path": "service/plans/particle-analysis",
+  "timestamp": "2026-11-02T10:01:36.449Z",
+  "title": "Particle Analysis",
+  "template": "service-plan-detail",
+  "blocks": [
+    "hero-centered",
+    "table-comparison",
+    "columns-cta"
+  ]
+}

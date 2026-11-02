@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service/plans/liquid-handling",
+  "path": "service/plans/liquid-handling",
+  "timestamp": "2026-11-02T10:01:32.939Z",
+  "title": "Liquid Handling",
+  "template": "service-plan-detail",
+  "blocks": [
+    "table-comparison",
+    "columns-cta"
+  ]
+}
