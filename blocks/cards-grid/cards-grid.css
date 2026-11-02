@@ -399,3 +399,91 @@
     flex: 1;
   }
 }
+
+/* icon cards (e.g. service offerings): bordered tiles, icon + linked title + text, centered rows */
+.cards-grid.cards-grid-icons {
+  box-sizing: border-box;
+  max-width: 1170px;
+  margin: 0 auto;
+  padding: 4vw 8vw 0;
+}
+
+.cards-grid.cards-grid-icons ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.cards-grid.cards-grid-icons ul > li {
+  box-sizing: border-box;
+  flex: 0 1 330px;
+  margin: 10px;
+  padding: 40px;
+  border: 2px solid #f0f3f5;
+  overflow: visible;
+}
+
+.cards-grid.cards-grid-icons ul > li:hover {
+  background-color: #f0f3f5;
+}
+
+.cards-grid.cards-grid-icons .cards-grid-icon {
+  height: 50.35px; /* source icon line box: 48px glyph on the 26.4px text baseline */
+  line-height: 0;
+}
+
+.cards-grid.cards-grid-icons .cards-grid-icon .icon {
+  display: inline-block;
+  width: 60px;
+  height: 48px;
+}
+
+.cards-grid.cards-grid-icons .cards-grid-icon .icon img {
+  width: auto;
+  max-width: 60px;
+  height: 48px;
+}
+
+.cards-grid.cards-grid-icons .cards-grid-body {
+  display: block;
+  padding: 0;
+  font-family: var(--body-font-family);
+}
+
+.cards-grid.cards-grid-icons .cards-grid-body h4 {
+  margin: 19.95px 0;
+  font-family: var(--body-font-family);
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.cards-grid.cards-grid-icons .cards-grid-body h4 a:any-link {
+  color: #007acb;
+  text-decoration: none;
+}
+
+/* stylelint-disable-next-line no-descending-specificity -- icon cards never combine with the solutions style */
+.cards-grid.cards-grid-icons .cards-grid-body p {
+  margin: 16px 0;
+  color: #007acb;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+@media (width >= 600px) {
+  .cards-grid.cards-grid-icons {
+    padding: 2vw;
+  }
+
+  .cards-grid.cards-grid-icons ul > li {
+    margin: 2px 2px 0 0;
+  }
+}
+
+@media (width >= 900px) {
+  .cards-grid.cards-grid-icons ul > li {
+    margin: 10px;
+  }
+}
