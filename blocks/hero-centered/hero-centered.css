@@ -14,6 +14,8 @@
   justify-content: center;
   min-height: 540px;
   overflow: hidden;
+  background-color: #000;
+  color: #fff;
   text-align: center;
 }
 
@@ -48,10 +50,6 @@
   width: 100%;
   max-width: 1200px;
   padding: 10px;
-}
-
-.hero-centered.hero-centered-has-image .hero-centered-content {
-  color: #fff;
 }
 
 .hero-centered .hero-centered-content h1,

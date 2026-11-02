@@ -84,6 +84,11 @@
   }
 }
 
+/* the source site hides the page scrollbar; scrolling still works */
+html {
+  scrollbar-width: none;
+}
+
 body {
   display: none;
   margin: 0;
