@@ -2,7 +2,8 @@
 /* global WebImporter */
 
 /**
- * Parser for columns-cta. Base: columns.
+ * Parser for columns-cta, emitted as the Columns block with the cta option
+ * (Universal Editor always renders Columns-type blocks as "columns").
  * Source: https://www.mybeckman.in/service
  * Selectors: #getInTouch .Contact__body, .Contact .Contact__body
  * Model: columns (no field hints for Columns blocks).
@@ -32,6 +33,6 @@ export default function parse(element, { document }) {
   });
 
   const cells = [row];
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns-cta', cells });
+  const block = WebImporter.Blocks.createBlock(document, { name: 'Columns (cta)', cells });
   element.replaceWith(block);
 }

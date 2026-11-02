@@ -1,3 +1,5 @@
+import { fetchSiteFragment } from '../../scripts/scripts.js';
+
 // media query match that indicates desktop width
 const isDesktop = window.matchMedia('(width >= 1200px)');
 
@@ -5,14 +7,12 @@ const isDesktop = window.matchMedia('(width >= 1200px)');
 const FLYOUT_WIDTH = 300;
 
 /**
- * Fetches the nav fragment as plain HTML (metadata-independent dual fetch).
- * /content/nav.plain.html serves local preview, /nav.plain.html serves DA/EDS.
+ * Fetches the nav fragment as plain HTML (nearest to the page, see fetchSiteFragment).
  * @returns {Promise<Element|null>} container with the nav sections
  */
 async function fetchNav() {
-  let resp = await fetch('/content/nav.plain.html');
-  if (!resp.ok) resp = await fetch('/nav.plain.html');
-  if (!resp.ok) return null;
+  const resp = await fetchSiteFragment('nav');
+  if (!resp) return null;
   const container = document.createElement('div');
   container.innerHTML = await resp.text();
   // resolve relative image paths against the fragment location
@@ -22,6 +22,136 @@ async function fetchNav() {
     img.loading = 'eager';
   });
   return container;
+}
+
+// utility dropdown icons for headings authored without an image (keyed by heading id)
+const TOOL_ICONS = {
+  contact: 'nav-phone',
+  account: 'nav-user',
+  'language-and-location': 'flag-in',
+};
+
+function iconImg(name, alt = '') {
+  const img = document.createElement('img');
+  img.src = `${window.hlx?.codeBasePath || ''}/icons/${name}.svg`;
+  img.alt = alt;
+  img.loading = 'eager';
+  return img;
+}
+
+/**
+ * Flattens a cascade level the way the menu expects it: titled groups become a
+ * title item followed by their links, and every item opening a sub-level gets a
+ * mobile "view all" title + link at the top of that sub-level.
+ * @param {Element} list cascade level list
+ */
+function normalizeCascade(list) {
+  [...list.children].forEach((li) => {
+    const sub = li.querySelector(':scope > ul');
+    if (sub && !li.querySelector(':scope > a')) {
+      li.after(...sub.children);
+      sub.remove();
+    }
+  });
+  [...list.children].forEach((li) => {
+    const link = li.querySelector(':scope > a');
+    const sub = li.querySelector(':scope > ul');
+    if (!link || !sub) return;
+    normalizeCascade(sub);
+    const title = document.createElement('li');
+    title.textContent = link.textContent.trim();
+    const viewAll = document.createElement('li');
+    viewAll.append(link.cloneNode(true));
+    sub.prepend(title, viewAll);
+  });
+}
+
+/**
+ * Converts the Universal Editor nav (brand, search + actions, menu, utility
+ * headings) into the six-section structure the header decorates:
+ * brand, search, actions, sections, tools, menu.
+ * @param {Element} fragment nav sections container
+ */
+function normalizeNav(fragment) {
+  const sections = [...fragment.children];
+  if (sections.length >= 6) return;
+
+  // icons rendered as spans by the authoring pipeline become images
+  fragment.querySelectorAll('span.icon').forEach((span) => {
+    const name = [...span.classList].find((c) => c.startsWith('icon-'))?.slice(5);
+    if (!name) return;
+    const link = span.closest('a');
+    span.replaceWith(iconImg(name, link?.title || ''));
+    link?.removeAttribute('title');
+  });
+
+  // search and actions authored in one section: split them
+  const combined = sections[1];
+  const searchLink = combined && [...combined.querySelectorAll('a')].find((a) => /search/i.test(a.getAttribute('href')));
+  if (searchLink && combined.querySelectorAll('a').length > 1) {
+    const search = document.createElement('div');
+    const p = searchLink.closest('p') || searchLink;
+    if (!searchLink.querySelector('img')) searchLink.prepend(iconImg('nav-search', 'Search'));
+    search.append(p);
+    combined.before(search);
+  }
+
+  // menu: unwrap richtext paragraphs inside list items, then shape the cascades
+  const menuList = fragment.children[3]?.querySelector(':scope > ul');
+  if (menuList) {
+    menuList.querySelectorAll('li > p').forEach((p) => p.replaceWith(...p.childNodes));
+    [...menuList.children].forEach((top) => {
+      const sub = top.querySelector(':scope > ul');
+      if (sub && [...sub.children].some((li) => li.querySelector(':scope > a'))) normalizeCascade(sub);
+    });
+  }
+
+  // utilities authored as headings + content: one dropdown per heading
+  const tools = fragment.children[4];
+  if (tools && tools.querySelector(':scope > h2, :scope > h3, :scope > h4')) {
+    const list = document.createElement('ul');
+    let items = null;
+    let label = null;
+    const flushLabel = () => {
+      if (!label) return;
+      const li = document.createElement('li');
+      li.append(...label.childNodes);
+      items.append(li);
+      label = null;
+    };
+    [...tools.children].forEach((el) => {
+      if (/^H[2-4]$/.test(el.tagName)) {
+        if (items) flushLabel();
+        const tool = document.createElement('li');
+        const icon = TOOL_ICONS[el.id];
+        tool.append(icon ? iconImg(icon, el.textContent.trim()) : el.textContent.trim());
+        items = document.createElement('ul');
+        tool.append(items);
+        list.append(tool);
+      } else if (!items) {
+        // content before the first heading has no dropdown to go into
+      } else if (el.tagName === 'UL' && label) {
+        // a plain label followed by a list is a select
+        const li = document.createElement('li');
+        li.append(...label.childNodes, el);
+        items.append(li);
+        label = null;
+      } else if (el.tagName === 'UL') {
+        items.append(...el.children);
+      } else {
+        flushLabel();
+        if (el.tagName === 'P' && !el.children.length) {
+          label = el;
+        } else {
+          const li = document.createElement('li');
+          li.append(...el.childNodes);
+          items.append(li);
+        }
+      }
+    });
+    if (items) flushLabel();
+    tools.replaceChildren(list);
+  }
 }
 
 /**
@@ -63,6 +193,7 @@ function closePanels(nav) {
     const trigger = item.querySelector(':scope > button');
     if (trigger) trigger.setAttribute('aria-expanded', 'false');
     item.querySelectorAll('.nav-has-sub.is-open').forEach((sub) => sub.classList.remove('is-open'));
+    item.querySelectorAll('.nav-flyout-list.is-shifted').forEach((l) => l.classList.remove('is-shifted'));
     const panel = item.querySelector(':scope > .nav-panel-cascade');
     if (panel) panel.style.width = '';
   });
@@ -92,6 +223,8 @@ function openFlyout(sub) {
     sibling.querySelectorAll('.is-open').forEach((d) => d.classList.remove('is-open'));
   });
   sub.classList.add('is-open');
+  // mobile: slide the current level out so the sub-level takes its place
+  if (!isDesktop.matches) sub.parentElement.classList.add('is-shifted');
   const panel = sub.closest('.nav-panel-cascade');
   if (panel && isDesktop.matches) {
     const depth = panel.querySelectorAll('.nav-has-sub.is-open').length;
@@ -100,11 +233,35 @@ function openFlyout(sub) {
 }
 
 /**
+ * Adds a back button (mobile) to a sub-level list, labelled with the level it returns to.
+ * @param {Element} li list item owning the sub-level
+ * @param {Element} subList sub-level list
+ * @param {string} rootLabel label of the top-level trigger
+ */
+function addBackButton(li, subList, rootLabel) {
+  const owner = li.parentElement.closest('li');
+  const ownerLink = owner && owner.querySelector(':scope > a');
+  const back = document.createElement('li');
+  back.className = 'nav-flyout-back';
+  const button = document.createElement('button');
+  button.type = 'button';
+  button.textContent = ownerLink ? ownerLink.textContent.trim() : rootLabel;
+  button.addEventListener('click', (e) => {
+    e.stopPropagation();
+    li.classList.remove('is-open');
+    li.parentElement.classList.remove('is-shifted');
+  });
+  back.append(button);
+  subList.prepend(back);
+}
+
+/**
  * Builds a cascading flyout panel from a nested link list.
  * @param {Element} list top-level list of the panel
+ * @param {string} rootLabel label of the top-level trigger
  * @returns {Element} panel
  */
-function buildCascadePanel(list) {
+function buildCascadePanel(list, rootLabel) {
   const panel = document.createElement('div');
   panel.className = 'nav-panel nav-panel-cascade';
   list.classList.add('nav-flyout-list');
@@ -116,6 +273,7 @@ function buildCascadePanel(list) {
     if (parentLink && ((link && link.getAttribute('href') === parentLink.getAttribute('href'))
       || (!link && ownText(li) === parentLink.textContent.trim()))) {
       li.classList.add('nav-mobile-only');
+      if (link) link.classList.add('nav-view-all');
     }
     const subList = li.querySelector(':scope > ul');
     if (subList) {
@@ -135,6 +293,9 @@ function buildCascadePanel(list) {
     } else if (!li.querySelector(':scope > a')) {
       li.classList.add('nav-flyout-title');
     }
+  });
+  list.querySelectorAll('.nav-has-sub').forEach((li) => {
+    addBackButton(li, li.querySelector(':scope > ul'), rootLabel);
   });
   panel.append(list);
   return panel;
@@ -187,14 +348,15 @@ function decorateSections(section, nav) {
     if (!subList) return;
     // link lists open as a cascade, titled groups render as columns
     const isCascade = [...subList.children].some((item) => item.querySelector(':scope > a'));
-    const panel = isCascade ? buildCascadePanel(subList) : buildColumnsPanel(subList);
+    const panel = isCascade ? buildCascadePanel(subList, label) : buildColumnsPanel(subList);
     panel.id = `nav-panel-${i}`;
     li.append(panel);
 
     li.addEventListener('mouseenter', () => { if (isDesktop.matches) openPanel(nav, li); });
     li.addEventListener('mouseleave', () => { if (isDesktop.matches) closePanels(nav); });
     trigger.addEventListener('click', () => {
-      if (li.getAttribute('aria-expanded') === 'true') closePanels(nav);
+      // desktop: click toggles the panel; mobile: rail tabs always switch to their panel
+      if (isDesktop.matches && li.getAttribute('aria-expanded') === 'true') closePanels(nav);
       else openPanel(nav, li);
     });
   });
@@ -225,7 +387,13 @@ function buildToolPanel(list) {
       const text = document.createElement('span');
       text.textContent = ownText(li);
       const select = document.createElement('select');
-      [...options.querySelectorAll(':scope > li > a')].forEach((a) => {
+      [...options.querySelectorAll(':scope > li')].forEach((opt) => {
+        const a = opt.querySelector(':scope > a');
+        // plain-text options carry no query value; the action link keeps its authored target
+        if (!a) {
+          select.append(new Option(opt.textContent.trim(), opt.textContent.trim()));
+          return;
+        }
         const [key, value] = new URL(a.getAttribute('href'), window.location).search.slice(1).split('=');
         select.name = key;
         const option = new Option(a.textContent.trim(), decodeURIComponent(value || ''));
@@ -258,7 +426,7 @@ function buildToolPanel(list) {
       panel.append(p);
     }
   });
-  if (selects.length && actionLink) {
+  if (selects.length && actionLink && selects.every((s) => s.name)) {
     const updateHref = () => {
       actionLink.href = `?${selects.map((s) => `${s.name}=${encodeURIComponent(s.value)}`).join('&')}`;
     };
@@ -293,6 +461,8 @@ function decorateTools(section, nav) {
       if (img) img.alt = '';
       trigger.append(icon);
       inlineSvg(img);
+    } else {
+      trigger.textContent = ownText(li);
     }
     const panel = subList ? buildToolPanel(subList) : null;
     li.textContent = '';
@@ -355,6 +525,7 @@ function decorateActions(section) {
     a.className = 'button primary';
     a.parentElement.replaceWith(a);
   });
+  section.querySelectorAll('a:not(.button)').forEach((a) => a.classList.add('nav-actions-link'));
 }
 
 /**
@@ -369,6 +540,12 @@ function toggleMenu(nav, forceExpanded = null) {
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   if (button) button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
   closePanels(nav);
+  const opening = !expanded && !isDesktop.matches;
+  // mobile drawer opens on the first menu tab, with the page dimmed behind it
+  const first = nav.querySelector('.nav-drop');
+  if (opening && first) openPanel(nav, first);
+  const overlay = nav.closest('header')?.querySelector('.nav-overlay');
+  if (overlay) overlay.classList.toggle('is-menu-open', opening);
 }
 
 function closeOnEscape(e) {
@@ -402,8 +579,9 @@ export default async function decorate(block) {
   const nav = document.createElement('nav');
   nav.id = 'nav';
   nav.setAttribute('aria-label', 'Main');
+  normalizeNav(fragment);
   const sections = [...fragment.children];
-  const classes = ['brand', 'search', 'actions', 'sections', 'tools'];
+  const classes = ['brand', 'search', 'actions', 'sections', 'tools', 'menu'];
   const named = {};
   classes.forEach((c, i) => {
     if (sections[i]) {
@@ -417,20 +595,23 @@ export default async function decorate(block) {
   if (named.sections) decorateSections(named.sections, nav);
   if (named.tools) decorateTools(named.tools, nav);
 
-  // hamburger for mobile
+  // hamburger for mobile (label from the mobile-only menu section)
   const hamburger = document.createElement('div');
   hamburger.className = 'nav-hamburger';
   hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
       <span class="nav-hamburger-icon"></span>
+      <span class="nav-hamburger-label"></span>
     </button>`;
+  hamburger.querySelector('.nav-hamburger-label').textContent = named.menu ? named.menu.textContent.trim() : 'Menu';
+  named.menu?.remove();
   hamburger.addEventListener('click', () => toggleMenu(nav));
 
   const top = document.createElement('div');
   top.className = 'nav-top';
-  top.append(hamburger, ...['brand', 'search', 'actions'].map((c) => named[c]).filter(Boolean));
+  top.append(...['brand', 'search', 'actions'].map((c) => named[c]).filter(Boolean));
   const bottom = document.createElement('div');
   bottom.className = 'nav-bottom';
-  bottom.append(...['sections', 'tools'].map((c) => named[c]).filter(Boolean));
+  bottom.append(hamburger, ...['sections', 'tools'].map((c) => named[c]).filter(Boolean));
   nav.append(top, bottom);
 
   nav.setAttribute('aria-expanded', 'false');
@@ -442,7 +623,10 @@ export default async function decorate(block) {
 
   const overlay = document.createElement('div');
   overlay.className = 'nav-overlay';
-  overlay.addEventListener('click', () => closePanels(nav));
+  overlay.addEventListener('click', () => {
+    if (!isDesktop.matches && nav.getAttribute('aria-expanded') === 'true') toggleMenu(nav, false);
+    else closePanels(nav);
+  });
 
   const navWrapper = document.createElement('div');
   navWrapper.className = 'nav-wrapper';

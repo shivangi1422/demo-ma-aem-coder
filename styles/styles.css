@@ -27,14 +27,14 @@
   --bc-grey: #667;
   --bc-surface: #f5f5f5;
   --bc-border: #e5e7eb;
-  --bc-brand-font: inter, var(--body-font-family);
+  --bc-brand-font: var(--body-font-family);
 
   /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
+  --body-font-family: montserrat, montserrat-fallback, sans-serif;
+  --heading-font-family: montserrat, montserrat-fallback, sans-serif;
 
   /* body sizes */
-  --body-font-size-m: 22px;
+  --body-font-size-m: 16px;
   --body-font-size-s: 19px;
   --body-font-size-xs: 17px;
 
@@ -46,27 +46,24 @@
   --heading-font-size-s: 24px;
   --heading-font-size-xs: 22px;
 
-  /* nav height */
-  --nav-height: 64px;
+  /* nav height: two-row mobile header (67px top bar + 46px menu bar) */
+  --nav-height: 113px;
 }
 
-/* fallback fonts */
+/* fallback font: Arial metrics adjusted to Montserrat to limit layout shift */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
-  src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
+  font-family: montserrat-fallback;
+  size-adjust: 113.39%;
+  ascent-override: 85.43%;
+  descent-override: 22.15%;
+  line-gap-override: 0%;
   src: local('Arial');
 }
 
 @media (width >= 900px) {
   :root {
     /* body sizes */
-    --body-font-size-m: 18px;
+    --body-font-size-m: 16px;
     --body-font-size-s: 16px;
     --body-font-size-xs: 14px;
 
@@ -94,7 +91,7 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: 1.65;
 }
 
 body.appear {
@@ -340,6 +337,7 @@ main > .section:first-of-type {
  * side padding, or vertical margin.
  */
 main > .section:has(> div > .hero),
+main > .section:has(> div > .hero-centered),
 main > .section:has(> div > .cards-grid),
 main > .section:has(> div > .carousel),
 main > .section:has(> div > .tabs-products),
@@ -352,6 +350,7 @@ main > .section:has(> div > .product-banner) {
 }
 
 main > .section:has(> div > .hero) > div,
+main > .section:has(> div > .hero-centered) > div,
 main > .section:has(> div > .cards-grid) > div,
 main > .section:has(> div > .carousel) > div,
 main > .section:has(> div > .tabs-products) > div,
@@ -365,6 +364,83 @@ main > .section:has(> div > .product-banner) > div {
 }
 
 /* section metadata */
+main .section.blue {
+  margin: 0;
+  padding: 28.8px 0;
+  background-color: #007acb;
+  color: #fff;
+}
+
+/* stats band: viewport-relative padding, no bottom padding on small screens (source) */
+main .section.blue:has(.cards-stats) {
+  padding: 0;
+}
+
+main .section.blue:has(.cards-stats) > .cards-stats-wrapper {
+  box-sizing: border-box;
+  padding: 4vw 8vw 0;
+}
+
+@media (width >= 600px) {
+  main .section.blue:has(.cards-stats) > .cards-stats-wrapper {
+    max-width: 1170px;
+    padding: 2vw;
+  }
+}
+
+/* contact band: spaced from the content above, viewport-relative padding (source) */
+main .section.blue:has(.columns.cta) {
+  margin-top: 40px;
+  padding: 4vw 0 2vw;
+}
+
+main .section.blue:has(.columns.cta) > div {
+  box-sizing: border-box;
+  max-width: 1170px;
+  padding: 0 8vw;
+}
+
+@media (width >= 600px) {
+  main .section.blue:has(.columns.cta) {
+    padding: 2vw 0 4vw;
+  }
+
+  main .section.blue:has(.columns.cta) > div {
+    padding: 0 2vw;
+  }
+}
+
+main .section.blue h1,
+main .section.blue h2,
+main .section.blue h3,
+main .section.blue h4,
+main .section.blue p,
+main .section.blue a:any-link {
+  color: #fff;
+}
+
+main .section.centered {
+  text-align: center;
+}
+
+main .section.blue .default-content-wrapper {
+  max-width: 1112px;
+}
+
+main .section.blue .default-content-wrapper h2 {
+  margin: 20.75px 0;
+  font-family: var(--body-font-family);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+main .section.blue .default-content-wrapper p {
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
 main .section.light,
 main .section.highlight {
   background-color: var(--light-color);

@@ -26,8 +26,7 @@
       "product-banner",
       "quote",
       "hero-centered",
-      "cards-stats",
-      "columns-cta"
+      "cards-stats"
     ]
   },
   {
@@ -52,12 +51,6 @@
     "id": "carousel",
     "components": [
       "carousel-item"
-    ]
-  },
-  {
-    "id": "columns-cta",
-    "components": [
-      "column"
     ]
   },
   {

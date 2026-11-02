@@ -9,7 +9,32 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  getMetadata,
 } from './aem.js';
+
+/**
+ * Fetches a site fragment (nav, footer) as plain HTML. Uses the page metadata
+ * path when set, otherwise the nearest one walking up from the page's folder,
+ * so pages under a sub-site (e.g. /vishal/service) get that sub-site's fragment.
+ * @param {string} name fragment name, also the metadata key
+ * @returns {Promise<Response|null>} the first successful response
+ */
+export async function fetchSiteFragment(name) {
+  const candidates = [];
+  const meta = getMetadata(name);
+  if (meta) candidates.push(new URL(meta, window.location).pathname.replace(/(\.plain)?\.html$/, ''));
+  const { pathname } = window.location;
+  const folders = pathname.slice(0, pathname.lastIndexOf('/') + 1).split('/').filter(Boolean);
+  for (let i = folders.length; i >= 0; i -= 1) {
+    candidates.push(`/${[...folders.slice(0, i), name].join('/')}`);
+  }
+  const tryNext = async ([path, ...rest]) => {
+    if (!path) return null;
+    const resp = await fetch(`${path}.plain.html`);
+    return resp.ok ? resp : tryNext(rest);
+  };
+  return tryNext([...new Set(candidates)]);
+}
 
 /**
  * Moves all the attributes from a given elmenet to another given element.

@@ -205,21 +205,6 @@
           }
         },
         {
-          "title": "Columns Cta",
-          "id": "columns-cta",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/columns/v1/columns",
-                "template": {
-                  "columns": "3",
-                  "rows": "1"
-                }
-              }
-            }
-          }
-        },
-        {
           "title": "Columns",
           "id": "columns",
           "plugins": {

@@ -1,4 +1,4 @@
-import { createOptimizedPicture } from '../../scripts/aem.js';
+import { createOptimizedPicture, decorateIcons } from '../../scripts/aem.js';
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
@@ -10,6 +10,25 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 function canOptimize(img) {
   const url = new URL(img.src, window.location.href);
   return url.origin === window.location.origin && !/\.svg$/i.test(url.pathname);
+}
+
+/**
+ * Turns a cell holding only icon tokens (e.g. ":user-plus:") into icon spans.
+ * Published pages already get span.icon from the pipeline; local previews keep the raw token.
+ * @param {Element} cell
+ * @returns {boolean} true when the cell is an icon cell
+ */
+function decorateIconCell(cell) {
+  if (cell.querySelector('span.icon') && !cell.textContent.trim()) return true;
+  const text = cell.textContent.trim();
+  if (!/^(:[a-z0-9-]+:\s*)+$/.test(text)) return false;
+  const names = text.match(/:([a-z0-9-]+):/g).map((t) => t.slice(1, -1));
+  cell.replaceChildren(...names.map((name) => {
+    const span = document.createElement('span');
+    span.className = `icon icon-${name}`;
+    return span;
+  }));
+  return true;
 }
 
 /**
@@ -118,11 +137,14 @@ export default function decorate(block) {
     while (row.firstElementChild) li.append(row.firstElementChild);
     [...li.children].forEach((div) => {
       // Drop empty cells (e.g. an unused image column) so no ghost boxes render.
-      if (!div.querySelector('picture, img') && div.textContent.trim() === '') {
+      if (!div.querySelector('picture, img, span.icon') && div.textContent.trim() === '') {
         div.remove();
         return;
       }
-      if (div.children.length === 1 && div.querySelector('picture')) {
+      if (decorateIconCell(div)) {
+        div.className = 'cards-grid-icon';
+        block.classList.add('cards-grid-icons');
+      } else if (div.children.length === 1 && div.querySelector('picture')) {
         div.className = 'cards-grid-image';
       } else {
         div.className = 'cards-grid-body';
@@ -149,8 +171,11 @@ export default function decorate(block) {
     img.closest('picture').replaceWith(optimized);
   });
 
+  decorateIcons(ul);
+
   const children = [];
-  if (headingRow) {
+  // an empty heading row (icon-card grids have none) renders nothing
+  if (headingRow && headingRow.textContent.trim()) {
     const heading = document.createElement('div');
     heading.className = 'cards-grid-heading';
     while (headingRow.firstElementChild) heading.append(headingRow.firstElementChild);

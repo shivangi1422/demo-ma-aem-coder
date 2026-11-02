@@ -45,6 +45,16 @@ export default function decorate(block) {
     });
   });
 
+  // A lone link in its own paragraph is the call-to-action button
+  // (also covers in-page anchors the global button decoration skips).
+  content.querySelectorAll(':scope > p').forEach((p) => {
+    const a = p.querySelector(':scope > a');
+    if (a && p.children.length === 1 && p.textContent.trim() === a.textContent.trim()) {
+      a.classList.add('button');
+      p.classList.add('button-wrapper');
+    }
+  });
+
   const children = [];
   if (background.firstElementChild) {
     block.classList.add('hero-centered-has-image');

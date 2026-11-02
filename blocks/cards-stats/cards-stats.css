@@ -1,40 +1,57 @@
-/* Cards Stats: borderless row of text-only stats (bold value + small label).
-   Structural only; colours come from the section style and the design pass. */
+/* Cards Stats: row of text-only stats (bold value + small label).
+   Text colour comes from the section style (e.g. white on the blue section). */
 
 .cards-stats > ul {
   list-style: none;
   margin: 0;
   padding: 0;
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 24px 32px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
 }
 
 .cards-stats > ul > li {
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
+  margin: 10px;
+  padding-right: 10px;
   color: inherit;
 }
 
 .cards-stats .cards-stats-value,
 .cards-stats .cards-stats-label {
-  margin: 0;
   color: inherit;
+  font-size: 14px;
+  line-height: 1.65;
 }
 
 .cards-stats .cards-stats-value {
+  margin: 14px 0 0;
+}
+
+.cards-stats .cards-stats-value strong {
+  font-size: 24px;
   font-weight: 700;
-  font-size: var(--heading-font-size-s);
-  line-height: 1.2;
+  line-height: 1.65;
 }
 
 .cards-stats .cards-stats-label {
-  font-size: var(--body-font-size-xs);
+  margin: 0 0 14px;
 }
 
+/* tablet: one row of equal columns */
+@media (width >= 600px) {
+  .cards-stats > ul > li {
+    flex: 1 1 0;
+  }
+}
+
+/* desktop: content-sized stats spread across the row */
 @media (width >= 900px) {
   .cards-stats > ul {
-    grid-template-columns: repeat(auto-fit, minmax(0, 1fr));
+    justify-content: space-between;
+  }
+
+  .cards-stats > ul > li {
+    flex: 0 1 auto;
   }
 }

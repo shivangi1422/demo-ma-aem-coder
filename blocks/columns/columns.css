@@ -31,3 +31,77 @@
     order: unset;
   }
 }
+
+/* Call-to-action variant: equal centered columns, each a button over short text.
+   Text colour comes from the section style (e.g. white on the blue section). */
+.columns.cta {
+  margin: 0;
+}
+
+.columns.cta .columns-cta-row {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.columns.cta .columns-cta-col {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 20px 0;
+  text-align: center;
+}
+
+.columns.cta .columns-cta-col p {
+  margin: 14px 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.columns.cta .columns-cta-col p.columns-cta-action {
+  margin: 0;
+}
+
+.columns.cta .columns-cta-action a.button:any-link {
+  box-sizing: border-box;
+  display: inline-block;
+  width: 200px;
+  max-width: 100%;
+  margin: 0;
+  padding: 13px 20px;
+  border: 1px solid #fff;
+  border-radius: 2px;
+  background-color: #007acb;
+  box-shadow: 0 8px 15px 0 rgb(0 0 0 / 10%);
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+}
+
+.columns.cta .columns-cta-action a.button:hover {
+  background-color: #fff;
+  color: #007acb;
+}
+
+@media (width >= 600px) {
+  .columns.cta {
+    margin-top: 50px;
+  }
+
+  .columns.cta .columns-cta-row {
+    flex-flow: row wrap;
+    justify-content: space-around;
+    align-items: flex-start;
+    gap: 0;
+  }
+
+  .columns.cta .columns-cta-col {
+    flex: 0 1 30%;
+    min-width: 0;
+  }
+}

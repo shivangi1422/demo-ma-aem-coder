@@ -12,7 +12,7 @@ header {
   --nav-gutter: 50px;
 }
 
-/* header and nav layout */
+/* header and nav layout (mobile first) */
 header .nav-wrapper {
   position: fixed;
   z-index: 30;
@@ -65,35 +65,117 @@ header nav .nav-icon {
   fill: currentcolor;
 }
 
-/* top bar: hamburger, brand, search, actions */
+/* top bar: brand, search, actions */
 header nav .nav-top {
+  box-sizing: border-box;
   display: flex;
   align-items: center;
-  gap: 16px;
-  height: var(--nav-height);
-  padding: 0 20px;
+  gap: 18px;
+  height: 67px;
+  padding: 12px 10px;
+}
+
+header nav .nav-brand a {
+  display: flex;
+  align-items: center;
+  height: 42px;
 }
 
 header nav .nav-brand img {
   display: block;
-  width: auto;
-  height: 36px;
+  width: 99px;
+  height: auto;
 }
 
-header nav .nav-search,
+header nav .nav-search {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+header nav .nav-search-form {
+  position: relative;
+  margin: 0;
+}
+
+header nav .nav-search-form button {
+  position: absolute;
+  top: 3px;
+  left: 8px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 36px;
+  height: 36px;
+  color: var(--nav-text-color);
+}
+
+header nav .nav-search-form .nav-icon,
+header nav .nav-search-form img {
+  width: 16px;
+  height: 16px;
+}
+
+header nav .nav-search-form input {
+  box-sizing: border-box;
+  display: block;
+  width: 100%;
+  height: 42px;
+  padding: 0;
+  text-indent: 50px;
+  border: 1px solid #e5e5e5;
+  border-radius: 50px;
+  background-color: #f5f5f5;
+  color: #212121;
+  font: inherit;
+  font-size: 14px;
+  line-height: 36px;
+}
+
+header nav .nav-search-form input::placeholder {
+  color: #67768b;
+}
+
 header nav .nav-actions {
+  display: flex;
+  align-items: center;
+}
+
+header nav .nav-actions .nav-actions-link {
+  display: block;
+  color: var(--nav-primary-color);
+  font-size: 11.7px;
+  line-height: 1.65;
+  text-decoration: underline;
+}
+
+header nav .nav-actions a.button:any-link {
   display: none;
 }
 
-/* hamburger */
+/* bottom bar: menu button + utility tools */
+header nav .nav-bottom {
+  box-sizing: border-box;
+  display: flex;
+  justify-content: space-between;
+  height: 46px;
+  padding: 0 0 0 10px;
+  border-top: 1px solid var(--nav-border-color);
+}
+
+/* menu button (no morph: the drawer slides over it) */
 header nav .nav-hamburger {
   display: flex;
   align-items: center;
-  height: 22px;
 }
 
 header nav .nav-hamburger button {
-  height: 22px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  height: 46px;
+  padding: 10px 0;
+  color: var(--nav-text-color);
+  font-size: 15px;
 }
 
 header nav .nav-hamburger-icon,
@@ -102,79 +184,75 @@ header nav .nav-hamburger-icon::after {
   box-sizing: border-box;
   display: block;
   position: relative;
-  width: 20px;
+  width: 18px;
+  height: 2.5px;
+  border-radius: 1px;
+  background: currentcolor;
 }
 
 header nav .nav-hamburger-icon::before,
 header nav .nav-hamburger-icon::after {
   content: '';
   position: absolute;
-  background: currentcolor;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon,
-header nav[aria-expanded='false'] .nav-hamburger-icon::before,
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
-  height: 2px;
-  border-radius: 2px;
-  background: currentcolor;
-}
-
-header nav[aria-expanded='false'] .nav-hamburger-icon::before {
+header nav .nav-hamburger-icon::before {
   top: -6px;
 }
 
-header nav[aria-expanded='false'] .nav-hamburger-icon::after {
+header nav .nav-hamburger-icon::after {
   top: 6px;
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon {
-  height: 22px;
+/* menu drawer: dark tab rail + white content pane, slides in from the left */
+header nav .nav-sections {
+  position: fixed;
+  top: 0;
+  left: -100vw;
+  z-index: 45;
+  width: calc(60px + 74vw);
+  height: 100dvh;
+  visibility: hidden;
+  transition: left 0.2s cubic-bezier(0.61, 0, 0.71, 0.48), visibility 0s 0.2s;
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon::before,
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: 3px;
-  left: 1px;
-  transform: rotate(45deg);
-  transform-origin: 2px 1px;
-  width: 24px;
-  height: 2px;
-  border-radius: 2px;
+header nav[aria-expanded='true'] .nav-sections {
+  left: 0;
+  visibility: visible;
+  transition: left 0.4s cubic-bezier(0.29, 0.52, 0.39, 1);
 }
 
-header nav[aria-expanded='true'] .nav-hamburger-icon::after {
-  top: unset;
-  bottom: 3px;
-  transform: rotate(-45deg);
-}
-
-/* bottom bar: main navigation + utility tools (mobile: menu drawer) */
-header nav .nav-bottom {
-  display: none;
-}
-
-header nav[aria-expanded='true'] .nav-bottom {
-  display: block;
-  height: calc(100dvh - var(--nav-height));
+header nav .nav-sections-list {
+  width: 60px;
+  height: 100%;
   overflow-y: auto;
-  border-top: 1px solid var(--nav-border-color);
+  background-color: var(--nav-text-color);
+}
+
+header nav .nav-drop {
+  width: 60px;
+}
+
+header nav .nav-drop[aria-expanded='true'] {
+  background-color: var(--nav-primary-color);
 }
 
 header nav .nav-drop-trigger {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  width: 100%;
-  padding: 15px 20px;
-  border-bottom: 1px solid var(--nav-border-color);
-  color: var(--nav-text-color);
-  font-size: 14px;
+  display: block;
+  box-sizing: border-box;
+  width: 60px;
+  height: 50px;
+  padding: 15px 1px;
+  color: #fff;
+  font-size: 11px;
   font-weight: 500;
+  line-height: 1.85;
+  text-align: center;
+  white-space: normal;
 }
 
 header nav .nav-chevron {
-  display: inline-block;
+  display: none;
   width: 6px;
   height: 6px;
   margin: 0 0 4px 8px;
@@ -184,72 +262,145 @@ header nav .nav-chevron {
   transition: transform 0.15s ease;
 }
 
-header nav .nav-drop-trigger:hover,
-header nav .nav-drop[aria-expanded='true'] > .nav-drop-trigger {
-  color: var(--nav-link-hover-color);
-}
-
-header nav .nav-drop[aria-expanded='true'] .nav-chevron {
-  margin: 4px 0 0 8px;
-  border-color: var(--nav-link-hover-color);
-  transform: rotate(-135deg);
-}
-
 header nav .nav-panel {
   display: none;
 }
 
 header nav .nav-drop[aria-expanded='true'] > .nav-panel {
+  position: absolute;
+  top: 0;
+  left: 60px;
   display: block;
+  box-sizing: border-box;
+  width: 74vw;
+  height: 100%;
+  padding: 0;
+  overflow: hidden auto;
+  background-color: #fff;
 }
 
-header nav .nav-panel a:any-link,
-header nav .nav-panel-title,
-header nav .nav-flyout-title {
+header nav .nav-panel a:any-link {
+  position: relative;
   display: block;
-  padding: 9px 35px 9px 20px;
+  padding: 15px 35px 15px 0;
+  border-bottom: 1px solid var(--nav-border-color);
   color: var(--nav-text-color);
-  font-size: 13px;
+  font-size: 14px;
   line-height: 1.35;
+  white-space: normal;
 }
 
 header nav .nav-panel-title,
 header nav .nav-flyout-title {
-  padding: 9px 30px 3px 20px;
+  display: block;
+  padding: 10px 0 8px;
+  color: var(--nav-text-color);
   font-size: 10px;
   font-weight: 600;
+  line-height: 1.65;
   letter-spacing: 1.2px;
   text-transform: uppercase;
 }
 
-header nav .nav-panel a:hover {
-  color: var(--nav-link-hover-color);
-  text-decoration: underline;
+header nav .nav-panel-column {
+  padding: 10px 15px 0;
+}
+
+header nav .nav-panel-column + .nav-panel-column {
+  margin-top: 35px;
+}
+
+header nav .nav-panel-column a:any-link {
+  padding-right: 10px;
+}
+
+/* cascade on mobile: each level slides out to reveal the next one */
+header nav .nav-flyout-list {
+  position: relative;
+  box-sizing: border-box;
+  padding: 12px 15px 0;
+  background-color: #fff;
+  transition: transform 0.25s ease-in-out;
+}
+
+header nav .nav-flyout-list.is-shifted {
+  transform: translateX(-100%);
 }
 
 header nav .nav-has-sub > ul {
+  position: absolute;
+  top: 0;
+  left: 100%;
   display: none;
-  padding-left: 15px;
+  width: 100%;
+  padding: 13px 15px 0;
 }
 
 header nav .nav-has-sub.is-open > ul {
   display: block;
 }
 
+header nav .nav-has-sub > a::after {
+  content: '';
+  position: absolute;
+  top: calc(50% - 4px);
+  right: 10px;
+  width: 6px;
+  height: 6px;
+  border: solid #afafaf;
+  border-width: 0 1.5px 1.5px 0;
+  transform: rotate(-45deg);
+}
+
+header nav .nav-flyout-back button {
+  position: relative;
+  padding: 0 0 5px 17px;
+  color: var(--nav-primary-color);
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.75;
+}
+
+header nav .nav-flyout-back button::before {
+  content: '';
+  position: absolute;
+  top: calc(50% - 6px);
+  left: 2px;
+  width: 6px;
+  height: 6px;
+  border: solid currentcolor;
+  border-width: 0 0 2px 2px;
+  transform: rotate(45deg);
+}
+
+header nav .nav-panel .nav-view-all {
+  padding-right: 10px;
+}
+
+header nav .nav-view-all::after {
+  content: '\2192';
+  margin-left: 6px;
+  font-weight: 700;
+}
+
+/* utility tools */
 header nav .nav-tools-list {
   display: flex;
-  border-bottom: 1px solid var(--nav-border-color);
+  height: 100%;
 }
 
 header nav .nav-tool {
   position: relative;
-  border-right: 1px solid var(--nav-border-color);
+  border-left: 1px solid var(--nav-border-color);
 }
 
 header nav .nav-tool-trigger {
   display: block;
-  padding: 15px 25px;
+  box-sizing: border-box;
+  height: 100%;
+  padding: 15px 19px;
   color: var(--nav-text-color);
+  transition: color 0.15s ease, background-color 0.15s ease;
 }
 
 header nav .nav-tool-trigger img {
@@ -285,7 +436,7 @@ header nav .nav-tool[aria-expanded='true'] > .nav-tool-panel {
   display: flex;
   position: absolute;
   top: 100%;
-  left: 0;
+  right: 0;
   z-index: 2;
 }
 
@@ -352,7 +503,7 @@ header nav .nav-tool-panel a.button:hover {
   color: #fff;
 }
 
-/* page overlay behind the cascade flyout */
+/* page overlay: behind the open menu drawer (mobile) and the cascade flyout (desktop) */
 header .nav-overlay {
   position: fixed;
   inset: 0;
@@ -363,10 +514,27 @@ header .nav-overlay {
   transition: opacity 0.25s ease 0.1s;
 }
 
+header .nav-overlay.is-menu-open {
+  background: rgb(0 0 0 / 65%);
+  opacity: 1;
+  pointer-events: auto;
+  transition: opacity 0.25s ease;
+}
+
 header .nav-overlay.is-open {
   opacity: 1;
   pointer-events: auto;
   transition: opacity 0.25s ease;
+}
+
+@media (width >= 600px) {
+  header nav .nav-sections {
+    width: 360px;
+  }
+
+  header nav .nav-drop[aria-expanded='true'] > .nav-panel {
+    width: 300px;
+  }
 }
 
 @media (width >= 1200px) {
@@ -452,6 +620,7 @@ header .nav-overlay.is-open {
     color: #212121;
     font: inherit;
     font-size: 14px;
+    line-height: 36px;
   }
 
   header nav .nav-search-form input::placeholder {
@@ -471,22 +640,61 @@ header .nav-overlay.is-open {
     border-top: 0;
   }
 
-  header nav .nav-sections-list {
-    display: flex;
+  /* reset the mobile drawer: sections sit inline in the nav bar */
+  header nav .nav-sections,
+  header nav[aria-expanded='true'] .nav-sections {
+    position: static;
+    left: auto;
+    z-index: auto;
+    width: auto;
     height: 100%;
+    visibility: visible;
+    transition: none;
   }
 
-  header nav .nav-drop {
+  header nav .nav-sections-list {
+    display: flex;
+    width: auto;
+    height: 100%;
+    overflow: visible;
+    background-color: transparent;
+  }
+
+  header nav .nav-drop,
+  header nav .nav-drop[aria-expanded='true'] {
     display: block;
+    width: auto;
     padding: 13px 18px 13px 0;
+    background-color: transparent;
   }
 
   header nav .nav-drop-trigger {
     display: inline-flex;
+    align-items: center;
     width: auto;
+    height: auto;
     padding: 0;
     border: 0;
+    color: var(--nav-text-color);
+    font-size: 14px;
     line-height: 1.85;
+    text-align: left;
+    white-space: nowrap;
+  }
+
+  header nav .nav-drop-trigger:hover,
+  header nav .nav-drop[aria-expanded='true'] > .nav-drop-trigger {
+    color: var(--nav-link-hover-color);
+  }
+
+  header nav .nav-chevron {
+    display: inline-block;
+  }
+
+  header nav .nav-drop[aria-expanded='true'] .nav-chevron {
+    margin: 4px 0 0 8px;
+    border-color: var(--nav-link-hover-color);
+    transform: rotate(-135deg);
   }
 
   /* megamenu panels: closed panels are removed from layout, open panels fade in */
@@ -501,6 +709,7 @@ header .nav-overlay.is-open {
     width: 100vw;
     height: var(--nav-panel-height);
     max-height: calc(100vh - 100px);
+    padding: 0;
     overflow: hidden auto;
     border-top: 1px solid var(--nav-border-color);
     background-color: #fff;
@@ -528,11 +737,22 @@ header .nav-overlay.is-open {
   header nav .nav-panel-column {
     flex: 0 0 var(--nav-flyout-width);
     box-sizing: border-box;
-    padding-top: 15px;
+    padding: 15px 0 0;
     border-left: 1px solid var(--nav-border-color);
   }
 
   header nav .nav-panel a:any-link {
+    padding: 9px 25px;
+    border-bottom: 0;
+    font-size: 13px;
+    line-height: 1.35;
+  }
+
+  header nav .nav-panel-column + .nav-panel-column {
+    margin-top: 0;
+  }
+
+  header nav .nav-panel-column a:any-link {
     padding: 9px 25px;
   }
 
@@ -550,8 +770,17 @@ header .nav-overlay.is-open {
     box-sizing: border-box;
     width: var(--nav-flyout-width);
     height: 100%;
-    padding-top: 15px;
+    padding: 15px 0 0;
     background-color: #fff;
+    transition: none;
+  }
+
+  header nav .nav-flyout-list.is-shifted {
+    transform: none;
+  }
+
+  header nav .nav-flyout-back {
+    display: none;
   }
 
   header nav .nav-panel-cascade > .nav-flyout-list {
@@ -565,8 +794,9 @@ header .nav-overlay.is-open {
     top: -1px;
     left: calc(100% + 1px);
     display: none;
+    width: var(--nav-flyout-width);
     height: calc(100% + 1px);
-    padding-left: 0;
+    padding: 15px 0 0;
     border-top: 1px solid var(--nav-border-color);
     border-left: 1px solid var(--nav-border-color);
   }
@@ -590,6 +820,10 @@ header .nav-overlay.is-open {
 
   header nav .nav-has-sub > a:any-link {
     position: relative;
+  }
+
+  header nav .nav-has-sub > a::after {
+    content: none;
   }
 
   header nav .nav-has-sub > a:hover,
@@ -649,6 +883,7 @@ header .nav-overlay.is-open {
 
   header nav .nav-tool[aria-expanded='true'] > .nav-tool-panel {
     top: 100%;
+    right: auto;
     left: 50%;
     transform: translateX(-50%);
   }
@@ -666,8 +901,7 @@ header .nav-overlay.is-open {
     gap: 25px;
   }
 
-  /* stylelint-disable-next-line no-descending-specificity -- different element than panel links */
-  header nav .nav-actions p > a:any-link {
+  header nav .nav-actions .nav-actions-link {
     display: block;
     color: var(--nav-primary-color);
     font-size: 11.7px;
@@ -675,7 +909,7 @@ header .nav-overlay.is-open {
     text-decoration: underline;
   }
 
-  header nav .nav-actions p > a:not(.button):hover {
+  header nav .nav-actions .nav-actions-link:hover {
     text-decoration: none;
   }
 
