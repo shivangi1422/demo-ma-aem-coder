@@ -50,12 +50,42 @@
           "label": "Style",
           "value": "solutions",
           "options": [
-            { "name": "Solutions (image + category + link)", "value": "solutions" },
-            { "name": "Product Lines (image + title)", "value": "productlines" },
-            { "name": "Insights (intro + text cards)", "value": "insights" },
-            { "name": "Simple (4-up: image + tag + title + link)", "value": "simple" },
-            { "name": "Features (centered, borderless, no image)", "value": "features" },
-            { "name": "Products (large image + H3 title + Read More button)", "value": "products" }
+            {
+              "name": "Solutions (image + category + link)",
+              "value": "solutions"
+            },
+            {
+              "name": "Product Lines (image + title)",
+              "value": "productlines"
+            },
+            {
+              "name": "Insights (intro + text cards)",
+              "value": "insights"
+            },
+            {
+              "name": "Simple (4-up: image + tag + title + link)",
+              "value": "simple"
+            },
+            {
+              "name": "Features (centered, borderless, no image)",
+              "value": "features"
+            },
+            {
+              "name": "Products (large image + H3 title + Read More button)",
+              "value": "products"
+            },
+            {
+              "name": "Content List (3-up: bordered 4:3 image, light H3, linked text)",
+              "value": "contentlist"
+            },
+            {
+              "name": "Icon Left (2-up: small icon beside bold title, text, outlined button)",
+              "value": "icon-left"
+            },
+            {
+              "name": "Buttons (red link tiles with white icon)",
+              "value": "buttons"
+            }
           ]
         }
       ]

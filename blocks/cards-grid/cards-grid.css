@@ -562,3 +562,278 @@ main .cards-grid.products .cards-grid-action a.button:any-link:hover {
   background-color: #0065a7;
 }
 /* stylelint-enable no-descending-specificity */
+
+/* ============================================================
+   CONTENT LIST / ICON LEFT / BUTTONS (Support, Training)
+   Each resets the shared tile look (border, padded body) for its own layout.
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct variants, ordering intentional */
+.cards-grid.contentlist,
+.cards-grid.icon-left,
+.cards-grid.buttons {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.cards-grid.contentlist ul > li,
+.cards-grid.icon-left ul > li,
+.cards-grid.buttons ul > li {
+  border: 0;
+  border-radius: 0;
+  background: none;
+  overflow: visible;
+}
+
+.cards-grid.contentlist .cards-grid-body,
+.cards-grid.icon-left .cards-grid-body {
+  display: block;
+  padding: 0;
+  font-family: var(--body-font-family);
+}
+
+/* --- content list: 1-up without images on mobile, 3-up from 768px (source hidden-xs);
+   256px cards with a 16px gutter, left aligned --- */
+.cards-grid.contentlist ul {
+  gap: 0 16px;
+  align-items: start;
+}
+
+.cards-grid.contentlist .cards-grid-image {
+  display: none;
+  padding-top: 20px;
+}
+
+.cards-grid.contentlist .cards-grid-image a {
+  display: block;
+}
+
+.cards-grid.contentlist .cards-grid-image img {
+  display: block;
+  box-sizing: border-box;
+  width: 100%;
+  aspect-ratio: 256 / 200;
+  object-fit: cover;
+  border: 1px solid #bfbfbf;
+  transition: opacity 0.3s;
+}
+
+.cards-grid.contentlist .cards-grid-image a:hover img {
+  opacity: 0.8;
+}
+
+.cards-grid.contentlist .cards-grid-body h2,
+.cards-grid.contentlist .cards-grid-body h3,
+.cards-grid.contentlist .cards-grid-body h4 {
+  margin: 22.4px 0;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 22.4px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.cards-grid.contentlist .cards-grid-body p {
+  margin: 0;
+  color: #000;
+  font-size: 15px;
+  line-height: 21px;
+}
+
+.cards-grid.contentlist .cards-grid-body a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+.cards-grid.contentlist .cards-grid-body a:hover {
+  color: #007acb;
+  text-decoration: none;
+}
+
+/* small right chevron after the description link */
+.cards-grid.contentlist .cards-grid-body p > a::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin-left: 6px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  transform: translateY(-1px) rotate(45deg);
+}
+
+@media (width >= 768px) {
+  .cards-grid.contentlist ul {
+    grid-template-columns: repeat(3, minmax(0, 256px));
+  }
+
+  .cards-grid.contentlist .cards-grid-image {
+    display: block;
+  }
+}
+
+/* --- icon left: stacked + centered on mobile, icon beside text, 2-up from 992px --- */
+.cards-grid.icon-left ul {
+  gap: 0;
+  margin-top: 40px;
+}
+
+.cards-grid.icon-left ul > li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 40px;
+}
+
+/* stacked (source < 992px): centred icon and button, left-aligned text */
+.cards-grid.icon-left .cards-grid-body {
+  align-self: stretch;
+  text-align: left;
+}
+
+
+.cards-grid.icon-left .cards-grid-image {
+  flex: 0 0 auto;
+  margin-bottom: 20px;
+}
+
+.cards-grid.icon-left .cards-grid-image img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.cards-grid.icon-left .cards-grid-body p {
+  margin: 0;
+  color: #4d4d4d;
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.cards-grid.icon-left .cards-grid-body strong {
+  color: #4d4d4d;
+  font-weight: 700;
+}
+
+.cards-grid.icon-left .cards-grid-body p.cards-grid-action {
+  margin-top: 16px;
+  text-align: center;
+}
+
+main .cards-grid.icon-left .cards-grid-action a.button:any-link {
+  display: inline-block;
+  margin: 0;
+  padding: 15px 25px;
+  border: 1px solid #ea1c2c;
+  border-radius: 2px;
+  background-color: #fff;
+  color: #ea1c2c;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 23.1px;
+  text-decoration: none;
+  text-transform: none;
+}
+
+main .cards-grid.icon-left .cards-grid-action a.button:hover,
+main .cards-grid.icon-left .cards-grid-action a.button:focus-visible {
+  background-color: #ea1c2c;
+  color: #fff;
+}
+
+@media (width >= 992px) {
+  .cards-grid.icon-left ul {
+    grid-template-columns: repeat(2, 1fr);
+    column-gap: 0;
+    margin: 40px -10px 0;
+  }
+
+  .cards-grid.icon-left ul > li {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    margin-bottom: 0;
+    text-align: left;
+  }
+
+  .cards-grid.icon-left .cards-grid-image {
+    box-sizing: border-box;
+    display: flex;
+    flex: 0 0 calc(100% / 6);
+    justify-content: center;
+    padding: 0 10px;
+    text-align: center;
+  }
+
+  .cards-grid.icon-left .cards-grid-body p.cards-grid-action {
+    text-align: left;
+  }
+
+  .cards-grid.icon-left .cards-grid-body {
+    box-sizing: border-box;
+    flex: 1;
+    margin-bottom: 40px;
+    padding: 0 10px;
+  }
+
+  .cards-grid.icon-left .cards-grid-image img {
+    max-width: 100%;
+  }
+}
+
+/* --- buttons: centered, wrapping row of 265px red link tiles --- */
+.cards-grid.buttons ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0;
+}
+
+.cards-grid.buttons ul > li {
+  flex: 0 1 265px;
+  margin: 10px;
+}
+
+.cards-grid.buttons .cards-grid-tile {
+  box-sizing: border-box;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 100%;
+  justify-content: center;
+  padding: 15px 20px;
+  border-radius: 5px;
+  background-color: #ea1c2c;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.3;
+  text-align: center;
+  text-decoration: none;
+  transition: background-color 1s;
+}
+
+.cards-grid.buttons a.cards-grid-tile:hover,
+.cards-grid.buttons a.cards-grid-tile:focus-visible {
+  background-color: #cf1322;
+  color: #fff;
+  text-decoration: none;
+}
+
+.cards-grid.buttons .cards-grid-image {
+  flex: 0 0 auto;
+  line-height: 0;
+}
+
+.cards-grid.buttons .cards-grid-image img {
+  width: auto;
+  height: 50px;
+  object-fit: contain;
+}
+
+.cards-grid.buttons .cards-grid-label {
+  flex: 0 1 auto;
+}
+/* stylelint-enable no-descending-specificity */

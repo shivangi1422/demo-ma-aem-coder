@@ -21,7 +21,8 @@ function optimizedPicture(img) {
  * centered heading, intro text and CTA.
  * Authored structure: row 1 = image (optional), row 2 = text (heading, optional
  * subheading or paragraph, one or more links; bold link = solid primary button,
- * italic or plain link = outlined button).
+ * italic or plain link = outlined button), row 3 = optional mobile image
+ * (picture only, replaces the background below 768px).
  * @param {Element} block
  */
 export default function decorate(block) {
@@ -31,6 +32,16 @@ export default function decorate(block) {
   background.className = 'hero-centered-background';
   const content = document.createElement('div');
   content.className = 'hero-centered-content';
+
+  // optional mobile image: a picture-only row after the text row (last in the model)
+  const mobileRow = rows.length > 2
+    ? rows.slice(2).find((row) => row.querySelector('picture > img') && !row.textContent.trim())
+    : null;
+  const mobileImg = mobileRow && mobileRow.querySelector('picture > img');
+  if (mobileRow) {
+    mobileRow.remove();
+    rows.splice(rows.indexOf(mobileRow), 1);
+  }
 
   rows.forEach((row) => {
     const img = row.querySelector('picture > img');
@@ -68,6 +79,16 @@ export default function decorate(block) {
       actions.append(p);
     }
   });
+
+  // the mobile image replaces the background below 768px (one download per viewport)
+  const backgroundPicture = background.querySelector('picture');
+  if (mobileImg && backgroundPicture) {
+    const source = document.createElement('source');
+    source.media = '(width < 768px)';
+    source.srcset = mobileImg.src;
+    backgroundPicture.prepend(source);
+    block.classList.add('hero-centered-has-mobile-image');
+  }
 
   const children = [];
   if (background.firstElementChild) {

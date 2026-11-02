@@ -139,7 +139,7 @@
 
 /*
  * Service plan heroes (page template "service-plans", body class .service-plans).
- * Source .hero: height 40vh with a 360px floor at every width, photo at 50% opacity
+ * Source hero: height 40vh with a 360px floor at every width, photo at 50% opacity
  * on black cropped from the centre, shrink-wrapped content box, light H1 and a
  * 25px subheading, solid + outlined buttons of equal height. Scoped so /service
  * keeps its own look.
@@ -199,14 +199,14 @@
   background-color: #0065a7;
 }
 
-/* source .hero div gets its 2vw padding from 768px (breakpoint mirrors the source) */
+/* source hero div gets its 2vw padding from 768px (breakpoint mirrors the source) */
 @media (width >= 768px) {
   .service-plans .hero-centered .hero-centered-content {
     padding: 2vw;
   }
 }
 
-/* option "tall": source .hero { height: 40vh; min-height: 450px } at every width */
+/* option "tall": source hero { height: 40vh; min-height: 450px } at every width */
 .hero-centered.tall {
   min-height: max(40vh, 450px);
 }
@@ -217,3 +217,148 @@
     padding: 2vw;
   }
 }
+
+/*
+ * Option "left" (Training): the background graphic is shown whole at its natural
+ * 2560/662 ratio with no tint; a left-aligned title graphic and solid red buttons
+ * sit vertically centred, aligned with the source 750/970/1170px container.
+ * Overlay width and button sizes mirror the source breakpoints (500/768/992/1200/1450).
+ * Below 768px the block keeps a 60vw floor and the image covers it.
+ */
+/* stylelint-disable no-descending-specificity -- option overrides follow the base rules */
+.hero-centered.left {
+  justify-content: flex-start;
+  min-height: 60vw;
+  background-color: transparent;
+  color: inherit;
+  text-align: left;
+}
+
+.hero-centered.left.hero-centered-has-image::after {
+  content: none;
+}
+
+/* source phones: a square background photo replaces the wide banner */
+.hero-centered.left.hero-centered-has-mobile-image {
+  aspect-ratio: 1;
+  min-height: 0;
+}
+
+.hero-centered.left .hero-centered-content {
+  box-sizing: border-box;
+  width: 60%;
+  max-width: none;
+  margin: 0 0 0 15px;
+  padding: 0;
+  line-height: 1.2;
+}
+
+/* the source keeps a <br> line (19.2px) between the title graphic and the buttons */
+.hero-centered.left .hero-centered-content > p:has(picture) {
+  margin: 0 0 19.2px;
+  line-height: 0;
+}
+
+.hero-centered.left .hero-centered-content > p:has(picture) img {
+  width: 100%;
+  height: auto;
+}
+
+.hero-centered.left .hero-centered-content .hero-centered-actions {
+  justify-content: flex-start;
+  gap: 4px;
+}
+
+.hero-centered.left .hero-centered-content p.button-wrapper {
+  margin: 0 0 15px;
+}
+
+.hero-centered.left .hero-centered-content a.button:any-link {
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 2px;
+  background-color: #ea1c2c;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.hero-centered.left .hero-centered-content a.button:hover,
+.hero-centered.left .hero-centered-content a.button:focus-visible {
+  background-color: #cf1322;
+  color: #fff;
+}
+
+@media (width >= 500px) and (width < 768px) {
+  .hero-centered.left .hero-centered-content p.button-wrapper {
+    margin-top: 20px;
+  }
+
+  .hero-centered.left .hero-centered-content a.button:any-link {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+}
+
+@media (width >= 768px) {
+  .hero-centered.left,
+  .hero-centered.left.hero-centered-has-mobile-image {
+    min-height: 0;
+    aspect-ratio: 2560 / 662;
+  }
+
+  .hero-centered.left .hero-centered-background picture,
+  .hero-centered.left .hero-centered-background img {
+    object-position: 50% 50%;
+  }
+
+  .hero-centered.left .hero-centered-content {
+    width: 30%;
+    padding: 0;
+    margin-left: calc(50% - 360px);
+  }
+
+  .hero-centered.left .hero-centered-content p.button-wrapper {
+    margin: 0;
+  }
+
+  .hero-centered.left .hero-centered-content a.button:any-link {
+    padding: 12px 17px;
+    font-size: 16px;
+  }
+}
+
+@media (width >= 992px) {
+  .hero-centered.left .hero-centered-content {
+    margin-left: calc(50% - 470px);
+  }
+
+  .hero-centered.left .hero-centered-content a.button:any-link {
+    padding: 15px 20px;
+    font-size: 18px;
+  }
+}
+
+@media (width >= 1200px) {
+  .hero-centered.left .hero-centered-content {
+    margin-left: calc(50% - 570px);
+  }
+
+  .hero-centered.left .hero-centered-content a.button:any-link {
+    padding: 18px 23px;
+    font-size: 20px;
+  }
+}
+
+@media (width >= 1450px) {
+  .hero-centered.left .hero-centered-content p.button-wrapper {
+    margin-top: 20px;
+  }
+
+  .hero-centered.left .hero-centered-content a.button:any-link {
+    padding: 20px 25px;
+    font-size: 22px;
+  }
+}
+/* stylelint-enable no-descending-specificity */

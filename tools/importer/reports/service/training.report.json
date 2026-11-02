@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service/training",
+  "path": "service/training",
+  "timestamp": "2026-11-02T13:57:54.885Z",
+  "title": "MyBeckman Learning",
+  "template": "service-training",
+  "blocks": [
+    "hero-centered-left",
+    "cards-grid-icon-left",
+    "cards-grid-buttons",
+    "marketo-form"
+  ]
+}

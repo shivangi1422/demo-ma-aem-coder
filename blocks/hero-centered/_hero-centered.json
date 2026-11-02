@@ -42,6 +42,20 @@
           "valueType": "string"
         },
         {
+          "component": "reference",
+          "valueType": "string",
+          "name": "mobileImage",
+          "label": "Mobile Image (optional, below 768px)",
+          "multi": false
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "mobileImageAlt",
+          "label": "Mobile Image Alt",
+          "value": ""
+        },
+        {
           "component": "multiselect",
           "name": "classes",
           "label": "Style",
@@ -50,6 +64,10 @@
             {
               "name": "Tall (450px)",
               "value": "tall"
+            },
+            {
+              "name": "Left-aligned (graphic + buttons, no tint)",
+              "value": "left"
             }
           ]
         }

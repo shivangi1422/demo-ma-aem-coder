@@ -1,0 +1,221 @@
+/* Marketo Form: embedded Marketo form. Marketo's theme stylesheet is removed in JS;
+   every rule is scoped to the block. */
+
+/* stylelint-disable selector-class-pattern -- Marketo's own class names */
+.marketo-form {
+  box-sizing: border-box;
+  padding: 20px;
+  border-radius: 3px;
+  background-color: #f0f0f0;
+  font-family: var(--body-font-family);
+}
+
+.marketo-form .mktoForm {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 0;
+  color: #333;
+  font-family: inherit;
+  font-size: 14px;
+}
+
+.marketo-form .mktoForm *,
+.marketo-form .mktoForm *::before,
+.marketo-form .mktoForm *::after {
+  box-sizing: border-box;
+}
+
+/* Marketo spacer elements */
+.marketo-form .mktoForm .mktoOffset,
+.marketo-form .mktoForm .mktoGutter,
+.marketo-form .mktoForm .mktoClear {
+  display: none;
+}
+
+.marketo-form .mktoForm .mktoFormRow {
+  display: block;
+}
+
+.marketo-form .mktoForm .mktoFormCol,
+.marketo-form .mktoForm .mktoFieldWrap {
+  float: none;
+  width: 100%;
+  margin: 0 0 12px;
+}
+
+.marketo-form .mktoForm .mktoFormCol .mktoFieldWrap {
+  margin: 0;
+}
+
+/* label.mktoLabel inside .mktoFieldWrap outranks forms2.css (bold required labels) */
+.marketo-form .mktoForm .mktoFieldWrap label.mktoLabel,
+.marketo-form .mktoForm .mktoLabel {
+  display: block;
+  float: none;
+  width: auto;
+  margin: 0 0 5px;
+  padding: 2.6px 0 3.9px;
+  color: #3b363b;
+  font-size: 13px;
+  font-weight: 500;
+  line-height: 1.2;
+}
+
+.marketo-form .mktoForm .mktoFieldWrap .mktoAsterix {
+  display: inline;
+  float: none;
+  padding: 0 2px 0 0;
+  color: #ea1c2c;
+}
+
+/* .mktoFieldWrap raises specificity over forms2.css mobile rules, which load after ours */
+.marketo-form .mktoForm .mktoFieldWrap input:not([type="radio"], [type="checkbox"], [type="hidden"]),
+.marketo-form .mktoForm .mktoFieldWrap select,
+.marketo-form .mktoForm .mktoFieldWrap textarea {
+  display: block;
+  width: 100%;
+  max-width: 100%;
+  min-height: 32px;
+  margin: 0;
+  padding: 5px 10px;
+  border: 1px solid #d9d9d1;
+  border-radius: 0;
+  background-color: #fff;
+  color: #333;
+  font-family: inherit;
+  font-size: 12px;
+  line-height: 1.2;
+}
+
+.marketo-form .mktoForm .mktoFieldWrap textarea {
+  min-height: 80px;
+}
+
+/* consent copy and radio groups */
+.marketo-form .mktoForm .mktoHtmlText {
+  width: auto;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.marketo-form .mktoForm .mktoRadioList,
+.marketo-form .mktoForm .mktoCheckboxList {
+  float: none;
+  width: auto;
+  padding: 0;
+}
+
+.marketo-form .mktoForm .mktoRadioList > label,
+.marketo-form .mktoForm .mktoCheckboxList > label {
+  margin: 0 0 4px 20px;
+  font-size: 13px;
+  font-weight: 400;
+}
+
+.marketo-form .mktoForm .mktoButtonRow {
+  display: block;
+  margin-top: 8px;
+}
+
+.marketo-form .mktoForm .mktoButtonWrap {
+  margin: 0;
+}
+
+.marketo-form .mktoForm .mktoButton {
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 3px;
+  background: #007acb;
+  box-shadow: 1.25px 2.5px 5px rgb(0 0 0 / 25%);
+  color: #fff;
+  font-family: inherit;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  cursor: pointer;
+}
+
+.marketo-form .mktoForm .mktoButton:hover,
+.marketo-form .mktoForm .mktoButton:focus-visible {
+  background: #005f9e;
+}
+
+/* option "two-column": no panel, labels beside fields from 768px, red submit;
+   source: form 90% wide (max 900px), 145px labels beside 270px x 35px fields */
+.marketo-form.two-column {
+  width: 90%;
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+  text-align: left;
+}
+
+.marketo-form.two-column .mktoForm .mktoFieldWrap label.mktoLabel {
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+.marketo-form.two-column .mktoForm .mktoFieldWrap input:not([type="radio"], [type="checkbox"], [type="hidden"]),
+.marketo-form.two-column .mktoForm .mktoFieldWrap select {
+  min-height: 35px;
+  border-color: #9fa4aa;
+}
+
+/* source: 20px text in the two-column inputs, selects keep the default size */
+.marketo-form.two-column .mktoForm .mktoFieldWrap input:not([type="radio"], [type="checkbox"], [type="hidden"]) {
+  font-size: 20px;
+}
+
+.marketo-form.two-column .mktoForm .mktoButtonRow {
+  text-align: center;
+}
+
+.marketo-form.two-column .mktoForm .mktoButton {
+  border-radius: 2px;
+  background: #ea1c2c;
+  box-shadow: none;
+}
+
+.marketo-form.two-column .mktoForm .mktoButton:hover,
+.marketo-form.two-column .mktoForm .mktoButton:focus-visible {
+  background: #cf1322;
+}
+
+@media (width >= 768px) {
+  .marketo-form.two-column .mktoForm .mktoFormRow {
+    display: flex;
+    gap: 0;
+  }
+
+  .marketo-form.two-column .mktoForm .mktoFormCol {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .marketo-form.two-column .mktoForm .mktoFieldWrap {
+    display: grid;
+    grid-template-columns: 145px minmax(0, 270px);
+    gap: 0;
+    align-items: start;
+  }
+
+  .marketo-form.two-column .mktoForm .mktoFieldWrap label.mktoLabel {
+    margin: 0;
+    text-align: left;
+  }
+
+  .marketo-form.two-column .mktoForm .mktoFieldWrap > :not(.mktoLabel) {
+    grid-column: 2;
+  }
+
+  /* single-field rows (comments) run the full form width; consent copy spans both columns */
+  .marketo-form.two-column .mktoForm .mktoFormRow:not(:has(> .mktoFormCol ~ .mktoFormCol)) .mktoFieldWrap {
+    grid-template-columns: 145px minmax(0, 720px);
+  }
+
+  .marketo-form.two-column .mktoForm .mktoFieldWrap > .mktoHtmlText {
+    grid-column: 1 / -1;
+  }
+}
+/* stylelint-enable selector-class-pattern */

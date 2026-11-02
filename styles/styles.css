@@ -520,6 +520,43 @@ main .section.highlight {
   padding: 40px 0;
 }
 
+/* grey band (source #f0f0f0, e.g. "Knowledge Awaits" on /service/training) */
+main .section.grey {
+  margin: 0;
+  background-color: #f0f0f0;
+}
+
+/* split: content column with a sidebar (e.g. the request form on /support).
+   Stacked on small screens; from 992px (source bootstrap col-md-9 / col-md-3,
+   10px column padding) the last block wrapper becomes the right-hand column
+   spanning all rows. */
+@media (width >= 992px) {
+  /* side padding centres a 1160px row (padding % is relative to main) */
+  main .section.split {
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: minmax(0, 3fr) minmax(0, 1fr);
+    grid-auto-flow: row dense;
+    align-items: start;
+    padding: 0 max(5px, calc((100% - 1160px) / 2));
+  }
+
+  /* attribute selector outranks the full-bleed block-wrapper reset above */
+  main .section.split > div[class$="-wrapper"] {
+    box-sizing: border-box;
+    grid-column: 1;
+    width: 100%;
+    max-width: none;
+    margin: 0;
+    padding: 0 10px;
+  }
+
+  main .section.split > div[class$="-wrapper"]:last-child:not(:first-child) {
+    grid-column: 2;
+    grid-row: 1 / span 99;
+  }
+}
+
 /* stylelint-disable no-descending-specificity -- template overrides must follow the shared rules they override */
 
 /*
@@ -837,5 +874,166 @@ main .section.highlight {
    13.2px margin stays inside the section instead of collapsing away */
 .service-plans main .table-comparison-wrapper + .default-content-wrapper {
   display: flow-root;
+}
+/* stylelint-enable no-descending-specificity */
+
+/*
+ * Templates "support" and "service-training" (page metadata "template", body
+ * classes .support / .service-training). Mirrors the source page CSS: bootstrap
+ * container (750/970/1170px at 768/992/1200px, 15px gutters), #4d4d4d text and
+ * the source type scale. Breakpoints mirror the source (768px / 992px / 1200px).
+ * Scoped so other pages using the same blocks are unaffected.
+ */
+/* stylelint-disable no-descending-specificity -- template overrides must follow the shared rules they override */
+.support main,
+.service-training main {
+  --st-container: 100%;
+
+  color: #4d4d4d;
+}
+
+@media (width >= 768px) {
+  .support main,
+  .service-training main {
+    --st-container: 750px;
+  }
+}
+
+@media (width >= 992px) {
+  .support main,
+  .service-training main {
+    --st-container: 970px;
+  }
+}
+
+@media (width >= 1200px) {
+  .support main,
+  .service-training main {
+    --st-container: 1170px;
+  }
+}
+
+.support main > .section,
+.service-training main > .section {
+  margin: 0;
+}
+
+.support main > .section:not(.split) > div,
+.service-training main > .section:not(.split) > div {
+  box-sizing: border-box;
+  max-width: var(--st-container);
+  margin: 0 auto;
+  padding: 0 15px;
+}
+
+/* split section: the container gutters live on the section; from 992px the
+   columns carry 10px padding, so the row is 10px wider than the content box */
+.support main > .section.split {
+  padding: 0 15px;
+}
+
+@media (width >= 992px) {
+  .support main > .section.split {
+    padding: 0 calc((100% - var(--st-container)) / 2 + 5px);
+  }
+}
+
+.support main h1,
+.service-training main h1 {
+  margin: 24.12px 0;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.support main .default-content-wrapper p,
+.service-training main .default-content-wrapper p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.support main .default-content-wrapper a:any-link,
+.service-training main .default-content-wrapper a:any-link {
+  color: #007acb;
+}
+
+/* support: the source keeps a <br> after the H1 and after the intro text */
+.support main > .section:first-of-type {
+  padding-bottom: 26.4px;
+}
+
+.support main .section.split .cards-grid-wrapper {
+  margin-top: 46.4px;
+}
+
+/* service-training: full-bleed hero, then the 1170px content column */
+.service-training main > .section:has(> div > .hero-centered) > div {
+  max-width: none;
+  padding: 0;
+}
+
+.service-training main .default-content-wrapper h2 {
+  margin: 20.75px 0;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.service-training main .default-content-wrapper ul {
+  margin: 0 0 10px;
+  padding-left: 17px;
+}
+
+.service-training main .default-content-wrapper ul li {
+  line-height: 26.4px;
+}
+
+/* "Course Catalog" heading sits right under the training methods (margin-top: 0) */
+.service-training main .cards-grid-wrapper + .default-content-wrapper > h2:first-child {
+  margin-top: 0;
+}
+
+.service-training main > .section:has(.cards-grid.buttons) {
+  padding-bottom: 25px;
+}
+
+/* grey "Knowledge Awaits" band: 720px heading block, then the form */
+.service-training main > .section.grey:has(.marketo-form) {
+  padding: 0 0 25px;
+}
+
+.service-training main > .section.grey .default-content-wrapper:has(h3) {
+  max-width: 720px;
+}
+
+.service-training main > .section.grey h3 {
+  margin: 0 0 10px;
+  padding-top: 30px;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.service-training main > .section.grey h3 + p {
+  margin: 16px 0 0;
+  padding-bottom: 20px;
+}
+
+/* legal note: 75% italic text inside the same grey band */
+.service-training main > .section.grey:not(:has(.marketo-form)) {
+  padding: 0 0 4px;
+}
+
+.service-training main > .section.grey:not(:has(.marketo-form)) p {
+  margin: 0;
+  font-size: 12px;
+  line-height: 19.8px;
 }
 /* stylelint-enable no-descending-specificity */

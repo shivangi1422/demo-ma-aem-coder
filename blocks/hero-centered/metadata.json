@@ -5,10 +5,11 @@
   "visualCharacteristics": {
     "purpose": "page-opening banner with a full-bleed photo behind a centered heading, intro text and call to action",
     "layout": "full-bleed background image with dark overlay; centered white H1, paragraph and outlined button",
-    "background": "photo"
+    "background": "photo",
+    "options": "tall: min-height max(40vh, 450px) at every width (default floor 360px). left: background shown whole at its natural 2560/662 ratio with no dark tint, left-aligned title graphic (30% wide from 768px, 60% below) and solid red #ea1c2c buttons side by side, vertically centred in a 1170px container; below 768px a 60vw floor with the image covering it."
   },
   "contentPattern": {
-    "structure": "row 1: background image (with alt); row 2: text cell with H1, intro paragraph and one CTA link",
+    "structure": "row 1: background image (with alt); row 2: text cell with H1 (or a title graphic picture, kept in the content), intro paragraph and one or more CTA links (each in its own paragraph)",
     "rows": [
       [
         "image"
@@ -20,8 +21,12 @@
   },
   "options": [
     {
-      "name": "tall",
-      "description": "min-height max(40vh, 450px) at every width (source flow-cytometry / particle-analysis plan heroes); default is the 360px floor"
+      "class": "tall",
+      "label": "Tall (450px)"
+    },
+    {
+      "class": "left",
+      "label": "Left-aligned (graphic + buttons, no tint)"
     }
   ],
   "memberVariantIds": [
@@ -32,9 +37,10 @@
       "/service",
       "/service/plans/centrifuge",
       "/service/plans/flow-cytometry",
-      "/service/plans/particle-analysis"
+      "/service/plans/particle-analysis",
+      "/service/training"
     ],
-    "reuseCount": 4,
+    "reuseCount": 5,
     "lastUsed": "2026-11-02"
   },
   "reuseGuidance": "Use for a page-top banner with a photo background and centered text plus CTA. For split or solid banners use hero (Style: split, banner)."

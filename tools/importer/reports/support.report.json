@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/support",
+  "path": "support",
+  "timestamp": "2026-11-02T13:43:40.989Z",
+  "title": "Support, Training, Service Plans, FAQs",
+  "template": "support",
+  "blocks": [
+    "cards-grid-contentlist",
+    "marketo-form"
+  ]
+}

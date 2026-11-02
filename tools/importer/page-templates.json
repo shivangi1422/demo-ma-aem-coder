@@ -338,6 +338,155 @@
           ]
         }
       ]
+    },
+    {
+      "name": "support",
+      "urls": [
+        "https://www.mybeckman.in/support"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/support",
+      "description": "Support landing page: breadcrumb, text intro, four image support cards (Service Plans, Locations, Training, FAQs), eCommerce promo",
+      "urlPattern": "/support",
+      "blocks": [
+        {
+          "name": "cards-grid-contentlist",
+          "instances": [
+            ".content-list.column-count-3",
+            ".content-list"
+          ]
+        },
+        {
+          "name": "marketo-form",
+          "instances": [
+            "#main .formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Page heading",
+          "selector": [
+            "#content-holder",
+            ".generic-content-heading"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            "#content-holder > h1"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Support content and request form",
+          "selector": [
+            ".two-columns-holder"
+          ],
+          "style": "split",
+          "blocks": [
+            "cards-grid-contentlist",
+            "marketo-form"
+          ],
+          "defaultContent": [
+            ".two-columns-holder__left .bc-rich-text > p"
+          ]
+        }
+      ]
+    },
+    {
+      "name": "service-training",
+      "urls": [
+        "https://www.mybeckman.in/service/training"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/training",
+      "description": "Training page: breadcrumb, MyBeckman Learning hero with images, Learn Your Way list, training method image/text sections with Sign Up CTAs, course catalog links, Knowledge Awaits callout, legal note",
+      "urlPattern": "/service/training",
+      "blocks": [
+        {
+          "name": "hero-centered-left",
+          "instances": [
+            ".bc-rich-text > .outimg",
+            ".outimg"
+          ]
+        },
+        {
+          "name": "cards-grid-icon-left",
+          "instances": [
+            ".containercustom > .row:has(> .col-md-1 img)"
+          ]
+        },
+        {
+          "name": "cards-grid-buttons",
+          "instances": [
+            ".containercustom > .menu"
+          ]
+        },
+        {
+          "name": "marketo-form",
+          "instances": [
+            "#main .formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "MyBeckman Learning hero",
+          "selector": [
+            ".bc-rich-text:has(> .outimg)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-centered-left"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Intro, training methods and Course Catalog",
+          "selector": [
+            ".bc-rich-text:has(> .containercustom > h1)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-icon-left",
+            "cards-grid-buttons"
+          ],
+          "defaultContent": [
+            ".containercustom > h1",
+            ".containercustom > p",
+            ".containercustom > h2",
+            ".containercustom > ul"
+          ]
+        },
+        {
+          "id": "section-3",
+          "name": "Knowledge Awaits",
+          "selector": [
+            ".bc-rich-text > div:has(> .containercustom > h3)"
+          ],
+          "style": "grey, centered",
+          "blocks": [
+            "marketo-form"
+          ],
+          "defaultContent": [
+            ".containercustom > h3",
+            ".containercustom > h3 + p"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Legal note",
+          "selector": [
+            ".bc-rich-text > div:has(> .containercustom > p > em)"
+          ],
+          "style": "grey",
+          "blocks": [],
+          "defaultContent": [
+            ".containercustom > p:has(> em)"
+          ]
+        }
+      ]
     }
   ]
 }

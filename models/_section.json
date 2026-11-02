@@ -47,6 +47,14 @@
             {
               "name": "Centered",
               "value": "centered"
+            },
+            {
+              "name": "Grey",
+              "value": "grey"
+            },
+            {
+              "name": "Split (content + sidebar form)",
+              "value": "split"
             }
           ]
         }
@@ -77,7 +85,8 @@
         "hero-centered",
         "cards-stats",
         "cards-benefits",
-        "table-comparison"
+        "table-comparison",
+        "marketo-form"
       ]
     }
   ]

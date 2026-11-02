@@ -19,6 +19,41 @@ const isEmpty = (el) => !el.textContent.trim()
 
 export default function transform(hookName, element, payload) {
   if (hookName === 'beforeTransform') {
+    // Marketo form config (support / service-training): stamp form id, munchkin id
+    // and forms origin on the in-page container before form.mktoForm and hidden
+    // inputs are removed below. The footer newsletter form is not stamped.
+    const doc = element.ownerDocument || document;
+    let mktoOrigin = 'https://pages.beckman.com';
+    const mktoStyle = doc.querySelector('link#mktoForms2BaseStyle[href]');
+    if (mktoStyle) {
+      try {
+        mktoOrigin = new URL(mktoStyle.getAttribute('href'), 'https://pages.beckman.com').origin;
+      } catch (e) {
+        // keep default origin
+      }
+    }
+    element.querySelectorAll('#main .formassembly-container').forEach((container) => {
+      if (container.closest('.footer2023')) return;
+      const form = container.querySelector('form.mktoForm[id^="mktoForm_"]');
+      if (!form) return;
+      const formId = form.id.replace('mktoForm_', '');
+      if (!formId) return;
+      const munchkinInput = container.querySelector('input[name="munchkinId"]');
+      const munchkin = (munchkinInput && munchkinInput.value) || '682-XWP-826';
+      container.setAttribute('data-excat-mkto-form', formId);
+      container.setAttribute('data-excat-mkto-munchkin', munchkin);
+      container.setAttribute('data-excat-mkto-origin', mktoOrigin);
+    });
+
+    // Training: empty in-page anchor target (no href) for the "Courses" CTA
+    removeAll(element, ['a[name="Courses"]:not([href])']);
+
+    // Support: <br> spacer and empty AEO placeholder next to the H1 in #content-holder
+    element.querySelectorAll('#content-holder > br').forEach((br) => br.remove());
+    element.querySelectorAll('#content-holder .bcls-aeo-published').forEach((el) => {
+      if (isEmpty(el)) el.remove();
+    });
+
     // Overlays / modals / consent banners that may interfere with block matching
     removeAll(element, [
       '#consent_blackbar',
