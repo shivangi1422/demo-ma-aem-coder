@@ -1,0 +1,205 @@
+/* full-bleed banner directly under the breadcrumb */
+main > .section.hero-banner-container {
+  margin-top: 0;
+  padding: 0;
+}
+
+main > .section.hero-banner-container > .hero-banner-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.hero-banner {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 360px;
+  background-color: #000;
+  color: var(--white);
+  overflow: hidden;
+}
+
+.hero-banner .hero-banner-media {
+  position: absolute;
+  inset: 0;
+}
+
+.hero-banner .hero-banner-media picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.hero-banner .hero-banner-media img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  opacity: 0.5;
+}
+
+.hero-banner.has-mobile-image .hero-banner-image {
+  display: none;
+}
+
+.hero-banner .hero-banner-content {
+  position: relative;
+  box-sizing: border-box;
+  width: 100%;
+  max-width: 1200px;
+  padding: 10px;
+  text-align: center;
+}
+
+.hero-banner .hero-banner-content h1 {
+  margin: 0.67em 0 0;
+  font-size: 40px;
+  line-height: 44px;
+  color: var(--white);
+}
+
+.hero-banner .hero-banner-content h2 {
+  color: var(--white);
+}
+
+.hero-banner .hero-banner-content p {
+  margin: 1em 0;
+}
+
+.hero-banner .hero-banner-content h1 + p {
+  margin-top: 26.8px;
+}
+
+.hero-banner .hero-banner-content > :last-child {
+  margin-bottom: 0;
+}
+
+/* buttons sit side by side like the source inline buttons */
+.hero-banner .hero-banner-content p.button-wrapper {
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.hero-banner a.button {
+  padding: 12px 20px;
+  line-height: 22px;
+}
+
+.hero-banner a.button.secondary {
+  border-color: var(--white);
+  color: var(--white);
+}
+
+.hero-banner a.button.secondary:hover,
+.hero-banner a.button.secondary:focus-visible {
+  border-color: var(--white);
+  background-color: var(--brand-blue);
+}
+
+/* left-aligned: plain image banner (no overlay), content on the left over the image */
+.hero-banner.left-aligned {
+  display: block;
+  min-height: 0;
+  background: none;
+}
+
+.hero-banner.left-aligned .hero-banner-media {
+  position: static;
+}
+
+.hero-banner.left-aligned .hero-banner-media picture,
+.hero-banner.left-aligned .hero-banner-media img {
+  height: auto;
+  opacity: 1;
+}
+
+.hero-banner.left-aligned .hero-banner-content {
+  position: absolute;
+  top: 50%;
+  left: 15px;
+  width: 60%;
+  max-width: 432px;
+  padding: 0;
+  text-align: left;
+  transform: translateY(-50%);
+}
+
+.hero-banner.left-aligned .hero-banner-content picture,
+.hero-banner.left-aligned .hero-banner-content img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.hero-banner.left-aligned .hero-banner-content p:has(> picture) {
+  margin: 0;
+}
+
+.hero-banner.left-aligned .hero-banner-content p.button-wrapper {
+  margin: 16px 6px 15px 0;
+}
+
+.hero-banner.left-aligned a.button {
+  padding: 12px 20px;
+  line-height: 16px;
+}
+
+@media (width >= 600px) {
+  .hero-banner.has-mobile-image .hero-banner-image {
+    display: block;
+  }
+
+  .hero-banner.has-mobile-image .hero-banner-image-mobile {
+    display: none;
+  }
+}
+
+@media (width >= 900px) {
+  .hero-banner .hero-banner-content {
+    padding: 28.8px;
+  }
+
+  .hero-banner.left-aligned .hero-banner-content {
+    left: max(15px, calc((100% - var(--content-max-width)) / 2 + 15px));
+    width: 432px;
+    padding: 0;
+  }
+
+  .hero-banner.left-aligned .hero-banner-content p.button-wrapper {
+    margin-bottom: 0;
+  }
+
+  .hero-banner.left-aligned a.button {
+    padding: 17px 22px;
+    font-size: 20px;
+    line-height: 24px;
+  }
+}
+
+/* template service-landing (/service page CSS): banner height follows the viewport
+   (60vh on phones, 50vh from 768px, 40vh from 992px, at least 360px), photo cropped at 68% 25%,
+   regular-weight title */
+.service-landing .hero-banner {
+  min-height: max(360px, 60vh);
+}
+
+.service-landing .hero-banner .hero-banner-content h1 {
+  font-weight: 400;
+}
+
+.service-landing .hero-banner .hero-banner-media img {
+  object-position: 68% 25%;
+}
+
+@media (width >= 768px) {
+  .service-landing .hero-banner {
+    min-height: max(360px, 50vh);
+  }
+}
+
+@media (width >= 992px) {
+  .service-landing .hero-banner {
+    min-height: max(360px, 40vh);
+  }
+}

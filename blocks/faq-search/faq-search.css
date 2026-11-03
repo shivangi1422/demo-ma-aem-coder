@@ -1,0 +1,59 @@
+/* source: unstyled form controls in page text (inherit 16px / 26.4px), 5px apart, bold filter labels;
+   the counter wraps below the buttons on phones */
+.faq-search {
+  font-size: var(--body-font-size-m);
+  line-height: 26.4px;
+}
+
+.faq-search input,
+.faq-search button {
+  box-sizing: border-box;
+  height: 32px;
+  margin: 0;
+  font: inherit;
+  color: inherit;
+  vertical-align: baseline;
+}
+
+.faq-search-bar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  column-gap: 5px;
+}
+
+.faq-search-bar input[type='search'] {
+  width: 218px;
+  padding: 1px 2px;
+  border: 2px inset #767676;
+  border-radius: 0;
+  background-color: var(--white);
+  appearance: none;
+}
+
+.faq-search-bar button {
+  padding: 1px 6px;
+  border: 2px outset #000;
+  border-radius: 0;
+  background-color: #f0f0f0;
+  cursor: pointer;
+}
+
+.faq-search-filters {
+  display: flex;
+  flex-wrap: wrap;
+  column-gap: 5px;
+}
+
+.faq-search-filters input[type='checkbox'] {
+  width: 13px;
+  height: 13px;
+  margin: 4px 0 0;
+  vertical-align: top;
+}
+
+.faq-search-filters label {
+  margin: 0 0 5px;
+  font-weight: 700;
+  cursor: pointer;
+}

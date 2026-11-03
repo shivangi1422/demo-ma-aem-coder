@@ -33,6 +33,26 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Grey",
+              "value": "grey"
+            },
+            {
+              "name": "Blue (white text, centred)",
+              "value": "blue"
+            },
+            {
+              "name": "Article (FAQ main column)",
+              "value": "article"
+            },
+            {
+              "name": "Listing (FAQ listing main column)",
+              "value": "listing"
+            },
+            {
+              "name": "Sidebar (last block, e.g. a form, beside the content)",
+              "value": "sidebar"
             }
           ]
         }
@@ -51,15 +71,23 @@
         "cards",
         "columns",
         "fragment",
-        "cards-grid",
-        "carousel",
-        "tabs-products",
-        "content-reversed",
-        "form-request",
-        "content-product-detail",
-        "content-product-form",
-        "product-banner",
-        "quote"
+        "breadcrumb",
+        "hero-banner",
+        "cards-stats",
+        "columns-actions",
+        "columns-article",
+        "faq-list",
+        "faq-search",
+        "cards-category",
+        "columns-callout",
+        "cards-tile",
+        "accordion-faq",
+        "contact-form",
+        "cards-icon",
+        "hero-callout",
+        "embed",
+        "table-plans",
+        "table"
       ]
     }
   ]

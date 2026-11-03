@@ -1,0 +1,76 @@
+/* source CSS-only FAQ toggles: grey bars, + / - on the right, light answer panel */
+.accordion-faq-item summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 0 1px;
+  border-radius: 3px;
+  padding: 18px 22px;
+  background: #f0f0f0;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.5s ease;
+}
+
+.accordion-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-faq-item summary:hover {
+  background: #e7e6e6;
+}
+
+.accordion-faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 12px;
+  font-size: 22px;
+  line-height: 1.65;
+}
+
+.accordion-faq-item[open] summary::after {
+  content: '-';
+}
+
+.accordion-faq-answer {
+  margin: 0 0 1px;
+  border-radius: 3px;
+  padding: 10px 25px;
+  background: #f8f6f6;
+}
+
+/* plain: open list (source /support/ecommerce): bold questions ruled below, ▸ marker, no panels */
+.accordion-faq.plain .accordion-faq-item {
+  margin: 0 0 8px;
+  border-bottom: 1px solid #ddd;
+}
+
+.accordion-faq.plain .accordion-faq-item summary {
+  margin: 0;
+  border-radius: 0;
+  padding: 14px 24px 14px 0;
+  background: none;
+  font-weight: 600;
+  color: #333;
+}
+
+.accordion-faq.plain .accordion-faq-item summary::after {
+  content: '▸';
+  font-size: 16px;
+  transition: transform 0.2s ease;
+}
+
+.accordion-faq.plain .accordion-faq-item[open] summary::after {
+  content: '▸';
+  transform: rotate(90deg);
+}
+
+.accordion-faq.plain .accordion-faq-answer {
+  margin: 0 0 20px;
+  border-radius: 0;
+  padding: 0 0 15px;
+  background: none;
+  line-height: 1.5;
+  color: #555;
+}

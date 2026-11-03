@@ -9,7 +9,37 @@ import {
   loadSection,
   loadSections,
   loadCSS,
+  getMetadata,
+  toClassName,
 } from './aem.js';
+
+/**
+ * Resolves the path of a site-wide document (nav, footer).
+ * Local preview serves content under /content, the authoring environment under /content/<site>.
+ * @param {string} name document name
+ * @returns {string} path of the document
+ */
+export function siteDocumentPath(name) {
+  const meta = getMetadata(name);
+  if (meta) return new URL(meta, window.location).pathname;
+  const { hostname, pathname } = window.location;
+  if (!pathname.startsWith('/content/')) return `/${name}`;
+  const root = hostname === 'localhost' ? '/content' : pathname.split('/').slice(0, 3).join('/');
+  return `${root}/${name}`;
+}
+
+/**
+ * Images in site documents are referenced relative to the document, not to the page.
+ * @param {Element} fragment loaded fragment
+ * @param {string} path path of the fragment
+ */
+export function rebaseImages(fragment, path) {
+  const base = new URL(path, window.location);
+  fragment.querySelectorAll('img[src]').forEach((img) => {
+    const src = img.getAttribute('src');
+    if (!/^([a-z]+:|\/)/i.test(src)) img.src = new URL(src, base).href;
+  });
+}
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -110,6 +140,25 @@ export function decorateButtons(main) {
 }
 
 /**
+ * Sidebar sections (section style "sidebar"): the last block of the section (e.g. a form)
+ * is the sidebar, everything before it is wrapped as the main column.
+ * @param {Element} main The main element
+ */
+export function decorateSidebarSections(main) {
+  main.querySelectorAll(':scope > .section.sidebar').forEach((section) => {
+    if (section.querySelector(':scope > .sidebar-main')) return;
+    // page metadata rendered as a block (local preview) is not the sidebar
+    const aside = [...section.children].reverse().find((el) => !el.classList.contains('metadata-wrapper'));
+    if (!aside || aside.classList.contains('default-content-wrapper') || !aside.querySelector('.block')) return;
+    aside.classList.add('sidebar-aside');
+    const column = document.createElement('div');
+    column.className = 'sidebar-main';
+    column.append(...[...section.children].filter((el) => el !== aside));
+    section.prepend(column);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -119,7 +168,21 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateSidebarSections(main);
   decorateButtons(main);
+}
+
+/**
+ * Local preview serves the page Metadata block inside main (the pipeline turns it into head meta):
+ * apply its Template as a body class there, so template layouts (e.g. service-landing) show.
+ * @param {Element} main The main element
+ */
+function decorateLocalTemplate(main) {
+  if (getMetadata('template')) return;
+  const row = [...main.querySelectorAll(':scope > div > .metadata > div')]
+    .find((r) => r.children[0]?.textContent.trim().toLowerCase() === 'template');
+  const value = row?.children[1]?.textContent.trim();
+  if (value) document.body.classList.add(...value.split(',').map((v) => toClassName(v)).filter(Boolean));
 }
 
 /**
@@ -131,6 +194,7 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    decorateLocalTemplate(main);
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);

@@ -20,6 +20,22 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Service landing (inset sections)",
+            "value": "service-landing"
+          }
+        ]
       }
     ]
   },
@@ -136,54 +152,82 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Grey",
+            "value": "grey"
+          },
+          {
+            "name": "Blue (white text, centred)",
+            "value": "blue"
+          },
+          {
+            "name": "Article (FAQ main column)",
+            "value": "article"
+          },
+          {
+            "name": "Listing (FAQ listing main column)",
+            "value": "listing"
+          },
+          {
+            "name": "Sidebar (last block, e.g. a form, beside the content)",
+            "value": "sidebar"
           }
         ]
       }
     ]
   },
   {
-    "id": "cards-grid",
+    "id": "accordion-faq",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Plain (ruled list, no grey bars)",
+            "value": "plain"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "accordion-faq-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "summary",
+        "value": "",
+        "label": "Question"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Answer",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "breadcrumb",
     "fields": [
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Heading / Intro",
+        "label": "Trail",
+        "description": "Bulleted list of links from Home to the parent page; the last item is the current page title",
         "valueType": "string"
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "classes",
-        "label": "Style",
-        "value": "solutions",
-        "options": [
-          {
-            "name": "Solutions (image + category + link)",
-            "value": "solutions"
-          },
-          {
-            "name": "Product Lines (image + title)",
-            "value": "productlines"
-          },
-          {
-            "name": "Insights (intro + text cards)",
-            "value": "insights"
-          },
-          {
-            "name": "Simple (4-up: image + tag + title + link)",
-            "value": "simple"
-          },
-          {
-            "name": "Features (centered, borderless, no image)",
-            "value": "features"
-          }
-        ]
       }
     ]
   },
   {
-    "id": "cards-grid-item",
+    "id": "cards-category-item",
     "fields": [
       {
         "component": "reference",
@@ -196,7 +240,7 @@
         "component": "text",
         "valueType": "string",
         "name": "imageAlt",
-        "label": "Image Alt",
+        "label": "Alt text",
         "value": ""
       },
       {
@@ -204,7 +248,124 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "description": "Title (heading with the link to the category page) and a short description; the whole card links to the title link",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-icon",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Horizontal (icon beside the text, two per row)",
+            "value": "horizontal"
+          },
+          {
+            "name": "Tiles (red link tiles: icon and label)",
+            "value": "tiles"
+          },
+          {
+            "name": "Bordered (service hub cards: icon, title, text in a bordered tile)",
+            "value": "bordered"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cards-icon-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Title (heading) and a short description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-stats",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left aligned",
+            "value": "left-aligned"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cards-stats-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "First paragraph is the figure (e.g. 80%), the rest is the description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-tile-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Title (heading) and a button link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Grey (screenshot cards: grey tiles, centred caption)",
+            "value": "grey"
+          },
+          {
+            "name": "List (3 per row, no border, large title and text link)",
+            "value": "list"
+          }
+        ]
       }
     ]
   },
@@ -228,36 +389,32 @@
     ]
   },
   {
-    "id": "carousel",
+    "id": "columns-actions-item",
     "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Button link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Button text",
+        "value": ""
+      },
       {
         "component": "richtext",
         "name": "text",
         "value": "",
-        "label": "Heading",
+        "label": "Caption",
         "valueType": "string"
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "classes",
-        "label": "Style",
-        "value": "instruments",
-        "options": [
-          {
-            "name": "Instruments (thumbnail slider)",
-            "value": "instruments"
-          },
-          {
-            "name": "Split (image + text panel)",
-            "value": "split"
-          }
-        ]
       }
     ]
   },
   {
-    "id": "carousel-item",
+    "id": "columns-article",
     "fields": [
       {
         "component": "reference",
@@ -270,14 +427,41 @@
         "component": "text",
         "valueType": "string",
         "name": "imageAlt",
-        "label": "Image Alt",
+        "label": "Image alt text",
         "value": ""
       },
       {
         "component": "richtext",
         "name": "text",
         "value": "",
+        "label": "Answer",
+        "description": "Answer text; a video link (Wistia, YouTube, Vimeo) alone in a paragraph is shown as a player",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-callout",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Intro",
+        "description": "Heading and short introduction shown beside the benefits",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-callout-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
         "label": "Text",
+        "description": "Bold title paragraph (shown with a check icon) followed by the description",
         "valueType": "string"
       }
     ]
@@ -302,156 +486,73 @@
     ]
   },
   {
-    "id": "content-product-detail",
+    "id": "contact-form",
     "fields": [
       {
         "component": "richtext",
         "name": "text",
         "value": "",
         "label": "Text",
+        "description": "Optional heading or introduction shown above the form",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Form link",
+        "description": "Marketo form (https://pages.beckman.com/index.php/form/getForm?munchkinId=…&form=…) or FormAssembly form (https://becls.tfaforms.net/…)",
         "valueType": "string"
       }
     ]
   },
   {
-    "id": "content-product-detail-item",
+    "id": "embed",
     "fields": [
       {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt",
-        "value": ""
-      }
-    ]
-  },
-  {
-    "id": "content-product-form",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Product Column",
-        "valueType": "string"
-      },
-      {
-        "component": "reference",
-        "valueType": "string",
-        "name": "image",
-        "label": "Product Image",
-        "multi": false
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "imageAlt",
-        "label": "Product Image Alt",
-        "value": ""
-      },
-      {
-        "component": "richtext",
-        "name": "formBody",
-        "value": "",
-        "label": "Form Column",
+        "component": "aem-content",
+        "name": "link",
+        "label": "Video link",
+        "description": "Wistia (https://fast.wistia.net/embed/iframe/…), YouTube or Vimeo link",
         "valueType": "string"
       }
     ]
   },
   {
-    "id": "content-reversed",
+    "id": "faq-list-item",
     "fields": [
       {
-        "component": "reference",
+        "component": "aem-content",
         "valueType": "string",
-        "name": "image",
-        "label": "Image",
-        "multi": false
+        "name": "link",
+        "label": "Answer page"
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
-        "label": "Image Alt",
+        "name": "linkText",
+        "label": "Question",
         "value": ""
       },
       {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
+        "component": "text",
+        "valueType": "string",
+        "name": "categories",
+        "label": "Categories",
+        "description": "Comma separated; used by the FAQ search filters",
+        "value": ""
       }
     ]
   },
   {
-    "id": "form-request",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Header (Title + Subtitle)",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "form-request-item",
+    "id": "faq-search",
     "fields": [
       {
         "component": "text",
         "valueType": "string",
-        "name": "label",
-        "label": "Label",
+        "name": "categories",
+        "label": "Category filters",
+        "description": "Comma separated; one checkbox per category, matched against the categories of the FAQ list questions. Leave empty for search only",
         "value": ""
-      },
-      {
-        "component": "text",
-        "valueType": "string",
-        "name": "placeholder",
-        "label": "Placeholder",
-        "value": ""
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "type",
-        "label": "Type",
-        "value": "text",
-        "options": [
-          {
-            "name": "Text",
-            "value": "text"
-          },
-          {
-            "name": "Text (half width)",
-            "value": "half"
-          },
-          {
-            "name": "Email",
-            "value": "email"
-          },
-          {
-            "name": "Text area",
-            "value": "textarea"
-          },
-          {
-            "name": "Consent text",
-            "value": "consent"
-          },
-          {
-            "name": "Submit button",
-            "value": "submit"
-          }
-        ]
       }
     ]
   },
@@ -462,6 +563,85 @@
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "hero-banner",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left aligned (image banner, no overlay)",
+            "value": "left-aligned"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image alt text",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobileImage",
+        "label": "Mobile image (optional)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mobileImageAlt",
+        "label": "Mobile image alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "hero-callout",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Logo",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Logo alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Heading, subheading, then the callout label and buttons (shown in the white box)",
+        "valueType": "string"
       }
     ]
   },
@@ -488,120 +668,108 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
-      },
-      {
-        "component": "select",
-        "valueType": "string",
-        "name": "classes",
-        "label": "Style",
-        "value": "home",
-        "options": [
-          {
-            "name": "Home (background image)",
-            "value": "home"
-          },
-          {
-            "name": "Banner (solid, no image)",
-            "value": "banner"
-          },
-          {
-            "name": "Plain (white, dark text, no image)",
-            "value": "plain"
-          },
-          {
-            "name": "Gradient (banner, white text, image bleeds right)",
-            "value": "gradient"
-          },
-          {
-            "name": "Split (text left, image right)",
-            "value": "split"
-          },
-          {
-            "name": "Split (image left, text right)",
-            "value": "split-left"
-          }
-        ]
       }
     ]
   },
   {
-    "id": "product-banner",
+    "id": "table-plans-row",
     "fields": [
       {
-        "component": "reference",
+        "component": "text",
         "valueType": "string",
-        "name": "image",
-        "label": "Banner Image",
-        "multi": false
+        "name": "column1",
+        "label": "Column 1",
+        "value": "",
+        "description": "Row 1: plan groups (a label, then empty cells for the columns it spans); row 2: plan names; then one row per feature (● included, ○ optional). Leave a column empty to separate plan groups; the last column is highlighted."
       },
       {
         "component": "text",
         "valueType": "string",
-        "name": "imageAlt",
-        "label": "Banner Image Alt",
+        "name": "column2",
+        "label": "Column 2",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column3",
+        "label": "Column 3",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column4",
+        "label": "Column 4",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column5",
+        "label": "Column 5",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column6",
+        "label": "Column 6",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column7",
+        "label": "Column 7",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "table-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column1",
+        "label": "Column 1",
+        "value": "",
+        "description": "The first row is the table header. Every row should use the same number of columns."
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column2",
+        "label": "Column 2",
         "value": ""
       },
       {
         "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Text",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "quote",
-    "fields": [
-      {
-        "component": "richtext",
-        "name": "quote",
-        "value": "",
-        "label": "Quote",
-        "valueType": "string"
-      },
-      {
-        "component": "text",
-        "name": "attribution",
-        "value": "",
-        "label": "Attribution",
-        "valueType": "string"
-      }
-    ]
-  },
-  {
-    "id": "tabs-products",
-    "fields": []
-  },
-  {
-    "id": "tabs-products-item",
-    "fields": [
-      {
-        "component": "text",
         "valueType": "string",
-        "name": "label",
-        "label": "Tab Label",
+        "name": "column3",
+        "label": "Column 3",
         "value": ""
       },
       {
         "component": "richtext",
-        "name": "text",
-        "value": "",
-        "label": "Panel Content",
-        "valueType": "string"
+        "valueType": "string",
+        "name": "column4",
+        "label": "Column 4",
+        "value": ""
       },
       {
-        "component": "reference",
+        "component": "richtext",
         "valueType": "string",
-        "name": "image",
-        "label": "Panel Image",
-        "multi": false
+        "name": "column5",
+        "label": "Column 5",
+        "value": ""
       },
       {
-        "component": "text",
+        "component": "richtext",
         "valueType": "string",
-        "name": "imageAlt",
-        "label": "Panel Image Alt",
+        "name": "column6",
+        "label": "Column 6",
         "value": ""
       }
     ]

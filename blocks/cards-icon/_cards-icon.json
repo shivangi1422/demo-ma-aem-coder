@@ -1,0 +1,90 @@
+{
+  "definitions": [
+    {
+      "title": "Cards Icon",
+      "id": "cards-icon",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards Icon",
+              "filter": "cards-icon",
+              "model": "cards-icon"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Icon Card",
+      "id": "cards-icon-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Icon Card",
+              "model": "cards-icon-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-icon",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Horizontal (icon beside the text, two per row)",
+              "value": "horizontal"
+            },
+            {
+              "name": "Tiles (red link tiles: icon and label)",
+              "value": "tiles"
+            },
+            {
+              "name": "Bordered (service hub cards: icon, title, text in a bordered tile)",
+              "value": "bordered"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cards-icon-item",
+      "fields": [
+        {
+          "component": "reference",
+          "valueType": "string",
+          "name": "image",
+          "label": "Image",
+          "multi": false
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "description": "Title (heading) and a short description",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-icon",
+      "components": [
+        "cards-icon-item"
+      ]
+    }
+  ]
+}

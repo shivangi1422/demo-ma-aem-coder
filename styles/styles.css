@@ -1,3 +1,5 @@
+@import url('brand.css');
+
 /*
  * Copyright 2020 Adobe. All rights reserved.
  * This file is licensed to you under the Apache License, Version 2.0 (the "License");
@@ -10,74 +12,14 @@
  * governing permissions and limitations under the License.
  */
 
-:root {
-  /* colors */
-  --background-color: white;
-  --light-color: #f8f8f8;
-  --dark-color: #505050;
-  --text-color: #131313;
-  --link-color: #3b63fb;
-  --link-hover-color: #1d3ecf;
-
-  /* Beckman Coulter brand palette */
-  --bc-blue: #003da5;
-  --bc-blue-dark: #051a40;
-  --bc-navy: #1a1a2e;
-  --bc-orange: #ff6b00;
-  --bc-grey: #667;
-  --bc-surface: #f5f5f5;
-  --bc-border: #e5e7eb;
-  --bc-brand-font: inter, var(--body-font-family);
-
-  /* fonts */
-  --body-font-family: roboto, roboto-fallback, sans-serif;
-  --heading-font-family: roboto-condensed, roboto-condensed-fallback, sans-serif;
-
-  /* body sizes */
-  --body-font-size-m: 22px;
-  --body-font-size-s: 19px;
-  --body-font-size-xs: 17px;
-
-  /* heading sizes */
-  --heading-font-size-xxl: 55px;
-  --heading-font-size-xl: 44px;
-  --heading-font-size-l: 34px;
-  --heading-font-size-m: 27px;
-  --heading-font-size-s: 24px;
-  --heading-font-size-xs: 22px;
-
-  /* nav height */
-  --nav-height: 64px;
-}
-
-/* fallback fonts */
+/* fallback font, metrics matched to montserrat */
 @font-face {
-  font-family: roboto-condensed-fallback;
-  size-adjust: 88.82%;
+  font-family: montserrat-fallback;
+  size-adjust: 113.4%;
+  ascent-override: 85%;
+  descent-override: 22%;
+  line-gap-override: 0%;
   src: local('Arial');
-}
-
-@font-face {
-  font-family: roboto-fallback;
-  size-adjust: 99.529%;
-  src: local('Arial');
-}
-
-@media (width >= 900px) {
-  :root {
-    /* body sizes */
-    --body-font-size-m: 18px;
-    --body-font-size-s: 16px;
-    --body-font-size-xs: 14px;
-
-    /* heading sizes */
-    --heading-font-size-xxl: 45px;
-    --heading-font-size-xl: 36px;
-    --heading-font-size-l: 28px;
-    --heading-font-size-m: 22px;
-    --heading-font-size-s: 20px;
-    --heading-font-size-xs: 18px;
-  }
 }
 
 body {
@@ -87,7 +29,9 @@ body {
   color: var(--text-color);
   font-family: var(--body-font-family);
   font-size: var(--body-font-size-m);
-  line-height: 1.6;
+  line-height: var(--body-line-height);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 body.appear {
@@ -108,35 +52,103 @@ footer .footer[data-block-status="loaded"] {
   visibility: visible;
 }
 
+/* headings: source keeps the same sizes on all viewports */
 h1,
 h2,
 h3,
 h4,
 h5,
 h6 {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
   font-family: var(--heading-font-family);
-  font-weight: 600;
-  line-height: 1.25;
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--text-color);
   scroll-margin: 40px;
 }
 
-h1 { font-size: var(--heading-font-size-xxl); }
-h2 { font-size: var(--heading-font-size-xl); }
-h3 { font-size: var(--heading-font-size-l); }
-h4 { font-size: var(--heading-font-size-m); }
-h5 { font-size: var(--heading-font-size-s); }
-h6 { font-size: var(--heading-font-size-xs); }
+h1 {
+  margin: 0.67em 0;
+  font-size: var(--heading-font-size-xxl);
+}
+
+h2 {
+  margin: 0.83em 0;
+  font-size: var(--heading-font-size-xl);
+  font-weight: 500;
+}
+
+h3 {
+  margin: 1em 0;
+  font-size: var(--heading-font-size-l);
+}
+
+h4 {
+  margin: 1.33em 0;
+  font-size: var(--heading-font-size-m);
+  line-height: 1.3;
+}
+
+h5 {
+  margin: 1.67em 0;
+  font-size: var(--heading-font-size-s);
+}
+
+h6 {
+  margin: 2.33em 0;
+  font-size: var(--heading-font-size-xs);
+}
 
 p,
 dl,
-ol,
-ul,
 pre,
 blockquote {
-  margin-top: 0.8em;
-  margin-bottom: 0.25em;
+  margin: 1em 0;
+}
+
+blockquote {
+  margin: 1em 40px;
+}
+
+ul,
+ol {
+  margin: 0 0 10px;
+}
+
+ul {
+  padding-left: 17px;
+}
+
+ol {
+  padding-left: 40px;
+}
+
+strong,
+b,
+th {
+  font-weight: 700;
+}
+
+/* sub/sup do not change the line height (source normalize) */
+sub,
+sup {
+  position: relative;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+sup {
+  top: -0.5em;
+}
+
+hr {
+  margin: 20px 0;
+  border: 0;
+  border-top: 1px solid var(--border-color);
 }
 
 code,
@@ -152,10 +164,6 @@ pre {
   white-space: pre;
 }
 
-main > div {
-  margin: 40px 16px;
-}
-
 input,
 textarea,
 select,
@@ -163,7 +171,7 @@ button {
   font: inherit;
 }
 
-/* links */
+/* links: source keeps colour and no underline on hover */
 a:any-link {
   color: var(--link-color);
   text-decoration: none;
@@ -172,12 +180,12 @@ a:any-link {
 
 a:hover {
   color: var(--link-hover-color);
-  text-decoration: underline;
 }
 
-/* buttons */
+/* buttons: **link** = primary (blue), _link_ = secondary (blue outline), **_link_** = accent (red);
+   source buttons are inline links without margins: spacing comes from the text around them */
 p.button-wrapper {
-  margin: 12px 0;
+  margin: 0;
 }
 
 a.button:any-link,
@@ -188,104 +196,82 @@ button.button {
   justify-content: center;
   max-width: 100%;
   margin: 0;
-  border: 2px solid transparent;
-  border-radius: 2.4em;
-  padding: 0.5em 1.2em;
-  font: inherit;
+  border: 1px solid transparent;
+  border-radius: var(--button-radius);
+  padding: 12px 20px;
+  font-family: var(--body-font-family);
+  font-size: var(--button-font-size);
   font-weight: 500;
-  line-height: 1.25;
+  line-height: 1.65;
+  text-align: center;
   text-decoration: none;
   cursor: pointer;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+  transition: color 0.3s ease, background-color 0.3s ease, border-color 0.3s ease;
 }
 
 a.button[aria-disabled="true"],
 button.button:disabled {
   cursor: not-allowed;
   pointer-events: none;
+  opacity: 0.4;
 }
 
 a.button.primary,
 button.button.primary {
-  border-color: var(--text-color);
-  background-color: var(--text-color);
-  color: var(--background-color);
+  border-color: var(--button-primary-color);
+  background-color: var(--button-primary-color);
+  color: var(--white);
 }
 
 a.button.primary:hover,
 a.button.primary:focus-visible,
+a.button.primary:active,
 button.button.primary:hover,
-button.button.primary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--dark-color);
-  color: var(--light-color);
-}
-
-a.button.primary[aria-disabled="true"],
-a.button.primary[aria-disabled="true"]:hover,
-a.button.primary[aria-disabled="true"]:focus-visible,
-button.button.primary:disabled,
-button.button.primary:disabled:hover,
-button.button.primary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+button.button.primary:focus-visible,
+button.button.primary:active {
+  border-color: var(--button-primary-hover-color);
+  background-color: var(--button-primary-hover-color);
+  color: var(--white);
 }
 
 a.button.secondary,
 button.button.secondary {
-  border-color: var(--text-color);
+  border-color: var(--button-primary-color);
   background-color: transparent;
-  color: var(--text-color);
+  color: var(--button-primary-color);
 }
 
 a.button.secondary:hover,
 a.button.secondary:focus-visible,
+a.button.secondary:active,
 button.button.secondary:hover,
-button.button.secondary:focus-visible {
-  border-color: var(--dark-color);
-  background-color: var(--light-color);
-  color: var(--dark-color);
-}
-
-a.button.secondary[aria-disabled="true"],
-a.button.secondary[aria-disabled="true"]:hover,
-a.button.secondary[aria-disabled="true"]:focus-visible,
-button.button.secondary:disabled,
-button.button.secondary:disabled:hover,
-button.button.secondary:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+button.button.secondary:focus-visible,
+button.button.secondary:active {
+  border-color: var(--button-primary-color);
+  background-color: var(--button-primary-color);
+  color: var(--white);
 }
 
 /* high-impact call-to-action */
 a.button.accent,
 button.button.accent {
-  border-color: var(--link-color);
-  background-color: var(--link-color);
-  color: var(--background-color);
+  border-color: var(--button-accent-color);
+  background-color: var(--button-accent-color);
+  color: var(--white);
 }
 
 a.button.accent:hover,
 a.button.accent:focus-visible,
+a.button.accent:active,
 button.button.accent:hover,
-button.button.accent:focus-visible {
-  border-color: var(--link-hover-color);
-  background-color: var(--link-hover-color);
-}
-
-a.button.accent[aria-disabled="true"],
-a.button.accent[aria-disabled="true"]:hover,
-a.button.accent[aria-disabled="true"]:focus-visible,
-button.button.accent:disabled,
-button.button.accent:disabled:hover,
-button.button.accent:disabled:focus-visible {
-  background-color: var(--light-color);
-  border-color: var(--light-color);
-  color: var(--dark-color);
+button.button.accent:focus-visible,
+button.button.accent:active {
+  border-color: var(--button-accent-hover-color);
+  background-color: var(--button-accent-hover-color);
+  color: var(--white);
 }
 
 main img {
@@ -305,62 +291,152 @@ main img {
   width: 100%;
 }
 
-/* sections */
+/* sections: bootstrap-style 1170px container with 15px gutters;
+   spacing as the source .Section: 2vw padding above and below, no margins */
 main > .section {
-  margin: 40px 0;
+  margin: 0;
+  padding: 2vw 0;
 }
 
 main > .section > div {
-  max-width: 1200px;
+  box-sizing: border-box;
+  max-width: var(--content-max-width);
   margin: auto;
-  padding: 0 24px;
+  padding: 0 var(--content-gutter);
 }
 
 main > .section:first-of-type {
   margin-top: 0;
 }
 
-@media (width >= 900px) {
+/* service pages: the source .Section is the full 1170px without gutters (x=135 at 1440);
+   FAQ articles keep the bootstrap container (1140px content) */
+@media (width >= 1200px) {
   main > .section > div {
-    padding: 0 32px;
+    max-width: calc(var(--content-max-width) + 2 * var(--content-gutter));
   }
-}
 
-/*
- * Full-bleed migrated blocks (Beckman Coulter homepage).
- * These blocks are designed edge-to-edge and carry their own internal padding,
- * so their section wrapper must span the full viewport width with no max-width,
- * side padding, or vertical margin.
- */
-main > .section:has(> div > .hero),
-main > .section:has(> div > .cards-grid),
-main > .section:has(> div > .carousel),
-main > .section:has(> div > .tabs-products),
-main > .section:has(> div > .content-reversed),
-main > .section:has(> div > .form-request),
-main > .section:has(> div > .content-product-detail),
-main > .section:has(> div > .content-product-form),
-main > .section:has(> div > .product-banner) {
-  margin: 0;
-}
-
-main > .section:has(> div > .hero) > div,
-main > .section:has(> div > .cards-grid) > div,
-main > .section:has(> div > .carousel) > div,
-main > .section:has(> div > .tabs-products) > div,
-main > .section:has(> div > .content-reversed) > div,
-main > .section:has(> div > .form-request) > div,
-main > .section:has(> div > .content-product-detail) > div,
-main > .section:has(> div > .content-product-form) > div,
-main > .section:has(> div > .product-banner) > div {
-  max-width: none;
-  padding: 0;
+  main > .section.article > div,
+  main > .section.listing > div {
+    max-width: var(--content-max-width);
+  }
 }
 
 /* section metadata */
 main .section.light,
-main .section.highlight {
+main .section.highlight,
+main .section.grey {
   background-color: var(--light-color);
+}
+
+/* blue band (source Section--blue): white text; centred in Get in Touch (source .Contact) */
+main .section.blue {
+  background-color: var(--brand-blue);
+  color: var(--white);
+}
+
+main .section.blue :is(h1, h2, h3, h4, h5, h6) {
+  color: var(--white);
+}
+
+main .section.blue > .default-content-wrapper p {
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  line-height: 23.1px;
+}
+
+/* an image right after a button starts the next item (source product lists) */
+main .default-content-wrapper > p.button-wrapper + p:has(> picture:only-child) {
+  margin-top: 0;
+}
+
+/* Get in Touch (source #getInTouch: 40px above, extra 2vw below; centred as the source .Contact) */
+main .section.blue.columns-actions-container {
+  text-align: center;
+  margin-top: var(--section-spacing);
+  padding: 2vw 0 4vw;
+}
+
+/* template service-landing (/service page CSS): the 1170px .Section keeps its own padding,
+   on phones 4vw above and 8vw at the sides (none below), 2vw all round from 768px */
+.service-landing main > .section {
+  padding: 4vw 0 0;
+}
+
+.service-landing main > .section > div {
+  max-width: var(--content-max-width);
+  padding: 0 8vw;
+}
+
+/* Get in Touch: 40px above as everywhere, 4vw inside at the top and 2vw at the bottom on phones */
+.service-landing main > .section.blue.columns-actions-container {
+  padding: 4vw 0 2vw;
+}
+
+@media (width >= 768px) {
+  .service-landing main > .section {
+    padding: 2vw 0;
+  }
+
+  .service-landing main > .section.blue.columns-actions-container {
+    padding: 2vw 0 4vw;
+  }
+
+  .service-landing main > .section > div {
+    padding: 0 2vw;
+  }
+}
+
+/* article: FAQ article main column (source col-md-8 of a 20px-gutter row), no section spacing */
+main > .section.article {
   margin: 0;
-  padding: 40px 0;
+  padding: 0;
+}
+
+@media (width >= 900px) {
+  main > .section.article > div > * {
+    max-width: calc((100% + 20px) * 2 / 3 - 20px);
+  }
+}
+
+/* listing: FAQ listing main column (source col-md-9 of a 20px-gutter row, 850px at 1440), no section spacing */
+main > .section.listing {
+  margin: 0;
+  padding: 0;
+}
+
+@media (width >= 900px) {
+  main > .section.listing > div > * {
+    max-width: calc((100% + 20px) * 3 / 4 - 20px);
+  }
+}
+
+/* sidebar: main column + the section's last block (e.g. a form) beside it,
+   as the source 9 / 3 column row (20px gutter) in the 1140px bootstrap content; stacked below 900px */
+main > .section.sidebar > .sidebar-main > div {
+  padding: 0;
+}
+
+@media (width >= 900px) {
+  main > .section.sidebar {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: calc(75% - 5px) minmax(0, 1fr);
+    align-items: start;
+    column-gap: 20px;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding-inline: var(--content-gutter);
+  }
+
+  main > .section.sidebar > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
+  }
+}
+
+/* metadata tables become head tags on publish; hide them where a document is rendered as-is */
+main .metadata-wrapper {
+  display: none;
 }
