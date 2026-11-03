@@ -12,79 +12,10 @@
       "image",
       "button",
       "title",
+      "hero",
       "cards",
       "columns",
-      "fragment",
-      "hero-curved-panel",
-      "jump-nav",
-      "cards-promo",
-      "cards-topic-tiles",
-      "cards-service-icon",
-      "hero-photo-card",
-      "hero-dim-photo",
-      "cards-stats",
-      "cards-icon-border",
-      "cards-button-caption",
-      "cards-benefit-check",
-      "cards-product-plan",
-      "hero-dim-buttons",
-      "table-plan-compare",
-      "callout-bar",
-      "cards-link-tile"
-    ]
-  },
-  {
-    "id": "cards-benefit-check",
-    "components": [
-      "cards-benefit-check-item"
-    ]
-  },
-  {
-    "id": "cards-button-caption",
-    "components": [
-      "cards-button-caption-item"
-    ]
-  },
-  {
-    "id": "cards-icon-border",
-    "components": [
-      "cards-icon-border-item"
-    ]
-  },
-  {
-    "id": "cards-link-tile",
-    "components": [
-      "cards-link-tile-item"
-    ]
-  },
-  {
-    "id": "cards-product-plan",
-    "components": [
-      "cards-product-plan-item"
-    ]
-  },
-  {
-    "id": "cards-promo",
-    "components": [
-      "cards-promo-item"
-    ]
-  },
-  {
-    "id": "cards-service-icon",
-    "components": [
-      "cards-service-icon-item"
-    ]
-  },
-  {
-    "id": "cards-stats",
-    "components": [
-      "cards-stats-item"
-    ]
-  },
-  {
-    "id": "cards-topic-tiles",
-    "components": [
-      "cards-topic-tiles-item"
+      "fragment"
     ]
   },
   {
@@ -106,18 +37,6 @@
       "image",
       "button",
       "title"
-    ]
-  },
-  {
-    "id": "jump-nav",
-    "components": [
-      "jump-nav-link"
-    ]
-  },
-  {
-    "id": "table-plan-compare",
-    "components": [
-      "table-plan-compare-row"
     ]
   }
 ]

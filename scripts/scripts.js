@@ -1,18 +1,44 @@
 import {
-  buildBlock,
-  decorateBlock,
-  loadBlock,
+  loadHeader,
+  loadFooter,
   decorateIcons,
   decorateSections,
   decorateBlocks,
   decorateTemplateAndTheme,
-  getMetadata,
   waitForFirstImage,
   loadSection,
   loadSections,
   loadCSS,
-  toClassName,
+  getMetadata,
 } from './aem.js';
+
+/**
+ * Resolves the path of a site-wide document (nav, footer).
+ * Local preview serves content under /content, the authoring environment under /content/<site>.
+ * @param {string} name document name
+ * @returns {string} path of the document
+ */
+export function siteDocumentPath(name) {
+  const meta = getMetadata(name);
+  if (meta) return new URL(meta, window.location).pathname;
+  const { hostname, pathname } = window.location;
+  if (!pathname.startsWith('/content/')) return `/${name}`;
+  const root = hostname === 'localhost' ? '/content' : pathname.split('/').slice(0, 3).join('/');
+  return `${root}/${name}`;
+}
+
+/**
+ * Images in site documents are referenced relative to the document, not to the page.
+ * @param {Element} fragment loaded fragment
+ * @param {string} path path of the fragment
+ */
+export function rebaseImages(fragment, path) {
+  const base = new URL(path, window.location);
+  fragment.querySelectorAll('img[src]').forEach((img) => {
+    const src = img.getAttribute('src');
+    if (!/^([a-z]+:|\/)/i.test(src)) img.src = new URL(src, base).href;
+  });
+}
 
 /**
  * Moves all the attributes from a given elmenet to another given element.
@@ -49,40 +75,6 @@ export function moveInstrumentation(from, to) {
 }
 
 /**
- * Returns the content elements of a block row's cells, the same whichever way the
- * row is delivered: <div><div>…</div></div> (preview), the rich text wrapped in an
- * extra element, or the content placed on the row itself (authoring). Also undoes
- * what the browser makes of stored <p><h4>…</h4></p>: the heading loses its
- * paragraph and the empty paragraphs around it are removed.
- * @param {Element} row A block row
- * @returns {Element[]} One element per cell whose children are the cell content
- */
-export function rowContentCells(row) {
-  const children = [...row.children];
-  const cells = children.length && children.every((el) => el.tagName === 'DIV') ? children : [row];
-  // a lone <div>, or a <p> that only holds block content (aem.js wraps cells that do not
-  // start with a paragraph into one), is a wrapper around the real content
-  const isWrapper = (el) => el.tagName === 'DIV'
-    || (el.tagName === 'P' && el.querySelector(':scope > :is(div, p, h1, h2, h3, h4, h5, h6, ul, ol)'));
-  return cells.map((cell) => {
-    let root = cell;
-    while (root.children.length === 1 && isWrapper(root.firstElementChild)
-      && ![...root.childNodes].some((n) => n.nodeType === Node.TEXT_NODE && n.textContent.trim())) {
-      root = root.firstElementChild;
-    }
-    root.querySelectorAll(':scope > p').forEach((p) => {
-      const only = p.children.length === 1 ? p.firstElementChild : null;
-      if (only && /^H[1-6]$/.test(only.tagName) && p.textContent.trim() === only.textContent.trim()) {
-        p.replaceWith(only);
-      } else if (!p.textContent.trim() && !p.querySelector('img, picture, svg, .icon')) {
-        p.remove();
-      }
-    });
-    return root;
-  });
-}
-
-/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
@@ -98,26 +90,9 @@ async function loadFonts() {
  * Builds all synthetic blocks in a container element.
  * @param {Element} main The container element
  */
-/**
- * mybeckman.in inner pages below a hub (e.g. /en-in/service/plans) start with a breadcrumb,
- * as on the source; `breadcrumb` metadata "off" / "on" overrides that.
- * @param {Element} main The container element
- */
-function buildBreadcrumb(main) {
-  if (!document.body.classList.contains('mybeckman-inner')) return;
-  const setting = getMetadata('breadcrumb').toLowerCase();
-  const path = window.location.pathname.replace(/\.html$/, '');
-  const [, below = ''] = path.split('/en-in/');
-  const depth = below.split('/').filter(Boolean).length;
-  if (setting === 'off' || (setting !== 'on' && depth < 2)) return;
-  const section = document.createElement('div');
-  section.append(buildBlock('breadcrumb-mybeckman', ''));
-  main.prepend(section);
-}
-
-function buildAutoBlocks(main) {
+function buildAutoBlocks() {
   try {
-    buildBreadcrumb(main);
+    // TODO: add auto block, if needed
   } catch (error) {
     // eslint-disable-next-line no-console
     console.error('Auto Blocking failed', error);
@@ -172,32 +147,8 @@ export function decorateMain(main) {
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
-  // Section "Anchor ID" (section metadata `anchor`) becomes the section's id for in-page links.
-  main.querySelectorAll('.section[data-anchor]').forEach((section) => {
-    section.id = toClassName(section.dataset.anchor);
-  });
   decorateBlocks(main);
   decorateButtons(main);
-}
-
-/**
- * Site themes given by page location, for pages that don't set `theme` metadata themselves:
- * [path pattern, theme class]. Paths match locally (/content/…), in the authoring
- * environment (/content/<site>/…) and on the published site.
- */
-const PATH_THEMES = [
-  // mybeckman.in home page
-  [/^(\/content(\/[^/]+)?)?\/en-in(\.html|\/(index(\.html)?)?)?$/, 'theme-mybeckman'],
-  // mybeckman.in inner pages (inner-page design): service hub, service plans, plan pages
-  [/^(\/content(\/[^/]+)?)?\/en-in\/service(\/plans(\/(centrifuge|flow-cytometry|liquid-handling|particle-analysis))?)?(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
-  // mybeckman.in technical support (inner-page design)
-  [/^(\/content(\/[^/]+)?)?\/en-in\/service\/tech-support(\.html)?\/?$/, 'theme-mybeckman mybeckman-inner'],
-];
-
-function applyPathTheme() {
-  if (getMetadata('theme')) return;
-  const match = PATH_THEMES.find(([pattern]) => pattern.test(window.location.pathname));
-  if (match) document.body.classList.add(...match[1].split(' '));
 }
 
 /**
@@ -207,7 +158,6 @@ function applyPathTheme() {
 async function loadEager(doc) {
   document.documentElement.lang = 'en';
   decorateTemplateAndTheme();
-  applyPathTheme();
   const main = doc.querySelector('main');
   if (main) {
     decorateMain(main);
@@ -226,36 +176,11 @@ async function loadEager(doc) {
 }
 
 /**
- * Site themes (page metadata `theme`) that bring their own header/footer block,
- * named `<part>-<theme>`, e.g. theme-mybeckman -> header-mybeckman.
- * The first theme is also used for pages without a theme (the site has no other header/footer).
- */
-const THEMED_BLOCKS = {
-  header: ['mybeckman'],
-  footer: ['mybeckman'],
-};
-
-/**
- * Loads the header or footer block for the page's theme.
- * @param {Element} el header or footer element
- * @param {string} part 'header' or 'footer'
- * @returns {Promise}
- */
-function loadThemedBlock(el, part) {
-  const theme = THEMED_BLOCKS[part].find((t) => document.body.classList.contains(`theme-${t}`))
-    || THEMED_BLOCKS[part][0];
-  const block = buildBlock(`${part}-${theme}`, '');
-  el.append(block);
-  decorateBlock(block);
-  return loadBlock(block);
-}
-
-/**
  * Loads everything that doesn't need to be delayed.
  * @param {Element} doc The container element
  */
 async function loadLazy(doc) {
-  loadThemedBlock(doc.querySelector('header'), 'header');
+  loadHeader(doc.querySelector('header'));
 
   const main = doc.querySelector('main');
   await loadSections(main);
@@ -264,7 +189,7 @@ async function loadLazy(doc) {
   const element = hash ? doc.getElementById(hash.substring(1)) : false;
   if (hash && element) element.scrollIntoView();
 
-  loadThemedBlock(doc.querySelector('footer'), 'footer');
+  loadFooter(doc.querySelector('footer'));
 
   loadCSS(`${window.hlx.codeBasePath}/styles/lazy-styles.css`);
   loadFonts();

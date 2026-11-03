@@ -26,12 +26,6 @@
           "description": "The label shown for this section in the Content Tree"
         },
         {
-          "component": "text",
-          "name": "anchor",
-          "label": "Anchor ID",
-          "description": "Optional id for in-page links (e.g. latest). Jump navigation links to #<anchor id>."
-        },
-        {
           "component": "multiselect",
           "name": "style",
           "label": "Style",
@@ -39,50 +33,6 @@
             {
               "name": "Highlight",
               "value": "highlight"
-            },
-            {
-              "name": "Light Grey Gradient",
-              "value": "light-grey-gradient"
-            },
-            {
-              "name": "Light Grey",
-              "value": "light-grey"
-            },
-            {
-              "name": "Off White",
-              "value": "off-white"
-            },
-            {
-              "name": "Blue",
-              "value": "blue"
-            },
-            {
-              "name": "Wide (full content column)",
-              "value": "wide"
-            },
-            {
-              "name": "Wide, taller mobile padding (4vw 2vw below 768px)",
-              "value": "wide-tall"
-            },
-            {
-              "name": "Roomy (4vw padding, 1170px column from 700px)",
-              "value": "roomy"
-            },
-            {
-              "name": "Split (intro beside block)",
-              "value": "split"
-            },
-            {
-              "name": "Centered",
-              "value": "centered"
-            },
-            {
-              "name": "Headline (inner pages: centred, 48px h1)",
-              "value": "headline"
-            },
-            {
-              "name": "Grey (inner pages: #f0f3f5 band)",
-              "value": "grey"
             }
           ]
         }
@@ -97,25 +47,10 @@
         "image",
         "button",
         "title",
+        "hero",
         "cards",
         "columns",
-        "fragment",
-        "hero-curved-panel",
-        "jump-nav",
-        "cards-promo",
-        "cards-topic-tiles",
-        "cards-service-icon",
-        "hero-photo-card",
-        "hero-dim-photo",
-        "cards-stats",
-        "cards-icon-border",
-        "cards-button-caption",
-        "cards-benefit-check",
-        "cards-product-plan",
-        "hero-dim-buttons",
-        "table-plan-compare",
-        "callout-bar",
-        "cards-link-tile"
+        "fragment"
       ]
     }
   ]
