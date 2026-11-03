@@ -118,7 +118,9 @@ var CustomImportScript = (() => {
     a.textContent = url;
     frag.appendChild(a);
     const cells = [[frag]];
-    const name = element.classList.contains("marketo-two-column") ? "Marketo Form (two-column)" : "Marketo Form";
+    let name = "Marketo Form (stacked)";
+    if (element.classList.contains("marketo-two-column")) name = "Marketo Form (two-column)";
+    else if (element.closest(".two-columns-holder__right")) name = "Marketo Form";
     const block = WebImporter.Blocks.createBlock(document2, { name, cells });
     element.replaceWith(block);
   }
@@ -157,6 +159,13 @@ var CustomImportScript = (() => {
       element.querySelectorAll("#content-holder > br").forEach((br) => br.remove());
       element.querySelectorAll("#content-holder .bcls-aeo-published").forEach((el) => {
         if (isEmpty(el)) el.remove();
+      });
+      removeAll(element, ["#product-documentation-wrapper .content-resource-list-child"]);
+      element.querySelectorAll("#product-documentation-wrapper .content-pagination-next-btn").forEach((btn) => btn.parentElement.remove());
+      element.querySelectorAll(".product-spotlight-wrapper .product-page-sub-heading-wrapper > h3").forEach((h3) => {
+        const h2 = element.ownerDocument.createElement("h2");
+        h2.innerHTML = h3.innerHTML;
+        h3.replaceWith(h2);
       });
       removeAll(element, [
         "#consent_blackbar",
@@ -207,6 +216,7 @@ var CustomImportScript = (() => {
       });
     }
     if (hookName === "afterTransform") {
+      removeAll(element, ["#coveo-techdocs-more-results"]);
       removeAll(element, [
         "header#mainNav",
         "header",

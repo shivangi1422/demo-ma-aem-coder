@@ -1,0 +1,11 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service/plans/request",
+  "path": "service/plans/request",
+  "timestamp": "2026-11-03T10:58:14.380Z",
+  "title": "Service Plan Request, Beckman Coulter Life Sciences",
+  "template": "service-plan-request",
+  "blocks": [
+    "marketo-form"
+  ]
+}

@@ -140,6 +140,89 @@
   background: #005f9e;
 }
 
+/* stylelint-disable no-descending-specificity -- distinct style options, ordering intentional */
+
+/* option "stacked" (source: in-page request forms, e.g. /service/plans/request):
+   no panel, 720px centered, 11px labels above full-width 32px fields,
+   radio groups beside their label, blue submit with shadow on the right */
+.marketo-form.stacked {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 0;
+  background: none;
+}
+
+/* source: 15px between fields (74px row pitch); Marketo sets an inline margin on
+   the column, so only !important can override it */
+.marketo-form.stacked .mktoForm .mktoFormRow > .mktoFormCol {
+  margin-bottom: 15px !important;
+}
+
+/* source phones: fields inset 10px inside the form */
+@media (width < 768px) {
+  .marketo-form.stacked .mktoForm {
+    padding: 0 10px;
+  }
+}
+
+/* forms2.css floats the fields: contain them so the spacing applies */
+.marketo-form.stacked .mktoForm .mktoFieldWrap {
+  display: flow-root;
+}
+
+.marketo-form.stacked .mktoForm .mktoFieldWrap label.mktoLabel {
+  margin: 0 0 5px;
+  padding: 2.2px 0 3.3px;
+  font-size: 11px;
+  line-height: 16.5px;
+}
+
+.marketo-form.stacked .mktoForm .mktoFieldWrap input:not([type="radio"], [type="checkbox"], [type="hidden"]),
+.marketo-form.stacked .mktoForm .mktoFieldWrap select,
+.marketo-form.stacked .mktoForm .mktoFieldWrap textarea {
+  border-color: #9fa4aa;
+}
+
+.marketo-form.stacked .mktoForm .mktoFieldWrap select {
+  background-color: #efefef;
+  font-size: 16px;
+}
+
+.marketo-form.stacked .mktoForm .mktoFieldWrap textarea {
+  min-height: 70px;
+}
+
+.marketo-form.stacked .mktoForm .mktoHtmlText {
+  color: #4d4d4d;
+  font-size: 14px;
+  line-height: 21px;
+}
+
+.marketo-form.stacked .mktoForm .mktoFieldWrap:has(> .mktoRadioList) {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+
+.marketo-form.stacked .mktoForm .mktoFieldWrap:has(> .mktoRadioList) label.mktoLabel {
+  flex: 0 0 auto;
+  margin: 0;
+}
+
+.marketo-form.stacked .mktoForm .mktoRadioList > label {
+  font-weight: 700;
+}
+
+.marketo-form.stacked .mktoForm .mktoButtonRow {
+  text-align: right;
+}
+
+.marketo-form.stacked .mktoForm .mktoButton {
+  border: 1px solid #aeb0b6;
+  border-radius: 2px;
+  box-shadow: 1px 1px 6px 1px #ccc;
+}
+
 /* option "two-column": no panel, labels beside fields from 768px, red submit;
    source: form 90% wide (max 900px), 145px labels beside 270px x 35px fields */
 .marketo-form.two-column {
@@ -218,4 +301,5 @@
     grid-column: 1 / -1;
   }
 }
+/* stylelint-enable no-descending-specificity */
 /* stylelint-enable selector-class-pattern */

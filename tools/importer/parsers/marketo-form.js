@@ -2,9 +2,10 @@
 /* global WebImporter */
 
 /**
- * Parser for marketo-form, emitted as the Marketo Form block (two-column
- * option when the container has class marketo-two-column).
- * Source: https://www.mybeckman.in/support, https://www.mybeckman.in/service/training
+ * Parser for marketo-form, emitted as the Marketo Form block: default (sidebar
+ * panel) in .two-columns-holder__right, two-column for .marketo-two-column,
+ * stacked otherwise.
+ * Source: https://www.mybeckman.in/support, /service/training, /service/plans/request
  * Selectors: #main .formassembly-container
  * Model: "marketo-form" (form = Marketo form URL, classes = style).
  * Row 1: field:form = link to
@@ -31,9 +32,11 @@ export default function parse(element, { document }) {
   frag.appendChild(a);
 
   const cells = [[frag]];
-  const name = element.classList.contains('marketo-two-column')
-    ? 'Marketo Form (two-column)'
-    : 'Marketo Form';
+  // sidebar form (support) = default panel; wide band form (training) = two-column;
+  // any other in-page form (e.g. /service/plans/request) = stacked
+  let name = 'Marketo Form (stacked)';
+  if (element.classList.contains('marketo-two-column')) name = 'Marketo Form (two-column)';
+  else if (element.closest('.two-columns-holder__right')) name = 'Marketo Form';
 
   const block = WebImporter.Blocks.createBlock(document, { name, cells });
   element.replaceWith(block);

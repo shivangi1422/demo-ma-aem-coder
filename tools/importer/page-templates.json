@@ -657,6 +657,40 @@
           ]
         }
       ]
+    },
+    {
+      "name": "service-plan-request",
+      "urls": [
+        "https://www.mybeckman.in/service/plans/request"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/plans/request",
+      "description": "Service plan quote request: breadcrumb, H1 and intro text, embedded Marketo request form (labels above fields)",
+      "urlPattern": "/service/plans/request",
+      "blocks": [
+        {
+          "name": "marketo-form",
+          "instances": [
+            "#main .formassembly-container"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Request form",
+          "selector": [
+            ".container:has(> #content-holder)"
+          ],
+          "style": null,
+          "blocks": [
+            "marketo-form"
+          ],
+          "defaultContent": [
+            "#content-holder > h1",
+            "#content-holder > p"
+          ]
+        }
+      ]
     }
   ]
 }
