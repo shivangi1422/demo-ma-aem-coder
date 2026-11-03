@@ -133,6 +133,14 @@
         {
           "component": "text",
           "valueType": "string",
+          "name": "fallbackData",
+          "label": "Fallback data URL",
+          "value": "",
+          "description": "Saved copy of the real API responses, used only when the live API is unreachable"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
           "name": "errorMessage",
           "label": "Error text",
           "value": ""

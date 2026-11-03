@@ -22,7 +22,18 @@ function scriptValue(document, key) {
   return m ? m[1] : '';
 }
 
-export default function parse(element, { document }) {
+// saved copy of the real API responses (tools/fallback-data/build-fallback-data.mjs),
+// used by the block only when the live API is unreachable
+function fallbackPath(params, file) {
+  try {
+    const pagePath = new URL(params.originalURL).pathname.replace(/\/$/, '').replace(/\.html?$/, '');
+    return `/fallback-data${pagePath}/${file}`;
+  } catch (e) {
+    return '';
+  }
+}
+
+export default function parse(element, { document, params }) {
   const options = Array.from(element.querySelectorAll('.multiselect-checkbox-label-wrapper')).map((w) => {
     const input = w.querySelector('input');
     const label = w.querySelector('label');
@@ -40,6 +51,7 @@ export default function parse(element, { document }) {
     ['dropdownLabel', dropdown ? norm(dropdown.textContent) : scriptValue(document, 'defaultText')],
     ['doneLabel', done ? norm(done.textContent) : 'Done'],
     ['noMatchingMessage', scriptValue(document, 'noMatching') || 'No matching records found'],
+    ['fallbackData', fallbackPath(params, 'resources.json')],
   ];
   const block = WebImporter.Blocks.createBlock(document, { name: 'Resource List', cells });
   element.replaceWith(block);

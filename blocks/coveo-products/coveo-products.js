@@ -3,6 +3,7 @@ import { search } from '../../scripts/coveo/coveo-client.js';
 import buildSearchParams from '../../scripts/coveo/coveo-query-builder.js';
 import { FacetState, parseFacetDefinitions } from '../../scripts/coveo/coveo-facets.js';
 import { normalizeProduct, pagination, uniqueById } from '../../scripts/coveo/coveo-results.js';
+import { loadSavedData, searchSaved } from '../../scripts/coveo/coveo-saved.js';
 import {
   el, renderPager, renderStatus,
 } from '../../scripts/search-ui.js';
@@ -16,6 +17,9 @@ import {
  *   store url, country code and optional labels.
  * Facet selections and the page are kept in localStorage per page, like the
  * source interface (data-use-local-storage-for-history).
+ * Optional "fallback data": URL of a saved copy of the real responses. When the
+ * live search can't be reached (it only answers on the source's own domain) the
+ * block switches to that copy, runs the same facet rules on it and says so.
  */
 
 let instance = 0;
@@ -151,12 +155,14 @@ export default function decorate(block) {
     cartLabel: configText(config, 'cartLabel', 'Add to Cart'),
     noResults: configText(config, 'noResultsMessage', 'No results found. Try clearing your filters.'),
     errorText: configText(config, 'errorMessage', 'Licenses could not be loaded.'),
+    fallbackData: configText(config, 'fallbackData'),
   };
   const facets = new FacetState(parseFacetDefinitions(configText(config, 'facets')));
   const storageKey = `coveo-products:${window.location.pathname}:${cfg.searchHub}`;
 
   // ---- layout ----
   const summary = el('p', { className: 'coveo-products-summary', 'aria-live': 'polite' });
+  const savedNote = el('p', { className: 'coveo-products-saved-note', hidden: true });
   const facetColumn = el('div', { className: 'coveo-products-facets', id: `${id}-facets` });
   const aside = el('aside', { className: 'coveo-products-filters', 'aria-label': cfg.filterHeading.replace(/:$/, '') }, facetColumn);
   const status = el('div', { className: 'coveo-products-status search-status', role: 'status' });
@@ -164,7 +170,7 @@ export default function decorate(block) {
   const pagerSlot = el('div', { className: 'coveo-products-pager-slot' });
   const results = el('div', { className: 'coveo-products-results' }, status, list, pagerSlot);
   const layout = el('div', { className: 'coveo-products-layout' }, aside, results);
-  block.replaceChildren(summary, layout);
+  block.replaceChildren(summary, savedNote, layout);
 
   if (!cfg.searchHub || !cfg.itemUri) {
     renderStatus(status, { type: 'error', message: 'Search is not configured (search hub and Sitecore item URI are required).' });
@@ -176,6 +182,8 @@ export default function decorate(block) {
   let controller = null;
   let requestId = 0;
   let lastFacets = facets.facetsFrom([]);
+  // 'live' until the live search fails and saved data is configured
+  let source = 'live';
   const collapsed = new Set();
   try {
     const saved = JSON.parse(window.localStorage.getItem(storageKey) || 'null');
@@ -242,23 +250,42 @@ export default function decorate(block) {
     block.classList.add('is-loading');
     renderStatus(status, { type: 'loading', message: 'Loading…' });
     persist();
+    const fromSaved = async () => {
+      const data = await loadSavedData(cfg.fallbackData);
+      if (source !== 'saved') {
+        source = 'saved';
+        savedNote.textContent = `Showing saved license data${data.capturedAt ? ` from ${data.capturedAt}` : ''}: live search is not available on this site.`;
+        savedNote.hidden = false;
+      }
+      return searchSaved(data, { facets, firstResult, numberOfResults: cfg.perPage });
+    };
     try {
-      const response = await search({
-        base: cfg.base,
-        itemUri: cfg.itemUri,
-        siteName: cfg.siteName,
-        signal: controller.signal,
-        params: buildSearchParams({
-          searchHub: cfg.searchHub,
-          pipeline: cfg.pipeline,
-          aq: cfg.aq,
-          cq: cfg.cq,
-          locale: cfg.locale,
-          firstResult,
-          numberOfResults: cfg.perPage,
-          facets,
-        }),
-      });
+      let response;
+      if (source === 'saved') {
+        response = await fromSaved();
+      } else {
+        try {
+          response = await search({
+            base: cfg.base,
+            itemUri: cfg.itemUri,
+            siteName: cfg.siteName,
+            signal: controller.signal,
+            params: buildSearchParams({
+              searchHub: cfg.searchHub,
+              pipeline: cfg.pipeline,
+              aq: cfg.aq,
+              cq: cfg.cq,
+              locale: cfg.locale,
+              firstResult,
+              numberOfResults: cfg.perPage,
+              facets,
+            }),
+          });
+        } catch (e) {
+          if (e.aborted || !cfg.fallbackData) throw e;
+          response = await fromSaved();
+        }
+      }
       if (current !== requestId) return;
       const info = pagination(response, firstResult, cfg.perPage);
       // a stored page beyond the results (e.g. the catalog shrank): go back to page 1

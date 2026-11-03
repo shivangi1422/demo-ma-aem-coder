@@ -238,3 +238,18 @@
   font: inherit;
   cursor: pointer;
 }
+
+/* saved-data fallback notice (the live API only answers on the source domain) */
+.resource-list .resource-list-saved-note {
+  margin: 0 0 12px;
+  padding: 6px 10px;
+  border-left: 3px solid #f0ad4e;
+  background: #fcf8e3;
+  color: #6b5300;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.resource-list .resource-list-saved-note[hidden] {
+  display: none;
+}

@@ -35,7 +35,18 @@ function itemUri(document) {
   return ctx ? ctx.getAttribute('data-sc-item-uri') : '';
 }
 
-export default function parse(element, { document }) {
+// saved copy of the real API responses (tools/fallback-data/build-fallback-data.mjs),
+// used by the block only when the live API is unreachable
+function fallbackPath(params, file) {
+  try {
+    const pagePath = new URL(params.originalURL).pathname.replace(/\/$/, '').replace(/\.html?$/, '');
+    return `/fallback-data${pagePath}/${file}`;
+  } catch (e) {
+    return '';
+  }
+}
+
+export default function parse(element, { document, params }) {
   const hub = (element.querySelector('.CoveoAnalytics[data-search-hub]') || {}).getAttribute
     ? element.querySelector('.CoveoAnalytics[data-search-hub]').getAttribute('data-search-hub')
     : element.getAttribute('data-pipeline');
@@ -67,6 +78,7 @@ export default function parse(element, { document }) {
     ['countryCode', 'IN'],
     ['filterHeading', 'Filter by:'],
     ['quoteLabel', 'Add to Quote'],
+    ['fallbackData', fallbackPath(params, 'licenses.json')],
   ];
   const block = WebImporter.Blocks.createBlock(document, { name: 'Coveo Products', cells });
   element.replaceWith(block);

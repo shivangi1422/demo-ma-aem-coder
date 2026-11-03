@@ -164,7 +164,15 @@ var CustomImportScript = (() => {
     const ctx = document2.querySelector("[data-sc-item-uri]");
     return ctx ? ctx.getAttribute("data-sc-item-uri") : "";
   }
-  function parse4(element, { document: document2 }) {
+  function fallbackPath(params, file) {
+    try {
+      const pagePath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
+      return `/fallback-data${pagePath}/${file}`;
+    } catch (e) {
+      return "";
+    }
+  }
+  function parse4(element, { document: document2, params }) {
     const hub = (element.querySelector(".CoveoAnalytics[data-search-hub]") || {}).getAttribute ? element.querySelector(".CoveoAnalytics[data-search-hub]").getAttribute("data-search-hub") : element.getAttribute("data-pipeline");
     const pipeline = element.getAttribute("data-pipeline") || hub;
     const perPage = element.getAttribute("data-results-per-page") || "8";
@@ -190,7 +198,8 @@ var CustomImportScript = (() => {
       ["storeUrl", "https://store.beckman.com/hi"],
       ["countryCode", "IN"],
       ["filterHeading", "Filter by:"],
-      ["quoteLabel", "Add to Quote"]
+      ["quoteLabel", "Add to Quote"],
+      ["fallbackData", fallbackPath(params, "licenses.json")]
     ];
     const block = WebImporter.Blocks.createBlock(document2, { name: "Coveo Products", cells });
     element.replaceWith(block);
@@ -236,7 +245,15 @@ var CustomImportScript = (() => {
     const m = text.match(new RegExp(`"${key}"\\s*:\\s*"([^"]*)"`));
     return m ? m[1] : "";
   }
-  function parse6(element, { document: document2 }) {
+  function fallbackPath2(params, file) {
+    try {
+      const pagePath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
+      return `/fallback-data${pagePath}/${file}`;
+    } catch (e) {
+      return "";
+    }
+  }
+  function parse6(element, { document: document2, params }) {
     const options = Array.from(element.querySelectorAll(".multiselect-checkbox-label-wrapper")).map((w) => {
       const input = w.querySelector("input");
       const label = w.querySelector("label");
@@ -252,7 +269,8 @@ var CustomImportScript = (() => {
       ["filterByLabel", heading ? norm5(heading.textContent) : scriptValue(document2, "filterByText")],
       ["dropdownLabel", dropdown ? norm5(dropdown.textContent) : scriptValue(document2, "defaultText")],
       ["doneLabel", done ? norm5(done.textContent) : "Done"],
-      ["noMatchingMessage", scriptValue(document2, "noMatching") || "No matching records found"]
+      ["noMatchingMessage", scriptValue(document2, "noMatching") || "No matching records found"],
+      ["fallbackData", fallbackPath2(params, "resources.json")]
     ];
     const block = WebImporter.Blocks.createBlock(document2, { name: "Resource List", cells });
     element.replaceWith(block);

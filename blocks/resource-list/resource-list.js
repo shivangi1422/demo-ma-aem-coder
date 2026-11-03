@@ -1,5 +1,6 @@
 import { readConfigRows, configText } from '../../scripts/block-config.js';
 import fetchResources from '../../scripts/sitecore/resource-client.js';
+import { loadSavedData, resourcesSaved } from '../../scripts/coveo/coveo-saved.js';
 import {
   el, htmlToText, renderPager, renderStatus,
 } from '../../scripts/search-ui.js';
@@ -10,6 +11,8 @@ import {
  * fetched from the Sitecore resource controller. Key/value configuration:
  *   endpoint, data source id, filter options ("Label = GUID|GUID", separated by ";"),
  *   and optional labels (filter by text, dropdown text, done, no matching text).
+ * Optional "fallback data": URL of a saved copy of the controller's complete list,
+ * used (and announced) when the live controller can't be reached.
  */
 
 let instance = 0;
@@ -69,6 +72,7 @@ export default function decorate(block) {
     doneLabel: configText(config, 'doneLabel', 'Done'),
     noMatching: configText(config, 'noMatchingMessage', 'No matching records found'),
     errorText: configText(config, 'errorMessage', 'Resources could not be loaded.'),
+    fallbackData: configText(config, 'fallbackData'),
   };
   const options = parseOptions(configText(config, 'filterOptions'));
   const allOption = options.find((o) => /^all$/i.test(o.label));
@@ -113,15 +117,18 @@ export default function decorate(block) {
     el('div', { className: 'resource-list-dropdown' }, trigger, panel),
   );
   const status = el('div', { className: 'resource-list-status search-status', role: 'status' });
+  const savedNote = el('p', { className: 'resource-list-saved-note', hidden: true });
   const list = el('ul', { className: 'resource-list-items' });
   const pagerSlot = el('div', { className: 'resource-list-pager-slot' });
-  block.replaceChildren(filter, status, list, pagerSlot);
+  block.replaceChildren(filter, savedNote, status, list, pagerSlot);
 
   // ---- state ----
   let filterValue = allValue;
   let page = 1;
   let controller = null;
   let requestId = 0;
+  // 'live' until the live controller fails and saved data is configured
+  let source = 'live';
 
   const openPanel = (open) => {
     panel.hidden = !open;
@@ -166,14 +173,33 @@ export default function decorate(block) {
     const current = requestId;
     block.setAttribute('aria-busy', 'true');
     renderStatus(status, { type: 'loading', message: 'Loading…' });
+    const fromSaved = async () => {
+      const saved = await loadSavedData(cfg.fallbackData);
+      if (source !== 'saved') {
+        source = 'saved';
+        savedNote.textContent = `Showing saved resources${saved.capturedAt ? ` from ${saved.capturedAt}` : ''}: the live list is not available on this site.`;
+        savedNote.hidden = false;
+      }
+      return resourcesSaved(saved, filterValue, page);
+    };
     try {
-      const data = await fetchResources({
-        base: cfg.base,
-        dataSourceId: cfg.dataSourceId,
-        filterValue,
-        pageNumber: page,
-        signal: controller.signal,
-      });
+      let data;
+      if (source === 'saved') {
+        data = await fromSaved();
+      } else {
+        try {
+          data = await fetchResources({
+            base: cfg.base,
+            dataSourceId: cfg.dataSourceId,
+            filterValue,
+            pageNumber: page,
+            signal: controller.signal,
+          });
+        } catch (e) {
+          if (e.aborted || !cfg.fallbackData) throw e;
+          data = await fromSaved();
+        }
+      }
       if (current !== requestId) return;
       const seen = new Set();
       const items = data.items.filter((item) => {

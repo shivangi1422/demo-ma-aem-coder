@@ -413,3 +413,18 @@
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 }
+
+/* saved-data fallback notice (the live API only answers on the source domain) */
+.coveo-products .coveo-products-saved-note {
+  margin: 0 0 12px;
+  padding: 6px 10px;
+  border-left: 3px solid #f0ad4e;
+  background: #fcf8e3;
+  color: #6b5300;
+  font-size: 13px;
+  line-height: 1.5;
+}
+
+.coveo-products .coveo-products-saved-note[hidden] {
+  display: none;
+}
