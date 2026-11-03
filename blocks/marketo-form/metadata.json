@@ -4,7 +4,7 @@
   "canonicalModel": "standalone",
   "visualCharacteristics": {
     "purpose": "embedded Marketo lead form (contact / training enquiry)",
-    "layout": "default: grey #f0f0f0 panel, 20px padding, 13px bold labels above full-width fields, blue #007acb submit; two-column: 720px centered, labels right-aligned in a 35% column beside fields (max 300px), red #ea1c2c submit, stacked below 768px",
+    "layout": "default: grey #f0f0f0 panel, 20px padding, 13px bold labels above full-width fields, blue #007acb submit; two-column: 720px centered, labels right-aligned in a 35% column beside fields (max 300px), red #ea1c2c submit, stacked below 768px; stacked: no panel, 720px centered, 11px labels above full-width 32px fields, blue #007acb submit on the right",
     "behavior": "form script loaded from the form URL's origin when the block nears the viewport; Marketo inline widths and theme stylesheet removed so the form is fluid; block hidden if the URL is invalid or the script fails"
   },
   "contentPattern": {
@@ -19,6 +19,10 @@
     {
       "class": "two-column",
       "label": "Two column (labels beside fields, on a grey band)"
+    },
+    {
+      "class": "stacked",
+      "label": "Stacked (labels above fields, centered, no panel)"
     }
   ],
   "memberVariantIds": [
@@ -27,10 +31,11 @@
   "usage": {
     "pagesUsing": [
       "/support",
-      "/service/training"
+      "/service/training",
+      "/service/plans/request"
     ],
-    "reuseCount": 2,
-    "lastUsed": "2026-11-02"
+    "reuseCount": 3,
+    "lastUsed": "2026-11-03"
   },
-  "reuseGuidance": "Use wherever the source embeds a Marketo form (mktoForm). Author only the form URL; the fields come from Marketo. Use two-column for wide in-page forms, the default for sidebar forms."
+  "reuseGuidance": "Use wherever the source embeds a Marketo form (mktoForm). Author only the form URL; the fields come from Marketo. Default = sidebar panel, two-column = wide in-page form on a band, stacked = in-page form with labels above fields."
 }

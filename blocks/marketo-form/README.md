@@ -13,6 +13,7 @@ Single block table. Content: one row, one cell: link (or plain text) to the Mark
 | Variation | Option class |
 | --- | --- |
 | Two column (labels beside fields, on a grey band) | `two-column` |
+| Stacked (labels above fields, centered, no panel) | `stacked` |
 
 ## Universal Editor fields
 

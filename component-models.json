@@ -939,6 +939,10 @@
           {
             "name": "Two column",
             "value": "two-column"
+          },
+          {
+            "name": "Stacked (labels above fields, centered, no panel)",
+            "value": "stacked"
           }
         ]
       }
