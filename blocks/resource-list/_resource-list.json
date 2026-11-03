@@ -1,0 +1,87 @@
+{
+  "definitions": [
+    {
+      "title": "Resource List",
+      "id": "resource-list",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Resource List",
+              "model": "resource-list",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "resource-list",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "endpoint",
+          "label": "Endpoint base URL",
+          "value": "",
+          "description": "Leave empty to call the same domain as the page (/coveo/rest, /api/sitecore). Set a proxy URL only if it forwards to the Sitecore site."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "dataSourceId",
+          "label": "Sitecore data source ID",
+          "value": "",
+          "description": "Resource table datasource item, e.g. {484CF72E-...}"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "filterOptions",
+          "label": "Filter options",
+          "value": "",
+          "description": "One per option, separated by \";\": Label = {GUID}|{GUID}"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "filterByLabel",
+          "label": "Filter by text",
+          "value": "Filter by:"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "dropdownLabel",
+          "label": "Dropdown text",
+          "value": "Resource Type"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "doneLabel",
+          "label": "Done label",
+          "value": "Done"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "noMatchingMessage",
+          "label": "No matching text",
+          "value": "No matching records found"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "errorMessage",
+          "label": "Error text",
+          "value": ""
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

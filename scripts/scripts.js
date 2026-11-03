@@ -161,8 +161,12 @@ function buildBreadcrumbs(main) {
     .split('-')
     .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
     .join(' ');
+  // optional "breadcrumb-titles" metadata: one label per path level, "A | B | C"
+  // (the last levels of the path when there are fewer labels than levels)
+  const titles = getMetadata('breadcrumb-titles').split('|').map((t) => t.trim()).filter(Boolean);
+  const offset = segments.length - titles.length;
   const crumbs = [{ text: 'Home', href: '/' }, ...segments.map((segment, i) => ({
-    text: label(segment),
+    text: (i >= offset && titles[i - offset]) || label(segment),
     href: `/${segments.slice(0, i + 1).join('/')}`,
   }))];
 

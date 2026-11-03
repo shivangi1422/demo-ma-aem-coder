@@ -263,6 +263,10 @@
           {
             "name": "Buttons (red link tiles with white icon)",
             "value": "buttons"
+          },
+          {
+            "name": "Related products (carousel: image, title, text; prev/next)",
+            "value": "related"
           }
         ]
       }
@@ -503,6 +507,213 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "coveo-products",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "endpoint",
+        "label": "Endpoint base URL",
+        "value": "",
+        "description": "Leave empty to call the same domain as the page (/coveo/rest, /api/sitecore). Set a proxy URL only if it forwards to the Sitecore site."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "sitecoreItemUri",
+        "label": "Sitecore item URI",
+        "value": "",
+        "description": "sitecoreItemUri sent to the Coveo for Sitecore proxy"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "siteName",
+        "label": "Sitecore site name",
+        "value": "website"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "searchHub",
+        "label": "Search hub",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "pipeline",
+        "label": "Query pipeline",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "advancedQuery",
+        "label": "Advanced query (aq)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "constantQuery",
+        "label": "Constant query (cq)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "locale",
+        "label": "Locale",
+        "value": "en"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "facets",
+        "label": "Facets",
+        "value": "",
+        "description": "One per facet, separated by \";\": @field | Label"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "resultsPerPage",
+        "label": "Results per page",
+        "value": "8"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "storeUrl",
+        "label": "Store URL",
+        "value": "https://store.beckman.com/hi",
+        "description": "Used for Login for Price / Add to Cart links"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "countryCode",
+        "label": "Store country code",
+        "value": "IN"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "filterHeading",
+        "label": "Filter heading",
+        "value": "Filter by:"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "quoteLabel",
+        "label": "Quote button label",
+        "value": "Add to Quote"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "noResultsMessage",
+        "label": "No results text",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "errorMessage",
+        "label": "Error text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "coveo-techdocs",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "endpoint",
+        "label": "Endpoint base URL",
+        "value": "",
+        "description": "Leave empty to call the same domain as the page (/coveo/rest, /api/sitecore). Set a proxy URL only if it forwards to the Sitecore site."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "sitecoreItemUri",
+        "label": "Sitecore item URI",
+        "value": "",
+        "description": "sitecoreItemUri sent to the Coveo for Sitecore proxy"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "siteName",
+        "label": "Sitecore site name",
+        "value": "website"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "searchHub",
+        "label": "Search hub",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "pipeline",
+        "label": "Query pipeline",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "advancedQuery",
+        "label": "Advanced query (aq)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "constantQuery",
+        "label": "Constant query (cq)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "locale",
+        "label": "Locale",
+        "value": "en"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "resultsPerPage",
+        "label": "Results per page",
+        "value": "5"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "fallback",
+        "label": "Fallback text",
+        "value": "",
+        "description": "Shown when no documents are found"
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "moreResults",
+        "label": "More results text",
+        "value": "",
+        "description": "Shown above the documents"
       }
     ]
   },
@@ -752,6 +963,19 @@
     ]
   },
   {
+    "id": "product-nav",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "links",
+        "label": "Links",
+        "value": "",
+        "description": "A list of links to section anchors, e.g. #features-wrapper"
+      }
+    ]
+  },
+  {
     "id": "quote",
     "fields": [
       {
@@ -767,6 +991,89 @@
         "value": "",
         "label": "Attribution",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "resource-list",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "endpoint",
+        "label": "Endpoint base URL",
+        "value": "",
+        "description": "Leave empty to call the same domain as the page (/coveo/rest, /api/sitecore). Set a proxy URL only if it forwards to the Sitecore site."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dataSourceId",
+        "label": "Sitecore data source ID",
+        "value": "",
+        "description": "Resource table datasource item, e.g. {484CF72E-...}"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "filterOptions",
+        "label": "Filter options",
+        "value": "",
+        "description": "One per option, separated by \";\": Label = {GUID}|{GUID}"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "filterByLabel",
+        "label": "Filter by text",
+        "value": "Filter by:"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "dropdownLabel",
+        "label": "Dropdown text",
+        "value": "Resource Type"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "doneLabel",
+        "label": "Done label",
+        "value": "Done"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "noMatchingMessage",
+        "label": "No matching text",
+        "value": "No matching records found"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "errorMessage",
+        "label": "Error text",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "specifications-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Label",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "value",
+        "label": "Value",
+        "value": ""
       }
     ]
   },

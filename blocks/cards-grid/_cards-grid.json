@@ -85,6 +85,10 @@
             {
               "name": "Buttons (red link tiles with white icon)",
               "value": "buttons"
+            },
+            {
+              "name": "Related products (carousel: image, title, text; prev/next)",
+              "value": "related"
             }
           ]
         }
