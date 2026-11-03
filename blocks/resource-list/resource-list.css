@@ -4,6 +4,10 @@
   padding-bottom: 20px;
 }
 
+.resource-list.is-single {
+  padding-bottom: 0;
+}
+
 /* ---- filter ---- */
 .resource-list-filter {
   display: flex;

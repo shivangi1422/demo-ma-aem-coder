@@ -5,6 +5,9 @@ import { loadFragment } from '../fragment/fragment.js';
 // desktop layout (horizontal menu + dropdown mega menus) from 1120px, as on the live site
 const isDesktop = window.matchMedia('(min-width: 1120px)');
 const COLUMN_WIDTH = 300;
+// live opens a menu ~150ms after the pointer arrives and closes it ~100ms after it leaves
+const HOVER_OPEN_DELAY = 150;
+const HOVER_CLOSE_DELAY = 100;
 const UTILITY_ICONS = ['phone', 'user', 'globe'];
 
 /**
@@ -318,7 +321,35 @@ function buildSections(section, nav) {
       li.append(flyout);
     }
 
-    button.addEventListener('click', () => toggleSection(nav, li));
+    button.addEventListener('click', () => {
+      // a click right after the pointer opened the menu keeps it open
+      if (li.dataset.hoverOpen) {
+        delete li.dataset.hoverOpen;
+        if (li.classList.contains('is-open')) return;
+      }
+      toggleSection(nav, li);
+    });
+
+    // desktop mouse: hovering a top item opens its menu, leaving it closes it (as on live);
+    // short delays let the pointer pass over an item, or cross into the panel, without flicker
+    let timer;
+    li.addEventListener('pointerenter', (e) => {
+      if (e.pointerType !== 'mouse' || !isDesktop.matches) return;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        if (li.classList.contains('is-open')) return;
+        li.dataset.hoverOpen = 'true';
+        toggleSection(nav, li, true);
+      }, HOVER_OPEN_DELAY);
+    });
+    li.addEventListener('pointerleave', (e) => {
+      if (e.pointerType !== 'mouse' || !isDesktop.matches) return;
+      clearTimeout(timer);
+      timer = setTimeout(() => {
+        delete li.dataset.hoverOpen;
+        if (li.classList.contains('is-open')) toggleSection(nav, li, false);
+      }, HOVER_CLOSE_DELAY);
+    });
     ul.append(li);
   });
 

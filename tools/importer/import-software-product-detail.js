@@ -14,7 +14,9 @@ import sectionsTransformer from './transformers/beckman-sections.js';
 const PAGE_TEMPLATE = {
   "name": "software-product-detail",
   "urls": [
-    "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise"
+    "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
+    "https://www.mybeckman.in/flow-cytometry/software/cytobank-premium",
+    "https://www.mybeckman.in/flow-cytometry/software/kaluza"
   ],
   "description": "Software product spotlight: product image beside title, intro, highlights, buttons and resource links; sticky in-page tabs; feature columns, licenses, specification table, resources list, technical documents and a related-products carousel",
   "blocks": [
@@ -102,9 +104,10 @@ const PAGE_TEMPLATE = {
     },
     {
       "id": "s4",
-      "name": "Licenses",
+      "name": "Licenses / Models",
       "selector": [
-        "div.product-page-sub-heading-wrapper#product-table-wrapper"
+        "div.product-page-sub-heading-wrapper#product-table-wrapper",
+        ".product-spotlight-wrapper .CoveoSearchInterface:has(.product-table)"
       ],
       "style": null,
       "blocks": [

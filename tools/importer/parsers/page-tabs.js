@@ -22,6 +22,9 @@ export default function parse(element, { document }) {
     const href = link.getAttribute('href');
     const target = href.startsWith('#') && href.length > 1 && document.getElementById(href.slice(1));
     const heading = target && (target.matches('h1, h2, h3, h4') ? target : target.querySelector('h1, h2, h3, h4'));
+    // tabs the page hides (e.g. "Related Products" when there is no such section) are dropped
+    const hidden = /display:\s*none/i.test(link.getAttribute('style') || '');
+    if (hidden || (href.startsWith('#') && !target)) return;
     const li = document.createElement('li');
     const a = document.createElement('a');
     a.setAttribute('href', heading ? `#${slug(heading.textContent)}` : href);

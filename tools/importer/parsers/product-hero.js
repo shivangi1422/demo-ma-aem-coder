@@ -6,11 +6,15 @@
  * Source: https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise
  * Selector: .product-spotlight-wrapper .product-intro-wrapper
  *   image     -> .lt-holder .product-gallery-carousel img (first slide)
- *   text      -> .rt-holder h1, p, ul + .twobuttons links
+ *   text      -> .rt-holder h1, p, ul + button-row links (.twobuttons / .threebuttons)
  *                (btn-default -> italic link = outline button, btn-primary -> bold link = solid button)
  *   resources -> .resource-tool-table-wrapper (label + links)
  *
  * XWalk model (blocks/product-hero/_product-hero.json): image (+ imageAlt) | text | resources
+ * A gallery with several slides (e.g. Kaluza) leaves the hero image empty and adds a
+ * product-gallery block right after the hero, which the hero places in its image column.
+ * Without a .twobuttons/.threebuttons row, the visible jump link (.product-table-link-btn)
+ * becomes a plain in-page link and its quote button a bold (solid) link.
  * In-page links (#product-table-wrapper) are rewritten to the id of the heading they
  * point to, the same id the page tabs use.
  */
@@ -57,11 +61,14 @@ function copyInline(source, target, document) {
 
 export default function parse(element, { document }) {
   const rt = element.querySelector('.rt-holder') || element;
-  const img = element.querySelector('.lt-holder img, .product-gallery-carousel img');
+  // gallery slides (not the thumbnail strip); several slides become a product-gallery block
+  const slides = [...element.querySelectorAll('.product-gallery-carousel .slide img')];
+  const img = slides[0] || element.querySelector('.lt-holder img');
+  const hasButtonRow = !!rt.querySelector(':scope > .twobuttons, :scope > .threebuttons');
 
   const imageCell = document.createDocumentFragment();
   imageCell.appendChild(document.createComment(' field:image '));
-  if (img) {
+  if (img && slides.length < 2) {
     const image = document.createElement('img');
     image.setAttribute('src', img.getAttribute('src'));
     image.setAttribute('alt', img.getAttribute('alt') || '');
@@ -81,7 +88,7 @@ export default function parse(element, { document }) {
         list.appendChild(copyInline(li, document.createElement('li'), document));
       });
       textCell.appendChild(list);
-    } else if (child.classList.contains('twobuttons')) {
+    } else if (child.classList.contains('twobuttons') || child.classList.contains('threebuttons')) {
       child.querySelectorAll('a.btn[href]').forEach((btn) => {
         const p = document.createElement('p');
         const wrapper = document.createElement(btn.classList.contains('btn-primary') ? 'strong' : 'em');
@@ -91,6 +98,25 @@ export default function parse(element, { document }) {
         wrapper.appendChild(a);
         p.appendChild(wrapper);
         textCell.appendChild(p);
+      });
+    } else if (!hasButtonRow && child.tagName === 'DIV' && child.querySelector(':scope > .product-table-link-btn')) {
+      // no button row (e.g. Kaluza): the boxed in-page jump link (plain link) and the quote button
+      const jump = child.querySelector(':scope > .product-table-link-btn');
+      const p = document.createElement('p');
+      const a = document.createElement('a');
+      a.setAttribute('href', anchorFor(jump.getAttribute('href'), document));
+      a.textContent = clean(jump.textContent);
+      p.appendChild(a);
+      textCell.appendChild(p);
+      child.querySelectorAll(':scope > a.btn-primary[href]').forEach((btn) => {
+        const q = document.createElement('p');
+        const strong = document.createElement('strong');
+        const link = document.createElement('a');
+        link.setAttribute('href', btn.getAttribute('href'));
+        link.textContent = clean(btn.textContent);
+        strong.appendChild(link);
+        q.appendChild(strong);
+        textCell.appendChild(q);
       });
     }
   });
@@ -117,9 +143,29 @@ export default function parse(element, { document }) {
     if (ul.children.length) resourcesCell.appendChild(ul);
   }
 
+  // Cytobank lists space their items 10px apart (inline styles); Kaluza's have no gap
+  const items = [...rt.querySelectorAll(':scope > ul > li')];
+  const compact = items.length > 1 && !items.some((li) => /margin-bottom/i.test(li.getAttribute('style') || ''));
   const block = WebImporter.Blocks.createBlock(document, {
     name: 'product-hero',
+    variants: compact ? ['compact-list'] : [],
     cells: [[imageCell], [textCell], [resourcesCell]],
   });
-  element.replaceWith(block);
+  if (slides.length < 2) {
+    element.replaceWith(block);
+    return;
+  }
+
+  // XWalk model (blocks/product-gallery/_product-gallery.json), item: image (+ imageAlt)
+  const galleryCells = slides.map((slide) => {
+    const cell = document.createDocumentFragment();
+    cell.appendChild(document.createComment(' field:image '));
+    const image = document.createElement('img');
+    image.setAttribute('src', slide.getAttribute('src'));
+    image.setAttribute('alt', slide.getAttribute('alt') || '');
+    cell.appendChild(image);
+    return [cell];
+  });
+  const gallery = WebImporter.Blocks.createBlock(document, { name: 'product-gallery', cells: galleryCells });
+  element.replaceWith(block, gallery);
 }

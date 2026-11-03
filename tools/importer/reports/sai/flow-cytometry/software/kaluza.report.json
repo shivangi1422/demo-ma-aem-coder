@@ -1,0 +1,15 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/flow-cytometry/software/kaluza",
+  "path": "sai/flow-cytometry/software/kaluza",
+  "timestamp": "2026-11-03T01:44:12.167Z",
+  "title": "Kaluza, Flow Cytometry Analysis Software",
+  "template": "software-product-detail",
+  "blocks": [
+    "product-hero",
+    "page-tabs",
+    "feature-columns",
+    "product-table",
+    "resource-list"
+  ]
+}

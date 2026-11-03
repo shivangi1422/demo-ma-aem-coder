@@ -133,12 +133,22 @@ var CustomImportScript = (() => {
         "#main .main-holder > .container.custome-container:not(.product-spotlight-wrapper)",
         "nav.breadcrumbs"
       ]);
+      element.querySelectorAll("#techdocs-wrapper").forEach((wrap) => {
+        const more = wrap.querySelector("#coveo-techdocs-more-results");
+        const error = wrap.querySelector("#coveo-techdocs-error");
+        const hidden = (el) => /display:\s*none/i.test(el && el.getAttribute("style") || "");
+        if (more && error && hidden(more) && !hidden(error)) {
+          error.removeAttribute("style");
+          error.id = "coveo-techdocs-more-results";
+          more.replaceWith(error);
+        }
+      });
       WebImporter.DOMUtils.remove(element, [
-        ".product-spotlight-wrapper .rt-holder > div:has(> .product-table-link-btn)",
-        ".product-spotlight-wrapper .twobuttons > div:not(:has(a))",
+        ".product-spotlight-wrapper .rt-holder:has(> .twobuttons, > .threebuttons) > div:has(> .product-table-link-btn)",
+        ".product-spotlight-wrapper :is(.twobuttons, .threebuttons) > div:not(:has(a))",
         '.product-spotlight-wrapper input[type="hidden"]',
-        ".product-spotlight-wrapper .CoveoSearchInterface",
-        ".product-spotlight-wrapper .product-table",
+        // (the licence table's search widget is kept: the product-table parser replaces it)
+        ".product-spotlight-wrapper .CoveoSearchInterface:not(:has(.product-table))",
         "#coveo-center-column",
         "#multiselect__container",
         "#resource-table-pagination",
@@ -230,11 +240,27 @@ var CustomImportScript = (() => {
         'img[width="1"][height="1"]'
         // tracking pixels
       ]);
+      element.querySelectorAll('img[src*="/pimassets/"]').forEach((img) => {
+        const src = img.getAttribute("src");
+        const path = src.replace(/^(https?:)?(\/\/www\.mybeckman\.in)?\/pimassets\//, "/");
+        if (path !== src) img.setAttribute("src", `https://plytix-files.com${path}`);
+      });
+      element.querySelectorAll('img[src*="media.beckman.com"]').forEach((img) => {
+        try {
+          const url = new URL(img.getAttribute("src"));
+          const rev = url.searchParams.get("rev");
+          url.search = rev ? `?rev=${rev}` : "";
+          img.setAttribute("src", url.href);
+        } catch (e) {
+        }
+      });
       const SITE_ROOT = "/sai";
       const MIGRATED = [
         "/software",
         "/flow-cytometry/software",
         "/flow-cytometry/software/cytobank-enterprise",
+        "/flow-cytometry/software/cytobank-premium",
+        "/flow-cytometry/software/kaluza",
         "/liquid-handlers/software",
         "/microbioreactor/biolector-xt/software"
       ];

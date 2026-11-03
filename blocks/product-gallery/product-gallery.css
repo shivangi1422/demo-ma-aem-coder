@@ -1,0 +1,203 @@
+/* Product Gallery — one product image at a time between slim chevrons, with a strip of
+   thumbnails below (the active one lifted by a soft shadow); clicking enlarges the image */
+.product-gallery {
+  position: relative;
+  margin: 0 38px;
+  padding: 0 11px;
+  text-align: center;
+}
+
+.product-gallery *,
+.product-gallery *::before,
+.product-gallery *::after {
+  box-sizing: border-box;
+}
+
+.product-gallery-stage {
+  margin-bottom: 11px;
+}
+
+.product-gallery-viewport {
+  overflow: hidden;
+}
+
+.product-gallery-track {
+  display: flex;
+  align-items: flex-start;
+  transition: transform 0.4s ease;
+}
+
+.product-gallery-slide {
+  flex: 0 0 100%;
+  padding-top: 25px;
+}
+
+/* images keep their proportions: at most 260px wide on phones, 400px tall from tablet up */
+.product-gallery-zoom {
+  display: inline-block;
+  max-width: min(260px, 100%);
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  vertical-align: top;
+  cursor: zoom-in;
+}
+
+.product-gallery-zoom img {
+  display: block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+}
+
+.product-gallery-prev,
+.product-gallery-next {
+  position: absolute;
+  top: 130px;
+  width: 12.5px;
+  height: 33px;
+  border: 0;
+  padding: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.product-gallery-prev {
+  left: -20px;
+}
+
+.product-gallery-next {
+  right: -11px;
+}
+
+.product-gallery-prev::before,
+.product-gallery-next::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 12.5px;
+  height: 20px;
+  background-color: var(--text-color);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M285.5 273 91.1 467.3c-9.4 9.4-24.6 9.4-33.9 0l-22.7-22.7c-9.4-9.4-9.4-24.5 0-33.9L188.5 256 34.5 101.3c-9.3-9.4-9.3-24.5 0-33.9l22.7-22.7c9.4-9.4 24.6-9.4 33.9 0L285.5 239c9.4 9.4 9.4 24.6 0 34z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.product-gallery-prev::before {
+  transform: scaleX(-1);
+}
+
+.product-gallery-prev:disabled,
+.product-gallery-next:disabled {
+  cursor: default;
+}
+
+.product-gallery-prev:disabled::before,
+.product-gallery-next:disabled::before {
+  opacity: 0.3;
+}
+
+/* thumbnails */
+.product-gallery-thumbs {
+  margin: 0;
+  padding: 0 0 0 15px;
+  list-style: none;
+  text-align: center;
+}
+
+.product-gallery-thumbs li {
+  display: inline-block;
+  width: 56.75px;
+}
+
+.product-gallery-thumb {
+  display: inline-block;
+  width: 100%;
+  margin: 0;
+  border: 4px solid transparent;
+  padding: 5px;
+  background: none;
+  cursor: pointer;
+}
+
+.product-gallery-thumb[aria-current] {
+  box-shadow: rgb(0 0 0 / 17.6%) 0 0 12px 0;
+}
+
+.product-gallery-thumb img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+/* lightbox */
+.product-gallery-lightbox {
+  max-width: 90vw;
+  max-height: 90vh;
+  border: 0;
+  padding: 0;
+  background: #fff;
+  overflow: visible;
+}
+
+.product-gallery-lightbox::backdrop {
+  background: rgb(0 0 0 / 80%);
+}
+
+.product-gallery-lightbox img {
+  display: block;
+  max-width: 90vw;
+  max-height: 90vh;
+}
+
+.product-gallery-lightbox-close {
+  position: absolute;
+  top: -36px;
+  right: 0;
+  border: 0;
+  padding: 0 4px;
+  background: none;
+  color: #fff;
+  font-size: 32px;
+  line-height: 32px;
+  cursor: pointer;
+}
+
+@media (width >= 768px) {
+  .product-gallery {
+    margin: 0;
+    padding: 0;
+  }
+
+  .product-gallery-stage {
+    margin-bottom: 30px;
+  }
+
+  /* the live gallery's link carries 43px of right padding, which offsets the image */
+  .product-gallery-zoom {
+    max-width: 100%;
+    padding-right: 43px;
+  }
+
+  .product-gallery-zoom img {
+    max-height: 400px;
+  }
+
+  .product-gallery-prev {
+    left: 0;
+  }
+
+  /* the live next arrow sits 49.5px in from the column edge */
+  .product-gallery-next {
+    right: 49.5px;
+  }
+
+  .product-gallery-thumbs {
+    padding-left: 20px;
+  }
+
+  .product-gallery-thumbs li {
+    width: 80px;
+    padding: 0 5px;
+  }
+}

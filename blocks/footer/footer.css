@@ -154,7 +154,16 @@ footer .footer-column-secondary a:any-link {
   color: var(--text-color);
 }
 
-footer .footer-column a:hover {
+/* hover: a 1px underline in the link colour grows from the left, as on the live site */
+footer .footer-column > ul:first-child a:any-link {
+  background: linear-gradient(currentcolor, currentcolor) left bottom / 0 1px no-repeat;
+  text-decoration: none;
+  transition: background-size 0.3s;
+}
+
+footer .footer-column > ul:first-child a:hover,
+footer .footer-column > ul:first-child a:focus-visible {
+  background-size: 100% 1px;
   text-decoration: none;
 }
 

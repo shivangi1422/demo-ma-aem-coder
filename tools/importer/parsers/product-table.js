@@ -96,5 +96,15 @@ export default function parse(element, { document, params }) {
   });
 
   const block = WebImporter.Blocks.createBlock(document, { name: 'product-table', cells });
-  element.replaceWith(block);
+  // The section heading: Cytobank pages show a separate heading above the widget (the
+  // widget's own header is a hidden duplicate); Kaluza shows only the widget's header.
+  const separate = document.querySelector('div.product-page-sub-heading-wrapper#product-table-wrapper');
+  const inner = element.querySelector('.product-table__header h3');
+  if (!separate && inner && clean(inner.textContent)) {
+    const h3 = document.createElement('h3');
+    h3.textContent = clean(inner.textContent);
+    element.replaceWith(h3, block);
+  } else {
+    element.replaceWith(block);
+  }
 }

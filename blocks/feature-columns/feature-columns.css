@@ -24,6 +24,17 @@
   line-height: 1.65;
 }
 
+/* paragraphs (including authored blank lines) below a column's list */
+.feature-columns-column p {
+  margin: 14px 0;
+  font-size: var(--body-font-size-s);
+  line-height: 1.65;
+}
+
+.feature-columns-column p:last-child {
+  margin-bottom: 0;
+}
+
 @media (width >= 768px) {
   .feature-columns {
     display: flex;

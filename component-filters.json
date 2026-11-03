@@ -35,7 +35,8 @@
       "spec-table",
       "resource-list",
       "related-products",
-      "product-table"
+      "product-table",
+      "product-gallery"
     ]
   },
   {
@@ -93,6 +94,12 @@
     "id": "form-request",
     "components": [
       "form-request-item"
+    ]
+  },
+  {
+    "id": "product-gallery",
+    "components": [
+      "product-gallery-image"
     ]
   },
   {

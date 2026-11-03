@@ -86,7 +86,8 @@
         "spec-table",
         "resource-list",
         "related-products",
-        "product-table"
+        "product-table",
+        "product-gallery"
       ]
     }
   ]

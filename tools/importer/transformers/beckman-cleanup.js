@@ -32,11 +32,26 @@ export default function transform(hookName, element, payload) {
       'nav.breadcrumbs',
     ]);
 
+    // Technical Documents shows either "Didn't find … click here." or, when its search has no
+    // results, "Please view Technical Documents for … here." – keep whichever is shown
+    element.querySelectorAll('#techdocs-wrapper').forEach((wrap) => {
+      const more = wrap.querySelector('#coveo-techdocs-more-results');
+      const error = wrap.querySelector('#coveo-techdocs-error');
+      const hidden = (el) => /display:\s*none/i.test((el && el.getAttribute('style')) || '');
+      if (more && error && hidden(more) && !hidden(error)) {
+        error.removeAttribute('style');
+        error.id = 'coveo-techdocs-more-results';
+        more.replaceWith(error);
+      }
+    });
+
     // Product spotlight pages: live search (Coveo) widgets, hidden duplicates and the
-    // resource-type filter, which the resource-list block rebuilds from the resources
+    // resource-type filter, which the resource-list block rebuilds from the resources.
+    // The jump-link/quote pair is a hidden duplicate only when a button row is present
+    // (Cytobank); on pages without one (Kaluza) it is the visible call to action.
     WebImporter.DOMUtils.remove(element, [
-      '.product-spotlight-wrapper .rt-holder > div:has(> .product-table-link-btn)',
-      '.product-spotlight-wrapper .twobuttons > div:not(:has(a))',
+      '.product-spotlight-wrapper .rt-holder:has(> .twobuttons, > .threebuttons) > div:has(> .product-table-link-btn)',
+      '.product-spotlight-wrapper :is(.twobuttons, .threebuttons) > div:not(:has(a))',
       '.product-spotlight-wrapper input[type="hidden"]',
       // (the licence table's search widget is kept: the product-table parser replaces it)
       '.product-spotlight-wrapper .CoveoSearchInterface:not(:has(.product-table))',
@@ -177,6 +192,8 @@ export default function transform(hookName, element, payload) {
       '/software',
       '/flow-cytometry/software',
       '/flow-cytometry/software/cytobank-enterprise',
+      '/flow-cytometry/software/cytobank-premium',
+      '/flow-cytometry/software/kaluza',
       '/liquid-handlers/software',
       '/microbioreactor/biolector-xt/software',
     ];

@@ -77,10 +77,12 @@ var CustomImportScript = (() => {
   }
   function parse(element, { document }) {
     const rt = element.querySelector(".rt-holder") || element;
-    const img = element.querySelector(".lt-holder img, .product-gallery-carousel img");
+    const slides = [...element.querySelectorAll(".product-gallery-carousel .slide img")];
+    const img = slides[0] || element.querySelector(".lt-holder img");
+    const hasButtonRow = !!rt.querySelector(":scope > .twobuttons, :scope > .threebuttons");
     const imageCell = document.createDocumentFragment();
     imageCell.appendChild(document.createComment(" field:image "));
-    if (img) {
+    if (img && slides.length < 2) {
       const image = document.createElement("img");
       image.setAttribute("src", img.getAttribute("src"));
       image.setAttribute("alt", img.getAttribute("alt") || "");
@@ -99,7 +101,7 @@ var CustomImportScript = (() => {
           list.appendChild(copyInline(li, document.createElement("li"), document));
         });
         textCell.appendChild(list);
-      } else if (child.classList.contains("twobuttons")) {
+      } else if (child.classList.contains("twobuttons") || child.classList.contains("threebuttons")) {
         child.querySelectorAll("a.btn[href]").forEach((btn) => {
           const p = document.createElement("p");
           const wrapper = document.createElement(btn.classList.contains("btn-primary") ? "strong" : "em");
@@ -109,6 +111,24 @@ var CustomImportScript = (() => {
           wrapper.appendChild(a);
           p.appendChild(wrapper);
           textCell.appendChild(p);
+        });
+      } else if (!hasButtonRow && child.tagName === "DIV" && child.querySelector(":scope > .product-table-link-btn")) {
+        const jump = child.querySelector(":scope > .product-table-link-btn");
+        const p = document.createElement("p");
+        const a = document.createElement("a");
+        a.setAttribute("href", anchorFor(jump.getAttribute("href"), document));
+        a.textContent = clean(jump.textContent);
+        p.appendChild(a);
+        textCell.appendChild(p);
+        child.querySelectorAll(":scope > a.btn-primary[href]").forEach((btn) => {
+          const q = document.createElement("p");
+          const strong = document.createElement("strong");
+          const link = document.createElement("a");
+          link.setAttribute("href", btn.getAttribute("href"));
+          link.textContent = clean(btn.textContent);
+          strong.appendChild(link);
+          q.appendChild(strong);
+          textCell.appendChild(q);
         });
       }
     });
@@ -133,11 +153,28 @@ var CustomImportScript = (() => {
       });
       if (ul.children.length) resourcesCell.appendChild(ul);
     }
+    const items = [...rt.querySelectorAll(":scope > ul > li")];
+    const compact = items.length > 1 && !items.some((li) => /margin-bottom/i.test(li.getAttribute("style") || ""));
     const block = WebImporter.Blocks.createBlock(document, {
       name: "product-hero",
+      variants: compact ? ["compact-list"] : [],
       cells: [[imageCell], [textCell], [resourcesCell]]
     });
-    element.replaceWith(block);
+    if (slides.length < 2) {
+      element.replaceWith(block);
+      return;
+    }
+    const galleryCells = slides.map((slide) => {
+      const cell = document.createDocumentFragment();
+      cell.appendChild(document.createComment(" field:image "));
+      const image = document.createElement("img");
+      image.setAttribute("src", slide.getAttribute("src"));
+      image.setAttribute("alt", slide.getAttribute("alt") || "");
+      cell.appendChild(image);
+      return [cell];
+    });
+    const gallery = WebImporter.Blocks.createBlock(document, { name: "product-gallery", cells: galleryCells });
+    element.replaceWith(block, gallery);
   }
 
   // tools/importer/parsers/page-tabs.js
@@ -151,6 +188,8 @@ var CustomImportScript = (() => {
       const href = link.getAttribute("href");
       const target = href.startsWith("#") && href.length > 1 && document.getElementById(href.slice(1));
       const heading = target && (target.matches("h1, h2, h3, h4") ? target : target.querySelector("h1, h2, h3, h4"));
+      const hidden = /display:\s*none/i.test(link.getAttribute("style") || "");
+      if (hidden || href.startsWith("#") && !target) return;
       const li = document.createElement("li");
       const a = document.createElement("a");
       a.setAttribute("href", heading ? `#${slug2(heading.textContent)}` : href);
@@ -528,6 +567,390 @@ var CustomImportScript = (() => {
           ]
         }
       ]
+    },
+    "/flow-cytometry/software/cytobank-premium": {
+      "source": "Live product table (search results) captured 2026-11-03",
+      "items": [
+        {
+          "number": "C47389",
+          "title": "Cytobank Commercial Premium License, 5-user, 2-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544c8/Cytobank-Premium-Commercial-License-c47389-2023-03.png",
+          "alt": "C47389_Cytobank Commercial Premium License, 5-user, 2-year",
+          "href": "https://store.beckman.com/hi/p/C47389?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Cytobank",
+          "filters": [
+            [
+              "Number of Users",
+              "5"
+            ],
+            [
+              "License Term",
+              "2 years"
+            ],
+            [
+              "License Type",
+              "Premium, Commercial"
+            ]
+          ]
+        },
+        {
+          "number": "C47385",
+          "title": "Cytobank Academic Premium License, 5-user, 1-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659ff5/cytobank-premium-academic-license-c47385-2023-03.png",
+          "alt": "C47385_Cytobank Academic Premium License, 5-user, 1-year",
+          "href": "https://store.beckman.com/hi/p/C47385?countryCode=IN",
+          "quote": "/Request-Quote",
+          "filters": [
+            [
+              "Number of Users",
+              "5"
+            ],
+            [
+              "License Term",
+              "1 Year"
+            ],
+            [
+              "License Type",
+              "Premium, Academic"
+            ]
+          ]
+        },
+        {
+          "number": "C47391",
+          "title": "Cytobank Academic Premium License, 1-user, 2-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659ff4/cytobank-premium-academic-license-c47391-2023-03.png",
+          "alt": "C47391_Cytobank Academic Premium License, 1-user, 2-year",
+          "href": "https://store.beckman.com/hi/p/C47391?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Number of Users",
+              "1"
+            ],
+            [
+              "License Term",
+              "2 years"
+            ],
+            [
+              "License Type",
+              "Premium, Academic"
+            ]
+          ]
+        },
+        {
+          "number": "C47392",
+          "title": "Cytobank Academic Premium License, 5-user, 2-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659ff1/cytobank-premium-academic-license-c47392-2023-03.png",
+          "alt": "C47392_Cytobank Academic Premium License, 5-user, 2-year",
+          "href": "https://store.beckman.com/hi/p/C47392?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Number of Users",
+              "5"
+            ],
+            [
+              "License Term",
+              "2 years"
+            ],
+            [
+              "License Type",
+              "Premium, Academic"
+            ]
+          ]
+        },
+        {
+          "number": "C47397",
+          "title": "Cytobank Commercial Premium License, 5-user, 3-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fed/cytobank-premium-commercial-license-c47397-2023-03.png",
+          "alt": "C47397_Cytobank Commercial Premium License, 5-user, 3-year",
+          "href": "https://store.beckman.com/hi/p/C47397?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Number of Users",
+              "5"
+            ],
+            [
+              "License Term",
+              "3 years"
+            ],
+            [
+              "License Type",
+              "Premium, Commercial"
+            ]
+          ]
+        },
+        {
+          "number": "C47399",
+          "title": "Cytobank Academic Premium License, 5-user, 3-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/45/64/26/68/68266445768113c2e865a012/cytobank-premium-academic-license-c47399-2023-03.png",
+          "alt": "C47399_Cytobank Academic Premium License, 5-user, 3-year",
+          "href": "https://store.beckman.com/hi/p/C47399?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Number of Users",
+              "5"
+            ],
+            [
+              "License Term",
+              "3 years"
+            ],
+            [
+              "License Type",
+              "Premium, Academic"
+            ]
+          ]
+        },
+        {
+          "number": "C47384",
+          "title": "Cytobank Academic Premium License, 1-user, 1-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/45/64/26/68/68266445768113c2e8659ffe/cytobank-premium-academic-license-c47384-2023-03.png",
+          "alt": "C47384_Cytobank Academic Premium License, 1-user, 1-year",
+          "href": "https://store.beckman.com/hi/p/C47384?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Number of Users",
+              "1"
+            ],
+            [
+              "License Term",
+              "1 Year"
+            ],
+            [
+              "License Type",
+              "Premium, Academic"
+            ]
+          ]
+        },
+        {
+          "number": "C47383",
+          "title": "Cytobank Commercial Premium License, 5-user, 1-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fef/cytobank-premium-commercial-license-c47383-2023-03.png",
+          "alt": "C47383_Cytobank Commercial Premium License, 5-user, 1-year",
+          "href": "https://store.beckman.com/hi/p/C47383?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Number of Users",
+              "5"
+            ],
+            [
+              "License Term",
+              "1 Year"
+            ],
+            [
+              "License Type",
+              "Premium, Commercial"
+            ]
+          ]
+        },
+        {
+          "number": "C47398",
+          "title": "Cytobank Academic Premium License, 1-user, 3-year",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659ff2/cytobank-premium-academic-license-c47398-2023-03.png",
+          "alt": "C47398_Cytobank Academic Premium License, 1-user, 3-year",
+          "href": "https://store.beckman.com/hi/p/C47398?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Number of Users",
+              "1"
+            ],
+            [
+              "License Term",
+              "3 years"
+            ],
+            [
+              "License Type",
+              "Premium, Academic"
+            ]
+          ]
+        }
+      ]
+    },
+    "/flow-cytometry/software/kaluza": {
+      "source": "Live product table (search results) captured 2026-11-03; facet values per model follow its part number, Cytometry and RUO (8 of 8 on live)",
+      "items": [
+        {
+          "number": "A84175",
+          "title": "Kaluza Analysis Software, 5-User, Network",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "A84175_Kaluza Analysis Software, 5-User, Network",
+          "href": "https://store.beckman.com/hi/p/A84175?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "A84175"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        },
+        {
+          "number": "A84174",
+          "title": "Kaluza Analysis Software 1 Year, 1-User (Single)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "A84174_Kaluza Analysis Software 1 Year, 1-User (Single)",
+          "href": "https://store.beckman.com/hi/p/A84174?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "A84174"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        },
+        {
+          "number": "A82959",
+          "title": "Kaluza Analysis Software Perpetual, 1-User (Single)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "A82959_Kaluza Analysis Software Perpetual, 1-User (Single)",
+          "href": "https://store.beckman.com/hi/p/A82959?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "A82959"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        },
+        {
+          "number": "A82961",
+          "title": "Kaluza Analysis Software, 10-User, Network",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "A82961_Kaluza Analysis Software, 10-User, Network",
+          "href": "https://store.beckman.com/hi/p/A82961?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "A82961"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        },
+        {
+          "number": "B16408",
+          "title": "Kaluza Analysis Software Educational, 5-User (Network)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "B16408_Kaluza Analysis Software Educational, 5-User (Network)",
+          "href": "https://store.beckman.com/hi/p/B16408?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "B16408"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        },
+        {
+          "number": "B16407",
+          "title": "Kaluza Analysis Software Educational 1 Year, 1-User (Single)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "B16407_Kaluza Analysis Software Educational 1 Year, 1-User (Single)",
+          "href": "https://store.beckman.com/hi/p/B16407?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "B16407"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        },
+        {
+          "number": "B16409",
+          "title": "Kaluza Analysis Software Educational, 10-User (Network)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "B16409_Kaluza Analysis Software Educational, 10-User (Network)",
+          "href": "https://store.beckman.com/hi/p/B16409?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "B16409"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        },
+        {
+          "number": "B16406",
+          "title": "Kaluza Analysis Software Educational, 1-User, Single",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/9d/7e/ca/64/64ca7e9d65334c0761c544ba/Flow-Software-Kaluza-Analysis-Screen-2017-05.png",
+          "alt": "B16406_Kaluza Analysis Software Educational, 1-User, Single",
+          "href": "https://store.beckman.com/hi/p/B16406?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": [
+            [
+              "Part Number",
+              "B16406"
+            ],
+            [
+              "Product Line Regulatory",
+              "Cytometry"
+            ],
+            [
+              "Regulatory Status",
+              "RUO"
+            ]
+          ]
+        }
+      ]
     }
   };
 
@@ -605,7 +1028,15 @@ var CustomImportScript = (() => {
       return [imageCell, textCell, filtersCell, quoteCell];
     });
     const block = WebImporter.Blocks.createBlock(document, { name: "product-table", cells });
-    element.replaceWith(block);
+    const separate = document.querySelector("div.product-page-sub-heading-wrapper#product-table-wrapper");
+    const inner = element.querySelector(".product-table__header h3");
+    if (!separate && inner && clean5(inner.textContent)) {
+      const h3 = document.createElement("h3");
+      h3.textContent = clean5(inner.textContent);
+      element.replaceWith(h3, block);
+    } else {
+      element.replaceWith(block);
+    }
   }
 
   // tools/importer/parsers/resource-list.js
@@ -700,9 +1131,19 @@ var CustomImportScript = (() => {
         "#main .main-holder > .container.custome-container:not(.product-spotlight-wrapper)",
         "nav.breadcrumbs"
       ]);
+      element.querySelectorAll("#techdocs-wrapper").forEach((wrap) => {
+        const more = wrap.querySelector("#coveo-techdocs-more-results");
+        const error = wrap.querySelector("#coveo-techdocs-error");
+        const hidden = (el) => /display:\s*none/i.test(el && el.getAttribute("style") || "");
+        if (more && error && hidden(more) && !hidden(error)) {
+          error.removeAttribute("style");
+          error.id = "coveo-techdocs-more-results";
+          more.replaceWith(error);
+        }
+      });
       WebImporter.DOMUtils.remove(element, [
-        ".product-spotlight-wrapper .rt-holder > div:has(> .product-table-link-btn)",
-        ".product-spotlight-wrapper .twobuttons > div:not(:has(a))",
+        ".product-spotlight-wrapper .rt-holder:has(> .twobuttons, > .threebuttons) > div:has(> .product-table-link-btn)",
+        ".product-spotlight-wrapper :is(.twobuttons, .threebuttons) > div:not(:has(a))",
         '.product-spotlight-wrapper input[type="hidden"]',
         // (the licence table's search widget is kept: the product-table parser replaces it)
         ".product-spotlight-wrapper .CoveoSearchInterface:not(:has(.product-table))",
@@ -816,6 +1257,8 @@ var CustomImportScript = (() => {
         "/software",
         "/flow-cytometry/software",
         "/flow-cytometry/software/cytobank-enterprise",
+        "/flow-cytometry/software/cytobank-premium",
+        "/flow-cytometry/software/kaluza",
         "/liquid-handlers/software",
         "/microbioreactor/biolector-xt/software"
       ];
@@ -890,7 +1333,9 @@ var CustomImportScript = (() => {
   var PAGE_TEMPLATE = {
     "name": "software-product-detail",
     "urls": [
-      "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise"
+      "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
+      "https://www.mybeckman.in/flow-cytometry/software/cytobank-premium",
+      "https://www.mybeckman.in/flow-cytometry/software/kaluza"
     ],
     "description": "Software product spotlight: product image beside title, intro, highlights, buttons and resource links; sticky in-page tabs; feature columns, licenses, specification table, resources list, technical documents and a related-products carousel",
     "blocks": [
@@ -978,9 +1423,10 @@ var CustomImportScript = (() => {
       },
       {
         "id": "s4",
-        "name": "Licenses",
+        "name": "Licenses / Models",
         "selector": [
-          "div.product-page-sub-heading-wrapper#product-table-wrapper"
+          "div.product-page-sub-heading-wrapper#product-table-wrapper",
+          ".product-spotlight-wrapper .CoveoSearchInterface:has(.product-table)"
         ],
         "style": null,
         "blocks": [

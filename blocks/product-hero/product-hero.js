@@ -35,12 +35,32 @@ function buildLightbox(img) {
  * @param {Element} content
  */
 function groupButtons(content) {
-  const wrappers = [...content.querySelectorAll(':scope > p.button-wrapper')];
+  // a paragraph holding only a plain in-page link (e.g. "Explore Kaluza Models") is shown
+  // as a boxed jump link beside the buttons
+  const isJump = (p) => {
+    const links = p.querySelectorAll('a[href^="#"]');
+    return links.length === 1 && p.children.length === 1
+      && p.textContent.trim() === links[0].textContent.trim();
+  };
+  const wrappers = [...content.querySelectorAll(':scope > p')]
+    .filter((p) => p.classList.contains('button-wrapper') || isJump(p));
   if (!wrappers.length) return;
   const row = document.createElement('div');
   row.className = 'product-hero-buttons';
   wrappers[0].before(row);
   row.append(...wrappers);
+  wrappers.filter((p) => !p.classList.contains('button-wrapper')).forEach((p) => {
+    p.className = 'product-hero-jump-wrapper';
+    p.querySelector('a').className = 'product-hero-jump';
+    row.classList.add('has-jump');
+  });
+  // buttons to other sites (e.g. a product's own login) open in a new tab, as on the live site
+  row.querySelectorAll('a[href]').forEach((a) => {
+    if (a.origin !== window.location.origin) {
+      a.target = '_blank';
+      a.rel = 'noopener noreferrer';
+    }
+  });
 }
 
 /**
@@ -100,6 +120,15 @@ export default function decorate(block) {
       lightbox.showModal();
     });
     children.push(media);
+  } else {
+    // a product-gallery block in the same section fills the image column
+    const gallery = block.closest('.section')?.querySelector('.product-gallery-wrapper');
+    if (gallery) {
+      const media = document.createElement('div');
+      media.className = 'product-hero-media has-gallery';
+      media.append(gallery);
+      children.push(media);
+    }
   }
 
   block.replaceChildren(...children);

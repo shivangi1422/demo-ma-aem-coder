@@ -54,6 +54,10 @@
   margin-bottom: 10px;
 }
 
+.product-hero.compact-list .product-hero-content > ul > li {
+  margin-bottom: 0;
+}
+
 .product-hero-content > ul > li::before {
   content: '';
   position: absolute;
@@ -100,6 +104,54 @@
   margin-left: 4px;
   background-color: currentcolor;
   mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M143 256.3 7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192 136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+/* boxed in-page jump link ("Explore Kaluza Models ⌄⌄") shown instead of an outline button:
+   full width above the button on phones, beside it from tablet up */
+.product-hero-buttons.has-jump {
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 35px 0 0;
+}
+
+.product-hero-buttons.has-jump p {
+  display: flex;
+  align-self: stretch;
+  margin: 0 35px 40px 0;
+}
+
+.product-hero-buttons.has-jump p.button-wrapper {
+  align-self: flex-start;
+}
+
+.product-hero-jump:any-link {
+  display: flex;
+  flex: 1 1 auto;
+  align-items: center;
+  justify-content: center;
+  height: 58px;
+  border: 1px solid var(--border-color);
+  padding: 0 20px;
+  color: #000;
+  font-size: var(--body-font-size-xs);
+  font-weight: 500;
+  line-height: 22px;
+  text-decoration: none;
+}
+
+.product-hero-jump:hover {
+  color: #000;
+  text-decoration: none;
+}
+
+.product-hero-jump::after {
+  content: '';
+  width: 12.5px;
+  height: 12px;
+  margin-left: 0;
+  padding-left: 5px;
+  background-color: currentcolor;
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 320 512'%3E%3Cpath d='M143 256.3 7 120.3c-9.4-9.4-9.4-24.6 0-33.9l22.6-22.6c9.4-9.4 24.6-9.4 33.9 0l96.4 96.4 96.4-96.4c9.4-9.4 24.6-9.4 33.9 0L313 86.3c9.4 9.4 9.4 24.6 0 33.9l-136 136c-9.4 9.5-24.6 9.5-34 .1zm34 192 136-136c9.4-9.4 9.4-24.6 0-33.9l-22.6-22.6c-9.4-9.4-24.6-9.4-33.9 0L160 352.1l-96.4-96.4c-9.4-9.4-24.6-9.4-33.9 0L7 278.3c-9.4 9.4-9.4 24.6 0 33.9l136 136c9.4 9.5 24.6 9.5 34 .1z'/%3E%3C/svg%3E") right center / 7.5px 12px no-repeat;
 }
 
 /* resources + tools: uppercase label over a two-column grid of links */
@@ -156,8 +208,14 @@
   text-align: center;
 }
 
+/* a product-gallery in the image column carries its own 25px slide padding */
+.product-hero-media.has-gallery {
+  padding-top: 0;
+}
+
 .product-hero-zoom {
   display: inline-block;
+  max-width: min(260px, 100%);
   margin: 0;
   border: 0;
   padding: 0;
@@ -165,9 +223,12 @@
   cursor: zoom-in;
 }
 
+/* product shots and wide logos keep their proportions: at most 260px wide on phones,
+   at most 400px tall from tablet up (a 600×600 photo shows at 400×400, a 600×271 logo
+   at its natural size) */
 .product-hero-media img {
   display: block;
-  width: 260px;
+  width: auto;
   max-width: 100%;
   height: auto;
 }
@@ -221,18 +282,50 @@
     padding-left: 20px;
   }
 
+  /* the live box keeps the paragraph's 16px margin above its own 35px */
+  .product-hero-buttons.has-jump {
+    flex-direction: row;
+    align-items: center;
+    margin-top: 51px;
+  }
+
+  .product-hero-buttons.has-jump p,
+  .product-hero-buttons.has-jump p.button-wrapper {
+    align-self: center;
+    margin: 0 39px 40px 0;
+  }
+
+  .product-hero-jump:any-link {
+    flex: 0 0 auto;
+    height: 62px;
+    padding: 0 35px;
+    font-size: 13px;
+  }
+
+  .product-hero-jump::after {
+    width: 13.1px;
+    height: 13px;
+    background-size: 8.1px 13px;
+  }
+
   .product-hero-media {
     margin-bottom: 0;
     padding: 49px 10px 0 0;
   }
 
+  .product-hero-media.has-gallery {
+    padding-top: 24px;
+  }
+
   /* the live gallery's link carries 43px of right padding, which offsets the image */
   .product-hero-zoom {
+    max-width: 100%;
     padding-right: 43px;
   }
 
   .product-hero-media img {
-    width: 400px;
+    max-width: 100%;
+    max-height: 400px;
   }
 }
 

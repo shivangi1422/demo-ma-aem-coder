@@ -1,6 +1,7 @@
 import { moveInstrumentation } from '../../scripts/scripts.js';
 
 const PAGE_SIZE = 8;
+const FACET_LIMIT = 5;
 
 let instance = 0;
 
@@ -77,7 +78,13 @@ function buildCard(row, data) {
     image.tabIndex = -1;
     image.setAttribute('aria-hidden', 'true');
     const img = data.picture.tagName === 'IMG' ? data.picture : data.picture.querySelector('img');
-    if (img) img.loading = 'lazy';
+    if (img) {
+      img.loading = 'lazy';
+      // some source product images no longer exist; keep the space without the broken icon
+      const broken = () => image.classList.add('is-broken');
+      img.addEventListener('error', broken);
+      if (img.complete && !img.naturalWidth && img.currentSrc) broken();
+    }
     li.append(image);
   }
 
@@ -130,7 +137,7 @@ function collectFacets(items) {
 }
 
 /** Builds the filter panel: one collapsible group of checkboxes per facet. */
-function buildFacetPanel(facets, onToggle) {
+function buildFacetPanel(facets, onToggle, onView) {
   instance += 1;
   const panel = document.createElement('div');
   panel.className = 'product-table-facets';
@@ -176,18 +183,115 @@ function buildFacetPanel(facets, onToggle) {
       facet.inputs.set(value, { li, input, count });
     });
 
+    group.append(header, list);
+
+    // long groups show the first values, a "Search" row and a show-more bar (as on live)
+    let more;
+    if (facet.values.length > FACET_LIMIT) {
+      facet.limit = FACET_LIMIT;
+      facet.expanded = false;
+      facet.query = '';
+      group.classList.add('has-more');
+      const searchLi = document.createElement('li');
+      searchLi.className = 'product-table-facet-search';
+      const searchButton = document.createElement('button');
+      searchButton.type = 'button';
+      searchButton.textContent = 'Search';
+      const search = document.createElement('input');
+      search.type = 'search';
+      search.placeholder = 'Search';
+      search.setAttribute('aria-label', `Search ${facet.name}`);
+      search.hidden = true;
+      searchButton.addEventListener('click', () => {
+        searchButton.hidden = true;
+        search.hidden = false;
+        search.focus();
+      });
+      search.addEventListener('input', () => {
+        facet.query = search.value.trim();
+        onView();
+      });
+      search.addEventListener('blur', () => {
+        if (search.value.trim()) return;
+        search.hidden = true;
+        searchButton.hidden = false;
+      });
+      searchLi.append(searchButton, search);
+      list.append(searchLi);
+
+      more = document.createElement('button');
+      more.type = 'button';
+      more.className = 'product-table-facet-more';
+      more.setAttribute('aria-expanded', 'false');
+      more.setAttribute('aria-label', `Show more ${facet.name}`);
+      more.addEventListener('click', () => {
+        facet.expanded = !facet.expanded;
+        more.setAttribute('aria-expanded', facet.expanded);
+        more.setAttribute('aria-label', `Show ${facet.expanded ? 'fewer' : 'more'} ${facet.name}`);
+        onView();
+      });
+      group.append(more);
+    }
+
     toggle.addEventListener('click', () => {
       const open = toggle.getAttribute('aria-expanded') !== 'true';
       toggle.setAttribute('aria-expanded', open);
       toggle.setAttribute('aria-label', `${open ? 'Collapse' : 'Expand'} ${facet.name}`);
       list.hidden = !open;
+      if (more) more.hidden = !open;
       group.classList.toggle('is-collapsed', !open);
     });
 
-    group.append(header, list);
     panel.append(group);
   });
   return panel;
+}
+
+/**
+ * Below 992px the filter panel folds into a "Filters" dropdown (as on live): the button
+ * opens it over the results, behind a white wash; the wash, Escape or the button close it.
+ * @returns {Element[]} the button and the wash, to place at the top of the block
+ */
+function buildFiltersToggle(block, panel) {
+  panel.id = `product-table-${instance}-filters`;
+  const toggle = document.createElement('button');
+  toggle.type = 'button';
+  toggle.className = 'product-table-filters-toggle';
+  toggle.textContent = 'Filters';
+  toggle.setAttribute('aria-expanded', 'false');
+  toggle.setAttribute('aria-controls', panel.id);
+  const wash = document.createElement('div');
+  wash.className = 'product-table-filters-wash';
+
+  const setOpen = (open) => {
+    block.classList.toggle('is-filters-open', open);
+    toggle.setAttribute('aria-expanded', open);
+  };
+  toggle.addEventListener('click', () => setOpen(!block.classList.contains('is-filters-open')));
+  wash.addEventListener('click', () => setOpen(false));
+  block.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape' || !block.classList.contains('is-filters-open')) return;
+    setOpen(false);
+    toggle.focus();
+  });
+  window.matchMedia('(width >= 992px)').addEventListener('change', () => setOpen(false));
+  return [toggle, wash];
+}
+
+/** Applies a long group's search text or show-more state to its (count-filtered) values. */
+function limitValues(facet) {
+  const query = facet.query.toLowerCase();
+  let shown = 0;
+  facet.inputs.forEach(({ li, input }, value) => {
+    if (li.hidden) return;
+    if (query) {
+      li.hidden = !value.toLowerCase().includes(query);
+    } else if (!facet.expanded && shown >= facet.limit && !input.checked) {
+      li.hidden = true;
+    } else {
+      shown += 1;
+    }
+  });
 }
 
 /**
@@ -280,6 +384,7 @@ export default function decorate(block) {
         li.hidden = !n && !isChosen;
         li.classList.toggle('is-selected', isChosen);
       });
+      if (facet.limit) limitValues(facet);
     });
 
     pager.replaceChildren();
@@ -302,15 +407,18 @@ export default function decorate(block) {
     else selected.get(name).delete(value);
     page = 0;
     render();
-  });
+  }, () => render());
 
   const main = document.createElement('div');
   main.className = 'product-table-main';
-  if (facets.length) main.append(panel);
+  const head = [];
+  if (facets.length) {
+    main.append(panel);
+    head.push(...buildFiltersToggle(block, panel));
+  }
   main.append(results);
-  block.replaceChildren(summary, main);
+  block.replaceChildren(...head, summary, main);
   render();
-  window.matchMedia('(width >= 480px)').addEventListener('change', render);
   window.matchMedia('(width >= 768px)').addEventListener('change', render);
-  window.matchMedia('(width >= 1200px)').addEventListener('change', render);
+  window.matchMedia('(width >= 1024px)').addEventListener('change', render);
 }

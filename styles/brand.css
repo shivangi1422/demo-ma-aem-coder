@@ -54,6 +54,8 @@
   --surface-pager: #efefef;
   --text-pager-current: #cddee9;
   --pager-arrow: #1d4f76;
+  --surface-facet-more: #f7f8f9;
+  --text-facet-count: #9fa4aa;
 
   /* fonts: Gotham is the licensed brand face (served by cloud.typography for
      whitelisted domains); Montserrat is a metrically close open-source fallback */

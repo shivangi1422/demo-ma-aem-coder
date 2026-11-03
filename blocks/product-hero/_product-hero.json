@@ -49,6 +49,17 @@
           "label": "Resources and Tools",
           "value": "",
           "description": "A short heading line followed by a bulleted list of links, shown as a two-column grid."
+        },
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Options",
+          "options": [
+            {
+              "name": "Compact highlight list (no gap between items)",
+              "value": "compact-list"
+            }
+          ]
         }
       ]
     }

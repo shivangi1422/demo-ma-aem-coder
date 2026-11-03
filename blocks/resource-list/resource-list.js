@@ -137,6 +137,8 @@ export default function decorate(block) {
     items.forEach((li) => { li.hidden = true; });
     visible.slice(page * PAGE_SIZE, (page + 1) * PAGE_SIZE).forEach((li) => { li.hidden = false; });
     pagination.replaceChildren();
+    // like the live list, a lone resource drops the pager's spacing too
+    block.classList.toggle('is-single', visible.length < 2);
     if (pages < 2) return;
     const current = page;
     pagination.append(...Array.from({ length: pages }, (_, i) => {
