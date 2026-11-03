@@ -41,6 +41,10 @@
             {
               "name": "Blue (white text, centred)",
               "value": "blue"
+            },
+            {
+              "name": "Article (FAQ main column)",
+              "value": "article"
             }
           ]
         }

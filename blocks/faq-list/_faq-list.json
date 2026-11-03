@@ -1,7 +1,7 @@
 {
   "definitions": [
     {
-      "title": "FAQ List",
+      "title": "Faq List",
       "id": "faq-list",
       "plugins": {
         "xwalk": {

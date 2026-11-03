@@ -669,7 +669,54 @@
       ],
       "coverageGaps": [],
       "description": "Breadcrumb, question heading, answer text with an image beside it in the main column, narrow right sidebar column offset from the content",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "breadcrumb",
+          "instances": [
+            ".main-holder > .container.custome-container nav.breadcrumbs",
+            "nav.breadcrumbs"
+          ]
+        },
+        {
+          "name": "columns-article",
+          "instances": [
+            "#content-holder > div.row"
+          ]
+        }
+      ],
+      "representativeUrl": "https://www.mybeckman.in/support/faq/product/why-doesnt-the-qbd1200-report-tic",
+      "sections": [
+        {
+          "id": "rc2",
+          "name": "breadcrumb",
+          "selector": [
+            ".main-holder > .container.custome-container"
+          ],
+          "style": null,
+          "blocks": [
+            "breadcrumb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "rc3",
+          "name": "faq-article",
+          "selector": [
+            ".main-holder .two-columns-holder.faq-section",
+            ".main-holder > .container:nth-of-type(2)"
+          ],
+          "style": "article",
+          "blocks": [
+            "columns-article"
+          ],
+          "defaultContent": [
+            "#content-holder > h1"
+          ]
+        }
+      ]
     }
-  ]
+  ],
+  "metadata": {
+    "projectType": "xwalk"
+  }
 }
