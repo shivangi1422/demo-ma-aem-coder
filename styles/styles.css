@@ -1037,3 +1037,318 @@ main .section.grey {
   line-height: 19.8px;
 }
 /* stylelint-enable no-descending-specificity */
+
+/*
+ * Template "product-detail" (page metadata "template", body class
+ * .product-detail): product pages such as /flow-cytometry/software/cytobank-enterprise.
+ * Mirrors the source product page CSS: bootstrap container (750/970px at
+ * 768/992px, then full width with 50px gutters from 1200px), light 29px section
+ * titles over a #ddd rule, and the intro / feature column layouts.
+ * Breakpoints mirror the source (768px / 992px / 1200px).
+ */
+/* stylelint-disable no-descending-specificity -- template overrides must follow the shared rules they override */
+.product-detail main {
+  --pd-container: 100%;
+  --pd-gutter: 15px;
+  --pd-heading: #001728;
+  --pd-blue: #007acb;
+
+  color: #4d4d4d;
+}
+
+@media (width >= 768px) {
+  .product-detail main {
+    --pd-container: 750px;
+  }
+}
+
+@media (width >= 992px) {
+  .product-detail main {
+    --pd-container: 970px;
+  }
+}
+
+@media (width >= 1200px) {
+  .product-detail main {
+    --pd-container: 100%;
+    --pd-gutter: 50px;
+  }
+}
+
+.product-detail main > .section {
+  margin: 0;
+}
+
+/* [class] outranks the full-bleed block-wrapper reset for columns / cards sections */
+.product-detail main > .section > div[class] {
+  box-sizing: border-box;
+  max-width: var(--pd-container);
+  margin: 0 auto;
+  padding: 0 var(--pd-gutter);
+}
+
+.product-detail main > .section[id] {
+  /* in-page jumps (hero "Explore Licenses", product nav) land below the fixed bar */
+  scroll-margin-top: 47px;
+}
+
+.product-detail main > .section > div.product-nav-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+/* section titles (source .product-page-sub-heading-wrapper) */
+.product-detail main .default-content-wrapper > h2 {
+  margin: 75px 0 25px;
+  padding-bottom: 10px;
+  border-bottom: 1px solid #ddd;
+  color: var(--pd-heading);
+  font-family: var(--body-font-family);
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.product-detail main > #features-wrapper .default-content-wrapper > h2 {
+  margin-top: 60px;
+}
+
+.product-detail main .default-content-wrapper p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.product-detail main .default-content-wrapper p:has(> em:only-child) {
+  margin: 40px 0 57px;
+  font-size: 14px;
+}
+
+/* ---- product intro (first section, columns: image | text) ---- */
+.product-detail main > .section:first-of-type .columns > div {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0;
+}
+
+.product-detail main > .section:first-of-type .columns > div > div {
+  flex: none;
+  order: 1;
+  width: 100%;
+}
+
+.product-detail main > .section:first-of-type .columns > div > .columns-img-col {
+  order: 2;
+  text-align: center;
+}
+
+.product-detail main > .section:first-of-type .columns-img-col img {
+  display: inline-block;
+  width: auto;
+  max-width: 100%;
+  height: auto;
+  max-height: 400px;
+}
+
+.product-detail main > .section:first-of-type .columns h1 {
+  margin: 24.12px 0;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.product-detail main > .section:first-of-type .columns p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.product-detail main .columns a:any-link {
+  color: var(--pd-blue);
+}
+
+/* check-circle bullets */
+.product-detail main > .section:first-of-type .columns ul:not(:last-child) {
+  margin: 0 0 10px 8px;
+  padding: 0;
+  list-style: none;
+}
+
+.product-detail main > .section:first-of-type .columns ul:not(:last-child) li {
+  position: relative;
+  margin: 0 0 10px;
+  padding-left: 21px;
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.product-detail main > .section:first-of-type .columns ul:not(:last-child) li::before {
+  content: '';
+  position: absolute;
+  top: 6px;
+  left: 0;
+  width: 15px;
+  height: 15px;
+  background-color: #05a379;
+  mask: url('../icons/check-circle-solid.svg') center / contain no-repeat;
+}
+
+/* Explore Licenses (outlined) + Request a Quote (solid) */
+.product-detail main > .section:first-of-type .columns p.button-wrapper {
+  display: inline-flex;
+  margin: 20px 9px 20px 0;
+}
+
+.product-detail main > .section:first-of-type .columns a.button:any-link {
+  padding: 13px 20px;
+  border: 1px solid var(--pd-blue);
+  border-radius: 2px;
+  background: var(--pd-blue);
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 21px;
+}
+
+.product-detail main > .section:first-of-type .columns a.button.secondary {
+  background: #fff;
+  color: var(--pd-blue);
+}
+
+.product-detail main > .section:first-of-type .columns a.button.secondary::after {
+  content: '';
+  display: inline-block;
+  width: 5px;
+  height: 5px;
+  margin: 0 0 3px 8px;
+  border-right: 2px solid currentcolor;
+  border-bottom: 2px solid currentcolor;
+  box-shadow: 3px 3px 0 -1px #fff, 4px 4px 0 0 currentcolor;
+  transform: rotate(45deg);
+}
+
+.product-detail main > .section:first-of-type .columns a.button:hover,
+.product-detail main > .section:first-of-type .columns a.button:focus-visible {
+  border-color: #005f9e;
+  background: #005f9e;
+  color: #fff;
+}
+
+/* "Resources + Tools": small caps title over a 2-column link grid */
+.product-detail main > .section:first-of-type .columns h2 {
+  margin: 0 0 10px;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.product-detail main > .section:first-of-type .columns h2 + ul {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0 0 20px;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid #f0f0f0;
+  border-left: 1px solid #f0f0f0;
+}
+
+.product-detail main > .section:first-of-type .columns h2 + ul li {
+  border-right: 1px solid #f0f0f0;
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.product-detail main > .section:first-of-type .columns h2 + ul a:any-link {
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: underline;
+}
+
+@media (width >= 768px) {
+  .product-detail main > .section:first-of-type .columns > div {
+    flex-direction: row;
+  }
+
+  .product-detail main > .section:first-of-type .columns > div > .columns-img-col {
+    flex: 0 0 43%;
+    order: 0;
+    box-sizing: border-box;
+    padding: 12px 11px 0 0;
+  }
+
+  .product-detail main > .section:first-of-type .columns > div > div:not(.columns-img-col) {
+    flex: 1;
+    min-width: 0;
+    box-sizing: border-box;
+    padding-left: 10px;
+  }
+}
+
+@media (width >= 992px) {
+  .product-detail main > .section:first-of-type .columns > div > .columns-img-col {
+    flex-basis: 50%;
+    padding: 24px 10px 0 0;
+  }
+
+  .product-detail main > .section:first-of-type .columns h1 {
+    margin: 28.14px 0;
+    color: var(--pd-heading);
+    font-size: 42px;
+  }
+}
+
+/* ---- features (columns: title + list per column) ---- */
+.product-detail main .columns:not(.cta) h3 {
+  margin: 21.28px 0;
+  color: var(--pd-heading);
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20.8px;
+}
+
+.product-detail main > #features-wrapper .columns ul {
+  margin: 0;
+  padding-left: 17px;
+}
+
+.product-detail main > #features-wrapper .columns li {
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 23.1px;
+}
+
+@media (width >= 768px) {
+  .product-detail main > #features-wrapper .columns > div {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: 0;
+    margin: 0 -15px;
+  }
+
+  .product-detail main > #features-wrapper .columns > div > div {
+    flex: 1 1 0;
+    order: unset;
+    min-width: 0;
+    padding: 0 15px;
+  }
+}
+
+@media (width >= 992px) {
+  .product-detail main > #features-wrapper .columns > div {
+    margin: 0 -10px;
+  }
+
+  .product-detail main > #features-wrapper .columns > div > div {
+    padding: 0 10px;
+  }
+}
+/* stylelint-enable no-descending-specificity */

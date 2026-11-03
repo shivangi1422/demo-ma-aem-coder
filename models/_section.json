@@ -86,7 +86,12 @@
         "cards-stats",
         "cards-benefits",
         "table-comparison",
-        "marketo-form"
+        "marketo-form",
+        "coveo-products",
+        "coveo-techdocs",
+        "resource-list",
+        "product-nav",
+        "specifications"
       ]
     }
   ]

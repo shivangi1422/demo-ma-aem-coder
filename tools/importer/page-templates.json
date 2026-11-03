@@ -487,6 +487,176 @@
           ]
         }
       ]
+    },
+    {
+      "name": "product-detail",
+      "urls": [
+        "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
+      "description": "Product detail page: intro with image and buttons, sticky in-page nav, features columns, Coveo license table, specifications, Content and Resources list (Sitecore API), Coveo technical documents, related products carousel",
+      "urlPattern": "/flow-cytometry/software/*",
+      "blocks": [
+        {
+          "name": "columns-product-hero",
+          "instances": [
+            ".product-spotlight-wrapper > .product-intro-wrapper"
+          ]
+        },
+        {
+          "name": "product-nav",
+          "instances": [
+            "#intrenal-page-link-wrapper"
+          ]
+        },
+        {
+          "name": "columns-features",
+          "instances": [
+            "#features-wrapper .bc-columns"
+          ]
+        },
+        {
+          "name": "coveo-products",
+          "instances": [
+            ".CoveoSearchInterface[data-pipeline=\"Product Table\"]"
+          ]
+        },
+        {
+          "name": "specifications",
+          "instances": [
+            "#product-specification-wrapper .specification-holder"
+          ]
+        },
+        {
+          "name": "resource-list",
+          "instances": [
+            "#product-documentation-wrapper #multiselect__container"
+          ]
+        },
+        {
+          "name": "coveo-techdocs",
+          "instances": [
+            "#techdocs-wrapper #coveo-center-column"
+          ]
+        },
+        {
+          "name": "cards-grid-related",
+          "instances": [
+            "#related-parts-wrapper .related-parts"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Product intro",
+          "selector": [
+            ".product-spotlight-wrapper > .product-intro-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-product-hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "In-page navigation",
+          "selector": [
+            "#intrenal-page-link-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "product-nav"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Features",
+          "selector": [
+            "#features-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-features"
+          ],
+          "defaultContent": [
+            "#features-wrapper .product-page-sub-heading-wrapper > h2"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Explore Licenses",
+          "selector": [
+            ".spotlight-content-wrapper > .bc-rich-text:has(> #product-table-wrapper)"
+          ],
+          "style": null,
+          "blocks": [
+            "coveo-products"
+          ],
+          "defaultContent": [
+            "#product-table-wrapper > h2"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "Specifications",
+          "selector": [
+            ".spotlight-content-wrapper > .bc-rich-text:has(#product-specification-wrapper)"
+          ],
+          "style": null,
+          "blocks": [
+            "specifications"
+          ],
+          "defaultContent": [
+            "#product-specification-wrapper .product-page-sub-heading-wrapper > h2"
+          ]
+        },
+        {
+          "id": "section-6",
+          "name": "Content and Resources",
+          "selector": [
+            "#product-documentation-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "resource-list"
+          ],
+          "defaultContent": [
+            "#product-documentation-wrapper .product-page-sub-heading-wrapper > h2"
+          ]
+        },
+        {
+          "id": "section-7",
+          "name": "Technical Documents",
+          "selector": [
+            "#techdocs-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "coveo-techdocs"
+          ],
+          "defaultContent": [
+            "#techdocs-wrapper .product-page-sub-heading-wrapper > h2"
+          ]
+        },
+        {
+          "id": "section-8",
+          "name": "Related Products",
+          "selector": [
+            "#related-parts-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-related"
+          ],
+          "defaultContent": [
+            "#related-parts-wrapper .product-page-sub-heading-wrapper > h2",
+            "p:has(> em)"
+          ]
+        }
+      ]
     }
   ]
 }

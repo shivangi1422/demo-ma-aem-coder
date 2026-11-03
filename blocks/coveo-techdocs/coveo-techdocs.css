@@ -1,0 +1,97 @@
+/* Coveo Technical Documents: document table (stacked on phones) or the
+   authored fallback text. */
+.coveo-techdocs {
+  color: #4d4d4d;
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.coveo-techdocs .coveo-techdocs-fallback p,
+.coveo-techdocs .coveo-techdocs-more p {
+  margin: 0;
+}
+
+.coveo-techdocs .coveo-techdocs-more {
+  margin: 0 0 15px;
+}
+
+.coveo-techdocs a:any-link {
+  color: #007acb;
+}
+
+.coveo-techdocs .coveo-techdocs-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.coveo-techdocs .coveo-techdocs-table th,
+.coveo-techdocs .coveo-techdocs-table td {
+  padding: 10px 12px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  vertical-align: top;
+}
+
+.coveo-techdocs .coveo-techdocs-table th {
+  background: #fafafa;
+  font-weight: 700;
+}
+
+.coveo-techdocs .coveo-techdocs-pager ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 4px;
+  margin: 15px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.coveo-techdocs .coveo-techdocs-pager button {
+  min-width: 30px;
+  padding: 5px 10px;
+  border: 1px solid #ddd;
+  background: #fff;
+  color: #007acb;
+  font: inherit;
+  cursor: pointer;
+}
+
+.coveo-techdocs .coveo-techdocs-pager button.is-current {
+  border-color: #007acb;
+  font-weight: 700;
+}
+
+.coveo-techdocs .search-status[data-state='none'] {
+  display: none;
+}
+
+.coveo-techdocs .search-status {
+  margin: 0 0 10px;
+  font-size: 14px;
+}
+
+@media (width < 768px) {
+  .coveo-techdocs .coveo-techdocs-table thead {
+    display: none;
+  }
+
+  .coveo-techdocs .coveo-techdocs-table tr {
+    display: block;
+    padding: 10px 0;
+    border-bottom: 1px solid #ddd;
+  }
+
+  .coveo-techdocs .coveo-techdocs-table td {
+    display: flex;
+    gap: 10px;
+    padding: 2px 0;
+    border: 0;
+  }
+
+  .coveo-techdocs .coveo-techdocs-table td::before {
+    content: attr(data-label);
+    flex: 0 0 40%;
+    font-weight: 700;
+  }
+}

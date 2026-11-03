@@ -1,0 +1,18 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
+  "path": "flow-cytometry/software/cytobank-enterprise",
+  "timestamp": "2026-11-03T06:56:41.960Z",
+  "title": "Cytobank Enterprise",
+  "template": "product-detail",
+  "blocks": [
+    "columns-product-hero",
+    "product-nav",
+    "columns-features",
+    "coveo-products",
+    "specifications",
+    "resource-list",
+    "coveo-techdocs",
+    "cards-grid-related"
+  ]
+}

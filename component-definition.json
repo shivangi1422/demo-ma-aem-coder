@@ -312,6 +312,38 @@
           }
         },
         {
+          "title": "Coveo Products",
+          "id": "coveo-products",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Coveo Products",
+                  "model": "coveo-products",
+                  "key-value": true
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Coveo Techdocs",
+          "id": "coveo-techdocs",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Coveo Techdocs",
+                  "model": "coveo-techdocs",
+                  "key-value": true
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Form Request",
           "id": "form-request",
           "plugins": {
@@ -418,6 +450,21 @@
           }
         },
         {
+          "title": "Product Nav",
+          "id": "product-nav",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Nav",
+                  "model": "product-nav"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Quote",
           "id": "quote",
           "plugins": {
@@ -427,6 +474,52 @@
                 "template": {
                   "name": "Quote",
                   "model": "quote"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Resource List",
+          "id": "resource-list",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Resource List",
+                  "model": "resource-list",
+                  "key-value": true
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Specifications",
+          "id": "specifications",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Specifications",
+                  "filter": "specifications"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Specification",
+          "id": "specifications-item",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block/item",
+                "template": {
+                  "name": "Specification",
+                  "model": "specifications-item"
                 }
               }
             }

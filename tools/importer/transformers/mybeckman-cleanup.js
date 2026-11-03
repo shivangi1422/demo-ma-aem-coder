@@ -54,6 +54,21 @@ export default function transform(hookName, element, payload) {
       if (isEmpty(el)) el.remove();
     });
 
+    // Product pages: the Content and Resources list and pager are server-rendered
+    // data (the resource-list block fetches them); section titles are H3 in the
+    // source and become H2 under the page H1.
+    // (only the items: the widget's init script with its data source id sits in
+    // the same wrapper and is read by the resource-list parser)
+    removeAll(element, ['#product-documentation-wrapper .content-resource-list-child']);
+    element.querySelectorAll('#product-documentation-wrapper .content-pagination-next-btn')
+      .forEach((btn) => btn.parentElement.remove());
+    element.querySelectorAll('.product-spotlight-wrapper .product-page-sub-heading-wrapper > h3')
+      .forEach((h3) => {
+        const h2 = element.ownerDocument.createElement('h2');
+        h2.innerHTML = h3.innerHTML;
+        h3.replaceWith(h2);
+      });
+
     // Overlays / modals / consent banners that may interfere with block matching
     removeAll(element, [
       '#consent_blackbar',
@@ -122,6 +137,10 @@ export default function transform(hookName, element, payload) {
   }
 
   if (hookName === 'afterTransform') {
+    // Product pages: hidden techdocs "more results" text (copied into the
+    // coveo-techdocs block by its parser)
+    removeAll(element, ['#coveo-techdocs-more-results']);
+
     // Site chrome
     removeAll(element, [
       'header#mainNav',

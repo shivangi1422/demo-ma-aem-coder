@@ -1,0 +1,45 @@
+/* Specifications: label (grey, bold, right aligned) beside value; one
+   specification per row, two per row from 992px (source table values). */
+.specifications dl {
+  display: grid;
+  margin: 0;
+  color: #4d4d4d;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.specifications .specifications-item {
+  display: grid;
+  grid-template-columns: minmax(0, 35%) minmax(0, 1fr);
+}
+
+.specifications dt,
+.specifications dd {
+  margin: 0;
+  padding: 14px 17.5px;
+}
+
+.specifications dt {
+  background: #fafafa;
+  font-weight: 700;
+  text-align: right;
+}
+
+.specifications dd p,
+.specifications dd ul {
+  margin: 0;
+}
+
+.specifications dd ul {
+  padding-left: 18px;
+}
+
+@media (width >= 992px) {
+  .specifications dl {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .specifications .specifications-item {
+    grid-template-columns: minmax(0, 225fr) minmax(0, 373fr);
+  }
+}

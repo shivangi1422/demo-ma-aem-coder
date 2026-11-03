@@ -29,7 +29,12 @@
       "cards-stats",
       "cards-benefits",
       "table-comparison",
-      "marketo-form"
+      "marketo-form",
+      "coveo-products",
+      "coveo-techdocs",
+      "resource-list",
+      "product-nav",
+      "specifications"
     ]
   },
   {
@@ -87,6 +92,12 @@
     "id": "form-request",
     "components": [
       "form-request-item"
+    ]
+  },
+  {
+    "id": "specifications",
+    "components": [
+      "specifications-item"
     ]
   },
   {

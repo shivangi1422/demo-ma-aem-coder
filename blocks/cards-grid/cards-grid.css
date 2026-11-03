@@ -838,3 +838,122 @@ main .cards-grid.icon-left .cards-grid-action a.button:focus-visible {
   flex: 0 1 auto;
 }
 /* stylelint-enable no-descending-specificity */
+
+/* ============================================================
+   RELATED (product pages): horizontal carousel of 208px product cards
+   (1px #f0f0f0 border, 20px padding, 8px apart) between prev/next arrows.
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+.cards-grid.related .cards-grid-carousel {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cards-grid.related .cards-grid-track {
+  display: flex;
+  flex: 1;
+  gap: 16px;
+  margin: 0;
+  padding: 0;
+  overflow-x: auto;
+  list-style: none;
+  scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.cards-grid.related .cards-grid-track::-webkit-scrollbar {
+  display: none;
+}
+
+.cards-grid.related .cards-grid-track > li {
+  box-sizing: border-box;
+  display: flex;
+  flex: 0 0 208px;
+  flex-direction: column;
+  padding: 20px;
+  border: 1px solid #f0f0f0;
+  border-radius: 0;
+  background: #fff;
+  scroll-snap-align: start;
+}
+
+.cards-grid.related .cards-grid-image {
+  min-height: 106px;
+  line-height: 0;
+}
+
+.cards-grid.related .cards-grid-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.cards-grid.related .cards-grid-image.is-missing img {
+  visibility: hidden;
+}
+
+.cards-grid.related .cards-grid-body {
+  padding: 0;
+}
+
+.cards-grid.related .cards-grid-body h3 {
+  margin: 20px 0 8px;
+  font-family: var(--body-font-family);
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 20px;
+}
+
+.cards-grid.related .cards-grid-body a:any-link {
+  color: #001728;
+  text-decoration: none;
+}
+
+.cards-grid.related .cards-grid-body a:hover {
+  color: #007acb;
+}
+
+.cards-grid.related .cards-grid-body p {
+  margin: 0;
+  color: #001728;
+  font-size: 14px;
+  font-weight: 300;
+  line-height: 18px;
+}
+
+.cards-grid.related .cards-grid-arrow {
+  position: relative;
+  flex: 0 0 27px;
+  height: 55px;
+  padding: 0;
+  border: 0;
+  border-radius: 2px;
+  background: none;
+  color: #4d4d4d;
+  cursor: pointer;
+}
+
+/* chevron */
+.cards-grid.related .cards-grid-arrow::before {
+  content: '';
+  position: absolute;
+  top: 20px;
+  left: 6px;
+  width: 12px;
+  height: 12px;
+  border-top: 2px solid currentcolor;
+  border-right: 2px solid currentcolor;
+  transform: rotate(45deg);
+}
+
+.cards-grid.related .cards-grid-arrow-prev::before {
+  left: 10px;
+  transform: rotate(-135deg);
+}
+
+.cards-grid.related .cards-grid-arrow:disabled {
+  opacity: 0.3;
+  cursor: default;
+}
+/* stylelint-enable no-descending-specificity */

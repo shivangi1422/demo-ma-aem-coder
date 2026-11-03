@@ -1,0 +1,56 @@
+{
+ "source": "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
+ "capturedAt": "2026-11-03",
+ "pageSize": 5,
+ "items": [
+  {
+   "contentTitle": "Using Machine Learning Algorithms to Provide Deep Insights into Cellular Subset Composition",
+   "contentDescription": "",
+   "contentIcon": "fas fa-video",
+   "contentUrl": "/resources/reading-material/application-notes/machine-learning-analysis-20c-immunophenotyping",
+   "ContentTypeTaxonomyFacet": "{442DF88C-CA7F-4B78-AF75-9D2B985534C0}"
+  },
+  {
+   "contentTitle": "Use Machine Learning Algorithms to Explore the Potential of Your High Dimensional Flow Cytometry Data Example of a 20–color Panel on CytoFLEX LX",
+   "contentDescription": "Explore the potential of high dimensional flow cytometry data with an Example of a 20&ndash;color Panel on CytoFLEX LX. Understand how to perform machine learning algorithms like viSNE and FlowSOM to identify phenotypes of populations/subsets present in the 20&ndash;color CytoFLEX LX flow cytometry data. Build a computational flow cytometry data analysis pipeline with Cytobank. Learn how to assess the quality of viSNE maps and FlowSOM clustering results. Recognize how pre&ndash;processing steps can affect the result quality of machine learning algorithms.",
+   "contentIcon": "fas fa-video",
+   "contentUrl": "/resources/reading-material/application-notes/cytobank-cytoflex-20-color-panel",
+   "ContentTypeTaxonomyFacet": "{442DF88C-CA7F-4B78-AF75-9D2B985534C0}"
+  },
+  {
+   "contentTitle": "How to use R to rewrite FCS files with different number of channels",
+   "contentDescription": "<span style=\"color: #183247; background-color: #ffffff;\">How to use R to rewrite FCS files with different number of channels</span>",
+   "contentIcon": "fas fa-video",
+   "contentUrl": "/resources/reading-material/application-notes/cytobank-r-to-rewrite-fcs-files-application-note",
+   "ContentTypeTaxonomyFacet": "{442DF88C-CA7F-4B78-AF75-9D2B985534C0}"
+  },
+  {
+   "contentTitle": "Using Standardized Dry Antibody Panels for Flow Cytometry in Response to SARS-CoV2 Infection",
+   "contentDescription": "As a highly standardized reagent set for comprehensive immune profiling, dry DURAClone* antibody panels (Beckman Coulter) were extended by adding antibodies in liquid format and evaluated for their utility as straightaway immune profiling research tools in normal and SARS-CoV2-positive donors.",
+   "contentIcon": "fas fa-video",
+   "contentUrl": "/resources/reading-material/posters/using-standardized-dry-antibody-panels-for-flow-cytometry-in-response-to-sars-cov2-infection",
+   "ContentTypeTaxonomyFacet": "{C00ACFAF-8661-4DF6-8BA5-A7A099A7BA9C}"
+  },
+  {
+   "contentTitle": "Get the Cytobank Platform and Publish",
+   "contentDescription": "",
+   "contentIcon": "fas fa-video",
+   "contentUrl": "/resources/technologies/machine-learning-analysis/publication-list",
+   "ContentTypeTaxonomyFacet": "{8ED0B7A0-4EDF-41AC-9D0B-3950E79F42E4}"
+  },
+  {
+   "contentTitle": "Whitepaper: Introduction to software and cloud security on the Cytobank platform",
+   "contentDescription": "",
+   "contentIcon": "far fa-file-pdf",
+   "contentUrl": "/gated-media?mediaId={FC010D87-BE31-435D-A5D2-69C2711571CD}",
+   "ContentTypeTaxonomyFacet": "{E588CF40-730C-4137-A5DC-8DDEAB7CF7D9}"
+  },
+  {
+   "contentTitle": "テクニカルノート_フローサイトメトリーハイパラメータ（高次元）データでのマシンラーニングアルゴリズムを用いた解析・可視化CytoFLEX LX 20カラーパネルでの例",
+   "contentDescription": "",
+   "contentIcon": "far fa-file-pdf",
+   "contentUrl": "/gated-media?mediaId={925B6F52-EB3D-478B-A371-881A9974E629}",
+   "ContentTypeTaxonomyFacet": "{611E05FD-FC41-4E23-9498-DA5662F8D4F9}"
+  }
+ ]
+}

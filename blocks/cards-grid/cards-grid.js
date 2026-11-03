@@ -209,6 +209,82 @@ function buildButtons(cardRows) {
 }
 
 /**
+ * Related: horizontal product carousel (source: "Related ... Products" on product
+ * pages). Cards scroll in a snap container; previous/next buttons move by one
+ * card and are disabled at the ends. Image, title and text link to the product.
+ * @param {Element[]} cardRows
+ * @returns {Element}
+ */
+function buildRelated(cardRows) {
+  const ul = document.createElement('ul');
+  ul.className = 'cards-grid-track';
+  cardRows.forEach((row) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    const { imgCell, textCell } = splitCells(row);
+    const link = textCell && textCell.querySelector('a[href]');
+    const picture = pictureFrom(imgCell, '400');
+    const media = document.createElement('div');
+    media.className = 'cards-grid-image';
+    if (imgCell) moveInstrumentation(imgCell, media);
+    if (picture) {
+      const img = picture.tagName === 'IMG' ? picture : picture.querySelector('img');
+      if (img) {
+        img.loading = 'lazy';
+        // the source has a missing product image; keep the card layout without a broken icon
+        img.addEventListener('error', () => media.classList.add('is-missing'), { once: true });
+      }
+      if (link) {
+        const a = document.createElement('a');
+        a.href = link.getAttribute('href');
+        a.tabIndex = -1;
+        a.setAttribute('aria-hidden', 'true');
+        a.append(picture);
+        media.append(a);
+      } else {
+        media.append(picture);
+      }
+    }
+    li.append(media);
+    if (textCell) {
+      const body = document.createElement('div');
+      body.className = 'cards-grid-body';
+      moveInstrumentation(textCell, body);
+      while (textCell.firstChild) body.append(textCell.firstChild);
+      li.append(body);
+    }
+    ul.append(li);
+  });
+
+  const carousel = document.createElement('div');
+  carousel.className = 'cards-grid-carousel';
+  const arrow = (dir, label) => {
+    const b = document.createElement('button');
+    b.type = 'button';
+    b.className = `cards-grid-arrow cards-grid-arrow-${dir}`;
+    b.setAttribute('aria-label', label);
+    b.addEventListener('click', () => {
+      const card = ul.querySelector('li');
+      const gap = parseFloat(getComputedStyle(ul).columnGap) || 0;
+      const step = card ? card.getBoundingClientRect().width + gap : ul.clientWidth;
+      ul.scrollBy({ left: dir === 'next' ? step : -step, behavior: 'smooth' });
+    });
+    return b;
+  };
+  const prev = arrow('prev', 'Previous products');
+  const next = arrow('next', 'Next products');
+  const sync = () => {
+    prev.disabled = ul.scrollLeft <= 1;
+    next.disabled = ul.scrollLeft + ul.clientWidth >= ul.scrollWidth - 1;
+  };
+  ul.addEventListener('scroll', () => window.requestAnimationFrame(sync), { passive: true });
+  window.addEventListener('resize', sync, { passive: true });
+  carousel.append(prev, ul, next);
+  window.requestAnimationFrame(sync);
+  return carousel;
+}
+
+/**
  * Decorates the cards-grid block. One block, three styles via the "Style"
  * dropdown (variant class):
  *   - .cards-grid.solutions    heading + 3-up cards (image, category, title, link)
@@ -218,6 +294,7 @@ function buildButtons(cardRows) {
  *   - .cards-grid.contentlist  3-up: bordered 4:3 linked image, light H3, linked text
  *   - .cards-grid.icon-left    2-up: small icon beside bold title, text, red button
  *   - .cards-grid.buttons      red link tiles with a white icon
+ *   - .cards-grid.related      horizontal product carousel with previous/next buttons
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
  * @param {Element} block
  */
@@ -237,6 +314,7 @@ export default function decorate(block) {
     contentlist: buildContentList,
     'icon-left': buildIconLeft,
     buttons: buildButtons,
+    related: buildRelated,
   };
   const style = Object.keys(builders).find((cls) => block.classList.contains(cls));
   if (style) {
