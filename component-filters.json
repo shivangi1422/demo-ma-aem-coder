@@ -22,6 +22,8 @@
       "columns-actions",
       "columns-article",
       "faq-list",
+      "faq-search",
+      "cards-category",
       "columns-callout",
       "cards-tile",
       "accordion-faq",
@@ -37,6 +39,12 @@
     "id": "accordion-faq",
     "components": [
       "accordion-faq-item"
+    ]
+  },
+  {
+    "id": "cards-category",
+    "components": [
+      "cards-category-item"
     ]
   },
   {

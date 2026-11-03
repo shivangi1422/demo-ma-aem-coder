@@ -150,6 +150,10 @@
             "value": "article"
           },
           {
+            "name": "Listing (FAQ listing main column)",
+            "value": "listing"
+          },
+          {
             "name": "Sidebar (last block, e.g. a form, beside the content)",
             "value": "sidebar"
           }
@@ -202,6 +206,33 @@
         "value": "",
         "label": "Trail",
         "description": "Bulleted list of links from Home to the parent page; the last item is the current page title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-category-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Title (heading with the link to the category page) and a short description; the whole card links to the title link",
         "valueType": "string"
       }
     ]
@@ -488,6 +519,19 @@
         "name": "categories",
         "label": "Categories",
         "description": "Comma separated; used by the FAQ search filters",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "faq-search",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "categories",
+        "label": "Category filters",
+        "description": "Comma separated; one checkbox per category, matched against the categories of the FAQ list questions. Leave empty for search only",
         "value": ""
       }
     ]

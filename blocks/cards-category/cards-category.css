@@ -1,0 +1,80 @@
+/* source /support/faq tiles: 90px cover image on black, 20px gap, uppercase bold title,
+   two 435px columns (20px gutter) >= 900px, filled column by column, 48px between tiles;
+   58px above the tiles (source: intro margin + an empty spacer paragraph) */
+.cards-category {
+  margin-top: 58px;
+}
+
+.cards-category ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-category li {
+  margin: 0 0 48px;
+}
+
+.cards-category li > .cards-category-link,
+.cards-category li:not(:has(> a)) {
+  display: flex;
+  gap: 20px;
+  align-items: flex-start;
+  color: #333;
+  text-decoration: none;
+}
+
+.cards-category li > .cards-category-link:hover,
+.cards-category li > .cards-category-link:focus-visible {
+  color: #0098ce;
+}
+
+.cards-category-image {
+  flex: 0 0 90px;
+  height: 90px;
+  background-color: #000;
+}
+
+.cards-category-image p,
+.cards-category-image picture {
+  display: block;
+  margin: 0;
+}
+
+.cards-category-image img {
+  display: block;
+  width: 90px;
+  height: 90px;
+  object-fit: cover;
+  background-color: #ddd;
+}
+
+.cards-category-body {
+  flex: 1 1 auto;
+  min-width: 0;
+  max-width: calc(100% - 130px);
+}
+
+.cards-category-body :is(h2, h3, h4) {
+  margin: 0 0 21.28px;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 17.6px;
+  text-transform: uppercase;
+  color: #000;
+}
+
+.cards-category-body p {
+  margin: 0;
+}
+
+@media (width >= 900px) {
+  .cards-category ul {
+    display: grid;
+    grid-auto-flow: column;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(var(--cards-category-rows, 1), auto);
+    column-gap: 20px;
+    align-items: start;
+  }
+}

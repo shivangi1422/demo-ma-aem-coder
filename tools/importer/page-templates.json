@@ -183,7 +183,66 @@
       ],
       "coverageGaps": [],
       "description": "Breadcrumb, title and intro text, then a grid of FAQ category tiles or a filterable list of FAQ links, with a narrow right sidebar column",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "breadcrumb",
+          "instances": [
+            ".main-holder > .container.custome-container nav.breadcrumbs",
+            "nav.breadcrumbs"
+          ]
+        },
+        {
+          "name": "faq-search",
+          "instances": [
+            "#content-holder .faq-search-source"
+          ]
+        },
+        {
+          "name": "faq-list",
+          "instances": [
+            "#content-holder .table-block"
+          ]
+        },
+        {
+          "name": "cards-category",
+          "instances": [
+            "#content-holder > div.row:has(a.faq-item)"
+          ]
+        }
+      ],
+      "representativeUrl": "https://www.mybeckman.in/support/faq/product",
+      "sections": [
+        {
+          "id": "fl1",
+          "name": "breadcrumb",
+          "selector": [
+            ".main-holder > .container.custome-container"
+          ],
+          "style": null,
+          "blocks": [
+            "breadcrumb"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "fl2",
+          "name": "faq-listing",
+          "selector": [
+            ".main-holder .two-columns-holder.faq-section",
+            ".main-holder > .container:nth-of-type(2)"
+          ],
+          "style": "listing",
+          "blocks": [
+            "faq-search",
+            "faq-list",
+            "cards-category"
+          ],
+          "defaultContent": [
+            "#content-holder > h1",
+            "#content-holder > p"
+          ]
+        }
+      ]
     },
     {
       "name": "faq-article",

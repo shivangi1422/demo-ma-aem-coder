@@ -316,7 +316,8 @@ main > .section:first-of-type {
     max-width: calc(var(--content-max-width) + 2 * var(--content-gutter));
   }
 
-  main > .section.article > div {
+  main > .section.article > div,
+  main > .section.listing > div {
     max-width: var(--content-max-width);
   }
 }
@@ -365,6 +366,18 @@ main > .section.article {
 @media (width >= 900px) {
   main > .section.article > div > * {
     max-width: calc((100% + 20px) * 2 / 3 - 20px);
+  }
+}
+
+/* listing: FAQ listing main column (source col-md-9 of a 20px-gutter row, 850px at 1440), no section spacing */
+main > .section.listing {
+  margin: 0;
+  padding: 0;
+}
+
+@media (width >= 900px) {
+  main > .section.listing > div > * {
+    max-width: calc((100% + 20px) * 3 / 4 - 20px);
   }
 }
 

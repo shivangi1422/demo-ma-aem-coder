@@ -47,6 +47,10 @@
               "value": "article"
             },
             {
+              "name": "Listing (FAQ listing main column)",
+              "value": "listing"
+            },
+            {
               "name": "Sidebar (last block, e.g. a form, beside the content)",
               "value": "sidebar"
             }
@@ -73,6 +77,8 @@
         "columns-actions",
         "columns-article",
         "faq-list",
+        "faq-search",
+        "cards-category",
         "columns-callout",
         "cards-tile",
         "accordion-faq",
