@@ -3,13 +3,14 @@
 
 /**
  * Parser for cards-tile (xwalk items: cards-tile-item: image, text).
- * Source: div.ProductCards (case-sensitive; lowercase .productCards stays default content) > .ProductCard (img.ProductCardImg, .ProductCardBody h3, a.btn).
+ * Source: div.ProductCards (case-sensitive; lowercase .productCards only with data-tiles, else default content) > .ProductCard (img.ProductCardImg, .ProductCardBody h3, a.btn).
  * Output: one row per card: [<!-- field:image --><img>] [<!-- field:text --><h3>…</h3><p><strong><a/></strong></p>]
  */
 export default function parse(element, { document }) {
   // snapshots load in quirks mode, where class selectors ignore case: the lowercase
   // .productCards list on /service/plans is unstyled on the source and stays default content
-  if (!element.className.split(/\s+/).includes('ProductCards')) return;
+  // (mybeckman-service-prepare marks lowercase lists the page itself styles as tiles: data-tiles)
+  if (!element.className.split(/\s+/).includes('ProductCards') && !element.hasAttribute('data-tiles')) return;
   const cells = [];
   [...element.children].forEach((card) => {
     const imageCell = document.createDocumentFragment();

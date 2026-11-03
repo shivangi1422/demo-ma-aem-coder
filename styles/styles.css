@@ -328,11 +328,10 @@ main .section.grey {
   background-color: var(--light-color);
 }
 
-/* blue band (source Section--blue, e.g. Get in Touch): white centred text */
+/* blue band (source Section--blue): white text; centred in Get in Touch (source .Contact) */
 main .section.blue {
   background-color: var(--brand-blue);
   color: var(--white);
-  text-align: center;
 }
 
 main .section.blue :is(h1, h2, h3, h4, h5, h6) {
@@ -350,8 +349,9 @@ main .default-content-wrapper > p.button-wrapper + p:has(> picture:only-child) {
   margin-top: 0;
 }
 
-/* Get in Touch (source #getInTouch: 40px above, extra 2vw below) */
+/* Get in Touch (source #getInTouch: 40px above, extra 2vw below; centred as the source .Contact) */
 main .section.blue.columns-actions-container {
+  text-align: center;
   margin-top: var(--section-spacing);
   padding: 2vw 0 4vw;
 }
@@ -365,6 +365,31 @@ main > .section.article {
 @media (width >= 900px) {
   main > .section.article > div > * {
     max-width: calc((100% + 20px) * 2 / 3 - 20px);
+  }
+}
+
+/* sidebar: main column + the section's last block (e.g. a form) beside it,
+   as the source 9 / 3 column row (20px gutter) in the 1140px bootstrap content; stacked below 900px */
+main > .section.sidebar > .sidebar-main > div {
+  padding: 0;
+}
+
+@media (width >= 900px) {
+  main > .section.sidebar {
+    display: grid;
+    box-sizing: border-box;
+    grid-template-columns: calc(75% - 5px) minmax(0, 1fr);
+    align-items: start;
+    column-gap: 20px;
+    max-width: var(--content-max-width);
+    margin: 0 auto;
+    padding-inline: var(--content-gutter);
+  }
+
+  main > .section.sidebar > div {
+    max-width: none;
+    margin: 0;
+    padding: 0;
   }
 }
 

@@ -1,0 +1,42 @@
+{
+  "definitions": [
+    {
+      "title": "Contact Form",
+      "id": "contact-form",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Contact Form",
+              "model": "contact-form"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "contact-form",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "description": "Optional heading or introduction shown above the form",
+          "valueType": "string"
+        },
+        {
+          "component": "aem-content",
+          "name": "link",
+          "label": "Form link",
+          "description": "Marketo form (https://pages.beckman.com/index.php/form/getForm?munchkinId=…&form=…) or FormAssembly form (https://becls.tfaforms.net/…)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

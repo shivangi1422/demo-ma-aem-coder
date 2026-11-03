@@ -1,0 +1,74 @@
+/* source .Header: centred logo (max 300px), h1, h2 and a white shadowed callout box,
+   shifted down (position relative) so that it overlaps the next section (z-index above its background) */
+main > .section.hero-callout-container {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-callout {
+  text-align: center;
+}
+
+.hero-callout .hero-callout-logo picture,
+.hero-callout .hero-callout-logo p {
+  margin: 0;
+}
+
+.hero-callout .hero-callout-logo img {
+  display: block;
+  max-width: 300px;
+  margin: 0 auto 40px;
+}
+
+.hero-callout .hero-callout-text h1 {
+  margin: 32.16px 0;
+  font-size: 48px;
+  line-height: 1.1;
+}
+
+.hero-callout .hero-callout-text h2 {
+  margin: 20.75px 0;
+  font-size: 25px;
+}
+
+.hero-callout .hero-callout-box {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  top: 18px;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 10px 20px;
+  border-radius: 4px;
+  box-shadow: rgb(0 0 0 / 20%) 0 4px 8px 4px;
+  background-color: var(--white);
+}
+
+.hero-callout .hero-callout-box > p {
+  margin: 16px 0;
+  font-weight: 500;
+}
+
+.hero-callout .hero-callout-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.hero-callout .hero-callout-buttons a.button {
+  margin: 10px;
+  border-radius: 2px;
+  padding: 13px 20px;
+  font-size: 13.5px;
+}
+
+@media (width >= 900px) {
+  .hero-callout .hero-callout-box {
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    top: 54px;
+  }
+}

@@ -45,6 +45,10 @@
             {
               "name": "Article (FAQ main column)",
               "value": "article"
+            },
+            {
+              "name": "Sidebar (last block, e.g. a form, beside the content)",
+              "value": "sidebar"
             }
           ]
         }
@@ -68,7 +72,16 @@
         "cards-stats",
         "columns-actions",
         "columns-article",
-        "faq-list"
+        "faq-list",
+        "columns-callout",
+        "cards-tile",
+        "accordion-faq",
+        "contact-form",
+        "cards-icon",
+        "hero-callout",
+        "embed",
+        "table-plans",
+        "table"
       ]
     }
   ]

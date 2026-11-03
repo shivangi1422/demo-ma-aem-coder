@@ -1,0 +1,40 @@
+/* source data tables (e.g. notification status table): red header row, light ruled cells, 14px text */
+.table .table-scroll {
+  overflow-x: auto;
+}
+
+.table table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.table th,
+.table td {
+  padding: 12px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table th {
+  background-color: #e21f26;
+  font-weight: 700;
+  color: var(--white);
+}
+
+.table td {
+  border: 1px solid #e6e6e6;
+}
+
+.table td > :first-child {
+  margin-top: 0;
+}
+
+.table td > :last-child {
+  margin-bottom: 0;
+}
+
+.table td:has(> picture:only-child, > p:only-child > picture:only-child) {
+  text-align: center;
+}

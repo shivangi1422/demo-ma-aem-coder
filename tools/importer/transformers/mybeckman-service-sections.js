@@ -11,7 +11,8 @@
  *  - turns `a.btn` links into authorable buttons (own paragraph, strong / em / strong+em)
  *  - turns Font Awesome check icons in running text into a ✔ character
  *  - wraps loose text runs into paragraphs, drops empty chunks
- * afterTransform: adds Section Metadata (style) at the end of each styled section.
+ * afterTransform: adds Section Metadata (style) at the end of each styled section; a video link alone
+ *  in its paragraph outside a block becomes an embed block.
  */
 
 const MARKER = 'data-scp-section-style';
@@ -58,6 +59,17 @@ function replaceWistia(document, root) {
     a.textContent = 'Wistia video player';
     p.append(a);
     wrap.replaceWith(p);
+  });
+}
+
+// <a><button class="btn …">Label</button></a> (training) -> a.btn; red outline buttons (.redbtn) -> secondary
+function linkButtons(root) {
+  root.querySelectorAll('a > button').forEach((button) => {
+    const a = button.parentElement;
+    if (button.classList.contains('menu-item') || a.children.length !== 1) return;
+    const cls = button.classList.contains('redbtn') ? 'btn btn-secondary' : `btn ${button.className}`;
+    a.className = cls;
+    a.textContent = button.textContent.replace(/\s+/g, ' ').trim();
   });
 }
 
@@ -124,19 +136,55 @@ export default function transform(hookName, element, payload) {
   const document = element.ownerDocument || (payload && payload.document);
 
   if (hookName === 'beforeTransform') {
-    const layout = element.querySelector('.bc-test-layout');
-    if (!layout) return;
-    // page-level style blocks / js components
-    layout.querySelectorAll('.row.js-component').forEach((el) => { if (!hasContent(el) || el.querySelector('style')) el.remove(); });
-    replaceWistia(document, layout);
-    buttonize(document, layout);
-    // Font Awesome check marks in running text become a text check mark
-    // (the benefits callout draws its own icon, its parser drops the span)
-    layout.querySelectorAll('span.fa-check').forEach((span) => {
-      if (!span.closest('.Intro')) span.replaceWith(document.createTextNode('✔ '));
+    // page body: one or more .bc-test-layout lists and / or a .two-columns-holder (col-md-9 + col-md-3) row
+    const ROOTS = '.bc-test-layout, .two-columns-holder';
+    const roots = [...element.querySelectorAll(ROOTS)].filter((r) => !r.parentElement.closest(ROOTS));
+    // the title holder (#content-holder) can carry page text too (e.g. /support/ecommerce): same inline fixes
+    const holder = element.querySelector('#content-holder');
+    const textRoots = holder && !roots.some((r) => r.contains(holder)) ? [...roots, holder] : roots;
+    textRoots.forEach((root) => {
+      // page-level style blocks / js components
+      root.querySelectorAll('.row.js-component').forEach((el) => { if (!hasContent(el) || el.querySelector('style')) el.remove(); });
+      replaceWistia(document, root);
+      linkButtons(root);
+      buttonize(document, root);
+      // Font Awesome check marks in running text become a text check mark
+      // (the benefits callout draws its own icon, its parser drops the span)
+      root.querySelectorAll('span.fa-check').forEach((span) => {
+        if (!span.closest('.Intro')) span.replaceWith(document.createTextNode('✔ '));
+      });
     });
 
-    const chunks = [...layout.querySelectorAll('.bc-rich-text')].filter((c) => !c.parentElement.closest('.bc-rich-text'));
+    if (!roots.length) return;
+
+    // two-column rows: with a form in the right column = one "sidebar" section (text left, form right);
+    // otherwise the right rail (empty, or the FAQ related-links rail also dropped on faq-article pages) is dropped
+    const sidebars = [];
+    element.querySelectorAll('.two-columns-holder').forEach((holder) => {
+      const right = holder.querySelector('.two-columns-holder__right');
+      if (right && right.querySelector('.contact-form-source')) sidebars.push(holder);
+      else if (right) right.remove();
+    });
+    sidebars.forEach((holder) => {
+      holder.querySelectorAll('.bc-rich-text').forEach((chunk) => {
+        if (!hasContent(chunk)) chunk.remove(); else wrapInlineRuns(document, chunk);
+      });
+      const hr = document.createElement('hr');
+      hr.setAttribute(MARKER, 'sidebar');
+      holder.parentNode.insertBefore(hr, holder);
+    });
+
+    // a grey band inside a chunk (inline background #f0f0f0, e.g. "Knowledge Awaits" + form on /service/training)
+    // starts its own grey section
+    roots.forEach((root) => root.querySelectorAll('.bc-rich-text > div[style*="background-color"]').forEach((band) => {
+      if (!/#f0f0f0|240,\s*240,\s*240/i.test(band.getAttribute('style'))) return;
+      const hr = document.createElement('hr');
+      hr.setAttribute(MARKER, 'grey');
+      band.parentNode.insertBefore(hr, band);
+    }));
+
+    const chunks = roots.flatMap((root) => [...root.querySelectorAll('.bc-rich-text')])
+      .filter((c) => c.isConnected && !c.parentElement.closest('.bc-rich-text') && !sidebars.some((h) => h.contains(c)));
     chunks.forEach((chunk) => {
       if (!hasContent(chunk)) { chunk.remove(); return; }
       wrapInlineRuns(document, chunk);
@@ -146,7 +194,7 @@ export default function transform(hookName, element, payload) {
       chunk.parentNode.insertBefore(hr, chunk);
     });
     // pages without chunks (plain rich text in the layout) still get one content section
-    if (!chunks.length) layout.parentNode.insertBefore(document.createElement('hr'), layout);
+    if (!chunks.length && !sidebars.length) roots[0].parentNode.insertBefore(document.createElement('hr'), roots[0]);
   }
 
   if (hookName === 'afterTransform') {
@@ -157,6 +205,15 @@ export default function transform(hookName, element, payload) {
       // end of this section = the chunk right after the marker
       const chunk = hr.nextElementSibling;
       if (chunk && chunk.tagName !== 'HR') chunk.append(sm); else hr.after(sm);
+    });
+    // video links in page text (not in columns, which embed them themselves) -> embed block
+    element.querySelectorAll('p > a[href*="fast.wistia.net/embed"]').forEach((a) => {
+      const p = a.parentElement;
+      if (p.closest('table') || p.textContent.trim() !== a.textContent.trim()) return;
+      const link = document.createElement('a');
+      link.href = a.href;
+      link.textContent = a.href;
+      p.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'embed', cells: [[link]] }));
     });
     // drop empty paragraphs left by cleanup
     element.querySelectorAll('p').forEach((p) => {

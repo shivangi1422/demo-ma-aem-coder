@@ -148,6 +148,27 @@
           {
             "name": "Article (FAQ main column)",
             "value": "article"
+          },
+          {
+            "name": "Sidebar (last block, e.g. a form, beside the content)",
+            "value": "sidebar"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "accordion-faq",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Plain (ruled list, no grey bars)",
+            "value": "plain"
           }
         ]
       }
@@ -181,6 +202,47 @@
         "value": "",
         "label": "Trail",
         "description": "Bulleted list of links from Home to the parent page; the last item is the current page title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-icon",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Horizontal (icon beside the text, two per row)",
+            "value": "horizontal"
+          },
+          {
+            "name": "Tiles (red link tiles: icon and label)",
+            "value": "tiles"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cards-icon-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Title (heading) and a short description",
         "valueType": "string"
       }
     ]
@@ -232,6 +294,27 @@
         "label": "Text",
         "description": "Title (heading) and a button link",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Grey (screenshot cards: grey tiles, centred caption)",
+            "value": "grey"
+          },
+          {
+            "name": "List (3 per row, no border, large title and text link)",
+            "value": "list"
+          }
+        ]
       }
     ]
   },
@@ -352,6 +435,38 @@
     ]
   },
   {
+    "id": "contact-form",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Optional heading or introduction shown above the form",
+        "valueType": "string"
+      },
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Form link",
+        "description": "Marketo form (https://pages.beckman.com/index.php/form/getForm?munchkinId=…&form=…) or FormAssembly form (https://becls.tfaforms.net/…)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "embed",
+    "fields": [
+      {
+        "component": "aem-content",
+        "name": "link",
+        "label": "Video link",
+        "description": "Wistia (https://fast.wistia.net/embed/iframe/…), YouTube or Vimeo link",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "faq-list-item",
     "fields": [
       {
@@ -440,6 +555,33 @@
     ]
   },
   {
+    "id": "hero-callout",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Logo",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Logo alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Heading, subheading, then the callout label and buttons (shown in the white box)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "hero",
     "fields": [
       {
@@ -462,6 +604,109 @@
         "value": "",
         "label": "Text",
         "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "table-plans-row",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column1",
+        "label": "Column 1",
+        "value": "",
+        "description": "Row 1: plan groups (a label, then empty cells for the columns it spans); row 2: plan names; then one row per feature (● included, ○ optional). Leave a column empty to separate plan groups; the last column is highlighted."
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column2",
+        "label": "Column 2",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column3",
+        "label": "Column 3",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column4",
+        "label": "Column 4",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column5",
+        "label": "Column 5",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column6",
+        "label": "Column 6",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "column7",
+        "label": "Column 7",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "table-row",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column1",
+        "label": "Column 1",
+        "value": "",
+        "description": "The first row is the table header. Every row should use the same number of columns."
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column2",
+        "label": "Column 2",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column3",
+        "label": "Column 3",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column4",
+        "label": "Column 4",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column5",
+        "label": "Column 5",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "column6",
+        "label": "Column 6",
+        "value": ""
       }
     ]
   }

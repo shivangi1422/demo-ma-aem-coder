@@ -139,6 +139,25 @@ export function decorateButtons(main) {
 }
 
 /**
+ * Sidebar sections (section style "sidebar"): the last block of the section (e.g. a form)
+ * is the sidebar, everything before it is wrapped as the main column.
+ * @param {Element} main The main element
+ */
+export function decorateSidebarSections(main) {
+  main.querySelectorAll(':scope > .section.sidebar').forEach((section) => {
+    if (section.querySelector(':scope > .sidebar-main')) return;
+    // page metadata rendered as a block (local preview) is not the sidebar
+    const aside = [...section.children].reverse().find((el) => !el.classList.contains('metadata-wrapper'));
+    if (!aside || aside.classList.contains('default-content-wrapper') || !aside.querySelector('.block')) return;
+    aside.classList.add('sidebar-aside');
+    const column = document.createElement('div');
+    column.className = 'sidebar-main';
+    column.append(...[...section.children].filter((el) => el !== aside));
+    section.prepend(column);
+  });
+}
+
+/**
  * Decorates the main element.
  * @param {Element} main The main element
  */
@@ -148,6 +167,7 @@ export function decorateMain(main) {
   buildAutoBlocks(main);
   decorateSections(main);
   decorateBlocks(main);
+  decorateSidebarSections(main);
   decorateButtons(main);
 }
 

@@ -58,7 +58,8 @@
         {
           "name": "hero-banner",
           "instances": [
-            ".bc-rich-text > .hero"
+            ".bc-rich-text > .hero",
+            ".bc-rich-text > .outimg:has(.largebanner img)"
           ]
         },
         {
@@ -82,19 +83,63 @@
         {
           "name": "columns",
           "instances": [
-            ".Section__two-column"
+            ".Section__two-column",
+            ".Section > .row:has(> .col-md-6 + .col-md-6)"
           ]
         },
         {
           "name": "cards-tile",
           "instances": [
-            ".ProductCards"
+            ".ProductCards",
+            ".productCards[data-tiles]"
           ]
         },
         {
           "name": "accordion-faq",
           "instances": [
-            ".Section:has(> label + .Content)"
+            ".Section:has(> label + .Content)",
+            ".faq-section:has(> details)"
+          ]
+        },
+        {
+          "name": "hero-callout",
+          "instances": [
+            ".bc-rich-text .Header:has(> h1)"
+          ]
+        },
+        {
+          "name": "cards-icon",
+          "instances": [
+            ".Content__body:has(> .ListingCard)",
+            ".bc-test-layout .container:has(.col-sm-6 > .col-sm-3 img)",
+            ".bc-test-layout .row:has(> .col-md-1 + .col-md-5)",
+            ".bc-test-layout .menu:has(button.menu-item)"
+          ]
+        },
+        {
+          "name": "cards",
+          "instances": [
+            ".panel-wrapper:has(> .panel)",
+            ".cards:has(> .card-container)",
+            ".content-list:has(.content-list-item)"
+          ]
+        },
+        {
+          "name": "table-plans",
+          "instances": [
+            "#service-plans-table"
+          ]
+        },
+        {
+          "name": "table",
+          "instances": [
+            ".bc-test-layout table, .two-columns-holder table, #content-holder table"
+          ]
+        },
+        {
+          "name": "contact-form",
+          "instances": [
+            ".contact-form-source"
           ]
         }
       ],

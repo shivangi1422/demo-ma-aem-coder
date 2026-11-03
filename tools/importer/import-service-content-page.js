@@ -9,6 +9,13 @@ import columnsActionsParser from './parsers/columns-actions.js';
 import columnsParser from './parsers/columns.js';
 import cardsTileParser from './parsers/cards-tile.js';
 import accordionFaqParser from './parsers/accordion-faq.js';
+import contactFormParser from './parsers/contact-form.js';
+import cardsIconParser from './parsers/cards-icon.js';
+import heroCalloutParser from './parsers/hero-callout.js';
+import cardsParser from './parsers/cards.js';
+import tablePlansParser from './parsers/table-plans.js';
+import tableParser from './parsers/table.js';
+import mybeckmanServicePrepareTransformer from './transformers/mybeckman-service-prepare.js';
 import mybeckmanCleanupTransformer from './transformers/mybeckman-cleanup.js';
 import mybeckmanServiceSectionsTransformer from './transformers/mybeckman-service-sections.js';
 import mybeckmanSectionsTransformer from './transformers/mybeckman-sections.js';
@@ -61,7 +68,8 @@ const PAGE_TEMPLATE = {
     {
       "name": "hero-banner",
       "instances": [
-        ".bc-rich-text > .hero"
+        ".bc-rich-text > .hero",
+        ".bc-rich-text > .outimg:has(.largebanner img)"
       ]
     },
     {
@@ -85,19 +93,64 @@ const PAGE_TEMPLATE = {
     {
       "name": "columns",
       "instances": [
-        ".Section__two-column"
+        ".Section__two-column",
+        ".Section > .row:has(> .col-md-6 + .col-md-6)",
+        ".bc-rich-text .row:has(> .col-sm-6 + .col-sm-6):not(:has(.col-sm-3))"
       ]
     },
     {
       "name": "cards-tile",
       "instances": [
-        ".ProductCards"
+        ".ProductCards",
+        ".productCards[data-tiles]"
       ]
     },
     {
       "name": "accordion-faq",
       "instances": [
-        ".Section:has(> label + .Content)"
+        ".Section:has(> label + .Content)",
+        ".faq-section:has(> details)"
+      ]
+    },
+    {
+      "name": "hero-callout",
+      "instances": [
+        ".bc-rich-text .Header:has(> h1)"
+      ]
+    },
+    {
+      "name": "cards-icon",
+      "instances": [
+        ".Content__body:has(> .ListingCard)",
+        ".bc-test-layout .container:has(.col-sm-6 > .col-sm-3 img)",
+        ".bc-test-layout .row:has(> .col-md-1 + .col-md-5)",
+        ".bc-test-layout .menu:has(button.menu-item)"
+      ]
+    },
+    {
+      "name": "cards",
+      "instances": [
+        ".panel-wrapper:has(> .panel)",
+        ".cards:has(> .card-container)",
+        ".content-list:has(.content-list-item)"
+      ]
+    },
+    {
+      "name": "table-plans",
+      "instances": [
+        "#service-plans-table"
+      ]
+    },
+    {
+      "name": "table",
+      "instances": [
+        ".bc-test-layout table, .two-columns-holder table, #content-holder table"
+      ]
+    },
+    {
+      "name": "contact-form",
+      "instances": [
+        ".contact-form-source"
       ]
     }
   ],
@@ -113,10 +166,17 @@ const parsers = {
   'columns': columnsParser,
   'cards-tile': cardsTileParser,
   'accordion-faq': accordionFaqParser,
+  'contact-form': contactFormParser,
+  'hero-callout': heroCalloutParser,
+  'cards-icon': cardsIconParser,
+  'cards': cardsParser,
+  'table-plans': tablePlansParser,
+  'table': tableParser,
 };
-// cleanup (chrome removal), then service sections (section breaks, buttons, videos),
+// prepare (forms, hidden title, table marks: before cleanup drops them), cleanup (chrome removal),
+// then service sections (section breaks, buttons, videos),
 // then page metadata (mybeckman-sections with no template sections only adds the Metadata block)
-const transformers = [mybeckmanCleanupTransformer, mybeckmanServiceSectionsTransformer, mybeckmanSectionsTransformer];
+const transformers = [mybeckmanServicePrepareTransformer, mybeckmanCleanupTransformer, mybeckmanServiceSectionsTransformer, mybeckmanSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };

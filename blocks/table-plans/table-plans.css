@@ -1,0 +1,94 @@
+/* source #service-plans-table: navy group headers, small bold plan names, ruled feature rows,
+   the last plan framed in light blue; scrolls sideways on narrow screens */
+.table-plans .table-plans-scroll {
+  overflow-x: auto;
+}
+
+.table-plans table {
+  width: 100%;
+  min-width: 476px;
+  border-collapse: collapse;
+}
+
+.table-plans td,
+.table-plans th {
+  padding: 8.4px;
+  border: 0;
+  border-bottom: 1px solid #778081;
+  font-size: 11.2px;
+  font-weight: 400;
+  line-height: 1.65;
+  text-align: center;
+  vertical-align: middle;
+  color: #000;
+}
+
+/* feature names */
+.table-plans tr > :first-child {
+  font-weight: 700;
+  text-align: left;
+}
+
+/* middle columns of a group are ruled on the left */
+.table-plans tr:not(.table-plans-groups) > :not(:first-child, .table-plans-spacer, .table-plans-group-start) {
+  border-left: 1px solid #778081;
+}
+
+/* plan group headers */
+.table-plans tr.table-plans-groups > * {
+  padding: 16px 0;
+  border-bottom: 2px solid #000;
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.65;
+  letter-spacing: 0.8px;
+  text-transform: uppercase;
+  color: var(--white);
+}
+
+.table-plans tr.table-plans-groups > :not(:first-child, .table-plans-spacer) {
+  background-color: #004666;
+}
+
+/* plan names */
+.table-plans tr.table-plans-names > * {
+  font-weight: 700;
+}
+
+.table-plans tr.table-plans-names > :first-child {
+  background-color: #004666;
+}
+
+.table-plans .table-plans-spacer {
+  width: 13px;
+  padding: 0;
+  border: 0;
+}
+
+.table-plans .table-plans-highlight {
+  border-right: 5px solid #0097ce;
+  border-left: 5px solid #0097ce;
+  color: #0097ce;
+}
+
+.table-plans tr.table-plans-names > .table-plans-highlight {
+  border-top: 5px solid #0097ce;
+  color: #000;
+}
+
+.table-plans p {
+  margin: 0;
+}
+
+@media (width < 900px) {
+  .table-plans .table-plans-spacer {
+    width: 0;
+  }
+}
+
+/* desktop: equal plan columns (source 192px at 1440) */
+@media (width >= 900px) {
+  .table-plans table {
+    table-layout: fixed;
+  }
+}
