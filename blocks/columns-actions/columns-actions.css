@@ -7,8 +7,8 @@
   list-style: none;
 }
 
+/* mobile: items as wide as their text (source flex items without a width), centred */
 .columns-actions li {
-  width: 100%;
   margin: 20px 0;
   text-align: center;
 }

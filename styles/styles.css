@@ -182,9 +182,10 @@ a:hover {
   color: var(--link-hover-color);
 }
 
-/* buttons: **link** = primary (blue), _link_ = secondary (blue outline), **_link_** = accent (red) */
+/* buttons: **link** = primary (blue), _link_ = secondary (blue outline), **_link_** = accent (red);
+   source buttons are inline links without margins: spacing comes from the text around them */
 p.button-wrapper {
-  margin: 1em 0;
+  margin: 0;
 }
 
 a.button:any-link,
@@ -290,9 +291,11 @@ main img {
   width: 100%;
 }
 
-/* sections: bootstrap-style 1170px container with 15px gutters */
+/* sections: bootstrap-style 1170px container with 15px gutters;
+   spacing as the source .Section: 2vw padding above and below, no margins */
 main > .section {
-  margin: var(--section-spacing) 0;
+  margin: 0;
+  padding: 2vw 0;
 }
 
 main > .section > div {
@@ -306,19 +309,27 @@ main > .section:first-of-type {
   margin-top: 0;
 }
 
+/* service pages: the source .Section is the full 1170px without gutters (x=135 at 1440);
+   FAQ articles keep the bootstrap container (1140px content) */
+@media (width >= 1200px) {
+  main > .section > div {
+    max-width: calc(var(--content-max-width) + 2 * var(--content-gutter));
+  }
+
+  main > .section.article > div {
+    max-width: var(--content-max-width);
+  }
+}
+
 /* section metadata */
 main .section.light,
 main .section.highlight,
 main .section.grey {
   background-color: var(--light-color);
-  margin: 0;
-  padding: var(--section-spacing) 0;
 }
 
 /* blue band (source Section--blue, e.g. Get in Touch): white centred text */
 main .section.blue {
-  margin: var(--section-spacing) 0 0;
-  padding: 15.6px 0 23.4px;
   background-color: var(--brand-blue);
   color: var(--white);
   text-align: center;
@@ -334,15 +345,21 @@ main .section.blue > .default-content-wrapper p {
   line-height: 23.1px;
 }
 
-@media (width >= 900px) {
-  main .section.blue {
-    padding: 28.8px 0 57.6px;
-  }
+/* an image right after a button starts the next item (source product lists) */
+main .default-content-wrapper > p.button-wrapper + p:has(> picture:only-child) {
+  margin-top: 0;
+}
+
+/* Get in Touch (source #getInTouch: 40px above, extra 2vw below) */
+main .section.blue.columns-actions-container {
+  margin-top: var(--section-spacing);
+  padding: 2vw 0 4vw;
 }
 
 /* article: FAQ article main column (source col-md-8 of a 20px-gutter row), no section spacing */
 main > .section.article {
   margin: 0;
+  padding: 0;
 }
 
 @media (width >= 900px) {

@@ -48,7 +48,58 @@
       ],
       "coverageGaps": [],
       "description": "Breadcrumb, single article column with title, subheading, text and buttons, followed by mixed content blocks (columns, cards, forms, callouts, video)",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "breadcrumb",
+          "instances": [
+            "nav.breadcrumbs"
+          ]
+        },
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".bc-rich-text > .hero"
+          ]
+        },
+        {
+          "name": "columns-callout",
+          "instances": [
+            ".Intro:has(> .Intro__title):has(> .Intro__body)"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".Section__intro:has(> div > p > strong)"
+          ]
+        },
+        {
+          "name": "columns-actions",
+          "instances": [
+            ".Contact:has(> .Contact__body)"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            ".Section__two-column"
+          ]
+        },
+        {
+          "name": "cards-tile",
+          "instances": [
+            ".ProductCards"
+          ]
+        },
+        {
+          "name": "accordion-faq",
+          "instances": [
+            ".Section:has(> label + .Content)"
+          ]
+        }
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/plans",
+      "sections": []
     },
     {
       "name": "faq-listing",

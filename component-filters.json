@@ -25,9 +25,21 @@
     ]
   },
   {
+    "id": "accordion-faq",
+    "components": [
+      "accordion-faq-item"
+    ]
+  },
+  {
     "id": "cards-stats",
     "components": [
       "cards-stats-item"
+    ]
+  },
+  {
+    "id": "cards-tile",
+    "components": [
+      "cards-tile-item"
     ]
   },
   {
@@ -40,6 +52,12 @@
     "id": "columns-actions",
     "components": [
       "columns-actions-item"
+    ]
+  },
+  {
+    "id": "columns-callout",
+    "components": [
+      "columns-callout-item"
     ]
   },
   {

@@ -154,6 +154,25 @@
     ]
   },
   {
+    "id": "accordion-faq-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "summary",
+        "value": "",
+        "label": "Question"
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Answer",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "breadcrumb",
     "fields": [
       {
@@ -192,6 +211,26 @@
         "value": "",
         "label": "Text",
         "description": "First paragraph is the figure (e.g. 80%), the rest is the description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-tile-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Title (heading) and a button link",
         "valueType": "string"
       }
     ]
@@ -263,6 +302,32 @@
         "value": "",
         "label": "Answer",
         "description": "Answer text; a video link (Wistia, YouTube, Vimeo) alone in a paragraph is shown as a player",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-callout",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Intro",
+        "description": "Heading and short introduction shown beside the benefits",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-callout-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Bold title paragraph (shown with a check icon) followed by the description",
         "valueType": "string"
       }
     ]

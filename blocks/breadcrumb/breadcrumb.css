@@ -1,6 +1,7 @@
 /* source: full-width trail with 50px side padding, hidden below 768px */
 main > .section.breadcrumb-container {
   margin: 0;
+  padding: 0;
 }
 
 main > .section.breadcrumb-container > .breadcrumb-wrapper {

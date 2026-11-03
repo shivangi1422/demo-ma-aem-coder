@@ -1,6 +1,7 @@
 /* full-bleed banner directly under the breadcrumb */
 main > .section.hero-banner-container {
   margin-top: 0;
+  padding: 0;
 }
 
 main > .section.hero-banner-container > .hero-banner-wrapper {

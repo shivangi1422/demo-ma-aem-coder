@@ -1,0 +1,41 @@
+/* source CSS-only FAQ toggles: grey bars, + / - on the right, light answer panel */
+.accordion-faq-item summary {
+  position: relative;
+  display: flex;
+  align-items: center;
+  margin: 0 0 1px;
+  border-radius: 3px;
+  padding: 18px 22px;
+  background: #f0f0f0;
+  font-weight: 500;
+  cursor: pointer;
+  list-style: none;
+  transition: background-color 0.5s ease;
+}
+
+.accordion-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.accordion-faq-item summary:hover {
+  background: #e7e6e6;
+}
+
+.accordion-faq-item summary::after {
+  content: '+';
+  position: absolute;
+  right: 12px;
+  font-size: 22px;
+  line-height: 1.65;
+}
+
+.accordion-faq-item[open] summary::after {
+  content: '-';
+}
+
+.accordion-faq-answer {
+  margin: 0 0 1px;
+  border-radius: 3px;
+  padding: 10px 25px;
+  background: #f8f6f6;
+}

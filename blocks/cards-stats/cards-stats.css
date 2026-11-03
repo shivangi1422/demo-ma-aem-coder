@@ -1,6 +1,7 @@
 /* full-bleed blue band directly under the hero */
 main > .section.cards-stats-container {
   margin: 0;
+  padding: 0;
   background-color: var(--brand-blue);
 }
 
