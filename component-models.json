@@ -136,8 +136,59 @@
           {
             "name": "Highlight",
             "value": "highlight"
+          },
+          {
+            "name": "Grey",
+            "value": "grey"
+          },
+          {
+            "name": "Blue (white text, centred)",
+            "value": "blue"
           }
         ]
+      }
+    ]
+  },
+  {
+    "id": "breadcrumb",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Trail",
+        "description": "Bulleted list of links from Home to the parent page; the last item is the current page title",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-stats",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left aligned",
+            "value": "left-aligned"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "cards-stats-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "First paragraph is the figure (e.g. 80%), the rest is the description",
+        "valueType": "string"
       }
     ]
   },
@@ -156,6 +207,58 @@
         "name": "text",
         "value": "",
         "label": "Text",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-actions-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Button link"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Button text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Caption",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-article",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Answer",
+        "description": "Answer text; a video link (Wistia, YouTube, Vimeo) alone in a paragraph is shown as a player",
         "valueType": "string"
       }
     ]
@@ -180,12 +283,90 @@
     ]
   },
   {
+    "id": "faq-list-item",
+    "fields": [
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Answer page"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Question",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "categories",
+        "label": "Categories",
+        "description": "Comma separated; used by the FAQ search filters",
+        "value": ""
+      }
+    ]
+  },
+  {
     "id": "fragment",
     "fields": [
       {
         "component": "aem-content",
         "name": "reference",
         "label": "Reference"
+      }
+    ]
+  },
+  {
+    "id": "hero-banner",
+    "fields": [
+      {
+        "component": "multiselect",
+        "name": "classes",
+        "label": "Style",
+        "valueType": "string",
+        "options": [
+          {
+            "name": "Left aligned (image banner, no overlay)",
+            "value": "left-aligned"
+          }
+        ]
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image alt text",
+        "value": ""
+      },
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "mobileImage",
+        "label": "Mobile image (optional)",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "mobileImageAlt",
+        "label": "Mobile image alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "valueType": "string"
       }
     ]
   },

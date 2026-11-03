@@ -1,0 +1,81 @@
+/* full-bleed blue band directly under the hero */
+main > .section.cards-stats-container {
+  margin: 0;
+  background-color: var(--brand-blue);
+}
+
+main > .section.cards-stats-container > .cards-stats-wrapper {
+  padding: 15.6px 31.2px 0;
+}
+
+.cards-stats {
+  color: var(--white);
+}
+
+.cards-stats ul {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.cards-stats li {
+  box-sizing: border-box;
+  width: calc(100% - 20px);
+  margin: 10px;
+  padding-right: 10px;
+  font-size: var(--body-font-size-s);
+  font-weight: 400;
+  line-height: 23.1px;
+}
+
+.cards-stats li p {
+  margin: 0 0 14px;
+}
+
+.cards-stats li .cards-stats-value {
+  margin: 14px 0 0;
+  font-size: 24px;
+  font-weight: 700;
+  line-height: 39.6px;
+  color: var(--white);
+}
+
+.cards-stats li .cards-stats-value strong {
+  font-weight: inherit;
+}
+
+.cards-stats sup {
+  position: relative;
+  top: -0.5em;
+  font-size: 75%;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+.cards-stats.left-aligned li {
+  width: auto;
+}
+
+@media (width >= 900px) {
+  main > .section.cards-stats-container > .cards-stats-wrapper {
+    padding: 28.8px;
+  }
+
+  .cards-stats li {
+    flex: 1 1 0;
+    width: auto;
+    text-align: center;
+  }
+
+  .cards-stats.left-aligned ul {
+    justify-content: space-between;
+  }
+
+  .cards-stats.left-aligned li {
+    flex: 0 1 auto;
+    text-align: left;
+  }
+}

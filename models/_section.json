@@ -33,6 +33,14 @@
             {
               "name": "Highlight",
               "value": "highlight"
+            },
+            {
+              "name": "Grey",
+              "value": "grey"
+            },
+            {
+              "name": "Blue (white text, centred)",
+              "value": "blue"
             }
           ]
         }
@@ -50,7 +58,13 @@
         "hero",
         "cards",
         "columns",
-        "fragment"
+        "fragment",
+        "breadcrumb",
+        "hero-banner",
+        "cards-stats",
+        "columns-actions",
+        "columns-article",
+        "faq-list"
       ]
     }
   ]

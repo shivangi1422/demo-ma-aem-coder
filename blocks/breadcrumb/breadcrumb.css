@@ -1,0 +1,64 @@
+/* source: full-width trail with 50px side padding, hidden below 768px */
+main > .section.breadcrumb-container {
+  margin: 0;
+}
+
+main > .section.breadcrumb-container > .breadcrumb-wrapper {
+  max-width: none;
+  padding: 0 50px;
+}
+
+.breadcrumb {
+  display: none;
+}
+
+.breadcrumb ol {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  font-size: var(--body-font-size-xs);
+  font-weight: 400;
+  line-height: 24px;
+}
+
+.breadcrumb li {
+  position: relative;
+  padding-right: 30px;
+  color: var(--grey-700);
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  right: 13px;
+  width: 5px;
+  height: 5px;
+  border-top: 1.5px solid #dcdcdc;
+  border-right: 1.5px solid #dcdcdc;
+  transform: translateY(-50%) rotate(45deg);
+}
+
+.breadcrumb a:any-link {
+  color: var(--grey-700);
+  font-weight: 300;
+  opacity: 0.9;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--brand-teal);
+}
+
+.breadcrumb li[aria-current='page'] {
+  font-weight: 700;
+}
+
+@media (width >= 768px) {
+  .breadcrumb {
+    display: block;
+    padding: 25px 0 10px;
+  }
+}

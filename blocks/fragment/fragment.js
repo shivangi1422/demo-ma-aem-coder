@@ -24,17 +24,21 @@ export async function loadFragment(path) {
     path = path.replace(/(\.plain)?\.html/, '');
     const resp = await fetch(`${path}.plain.html`);
     if (resp.ok) {
-      const main = document.createElement('main');
-      main.innerHTML = await resp.text();
+      // parse inertly so relative images are not requested against the page path first
+      const parsed = new DOMParser().parseFromString(`<main>${await resp.text()}</main>`, 'text/html');
 
       // reset base path for media to fragment base
+      const base = new URL(path, window.location);
       const resetAttributeBase = (tag, attr) => {
-        main.querySelectorAll(`${tag}[${attr}^="./media_"]`).forEach((elem) => {
-          elem[attr] = new URL(elem.getAttribute(attr), new URL(path, window.location)).href;
+        parsed.querySelectorAll(`${tag}[${attr}]`).forEach((elem) => {
+          const value = elem.getAttribute(attr);
+          if (!/^([a-z]+:|\/|#)/i.test(value)) elem.setAttribute(attr, new URL(value, base).href);
         });
       };
       resetAttributeBase('img', 'src');
       resetAttributeBase('source', 'srcset');
+
+      const main = document.adoptNode(parsed.querySelector('main'));
 
       decorateMain(main);
       await loadSections(main);

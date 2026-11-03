@@ -1,0 +1,38 @@
+/* source: table with an empty grey header row and ruled question rows */
+.faq-list {
+  margin: 0 0 20px;
+  font-size: var(--body-font-size-s);
+  line-height: 20px;
+}
+
+.faq-list::before {
+  content: '';
+  display: block;
+  height: 44px;
+  background-color: #ededed;
+}
+
+.faq-list ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.faq-list li {
+  padding: 11px 10px 10px;
+  border-bottom: 1px solid #9fa4aa;
+}
+
+.faq-list li[hidden] {
+  display: none;
+}
+
+.faq-list a:any-link {
+  color: #000;
+  transition: color 0.3s ease;
+}
+
+.faq-list a:hover,
+.faq-list a:focus-visible {
+  color: #74b70b;
+}
