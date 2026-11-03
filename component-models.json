@@ -20,6 +20,22 @@
         "name": "keywords",
         "multi": true,
         "label": "Keywords"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "template",
+        "label": "Template",
+        "options": [
+          {
+            "name": "Default",
+            "value": ""
+          },
+          {
+            "name": "Service landing (inset sections)",
+            "value": "service-landing"
+          }
+        ]
       }
     ]
   },
@@ -253,6 +269,10 @@
           {
             "name": "Tiles (red link tiles: icon and label)",
             "value": "tiles"
+          },
+          {
+            "name": "Bordered (service hub cards: icon, title, text in a bordered tile)",
+            "value": "bordered"
           }
         ]
       }

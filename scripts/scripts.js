@@ -10,6 +10,7 @@ import {
   loadSections,
   loadCSS,
   getMetadata,
+  toClassName,
 } from './aem.js';
 
 /**
@@ -172,6 +173,19 @@ export function decorateMain(main) {
 }
 
 /**
+ * Local preview serves the page Metadata block inside main (the pipeline turns it into head meta):
+ * apply its Template as a body class there, so template layouts (e.g. service-landing) show.
+ * @param {Element} main The main element
+ */
+function decorateLocalTemplate(main) {
+  if (getMetadata('template')) return;
+  const row = [...main.querySelectorAll(':scope > div > .metadata > div')]
+    .find((r) => r.children[0]?.textContent.trim().toLowerCase() === 'template');
+  const value = row?.children[1]?.textContent.trim();
+  if (value) document.body.classList.add(...value.split(',').map((v) => toClassName(v)).filter(Boolean));
+}
+
+/**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
@@ -180,6 +194,7 @@ async function loadEager(doc) {
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
+    decorateLocalTemplate(main);
     decorateMain(main);
     document.body.classList.add('appear');
     await loadSection(main.querySelector('.section'), waitForFirstImage);

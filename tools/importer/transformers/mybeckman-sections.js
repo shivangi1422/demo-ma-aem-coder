@@ -6,7 +6,8 @@
  * beforeTransform: insert <hr> section breaks before every non-first section
  * (driven by payload.template.sections) while the original elements exist.
  * afterTransform: add Section Metadata for styled sections and the page
- * Metadata block (Title, Description).
+ * Metadata block (Title, Description; Template when the page template sets pageTemplate,
+ * e.g. service-landing: body class for the template layout).
  */
 
 const MARKER = 'data-excat-section-id';
@@ -92,6 +93,7 @@ export default function transform(hookName, element, payload) {
     const cells = {};
     if (title) cells.Title = title;
     if (description) cells.Description = description;
+    if (payload.template && payload.template.pageTemplate) cells.Template = payload.template.pageTemplate;
     const metaBlock = WebImporter.Blocks.createBlock(document, { name: 'Metadata', cells });
     element.append(metaBlock);
   }

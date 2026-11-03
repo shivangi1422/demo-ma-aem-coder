@@ -7,7 +7,34 @@
       ],
       "coverageGaps": [],
       "description": "Landing page: full-width hero with text on photo and CTA, blue stats band, grid of icon cards, blue contact band with three action buttons",
-      "blocks": []
+      "blocks": [
+        {
+          "name": "hero-banner",
+          "instances": [
+            ".bc-rich-text > .hero"
+          ]
+        },
+        {
+          "name": "cards-stats",
+          "instances": [
+            ".Section__intro:has(> div > p > strong)"
+          ]
+        },
+        {
+          "name": "cards-icon",
+          "instances": [
+            ".ServiceCards:has(> .ServiceCard)"
+          ]
+        },
+        {
+          "name": "columns-actions",
+          "instances": [
+            ".Contact:has(> .Contact__body)"
+          ]
+        }
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service",
+      "sections": []
     },
     {
       "name": "service-content-page",

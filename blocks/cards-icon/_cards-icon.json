@@ -49,6 +49,10 @@
             {
               "name": "Tiles (red link tiles: icon and label)",
               "value": "tiles"
+            },
+            {
+              "name": "Bordered (service hub cards: icon, title, text in a bordered tile)",
+              "value": "bordered"
             }
           ]
         }

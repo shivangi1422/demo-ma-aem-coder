@@ -357,6 +357,36 @@ main .section.blue.columns-actions-container {
   padding: 2vw 0 4vw;
 }
 
+/* template service-landing (/service page CSS): the 1170px .Section keeps its own padding,
+   on phones 4vw above and 8vw at the sides (none below), 2vw all round from 768px */
+.service-landing main > .section {
+  padding: 4vw 0 0;
+}
+
+.service-landing main > .section > div {
+  max-width: var(--content-max-width);
+  padding: 0 8vw;
+}
+
+/* Get in Touch: 40px above as everywhere, 4vw inside at the top and 2vw at the bottom on phones */
+.service-landing main > .section.blue.columns-actions-container {
+  padding: 4vw 0 2vw;
+}
+
+@media (width >= 768px) {
+  .service-landing main > .section {
+    padding: 2vw 0;
+  }
+
+  .service-landing main > .section.blue.columns-actions-container {
+    padding: 2vw 0 4vw;
+  }
+
+  .service-landing main > .section > div {
+    padding: 0 2vw;
+  }
+}
+
 /* article: FAQ article main column (source col-md-8 of a 20px-gutter row), no section spacing */
 main > .section.article {
   margin: 0;

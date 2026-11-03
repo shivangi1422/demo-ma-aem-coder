@@ -1,3 +1,5 @@
+/* stylelint-disable no-descending-specificity -- variants (horizontal, tiles, bordered) never combine */
+
 /* source .ListingCard row: 250px cards (icon 150px, title, text) spread over the row, centred when stacked */
 .cards-icon > ul {
   display: flex;
@@ -94,6 +96,61 @@
   .cards-icon.horizontal .cards-icon-body > :first-child {
     margin-top: 21.28px;
   }
+}
+
+/* bordered: service hub cards (source .ServiceCard): 330px bordered tiles, 48px blue icon,
+   blue title and text, the whole tile is the title link */
+.cards-icon.bordered > ul {
+  justify-content: center;
+  max-width: 1170px;
+  margin: 0 auto;
+}
+
+.cards-icon.bordered > ul > li {
+  position: relative;
+  width: 330px;
+  padding: 40px;
+  border: 2px solid #f0f3f5;
+}
+
+.cards-icon.bordered > ul > li:hover {
+  background-color: #f0f3f5;
+}
+
+.cards-icon.bordered .cards-icon-body .icon {
+  display: block;
+  width: auto;
+  height: 48px;
+}
+
+.cards-icon.bordered .cards-icon-body .icon img {
+  width: auto;
+}
+
+.cards-icon.bordered .cards-icon-body :is(h2, h3, h4) {
+  margin: 0 0 20px;
+  font-size: 15px;
+  font-weight: 500;
+  line-height: 1.3;
+}
+
+.cards-icon.bordered .cards-icon-body p {
+  margin: 0 0 16px;
+  color: var(--link-color);
+}
+
+.cards-icon.bordered .cards-icon-body > p:has(> .icon:only-child) {
+  margin: 0 0 22px;
+}
+
+.cards-icon.bordered .cards-icon-body a:any-link {
+  color: var(--link-color);
+}
+
+.cards-icon.bordered .cards-icon-body a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
 }
 
 /* tiles: red link tiles with a white icon (source training course catalog) */

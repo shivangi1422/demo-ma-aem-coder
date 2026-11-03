@@ -176,3 +176,30 @@ main > .section.hero-banner-container > .hero-banner-wrapper {
     line-height: 24px;
   }
 }
+
+/* template service-landing (/service page CSS): banner height follows the viewport
+   (60vh on phones, 50vh from 768px, 40vh from 992px, at least 360px), photo cropped at 68% 25%,
+   regular-weight title */
+.service-landing .hero-banner {
+  min-height: max(360px, 60vh);
+}
+
+.service-landing .hero-banner .hero-banner-content h1 {
+  font-weight: 400;
+}
+
+.service-landing .hero-banner .hero-banner-media img {
+  object-position: 68% 25%;
+}
+
+@media (width >= 768px) {
+  .service-landing .hero-banner {
+    min-height: max(360px, 50vh);
+  }
+}
+
+@media (width >= 992px) {
+  .service-landing .hero-banner {
+    min-height: max(360px, 40vh);
+  }
+}
