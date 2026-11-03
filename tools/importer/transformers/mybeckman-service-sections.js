@@ -219,5 +219,14 @@ export default function transform(hookName, element, payload) {
     element.querySelectorAll('p').forEach((p) => {
       if (isBlankText(p.textContent) && !p.querySelector('img, picture, a')) p.remove();
     });
+    // block cells become markdown grid tables, which wrap long lines: a wrap before a lone "#", "-", "+",
+    // "*" or ">" starts a heading / list / quote ("Part # tool" on ecommerce became an h1).
+    // Glue the marker to the word before it with a no-break space.
+    element.querySelectorAll('table').forEach((table) => {
+      const walker = document.createTreeWalker(table, 4);
+      for (let n = walker.nextNode(); n; n = walker.nextNode()) {
+        if (/\s[#\-+*>](?=\s)/.test(n.nodeValue)) n.nodeValue = n.nodeValue.replace(/\s+([#\-+*>])(?=\s)/g, '\u00a0$1');
+      }
+    });
   }
 }

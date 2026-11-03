@@ -12,9 +12,13 @@
  *  - lowercase .productCards lists become product tiles (cards-tile) when the page's own CSS styles
  *    them as tiles (biomek, vi-cell-metaflex); unstyled ones (/service/plans) stay default content
  *  - circles in plan tables (and their legend) become text marks before cleanup drops empty elements
+ *  - extensionless Sitecore media images get a file extension (the media CDN refuses them without)
  */
 
-const MARKETO_DEFAULT = { host: 'pages.beckman.com', munchkinId: '682-XWP-826' };
+// extensionless media that are JPEG (the others found on the template are PNG)
+const MEDIA_JPEG = ['notifications_01-2023-04', 'notifications_02-2023-04', 'notifications_03-2023-04'];
+
+const MARKETO_DEFAULT ={ host: 'pages.beckman.com', munchkinId: '682-XWP-826' };
 
 function marketoUrl(container) {
   const scripts = [...container.querySelectorAll('script')].map((s) => s.textContent).join('\n');
@@ -61,5 +65,14 @@ export default function transform(hookName, element, payload) {
   // plan comparison tables: included (filled circle) / optional (white circle)
   element.querySelectorAll('table .circle, table .whiteCircle, .footnotes .circle, .footnotes .whiteCircle').forEach((c) => {
     c.replaceWith(document.createTextNode(c.classList.contains('whiteCircle') ? '○' : '●'));
+  });
+
+  // Sitecore media links without a file extension are refused by the media CDN (403) outside the
+  // site; with any extension it serves the image. Add the extension of the real format.
+  element.querySelectorAll('img[src*="media.beckman.com/-/media/"]').forEach((img) => {
+    const [path, query] = img.getAttribute('src').split('?');
+    if (/\.[a-z0-9]{2,5}$/i.test(path.split('/').pop())) return;
+    const ext = MEDIA_JPEG.some((name) => path.endsWith(`/${name}`)) ? 'jpg' : 'png';
+    img.setAttribute('src', `${path}.${ext}${query ? `?${query}` : ''}`);
   });
 }

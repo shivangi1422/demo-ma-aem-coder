@@ -24,6 +24,9 @@ main > .section.hero-callout-container {
   margin: 32.16px 0;
   font-size: 48px;
   line-height: 1.1;
+
+  /* "BeckmanConnect" in the substitute font is wider than a phone: wrap it instead of scrolling the page */
+  overflow-wrap: break-word;
 }
 
 .hero-callout .hero-callout-text h2 {
