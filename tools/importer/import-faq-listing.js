@@ -6,6 +6,7 @@ import faqSearchParser from './parsers/faq-search.js';
 import faqListParser from './parsers/faq-list.js';
 import cardsCategoryParser from './parsers/cards-category.js';
 import mybeckmanFaqListingPrepareTransformer from './transformers/mybeckman-faq-listing-prepare.js';
+import mybeckmanLinksTransformer from './transformers/mybeckman-links.js';
 import mybeckmanCleanupTransformer from './transformers/mybeckman-cleanup.js';
 import mybeckmanSectionsTransformer from './transformers/mybeckman-sections.js';
 
@@ -116,7 +117,7 @@ const parsers = {
 };
 // prepare first (keeps filters, row categories and tile images that cleanup would drop),
 // then cleanup (chrome removal, text normalisation), then section breaks + page metadata
-const transformers = [mybeckmanFaqListingPrepareTransformer, mybeckmanCleanupTransformer, mybeckmanSectionsTransformer];
+const transformers = [mybeckmanLinksTransformer, mybeckmanFaqListingPrepareTransformer, mybeckmanCleanupTransformer, mybeckmanSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };

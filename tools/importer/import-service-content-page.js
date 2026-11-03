@@ -16,6 +16,7 @@ import cardsParser from './parsers/cards.js';
 import tablePlansParser from './parsers/table-plans.js';
 import tableParser from './parsers/table.js';
 import mybeckmanServicePrepareTransformer from './transformers/mybeckman-service-prepare.js';
+import mybeckmanLinksTransformer from './transformers/mybeckman-links.js';
 import mybeckmanCleanupTransformer from './transformers/mybeckman-cleanup.js';
 import mybeckmanServiceSectionsTransformer from './transformers/mybeckman-service-sections.js';
 import mybeckmanSectionsTransformer from './transformers/mybeckman-sections.js';
@@ -176,7 +177,7 @@ const parsers = {
 // prepare (forms, hidden title, table marks: before cleanup drops them), cleanup (chrome removal),
 // then service sections (section breaks, buttons, videos),
 // then page metadata (mybeckman-sections with no template sections only adds the Metadata block)
-const transformers = [mybeckmanServicePrepareTransformer, mybeckmanCleanupTransformer, mybeckmanServiceSectionsTransformer, mybeckmanSectionsTransformer];
+const transformers = [mybeckmanLinksTransformer, mybeckmanServicePrepareTransformer, mybeckmanCleanupTransformer, mybeckmanServiceSectionsTransformer, mybeckmanSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };

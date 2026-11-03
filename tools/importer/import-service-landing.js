@@ -6,6 +6,7 @@ import cardsStatsParser from './parsers/cards-stats.js';
 import columnsActionsParser from './parsers/columns-actions.js';
 import cardsIconParser from './parsers/cards-icon.js';
 import mybeckmanServicePrepareTransformer from './transformers/mybeckman-service-prepare.js';
+import mybeckmanLinksTransformer from './transformers/mybeckman-links.js';
 import mybeckmanCleanupTransformer from './transformers/mybeckman-cleanup.js';
 import mybeckmanServiceSectionsTransformer from './transformers/mybeckman-service-sections.js';
 import mybeckmanSectionsTransformer from './transformers/mybeckman-sections.js';
@@ -68,7 +69,7 @@ function serviceLandingTransformer(hookName, element) {
 // landing fixes, prepare (forms, hidden title, table marks: before cleanup drops them), cleanup (chrome removal),
 // then service sections (section breaks, buttons, videos),
 // then page metadata (mybeckman-sections with no template sections only adds the Metadata block)
-const transformers = [serviceLandingTransformer, mybeckmanServicePrepareTransformer, mybeckmanCleanupTransformer, mybeckmanServiceSectionsTransformer, mybeckmanSectionsTransformer];
+const transformers = [mybeckmanLinksTransformer, serviceLandingTransformer, mybeckmanServicePrepareTransformer, mybeckmanCleanupTransformer, mybeckmanServiceSectionsTransformer, mybeckmanSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };

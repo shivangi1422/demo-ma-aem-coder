@@ -3,6 +3,7 @@
 
 import breadcrumbParser from './parsers/breadcrumb.js';
 import columnsArticleParser from './parsers/columns-article.js';
+import mybeckmanLinksTransformer from './transformers/mybeckman-links.js';
 import mybeckmanCleanupTransformer from './transformers/mybeckman-cleanup.js';
 import mybeckmanSectionsTransformer from './transformers/mybeckman-sections.js';
 
@@ -638,7 +639,7 @@ const parsers = {
   'columns-article': columnsArticleParser,
 };
 // cleanup first (chrome removal, text normalisation), then section breaks + page metadata
-const transformers = [mybeckmanCleanupTransformer, mybeckmanSectionsTransformer];
+const transformers = [mybeckmanLinksTransformer, mybeckmanCleanupTransformer, mybeckmanSectionsTransformer];
 
 function executeTransformers(hookName, element, payload) {
   const enhancedPayload = { ...payload, template: PAGE_TEMPLATE };
