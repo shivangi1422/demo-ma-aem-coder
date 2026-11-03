@@ -10,6 +10,7 @@
  *  - absolute www.mybeckman.in links become root-relative
  *  - links that are dead on the source (Sitecore notfound.aspx, empty href, bare '#') are unlinked,
  *    keeping their text; links left with no text or media are removed
+ *  - moved external documents: old www.dtic.mil report PDFs point at the current DTIC citation page
  *  - FAQ leaf URLs left out of the import (copies of their parent listing on the source) point at
  *    the parent listing (P7 decision; the same 22 URLs are listed as redirects for the content team)
  * Links to pages outside the migrated scope stay root-relative (P7 decision).
@@ -101,6 +102,12 @@ function rewriteLinks(root) {
     if (/^(mailto|tel|javascript):/i.test(href) || href.startsWith('#')) return;
     let url;
     try { url = new URL(href, 'https://www.mybeckman.in'); } catch (e) { return; }
+    // old DTIC report PDFs (www.dtic.mil no longer answers) -> the report's current citation page
+    const dtic = /^(www\.)?dtic\.mil$/i.test(url.hostname) && url.pathname.match(/\/fulltext\/u2\/a(\d+)\.pdf$/i);
+    if (dtic) {
+      a.setAttribute('href', `https://apps.dtic.mil/sti/citations/ADA${dtic[1]}`);
+      return;
+    }
     if (!SITE_HOST.test(url.hostname)) return;
     const path = url.pathname.replace(/\/$/, '') || '/';
     const target = LEAF_REDIRECTS[path] || path;
