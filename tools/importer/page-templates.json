@@ -143,7 +143,7 @@
         "https://www.mybeckman.in/flow-cytometry/software/kaluza"
       ],
       "coverageGaps": [],
-      "description": "Software product spotlight: product image beside title, intro, highlights, buttons and resource links; sticky in-page tabs; feature columns, licenses, specification table, resources list, technical documents and a related-products carousel",
+      "description": "Breadcrumb trail, product hero (image or gallery beside title, highlights, CTAs and resource links), sticky section tabs, then Features columns, a filterable licence/model table, specifications, content and resources, technical documents and related products",
       "blocks": [
         {
           "name": "product-hero",
