@@ -95,6 +95,12 @@
     ]
   },
   {
+    "id": "service-contact",
+    "components": [
+      "service-contact-item"
+    ]
+  },
+  {
     "id": "specifications",
     "components": [
       "specifications-item"

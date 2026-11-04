@@ -1,0 +1,69 @@
+{
+  "definitions": [
+    {
+      "title": "Service Contact",
+      "id": "service-contact",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Service Contact",
+              "model": "service-contact",
+              "filter": "service-contact"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Service Contact Option",
+      "id": "service-contact-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Service Contact Option",
+              "model": "service-contact-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "service-contact",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Section heading and introduction",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "service-contact-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Contact option (heading, description, and link)",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "service-contact",
+      "components": [
+        "service-contact-item"
+      ]
+    }
+  ]
+}

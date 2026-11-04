@@ -1,0 +1,117 @@
+.service-contact {
+  padding: 40px 24px;
+  background-color: var(--bc-surface);
+  font-family: var(--bc-brand-font);
+}
+
+.service-contact .service-contact-intro {
+  max-width: 760px;
+  margin: 0 auto 32px;
+  text-align: center;
+}
+
+.service-contact .service-contact-intro h2,
+.service-contact .service-contact-intro h3 {
+  margin: 0 0 12px;
+  color: var(--bc-navy);
+  font-size: 30px;
+  font-weight: 800;
+  line-height: 1.2;
+}
+
+.service-contact .service-contact-intro p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+.service-contact .service-contact-list {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 20px;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0;
+  list-style: none;
+}
+
+.service-contact .service-contact-item {
+  display: flex;
+  min-width: 0;
+  padding: 24px;
+  border: 1px solid var(--bc-border);
+  border-radius: 8px;
+  background-color: #fff;
+}
+
+.service-contact .service-contact-content {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.service-contact .service-contact-content h3,
+.service-contact .service-contact-content h4 {
+  margin: 0;
+  color: var(--bc-navy);
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.25;
+}
+
+.service-contact .service-contact-content p {
+  margin: 0;
+  color: var(--bc-grey);
+  font-size: 15px;
+  line-height: 1.5;
+}
+
+.service-contact .service-contact-content p.service-contact-action {
+  margin-top: auto;
+  padding-top: 8px;
+}
+
+.service-contact a.service-contact-link:any-link {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  padding: 10px 20px;
+  border: 1px solid var(--bc-orange);
+  border-radius: 4px;
+  background-color: var(--bc-orange);
+  color: #fff;
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-decoration: none;
+}
+
+.service-contact a.service-contact-link:hover {
+  background-color: #d95b00;
+  border-color: #d95b00;
+}
+
+.service-contact a.service-contact-link:focus-visible {
+  outline: 3px solid var(--bc-blue);
+  outline-offset: 3px;
+}
+
+@media (width >= 600px) {
+  .service-contact .service-contact-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (width >= 900px) {
+  .service-contact {
+    padding: 64px 40px;
+  }
+
+  .service-contact .service-contact-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 24px;
+  }
+}

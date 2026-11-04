@@ -1079,6 +1079,30 @@
     ]
   },
   {
+    "id": "service-contact",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Section heading and introduction",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "service-contact-item",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Contact option (heading, description, and link)",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "specifications-item",
     "fields": [
       {
