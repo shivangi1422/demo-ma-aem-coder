@@ -23,6 +23,26 @@
           "label": "Keywords"
         },
         {
+          "component": "text",
+          "valueType": "string",
+          "name": "canonical",
+          "label": "Canonical URL"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "lang",
+          "label": "Page language",
+          "description": "BCP 47 language tag for the page, e.g. en or hi-IN"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "structuredData",
+          "label": "Structured data (JSON-LD)",
+          "description": "Valid JSON-LD object or array to add to the page head"
+        },
+        {
           "component": "boolean",
           "valueType": "boolean",
           "name": "breadcrumbs",
