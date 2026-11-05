@@ -180,6 +180,60 @@
 }
 
 /* ============================================================
+   SERVICE — white intro with the source site's blue action
+   ============================================================ */
+.hero.service {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  padding: 16px var(--content-padding-mobile);
+  background-color: #fff;
+}
+
+.hero.service h1 {
+  margin: 24px 0;
+  color: #4d4d4d;
+  font-family: var(--bc-brand-font);
+  font-weight: 300;
+  font-size: 36px;
+  line-height: 1.1;
+}
+
+.hero.service h2 {
+  margin: 20px 0;
+  color: #4d4d4d;
+  font-family: var(--bc-brand-font);
+  font-weight: 500;
+  font-size: 25px;
+  line-height: 1.1;
+}
+
+.hero.service p {
+  margin: 14px 0;
+  color: #4d4d4d;
+  font-family: var(--bc-brand-font);
+  font-size: 16px;
+  line-height: 1.65;
+}
+
+.hero.service a.button:any-link {
+  border: 0;
+  border-radius: 2px;
+  background-color: #007acb;
+  color: #fff;
+  font-family: var(--bc-brand-font);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+}
+
+@media (width >= 768px) {
+  .hero.service {
+    padding: 24px var(--content-padding-desktop) 16px;
+  }
+}
+
+/* ============================================================
    GRADIENT — indigo→teal banner, white left text, outlined CTA,
    illustration bleeding off the right edge
    (matches beckmancoulter.com product hero)

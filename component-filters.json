@@ -26,6 +26,7 @@
       "product-banner",
       "quote",
       "category-cards",
+      "service-contact",
       "product-tiles",
       "link-list",
       "marketo-form",
@@ -124,6 +125,12 @@
     "id": "resource-list",
     "components": [
       "resource"
+    ]
+  },
+  {
+    "id": "service-contact",
+    "components": [
+      "service-contact-action"
     ]
   },
   {

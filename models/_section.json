@@ -49,6 +49,10 @@
             {
               "name": "Fine Print",
               "value": "fine-print"
+            },
+            {
+              "name": "Service Blue",
+              "value": "service-blue"
             }
           ]
         }
@@ -77,6 +81,7 @@
         "product-banner",
         "quote",
         "category-cards",
+        "service-contact",
         "product-tiles",
         "link-list",
         "marketo-form",

@@ -368,6 +368,31 @@ main > .section.light-grey > div {
   background-color: var(--surface-band);
 }
 
+main > .section.service-blue {
+  background-color: var(--bc-blue);
+  color: #fff;
+}
+
+main > .section.service-blue > div {
+  color: #fff;
+}
+
+main > .section.service-blue > .default-content-wrapper {
+  text-align: center;
+}
+
+main > .section.service-blue h2 {
+  color: #fff;
+  font-size: 25px;
+  font-weight: 500;
+}
+
+main > .section.service-blue .default-content-wrapper p {
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
 /* contained: the narrower bootstrap container used on product pages */
 main > .section.contained > div {
   max-width: none;

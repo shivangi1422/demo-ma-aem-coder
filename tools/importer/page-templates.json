@@ -310,6 +310,57 @@
           ]
         }
       ]
+    },
+    {
+      "name": "service",
+      "urls": [
+        "https://www.mybeckman.in/service/instrument-optimization"
+      ],
+      "coverageGaps": [],
+      "description": "Service introduction and contact options with direct call, email and technical-support actions",
+      "blocks": [
+        {
+          "name": "hero",
+          "instances": [
+            ".Header"
+          ]
+        },
+        {
+          "name": "service-contact",
+          "instances": [
+            ".Contact__body"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "s1",
+          "name": "Service introduction",
+          "selector": [
+            ".Header"
+          ],
+          "style": null,
+          "blocks": [
+            "hero"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "s2",
+          "name": "Contact options",
+          "selector": [
+            ".Section--blue .Contact"
+          ],
+          "style": "service-blue",
+          "blocks": [
+            "service-contact"
+          ],
+          "defaultContent": [
+            ".Contact > h2",
+            ".Contact > p"
+          ]
+        }
+      ]
     }
   ]
 }

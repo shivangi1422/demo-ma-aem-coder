@@ -1,0 +1,61 @@
+.service-contact {
+  padding: 0 0 28px;
+  color: #fff;
+  font-family: var(--bc-brand-font);
+}
+
+.service-contact ul {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.service-contact li {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+  margin: 0;
+  text-align: center;
+}
+
+.service-contact a.service-contact-cta:any-link {
+  border: 0;
+  border-radius: 2px;
+  background-color: #007acb;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 1.65;
+  text-align: center;
+  text-decoration: none;
+}
+
+.service-contact a.service-contact-cta:hover,
+.service-contact a.service-contact-cta:focus-visible {
+  background-color: var(--brand-blue-hover);
+  color: #fff;
+}
+
+.service-contact-description p {
+  margin: 0;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+@media (width >= 600px) {
+  .service-contact ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 28px 24px;
+  }
+}
+
+@media (width >= 900px) {
+  .service-contact ul {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

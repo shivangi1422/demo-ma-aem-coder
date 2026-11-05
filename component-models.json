@@ -176,6 +176,10 @@
           {
             "name": "Fine Print",
             "value": "fine-print"
+          },
+          {
+            "name": "Service Blue",
+            "value": "service-blue"
           }
         ]
       }
@@ -594,6 +598,10 @@
             "value": "plain"
           },
           {
+            "name": "Service (white, blue action)",
+            "value": "service"
+          },
+          {
             "name": "Gradient (banner, white text, image bleeds right)",
             "value": "gradient"
           },
@@ -946,6 +954,19 @@
         "label": "Description",
         "value": "",
         "description": "Optional. Shown on one line below the title."
+      }
+    ]
+  },
+  {
+    "id": "service-contact-action",
+    "fields": [
+      {
+        "component": "richtext",
+        "valueType": "string",
+        "name": "text",
+        "label": "Action and Description",
+        "value": "",
+        "description": "Add the action link first, followed by its description."
       }
     ]
   },
