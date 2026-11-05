@@ -206,12 +206,52 @@ export function decorateMain(main) {
   buildBreadcrumbs(main);
 }
 
+function addStructuredData() {
+  const rawData = getMetadata('structuredData').trim();
+  if (!rawData) return;
+
+  let structuredData;
+  try {
+    structuredData = JSON.parse(rawData);
+  } catch (error) {
+    // eslint-disable-next-line no-console
+    console.error('Invalid structuredData page metadata; expected JSON-LD.', error);
+    return;
+  }
+
+  if (!structuredData || typeof structuredData !== 'object') {
+    // eslint-disable-next-line no-console
+    console.error('Invalid structuredData page metadata; expected a JSON-LD object or array.');
+    return;
+  }
+
+  let script = document.querySelector('script[data-page-structured-data]');
+  if (!script) {
+    script = document.createElement('script');
+    script.type = 'application/ld+json';
+    script.dataset.pageStructuredData = '';
+    document.head.append(script);
+  }
+  script.textContent = JSON.stringify(structuredData).replace(/</g, '\\u003c');
+}
+
 /**
  * Loads everything needed to get to LCP.
  * @param {Element} doc The container element
  */
 async function loadEager(doc) {
-  document.documentElement.lang = 'en';
+  document.documentElement.lang = getMetadata('lang').trim() || 'en';
+  const canonical = getMetadata('canonical').trim();
+  if (canonical) {
+    let canonicalLink = document.querySelector('link[rel="canonical"]');
+    if (!canonicalLink) {
+      canonicalLink = document.createElement('link');
+      canonicalLink.rel = 'canonical';
+      document.head.append(canonicalLink);
+    }
+    canonicalLink.href = canonical;
+  }
+  addStructuredData();
   decorateTemplateAndTheme();
   const main = doc.querySelector('main');
   if (main) {
