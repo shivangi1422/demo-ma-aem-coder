@@ -17,7 +17,7 @@ The preview currently shows the starter placeholder header and footer.
 ## Page templates
 | Template | Pages | Layout | Status |
 |---|---|---|---|
-| `service-landing` | 1 (`/service`) | Photo hero, blue stats band, 6 icon cards, blue "Get in Touch" band | **Migrated** (content + structural blocks). Styling still to do. |
+| `service-landing` | 1 (`/service`) | Photo hero, blue stats band, 6 icon cards, blue "Get in Touch" band | **Migrated and styled** (re-imported 2026-11-05 with the `service-landing` importer template; blocks hero-centered, cards-stats, cards-grid, columns-cta). |
 | `service-detail` | 16 | Breadcrumb, optional hero or intro, stacked content (text/media columns, comparison tables, video, card grids, forms), ending in a contact CTA band | To do |
 
 `service-detail` pages: instrument-optimization (+ beckmanconnect-support-tools, remote-support, installation, preventive-maintenance), instrument-qualification-calibration, plans (+ centrifuge, flow-cytometry, liquid-handling, particle-analysis, request), tech-support (+ repairs, windows-10), training.

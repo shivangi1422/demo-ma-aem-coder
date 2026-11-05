@@ -9,13 +9,13 @@ import cleanupTransformer from './transformers/mybeckman-cleanup.js';
 import sectionsTransformer from './transformers/mybeckman-sections.js';
 
 const PAGE_TEMPLATE = {
-  name: 'service',
+  name: 'service-landing',
   urls: [
     'https://www.mybeckman.in/service',
   ],
   representativeUrl: 'https://www.mybeckman.in/service',
   description: 'Service landing page: photo hero, blue stats band, service offering cards and a blue Get in Touch contact band',
-  urlPattern: '/*',
+  urlPattern: '/service',
   blocks: [
     {
       name: 'hero-centered',
@@ -119,7 +119,11 @@ export default {
     executeTransformers('afterTransform', main, payload);
 
     main.appendChild(document.createElement('hr'));
-    WebImporter.rules.createMetadata(main, document);
+    // page metadata from the head, plus the template name (body class
+    // .service-landing); the source landing page has no breadcrumb
+    const meta = WebImporter.Blocks.getMetadata(document);
+    meta.template = 'service-landing';
+    main.append(WebImporter.Blocks.getMetadataBlock(document, meta));
     WebImporter.rules.transformBackgroundImages(main, document);
     WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
 

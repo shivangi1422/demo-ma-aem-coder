@@ -4,13 +4,13 @@
   },
   "templates": [
     {
-      "name": "service",
+      "name": "service-landing",
       "urls": [
         "https://www.mybeckman.in/service"
       ],
       "representativeUrl": "https://www.mybeckman.in/service",
       "description": "Service landing page: photo hero, blue stats band, service offering cards and a blue Get in Touch contact band",
-      "urlPattern": "/*",
+      "urlPattern": "/service",
       "blocks": [
         {
           "name": "hero-centered",
