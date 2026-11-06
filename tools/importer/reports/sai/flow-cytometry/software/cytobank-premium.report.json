@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://www.mybeckman.in/flow-cytometry/software/cytobank-premium",
   "path": "sai/flow-cytometry/software/cytobank-premium",
-  "timestamp": "2026-11-03T01:05:03.109Z",
+  "timestamp": "2026-11-05T07:43:24.288Z",
   "title": "Cytobank Premium",
   "template": "software-product-detail",
   "blocks": [
@@ -12,6 +12,7 @@
     "product-table",
     "spec-table",
     "resource-list",
+    "technical-documents",
     "related-products"
   ]
 }

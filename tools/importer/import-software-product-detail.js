@@ -8,6 +8,7 @@ import specTableParser from './parsers/spec-table.js';
 import productTableParser from './parsers/product-table.js';
 import resourceListParser from './parsers/resource-list.js';
 import relatedProductsParser from './parsers/related-products.js';
+import technicalDocumentsParser from './parsers/technical-documents.js';
 import cleanupTransformer from './transformers/beckman-cleanup.js';
 import sectionsTransformer from './transformers/beckman-sections.js';
 
@@ -16,9 +17,11 @@ const PAGE_TEMPLATE = {
   "urls": [
     "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
     "https://www.mybeckman.in/flow-cytometry/software/cytobank-premium",
-    "https://www.mybeckman.in/flow-cytometry/software/kaluza"
+    "https://www.mybeckman.in/flow-cytometry/software/kaluza",
+    "https://www.mybeckman.in/flow-cytometry/software/kaluza-c"
   ],
-  "description": "Software product spotlight: product image beside title, intro, highlights, buttons and resource links; sticky in-page tabs; feature columns, licenses, specification table, resources list, technical documents and a related-products carousel",
+  "coverageGaps": [],
+  "description": "Breadcrumb trail, product hero (image or gallery beside title, highlights, CTAs and resource links), sticky section tabs, then Features columns, a filterable licence/model table, specifications, content and resources, technical documents and related products",
   "blocks": [
     {
       "name": "product-hero",
@@ -54,6 +57,12 @@ const PAGE_TEMPLATE = {
       "name": "resource-list",
       "instances": [
         "#product-documentation-wrapper .content-resource-list-wrapper"
+      ]
+    },
+    {
+      "name": "technical-documents",
+      "instances": [
+        "#techdocs-wrapper #coveo-center-column"
       ]
     },
     {
@@ -152,7 +161,9 @@ const PAGE_TEMPLATE = {
         "#techdocs-wrapper"
       ],
       "style": null,
-      "blocks": [],
+      "blocks": [
+        "technical-documents"
+      ],
       "defaultContent": [
         "#techdocs-wrapper h3",
         "#coveo-techdocs-more-results"
@@ -185,7 +196,6 @@ const PAGE_TEMPLATE = {
       ]
     }
   ],
-  "representativeUrl": "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
   "urlPattern": "/*/software/*"
 };
 
@@ -197,6 +207,7 @@ const parsers = {
   'product-table': productTableParser,
   'resource-list': resourceListParser,
   'related-products': relatedProductsParser,
+  'technical-documents': technicalDocumentsParser,
 };
 const transformers = [cleanupTransformer, sectionsTransformer];
 

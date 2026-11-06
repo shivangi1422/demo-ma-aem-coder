@@ -951,6 +951,47 @@ var CustomImportScript = (() => {
           ]
         }
       ]
+    },
+    "/flow-cytometry/software/kaluza-c": {
+      "source": "Live product table (search results) captured 2026-11-05; the live table shows no filter groups for these 4 models",
+      "items": [
+        {
+          "number": "C10574",
+          "title": "Kaluza C Analysis Software Perpetual, 1-User (Single)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+          "alt": "C10574_Kaluza C Analysis Software Perpetual, 1-User (Single)",
+          "href": "https://store.beckman.com/hi/p/C10574?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": []
+        },
+        {
+          "number": "C10577",
+          "title": "Kaluza C Analysis Software, 5-User (Network)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+          "alt": "C10577_Kaluza C Analysis Software, 5-User (Network)",
+          "href": "https://store.beckman.com/hi/p/C10577?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": []
+        },
+        {
+          "number": "C10575",
+          "title": "Kaluza C Analysis Software 1 Year, 1-User (Single)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+          "alt": "C10575_Kaluza C Analysis Software 1 Year, 1-User (Single)",
+          "href": "https://store.beckman.com/hi/p/C10575?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": []
+        },
+        {
+          "number": "C10576",
+          "title": "Kaluza C Analysis Software, 10-User (Network)",
+          "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+          "alt": "C10576_Kaluza C Analysis Software, 10-User (Network)",
+          "href": "https://store.beckman.com/hi/p/C10576?countryCode=IN",
+          "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+          "filters": []
+        }
+      ]
     }
   };
 
@@ -1112,6 +1153,94 @@ var CustomImportScript = (() => {
     element.replaceWith(block);
   }
 
+  // tools/importer/data/technical-documents.js
+  var technical_documents_default = {
+    "/flow-cytometry/software/kaluza-c": {
+      "source": "Live Technical Documents table (search results) captured 2026-11-05; every document is offered in all five languages",
+      "items": [
+        {
+          "title": "Kaluza C 10 User Network",
+          "href": "/techdocs/C10576DEC3.0/wsr-315758",
+          "type": "CE Declaration - Hardware",
+          "docId": "wsr-315758",
+          "lots": [],
+          "languages": ["English", "French", "German", "Italian", "Spanish"]
+        },
+        {
+          "title": "Kaluza C 5 User Network",
+          "href": "/techdocs/C10577DEC3.0/wsr-264808",
+          "type": "CE Declaration - Hardware",
+          "docId": "wsr-264808",
+          "lots": [],
+          "languages": ["English", "French", "German", "Italian", "Spanish"]
+        },
+        {
+          "title": "Kaluza C Perpetual License",
+          "href": "/techdocs/C10574DEC3.0/wsr-264805",
+          "type": "CE Declaration - Hardware",
+          "docId": "wsr-264805",
+          "lots": [],
+          "languages": ["English", "French", "German", "Italian", "Spanish"]
+        },
+        {
+          "title": "Kaluza C Single Use 1 Year License",
+          "href": "/techdocs/C10575DEC3.0/wsr-264806",
+          "type": "CE Declaration - Hardware",
+          "docId": "wsr-264806",
+          "lots": [],
+          "languages": ["English", "French", "German", "Italian", "Spanish"]
+        }
+      ]
+    }
+  };
+
+  // tools/importer/parsers/technical-documents.js
+  function parse8(element, { document, params }) {
+    const path = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
+    const items = technical_documents_default[path] && technical_documents_default[path].items || [];
+    if (!items.length) {
+      element.remove();
+      return;
+    }
+    const cells = items.map((item) => {
+      const linkCell = document.createDocumentFragment();
+      linkCell.appendChild(document.createComment(" field:link "));
+      const p = document.createElement("p");
+      if (item.href) {
+        const a = document.createElement("a");
+        a.setAttribute("href", item.href);
+        a.textContent = item.title;
+        p.appendChild(a);
+      } else {
+        p.textContent = item.title;
+      }
+      linkCell.appendChild(p);
+      const typeCell = document.createDocumentFragment();
+      typeCell.appendChild(document.createComment(" field:category "));
+      typeCell.appendChild(document.createTextNode(item.type || ""));
+      const idCell = document.createDocumentFragment();
+      idCell.appendChild(document.createComment(" field:docId "));
+      idCell.appendChild(document.createTextNode(item.docId || ""));
+      const detailsCell = document.createDocumentFragment();
+      detailsCell.appendChild(document.createComment(" field:details "));
+      const lines = [];
+      if (item.lots && item.lots.length) lines.push(`Lot Number(s): ${item.lots.join(", ")}`);
+      if (item.languages && item.languages.length) lines.push(`Language: ${item.languages.join(", ")}`);
+      if (lines.length) {
+        const ul = document.createElement("ul");
+        lines.forEach((line) => {
+          const li = document.createElement("li");
+          li.textContent = line;
+          ul.appendChild(li);
+        });
+        detailsCell.appendChild(ul);
+      }
+      return [linkCell, typeCell, idCell, detailsCell];
+    });
+    const block = WebImporter.Blocks.createBlock(document, { name: "technical-documents", cells });
+    element.replaceWith(block);
+  }
+
   // tools/importer/transformers/beckman-cleanup.js
   function transform(hookName, element, payload) {
     if (hookName === "beforeTransform") {
@@ -1141,13 +1270,17 @@ var CustomImportScript = (() => {
           more.replaceWith(error);
         }
       });
+      element.querySelectorAll("#techdocs-wrapper #coveo-center-column").forEach((column) => {
+        column.removeAttribute("style");
+        column.textContent = "Technical documents";
+      });
       WebImporter.DOMUtils.remove(element, [
         ".product-spotlight-wrapper .rt-holder:has(> .twobuttons, > .threebuttons) > div:has(> .product-table-link-btn)",
         ".product-spotlight-wrapper :is(.twobuttons, .threebuttons) > div:not(:has(a))",
         '.product-spotlight-wrapper input[type="hidden"]',
         // (the licence table's search widget is kept: the product-table parser replaces it)
         ".product-spotlight-wrapper .CoveoSearchInterface:not(:has(.product-table))",
-        "#coveo-center-column",
+        "#coveo-center-column:not(#techdocs-wrapper *)",
         "#multiselect__container",
         "#resource-table-pagination",
         ".related-parts .slick-cloned",
@@ -1259,6 +1392,7 @@ var CustomImportScript = (() => {
         "/flow-cytometry/software/cytobank-enterprise",
         "/flow-cytometry/software/cytobank-premium",
         "/flow-cytometry/software/kaluza",
+        "/flow-cytometry/software/kaluza-c",
         "/liquid-handlers/software",
         "/microbioreactor/biolector-xt/software"
       ];
@@ -1335,9 +1469,11 @@ var CustomImportScript = (() => {
     "urls": [
       "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
       "https://www.mybeckman.in/flow-cytometry/software/cytobank-premium",
-      "https://www.mybeckman.in/flow-cytometry/software/kaluza"
+      "https://www.mybeckman.in/flow-cytometry/software/kaluza",
+      "https://www.mybeckman.in/flow-cytometry/software/kaluza-c"
     ],
-    "description": "Software product spotlight: product image beside title, intro, highlights, buttons and resource links; sticky in-page tabs; feature columns, licenses, specification table, resources list, technical documents and a related-products carousel",
+    "coverageGaps": [],
+    "description": "Breadcrumb trail, product hero (image or gallery beside title, highlights, CTAs and resource links), sticky section tabs, then Features columns, a filterable licence/model table, specifications, content and resources, technical documents and related products",
     "blocks": [
       {
         "name": "product-hero",
@@ -1373,6 +1509,12 @@ var CustomImportScript = (() => {
         "name": "resource-list",
         "instances": [
           "#product-documentation-wrapper .content-resource-list-wrapper"
+        ]
+      },
+      {
+        "name": "technical-documents",
+        "instances": [
+          "#techdocs-wrapper #coveo-center-column"
         ]
       },
       {
@@ -1471,7 +1613,9 @@ var CustomImportScript = (() => {
           "#techdocs-wrapper"
         ],
         "style": null,
-        "blocks": [],
+        "blocks": [
+          "technical-documents"
+        ],
         "defaultContent": [
           "#techdocs-wrapper h3",
           "#coveo-techdocs-more-results"
@@ -1504,7 +1648,6 @@ var CustomImportScript = (() => {
         ]
       }
     ],
-    "representativeUrl": "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
     "urlPattern": "/*/software/*"
   };
   var parsers = {
@@ -1514,7 +1657,8 @@ var CustomImportScript = (() => {
     "spec-table": parse4,
     "product-table": parse5,
     "resource-list": parse6,
-    "related-products": parse7
+    "related-products": parse7,
+    "technical-documents": parse8
   };
   var transformers = [transform, transform2];
   function executeTransformers(hookName, element, payload) {

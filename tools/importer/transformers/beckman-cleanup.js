@@ -45,6 +45,13 @@ export default function transform(hookName, element, payload) {
       }
     });
 
+    // The Technical Documents search widget becomes a placeholder: the technical-documents
+    // parser fills it from the captured documents, or removes it when a page has none
+    element.querySelectorAll('#techdocs-wrapper #coveo-center-column').forEach((column) => {
+      column.removeAttribute('style');
+      column.textContent = 'Technical documents';
+    });
+
     // Product spotlight pages: live search (Coveo) widgets, hidden duplicates and the
     // resource-type filter, which the resource-list block rebuilds from the resources.
     // The jump-link/quote pair is a hidden duplicate only when a button row is present
@@ -55,7 +62,7 @@ export default function transform(hookName, element, payload) {
       '.product-spotlight-wrapper input[type="hidden"]',
       // (the licence table's search widget is kept: the product-table parser replaces it)
       '.product-spotlight-wrapper .CoveoSearchInterface:not(:has(.product-table))',
-      '#coveo-center-column',
+      '#coveo-center-column:not(#techdocs-wrapper *)',
       '#multiselect__container',
       '#resource-table-pagination',
       '.related-parts .slick-cloned',
@@ -194,6 +201,7 @@ export default function transform(hookName, element, payload) {
       '/flow-cytometry/software/cytobank-enterprise',
       '/flow-cytometry/software/cytobank-premium',
       '/flow-cytometry/software/kaluza',
+      '/flow-cytometry/software/kaluza-c',
       '/liquid-handlers/software',
       '/microbioreactor/biolector-xt/software',
     ];

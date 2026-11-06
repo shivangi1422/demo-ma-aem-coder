@@ -143,13 +143,17 @@ var CustomImportScript = (() => {
           more.replaceWith(error);
         }
       });
+      element.querySelectorAll("#techdocs-wrapper #coveo-center-column").forEach((column) => {
+        column.removeAttribute("style");
+        column.textContent = "Technical documents";
+      });
       WebImporter.DOMUtils.remove(element, [
         ".product-spotlight-wrapper .rt-holder:has(> .twobuttons, > .threebuttons) > div:has(> .product-table-link-btn)",
         ".product-spotlight-wrapper :is(.twobuttons, .threebuttons) > div:not(:has(a))",
         '.product-spotlight-wrapper input[type="hidden"]',
         // (the licence table's search widget is kept: the product-table parser replaces it)
         ".product-spotlight-wrapper .CoveoSearchInterface:not(:has(.product-table))",
-        "#coveo-center-column",
+        "#coveo-center-column:not(#techdocs-wrapper *)",
         "#multiselect__container",
         "#resource-table-pagination",
         ".related-parts .slick-cloned",
@@ -261,6 +265,7 @@ var CustomImportScript = (() => {
         "/flow-cytometry/software/cytobank-enterprise",
         "/flow-cytometry/software/cytobank-premium",
         "/flow-cytometry/software/kaluza",
+        "/flow-cytometry/software/kaluza-c",
         "/liquid-handlers/software",
         "/microbioreactor/biolector-xt/software"
       ];

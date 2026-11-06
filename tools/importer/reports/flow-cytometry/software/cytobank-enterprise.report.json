@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "url": "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
+  "path": "flow-cytometry/software/cytobank-enterprise",
+  "timestamp": "2026-11-05T07:44:11.104Z",
+  "error": "page.setContent: Timeout 45000ms exceeded.\nCall log:\n  - setting frame content, waiting until \"domcontentloaded\"\n",
+  "errorStack": "page.setContent: Timeout 45000ms exceeded.\nCall log:\n  - setting frame content, waiting until \"domcontentloaded\"\n\n    at processUrl (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:596:18)\n    at async main (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:936:23)"
+}

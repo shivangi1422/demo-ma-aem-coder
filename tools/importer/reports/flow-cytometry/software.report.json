@@ -2,7 +2,7 @@
   "status": "failed",
   "url": "https://www.mybeckman.in/flow-cytometry/software",
   "path": "flow-cytometry/software",
-  "timestamp": "2026-11-02T07:23:05.433Z",
+  "timestamp": "2026-11-05T07:46:49.945Z",
   "error": "page.setContent: Timeout 45000ms exceeded.\nCall log:\n  - setting frame content, waiting until \"domcontentloaded\"\n",
-  "errorStack": "page.setContent: Timeout 45000ms exceeded.\nCall log:\n  - setting frame content, waiting until \"domcontentloaded\"\n\n    at processUrl (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:593:18)\n    at async main (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:943:23)"
+  "errorStack": "page.setContent: Timeout 45000ms exceeded.\nCall log:\n  - setting frame content, waiting until \"domcontentloaded\"\n\n    at processUrl (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:596:18)\n    at async main (/home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:936:23)"
 }

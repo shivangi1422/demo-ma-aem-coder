@@ -666,5 +666,46 @@ export default {
         ]
       }
     ]
+  },
+  "/flow-cytometry/software/kaluza-c": {
+    "source": "Live product table (search results) captured 2026-11-05; the live table shows no filter groups for these 4 models",
+    "items": [
+      {
+        "number": "C10574",
+        "title": "Kaluza C Analysis Software Perpetual, 1-User (Single)",
+        "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+        "alt": "C10574_Kaluza C Analysis Software Perpetual, 1-User (Single)",
+        "href": "https://store.beckman.com/hi/p/C10574?countryCode=IN",
+        "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+        "filters": []
+      },
+      {
+        "number": "C10577",
+        "title": "Kaluza C Analysis Software, 5-User (Network)",
+        "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+        "alt": "C10577_Kaluza C Analysis Software, 5-User (Network)",
+        "href": "https://store.beckman.com/hi/p/C10577?countryCode=IN",
+        "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+        "filters": []
+      },
+      {
+        "number": "C10575",
+        "title": "Kaluza C Analysis Software 1 Year, 1-User (Single)",
+        "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+        "alt": "C10575_Kaluza C Analysis Software 1 Year, 1-User (Single)",
+        "href": "https://store.beckman.com/hi/p/C10575?countryCode=IN",
+        "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+        "filters": []
+      },
+      {
+        "number": "C10576",
+        "title": "Kaluza C Analysis Software, 10-User (Network)",
+        "image": "https://www.mybeckman.in/pimassets/api/v1.1/file/public_files/pim/assets/8f/02/66/64/6466028f634fff00015af465/images/44/64/26/68/68266444768113c2e8659fea/flow-cytometers-software-kaluza-c-10c-data.png",
+        "alt": "C10576_Kaluza C Analysis Software, 10-User (Network)",
+        "href": "https://store.beckman.com/hi/p/C10576?countryCode=IN",
+        "quote": "/Request-Quote?tfa_2=Flow Software - Kaluza",
+        "filters": []
+      }
+    ]
   }
 };

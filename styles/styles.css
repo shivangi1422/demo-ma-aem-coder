@@ -512,6 +512,11 @@ body.software-product-detail main .default-content-wrapper h3 {
   scroll-margin-top: 60px;
 }
 
+/* the documents table follows the "Didn't find …" line directly, as on live */
+body.software-product-detail main .default-content-wrapper:has(+ .technical-documents-wrapper) > p:last-child {
+  margin-bottom: 0;
+}
+
 body.software-product-detail main .default-content-wrapper h3::after {
   content: '';
   position: absolute;

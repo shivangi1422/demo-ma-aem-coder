@@ -1,0 +1,430 @@
+/* Technical Documents — a sortable table of documents (title link, type, doc id, lot numbers)
+   under Document Type / Language / Lot Number filters. From 992px the filters are a row of
+   boxes whose titles drop a list of values; below that they fold into a "Filters" dropdown
+   (as in the product table) and the table scrolls sideways */
+.technical-documents {
+  display: flow-root;
+  position: relative;
+  margin-bottom: 16px;
+  color: var(--text-dark-slate);
+}
+
+.technical-documents *,
+.technical-documents *::before,
+.technical-documents *::after {
+  box-sizing: border-box;
+}
+
+.technical-documents-summary {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+/* ---- "Filters" dropdown button (phones and tablets) ---- */
+.technical-documents-filters-toggle {
+  display: block;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  height: 40px;
+  margin: 0;
+  border: 1px solid var(--brand-blue);
+  border-radius: 2px;
+  padding: 10px 30px 8px 10px;
+  background: #fff url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='%23007acb' d='M0 0h10L5 5z'/%3E%3C/svg%3E") right 10px center / 10px 5px no-repeat;
+  color: var(--brand-blue);
+  font-size: var(--body-font-size-xs);
+  font-weight: 700;
+  line-height: 20px;
+  letter-spacing: 0.09px;
+  text-align: left;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.technical-documents-filters-toggle[aria-expanded='true'] {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 10 5'%3E%3Cpath fill='%23007acb' d='M0 5h10L5 0z'/%3E%3C/svg%3E");
+}
+
+.technical-documents-filters-toggle:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+
+.technical-documents-filters-wash {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1;
+  background-color: rgb(255 255 255 / 85%);
+  opacity: 0.9;
+}
+
+.technical-documents.is-filters-open .technical-documents-filters-wash {
+  display: block;
+}
+
+/* ---- filter groups: a dropdown panel under the button on phones and tablets ---- */
+.technical-documents-filters {
+  display: none;
+  position: absolute;
+  top: 40px;
+  left: 0;
+  right: 0;
+  z-index: 2;
+  max-height: 60vh;
+  border-radius: 0 0 0 2px;
+  padding: 1px;
+  background-color: #fff;
+  box-shadow: rgb(0 0 0 / 25%) 0 7px 15px 0;
+  overflow-y: auto;
+}
+
+.technical-documents.is-filters-open .technical-documents-filters {
+  display: block;
+}
+
+.technical-documents-filter {
+  position: relative;
+}
+
+.technical-documents-filter-header {
+  display: flex;
+  align-items: center;
+  border-top: 1px solid var(--border-checkbox);
+  padding: 10px 20px;
+  background-color: var(--surface-facet-more);
+}
+
+.technical-documents-filter-title {
+  flex: 1 1 auto;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: var(--pager-arrow);
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 400;
+  line-height: 24.75px;
+  text-align: left;
+  cursor: default;
+}
+
+/* clear (x) while the group has a selection, then a settings (circled dots) icon */
+.technical-documents-filter-clear,
+.technical-documents-filter-settings {
+  flex: 0 0 18px;
+  width: 18px;
+  height: 18px;
+  margin: 0 0 0 10px;
+  border: 0;
+  padding: 0;
+  background-color: var(--pager-arrow);
+}
+
+.technical-documents-filter-clear {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Cpath fill='none' stroke='%23000' stroke-width='2' d='m2 2 14 14M16 2 2 16'/%3E%3C/svg%3E") center / 14px 14px no-repeat;
+  cursor: pointer;
+}
+
+.technical-documents-filter-clear[hidden] {
+  display: none;
+}
+
+.technical-documents-filter-settings {
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 18 18'%3E%3Ccircle cx='9' cy='9' r='8' fill='none' stroke='%23000' stroke-width='1.4'/%3E%3Ccircle cx='5.5' cy='9' r='1.2'/%3E%3Ccircle cx='9' cy='9' r='1.2'/%3E%3Ccircle cx='12.5' cy='9' r='1.2'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.technical-documents-filter-values {
+  margin: 0;
+  padding: 5px 20px 8px;
+  list-style: none;
+}
+
+.technical-documents-filter-values li {
+  margin-bottom: 5px;
+}
+
+.technical-documents-filter-values label {
+  display: flex;
+  align-items: flex-start;
+  padding: 5px 0;
+  color: var(--brand-navy);
+  font-size: 15px;
+  font-weight: 700;
+  line-height: 22px;
+  cursor: pointer;
+}
+
+/* square checkbox with a dark tick, as in the product table */
+.technical-documents-filter-values input[type='checkbox'] {
+  flex: 0 0 18px;
+  appearance: none;
+  width: 18px;
+  height: 18px;
+  margin: 2px 15px 0 0;
+  border: 1px solid var(--border-checkbox);
+  border-radius: 2px;
+  background: #fff center / 12px 10px no-repeat;
+  cursor: pointer;
+}
+
+.technical-documents-filter-values input[type='checkbox']:checked {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 10'%3E%3Cpath fill='%23313a45' d='M10.6.4a.9.9 0 0 0-1.3 0L4.4 5.4 2.2 3.4a.9.9 0 0 0-1.3.1.9.9 0 0 0 0 1.2l2.9 2.7a.9.9 0 0 0 1.3 0l5.4-5.4a.9.9 0 0 0 .1-1.3z'/%3E%3C/svg%3E");
+}
+
+.technical-documents-filter-values input[type='checkbox']:focus-visible {
+  outline: 2px solid var(--brand-blue);
+  outline-offset: 2px;
+}
+
+.technical-documents-filter-caption {
+  flex: 1 1 auto;
+  min-width: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.technical-documents-filter-count {
+  margin: 0 5px;
+  color: var(--text-facet-count);
+}
+
+.technical-documents-filter-footer {
+  display: none;
+}
+
+/* ---- table: scrolls sideways on small screens ---- */
+.technical-documents-scroll {
+  margin: 15px 0 20px;
+  border-bottom: 2px solid var(--text-input);
+  overflow-x: auto;
+}
+
+.technical-documents table {
+  width: 100%;
+  min-width: 790px;
+  border-collapse: collapse;
+}
+
+.technical-documents th {
+  border-bottom: 2px solid var(--arrow-grey);
+  padding: 15px 25px;
+  color: var(--text-input);
+  font-size: var(--body-font-size-s);
+  font-weight: 700;
+  line-height: 23.1px;
+  text-align: center;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+/* the live table has no rule under its first heading */
+.technical-documents th:first-child {
+  border-bottom: 0;
+}
+
+.technical-documents .technical-documents-sort {
+  width: 100%;
+  margin: 0;
+  border: 0;
+  padding: 0;
+  background: none;
+  color: inherit;
+  font: inherit;
+  cursor: pointer;
+}
+
+.technical-documents td {
+  padding: 15px;
+  font-size: 15px;
+  line-height: 24.75px;
+  vertical-align: middle;
+}
+
+.technical-documents :is(th, td):not(:last-child) {
+  border-right: 1px solid var(--arrow-grey);
+}
+
+.technical-documents tbody tr:hover td {
+  background-color: var(--surface-doc-row-hover);
+}
+
+.technical-documents td a:any-link {
+  color: var(--text-doc-link);
+  text-decoration: none;
+}
+
+.technical-documents td a:hover,
+.technical-documents td a:focus-visible {
+  color: var(--text-doc-link);
+  text-decoration: underline;
+}
+
+/* ---- pager: right-aligned page boxes (five documents a page) ---- */
+.technical-documents-pager {
+  margin: 6px 0;
+  padding-top: 13.5px;
+}
+
+.technical-documents-pager ul {
+  display: flex;
+  justify-content: flex-end;
+  gap: 5px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.technical-documents-pager button {
+  position: relative;
+  min-width: 30px;
+  height: 35px;
+  border: 1px solid rgb(0 0 0 / 15%);
+  padding: 5px 10px;
+  background-color: var(--surface-pager);
+  color: var(--brand-blue);
+  font-size: var(--body-font-size-s);
+  line-height: 1.65;
+  cursor: pointer;
+}
+
+.technical-documents-pager button[aria-current] {
+  border-color: transparent;
+  background: none;
+  color: var(--text-pager-current);
+  cursor: default;
+}
+
+.technical-documents-pager-prev::before,
+.technical-documents-pager-next::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  margin: auto;
+  width: 7px;
+  height: 13px;
+  background-color: var(--pager-arrow);
+  mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 7 13'%3E%3Cpath d='M.6 12.6a.6.6 0 0 1-.4-1L5.3 6.5.2 1.4A.6.6 0 0 1 1 .5l5.6 5.6a.6.6 0 0 1 0 .9L1 12.5a.6.6 0 0 1-.4.1z'/%3E%3C/svg%3E") center / contain no-repeat;
+}
+
+.technical-documents-pager-prev::before {
+  transform: scaleX(-1);
+}
+
+/* ---- from 992px: inset table under a row of filter boxes ---- */
+@media (width >= 992px) {
+  .technical-documents {
+    margin: 0 70px 16px;
+  }
+
+  .technical-documents-filters-toggle,
+  .technical-documents.is-filters-open .technical-documents-filters-wash {
+    display: none;
+  }
+
+  .technical-documents-filters,
+  .technical-documents.is-filters-open .technical-documents-filters {
+    display: flex;
+    flex-wrap: wrap;
+    position: static;
+    max-height: none;
+    border-radius: 0;
+    padding: 5px 15px;
+    background: none;
+    box-shadow: none;
+    overflow: visible;
+  }
+
+  .technical-documents-filter {
+    flex: 0 0 323px;
+    margin: 10px 0;
+    border: 1px solid var(--border-checkbox);
+    background-color: #fff;
+  }
+
+  .technical-documents-filter-header {
+    border-top: 0;
+    border-radius: 2px 2px 0 0;
+  }
+
+  .technical-documents-filter-title {
+    color: var(--techdocs-title);
+    cursor: pointer;
+  }
+
+  .technical-documents-filter-title::after {
+    content: '▼' / '';
+    margin-left: 5px;
+    font-size: 12.75px;
+  }
+
+  .technical-documents-filter.is-empty .technical-documents-filter-title {
+    cursor: default;
+  }
+
+  /* the value list drops below the box's header */
+  .technical-documents-filter-values {
+    display: none;
+    position: absolute;
+    top: 45px;
+    left: 0;
+    z-index: 3;
+    width: 300px;
+    border-top: 1px solid var(--border-spec);
+    border-bottom: 1px solid var(--border-spec);
+    padding: 5px 0 0;
+    background-color: #fff;
+    box-shadow: rgb(0 0 0 / 15%) 0 4px 10px 0;
+  }
+
+  .technical-documents-filter.is-open .technical-documents-filter-values {
+    display: block;
+  }
+
+  .technical-documents-filter-values li {
+    margin: 0;
+    padding: 3px 9px;
+  }
+
+  .technical-documents-filter-values label {
+    margin-bottom: 5px;
+    color: var(--text-dark-slate);
+    font-weight: 400;
+  }
+
+  .technical-documents-filter-count {
+    color: inherit;
+  }
+
+  .technical-documents-filter-footer {
+    display: block;
+    height: 15px;
+    border-radius: 0 0 2px 2px;
+    background-color: var(--surface-facet-more);
+  }
+
+  .technical-documents table {
+    min-width: 0;
+  }
+
+  .technical-documents th:nth-child(1),
+  .technical-documents th:nth-child(2) {
+    width: 35.42%;
+  }
+
+  .technical-documents th:nth-child(3) {
+    width: 16.67%;
+  }
+
+  .technical-documents th:nth-child(4) {
+    width: 12.5%;
+  }
+}

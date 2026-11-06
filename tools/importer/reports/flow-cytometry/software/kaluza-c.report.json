@@ -1,0 +1,8 @@
+{
+  "status": "failed",
+  "url": "https://www.mybeckman.in/flow-cytometry/software/kaluza-c",
+  "path": "flow-cytometry/software/kaluza-c",
+  "timestamp": "2026-11-05T07:37:58.470Z",
+  "error": "BLOCKED_PAGE: CLOUDFLARE — \"just a moment...\"",
+  "errorStack": "Error: BLOCKED_PAGE: CLOUDFLARE — \"just a moment...\"\n    at processUrl (file:///home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:625:15)\n    at async main (file:///home/node/.excat-marketplaces/excat-marketplace/excat/skills/excat-content-import/scripts/run-bulk-import.js:950:22)"
+}

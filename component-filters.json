@@ -37,7 +37,8 @@
       "resource-list",
       "related-products",
       "product-table",
-      "product-gallery"
+      "product-gallery",
+      "technical-documents"
     ]
   },
   {
@@ -143,6 +144,12 @@
     "id": "tabs-products",
     "components": [
       "tabs-products-item"
+    ]
+  },
+  {
+    "id": "technical-documents",
+    "components": [
+      "technical-document"
     ]
   }
 ]

@@ -140,7 +140,8 @@
       "urls": [
         "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
         "https://www.mybeckman.in/flow-cytometry/software/cytobank-premium",
-        "https://www.mybeckman.in/flow-cytometry/software/kaluza"
+        "https://www.mybeckman.in/flow-cytometry/software/kaluza",
+        "https://www.mybeckman.in/flow-cytometry/software/kaluza-c"
       ],
       "coverageGaps": [],
       "description": "Breadcrumb trail, product hero (image or gallery beside title, highlights, CTAs and resource links), sticky section tabs, then Features columns, a filterable licence/model table, specifications, content and resources, technical documents and related products",
@@ -179,6 +180,12 @@
           "name": "resource-list",
           "instances": [
             "#product-documentation-wrapper .content-resource-list-wrapper"
+          ]
+        },
+        {
+          "name": "technical-documents",
+          "instances": [
+            "#techdocs-wrapper #coveo-center-column"
           ]
         },
         {
@@ -277,7 +284,9 @@
             "#techdocs-wrapper"
           ],
           "style": null,
-          "blocks": [],
+          "blocks": [
+            "technical-documents"
+          ],
           "defaultContent": [
             "#techdocs-wrapper h3",
             "#coveo-techdocs-more-results"

@@ -57,6 +57,11 @@
   --surface-facet-more: #f7f8f9;
   --text-facet-count: #9fa4aa;
 
+  /* technical documents table */
+  --techdocs-title: #009ddc;
+  --text-doc-link: #004990;
+  --surface-doc-row-hover: #e6ecf0;
+
   /* fonts: Gotham is the licensed brand face (served by cloud.typography for
      whitelisted domains); Montserrat is a metrically close open-source fallback */
   --brand-font: 'Gotham A', 'Gotham B', gotham, montserrat, montserrat-fallback, arial, sans-serif;

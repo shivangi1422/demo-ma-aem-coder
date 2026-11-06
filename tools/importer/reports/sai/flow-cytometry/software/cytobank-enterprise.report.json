@@ -2,7 +2,7 @@
   "status": "success",
   "url": "https://www.mybeckman.in/flow-cytometry/software/cytobank-enterprise",
   "path": "sai/flow-cytometry/software/cytobank-enterprise",
-  "timestamp": "2026-11-03T01:04:58.211Z",
+  "timestamp": "2026-11-05T07:45:02.877Z",
   "title": "Cytobank Enterprise",
   "template": "software-product-detail",
   "blocks": [
@@ -12,6 +12,7 @@
     "product-table",
     "spec-table",
     "resource-list",
+    "technical-documents",
     "related-products"
   ]
 }
