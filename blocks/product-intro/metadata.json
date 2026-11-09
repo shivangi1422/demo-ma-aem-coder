@@ -1,0 +1,22 @@
+{
+  "variantName": "product-intro",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "product page intro: product image beside the H1, introduction, checklist, call-to-action buttons and a 'Resources + Tools' link table",
+    "layout": "stacked on mobile; two equal side-by-side columns (image | text) from 900px",
+    "sourceSelector": "div.product-intro-wrapper"
+  },
+  "contentPattern": {
+    "structure": "one row, two cells: image (product picture) | text (H1, paragraph, bulleted checklist, button links: bold = primary, italic = secondary, then a bold-only paragraph label such as 'Resources + Tools' followed by a bulleted list of links)"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": [
+    {
+      "url": "https://www.beckman.com/air-particle-counters/met-one-6000",
+      "selector": "#main .product-spotlight-wrapper > div.product-intro-wrapper"
+    }
+  ],
+  "reuseGuidance": "Use for the top intro of a product page. The resources table is detected as a bold-only paragraph immediately followed by a list whose items are all links; any other list renders as a checklist."
+}

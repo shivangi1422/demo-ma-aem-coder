@@ -1,0 +1,46 @@
+/* benefits callout, used in a blue section (source .Section--blue .Intro) */
+.columns-callout {
+  text-align: start;
+}
+
+.columns-callout ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.columns-callout p {
+  font-weight: 400;
+}
+
+.columns-callout .columns-callout-title::before {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-right: 20px;
+  vertical-align: -2px;
+  background-color: currentcolor;
+  mask: url('../../icons/check-circle.svg') center / contain no-repeat;
+}
+
+@media (width >= 900px) {
+  .columns-callout {
+    display: flex;
+  }
+
+  .columns-callout .columns-callout-intro {
+    flex: 1 1 0;
+    margin-right: 20px;
+  }
+
+  .columns-callout .columns-callout-body {
+    display: flex;
+    flex: 2 1 0;
+    justify-content: space-between;
+  }
+
+  .columns-callout .columns-callout-body > ul:first-child {
+    margin-right: 10px;
+  }
+}

@@ -21,6 +21,26 @@
           "name": "keywords",
           "multi": true,
           "label": "Keywords"
+        },
+        {
+          "component": "select",
+          "valueType": "string",
+          "name": "template",
+          "label": "Template",
+          "options": [
+            {
+              "name": "Default",
+              "value": ""
+            },
+            {
+              "name": "Service landing (inset sections)",
+              "value": "service-landing"
+            },
+            {
+              "name": "Product detail",
+              "value": "product-detail"
+            }
+          ]
         }
       ]
     }

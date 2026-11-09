@@ -1,0 +1,85 @@
+{
+  "definitions": [
+    {
+      "title": "Accordion Faq",
+      "id": "accordion-faq",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Accordion Faq",
+              "filter": "accordion-faq",
+              "model": "accordion-faq"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Question",
+      "id": "accordion-faq-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Question",
+              "model": "accordion-faq-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "accordion-faq",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Plain (ruled list, no grey bars)",
+              "value": "plain"
+            },
+            {
+              "name": "Open (all answers visible in grey boxes, no toggle)",
+              "value": "open"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "accordion-faq-item",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "summary",
+          "value": "",
+          "label": "Question"
+        },
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Answer",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "accordion-faq",
+      "components": [
+        "accordion-faq-item"
+      ]
+    }
+  ]
+}

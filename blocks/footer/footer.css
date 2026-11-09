@@ -1,87 +1,403 @@
+/* stylelint-disable no-descending-specificity -- independent footer regions */
+
 footer {
-  background-color: var(--bc-navy);
-  color: #fff;
-  font-family: var(--bc-brand-font);
-  font-size: 13px;
+  margin-top: 50px;
 }
 
-footer .footer > div {
-  margin: auto;
-  max-width: 1280px;
-  padding: 40px 24px;
+footer .footer {
+  --footer-muted: var(--muted-text-color);
+  --footer-legal: #b7b6b6;
+  --footer-field-bg: #f4f4f4;
+
+  box-shadow: 0 4px 8px 2px rgb(2 0 0 / 10%);
+  color: var(--text-color);
+  font-size: 14px;
 }
 
 footer .footer p {
-  margin: 0;
+  margin: 0 0 16px;
+  color: var(--footer-muted);
+  font-size: 14px;
+  line-height: 1.625;
 }
 
-/* branding heading */
-footer .footer h1,
-footer .footer h2,
-footer .footer h3 {
-  margin: 0 0 12px;
-  color: #fff;
-  font-weight: 800;
-  font-size: 22px;
-}
-
-footer .footer a:any-link {
-  color: rgb(255 255 255 / 70%);
-  text-decoration: none;
-}
-
-footer .footer a:hover {
-  color: #fff;
-}
-
-/* link column headings (bold paragraph) */
-footer .footer .footer-col p strong {
-  display: block;
-  margin-bottom: 12px;
-  color: #fff;
-  font-weight: 700;
-  text-transform: uppercase;
-  letter-spacing: 0.02em;
-}
-
-/* link lists */
-footer .footer ul {
-  list-style: none;
+footer .footer :where(ul) {
   margin: 0;
   padding: 0;
+  list-style: none;
+}
+
+/* main row: newsletter, link columns, back to top */
+footer .footer-main {
+  position: relative;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  justify-content: space-between;
+  box-sizing: border-box;
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 96px 16px 48px;
 }
 
-/* the columns grid: branding + link columns */
-footer .footer .footer-columns {
-  display: grid;
-  grid-template-columns: 1fr;
+footer .footer-newsletter {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+footer .footer-newsletter h2 {
+  margin: 1.33em 0 16px;
+  color: var(--text-color);
+  font-size: 20px;
+  font-weight: 300;
+  line-height: 1.5;
+}
+
+/* Marketo newsletter form, layout taken over from Marketo's inline styles */
+/* stylelint-disable selector-class-pattern -- Marketo class names */
+footer .footer-form .mktoForm {
+  width: 100% !important;
+  padding: 0;
+  color: var(--footer-muted);
+  font-family: var(--body-font-family) !important;
+  font-size: 12.8px;
+}
+
+@media (width < 481px) {
+  footer .footer-form .mktoForm {
+    padding: 10px;
+  }
+}
+
+footer .footer-form .mktoForm .mktoOffset,
+footer .footer-form .mktoForm .mktoGutter,
+footer .footer-form .mktoForm .mktoClear {
+  display: none;
+}
+
+footer .footer-form .mktoForm .mktoFormRow,
+footer .footer-form .mktoForm .mktoFormCol,
+footer .footer-form .mktoForm .mktoFieldWrap {
+  float: none;
+  width: 100%;
+}
+
+footer .footer-form .mktoForm .mktoFormCol {
+  margin-bottom: 10px;
+}
+
+footer .footer-form .mktoForm .mktoLabel {
+  display: block;
+  float: none;
+  width: auto;
+  padding: 0 0 13px;
+  color: var(--footer-muted);
+  font-size: 12.8px;
+  font-weight: 600;
+}
+
+footer .footer-form .mktoForm .mktoAsterix {
+  float: none;
+  display: inline;
+  padding-right: 3px;
+  color: var(--brand-red);
+}
+
+footer .footer-form .mktoForm input[type='email'],
+footer .footer-form .mktoForm input[type='text'] {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  border: 0;
+  border-radius: 9999px;
+  padding: 16px 32px;
+  background-color: var(--footer-field-bg);
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+footer .footer-form .mktoForm .mktoHtmlText {
+  width: auto;
+  color: var(--footer-muted);
+  font-size: 12.8px;
+  line-height: 1.5;
+}
+
+footer .footer-form .mktoForm .mktoHtmlText a:any-link {
+  padding: 0;
+  color: var(--footer-muted);
+  text-decoration: underline;
+}
+
+footer .footer-form .mktoForm .mktoButtonRow {
+  float: none;
+  display: block;
+}
+
+footer .footer-form .mktoForm .mktoButtonWrap {
+  margin-left: 0;
+}
+
+footer .footer-form .mktoForm .mktoButtonWrap .mktoButton {
+  border: 0;
+  border-radius: 9999px;
+  padding: 8px 20px;
+  background: var(--brand-red);
+  text-shadow: none;
+  box-shadow: none;
+  color: var(--white);
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.65;
+  cursor: pointer;
+}
+
+footer .footer-form .mktoForm .mktoButtonWrap .mktoButton:hover {
+  background: #bb1623;
+}
+
+footer .footer-form .mktoForm .mktoError {
+  font-size: 12px;
+}
+/* stylelint-enable selector-class-pattern */
+
+/* link columns */
+footer .footer-columns {
+  display: flex;
+  justify-content: flex-end;
+  padding: 24px 0;
+}
+
+footer .footer-links {
+  position: relative;
+  width: 50%;
+}
+
+footer .footer-link-list {
+  margin-top: 32px;
+  padding-left: 15px;
+  font-size: 14px;
+}
+
+footer .footer-link-list li {
+  padding: 8px 0;
+  line-height: 1.65;
+}
+
+footer .footer-link-list a:any-link {
+  display: inline;
+  color: inherit;
+  background-image: linear-gradient(to right, currentcolor, currentcolor);
+  background-position: 0 100%;
+  background-repeat: no-repeat;
+  background-size: 0 1px;
+  transition: background-size 0.3s;
+}
+
+footer .footer-link-list a:hover {
+  background-size: 100% 1px;
+}
+
+footer .footer-links-primary a:any-link {
+  color: var(--brand-red);
+}
+
+footer .footer-social {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  padding-left: 15px;
+}
+
+footer .footer-social li {
+  margin-right: 20px;
+}
+
+footer .footer-social a:any-link {
+  display: inline-flex;
+  color: inherit;
+}
+
+footer .footer-social a:hover {
+  color: var(--brand-red);
+}
+
+footer .footer-social .icon {
+  width: 20px;
+  height: 20px;
+  background-color: currentcolor;
+  mask: var(--icon) center / contain no-repeat;
+}
+
+footer .footer-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip-path: inset(50%);
+  white-space: nowrap;
+}
+
+footer .footer-back-to-top {
+  position: absolute;
+  top: 32px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid var(--border-color);
+  border-radius: 9999px;
+  padding: 4px 12px;
+  background-color: transparent;
+  color: inherit;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  line-height: 1;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+footer .footer-back-to-top:hover {
+  border-color: var(--footer-muted);
+}
+
+footer .footer-back-to-top svg {
+  width: 20px;
+  height: 20px;
+}
+
+/* legal rows */
+footer .footer-legal {
+  box-sizing: border-box;
+  max-width: 1536px;
+  margin: 0 auto;
+  padding: 16px;
+  color: var(--footer-legal);
+  font-size: 10.24px;
+}
+
+footer .footer-legal-row {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: center;
+  justify-content: center;
   gap: 32px;
+  margin-bottom: 40px;
 }
 
-/* copyright bottom bar */
-footer .footer .footer-bottom {
-  margin-top: 24px;
-  padding-top: 24px;
-  border-top: 1px solid rgb(255 255 255 / 10%);
-  color: rgb(255 255 255 / 50%);
+footer .footer-legal-row:last-child {
+  margin-bottom: 0;
 }
 
-@media (width >= 600px) {
-  footer .footer .footer-columns {
-    grid-template-columns: repeat(3, 1fr);
+footer .footer-legal-row p:last-of-type {
+  margin-bottom: 0;
+}
+
+footer .footer-fineprint p {
+  font-size: 12px;
+}
+
+footer .footer-legal-logo {
+  flex: 0 1 auto;
+  width: 106px;
+  min-width: 0;
+  line-height: 0;
+}
+
+footer .footer-legal-logo img {
+  width: 60px;
+  max-width: 100%;
+  height: auto;
+}
+
+/* operating company logos */
+footer .footer-opco-list {
+  font-size: 16px;
+  line-height: 1.65;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 0 5%;
+}
+
+footer .footer-opco-list li {
+  margin: 0 10px 10px;
+}
+
+footer .footer-opco-list a,
+footer .footer-opco-list li > img {
+  display: block;
+  max-width: 5.5em;
+}
+
+footer .footer-opco-list img {
+  width: 100%;
+  height: auto;
+  vertical-align: baseline;
+}
+
+@media (width >= 640px) {
+  footer .footer-legal-row {
+    flex-direction: row;
+    gap: 64px;
+  }
+}
+
+@media (width >= 768px) {
+  footer .footer-main {
+    flex-direction: row;
+  }
+
+  footer .footer-newsletter {
+    width: 41.6667%;
+  }
+
+  footer .footer-columns {
+    width: 50%;
+    padding: 0 0 48px;
+  }
+
+  footer .footer-social {
+    justify-content: flex-start;
+  }
+
+  footer .footer-legal {
+    padding: 24px 16px;
+    font-size: 12.8px;
+  }
+
+  footer .footer-legal-row {
+    gap: 80px;
+    margin-bottom: 80px;
   }
 }
 
 @media (width >= 900px) {
-  footer .footer > div {
-    padding: 56px 32px 32px;
+  footer .footer-opco-list {
+    flex-wrap: nowrap;
+    justify-content: space-between;
   }
 
-  footer .footer .footer-columns {
-    grid-template-columns: 1.6fr repeat(6, 1fr);
-    gap: 48px;
+  footer .footer-opco-list a,
+  footer .footer-opco-list li > img {
+    max-width: 66%;
+  }
+}
+
+@media (width >= 1024px) {
+  footer .footer-newsletter {
+    width: 50%;
+    padding-right: 48px;
+  }
+
+  footer .footer-legal-row {
+    gap: 124px;
+  }
+}
+
+@media (width >= 1280px) {
+  footer .footer-newsletter {
+    padding-right: 192px;
   }
 }

@@ -1,0 +1,22 @@
+{
+  "variantName": "cards-resource",
+  "baseBlock": "cards",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "list of downloadable documents (Content and Resources): file icon or thumbnail beside the document title link",
+    "layout": "one document per line, icon left, title right; links open in a new tab",
+    "sourceSelector": "#product-documentation-wrapper > div.content-resource-wrapper"
+  },
+  "contentPattern": {
+    "structure": "image (optional thumbnail; a document icon is shown without it, PDF style for .pdf and /gated-media links) | text (title link, optional description)"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": [
+    {
+      "url": "https://www.beckman.com/air-particle-counters/met-one-6000",
+      "selector": "#product-documentation-wrapper > div.content-resource-wrapper"
+    }
+  ],
+  "reuseGuidance": "Use for document/resource link lists. The source's Resource Type filter and pagination are not implemented (items carry no type); a type cell can be added later."
+}

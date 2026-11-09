@@ -1,0 +1,75 @@
+{
+  "definitions": [
+    {
+      "title": "Cards Stats",
+      "id": "cards-stats",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Cards Stats",
+              "model": "cards-stats",
+              "filter": "cards-stats"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Statistic",
+      "id": "cards-stats-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Statistic",
+              "model": "cards-stats-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "cards-stats",
+      "fields": [
+        {
+          "component": "multiselect",
+          "name": "classes",
+          "label": "Style",
+          "valueType": "string",
+          "options": [
+            {
+              "name": "Left aligned",
+              "value": "left-aligned"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "cards-stats-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "description": "First paragraph is the figure (e.g. 80%), the rest is the description",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "cards-stats",
+      "components": [
+        "cards-stats-item"
+      ]
+    }
+  ]
+}

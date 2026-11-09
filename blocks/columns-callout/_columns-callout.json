@@ -1,0 +1,71 @@
+{
+  "definitions": [
+    {
+      "title": "Columns Callout",
+      "id": "columns-callout",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Columns Callout",
+              "model": "columns-callout",
+              "filter": "columns-callout"
+            }
+          }
+        }
+      }
+    },
+    {
+      "title": "Benefit",
+      "id": "columns-callout-item",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block/item",
+            "template": {
+              "name": "Benefit",
+              "model": "columns-callout-item"
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "columns-callout",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Intro",
+          "description": "Heading and short introduction shown beside the benefits",
+          "valueType": "string"
+        }
+      ]
+    },
+    {
+      "id": "columns-callout-item",
+      "fields": [
+        {
+          "component": "richtext",
+          "name": "text",
+          "value": "",
+          "label": "Text",
+          "description": "Bold title paragraph (shown with a check icon) followed by the description",
+          "valueType": "string"
+        }
+      ]
+    }
+  ],
+  "filters": [
+    {
+      "id": "columns-callout",
+      "components": [
+        "columns-callout-item"
+      ]
+    }
+  ]
+}

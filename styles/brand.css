@@ -1,0 +1,71 @@
+/*
+ * Brand tokens extracted from www.mybeckman.in (source: migration-work/brand.json,
+ * migration-work/design-source/default-probe.json).
+ * Gotham (cloud.typography.com, domain-licensed) is substituted with self-hosted Montserrat.
+ */
+
+:root {
+  /* brand palette */
+  --brand-blue: #007acb;
+  --brand-blue-dark: #0065a7;
+  --brand-red: #ea1c2c;
+  --brand-red-dark: #cf1322;
+  --brand-teal: #0099ab;
+  --grey-900: #4d4d4d;
+  --grey-700: #5c5c5c;
+  --grey-500: #8e8d8d;
+  --grey-300: #e0e0e0;
+  --grey-100: #f5f6f7;
+  --white: #fff;
+
+  /* colors */
+  --background-color: var(--white);
+  --light-color: var(--grey-100);
+  --dark-color: var(--grey-700);
+  --text-color: var(--grey-900);
+  --muted-text-color: var(--grey-500);
+  --border-color: var(--grey-300);
+  --link-color: var(--brand-blue);
+  --link-hover-color: var(--brand-blue);
+  --button-primary-color: var(--brand-blue);
+  --button-primary-hover-color: var(--brand-blue-dark);
+  --button-accent-color: var(--brand-red);
+  --button-accent-hover-color: var(--brand-red-dark);
+
+  /* fonts */
+  --body-font-family: montserrat, montserrat-fallback, arial, sans-serif;
+  --heading-font-family: montserrat, montserrat-fallback, arial, sans-serif;
+
+  /* body sizes */
+  --body-font-size-m: 16px;
+  --body-font-size-s: 14px;
+  --body-font-size-xs: 12px;
+  --body-line-height: 1.65;
+
+  /* heading sizes (identical on all viewports on the source) */
+  --heading-font-size-xxl: 36px;
+  --heading-font-size-xl: 25px;
+  --heading-font-size-l: 25px;
+  --heading-font-size-m: 15px;
+  --heading-font-size-s: 14px;
+  --heading-font-size-xs: 12px;
+
+  /* buttons */
+  --button-font-size: 13.5px;
+  --button-radius: 2px;
+
+  /* layout */
+  --content-max-width: 1170px;
+  --content-gutter: 15px;
+  --section-spacing: 40px;
+
+  /* nav height (desktop: 70px top bar + 54px nav bar) */
+  --nav-height: 113px;
+}
+
+/* header switches to the bar navigation at 1120px, like the source */
+@media (width >= 1120px) {
+  :root {
+    --nav-height: 124px;
+  }
+}
