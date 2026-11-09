@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, unwrapRichtext } from '../../scripts/scripts.js';
 
 /**
  * Optimizes a same-origin, non-SVG image; other images keep the authored picture.
@@ -90,6 +90,7 @@ export default function decorate(block) {
 
   const content = document.createElement('div');
   content.className = 'product-intro-content';
+  unwrapRichtext(textCell);
   moveInstrumentation(textCell, content);
   content.append(...textCell.childNodes);
   // drop empty paragraphs/headings left over from the source markup

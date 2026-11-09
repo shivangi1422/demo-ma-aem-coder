@@ -1,4 +1,4 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, unwrapRichtext } from '../../scripts/scripts.js';
 
 /**
  * FAQ accordion: grey question bars with a +/- marker, the answer opens below.
@@ -20,11 +20,22 @@ export default function decorate(block) {
     if (questionCell) summary.append(...questionCell.childNodes);
     // the question is authored as plain text; keep inline markup but drop the paragraph
     const p = summary.querySelector(':scope > p:only-child');
-    if (p) p.replaceWith(...p.childNodes);
+    if (p) {
+      moveInstrumentation(p, summary);
+      p.replaceWith(...p.childNodes);
+    }
 
     const answer = document.createElement('div');
     answer.className = 'accordion-faq-answer';
-    if (answerCell) answer.append(...answerCell.childNodes);
+    if (answerCell) {
+      unwrapRichtext(answerCell);
+      moveInstrumentation(answerCell, answer);
+      answer.append(...answerCell.childNodes);
+      // empty paragraphs left where the stored richtext wraps a list in <p> (author instance)
+      answer.querySelectorAll(':scope > p').forEach((el) => {
+        if (!el.textContent.trim() && !el.querySelector('img, picture')) el.remove();
+      });
+    }
 
     details.append(summary, answer);
     row.replaceWith(details);
