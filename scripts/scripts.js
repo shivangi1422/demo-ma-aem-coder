@@ -76,6 +76,23 @@ export function moveInstrumentation(from, to) {
 }
 
 /**
+ * Universal Editor groups the elements of a richtext field in one editable wrapper
+ * (div[data-aue-type="richtext"], see editor-support-rte.js); published pages have none.
+ * Unwraps it into the cell and moves its instrumentation onto the cell, so a block sees the
+ * field content as the cell's children on author and on the published page alike.
+ * @param {Element} cell block cell holding a richtext field
+ * @returns {Element} the cell
+ */
+export function unwrapRichtext(cell) {
+  const wrapper = cell && cell.querySelector(':scope > div[data-aue-type="richtext"]:only-child');
+  if (wrapper) {
+    moveInstrumentation(wrapper, cell);
+    wrapper.replaceWith(...wrapper.childNodes);
+  }
+  return cell;
+}
+
+/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {

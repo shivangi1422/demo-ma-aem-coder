@@ -1,5 +1,5 @@
 import { createOptimizedPicture } from '../../scripts/aem.js';
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, unwrapRichtext } from '../../scripts/scripts.js';
 
 const PDF = /(\.pdf($|[?#]))|\/gated-media\b/i;
 
@@ -46,7 +46,11 @@ export default function decorate(block) {
 
     const body = document.createElement('div');
     body.className = 'cards-resource-body';
-    textCells.forEach((cell) => body.append(...cell.childNodes));
+    textCells.forEach((cell) => {
+      unwrapRichtext(cell);
+      moveInstrumentation(cell, body);
+      body.append(...cell.childNodes);
+    });
     body.querySelectorAll('.button-wrapper').forEach((p) => p.classList.remove('button-wrapper'));
 
     const links = [...body.querySelectorAll('a[href]')];
