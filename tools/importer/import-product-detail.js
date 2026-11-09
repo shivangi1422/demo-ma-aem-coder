@@ -2,8 +2,8 @@
 /* global WebImporter */
 
 import breadcrumbParser from './parsers/breadcrumb.js';
-import columnsProductIntroParser from './parsers/columns-product-intro.js';
-import columnsAnchorNavParser from './parsers/columns-anchor-nav.js';
+import productIntroParser from './parsers/product-intro.js';
+import anchorNavParser from './parsers/anchor-nav.js';
 import cardsIconParser from './parsers/cards-icon.js';
 import cardsTileParser from './parsers/cards-tile.js';
 import cardsResourceParser from './parsers/cards-resource.js';
@@ -29,14 +29,14 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "columns-product-intro",
+      "name": "product-intro",
       "instances": [
         ".product-spotlight-wrapper > .product-intro-wrapper",
         ".product-intro-wrapper"
       ]
     },
     {
-      "name": "columns-anchor-nav",
+      "name": "anchor-nav",
       "instances": [
         "#intrenal-page-link-wrapper"
       ]
@@ -91,8 +91,8 @@ const PAGE_TEMPLATE = {
       ],
       "style": null,
       "blocks": [
-        "columns-product-intro",
-        "columns-anchor-nav",
+        "product-intro",
+        "anchor-nav",
         "cards-icon",
         "cards-tile",
         "cards-resource",
@@ -127,8 +127,8 @@ const PAGE_TEMPLATE = {
 
 const parsers = {
   breadcrumb: breadcrumbParser,
-  'columns-product-intro': columnsProductIntroParser,
-  'columns-anchor-nav': columnsAnchorNavParser,
+  'product-intro': productIntroParser,
+  'anchor-nav': anchorNavParser,
   'cards-icon': cardsIconParser,
   'cards-tile': cardsTileParser,
   'cards-resource': cardsResourceParser,

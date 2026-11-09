@@ -36,9 +36,9 @@ function decorateResources(content) {
     if (!items.length || !items.every((li) => li.querySelector('a[href]'))) return;
 
     const wrapper = document.createElement('div');
-    wrapper.className = 'columns-product-intro-resources';
-    label.classList.add('columns-product-intro-resources-label');
-    ul.classList.add('columns-product-intro-resources-list');
+    wrapper.className = 'product-intro-resources';
+    label.classList.add('product-intro-resources-label');
+    ul.classList.add('product-intro-resources-list');
     label.before(wrapper);
     wrapper.append(label, ul);
   });
@@ -57,7 +57,7 @@ function decorateActions(content) {
     }
     if (!group) {
       group = document.createElement('div');
-      group.className = 'columns-product-intro-actions';
+      group.className = 'product-intro-actions';
       el.before(group);
     }
     group.append(el);
@@ -82,14 +82,14 @@ export default function decorate(block) {
   const img = imageCell && imageCell.querySelector('img');
   if (img) {
     const media = document.createElement('div');
-    media.className = 'columns-product-intro-media';
+    media.className = 'product-intro-media';
     moveInstrumentation(imageCell, media);
     media.append(optimizedPicture(img, firstSection));
     row.append(media);
   }
 
   const content = document.createElement('div');
-  content.className = 'columns-product-intro-content';
+  content.className = 'product-intro-content';
   moveInstrumentation(textCell, content);
   content.append(...textCell.childNodes);
   // drop empty paragraphs/headings left over from the source markup
@@ -98,7 +98,7 @@ export default function decorate(block) {
   });
   decorateResources(content);
   decorateActions(content);
-  content.querySelectorAll(':scope > ul').forEach((ul) => ul.classList.add('columns-product-intro-checklist'));
+  content.querySelectorAll(':scope > ul').forEach((ul) => ul.classList.add('product-intro-checklist'));
   row.append(content);
 
   block.replaceChildren(row);

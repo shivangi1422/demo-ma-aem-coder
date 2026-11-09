@@ -1,4 +1,4 @@
-# columns-product-intro
+# product-intro
 
 Custom **columns** block. Purpose: product page intro: product image beside the H1, introduction, checklist, call-to-action buttons and a 'Resources + Tools' link table.
 

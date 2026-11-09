@@ -912,14 +912,14 @@
           ]
         },
         {
-          "name": "columns-product-intro",
+          "name": "product-intro",
           "instances": [
             ".product-spotlight-wrapper > .product-intro-wrapper",
             ".product-intro-wrapper"
           ]
         },
         {
-          "name": "columns-anchor-nav",
+          "name": "anchor-nav",
           "instances": [
             "#intrenal-page-link-wrapper"
           ]
@@ -974,8 +974,8 @@
           ],
           "style": null,
           "blocks": [
-            "columns-product-intro",
-            "columns-anchor-nav",
+            "product-intro",
+            "anchor-nav",
             "cards-icon",
             "cards-tile",
             "cards-resource",

@@ -114,6 +114,21 @@
           }
         },
         {
+          "title": "Anchor Nav",
+          "id": "anchor-nav",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Anchor Nav",
+                  "model": "anchor-nav"
+                }
+              }
+            }
+          }
+        },
+        {
           "title": "Breadcrumb",
           "id": "breadcrumb",
           "plugins": {
@@ -342,21 +357,6 @@
           }
         },
         {
-          "title": "Columns Anchor Nav",
-          "id": "columns-anchor-nav",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "name": "Columns Anchor Nav",
-                  "model": "columns-anchor-nav"
-                }
-              }
-            }
-          }
-        },
-        {
           "title": "Columns Article",
           "id": "columns-article",
           "plugins": {
@@ -397,21 +397,6 @@
                 "template": {
                   "name": "Benefit",
                   "model": "columns-callout-item"
-                }
-              }
-            }
-          }
-        },
-        {
-          "title": "Columns Product Intro",
-          "id": "columns-product-intro",
-          "plugins": {
-            "xwalk": {
-              "page": {
-                "resourceType": "core/franklin/components/block/v1/block",
-                "template": {
-                  "name": "Columns Product Intro",
-                  "model": "columns-product-intro"
                 }
               }
             }
@@ -562,6 +547,21 @@
                 "template": {
                   "name": "Hero",
                   "model": "hero"
+                }
+              }
+            }
+          }
+        },
+        {
+          "title": "Product Intro",
+          "id": "product-intro",
+          "plugins": {
+            "xwalk": {
+              "page": {
+                "resourceType": "core/franklin/components/block/v1/block",
+                "template": {
+                  "name": "Product Intro",
+                  "model": "product-intro"
                 }
               }
             }

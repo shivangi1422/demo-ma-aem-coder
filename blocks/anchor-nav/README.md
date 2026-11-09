@@ -1,4 +1,4 @@
-# columns-anchor-nav
+# anchor-nav
 
 Custom **columns** block. Purpose: sticky in-page navigation bar linking to sections of the same page, highlighting the section in view.
 

@@ -65,7 +65,7 @@ export default function decorate(block) {
     // the block keeps the bar's height so the page does not jump
     const stuck = block.getBoundingClientRect().top < 0;
     block.style.minHeight = stuck ? `${navHeight()}px` : '';
-    block.classList.toggle('columns-anchor-nav-stuck', stuck);
+    block.classList.toggle('anchor-nav-stuck', stuck);
 
     // highlight the last section whose top has passed the bar
     const offset = navHeight() + 1;

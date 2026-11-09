@@ -3,19 +3,19 @@
    screens; sticks to the top of the viewport (the site header is not sticky) once scrolled past */
 
 /* the bar spans the viewport like the source, not the 1170px content column */
-main .section > .columns-anchor-nav-wrapper {
+main .section > .anchor-nav-wrapper {
   max-width: none;
   padding: 0;
 }
 
-.columns-anchor-nav nav {
+.anchor-nav nav {
   background-color: var(--background-color);
   border-top: 2px solid #ddd;
   box-shadow: 0 8px 6px -6px rgb(0 0 0 / 20%);
 }
 
 /* phones: one link per line, centred (source at 390px) */
-.columns-anchor-nav ul {
+.anchor-nav ul {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -24,7 +24,7 @@ main .section > .columns-anchor-nav-wrapper {
   list-style: none;
 }
 
-.columns-anchor-nav a:any-link {
+.anchor-nav a:any-link {
   display: block;
   padding: 10px 28px;
   border-bottom: 2px solid transparent;
@@ -35,8 +35,8 @@ main .section > .columns-anchor-nav-wrapper {
   text-decoration: none;
 }
 
-.columns-anchor-nav a:any-link:hover,
-.columns-anchor-nav a.active:any-link {
+.anchor-nav a:any-link:hover,
+.anchor-nav a.active:any-link {
   border-bottom-color: var(--link-color);
   color: var(--link-color);
   text-decoration: none;
@@ -44,7 +44,7 @@ main .section > .columns-anchor-nav-wrapper {
 
 /* stuck: fixed to the top of the viewport; below the header's stacking context (z-index 25)
    so the mobile drawer and its overlay still cover it */
-.columns-anchor-nav.columns-anchor-nav-stuck nav {
+.anchor-nav.anchor-nav-stuck nav {
   position: fixed;
   top: 0;
   right: 0;
@@ -54,7 +54,7 @@ main .section > .columns-anchor-nav-wrapper {
 
 /* wider screens: links side by side, centred, wrapping when they do not fit */
 @media (width >= 600px) {
-  .columns-anchor-nav ul {
+  .anchor-nav ul {
     flex-flow: row wrap;
     justify-content: center;
   }
@@ -62,7 +62,7 @@ main .section > .columns-anchor-nav-wrapper {
 
 @media (width >= 900px) {
   /* source: 88px from the bar to the features heading */
-  .columns-anchor-nav {
+  .anchor-nav {
     margin-bottom: 88px;
   }
 }

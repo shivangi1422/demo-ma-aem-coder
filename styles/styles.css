@@ -391,7 +391,7 @@ main .section.blue.columns-actions-container {
    viewport edges (1340px at 1440, up to 1500px), the breadcrumb is fluid, the FAQ keeps the 1170px
    container; the anchor bar stays full width (its own block rule) */
 @media (width >= 1200px) {
-  .product-detail main > .section > div:not(.columns-anchor-nav-wrapper) {
+  .product-detail main > .section > div:not(.anchor-nav-wrapper) {
     max-width: 1600px;
     padding: 0 50px;
   }

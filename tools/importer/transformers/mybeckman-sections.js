@@ -93,7 +93,8 @@ export default function transform(hookName, element, payload) {
     const cells = {};
     if (title) cells.Title = title;
     if (description) cells.Description = description;
-    if (payload.template && payload.template.pageTemplate) cells.Template = payload.template.pageTemplate;
+    // lower-case key: the AEM converter maps metadata rows to page fields by exact (case-sensitive) name
+    if (payload.template && payload.template.pageTemplate) cells.template = payload.template.pageTemplate;
     const metaBlock = WebImporter.Blocks.createBlock(document, { name: 'Metadata', cells });
     element.append(metaBlock);
   }

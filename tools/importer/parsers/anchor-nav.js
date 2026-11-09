@@ -2,7 +2,7 @@
 /* global WebImporter */
 
 /**
- * Parser for columns-anchor-nav (xwalk model: columns-anchor-nav, field "text" richtext).
+ * Parser for anchor-nav (xwalk model: anchor-nav, field "text" richtext).
  * Source (www.beckman.com product page): #intrenal-page-link-wrapper > div > a[href="#…"]
  * (hrefs already rewritten to heading slugs by mybeckman-links; links without a target are
  * removed by beckman-product-prepare).
@@ -28,6 +28,6 @@ export default function parse(element, { document }) {
   }
 
   const cells = [[cell]];
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns-anchor-nav', cells });
+  const block = WebImporter.Blocks.createBlock(document, { name: 'anchor-nav', cells });
   element.replaceWith(block);
 }

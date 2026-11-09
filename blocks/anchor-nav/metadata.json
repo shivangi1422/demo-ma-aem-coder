@@ -1,5 +1,5 @@
 {
-  "variantName": "columns-anchor-nav",
+  "variantName": "anchor-nav",
   "baseBlock": "columns",
   "canonicalModel": "standalone",
   "visualCharacteristics": {

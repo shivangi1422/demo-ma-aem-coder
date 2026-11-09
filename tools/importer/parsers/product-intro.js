@@ -2,13 +2,13 @@
 /* global WebImporter */
 
 /**
- * Parser for columns-product-intro (xwalk model: columns-product-intro: image (reference,
+ * Parser for product-intro (xwalk model: product-intro: image (reference,
  * imageAlt collapsed onto the img alt), text (richtext)).
  * Source (www.beckman.com product page): .product-intro-wrapper > .product-intro-holder >
  *   .rt-holder (h1, p, ul checklist, div > a buttons, .resource-tool-table-wrapper) and a nested
  *   .product-intro-holder > .lt-holder > .product-gallery-carousel (reduced to one img by
  *   beckman-product-prepare; on the raw page the first carousel img is used).
- * Output (one row, two cells):
+ * Output (one row per field, as xwalk simple blocks convert):
  *   [<!-- field:image --><img>] [<!-- field:text --><h1/><p/><ul/>
  *     <p><strong><a/></strong></p> (primary: the source .btn-primary link, e.g. Request a Quote)
  *     <p><em><a/></em></p>         (secondary: e.g. the "Explore … Models" link)
@@ -85,7 +85,8 @@ export default function parse(element, { document }) {
     parts.forEach((n) => textCell.appendChild(n));
   }
 
-  const cells = [[imageCell, textCell]];
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns-product-intro', cells });
+  // xwalk simple block: one row per field (image, then text); the block JS lays them out side by side
+  const cells = [[imageCell], [textCell]];
+  const block = WebImporter.Blocks.createBlock(document, { name: 'product-intro', cells });
   element.replaceWith(block);
 }
