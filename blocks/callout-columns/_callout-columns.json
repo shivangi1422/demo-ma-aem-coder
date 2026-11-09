@@ -1,16 +1,16 @@
 {
   "definitions": [
     {
-      "title": "Columns Callout",
-      "id": "columns-callout",
+      "title": "Callout Columns",
+      "id": "callout-columns",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block",
             "template": {
-              "name": "Columns Callout",
-              "model": "columns-callout",
-              "filter": "columns-callout"
+              "name": "Callout Columns",
+              "model": "callout-columns",
+              "filter": "callout-columns"
             }
           }
         }
@@ -18,14 +18,14 @@
     },
     {
       "title": "Benefit",
-      "id": "columns-callout-item",
+      "id": "callout-columns-item",
       "plugins": {
         "xwalk": {
           "page": {
             "resourceType": "core/franklin/components/block/v1/block/item",
             "template": {
               "name": "Benefit",
-              "model": "columns-callout-item"
+              "model": "callout-columns-item"
             }
           }
         }
@@ -34,7 +34,7 @@
   ],
   "models": [
     {
-      "id": "columns-callout",
+      "id": "callout-columns",
       "fields": [
         {
           "component": "richtext",
@@ -47,7 +47,7 @@
       ]
     },
     {
-      "id": "columns-callout-item",
+      "id": "callout-columns-item",
       "fields": [
         {
           "component": "richtext",
@@ -62,9 +62,9 @@
   ],
   "filters": [
     {
-      "id": "columns-callout",
+      "id": "callout-columns",
       "components": [
-        "columns-callout-item"
+        "callout-columns-item"
       ]
     }
   ]

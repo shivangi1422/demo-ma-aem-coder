@@ -27,7 +27,8 @@ function marketoUrl(container) {
   if (!formId) return null;
   const munchkinId = (scripts.match(/munchkinId:\s*"([^"]+)"/) || [])[1] || MARKETO_DEFAULT.munchkinId;
   const host = (scripts.match(/instanceURLProtoRelative:\s*"\/\/([^"]+)"/) || [])[1] || MARKETO_DEFAULT.host;
-  return `https://${host}/index.php/form/getForm?munchkinId=${munchkinId}&form=${formId}`;
+  // munchkinId after '#': the AEM content converter does not escape a second query parameter (&)
+  return `https://${host}/index.php/form/getForm?form=${formId}#munchkinId=${munchkinId}`;
 }
 
 function formAssemblyUrl(container) {

@@ -93,6 +93,74 @@ export function unwrapRichtext(cell) {
 }
 
 /**
+ * Heading ids as the publishing pipeline generates them (github-slugger: lower case,
+ * punctuation dropped, spaces to hyphens, -1, -2 … for repeats). Published pages already
+ * have them; the author instance (Universal Editor) renders headings without ids, so
+ * in-page links would have no target there.
+ * @param {Element} main The main element
+ */
+export function decorateHeadingIds(main) {
+  const used = new Set([...document.querySelectorAll('[id]')].map((el) => el.id));
+  main.querySelectorAll('h1, h2, h3, h4, h5, h6').forEach((h) => {
+    if (h.id) return;
+    const base = h.textContent.replace(/\s+/g, ' ').trim().toLowerCase()
+      .replace(/[^\p{L}\p{M}\p{N}\p{Pc} -]/gu, '')
+      .replace(/ /g, '-');
+    if (!base) return;
+    let id = base;
+    for (let i = 1; used.has(id); i += 1) id = `${base}-${i}`;
+    h.id = id;
+    used.add(id);
+  });
+}
+
+/**
+ * The AEM content converter stores richtext with block elements wrapped in a paragraph
+ * (<p><h4>…</h4></p>, <p><ul>…</ul></p>); the browser splits that into empty paragraphs around
+ * the element, which add spacing on the author instance. Removes empty paragraphs, except one
+ * that is the only content of its parent (an empty field stays editable). Published and local
+ * pages have no empty paragraphs.
+ * @param {Element} container element to clean
+ */
+export function removeEmptyParagraphs(container) {
+  container.querySelectorAll('p').forEach((p) => {
+    if (p.textContent.trim() || p.children.length) return;
+    if (p.parentElement && p.parentElement.children.length === 1) return;
+    p.remove();
+  });
+}
+
+const INLINE_TAGS = new Set(['A', 'ABBR', 'B', 'BR', 'CODE', 'EM', 'I', 'SMALL', 'SPAN', 'STRONG', 'SUB', 'SUP', 'U']);
+
+/**
+ * The AEM content converter stores a paragraph that is all bold or italic without its <p>,
+ * so on the author instance it renders as bare inline text in the default content.
+ * Wraps such inline runs in a paragraph again (with their editor instrumentation).
+ * Published and local pages have no bare inline content, so nothing changes there.
+ * @param {Element} main The main element
+ */
+export function wrapInlineDefaultContent(main) {
+  main.querySelectorAll('.default-content-wrapper').forEach((wrapper) => {
+    let p = null;
+    [...wrapper.childNodes].forEach((node) => {
+      const inline = node.nodeType === Node.TEXT_NODE
+        ? !!node.textContent.trim()
+        : node.nodeType === Node.ELEMENT_NODE && INLINE_TAGS.has(node.tagName);
+      if (!inline) {
+        if (node.nodeType !== Node.TEXT_NODE) p = null;
+        return;
+      }
+      if (!p) {
+        p = document.createElement('p');
+        node.before(p);
+        if (node.nodeType === Node.ELEMENT_NODE) moveInstrumentation(node, p);
+      }
+      p.append(node);
+    });
+  });
+}
+
+/**
  * load fonts.css and set a session storage flag
  */
 async function loadFonts() {
@@ -181,9 +249,12 @@ export function decorateSidebarSections(main) {
  */
 // eslint-disable-next-line import/prefer-default-export
 export function decorateMain(main) {
+  removeEmptyParagraphs(main);
+  decorateHeadingIds(main);
   decorateIcons(main);
   buildAutoBlocks(main);
   decorateSections(main);
+  wrapInlineDefaultContent(main);
   decorateBlocks(main);
   decorateSidebarSections(main);
   decorateButtons(main);

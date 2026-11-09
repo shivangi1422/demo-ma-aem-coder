@@ -1,3 +1,6 @@
+import { createOptimizedPicture } from '../../scripts/aem.js';
+import { moveInstrumentation } from '../../scripts/scripts.js';
+
 const VIDEO_HOSTS = /(fast\.wistia\.(net|com)|youtube\.com|youtu\.be|player\.vimeo\.com)/;
 
 function embedUrl(href) {
@@ -31,7 +34,40 @@ function embedVideos(col) {
   });
 }
 
+/**
+ * Article (style "article", FAQ article body): small image beside a wide text column.
+ * Cells: image, text (one row with two cells; Universal Editor columns hold text, image and
+ * title components, so the text column may mix paragraphs and images).
+ * @param {Element} block The block element
+ */
+function decorateArticle(block) {
+  const cells = [...block.querySelectorAll(':scope > div > div')];
+  if (!cells.length) return;
+  const imageCell = cells.find((cell) => cell.querySelector('picture') && !cell.textContent.trim());
+  const textCell = cells.find((cell) => cell !== imageCell) || document.createElement('div');
+  const row = document.createElement('div');
+
+  const img = imageCell && imageCell.querySelector('img');
+  if (img) {
+    const media = document.createElement('div');
+    media.className = 'columns-article-image';
+    const pic = createOptimizedPicture(img.src, img.alt, false, [{ media: '(min-width: 900px)', width: '600' }, { width: '750' }]);
+    moveInstrumentation(img, pic.querySelector('img'));
+    media.append(pic);
+    row.append(media);
+  }
+
+  textCell.classList.add('columns-article-text');
+  embedVideos(textCell);
+  row.append(textCell);
+  block.replaceChildren(row);
+}
+
 export default function decorate(block) {
+  if (block.classList.contains('article')) {
+    decorateArticle(block);
+    return;
+  }
   const cols = [...block.firstElementChild.children];
   block.classList.add(`columns-${cols.length}-cols`);
 

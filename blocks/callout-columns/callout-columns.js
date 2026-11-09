@@ -11,12 +11,12 @@ export default function decorate(block) {
   if (!introRow) return;
 
   const intro = document.createElement('div');
-  intro.className = 'columns-callout-intro';
+  intro.className = 'callout-columns-intro';
   moveInstrumentation(introRow, intro);
   introRow.querySelectorAll(':scope > div').forEach((cell) => intro.append(...cell.childNodes));
 
   const body = document.createElement('div');
-  body.className = 'columns-callout-body';
+  body.className = 'callout-columns-body';
   const half = Math.ceil(itemRows.length / 2);
   [itemRows.slice(0, half), itemRows.slice(half)].forEach((rows) => {
     if (!rows.length) return;
@@ -26,7 +26,7 @@ export default function decorate(block) {
       moveInstrumentation(row, li);
       row.querySelectorAll(':scope > div').forEach((cell) => li.append(...cell.childNodes));
       const title = li.querySelector('p, h3, h4');
-      if (title && title.querySelector('strong')) title.classList.add('columns-callout-title');
+      if (title && title.querySelector('strong')) title.classList.add('callout-columns-title');
       ul.append(li);
     });
     body.append(ul);

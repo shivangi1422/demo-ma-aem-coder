@@ -88,6 +88,29 @@ export default function transform(hookName, element, payload) {
       element.querySelectorAll(`hr[${MARKER}]`).forEach((hr) => hr.removeAttribute(MARKER));
     }
 
+    // no empty sections: the AEM content converter drops a section without content, while the
+    // local preview renders it (with section spacing). Walk the content in document order and
+    // drop a break when no text or media came since the previous break (or the start), and a
+    // last break with nothing after it.
+    const walker = document.createTreeWalker(element, NodeFilter.SHOW_ELEMENT | NodeFilter.SHOW_TEXT);
+    const redundant = [];
+    let content = false;
+    let lastHr = null;
+    while (walker.nextNode()) {
+      const node = walker.currentNode;
+      if (node.nodeType === Node.TEXT_NODE) {
+        if (node.textContent.trim()) content = true;
+      } else if (node.tagName === 'HR') {
+        if (!content) redundant.push(node);
+        else lastHr = node;
+        content = false;
+      } else if (/^(IMG|PICTURE|IFRAME|VIDEO|TABLE)$/.test(node.tagName)) {
+        content = true;
+      }
+    }
+    if (!content && lastHr) redundant.push(lastHr);
+    redundant.forEach((hr) => hr.remove());
+
     // page metadata
     const { title, description } = payload.mybeckmanMeta || readMeta(document, element);
     const cells = {};

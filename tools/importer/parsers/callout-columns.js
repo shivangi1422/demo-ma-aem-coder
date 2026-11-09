@@ -2,7 +2,7 @@
 /* global WebImporter */
 
 /**
- * Parser for columns-callout (xwalk model: columns-callout, items: columns-callout-item).
+ * Parser for callout-columns (xwalk model: callout-columns, items: callout-columns-item).
  * Source: div.Intro > .Intro__title (h2 + p) | .Intro__body > .Intro__body-item > div (benefit).
  * Output:
  *   row 1: <!-- field:text --> intro (h2, p)
@@ -29,6 +29,6 @@ export default function parse(element, { document }) {
     cells.push([cell]);
   });
 
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns-callout', cells });
+  const block = WebImporter.Blocks.createBlock(document, { name: 'callout-columns', cells });
   element.replaceWith(block);
 }
