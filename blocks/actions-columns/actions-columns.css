@@ -1,4 +1,4 @@
-.columns-actions ul {
+.actions-columns ul {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
@@ -8,23 +8,23 @@
 }
 
 /* mobile: items as wide as their text (source flex items without a width), centred */
-.columns-actions li {
+.actions-columns li {
   margin: 20px 0;
   text-align: center;
 }
 
-.columns-actions p {
+.actions-columns p {
   margin: 14px 0;
   font-size: var(--body-font-size-s);
   font-weight: 400;
   line-height: 23.1px;
 }
 
-.columns-actions p.button-wrapper {
+.actions-columns p.button-wrapper {
   margin: 0;
 }
 
-.columns-actions a.button {
+.actions-columns a.button {
   width: 200px;
   padding: 13px 20px;
   border-color: var(--white);
@@ -34,19 +34,19 @@
   line-height: 22.275px;
 }
 
-.columns-actions a.button:hover,
-.columns-actions a.button:focus-visible {
+.actions-columns a.button:hover,
+.actions-columns a.button:focus-visible {
   border-color: var(--white);
   background-color: var(--brand-blue-dark);
   color: var(--white);
 }
 
 @media (width >= 900px) {
-  .columns-actions ul {
+  .actions-columns ul {
     margin-top: 50px;
   }
 
-  .columns-actions li {
+  .actions-columns li {
     width: 30%;
     margin: 20px 1.6667%;
   }

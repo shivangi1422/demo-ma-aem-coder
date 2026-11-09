@@ -19,12 +19,11 @@
       "breadcrumb",
       "hero-banner",
       "cards-stats",
-      "columns-actions",
-      "columns-article",
+      "actions-columns",
       "faq-list",
       "faq-search",
       "cards-category",
-      "columns-callout",
+      "callout-columns",
       "cards-tile",
       "accordion-faq",
       "contact-form",
@@ -42,6 +41,18 @@
     "id": "accordion-faq",
     "components": [
       "accordion-faq-item"
+    ]
+  },
+  {
+    "id": "actions-columns",
+    "components": [
+      "actions-columns-item"
+    ]
+  },
+  {
+    "id": "callout-columns",
+    "components": [
+      "callout-columns-item"
     ]
   },
   {
@@ -78,18 +89,6 @@
     "id": "cards",
     "components": [
       "card"
-    ]
-  },
-  {
-    "id": "columns-actions",
-    "components": [
-      "columns-actions-item"
-    ]
-  },
-  {
-    "id": "columns-callout",
-    "components": [
-      "columns-callout-item"
     ]
   },
   {

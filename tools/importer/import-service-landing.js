@@ -3,7 +3,7 @@
 
 import heroBannerParser from './parsers/hero-banner.js';
 import cardsStatsParser from './parsers/cards-stats.js';
-import columnsActionsParser from './parsers/columns-actions.js';
+import actionsColumnsParser from './parsers/actions-columns.js';
 import cardsIconParser from './parsers/cards-icon.js';
 import mybeckmanServicePrepareTransformer from './transformers/mybeckman-service-prepare.js';
 import mybeckmanLinksTransformer from './transformers/mybeckman-links.js';
@@ -38,7 +38,7 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "columns-actions",
+      "name": "actions-columns",
       "instances": [
         ".Contact:has(> .Contact__body)"
       ]
@@ -52,7 +52,7 @@ const parsers = {
   // the /service stats band spreads its figures (space-between)
   'cards-stats': (element, ctx) => cardsStatsParser(element, { ...ctx, variant: 'left-aligned' }),
   'cards-icon': cardsIconParser,
-  'columns-actions': columnsActionsParser,
+  'actions-columns': actionsColumnsParser,
 };
 
 // /service page CSS: the hero button is a white outline button (hero-banner `_link_`), and the hero

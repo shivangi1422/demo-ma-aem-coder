@@ -1,16 +1,18 @@
+/* stylelint-disable no-descending-specificity -- the article rules and the :not(.article) rules never match the same block */
+
 /* source .Section__two-column: two equal columns, vertically centred, 30px gap after the first */
-.columns > div {
+.columns:not(.article) > div {
   display: flex;
   flex-direction: column;
 }
 
-.columns img {
+.columns:not(.article) img {
   display: block;
   width: 100%;
   object-fit: cover;
 }
 
-.columns > div > div > p:has(> picture:only-child) {
+.columns:not(.article) > div > div > p:has(> picture:only-child) {
   margin: 0;
 }
 
@@ -27,23 +29,60 @@
   border: 0;
 }
 
+/* article (FAQ article body): small category image beside a wide text column */
+.columns.article > div {
+  display: flex;
+  flex-direction: column;
+}
+
+.columns.article .columns-article-image img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.columns.article .columns-article-text > :first-child {
+  margin-top: 16px;
+}
+
+/* wide tables scroll inside the text column instead of widening the page */
+.columns.article .columns-article-text table {
+  display: block;
+  max-width: 100%;
+  overflow-x: auto;
+}
+
 @media (width >= 900px) {
-  .columns > div {
+  .columns:not(.article) > div {
     align-items: center;
     flex-direction: row;
   }
 
-  .columns > div > div {
+  .columns:not(.article) > div > div {
     flex: 1 1 0;
     min-width: 0;
   }
 
-  .columns > div > div:first-child {
+  .columns:not(.article) > div > div:first-child {
     padding-right: 30px;
   }
 
   /* source two-column photos are cropped to a 350px band */
-  .columns > div > .columns-img-col img {
+  .columns:not(.article) > div > .columns-img-col img {
     height: 350px;
+  }
+
+  .columns.article > div {
+    flex-direction: row;
+    gap: 20px;
+  }
+
+  .columns.article .columns-article-image {
+    flex: 0 0 calc((100% - 40px) / 3);
+  }
+
+  .columns.article .columns-article-text {
+    flex: 1 1 0;
+    min-width: 0;
   }
 }

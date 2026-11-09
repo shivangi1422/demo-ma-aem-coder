@@ -3,9 +3,9 @@
 
 import breadcrumbParser from './parsers/breadcrumb.js';
 import heroBannerParser from './parsers/hero-banner.js';
-import columnsCalloutParser from './parsers/columns-callout.js';
+import calloutColumnsParser from './parsers/callout-columns.js';
 import cardsStatsParser from './parsers/cards-stats.js';
-import columnsActionsParser from './parsers/columns-actions.js';
+import actionsColumnsParser from './parsers/actions-columns.js';
 import columnsParser from './parsers/columns.js';
 import cardsTileParser from './parsers/cards-tile.js';
 import accordionFaqParser from './parsers/accordion-faq.js';
@@ -74,7 +74,7 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "columns-callout",
+      "name": "callout-columns",
       "instances": [
         ".Intro:has(> .Intro__title):has(> .Intro__body)"
       ]
@@ -86,7 +86,7 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "columns-actions",
+      "name": "actions-columns",
       "instances": [
         ".Contact:has(> .Contact__body)"
       ]
@@ -161,9 +161,9 @@ const PAGE_TEMPLATE = {
 const parsers = {
   'breadcrumb': breadcrumbParser,
   'hero-banner': heroBannerParser,
-  'columns-callout': columnsCalloutParser,
+  'callout-columns': calloutColumnsParser,
   'cards-stats': cardsStatsParser,
-  'columns-actions': columnsActionsParser,
+  'actions-columns': actionsColumnsParser,
   'columns': columnsParser,
   'cards-tile': cardsTileParser,
   'accordion-faq': accordionFaqParser,

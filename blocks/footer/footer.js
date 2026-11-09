@@ -11,11 +11,12 @@ function el(tag, className, ...children) {
 /**
  * Embeds the Marketo newsletter form once the footer comes close to the viewport.
  * @param {Element} container element to render the form into
- * @param {string} href Marketo getForm URL (munchkinId and form parameters)
+ * @param {string} href Marketo getForm URL (form parameter; munchkinId as parameter or after '#')
  */
 function embedMarketoForm(container, href) {
   const url = new URL(href);
-  const munchkinId = url.searchParams.get('munchkinId');
+  const munchkinId = url.searchParams.get('munchkinId')
+    || new URLSearchParams(url.hash.slice(1)).get('munchkinId');
   const formId = url.searchParams.get('form');
   if (!munchkinId || !formId) return;
   const form = el('form');
@@ -70,7 +71,7 @@ export default async function decorate(block) {
   // newsletter: heading, intro and the Marketo form
   const news = el('section', 'footer-newsletter');
   if (newsletter) {
-    const formLink = newsletter.querySelector('a[href*="munchkinId"]');
+    const formLink = newsletter.querySelector('a[href*="/form/getForm"]');
     const formHolder = el('div', 'footer-form');
     if (formLink) {
       formLink.closest('p').remove();

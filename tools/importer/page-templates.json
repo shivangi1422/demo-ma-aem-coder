@@ -27,7 +27,7 @@
           ]
         },
         {
-          "name": "columns-actions",
+          "name": "actions-columns",
           "instances": [
             ".Contact:has(> .Contact__body)"
           ]
@@ -90,7 +90,7 @@
           ]
         },
         {
-          "name": "columns-callout",
+          "name": "callout-columns",
           "instances": [
             ".Intro:has(> .Intro__title):has(> .Intro__body)"
           ]
@@ -102,7 +102,7 @@
           ]
         },
         {
-          "name": "columns-actions",
+          "name": "actions-columns",
           "instances": [
             ".Contact:has(> .Contact__body)"
           ]
@@ -860,7 +860,7 @@
           ]
         },
         {
-          "name": "columns-article",
+          "name": "article-columns",
           "instances": [
             "#content-holder > div.row"
           ]
@@ -889,7 +889,7 @@
           ],
           "style": "article",
           "blocks": [
-            "columns-article"
+            "article-columns"
           ],
           "defaultContent": [
             "#content-holder > h1"

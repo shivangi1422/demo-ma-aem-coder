@@ -4,13 +4,16 @@ const MARKETO = /\/index\.php\/form\/getForm/;
 const FORMASSEMBLY = /\.tfaforms\.(net|com)$/;
 
 /**
- * Marketo form link: https://<instance>/index.php/form/getForm?munchkinId=<id>&form=<formId>
+ * Marketo form link: https://<instance>/index.php/form/getForm?form=<formId>#munchkinId=<id>
+ * (munchkinId may also be a query parameter; in AEM content it stays after '#', since the
+ * content converter does not escape a second query parameter)
  * @param {URL} url form link
  * @returns {{ base: string, munchkinId: string, formId: string } | null}
  */
 function marketoConfig(url) {
   if (!MARKETO.test(url.pathname)) return null;
-  const munchkinId = url.searchParams.get('munchkinId');
+  const munchkinId = url.searchParams.get('munchkinId')
+    || new URLSearchParams(url.hash.slice(1)).get('munchkinId');
   const formId = url.searchParams.get('form');
   if (!munchkinId || !formId) return null;
   return { base: `//${url.host}`, munchkinId, formId };

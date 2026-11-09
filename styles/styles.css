@@ -122,6 +122,13 @@ ol {
   padding-left: 40px;
 }
 
+/* list items holding paragraphs keep the tight list spacing: AEM stores items of text lists that
+   have line breaks or images as paragraphs (loose list), the source and the import keep them inline
+   (default content only: blocks build their own list items with paragraphs) */
+main .default-content-wrapper li > p {
+  margin: 0;
+}
+
 strong,
 b,
 th {
@@ -346,12 +353,12 @@ main .section.blue > .default-content-wrapper p {
 }
 
 /* an image right after a button starts the next item (source product lists) */
-main .default-content-wrapper > p.button-wrapper + p:has(> picture:only-child) {
+main .default-content-wrapper p.button-wrapper + p:has(> picture:only-child) {
   margin-top: 0;
 }
 
 /* Get in Touch (source #getInTouch: 40px above, extra 2vw below; centred as the source .Contact) */
-main .section.blue.columns-actions-container {
+main .section.blue.actions-columns-container {
   text-align: center;
   margin-top: var(--section-spacing);
   padding: 2vw 0 4vw;
@@ -369,7 +376,7 @@ main .section.blue.columns-actions-container {
 }
 
 /* Get in Touch: 40px above as everywhere, 4vw inside at the top and 2vw at the bottom on phones */
-.service-landing main > .section.blue.columns-actions-container {
+.service-landing main > .section.blue.actions-columns-container {
   padding: 4vw 0 2vw;
 }
 
@@ -378,7 +385,7 @@ main .section.blue.columns-actions-container {
     padding: 2vw 0;
   }
 
-  .service-landing main > .section.blue.columns-actions-container {
+  .service-landing main > .section.blue.actions-columns-container {
     padding: 2vw 0 4vw;
   }
 
@@ -408,7 +415,7 @@ main .section.blue.columns-actions-container {
 
 /* product-detail sub-headings (source .product-page-sub-heading-wrapper): grey rule across the column,
    blue accent under the heading text only (the fit-content grid column is as wide as the text) */
-.product-detail main .default-content-wrapper > h3 {
+.product-detail main .default-content-wrapper h3 {
   display: grid;
   grid-template-columns: fit-content(100%);
   row-gap: 11px;
@@ -421,7 +428,7 @@ main .section.blue.columns-actions-container {
   line-height: 31.9px;
 }
 
-.product-detail main .default-content-wrapper > h3::after {
+.product-detail main .default-content-wrapper h3::after {
   content: '';
   position: relative;
   top: 1px;

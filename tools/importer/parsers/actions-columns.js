@@ -2,7 +2,7 @@
 /* global WebImporter */
 
 /**
- * Parser for columns-actions (xwalk items: columns-actions-item: link (+linkText), text).
+ * Parser for actions-columns (xwalk items: actions-columns-item: link (+linkText), text).
  * Source: div.Contact > h2, p (kept as default content) + .Contact__body > div (a.btn + p).
  * Output: one row per action: [<!-- field:link --><p><a></a></p>] [<!-- field:text --><p>caption</p>]
  */
@@ -30,7 +30,7 @@ export default function parse(element, { document }) {
     }
     cells.push([linkCell, textCell]);
   });
-  const block = WebImporter.Blocks.createBlock(document, { name: 'columns-actions', cells });
+  const block = WebImporter.Blocks.createBlock(document, { name: 'actions-columns', cells });
   body.replaceWith(block);
   // heading and intro stay as default content in the (blue) section
   element.replaceWith(...element.childNodes);

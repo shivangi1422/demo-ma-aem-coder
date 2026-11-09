@@ -11,12 +11,16 @@
  *  - links that are dead on the source (Sitecore notfound.aspx, empty href, bare '#') are unlinked,
  *    keeping their text; links left with no text or media are removed
  *  - moved external documents: old www.dtic.mil report PDFs point at the current DTIC citation page
+ *  - media.beckman.com document links lose their cache-key query; captured sso.beckmancoulter.com
+ *    sign-in URLs (single-use state/nonce) point at /sign-in (both had '&', which the AEM content
+ *    converter leaves unescaped in button links -> invalid XML)
  *  - FAQ leaf URLs left out of the import (copies of their parent listing on the source) point at
  *    the parent listing (P7 decision; the same 22 URLs are listed as redirects for the content team)
  * Links to pages outside the migrated scope stay root-relative (P7 decision).
  */
 
 const SITE_HOST = /^(www\.)?mybeckman\.in$/i;
+const DOCUMENT = /\.(pdf|docx?|xlsx?|pptx?|zip)$/i;
 
 const LEAF_PARENTS = {
   '/support/faq/product': [
@@ -108,6 +112,17 @@ function rewriteLinks(root) {
       a.setAttribute('href', `https://apps.dtic.mil/sti/citations/ADA${dtic[1]}`);
       return;
     }
+    // media documents: the query only holds cache keys (sc_lang, rev, hash); the AEM content converter
+    // does not escape '&' in button links, so a multi-parameter query makes the page invalid XML
+    if (/(^|\.)media\.beckman\.com$/i.test(url.hostname) && DOCUMENT.test(url.pathname) && url.search) {
+      a.setAttribute('href', `${url.origin}${url.pathname}${url.hash}`);
+      return;
+    }
+    // captured single-use sign-in URLs (OIDC state/nonce of the source session) -> the site sign-in page
+    if (/^sso\.beckmancoulter\.com$/i.test(url.hostname) && /\/openid-connect\/auth$/.test(url.pathname)) {
+      a.setAttribute('href', '/sign-in');
+      return;
+    }
     if (!SITE_HOST.test(url.hostname)) return;
     const path = url.pathname.replace(/\/$/, '') || '/';
     const target = LEAF_REDIRECTS[path] || path;
@@ -117,8 +132,42 @@ function rewriteLinks(root) {
   root.querySelectorAll('a[href]').forEach((a) => { if (isEmpty(a)) a.remove(); });
 }
 
+// plain emails and URLs in text: the AEM content converter auto-links them (GFM autolink literals),
+// so link them here too and the local page matches what AEM stores
+const AUTOLINK = /([\w.+-]+@[\w-]+(?:\.[\w-]+)+)|((?:https?:\/\/|www\.)[^\s<>"]+[^\s<>".,;:!?)\]'])/g;
+
+function autolink(document, root) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT);
+  const nodes = [];
+  while (walker.nextNode()) {
+    const node = walker.currentNode;
+    if (!node.parentElement.closest('a, script, style, code, pre') && AUTOLINK.test(node.textContent)) nodes.push(node);
+    AUTOLINK.lastIndex = 0;
+  }
+  nodes.forEach((node) => {
+    const text = node.textContent;
+    const frag = document.createDocumentFragment();
+    let last = 0;
+    text.replace(AUTOLINK, (match, email, url, offset) => {
+      frag.append(text.slice(last, offset));
+      const a = document.createElement('a');
+      if (email) a.href = `mailto:${email}`;
+      else a.href = url.startsWith('www.') ? `http://${url}` : url;
+      a.textContent = match;
+      frag.append(a);
+      last = offset + match.length;
+      return match;
+    });
+    frag.append(text.slice(last));
+    node.replaceWith(frag);
+  });
+}
+
 export default function transform(hookName, element, payload) {
   const document = element.ownerDocument || (payload && payload.document);
   if (hookName === 'beforeTransform') rewriteAnchors(document, element);
-  if (hookName === 'afterTransform') rewriteLinks(element);
+  if (hookName === 'afterTransform') {
+    rewriteLinks(element);
+    autolink(document, element);
+  }
 }

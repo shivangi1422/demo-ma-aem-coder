@@ -2,7 +2,7 @@
 /* global WebImporter */
 
 import breadcrumbParser from './parsers/breadcrumb.js';
-import columnsArticleParser from './parsers/columns-article.js';
+import articleColumnsParser from './parsers/article-columns.js';
 import mybeckmanLinksTransformer from './transformers/mybeckman-links.js';
 import mybeckmanCleanupTransformer from './transformers/mybeckman-cleanup.js';
 import mybeckmanSectionsTransformer from './transformers/mybeckman-sections.js';
@@ -596,7 +596,7 @@ const PAGE_TEMPLATE = {
       ]
     },
     {
-      "name": "columns-article",
+      "name": "article-columns",
       "instances": [
         "#content-holder > div.row"
       ]
@@ -625,7 +625,7 @@ const PAGE_TEMPLATE = {
       ],
       "style": "article",
       "blocks": [
-        "columns-article"
+        "article-columns"
       ],
       "defaultContent": [
         "#content-holder > h1"
@@ -636,7 +636,7 @@ const PAGE_TEMPLATE = {
 
 const parsers = {
   breadcrumb: breadcrumbParser,
-  'columns-article': columnsArticleParser,
+  'article-columns': articleColumnsParser,
 };
 // cleanup first (chrome removal, text normalisation), then section breaks + page metadata
 const transformers = [mybeckmanLinksTransformer, mybeckmanCleanupTransformer, mybeckmanSectionsTransformer];
