@@ -54,6 +54,12 @@
     ]
   },
   {
+    "id": "cards-resource",
+    "components": [
+      "cards-resource-item"
+    ]
+  },
+  {
     "id": "cards-stats",
     "components": [
       "cards-stats-item"

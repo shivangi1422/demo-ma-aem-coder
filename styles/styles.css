@@ -387,6 +387,48 @@ main .section.blue.columns-actions-container {
   }
 }
 
+/* template product-detail (beckman.com product page): from 1200px the content runs 50px from the
+   viewport edges (1340px at 1440, up to 1500px), the breadcrumb is fluid, the FAQ keeps the 1170px
+   container; the anchor bar stays full width (its own block rule) */
+@media (width >= 1200px) {
+  .product-detail main > .section > div:not(.columns-anchor-nav-wrapper) {
+    max-width: 1600px;
+    padding: 0 50px;
+  }
+
+  .product-detail main > .section:first-of-type > div {
+    max-width: none;
+  }
+
+  .product-detail main > .section > div.accordion-faq-wrapper {
+    max-width: var(--content-max-width);
+    padding: 0;
+  }
+}
+
+/* product-detail sub-headings (source .product-page-sub-heading-wrapper): grey rule across the column,
+   blue accent under the heading text only (the fit-content grid column is as wide as the text) */
+.product-detail main .default-content-wrapper > h3 {
+  display: grid;
+  grid-template-columns: fit-content(100%);
+  row-gap: 11px;
+  margin: 75px 0 25px;
+  padding: 0;
+  border-bottom: 1px solid #ddd;
+  color: #001728;
+  font-size: 29px;
+  font-weight: 300;
+  line-height: 31.9px;
+}
+
+.product-detail main .default-content-wrapper > h3::after {
+  content: '';
+  position: relative;
+  top: 1px;
+  height: 1px;
+  background: #59baff;
+}
+
 /* article: FAQ article main column (source col-md-8 of a 20px-gutter row), no section spacing */
 main > .section.article {
   margin: 0;

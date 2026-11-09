@@ -1,0 +1,22 @@
+{
+  "variantName": "columns-anchor-nav",
+  "baseBlock": "columns",
+  "canonicalModel": "standalone",
+  "visualCharacteristics": {
+    "purpose": "sticky in-page navigation bar linking to sections of the same page, highlighting the section in view",
+    "layout": "single non-wrapping row of links (horizontal scroll on narrow screens, centred from 900px); fixed to the top of the viewport once scrolled past",
+    "sourceSelector": "#intrenal-page-link-wrapper"
+  },
+  "contentPattern": {
+    "structure": "one row, one cell: links to '#id' anchors on the same page (bulleted list or one link per paragraph); links whose target id is not on the page are hidden"
+  },
+  "options": [],
+  "memberVariantIds": [],
+  "usage": [
+    {
+      "url": "https://www.beckman.com/air-particle-counters/met-one-6000",
+      "selector": "#intrenal-page-link-wrapper"
+    }
+  ],
+  "reuseGuidance": "Use for 'jump to' bars on long product pages. Link targets must be ids present on the page (heading ids, e.g. #content-and-resources)."
+}

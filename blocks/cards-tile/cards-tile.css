@@ -58,3 +58,65 @@
     flex: 1 1 0;
   }
 }
+
+/* product-detail template (beckman.com .download-res): a row of fixed-width bordered download
+   cards (24% of the row, 96% on mobile) with a red outlined button; scoped so the
+   mybeckman.in product tiles above stay unchanged */
+.product-detail .cards-tile > ul {
+  justify-content: flex-start;
+  gap: 16px;
+  padding: 0 0 12px;
+}
+
+.product-detail .cards-tile > ul > li {
+  box-sizing: border-box;
+  flex: 0 0 96%;
+  justify-content: flex-start;
+  margin: 0;
+  border: 1px solid #e6e6e6;
+  padding: 16px 24px;
+  background-color: var(--white);
+  box-shadow: none;
+  transition: none;
+}
+
+.product-detail .cards-tile > ul > li:hover {
+  box-shadow: none;
+}
+
+.product-detail .cards-tile .cards-tile-image img {
+  height: 180px;
+  margin: 0 0 16px;
+  padding: 0;
+}
+
+.product-detail .cards-tile .cards-tile-body :is(h2, h3, h4) {
+  margin: 0 0 12px;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 21.6px;
+  color: var(--text-color);
+}
+
+.product-detail .cards-tile .cards-tile-body a.button:any-link {
+  border-color: #e21f26;
+  padding: 8px;
+  background-color: transparent;
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 26.4px;
+  color: #e21f26;
+}
+
+.product-detail .cards-tile .cards-tile-body a.button:any-link:hover,
+.product-detail .cards-tile .cards-tile-body a.button:any-link:focus-visible {
+  border-color: #e21f26;
+  background-color: #e21f26;
+  color: var(--white);
+}
+
+@media (width >= 900px) {
+  .product-detail .cards-tile > ul > li {
+    flex: 0 0 24%;
+  }
+}

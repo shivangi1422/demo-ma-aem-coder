@@ -35,6 +35,10 @@
             {
               "name": "Service landing (inset sections)",
               "value": "service-landing"
+            },
+            {
+              "name": "Product detail",
+              "value": "product-detail"
             }
           ]
         }

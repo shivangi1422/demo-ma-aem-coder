@@ -197,3 +197,47 @@
   position: absolute;
   inset: 0;
 }
+
+/* ---------------------------------------------------------------------------------------------
+   product-detail template (beckman.com product pages, source #features-wrapper .bc-columns.row):
+   text-only feature cards, stacked on phones, four equal columns (col-xs-3) from 768px;
+   small bold dark-navy titles, plain grey text. Scoped to the default (no-variant) block so
+   the horizontal / bordered / tiles variants and the service pages are untouched.
+   On phones the list is a flow-root so the first title's top margin stays inside the block
+   (the source row's clearfix ::before stops it collapsing into the heading margin above).
+   --------------------------------------------------------------------------------------------- */
+.product-detail .cards-icon:not(.horizontal, .bordered, .tiles) > ul {
+  display: flow-root;
+}
+
+.product-detail .cards-icon:not(.horizontal, .bordered, .tiles) > ul > li {
+  width: auto;
+  margin: 0;
+  padding: 0;
+}
+
+.product-detail .cards-icon:not(.horizontal, .bordered, .tiles) .cards-icon-body :is(h2, h3, h4) {
+  margin: 21.28px 0;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 20.8px;
+  color: #001728;
+}
+
+.product-detail .cards-icon:not(.horizontal, .bordered, .tiles) .cards-icon-body p {
+  margin: 0;
+}
+
+@media (width >= 768px) {
+  .product-detail .cards-icon:not(.horizontal, .bordered, .tiles) > ul {
+    display: flex;
+    flex-wrap: nowrap;
+    margin: 0 -10px;
+  }
+
+  .product-detail .cards-icon:not(.horizontal, .bordered, .tiles) > ul > li {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0 10px;
+  }
+}

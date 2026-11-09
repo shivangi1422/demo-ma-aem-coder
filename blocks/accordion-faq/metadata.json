@@ -1,0 +1,42 @@
+{
+  "variantName": "accordion-faq",
+  "baseBlock": "accordion-faq",
+  "canonicalModel": "collection",
+  "visualCharacteristics": {
+    "purpose": "FAQ list of questions and answers",
+    "layout": "default: grey question bars with +/- toggle, answer opens below; plain: ruled open list with a ▸ toggle; open: grey boxes with a left rule, question heading and answer always visible, no toggle"
+  },
+  "contentPattern": {
+    "structure": "summary (question, plain text) | text (answer, rich text)"
+  },
+  "options": [
+    {
+      "class": "plain",
+      "label": "Plain (ruled list, no grey bars)"
+    },
+    {
+      "class": "open",
+      "label": "Open (all answers visible in grey boxes, no toggle)"
+    }
+  ],
+  "memberVariantIds": [],
+  "usage": [
+    {
+      "url": "/support/ecommerce",
+      "options": [
+        "plain"
+      ]
+    },
+    {
+      "url": "windows-10 FAQ page"
+    },
+    {
+      "url": "https://www.beckman.com/air-particle-counters/met-one-6000",
+      "options": [
+        "open"
+      ],
+      "selector": "div.bcls-aeo-faqs > div.bcls-aeo-faq"
+    }
+  ],
+  "reuseGuidance": "Use the default for collapsible FAQs, 'plain' for the ruled open list, 'open' when every answer must be visible (product page FAQs)."
+}

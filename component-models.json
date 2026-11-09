@@ -34,6 +34,10 @@
           {
             "name": "Service landing (inset sections)",
             "value": "service-landing"
+          },
+          {
+            "name": "Product detail",
+            "value": "product-detail"
           }
         ]
       }
@@ -189,6 +193,10 @@
           {
             "name": "Plain (ruled list, no grey bars)",
             "value": "plain"
+          },
+          {
+            "name": "Open (all answers visible in grey boxes, no toggle)",
+            "value": "open"
           }
         ]
       }
@@ -294,6 +302,27 @@
         "value": "",
         "label": "Text",
         "description": "Title (heading) and a short description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "cards-resource-item",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Thumbnail",
+        "description": "Optional; without it a document (PDF) icon is shown",
+        "multi": false
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Title as a link to the document, optionally followed by a short description",
         "valueType": "string"
       }
     ]
@@ -414,6 +443,19 @@
     ]
   },
   {
+    "id": "columns-anchor-nav",
+    "fields": [
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Links",
+        "description": "Bulleted list of links to sections on this page (link URL '#id' of a heading or section); links whose target is missing on the page are hidden",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "columns-article",
     "fields": [
       {
@@ -462,6 +504,33 @@
         "value": "",
         "label": "Text",
         "description": "Bold title paragraph (shown with a check icon) followed by the description",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
+    "id": "columns-product-intro",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Product image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Product image alt text",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Text",
+        "description": "Title (Heading 1), introduction, a bulleted checklist, buttons (bold link = primary, italic link = secondary), then a bold label such as 'Resources + Tools' followed by a bulleted list of links",
         "valueType": "string"
       }
     ]

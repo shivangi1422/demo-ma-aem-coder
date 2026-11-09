@@ -1,0 +1,223 @@
+/* product intro (source .product-intro-wrapper): product image | title, intro, checklist,
+   buttons and a "Resources + Tools" link table.
+   Mobile: text first, product image below (source .rt-holder before .lt-holder) */
+.columns-product-intro {
+  margin: 0 0 48px;
+  padding: 24px 0 19px;
+}
+
+.columns-product-intro > div {
+  display: flex;
+  flex-direction: column;
+}
+
+/* text column (source .rt-holder) */
+.columns-product-intro .columns-product-intro-content {
+  padding: 0 14px 10px;
+}
+
+.columns-product-intro .columns-product-intro-content > h1 {
+  margin: 0.67em 0;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.columns-product-intro .columns-product-intro-content > p {
+  margin: 16px 0;
+}
+
+/* image column (source .lt-holder > .product-gallery-carousel) */
+.columns-product-intro .columns-product-intro-media {
+  order: 1;
+  margin: 0 38px 22px;
+  padding: 25px 11px 0;
+  text-align: center;
+}
+
+.columns-product-intro .columns-product-intro-media img {
+  display: inline-block;
+  width: auto;
+  max-width: min(100%, 260px);
+  height: auto;
+  vertical-align: top;
+}
+
+/* checklist with circled check icons */
+.columns-product-intro .columns-product-intro-checklist {
+  margin: 0 0 10px 8px;
+  padding: 0 0 0 15px;
+  list-style: none;
+}
+
+.columns-product-intro .columns-product-intro-checklist li {
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.columns-product-intro .columns-product-intro-checklist li::before {
+  content: '';
+  display: inline-block;
+  width: 15px;
+  height: 15px;
+  margin: 0 6px 0 -23px;
+  background-color: #05a379;
+  vertical-align: -2px;
+  mask: url('../../icons/check-circle.svg') center / contain no-repeat;
+}
+
+/* buttons: "Explore models" (outlined) and "Request a Quote" (primary) */
+.columns-product-intro .columns-product-intro-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 40px;
+  margin: 35px 0 40px;
+}
+
+.columns-product-intro .columns-product-intro-actions p.button-wrapper {
+  margin: 0;
+}
+
+main .columns-product-intro .columns-product-intro-actions a.button.secondary:any-link {
+  box-sizing: border-box;
+  width: 297px;
+  min-height: 58px;
+  padding: 0 20px;
+  border: 1px solid #ddd;
+  border-radius: 0;
+  background-color: transparent;
+  color: #000;
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 22px;
+}
+
+main .columns-product-intro .columns-product-intro-actions a.button.secondary:hover,
+main .columns-product-intro .columns-product-intro-actions a.button.secondary:focus-visible {
+  border-color: #ddd;
+  background-color: transparent;
+  color: #000;
+}
+
+/* source: fa-angle-double-down after the label */
+main .columns-product-intro .columns-product-intro-actions a.button.secondary::after {
+  content: '';
+  flex: none;
+  width: 8px;
+  height: 1em;
+  margin-left: 5px;
+  background-color: currentcolor;
+  mask: url('../../icons/angle-double-down.svg') center / contain no-repeat;
+}
+
+main .columns-product-intro .columns-product-intro-actions a.button.primary:any-link {
+  padding: 12px 20px;
+  font-size: 13.5px;
+  line-height: 22px;
+}
+
+/* "Resources + Tools" link table */
+.columns-product-intro .columns-product-intro-resources {
+  margin: 0 0 20px;
+}
+
+.columns-product-intro .columns-product-intro-resources-label {
+  margin: 0 0 10px;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 22px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.columns-product-intro .columns-product-intro-resources-label strong {
+  font-weight: inherit;
+}
+
+.columns-product-intro .columns-product-intro-resources-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.columns-product-intro .columns-product-intro-resources-list li {
+  border-top: 1px solid #f0f0f0;
+  border-left: 1px solid #f0f0f0;
+}
+
+.columns-product-intro .columns-product-intro-resources-list li:nth-child(even),
+.columns-product-intro .columns-product-intro-resources-list li:last-child {
+  border-right: 1px solid #f0f0f0;
+}
+
+.columns-product-intro .columns-product-intro-resources-list li:last-child,
+.columns-product-intro .columns-product-intro-resources-list li:nth-child(odd):nth-last-child(2) {
+  border-bottom: 1px solid #f0f0f0;
+}
+
+.columns-product-intro .columns-product-intro-resources-list a:any-link {
+  display: block;
+  padding: 10px;
+  font-size: 16px;
+  line-height: 24px;
+  text-decoration: underline;
+}
+
+@media (width >= 900px) {
+  .columns-product-intro {
+    padding: 0;
+  }
+
+  .columns-product-intro > div {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .columns-product-intro .columns-product-intro-media,
+  .columns-product-intro .columns-product-intro-content {
+    flex: 1 1 0;
+    min-width: 0;
+  }
+
+  .columns-product-intro .columns-product-intro-content {
+    padding: 0 0 0 10px;
+  }
+
+  .columns-product-intro .columns-product-intro-content > h1 {
+    color: #001728;
+    font-size: 42px;
+  }
+
+  .columns-product-intro .columns-product-intro-media {
+    order: 0;
+    margin: 0;
+    padding: 49px 10px 30px 0;
+  }
+
+  .columns-product-intro .columns-product-intro-media img {
+    max-width: 100%;
+    max-height: 400px;
+  }
+
+  .columns-product-intro .columns-product-intro-checklist {
+    padding-left: 20px;
+  }
+
+  /* buttons sit on one line, vertically centred */
+  .columns-product-intro .columns-product-intro-actions {
+    flex-flow: row wrap;
+    align-items: center;
+    gap: 0 39px;
+    margin-top: 45px;
+  }
+
+  main .columns-product-intro .columns-product-intro-actions a.button.secondary:any-link {
+    width: auto;
+    min-height: 62px;
+    padding: 0 35px;
+    font-size: 13px;
+  }
+}

@@ -122,7 +122,35 @@ function parseHorizontal(element, document) {
   element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'Cards Icon (horizontal)', cells }));
 }
 
+// www.beckman.com product page features (#features-wrapper > div.bc-columns.row): .bc-column >
+// .bc-rich-text (h4 title, div.bc-rich-text-desc text), no icons -> empty image cell
+function parseFeatures(element, document) {
+  const cards = [...element.querySelectorAll(':scope > .bc-column')];
+  const cells = [];
+  cards.forEach((card) => {
+    const parts = [];
+    const title = card.querySelector('h2, h3, h4, h5, h6');
+    if (title && title.textContent.trim()) parts.push(title);
+    card.querySelectorAll('.bc-rich-text-desc').forEach((desc) => {
+      const blocks = [...desc.children].filter((n) => /^(P|UL|OL)$/.test(n.tagName));
+      if (blocks.length) { blocks.forEach((n) => parts.push(n)); return; }
+      if (!desc.textContent.trim()) return;
+      const p = document.createElement('p');
+      p.append(...desc.childNodes);
+      parts.push(p);
+    });
+    if (!parts.length) return;
+    const textCell = document.createDocumentFragment();
+    textCell.appendChild(document.createComment(' field:text '));
+    parts.forEach((n) => textCell.appendChild(n));
+    cells.push([document.createDocumentFragment(), textCell]);
+  });
+  if (!cells.length) return;
+  element.replaceWith(WebImporter.Blocks.createBlock(document, { name: 'cards-icon', cells }));
+}
+
 export default function parse(element, { document }) {
+  if (element.classList.contains('bc-columns') && element.querySelector(':scope > .bc-column')) { parseFeatures(element, document); return; }
   if (element.classList.contains('menu')) { parseTiles(element, document); return; }
   if (element.classList.contains('ServiceCards')) { parseBordered(element, document); return; }
   if (!element.classList.contains('Content__body')) { parseHorizontal(element, document); return; }

@@ -73,7 +73,38 @@ function parseDetails(element, document) {
   });
 }
 
+// www.beckman.com product page FAQs: .bcls-aeo-faqs (h2 + div.bcls-aeo-faq: h6 question, answer
+// p/ul, empty p and comments): every run of items becomes one block, variant open; the h2 stays
+// default content before it
+function parseAeo(element, document) {
+  const runs = [];
+  let run = null;
+  [...element.children].forEach((el) => {
+    if (el.classList.contains('bcls-aeo-faq')) {
+      if (!run) { run = []; runs.push(run); }
+      run.push(el);
+    } else run = null;
+  });
+  runs.forEach((items) => {
+    const cells = items.map((item) => {
+      const summary = document.createDocumentFragment();
+      summary.appendChild(document.createComment(' field:summary '));
+      const q = item.querySelector(':scope > h1, :scope > h2, :scope > h3, :scope > h4, :scope > h5, :scope > h6');
+      summary.appendChild(document.createTextNode(q ? q.textContent.replace(/\s+/g, ' ').trim() : ''));
+      if (q) q.remove();
+      const text = document.createDocumentFragment();
+      text.appendChild(document.createComment(' field:text '));
+      answerNodes(document, item).forEach((n) => text.appendChild(n));
+      return [summary, text];
+    });
+    const block = WebImporter.Blocks.createBlock(document, { name: 'Accordion Faq (open)', cells });
+    items[0].replaceWith(block);
+    items.slice(1).forEach((d) => d.remove());
+  });
+}
+
 export default function parse(element, { document }) {
+  if (element.querySelector(':scope > .bcls-aeo-faq')) { parseAeo(element, document); return; }
   if (element.querySelector(':scope > details')) { parseDetails(element, document); return; }
   // group consecutive label + .Content pairs into runs
   const runs = [];

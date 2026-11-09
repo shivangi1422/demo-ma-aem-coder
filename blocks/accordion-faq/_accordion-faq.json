@@ -45,6 +45,10 @@
             {
               "name": "Plain (ruled list, no grey bars)",
               "value": "plain"
+            },
+            {
+              "name": "Open (all answers visible in grey boxes, no toggle)",
+              "value": "open"
             }
           ]
         }

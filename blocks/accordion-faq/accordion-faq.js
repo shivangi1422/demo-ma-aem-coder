@@ -2,17 +2,20 @@ import { moveInstrumentation } from '../../scripts/scripts.js';
 
 /**
  * FAQ accordion: grey question bars with a +/- marker, the answer opens below.
+ * Option "open": every item is a box with the question as a heading and the answer
+ * always visible (no toggle).
  * Items: summary (question), text (answer).
  * @param {Element} block The block element
  */
 export default function decorate(block) {
+  const open = block.classList.contains('open');
   [...block.children].forEach((row) => {
     const [questionCell, answerCell] = row.children;
-    const details = document.createElement('details');
+    const details = document.createElement(open ? 'div' : 'details');
     details.className = 'accordion-faq-item';
     moveInstrumentation(row, details);
 
-    const summary = document.createElement('summary');
+    const summary = document.createElement(open ? 'h3' : 'summary');
     summary.className = 'accordion-faq-question';
     if (questionCell) summary.append(...questionCell.childNodes);
     // the question is authored as plain text; keep inline markup but drop the paragraph
