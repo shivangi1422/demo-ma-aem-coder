@@ -1,4 +1,4 @@
-import { moveInstrumentation } from '../../scripts/scripts.js';
+import { moveInstrumentation, unwrapRichtext } from '../../scripts/scripts.js';
 
 /**
  * Returns the id an in-page link points to, or null for links to other pages.
@@ -19,6 +19,34 @@ function targetId(a) {
 }
 
 /**
+ * Heading id as the publishing pipeline generates it (github-slugger): lower case,
+ * punctuation dropped, spaces to hyphens.
+ * @param {string} text heading text
+ * @returns {string}
+ */
+function slug(text) {
+  return text.replace(/\s+/g, ' ').trim().toLowerCase()
+    .replace(/[^\p{L}\p{M}\p{N}\p{Pc} -]/gu, '')
+    .replace(/ /g, '-');
+}
+
+/**
+ * Finds the element a link points to. Published pages carry heading ids; the author
+ * instance (Universal Editor) renders headings without them, so fall back to the heading
+ * whose text gives that id, and set the id on it.
+ * @param {string} id target id
+ * @returns {Element|null}
+ */
+function findTarget(id) {
+  const byId = document.getElementById(id);
+  if (byId) return byId;
+  const heading = [...document.querySelectorAll('main :is(h1, h2, h3, h4, h5, h6):not([id])')]
+    .find((h) => slug(h.textContent) === id);
+  if (heading) heading.id = id;
+  return heading || null;
+}
+
+/**
  * Sticky in-page navigation: a bar of links to sections of the same page that sticks to
  * the top of the viewport once scrolled past and highlights the section in view.
  * Content: one cell with the links (a bulleted list or one link per paragraph).
@@ -29,7 +57,10 @@ export default function decorate(block) {
   const nav = document.createElement('nav');
   nav.setAttribute('aria-label', 'On this page');
   const cell = block.querySelector(':scope > div > div');
-  if (cell) moveInstrumentation(cell, nav);
+  if (cell) {
+    unwrapRichtext(cell);
+    moveInstrumentation(cell, nav);
+  }
 
   const ul = document.createElement('ul');
   const entries = [];
@@ -37,7 +68,7 @@ export default function decorate(block) {
     a.classList.remove('button', 'primary', 'secondary', 'accent');
     const li = document.createElement('li');
     const id = targetId(a);
-    const target = id ? document.getElementById(id) : null;
+    const target = id ? findTarget(id) : null;
     if (id && !target) li.hidden = true;
     if (target) entries.push({ a, target });
     li.append(a);
