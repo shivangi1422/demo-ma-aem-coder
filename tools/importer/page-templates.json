@@ -691,6 +691,42 @@
           ]
         }
       ]
+    },
+    {
+      "name": "support-faq",
+      "urls": [
+        "https://www.mybeckman.in/support/faq"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/support/faq",
+      "description": "Support FAQ landing page: H1 and intro text, then a 2-up list of eight FAQ category tiles (90px thumbnail, uppercase title, description) linking to /support/faq/<category>",
+      "blocks": [
+        {
+          "name": "cards-grid-thumblist",
+          "instances": [
+            "#content-holder > div.row:has(a.faq-item)",
+            ".faq-section #content-holder > .row"
+          ]
+        }
+      ],
+      "urlPattern": "/support/faq",
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "FAQ landing main content",
+          "selector": [
+            ".two-columns-holder.faq-section",
+            "#main > div.main-holder > div.container:nth-of-type(2)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-thumblist"
+          ],
+          "defaultContent": [
+            "#content-holder > h1",
+            "#content-holder > p:nth-of-type(1)"
+          ]
+        }
+      ]
     }
   ]
 }

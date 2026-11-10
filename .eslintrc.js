@@ -18,5 +18,7 @@ module.exports = {
     'import/extensions': ['error', { js: 'always' }], // require js file extensions in imports
     'linebreak-style': ['error', 'unix'], // enforce unix linebreaks
     'no-param-reassign': [2, { props: false }], // allow modifying properties of param
+    // tabular comparison rows need one cell per column (feature label + 5 plans)
+    'xwalk/max-cells': ['error', { '*': 4, 'table-comparison-row': 6 }],
   },
 };

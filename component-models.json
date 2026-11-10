@@ -267,6 +267,10 @@
           {
             "name": "Related products (carousel: image, title, text; prev/next)",
             "value": "related"
+          },
+          {
+            "name": "Thumb List (2-up: 90px square thumbnail left of uppercase title and text)",
+            "value": "thumblist"
           }
         ]
       }

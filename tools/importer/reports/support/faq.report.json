@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/support/faq",
+  "path": "support/faq",
+  "timestamp": "2026-11-10T07:22:39.039Z",
+  "title": "FAQs, Life Sciences",
+  "template": "support-faq",
+  "blocks": [
+    "cards-grid-thumblist"
+  ],
+  "importScript": "f6e6fb95a4be"
+}

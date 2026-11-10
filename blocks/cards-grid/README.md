@@ -21,9 +21,10 @@ Repeating rows — one row per item. Each item: row 1: optional heading/intro te
 | Content List (3-up: bordered 4:3 image, light H3, linked text) | `contentlist` |
 | Icon Left (2-up: small icon beside bold title, text, red button) | `icon-left` |
 | Buttons (red link tiles with white icon) | `buttons` |
+| Thumb List (2-up: 90px square thumbnail left of uppercase title and text) | `thumblist` |
 
 ## Universal Editor fields
 
 - Content fields derived from the block's decorate contract.
-- `classes` select for options: Solutions (image + category + link), Product Lines (image + title), Insights (intro + text cards), Simple (4-up: image + tag + title + link), Features (centered, borderless, no image), Products (large image + H3 title + Read More button), Content List (3-up: bordered 4:3 image, light H3, linked text), Icon Left (2-up: small icon beside bold title, text, red button), Buttons (red link tiles with white icon).
+- `classes` select for options: Solutions (image + category + link), Product Lines (image + title), Insights (intro + text cards), Simple (4-up: image + tag + title + link), Features (centered, borderless, no image), Products (large image + H3 title + Read More button), Content List (3-up: bordered 4:3 image, light H3, linked text), Icon Left (2-up: small icon beside bold title, text, red button), Buttons (red link tiles with white icon), Thumb List (2-up: 90px square thumbnail left of uppercase title and text).
 - A separate `-item` model defines one repeated item.
