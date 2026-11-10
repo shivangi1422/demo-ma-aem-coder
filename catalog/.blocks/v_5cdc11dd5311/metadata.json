@@ -1,0 +1,38 @@
+{
+  "id": "v_5cdc11dd5311",
+  "type": "custom",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/plans/request",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "field + link + video + button"
+  },
+  "layoutKey": "form",
+  "colour": "form",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/plans/request",
+        "instanceId": "292e0d6b1732",
+        "instanceIds": [
+          "292e0d6b1732"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_request--7f9b3032/blocks/292e0d6b1732.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Web form collecting contact details; no library form block",
+    "mergedInto": null
+  }
+}

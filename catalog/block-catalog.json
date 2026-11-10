@@ -1,0 +1,365 @@
+{
+  "block-catalog": {
+    "schemaVersion": 2,
+    "captured": "2026-10-30T07:06:46.214Z",
+    "totalBlockVariants": 21,
+    "totalBlocksProcessed": 79,
+    "newVariantsCreated": 21,
+    "variantsReused": 58,
+    "layoutKeyThreshold": 0.85,
+    "completionStatus": {
+      "analyzed": 17,
+      "failed": 0
+    },
+    "blockVariants": {
+      "v_6cc097716c59": {
+        "id": "v_6cc097716c59",
+        "name": "columns-cta",
+        "type": "columns",
+        "canonicalModel": "standalone",
+        "pagesFound": 15,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Side-by-side action options, each a button with optional heading and description; matches project variant columns-cta; heading/paragraph is optional content, not an option",
+        "description": "link + text",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service--d3bfa37c/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization--a3150665/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools--3f149921/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_installation--77e0da97/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_preventive-maintenance--671a7adf/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_instrument-qualification-calibration--97e7cec8/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_plans_liquid-handling--cf2943e6/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_tech-support--202264b0/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_tech-support_repairs--9555bd8f/blocks/a9c4fdea9adb.jpg",
+          ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/dc63a689e415.jpg"
+        ]
+      },
+      "v_c5c5770e98ee": {
+        "id": "v_c5c5770e98ee",
+        "name": "breadcrumb",
+        "type": "custom",
+        "canonicalModel": "standalone",
+        "pagesFound": 16,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Breadcrumb trail opening every page; no library block fits",
+        "description": "list + link",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_instrument-optimization--a3150665/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools--3f149921/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_installation--77e0da97/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_preventive-maintenance--671a7adf/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_instrument-qualification-calibration--97e7cec8/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_plans_liquid-handling--cf2943e6/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_plans_request--7f9b3032/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_tech-support--202264b0/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_tech-support_repairs--9555bd8f/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/e323e7766608.jpg",
+          ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/e323e7766608.jpg"
+        ]
+      },
+      "v_5252ed98aa42": {
+        "id": "v_5252ed98aa42",
+        "name": "default-content",
+        "type": "default-content",
+        "canonicalModel": "standalone",
+        "pagesFound": 2,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "Short legend line or centered heading plus paragraph; an author can type it, the background is section style",
+        "description": "Block variant: default-content",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/a94e25f0b868.jpg",
+          ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/6cc300df4f52.jpg"
+        ]
+      },
+      "v_27a41c6f82ef": {
+        "id": "v_27a41c6f82ef",
+        "name": "default-content",
+        "type": "default-content",
+        "canonicalModel": "standalone",
+        "pagesFound": 4,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "Short legend line or centered heading plus paragraph; an author can type it, the background is section style",
+        "description": "text",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/c4685959982f.jpg",
+          ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/c4685959982f.jpg",
+          ".pages/www_mybeckman_in_service_plans_liquid-handling--cf2943e6/blocks/c4685959982f.jpg",
+          ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/c4685959982f.jpg"
+        ]
+      },
+      "v_2fa05e1a5d96": {
+        "id": "v_2fa05e1a5d96",
+        "name": "columns-cta",
+        "type": "columns",
+        "canonicalModel": "standalone",
+        "pagesFound": 8,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Side-by-side action options, each a button with optional heading and description; matches project variant columns-cta; heading/paragraph is optional content, not an option",
+        "variant": "dark",
+        "description": "image + heading + text",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/b031099cb513.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_preventive-maintenance--671a7adf/blocks/e6131b90f9ea.jpg",
+          ".pages/www_mybeckman_in_service_instrument-qualification-calibration--97e7cec8/blocks/7200cc43eef5.jpg",
+          ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/a35437a70e7c.jpg",
+          ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/7feb3f12cdda.jpg",
+          ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/7feb3f12cdda.jpg",
+          ".pages/www_mybeckman_in_service_tech-support_repairs--9555bd8f/blocks/5198953480d0.jpg",
+          ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/7feb3f12cdda.jpg"
+        ]
+      },
+      "v_8d052bd71622": {
+        "id": "v_8d052bd71622",
+        "name": "table-comparison",
+        "type": "table",
+        "canonicalModel": "standalone",
+        "pagesFound": 4,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Plan comparison data table with grouped column headers",
+        "description": "table",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/813896e1b219.jpg",
+          ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/813896e1b219.jpg",
+          ".pages/www_mybeckman_in_service_plans_liquid-handling--cf2943e6/blocks/813896e1b219.jpg",
+          ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/813896e1b219.jpg"
+        ]
+      },
+      "v_b8a06617cb02": {
+        "id": "v_b8a06617cb02",
+        "name": "hero-centered",
+        "type": "hero",
+        "canonicalModel": "standalone",
+        "pagesFound": 3,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Page-top full-bleed photo banner with centered title, subtitle and CTAs; matches project variant hero-centered",
+        "description": "image + heading + link",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/88b7ef161d78.jpg",
+          ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/88b7ef161d78.jpg",
+          ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/88b7ef161d78.jpg"
+        ]
+      },
+      "v_c89a4fc22277": {
+        "id": "v_c89a4fc22277",
+        "name": "columns-intro",
+        "type": "columns",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "Boxed row with a heading on the left and buttons or benefit items on the right",
+        "variant": "benefits",
+        "description": "heading + text",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/56d1d6864d9d.jpg"
+        ]
+      },
+      "v_a05bc5efb4d3": {
+        "id": "v_a05bc5efb4d3",
+        "name": "columns-intro",
+        "type": "columns",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "Boxed row with a heading on the left and buttons or benefit items on the right",
+        "description": "text + link",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/5044428d1518.jpg"
+        ]
+      },
+      "v_b8a06617cb02-1": {
+        "id": "v_b8a06617cb02-1",
+        "name": "hero-centered",
+        "type": "hero",
+        "canonicalModel": "standalone",
+        "pagesFound": 2,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Same photo hero with centered title; a single button is optional content",
+        "description": "image + heading + text + link",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service--d3bfa37c/blocks/88b7ef161d78.jpg",
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools--3f149921/blocks/88b7ef161d78.jpg"
+        ]
+      },
+      "v_c89a4fc22277-1": {
+        "id": "v_c89a4fc22277-1",
+        "name": "columns-intro",
+        "type": "columns",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "Heading left with wider description right, same intro job without the box",
+        "variant": "no-box",
+        "description": "heading + text",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_instrument-qualification-calibration--97e7cec8/blocks/56d1d6864d9d.jpg"
+        ]
+      },
+      "v_d008a08fd2ed": {
+        "id": "v_d008a08fd2ed",
+        "name": "cards-grid",
+        "type": "cards",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "Look-alike items with icon, title, text and button; icon beside text instead of on top",
+        "variant": "icon-left",
+        "description": "image + text + link + button",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/71e33519b85f.jpg"
+        ]
+      },
+      "v_f6fc7fef2d69": {
+        "id": "v_f6fc7fef2d69",
+        "name": "columns-media",
+        "type": "columns",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Text with heading and button beside an embedded video, a fixed two-column layout",
+        "description": "heading + text + link + video",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/7200cc43eef5.jpg"
+        ]
+      },
+      "v_f83707d7d105": {
+        "id": "v_f83707d7d105",
+        "name": "cards-grid",
+        "type": "cards",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Look-alike shadowed tiles with image, title and button linking to detail pages; matches project variant cards-grid",
+        "description": "image + heading + link",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/a35437a70e7c.jpg"
+        ]
+      },
+      "v_b6cd2922acea": {
+        "id": "v_b6cd2922acea",
+        "name": "video-player",
+        "type": "video",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Stand-alone video with poster and play button",
+        "description": "button",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/e993faf245ba.jpg"
+        ]
+      },
+      "v_5cdc11dd5311": {
+        "id": "v_5cdc11dd5311",
+        "name": "form",
+        "type": "custom",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Web form collecting contact details; no library form block",
+        "description": "field + link + video + button",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_plans_request--7f9b3032/blocks/292e0d6b1732.jpg"
+        ]
+      },
+      "v_6d61ae626c44": {
+        "id": "v_6d61ae626c44",
+        "name": "video-player",
+        "type": "video",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "low",
+        "confidenceReason": "Only the control bar of an embedded video player; same video block",
+        "variant": "red",
+        "description": "button",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/e3cb7f51b785.jpg"
+        ]
+      },
+      "v_c89a4fc22277-2": {
+        "id": "v_c89a4fc22277-2",
+        "name": "cards-stats",
+        "type": "cards",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Row of bold figures over short captions; matches project variant cards-stats",
+        "description": "text",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/56d1d6864d9d.jpg"
+        ]
+      },
+      "v_c89a4fc22277-3": {
+        "id": "v_c89a4fc22277-3",
+        "name": "cards-stats",
+        "type": "cards",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Row of bold figures over short captions; matches project variant cards-stats",
+        "variant": "alt",
+        "description": "text",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service--d3bfa37c/blocks/56d1d6864d9d.jpg"
+        ]
+      },
+      "v_afe2cddda7e1": {
+        "id": "v_afe2cddda7e1",
+        "name": "form",
+        "type": "custom",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Same contact form job, fields laid out in two columns in a box",
+        "variant": "two-column",
+        "description": "field + link + video + button",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/50bca06ef765.jpg"
+        ]
+      },
+      "v_c89a4fc22277-4": {
+        "id": "v_c89a4fc22277-4",
+        "name": "hero-centered",
+        "type": "hero",
+        "canonicalModel": "standalone",
+        "pagesFound": 1,
+        "placedBy": "naming",
+        "confidenceLevel": "high",
+        "confidenceReason": "Same photo hero fields (title, subtitle, buttons) but text left-aligned",
+        "variant": "left-aligned",
+        "description": "image + text + link + button",
+        "screenshots": [
+          ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/56d1d6864d9d.jpg"
+        ]
+      }
+    }
+  }
+}

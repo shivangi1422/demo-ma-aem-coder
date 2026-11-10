@@ -1,0 +1,92 @@
+{
+  "analysis-urls-checklist": {
+    "captured": "2026-11-10T06:40:06.071Z",
+    "totalPages": 19,
+    "statusBreakdown": {
+      "analyzed": 19,
+      "marked": 0
+    },
+    "pages": {
+      "https://www.mybeckman.in/service": {
+        "url": "https://www.mybeckman.in/service",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/instrument-optimization": {
+        "url": "https://www.mybeckman.in/service/instrument-optimization",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools": {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support": {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/instrument-optimization/installation": {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/installation",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/instrument-optimization/preventive-maintenance": {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/preventive-maintenance",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/instrument-qualification-calibration": {
+        "url": "https://www.mybeckman.in/service/instrument-qualification-calibration",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/plans": {
+        "url": "https://www.mybeckman.in/service/plans",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/plans/centrifuge": {
+        "url": "https://www.mybeckman.in/service/plans/centrifuge",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/plans/flow-cytometry": {
+        "url": "https://www.mybeckman.in/service/plans/flow-cytometry",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/plans/liquid-handling": {
+        "url": "https://www.mybeckman.in/service/plans/liquid-handling",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/plans/particle-analysis": {
+        "url": "https://www.mybeckman.in/service/plans/particle-analysis",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/plans/request": {
+        "url": "https://www.mybeckman.in/service/plans/request",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/tech-support": {
+        "url": "https://www.mybeckman.in/service/tech-support",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/tech-support/repairs": {
+        "url": "https://www.mybeckman.in/service/tech-support/repairs",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/tech-support/windows-10": {
+        "url": "https://www.mybeckman.in/service/tech-support/windows-10",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/service/training": {
+        "url": "https://www.mybeckman.in/service/training",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/support": {
+        "url": "https://www.mybeckman.in/support",
+        "status": "analyzed"
+      },
+      "https://www.mybeckman.in/support/faq": {
+        "url": "https://www.mybeckman.in/support/faq",
+        "status": "analyzed",
+        "analyzedAt": "2026-11-10T06:40:50.677Z",
+        "slug": "www_mybeckman_in_support_faq--083a3121",
+        "title": "FAQs, Life Sciences",
+        "blockCount": 4
+      }
+    }
+  }
+}

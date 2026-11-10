@@ -1,0 +1,38 @@
+{
+  "id": "v_c89a4fc22277",
+  "type": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/plans",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text"
+  },
+  "layoutKey": "~([T|[T]*2])",
+  "colour": "~b([Tw|[Tw]*2])",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/plans",
+        "instanceId": "56d1d6864d9d",
+        "instanceIds": [
+          "56d1d6864d9d"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/56d1d6864d9d.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "Boxed row with a heading on the left and buttons or benefit items on the right",
+    "mergedInto": null
+  }
+}

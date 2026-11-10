@@ -1,0 +1,175 @@
+{
+  "url": "https://www.mybeckman.in/support",
+  "title": "Support, Training, Service Plans, FAQs",
+  "timestamp": "2026-11-02T12:23:12.073Z",
+  "duration": "61.8s",
+  "cleanup": {
+    "elementsRemoved": 16,
+    "types": [
+      "overlay",
+      "cookie-banner",
+      "popup",
+      "geo-modal"
+    ],
+    "cookieConsentDismissed": true,
+    "lateConsentOverlaysRemoved": 0
+  },
+  "skeleton": {
+    "signature": "s(s,s(s,s(s(s,s),2x1(s(,,),s(,)))),s)",
+    "nodeMap": {
+      "r": "body",
+      "rc1": "#consent_blackbar",
+      "rc2": "#wrapper",
+      "rc2c1": "#main > div.main-holder > div.container.custome-container",
+      "rc2c2": "#main > div.main-holder > div.container:nth-of-type(2)",
+      "rc2c2c1": "#content-holder",
+      "rc2c2c1c1": "#content-holder > h1",
+      "rc2c2c1c2": "#content-holder > div.bcls-aeo-published",
+      "rc2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder",
+      "rc2c2c2c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.bc-rich-text",
+      "rc2c2c2c1c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.bc-rich-text > p:nth-of-type(1)",
+      "rc2c2c2c1c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.bc-rich-text > p:nth-of-type(2)",
+      "rc2c2c2c1c3": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.bc-rich-text > p:nth-of-type(3)",
+      "rc2c2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.content-list.column-count-3",
+      "rc2c2c2c2c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.content-list.column-count-3 > h2",
+      "rc2c2c2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.content-list.column-count-3 > table.no-style",
+      "rc2c2c2c2c2c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.content-list.column-count-3 > table.no-style > thead",
+      "rc2c2c2c2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.two-columns-holder > div.row > div.two-columns-holder__left.col-md-9 > div.block > div.content-list.column-count-3 > table.no-style > tbody",
+      "rc3": "#font-resize-frame-454"
+    },
+    "sections": [
+      {
+        "id": "rc1",
+        "selector": "#consent_blackbar",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc2",
+        "selector": "#main > div.main-holder > div.container.custome-container",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc3",
+        "selector": "#main > div.main-holder > div.container:nth-of-type(2)",
+        "layout": null,
+        "hasBg": false,
+        "hint": "block",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc4",
+        "selector": "#font-resize-frame-454",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      }
+    ],
+    "invalidIgnore": []
+  },
+  "pageLayout": {
+    "box": {
+      "y": 122.70325058763882,
+      "height": 1580.4703676225222
+    },
+    "splits": [],
+    "start": {
+      "kind": "paragraph"
+    }
+  },
+  "blocks": [
+    {
+      "id": "e323e7766608",
+      "type": "columns",
+      "selector": "#main > div > div.container.custome-container",
+      "bounds": {
+        "x": 0,
+        "y": 123,
+        "width": 1536,
+        "height": 59
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "list + link"
+      },
+      "description": "container",
+      "features": {
+        "skeleton": "nav",
+        "variant": "nav",
+        "variantClean": "nav"
+      },
+      "screenshot": "blocks/e323e7766608.jpg"
+    },
+    {
+      "id": "b3245c45ee86",
+      "type": "default-content",
+      "selector": "#content-holder",
+      "bounds": {
+        "x": 198,
+        "y": 206,
+        "width": 1140,
+        "height": 90
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "generic-content-heading",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "358af595b7cf",
+      "type": "columns",
+      "selector": "#main > div > div:nth-child(3) > div.two-columns-holder",
+      "bounds": {
+        "x": 198,
+        "y": 296,
+        "width": 1140,
+        "height": 1407
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "dense",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "text + link + heading + table + field + video + button"
+      },
+      "description": "two-columns-holder",
+      "features": {
+        "skeleton": "[(T table)*3|~(form)]",
+        "variant": "[(Tbn table)*3|~w(form)]",
+        "variantClean": "[(Tk table)*3|~w(form)]"
+      },
+      "screenshot": "blocks/358af595b7cf.jpg"
+    }
+  ]
+}

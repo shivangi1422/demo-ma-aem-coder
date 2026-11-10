@@ -1,0 +1,30 @@
+{
+  "analysis-summary": {
+    "status": "complete",
+    "metadata": {
+      "siteUrl": "https://www.mybeckman.in",
+      "siteName": "www.mybeckman.in",
+      "analysisDate": "2026-10-30",
+      "rootPageTitle": null
+    },
+    "metrics": {
+      "urlDiscoveryMethod": "user-provided-list",
+      "totalPages": 17,
+      "localeCount": 0,
+      "locales": [],
+      "totalTemplates": 2,
+      "totalBlockTypes": 21,
+      "unknownBlockVariants": 0,
+      "edsBlockVariants": 21,
+      "pagesAnalyzed": 17,
+      "percentAnalyzed": 100,
+      "pagesPending": 0,
+      "pagesFailed": 0,
+      "blockDetectionCrashes": 0,
+      "blockNaming": "applied"
+    },
+    "errors": {
+      "totalCount": 3
+    }
+  }
+}
