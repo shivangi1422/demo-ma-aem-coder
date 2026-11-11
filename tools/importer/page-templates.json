@@ -727,6 +727,39 @@
           ]
         }
       ]
+    },
+    {
+      "name": "search",
+      "urls": [
+        "https://www.mybeckman.in/search"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/search",
+      "description": "Site search results page: Coveo for Sitecore search interface (tabs, facets, result list, pager); the header search submits here with #q=",
+      "urlPattern": "/search",
+      "blocks": [
+        {
+          "name": "coveo-search",
+          "instances": [
+            "#coveo-search-interface",
+            ".CoveoSearchInterface"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Search",
+          "selector": [
+            "#coveo-center-column",
+            ".coveo-center-column-wrapper"
+          ],
+          "style": null,
+          "blocks": [
+            "coveo-search"
+          ],
+          "defaultContent": []
+        }
+      ]
     }
   ]
 }

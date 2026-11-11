@@ -1,0 +1,153 @@
+{
+  "definitions": [
+    {
+      "title": "Coveo Search",
+      "id": "coveo-search",
+      "plugins": {
+        "xwalk": {
+          "page": {
+            "resourceType": "core/franklin/components/block/v1/block",
+            "template": {
+              "name": "Coveo Search",
+              "model": "coveo-search",
+              "key-value": true
+            }
+          }
+        }
+      }
+    }
+  ],
+  "models": [
+    {
+      "id": "coveo-search",
+      "fields": [
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "endpoint",
+          "label": "Endpoint base URL",
+          "value": "",
+          "description": "Leave empty to call the same domain as the page (/coveo/rest). Set a proxy URL only if it forwards to the Sitecore site."
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "sitecoreItemUri",
+          "label": "Sitecore item URI",
+          "value": "",
+          "description": "sitecoreItemUri sent to the Coveo for Sitecore proxy"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "siteName",
+          "label": "Sitecore site name",
+          "value": "website"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "searchHub",
+          "label": "Search hub",
+          "value": "Main Search Page"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "pipeline",
+          "label": "Query pipeline",
+          "value": "Main Search Page"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "advancedQuery",
+          "label": "Advanced query (aq), all tabs",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "constantQuery",
+          "label": "Constant query (cq)",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "locale",
+          "label": "Locale",
+          "value": "en"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "resultsPerPage",
+          "label": "Results per page",
+          "value": "10"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "tabs",
+          "label": "Tabs",
+          "value": "",
+          "description": "One per tab, separated by \";\": tab id | Label | tab query (aq) | constant query (optional, replaces the default)"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "facets",
+          "label": "Facets",
+          "value": "",
+          "description": "One per facet, separated by \";\": @field | Label | allowed values (optional, comma-separated)"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "storeUrl",
+          "label": "Store URL",
+          "value": "https://store.beckman.com/hi",
+          "description": "Product results link to the store product page"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "countryCode",
+          "label": "Store country code",
+          "value": "IN"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "filtersLabel",
+          "label": "Filters label",
+          "value": "Filters"
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "noResultsMessage",
+          "label": "No results message",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "errorMessage",
+          "label": "Error message",
+          "value": ""
+        },
+        {
+          "component": "text",
+          "valueType": "string",
+          "name": "fallbackData",
+          "label": "Fallback data folder",
+          "value": "",
+          "description": "Folder with saved responses (<tab id>.json), used only when the live search is unreachable"
+        }
+      ]
+    }
+  ],
+  "filters": []
+}

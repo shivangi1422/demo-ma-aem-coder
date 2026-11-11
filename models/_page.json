@@ -43,6 +43,67 @@
             {
               "name": "Service Plans",
               "value": "service-plans"
+            },
+            {
+              "name": "Service Landing",
+              "value": "service-landing"
+            },
+            {
+              "name": "Service Plan Request",
+              "value": "service-plan-request"
+            },
+            {
+              "name": "Service Training",
+              "value": "service-training"
+            },
+            {
+              "name": "Support",
+              "value": "support"
+            },
+            {
+              "name": "Support FAQ",
+              "value": "support-faq"
+            },
+            {
+              "name": "Product Detail",
+              "value": "product-detail"
+            },
+            {
+              "name": "Search",
+              "value": "search"
+            }
+          ]
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "cq:robotsTags",
+          "label": "Robots",
+          "description": "Search engine directives (AEM robots tags); leave empty to allow indexing",
+          "options": [
+            {
+              "name": "index",
+              "value": "index"
+            },
+            {
+              "name": "noindex",
+              "value": "noindex"
+            },
+            {
+              "name": "follow",
+              "value": "follow"
+            },
+            {
+              "name": "nofollow",
+              "value": "nofollow"
+            },
+            {
+              "name": "noarchive",
+              "value": "noarchive"
+            },
+            {
+              "name": "nosnippet",
+              "value": "nosnippet"
             }
           ]
         }

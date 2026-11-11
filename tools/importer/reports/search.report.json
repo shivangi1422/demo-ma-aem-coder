@@ -1,0 +1,12 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/search",
+  "path": "search",
+  "timestamp": "2026-11-11T09:38:56.221Z",
+  "title": "Search Beckman Coulter Life Sciences",
+  "template": "search",
+  "blocks": [
+    "coveo-search"
+  ],
+  "importScript": "5a82081c15c2"
+}
