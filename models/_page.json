@@ -39,6 +39,43 @@
             {
               "name": "Product detail",
               "value": "product-detail"
+            },
+            {
+              "name": "Search",
+              "value": "search"
+            }
+          ]
+        },
+        {
+          "component": "multiselect",
+          "valueType": "string",
+          "name": "cq:robotsTags",
+          "label": "Robots",
+          "description": "Search engine directives (AEM robots tags); leave empty to allow indexing",
+          "options": [
+            {
+              "name": "index",
+              "value": "index"
+            },
+            {
+              "name": "noindex",
+              "value": "noindex"
+            },
+            {
+              "name": "follow",
+              "value": "follow"
+            },
+            {
+              "name": "nofollow",
+              "value": "nofollow"
+            },
+            {
+              "name": "noarchive",
+              "value": "noarchive"
+            },
+            {
+              "name": "nosnippet",
+              "value": "nosnippet"
             }
           ]
         }
