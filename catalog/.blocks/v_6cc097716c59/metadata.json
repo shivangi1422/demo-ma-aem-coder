@@ -1,0 +1,154 @@
+{
+  "id": "v_6cc097716c59",
+  "type": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.722Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "link + text"
+  },
+  "layoutKey": "[T]",
+  "colour": "[Tw]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb",
+          "7feb3f12cdda"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service--d3bfa37c/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization--a3150665/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools--3f149921/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb",
+          "4f3a6887e970"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/installation",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_installation--77e0da97/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/preventive-maintenance",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb",
+          "46edfb6eed99",
+          "71e33519b85f"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_preventive-maintenance--671a7adf/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-qualification-calibration",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-qualification-calibration--97e7cec8/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/centrifuge",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/flow-cytometry",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/liquid-handling",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_liquid-handling--cf2943e6/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/particle-analysis",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/tech-support",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_tech-support--202264b0/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/tech-support/repairs",
+        "instanceId": "a9c4fdea9adb",
+        "instanceIds": [
+          "a9c4fdea9adb"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_tech-support_repairs--9555bd8f/blocks/a9c4fdea9adb.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/training",
+        "instanceId": "dc63a689e415",
+        "instanceIds": [
+          "dc63a689e415"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/dc63a689e415.jpg"
+      }
+    ],
+    "reuseCount": 15
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Side-by-side action options, each a button with optional heading and description; matches project variant columns-cta; heading/paragraph is optional content, not an option",
+    "mergedInto": null
+  }
+}

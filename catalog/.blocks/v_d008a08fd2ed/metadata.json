@@ -1,0 +1,38 @@
+{
+  "id": "v_d008a08fd2ed",
+  "type": "cards",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/training",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "dense",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "image + text + link + button"
+  },
+  "layoutKey": "[T|T*3]",
+  "colour": "[T|Tk*3]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/training",
+        "instanceId": "71e33519b85f",
+        "instanceIds": [
+          "71e33519b85f"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/71e33519b85f.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "Look-alike items with icon, title, text and button; icon beside text instead of on top",
+    "mergedInto": "v_f83707d7d105"
+  }
+}

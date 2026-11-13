@@ -1,0 +1,52 @@
+{
+  "id": "v_5252ed98aa42",
+  "type": "default-content",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.722Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/tech-support/windows-10",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": ""
+  },
+  "layoutKey": "~(T)",
+  "colour": "~w(Tk)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/tech-support/windows-10",
+        "instanceId": "a94e25f0b868",
+        "instanceIds": [
+          "a94e25f0b868",
+          "ac72c209a4b6",
+          "91b5be7d6ab5",
+          "f2edfac6bdb7",
+          "0df9607e6455",
+          "d58e1db75960",
+          "aada5f9bdf49"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/a94e25f0b868.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/training",
+        "instanceId": "6cc300df4f52",
+        "instanceIds": [
+          "6cc300df4f52"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/6cc300df4f52.jpg"
+      }
+    ],
+    "reuseCount": 2
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "Short legend line or centered heading plus paragraph; an author can type it, the background is section style",
+    "mergedInto": null
+  }
+}

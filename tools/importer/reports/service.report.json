@@ -2,9 +2,9 @@
   "status": "success",
   "url": "https://www.mybeckman.in/service",
   "path": "service",
-  "timestamp": "2026-10-30T06:41:34.660Z",
+  "timestamp": "2026-11-05T05:01:07.010Z",
   "title": "Service",
-  "template": "service",
+  "template": "service-landing",
   "blocks": [
     "hero-centered",
     "cards-stats",

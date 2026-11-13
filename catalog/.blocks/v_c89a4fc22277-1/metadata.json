@@ -1,0 +1,38 @@
+{
+  "id": "v_c89a4fc22277-1",
+  "type": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/instrument-qualification-calibration",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text"
+  },
+  "layoutKey": "[T|T*2]",
+  "colour": "[Tk|Tk*2]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/instrument-qualification-calibration",
+        "instanceId": "56d1d6864d9d",
+        "instanceIds": [
+          "56d1d6864d9d"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-qualification-calibration--97e7cec8/blocks/56d1d6864d9d.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "Heading left with wider description right, same intro job without the box",
+    "mergedInto": "v_a05bc5efb4d3"
+  }
+}

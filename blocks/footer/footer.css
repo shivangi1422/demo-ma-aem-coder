@@ -1,8 +1,12 @@
 /* footer tokens (measured from the source footer) */
 footer {
   --footer-text-color: #4d4d4d;
-  --footer-muted-color: #8e8d8d;
-  --footer-accent-color: #ea1c2c;
+
+  /* source #8e8d8d is 3.3:1 on white; #737373 meets WCAG AA (4.7:1) */
+  --footer-muted-color: #737373;
+
+  /* source #ea1c2c gives white button text 4.47:1; #e61b2b reaches 4.6:1 */
+  --footer-accent-color: #e61b2b;
   --footer-accent-hover: #bb1623;
   --footer-input-bg: #f4f4f4;
   --footer-pill-border: #e0e0e0;

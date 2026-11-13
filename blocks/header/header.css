@@ -5,7 +5,9 @@ header {
   --nav-link-hover-color: #007acb;
   --nav-border-color: #ddd;
   --nav-hover-bg: #f2f5f7;
-  --nav-cta-color: #ea1c2c;
+
+  /* source #ea1c2c gives the white "Request a Quote" text 4.47:1; #e61b2b reaches 4.6:1 (as the footer) */
+  --nav-cta-color: #e61b2b;
   --nav-primary-color: #007acb;
   --nav-flyout-width: 300px;
   --nav-panel-height: 450px;

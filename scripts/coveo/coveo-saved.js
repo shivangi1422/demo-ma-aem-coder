@@ -75,11 +75,14 @@ export function searchSaved(data, { facets, firstResult, numberOfResults }) {
   const groupByResults = facets.definitions.map((d) => {
     const counts = new Map();
     applySelections(all, facets, d.field).forEach((r) => {
-      fieldValues(r, d.field).forEach((v) => counts.set(v, (counts.get(v) || 0) + 1));
+      fieldValues(r, d.field)
+        .filter((v) => !d.allowed || d.allowed.includes(v))
+        .forEach((v) => counts.set(v, (counts.get(v) || 0) + 1));
     });
+    const limit = facets.limitFor ? facets.limitFor(d.field) : facets.maximumNumberOfValues;
     const values = [...counts.entries()]
       .sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0]))
-      .slice(0, facets.maximumNumberOfValues)
+      .slice(0, limit)
       .map(([value, count]) => ({ value, numberOfResults: count }));
     return { field: d.field.replace(/^@/, ''), values };
   });

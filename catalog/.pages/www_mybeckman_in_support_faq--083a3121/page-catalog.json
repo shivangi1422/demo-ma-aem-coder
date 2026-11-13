@@ -1,0 +1,288 @@
+{
+  "schemaVersion": 2,
+  "url": "https://www.mybeckman.in/support/faq",
+  "title": "FAQs, Life Sciences",
+  "timestamp": "2026-11-10T06:40:50.567Z",
+  "duration": "40.0s",
+  "cleanup": {
+    "elementsRemoved": 16,
+    "types": [
+      "overlay",
+      "cookie-banner",
+      "popup",
+      "geo-modal"
+    ],
+    "cookieConsentDismissed": true,
+    "lateConsentOverlaysRemoved": 0,
+    "removed": [
+      {
+        "selector": "#trustarc-banner-overlay",
+        "type": "overlay"
+      },
+      {
+        "selector": "div.flash-message",
+        "type": "overlay"
+      },
+      {
+        "selector": "#truste-consent-track",
+        "type": "cookie-banner",
+        "rule": "[id*=\"truste\"]"
+      },
+      {
+        "selector": "#truste_0\\.6035027610354602",
+        "type": "cookie-banner",
+        "rule": "[id*=\"truste\"]"
+      },
+      {
+        "selector": "#teconsent",
+        "type": "cookie-banner",
+        "rule": "[class*=\"truste\"]"
+      },
+      {
+        "selector": "#ModalPopup",
+        "type": "popup",
+        "rule": "body [class*=\"modal\"]:not(nav *)"
+      },
+      {
+        "selector": "#country-selector-newHeader",
+        "type": "geo-modal",
+        "rule": "[id*=\"country-selector\"]"
+      }
+    ]
+  },
+  "snapshot": {
+    "html": "page.html",
+    "unresolvedSelectors": []
+  },
+  "images": [
+    {
+      "url": "https://media.beckman.com/-/media/corporate/logos/bcls_logo_horizontal_2-color.svg?rev=8efe44b5fda1441ea8ba6f0f694baf78",
+      "type": "img"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/beckman/danaher_trustmark_tm_rgb_gs.svg?rev=d21248a9dcc64c4a97f772e8a20bad9d&sc_lang=hi",
+      "type": "img"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/corporate/logos/bcls_logo_horizontal_2-color.svg?rev=8efe44b5fda1441ea8ba6f0f694baf78",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/faqs/category-images/faq-product-2017-08.jpg?rev=ee4439d2920c46bb931b6c243034695e",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/faqs/category-images/faq-standards-2017-08.jpg?rev=fe15b4ce41224be38905ec05cd7b2d89",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/faqs/category-images/faq-research-2017-08.jpg?rev=f005e9ac7fc943e9be3cd015243c7e5b",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/faqs/category-images/faq-other-2017-08.jpg?rev=2a0cb738a9f94c869e8df22b30d3b68b",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/corporate/service-and-support/calibration-services/calibration-services-met-one-hiac.png?rev=67ccc1e6788f4ead827f503a6fdd01ce",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/faqs/category-images/faq-e-commerce-2017-08.jpg?rev=dedc403af86346dea8a63c063c6f699a",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/faqs/category-images/faq-scientific-2017-08.jpg?rev=726ad52dae8c4bf5b6cd69f855f53d5f",
+      "type": "background"
+    },
+    {
+      "url": "https://media.beckman.com/-/media/faqs/category-images/faq-careers-2017-08.jpg?rev=89319ba2e3a3414d9df8e05c56c97936",
+      "type": "background"
+    }
+  ],
+  "skeleton": {
+    "signature": "s(s,s(s,2x1(s,s,s,2x1)))",
+    "nodeMap": {
+      "r": "body",
+      "rc1": "#consent_blackbar",
+      "rc2": "#wrapper",
+      "rc2c1": "#main > div.main-holder > div.container.custome-container",
+      "rc2c2": "#main > div.main-holder > div.container:nth-of-type(2)",
+      "rc2c2c1": "#content-holder > h1",
+      "rc2c2c2": "#content-holder > p:nth-of-type(1)",
+      "rc2c2c3": "#content-holder > p:nth-of-type(2)",
+      "rc2c2c4": "#content-holder > div.row"
+    },
+    "sections": [
+      {
+        "id": "rc1",
+        "selector": "#consent_blackbar",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc2",
+        "selector": "#main > div.main-holder > div.container.custome-container",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc3",
+        "selector": "#main > div.main-holder > div.container:nth-of-type(2)",
+        "layout": "2x1",
+        "hasBg": false,
+        "hint": "block",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      }
+    ],
+    "invalidIgnore": []
+  },
+  "pageLayout": {
+    "box": {
+      "y": 122.70292473172299,
+      "height": 1027.670197698988
+    },
+    "splits": [
+      {
+        "selector": "div.row > div.col-md-3",
+        "sides": [
+          [
+            0.75,
+            1
+          ]
+        ],
+        "top": 181.70282843565602,
+        "bottom": 1150.373122430711,
+        "cover": 0.9425886789010355,
+        "above": 1
+      }
+    ],
+    "start": {
+      "kind": "paragraph"
+    }
+  },
+  "blocks": [
+    {
+      "id": "e323e7766608",
+      "type": "columns",
+      "detectionTier": 1,
+      "selector": "#main > div > div.container.custome-container",
+      "bounds": {
+        "x": 0,
+        "y": 123,
+        "width": 1280,
+        "height": 59
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "list + link"
+      },
+      "description": "container",
+      "features": {
+        "skeleton": "nav",
+        "variant": "nav",
+        "variantClean": "nav"
+      },
+      "screenshot": "blocks/e323e7766608.jpg",
+      "html": "blocks/e323e7766608.html"
+    },
+    {
+      "id": "218b36ef71db",
+      "type": "default-content",
+      "detectionTier": 1,
+      "selector": "#content-holder > h1",
+      "bounds": {
+        "x": 70,
+        "y": 206,
+        "width": 850,
+        "height": 40
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null,
+      "html": "blocks/218b36ef71db.html"
+    },
+    {
+      "id": "c5ee52a20010",
+      "type": "default-content",
+      "detectionTier": 1,
+      "selector": "#content-holder > p:nth-child(2)",
+      "bounds": {
+        "x": 70,
+        "y": 270,
+        "width": 850,
+        "height": 158
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text + link"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tbn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null,
+      "html": "blocks/c5ee52a20010.html"
+    },
+    {
+      "id": "f060688b3469",
+      "type": "cards",
+      "detectionTier": 1,
+      "selector": "#content-holder > div",
+      "bounds": {
+        "x": 60,
+        "y": 486,
+        "width": 870,
+        "height": 664
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "link + heading"
+      },
+      "description": "row",
+      "features": {
+        "skeleton": "[[~|T*3]]",
+        "variant": "[[~k|Tk*3]]",
+        "variantClean": "[[~k|Tk*3]]",
+        "set": true
+      },
+      "screenshot": "blocks/f060688b3469.jpg",
+      "html": "blocks/f060688b3469.html"
+    }
+  ]
+}

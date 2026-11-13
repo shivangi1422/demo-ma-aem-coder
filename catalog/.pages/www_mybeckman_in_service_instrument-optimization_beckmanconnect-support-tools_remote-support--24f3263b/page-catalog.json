@@ -1,0 +1,583 @@
+{
+  "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+  "title": "BeckmanConnect, Remote Desktop Sharing",
+  "timestamp": "2026-10-30T07:05:11.552Z",
+  "duration": "47.1s",
+  "cleanup": {
+    "elementsRemoved": 16,
+    "types": [
+      "overlay",
+      "cookie-banner",
+      "popup",
+      "geo-modal"
+    ],
+    "cookieConsentDismissed": true,
+    "lateConsentOverlaysRemoved": 0
+  },
+  "skeleton": {
+    "signature": "s(s,s(s,s(s,s(s,s,2x1B),sB,sB(s,4x1),s(s,4x2,s(,,)),s(s(,),s),sB(s,s,3x1))))",
+    "nodeMap": {
+      "r": "body",
+      "rc1": "#consent_blackbar",
+      "rc2": "#wrapper",
+      "rc2c1": "#main > div.main-holder > div.container.custome-container",
+      "rc2c2": "#main > div.main-holder > div.container:nth-of-type(2)",
+      "rc2c2c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.row.js-component",
+      "rc2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(2)",
+      "rc2c2c2c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(2) > div.Section > div.Header > h1",
+      "rc2c2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(2) > div.Section > div.Header > h2",
+      "rc2c2c2c3": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(2) > div.Section > div.Header > div.Header__callout",
+      "rc2c2c3": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(3)",
+      "rc2c2c4": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(4)",
+      "rc2c2c4c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(4) > div.Section--blue > div.Section > div.Content--white > h2",
+      "rc2c2c4c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(4) > div.Section--blue > div.Section > div.Content--white > div.Content__body",
+      "rc2c2c5": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(5)",
+      "rc2c2c5c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(5) > div.Section > div.Content > h2",
+      "rc2c2c5c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(5) > div.Section > div.Content > div.Content__body",
+      "rc2c2c5c3": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(5) > div.Section > div.Content > div.wistia_responsive_padding",
+      "rc2c2c5c3c1": "#wistia_grid_31_above",
+      "rc2c2c5c3c2": "#wistia_grid_31_main",
+      "rc2c2c5c3c2c1": "#wistia_grid_31_behind",
+      "rc2c2c5c3c2c2": "#wistia_grid_31_center",
+      "rc2c2c5c3c2c2c1": "#wistia_grid_31_center > div.w-video-wrapper.w-css-reset",
+      "rc2c2c5c3c2c2c2": "#wistia_grid_31_center > div.w-ui-container",
+      "rc2c2c5c3c2c2c2c1": "#w-vulcan-v2-30 > div.w-vulcan--background.w-css-reset",
+      "rc2c2c5c3c2c2c2c1c1": "#w-vulcan-v2-30 > div.w-vulcan--background.w-css-reset > div.w-css-reset:nth-of-type(1)",
+      "rc2c2c5c3c2c2c2c1c2": "#w-vulcan-v2-30 > div.w-vulcan--background.w-css-reset > div.w-css-reset:nth-of-type(2)",
+      "rc2c2c5c3c2c2c2c1c3": "#w-vulcan-v2-30 > div.w-vulcan--background.w-css-reset > div.w-css-reset:nth-of-type(3)",
+      "rc2c2c5c3c2c2c2c2": "#w-vulcan-v2-30 > div.w-vulcan-overlays-table.w-css-reset",
+      "rc2c2c5c3c2c2c2c2c1": "#w-vulcan-v2-30 > div.w-vulcan-overlays-table.w-css-reset > div.w-vulcan-overlays--center.w-css-reset > div.w-css-reset > div.w-css-reset:nth-of-type(1)",
+      "rc2c2c5c3c2c2c2c2c2": "#w-vulcan-v2-30 > div.w-vulcan-overlays-table.w-css-reset > div.w-vulcan-overlays--center.w-css-reset > div.w-css-reset > div.w-css-reset:nth-of-type(2)",
+      "rc2c2c5c3c2c2c2c2c3": "#w-vulcan-v2-30 > div.w-vulcan-overlays-table.w-css-reset > div.w-vulcan-overlays--center.w-css-reset > div.w-css-reset > div.w-css-reset:nth-of-type(3)",
+      "rc2c2c5c3c2c2c2c2c4": "#w-vulcan-v2-30 > div.w-vulcan-overlays-table.w-css-reset > div.w-vulcan-overlays--center.w-css-reset > div.w-css-reset > div.w-css-reset:nth-of-type(4)",
+      "rc2c2c5c3c2c2c2c3": "#w-vulcan-v2-30-control-bar",
+      "rc2c2c5c3c2c2c2c3c1": "#w-vulcan-v2-30-control-bar > div.w-bottom-bar-lower.w-css-reset > div:nth-of-type(1)",
+      "rc2c2c5c3c2c2c2c3c2": "#w-vulcan-v2-30-control-bar > div.w-bottom-bar-lower.w-css-reset > div.w-bottom-bar-middle.w-css-reset",
+      "rc2c2c5c3c2c2c2c4": "#w-vulcan-v2-30 > div.w-foreground.w-css-reset",
+      "rc2c2c5c3c2c2c2c4c1": "#w-vulcan-v2-30 > div.w-foreground.w-css-reset > div.w-css-reset:nth-of-type(1)",
+      "rc2c2c5c3c2c2c2c4c2": "#w-vulcan-v2-30 > div.w-foreground.w-css-reset > div.w-css-reset:nth-of-type(2)",
+      "rc2c2c5c3c2c2c2c4c3": "#w-vulcan-v2-30 > div.w-foreground.w-css-reset > div.w-css-reset:nth-of-type(3)",
+      "rc2c2c5c3c2c3": "#wistia_grid_31_top_inside",
+      "rc2c2c5c3c2c4": "#wistia_grid_31_bottom_inside",
+      "rc2c2c5c3c3": "#wistia_grid_31_below",
+      "rc2c2c6": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(6)",
+      "rc2c2c6c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(6) > div.Section:nth-of-type(1)",
+      "rc2c2c6c1c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(6) > div.Section:nth-of-type(1) > div > h2",
+      "rc2c2c6c1c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(6) > div.Section:nth-of-type(1) > div > ul",
+      "rc2c2c6c1c2c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(6) > div.Section:nth-of-type(1) > div > ul > li:nth-of-type(1)",
+      "rc2c2c6c1c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(6) > div.Section:nth-of-type(1) > div > ul > li:nth-of-type(2)",
+      "rc2c2c6c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(6) > div.Section:nth-of-type(2)",
+      "rc2c2c7": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(7)",
+      "rc2c2c7c1": "#getInTouch > div.Section > div.Contact > h2",
+      "rc2c2c7c2": "#getInTouch > div.Section > div.Contact > p",
+      "rc2c2c7c3": "#getInTouch > div.Section > div.Contact > div.Contact__body"
+    },
+    "sections": [
+      {
+        "id": "rc1",
+        "selector": "#consent_blackbar",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc2",
+        "selector": "#main > div.main-holder > div.container.custome-container",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc3",
+        "selector": "#main > div.main-holder > div.container:nth-of-type(2)",
+        "layout": null,
+        "hasBg": false,
+        "hint": "block",
+        "background": "#000000",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      }
+    ],
+    "invalidIgnore": []
+  },
+  "pageLayout": {
+    "box": {
+      "y": 122.70338657940658,
+      "height": 3280.3819931270773
+    },
+    "splits": [],
+    "start": {
+      "kind": "paragraph"
+    }
+  },
+  "blocks": [
+    {
+      "id": "e323e7766608",
+      "type": "columns",
+      "selector": "#main > div > div.container.custome-container",
+      "bounds": {
+        "x": 0,
+        "y": 123,
+        "width": 1536,
+        "height": 59
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "list + link"
+      },
+      "description": "container",
+      "features": {
+        "skeleton": "nav",
+        "variant": "nav",
+        "variantClean": "nav"
+      },
+      "screenshot": "blocks/e323e7766608.jpg",
+      "variantId": "v_c5c5770e98ee"
+    },
+    {
+      "id": "77aa2f72bacd",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(2) > div > div > img",
+      "bounds": {
+        "x": 618,
+        "y": 212,
+        "width": 300,
+        "height": 115
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "image"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "T",
+        "variantClean": "T"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "018092e44334",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(2) > div > div > h1",
+      "bounds": {
+        "x": 214,
+        "y": 367,
+        "width": 1109,
+        "height": 53
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "e72cc9f35dda",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(2) > div > div > h2",
+      "bounds": {
+        "x": 214,
+        "y": 452,
+        "width": 1109,
+        "height": 28
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "5044428d1518",
+      "type": "columns",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(2) > div > div > div",
+      "bounds": {
+        "x": 368,
+        "y": 555,
+        "width": 800,
+        "height": 88
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text + link"
+      },
+      "description": "header-callout",
+      "features": {
+        "skeleton": "~([T|[T]])",
+        "variant": "~s([Tn|[Tw]])",
+        "variantClean": "~s([Tk|[Tw]])"
+      },
+      "screenshot": "blocks/5044428d1518.jpg",
+      "variantId": "v_a05bc5efb4d3"
+    },
+    {
+      "id": "7feb3f12cdda",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(3)",
+      "bounds": {
+        "x": 0,
+        "y": 620,
+        "width": 1536,
+        "height": 173
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "bc-rich-text",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "941ef01a9290",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(4) > div > div > div > h2",
+      "bounds": {
+        "x": 214,
+        "y": 844,
+        "width": 1109,
+        "height": 28
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tw",
+        "variantClean": "Tw"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "b031099cb513",
+      "type": "columns",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(4) > div > div > div > div",
+      "bounds": {
+        "x": 214,
+        "y": 892,
+        "width": 1109,
+        "height": 536
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "image + heading + text"
+      },
+      "description": "content-body",
+      "features": {
+        "skeleton": "[T]",
+        "variant": "[Tw]",
+        "variantClean": "[Tw]"
+      },
+      "screenshot": "blocks/b031099cb513.jpg",
+      "variantId": "v_2fa05e1a5d96"
+    },
+    {
+      "id": "00348b358e0e",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(5) > div > div > h2",
+      "bounds": {
+        "x": 214,
+        "y": 1510,
+        "width": 1109,
+        "height": 28
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "4f3a6887e970",
+      "type": "cards",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(5) > div > div > div.Content__body",
+      "bounds": {
+        "x": 214,
+        "y": 1558,
+        "width": 1109,
+        "height": 137
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "link"
+      },
+      "description": "content-body",
+      "features": {
+        "skeleton": "[T]",
+        "variant": "[Tw]",
+        "variantClean": "[Tw]",
+        "set": true
+      },
+      "screenshot": "blocks/4f3a6887e970.jpg",
+      "variantId": "v_6cc097716c59"
+    },
+    {
+      "id": "78039409c335",
+      "type": "default-content",
+      "selector": "#w-vulcan-v2-30 > div.w-vulcan--background.w-css-reset",
+      "bounds": {
+        "x": 214,
+        "y": 1725,
+        "width": 1109,
+        "height": 624
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "button + image"
+      },
+      "description": "w-vulcan-background",
+      "features": {
+        "skeleton": "{button T}",
+        "variant": "{button Tn}",
+        "variantClean": "{button Tk}"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "e993faf245ba",
+      "type": "unknown",
+      "selector": "#w-vulcan-v2-30 > div.w-vulcan-overlays-table.w-css-reset",
+      "bounds": {
+        "x": 214,
+        "y": 1725,
+        "width": 1109,
+        "height": 585
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "button"
+      },
+      "description": "w-vulcan-overlays-table",
+      "features": {
+        "skeleton": "button",
+        "variant": "button",
+        "variantClean": "button"
+      },
+      "screenshot": "blocks/e993faf245ba.jpg",
+      "variantId": "v_b6cd2922acea"
+    },
+    {
+      "id": "e3cb7f51b785",
+      "type": "columns",
+      "selector": "#w-vulcan-v2-30-control-bar",
+      "bounds": {
+        "x": 214,
+        "y": 2309,
+        "width": 1109,
+        "height": 39
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "button"
+      },
+      "description": "w-bottom-bar",
+      "features": {
+        "skeleton": "{~ button [T|slider*3] [button]}",
+        "variant": "{~r button [Tw|slider*3] [button]}",
+        "variantClean": "{~r button [Tw|slider*3] [button]}"
+      },
+      "screenshot": "blocks/e3cb7f51b785.jpg",
+      "variantId": "v_6d61ae626c44"
+    },
+    {
+      "id": "120116876d83",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(6) > div:nth-child(1)",
+      "bounds": {
+        "x": 183,
+        "y": 2379,
+        "width": 1170,
+        "height": 352
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading + list"
+      },
+      "description": "section",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "e727af68cfe6",
+      "type": "default-content",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(6) > div:nth-child(2)",
+      "bounds": {
+        "x": 183,
+        "y": 2731,
+        "width": 1170,
+        "height": 234
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading + link"
+      },
+      "description": "section",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tnw",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "5e614822e5e5",
+      "type": "default-content",
+      "selector": "#getInTouch > div > div > h2",
+      "bounds": {
+        "x": 214,
+        "y": 3056,
+        "width": 1109,
+        "height": 28
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tw",
+        "variantClean": "Tw"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "1844bffa3a76",
+      "type": "default-content",
+      "selector": "#getInTouch > div > div > p",
+      "bounds": {
+        "x": 214,
+        "y": 3104,
+        "width": 1109,
+        "height": 23
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tw",
+        "variantClean": "Tw"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "a9c4fdea9adb",
+      "type": "cards",
+      "selector": "#getInTouch > div > div > div",
+      "bounds": {
+        "x": 214,
+        "y": 3177,
+        "width": 1109,
+        "height": 164
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "link + text"
+      },
+      "description": "contact-body",
+      "features": {
+        "skeleton": "[T]",
+        "variant": "[Tw]",
+        "variantClean": "[Tw]",
+        "set": true
+      },
+      "screenshot": "blocks/a9c4fdea9adb.jpg",
+      "variantId": "v_6cc097716c59"
+    }
+  ]
+}

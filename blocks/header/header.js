@@ -538,7 +538,8 @@ function toggleMenu(nav, forceExpanded = null) {
   const button = nav.querySelector('.nav-hamburger button');
   document.body.style.overflowY = (expanded || isDesktop.matches) ? '' : 'hidden';
   nav.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-  if (button) button.setAttribute('aria-label', expanded ? 'Open navigation' : 'Close navigation');
+  // the visible "Menu" text names the button; open/closed is its expanded state
+  if (button) button.setAttribute('aria-expanded', expanded ? 'false' : 'true');
   closePanels(nav);
   const opening = !expanded && !isDesktop.matches;
   // mobile drawer opens on the first menu tab, with the page dimmed behind it
@@ -598,7 +599,7 @@ export default async function decorate(block) {
   // hamburger for mobile (label from the mobile-only menu section)
   const hamburger = document.createElement('div');
   hamburger.className = 'nav-hamburger';
-  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-label="Open navigation">
+  hamburger.innerHTML = `<button type="button" aria-controls="nav" aria-expanded="false">
       <span class="nav-hamburger-icon"></span>
       <span class="nav-hamburger-label"></span>
     </button>`;

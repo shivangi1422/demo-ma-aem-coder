@@ -1,0 +1,66 @@
+{
+  "analysis-urls-all": {
+    "captured": "2026-10-30T07:04:02.233Z",
+    "totalUrls": 17,
+    "totalDocuments": 0,
+    "method": "user-provided-list",
+    "robotsTxtFound": false,
+    "robotsTxtRulesApplied": false,
+    "limitations": "User-provided list; discovery metadata unavailable",
+    "confidence": "100%",
+    "urls": [
+      {
+        "url": "https://www.mybeckman.in/service"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/installation"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/preventive-maintenance"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-qualification-calibration"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/centrifuge"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/flow-cytometry"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/liquid-handling"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/particle-analysis"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/request"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/tech-support"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/tech-support/repairs"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/tech-support/windows-10"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/training"
+      }
+    ],
+    "documents": []
+  }
+}

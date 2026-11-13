@@ -1,0 +1,3 @@
+- Analyze the Service section only (/service and its sub-pages).
+- Identify page templates, navigation, header, footer, hero sections, cards, product listing pages and reusable components.
+- Do not modify any code yet.

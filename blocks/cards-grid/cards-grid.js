@@ -209,6 +209,55 @@ function buildButtons(cardRows) {
 }
 
 /**
+ * Thumb list: 90px square thumbnail left of an uppercase title and text,
+ * 1-up on mobile, 2-up from 992px. The title link is stretched over the whole
+ * tile in CSS, so the tile is clickable while the link keeps the title as its
+ * accessible name. The thumbnail is decorative next to the title.
+ * @param {Element[]} cardRows
+ * @returns {Element}
+ */
+function buildThumbList(cardRows) {
+  const ul = document.createElement('ul');
+  cardRows.forEach((row, index) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    const { imgCell, textCell } = splitCells(row);
+
+    const picture = pictureFrom(imgCell, '180');
+    if (picture) {
+      // 90px square slot: size hints avoid layout shift; only the first row
+      // (two tiles from 992px) can be in the first viewport, so defer the rest
+      const img = picture.querySelector('img') || picture;
+      img.width = 90;
+      img.height = 90;
+      img.decoding = 'async';
+      if (index > 1) img.loading = 'lazy';
+      const thumb = document.createElement('div');
+      thumb.className = 'cards-grid-image';
+      moveInstrumentation(imgCell, thumb);
+      thumb.append(picture);
+      li.append(thumb);
+    }
+
+    if (textCell) {
+      const body = document.createElement('div');
+      body.className = 'cards-grid-body';
+      moveInstrumentation(textCell, body);
+      while (textCell.firstChild) body.append(textCell.firstChild);
+      const heading = body.querySelector('h2, h3, h4, h5, h6');
+      const link = (heading && heading.querySelector('a[href]')) || body.querySelector('a[href]');
+      if (link) {
+        link.classList.add('cards-grid-link');
+        li.classList.add('cards-grid-linked');
+      }
+      li.append(body);
+    }
+    ul.append(li);
+  });
+  return ul;
+}
+
+/**
  * Related: horizontal product carousel (source: "Related ... Products" on product
  * pages). Cards scroll in a snap container; previous/next buttons move by one
  * card and are disabled at the ends. Image, title and text link to the product.
@@ -295,6 +344,7 @@ function buildRelated(cardRows) {
  *   - .cards-grid.icon-left    2-up: small icon beside bold title, text, red button
  *   - .cards-grid.buttons      red link tiles with a white icon
  *   - .cards-grid.related      horizontal product carousel with previous/next buttons
+ *   - .cards-grid.thumblist    2-up: 90px thumb left of uppercase title + text, whole tile links
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
  * @param {Element} block
  */
@@ -315,6 +365,7 @@ export default function decorate(block) {
     'icon-left': buildIconLeft,
     buttons: buildButtons,
     related: buildRelated,
+    thumblist: buildThumbList,
   };
   const style = Object.keys(builders).find((cls) => block.classList.contains(cls));
   if (style) {

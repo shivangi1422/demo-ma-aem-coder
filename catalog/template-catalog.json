@@ -1,0 +1,33 @@
+{
+  "templates": [
+    {
+      "name": "service-landing",
+      "urls": [
+        "https://www.mybeckman.in/service"
+      ],
+      "description": "Section landing page without breadcrumb: full-bleed photo hero with centered heading and CTA, colored stats band, icon card grid linking to sub-pages, and a colored contact CTA band"
+    },
+    {
+      "name": "service-detail",
+      "urls": [
+        "https://www.mybeckman.in/service/instrument-optimization",
+        "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools",
+        "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+        "https://www.mybeckman.in/service/instrument-optimization/installation",
+        "https://www.mybeckman.in/service/instrument-optimization/preventive-maintenance",
+        "https://www.mybeckman.in/service/instrument-qualification-calibration",
+        "https://www.mybeckman.in/service/plans",
+        "https://www.mybeckman.in/service/plans/centrifuge",
+        "https://www.mybeckman.in/service/plans/flow-cytometry",
+        "https://www.mybeckman.in/service/plans/liquid-handling",
+        "https://www.mybeckman.in/service/plans/particle-analysis",
+        "https://www.mybeckman.in/service/plans/request",
+        "https://www.mybeckman.in/service/tech-support",
+        "https://www.mybeckman.in/service/tech-support/repairs",
+        "https://www.mybeckman.in/service/tech-support/windows-10",
+        "https://www.mybeckman.in/service/training"
+      ],
+      "description": "Breadcrumb-led content page: breadcrumb, optional hero or intro columns, then stacked content sections (text/media columns, comparison tables, video, card grids, forms) ending in a contact CTA columns band"
+    }
+  ]
+}

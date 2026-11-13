@@ -1,0 +1,38 @@
+{
+  "id": "v_f83707d7d105",
+  "type": "cards",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/tech-support/windows-10",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "image + heading + link"
+  },
+  "layoutKey": "[~(T)]",
+  "colour": "[~s(Tk)]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/tech-support/windows-10",
+        "instanceId": "a35437a70e7c",
+        "instanceIds": [
+          "a35437a70e7c"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/a35437a70e7c.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Look-alike shadowed tiles with image, title and button linking to detail pages; matches project variant cards-grid",
+    "mergedInto": null
+  }
+}

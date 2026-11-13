@@ -957,3 +957,122 @@ main .cards-grid.icon-left .cards-grid-action a.button:focus-visible {
   cursor: default;
 }
 /* stylelint-enable no-descending-specificity */
+
+/* ============================================================
+   THUMB LIST (Support FAQ landing)
+   90px square thumbnail left of an uppercase title and text; 1-up on mobile
+   (thumbnail stays beside the text), 2-up from 992px. The title link is
+   stretched over the tile; hovering a tile turns its description blue
+   (source: 415px tiles, 20px gutter, text box = tile - 130px).
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+.cards-grid.thumblist {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.cards-grid.thumblist ul {
+  gap: 48px 20px;
+  align-items: start;
+}
+
+.cards-grid.thumblist ul > li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 90px minmax(0, 1fr);
+  gap: 0 24.8px;
+  align-items: start;
+  padding-right: 15.2px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  overflow: visible;
+}
+
+/* no thumbnail: the text takes the whole tile */
+.cards-grid.thumblist ul > li > .cards-grid-body:only-child {
+  grid-column: 1 / -1;
+}
+
+.cards-grid.thumblist .cards-grid-image {
+  width: 90px;
+  height: 90px;
+  overflow: hidden;
+}
+
+.cards-grid.thumblist .cards-grid-image picture {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.cards-grid.thumblist .cards-grid-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.cards-grid.thumblist .cards-grid-body {
+  display: block;
+  padding: 0;
+  color: #333;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.cards-grid.thumblist .cards-grid-body h2,
+.cards-grid.thumblist .cards-grid-body h3,
+.cards-grid.thumblist .cards-grid-body h4 {
+  margin: 0 0 21.28px;
+  color: #000;
+  font-family: var(--body-font-family);
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.cards-grid.thumblist .cards-grid-body p {
+  margin: 0;
+  color: inherit;
+  font-size: inherit;
+  line-height: inherit;
+}
+
+.cards-grid.thumblist .cards-grid-body a:any-link {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* stretched link: the whole tile is the title link's hit area */
+.cards-grid.thumblist .cards-grid-link::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.cards-grid.thumblist .cards-grid-link:focus-visible {
+  outline: none;
+}
+
+.cards-grid.thumblist ul > li.cards-grid-linked:has(.cards-grid-link:focus-visible) {
+  outline: 2px solid currentcolor;
+  outline-offset: 4px;
+}
+
+/* hovered / focused tile: the description turns blue, the title stays black */
+.cards-grid.thumblist ul > li.cards-grid-linked:hover .cards-grid-body,
+.cards-grid.thumblist ul > li.cards-grid-linked:focus-within .cards-grid-body {
+  color: rgb(0 152 206);
+}
+
+@media (width >= 992px) {
+  .cards-grid.thumblist ul {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* stylelint-enable no-descending-specificity */
