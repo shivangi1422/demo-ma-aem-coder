@@ -35,10 +35,10 @@ var CustomImportScript = (() => {
   };
   var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: true }), mod);
 
-  // tools/importer/import-service.js
-  var import_service_exports = {};
-  __export(import_service_exports, {
-    default: () => import_service_default
+  // tools/importer/import-service-landing.js
+  var import_service_landing_exports = {};
+  __export(import_service_landing_exports, {
+    default: () => import_service_landing_default
   });
 
   // tools/importer/parsers/hero-centered.js
@@ -225,6 +225,39 @@ var CustomImportScript = (() => {
   var isEmpty = (el) => !el.textContent.trim() && !el.querySelector("img, picture, video, iframe, svg, a[href], h1, h2, h3, h4, h5, h6");
   function transform(hookName, element, payload) {
     if (hookName === "beforeTransform") {
+      const doc = element.ownerDocument || document;
+      let mktoOrigin = "https://pages.beckman.com";
+      const mktoStyle = doc.querySelector("link#mktoForms2BaseStyle[href]");
+      if (mktoStyle) {
+        try {
+          mktoOrigin = new URL(mktoStyle.getAttribute("href"), "https://pages.beckman.com").origin;
+        } catch (e) {
+        }
+      }
+      element.querySelectorAll("#main .formassembly-container").forEach((container) => {
+        if (container.closest(".footer2023")) return;
+        const form = container.querySelector('form.mktoForm[id^="mktoForm_"]');
+        if (!form) return;
+        const formId = form.id.replace("mktoForm_", "");
+        if (!formId) return;
+        const munchkinInput = container.querySelector('input[name="munchkinId"]');
+        const munchkin = munchkinInput && munchkinInput.value || "682-XWP-826";
+        container.setAttribute("data-excat-mkto-form", formId);
+        container.setAttribute("data-excat-mkto-munchkin", munchkin);
+        container.setAttribute("data-excat-mkto-origin", mktoOrigin);
+      });
+      removeAll(element, ['a[name="Courses"]:not([href])']);
+      element.querySelectorAll("#content-holder > br").forEach((br) => br.remove());
+      element.querySelectorAll("#content-holder .bcls-aeo-published").forEach((el) => {
+        if (isEmpty(el)) el.remove();
+      });
+      removeAll(element, ["#product-documentation-wrapper .content-resource-list-child"]);
+      element.querySelectorAll("#product-documentation-wrapper .content-pagination-next-btn").forEach((btn) => btn.parentElement.remove());
+      element.querySelectorAll(".product-spotlight-wrapper .product-page-sub-heading-wrapper > h3").forEach((h3) => {
+        const h2 = element.ownerDocument.createElement("h2");
+        h2.innerHTML = h3.innerHTML;
+        h3.replaceWith(h2);
+      });
       removeAll(element, [
         "#consent_blackbar",
         "#teconsent",
@@ -274,6 +307,7 @@ var CustomImportScript = (() => {
       });
     }
     if (hookName === "afterTransform") {
+      removeAll(element, ["#coveo-techdocs-more-results"]);
       removeAll(element, [
         "header#mainNav",
         "header",
@@ -387,15 +421,15 @@ var CustomImportScript = (() => {
     }
   }
 
-  // tools/importer/import-service.js
+  // tools/importer/import-service-landing.js
   var PAGE_TEMPLATE = {
-    name: "service",
+    name: "service-landing",
     urls: [
       "https://www.mybeckman.in/service"
     ],
     representativeUrl: "https://www.mybeckman.in/service",
     description: "Service landing page: photo hero, blue stats band, service offering cards and a blue Get in Touch contact band",
-    urlPattern: "/*",
+    urlPattern: "/service",
     blocks: [
       {
         name: "hero-centered",
@@ -480,7 +514,7 @@ var CustomImportScript = (() => {
     });
     return pageBlocks;
   }
-  var import_service_default = {
+  var import_service_landing_default = {
     transform: (payload) => {
       const { document: document2, url, params } = payload;
       const main = document2.body;
@@ -498,7 +532,9 @@ var CustomImportScript = (() => {
       });
       executeTransformers("afterTransform", main, payload);
       main.appendChild(document2.createElement("hr"));
-      WebImporter.rules.createMetadata(main, document2);
+      const meta = WebImporter.Blocks.getMetadata(document2);
+      meta.template = "service-landing";
+      main.append(WebImporter.Blocks.getMetadataBlock(document2, meta));
       WebImporter.rules.transformBackgroundImages(main, document2);
       WebImporter.rules.adjustImageUrls(main, url, params.originalURL);
       const rawPath = new URL(params.originalURL).pathname.replace(/\/$/, "").replace(/\.html?$/, "");
@@ -510,5 +546,5 @@ var CustomImportScript = (() => {
       }];
     }
   };
-  return __toCommonJS(import_service_exports);
+  return __toCommonJS(import_service_landing_exports);
 })();

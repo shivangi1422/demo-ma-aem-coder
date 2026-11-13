@@ -1,17 +1,18 @@
 {
   "variantName": "cards-grid",
   "baseBlock": "cards",
-  "visualCharacteristics": "Grid of bordered tiles (3-up desktop), image or icon on top, title and text below; optional heading/intro row; Style options solutions, productlines, insights, simple, features, products (single column: large product image, H3 title, Read More button), contentlist (3-up borderless cards: bordered 4:3 image linked to the title href, light 22.4px H3, linked description with chevron; 1-up without image below 768px), icon-left (2-up from 992px: ~70px icon beside bold title, text and a solid red button; stacked and centered below), buttons (centered wrapping 265px red tiles, white 50px icon left of the label, whole tile is the link; external links open in a new tab).",
+  "visualCharacteristics": "Grid of bordered tiles (3-up desktop), image or icon on top, title and text below; optional heading/intro row; Style options solutions, productlines, insights, simple, features, products (single column: large product image, H3 title, Read More button), contentlist (3-up borderless cards: bordered 4:3 image linked to the title href, light 22.4px H3, linked description with chevron; 1-up without image below 768px), icon-left (2-up from 992px: ~70px icon beside bold title, text and a solid red button; stacked and centered below), buttons (centered wrapping 265px red tiles, white 50px icon left of the label, whole tile is the link; external links open in a new tab), thumblist (1-up, 2-up from 992px with a 48px row gap: 90px cover-cropped square thumbnail always left of the text with a 25px gap, uppercase 16px/700 black title, 16px/26.4px #333 description; the title link is stretched over the whole tile, hover turns the tile text blue and dims the other tiles).",
   "reuseGuidance": "Use for wrapping grids of look-alike linked items with an image or icon.",
   "usage": {
     "pagesUsing": [
       "/service",
       "/service/plans",
       "/service/training",
-      "/support"
+      "/support",
+      "/support/faq"
     ],
-    "reuseCount": 4,
-    "lastUsed": "2026-11-02"
+    "reuseCount": 5,
+    "lastUsed": "2026-11-10"
   },
   "canonicalModel": "collection",
   "contentPattern": {
@@ -53,6 +54,10 @@
     {
       "class": "buttons",
       "label": "Buttons (red link tiles with white icon)"
+    },
+    {
+      "class": "thumblist",
+      "label": "Thumb List (2-up: 90px square thumbnail left of uppercase title and text)"
     }
   ],
   "memberVariantIds": [

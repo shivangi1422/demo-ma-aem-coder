@@ -878,9 +878,9 @@ main .section.grey {
 /* stylelint-enable no-descending-specificity */
 
 /*
- * Templates "support", "service-training" and "service-plan-request" (page
- * metadata "template", body classes .support / .service-training /
- * .service-plan-request). Mirrors the source page CSS: bootstrap
+ * Templates "support", "service-training", "service-plan-request" and
+ * "support-faq" (page metadata "template", body classes .support /
+ * .service-training / .service-plan-request / .support-faq). Mirrors the source page CSS: bootstrap
  * container (750/970/1170px at 768/992/1200px, 15px gutters), #4d4d4d text and
  * the source type scale. Breakpoints mirror the source (768px / 992px / 1200px).
  * Scoped so other pages using the same blocks are unaffected.
@@ -888,6 +888,7 @@ main .section.grey {
 /* stylelint-disable no-descending-specificity -- template overrides must follow the shared rules they override */
 .support main,
 .service-training main,
+.support-faq main,
 .service-plan-request main {
   --st-container: 100%;
 
@@ -897,6 +898,7 @@ main .section.grey {
 @media (width >= 768px) {
   .support main,
   .service-training main,
+  .support-faq main,
   .service-plan-request main {
     --st-container: 750px;
   }
@@ -905,6 +907,7 @@ main .section.grey {
 @media (width >= 992px) {
   .support main,
   .service-training main,
+  .support-faq main,
   .service-plan-request main {
     --st-container: 970px;
   }
@@ -913,6 +916,7 @@ main .section.grey {
 @media (width >= 1200px) {
   .support main,
   .service-training main,
+  .support-faq main,
   .service-plan-request main {
     --st-container: 1170px;
   }
@@ -920,12 +924,14 @@ main .section.grey {
 
 .support main > .section,
 .service-training main > .section,
+.support-faq main > .section,
 .service-plan-request main > .section {
   margin: 0;
 }
 
 .support main > .section:not(.split) > div,
 .service-training main > .section:not(.split) > div,
+.support-faq main > .section:not(.split) > div,
 .service-plan-request main > .section:not(.split) > div {
   box-sizing: border-box;
   max-width: var(--st-container);
@@ -947,6 +953,7 @@ main .section.grey {
 
 .support main h1,
 .service-training main h1,
+.support-faq main h1,
 .service-plan-request main h1 {
   margin: 24.12px 0;
   color: #4d4d4d;
@@ -958,6 +965,7 @@ main .section.grey {
 
 .support main .default-content-wrapper p,
 .service-training main .default-content-wrapper p,
+.support-faq main .default-content-wrapper p,
 .service-plan-request main .default-content-wrapper p {
   margin: 16px 0;
   font-size: 16px;
@@ -966,8 +974,20 @@ main .section.grey {
 
 .support main .default-content-wrapper a:any-link,
 .service-training main .default-content-wrapper a:any-link,
+.support-faq main .default-content-wrapper a:any-link,
 .service-plan-request main .default-content-wrapper a:any-link {
   color: #007acb;
+}
+
+/* links inside running text are underlined, not marked by color alone
+   (WCAG 1.4.1; #007acb vs #4d4d4d text is only 1.87:1). Deliberate deviation
+   from the source, which shows them without underline. Buttons are excluded. */
+.support main .default-content-wrapper p a:any-link:not(.button),
+.service-training main .default-content-wrapper p a:any-link:not(.button),
+.support-faq main .default-content-wrapper p a:any-link:not(.button),
+.service-plan-request main .default-content-wrapper p a:any-link:not(.button) {
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
 }
 
 /* support: the source keeps a <br> after the H1 and after the intro text */
@@ -977,6 +997,22 @@ main .section.grey {
 
 .support main .section.split .cards-grid-wrapper {
   margin-top: 46.4px;
+}
+
+/* support-faq: the source keeps an empty spacer paragraph between the intro
+   and the tiles, and lays the page out in the col-md-9 column (850px of the
+   1170px container from 992px) next to an empty sidebar.
+   Gap above the tiles: 16px + 26.4px + 16px spacer (the intro's bottom margin
+   collapses into it); below them the source's 48px last-tile margin. */
+.support-faq main > .section:not(.split) > .cards-grid-wrapper {
+  margin-top: 58.4px;
+  padding-bottom: 48px;
+}
+
+@media (width >= 992px) {
+  .support-faq main > .section:not(.split) > div[class$="-wrapper"] {
+    padding-right: calc(var(--st-container) * 0.25 + 12.5px);
+  }
 }
 
 /* service-training: full-bleed hero, then the 1170px content column */

@@ -1,0 +1,96 @@
+{
+  "id": "v_2fa05e1a5d96",
+  "type": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.722Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "image + heading + text"
+  },
+  "layoutKey": "[T]",
+  "colour": "[T|Tk]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+        "instanceId": "b031099cb513",
+        "instanceIds": [
+          "b031099cb513"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/b031099cb513.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/preventive-maintenance",
+        "instanceId": "e6131b90f9ea",
+        "instanceIds": [
+          "e6131b90f9ea"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_preventive-maintenance--671a7adf/blocks/e6131b90f9ea.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-qualification-calibration",
+        "instanceId": "7200cc43eef5",
+        "instanceIds": [
+          "7200cc43eef5"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-qualification-calibration--97e7cec8/blocks/7200cc43eef5.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans",
+        "instanceId": "a35437a70e7c",
+        "instanceIds": [
+          "a35437a70e7c",
+          "da17e4b881d2"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/a35437a70e7c.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/centrifuge",
+        "instanceId": "7feb3f12cdda",
+        "instanceIds": [
+          "7feb3f12cdda"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/7feb3f12cdda.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/flow-cytometry",
+        "instanceId": "7feb3f12cdda",
+        "instanceIds": [
+          "7feb3f12cdda"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/7feb3f12cdda.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/tech-support/repairs",
+        "instanceId": "5198953480d0",
+        "instanceIds": [
+          "5198953480d0",
+          "56d1d6864d9d"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_tech-support_repairs--9555bd8f/blocks/5198953480d0.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/tech-support/windows-10",
+        "instanceId": "7feb3f12cdda",
+        "instanceIds": [
+          "7feb3f12cdda"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_tech-support_windows-10--8d1103f9/blocks/7feb3f12cdda.jpg"
+      }
+    ],
+    "reuseCount": 8
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Side-by-side action options, each a button with optional heading and description; matches project variant columns-cta; heading/paragraph is optional content, not an option",
+    "mergedInto": null
+  }
+}

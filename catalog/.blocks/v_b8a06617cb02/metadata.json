@@ -1,0 +1,54 @@
+{
+  "id": "v_b8a06617cb02",
+  "type": "hero",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.722Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/plans/centrifuge",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "image + heading + link"
+  },
+  "layoutKey": "~(~@(T [T]))",
+  "colour": "~k(~@(Tw [Tw]))",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/plans/centrifuge",
+        "instanceId": "88b7ef161d78",
+        "instanceIds": [
+          "88b7ef161d78"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/88b7ef161d78.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/flow-cytometry",
+        "instanceId": "88b7ef161d78",
+        "instanceIds": [
+          "88b7ef161d78"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/88b7ef161d78.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/particle-analysis",
+        "instanceId": "88b7ef161d78",
+        "instanceIds": [
+          "88b7ef161d78"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/88b7ef161d78.jpg"
+      }
+    ],
+    "reuseCount": 3
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Page-top full-bleed photo banner with centered title, subtitle and CTAs; matches project variant hero-centered",
+    "mergedInto": null
+  }
+}

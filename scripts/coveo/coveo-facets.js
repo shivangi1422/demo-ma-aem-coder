@@ -30,17 +30,22 @@ export function fieldExpression(field, values) {
 }
 
 /**
- * Parses facet definitions authored one per line as "@field | Label".
+ * Parses facet definitions authored one per line as "@field | Label", optionally
+ * followed by "| Value A, Value B" to limit the facet to those values (the source's
+ * allowedValues, e.g. Product Market on the search page).
  * @param {string} text
- * @returns {{field: string, label: string}[]}
+ * @returns {{field: string, label: string, allowed?: string[]}[]}
  */
 export function parseFacetDefinitions(text) {
   return (text || '').split(/\n|;/)
     .map((line) => line.trim())
     .filter((line) => line.startsWith('@'))
     .map((line) => {
-      const [field, ...label] = line.split('|');
-      return { field: field.trim(), label: label.join('|').trim() || field.trim().slice(1) };
+      const [field, label = '', allowed = ''] = line.split('|').map((part) => part.trim());
+      const definition = { field, label: label || field.slice(1) };
+      const values = allowed.split(',').map((v) => v.trim()).filter(Boolean);
+      if (values.length) definition.allowed = values;
+      return definition;
     });
 }
 
@@ -54,6 +59,25 @@ export class FacetState {
     this.maximumNumberOfValues = maximumNumberOfValues;
     this.sortCriteria = sortCriteria;
     this.selected = new Map(definitions.map((d) => [d.field, []]));
+    // per-facet value limits ("Show all"), default maximumNumberOfValues
+    this.limits = new Map();
+  }
+
+  /**
+   * @param {string} field
+   * @returns {number} number of values requested for the facet
+   */
+  limitFor(field) {
+    return this.limits.get(field) || this.maximumNumberOfValues;
+  }
+
+  /**
+   * @param {string} field
+   * @param {number} [limit] values to request; omit to go back to the default
+   */
+  setLimit(field, limit) {
+    if (limit) this.limits.set(field, limit);
+    else this.limits.delete(field);
   }
 
   /**
@@ -113,11 +137,11 @@ export class FacetState {
       const values = this.selected.get(d.field) || [];
       const entry = {
         field: d.field,
-        maximumNumberOfValues: this.maximumNumberOfValues,
+        maximumNumberOfValues: this.limitFor(d.field),
         sortCriteria: this.sortCriteria,
         injectionDepth: 1000,
-        completeFacetWithStandardValues: true,
-        allowedValues: [...values],
+        completeFacetWithStandardValues: !d.allowed,
+        allowedValues: d.allowed ? [...new Set([...d.allowed, ...values])] : [...values],
       };
       if (values.length) {
         entry.advancedQueryOverride = this.advancedQuery(baseAq, d.field);

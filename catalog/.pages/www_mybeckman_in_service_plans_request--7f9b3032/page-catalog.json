@@ -1,0 +1,208 @@
+{
+  "url": "https://www.mybeckman.in/service/plans/request",
+  "title": "Service Plan Request, Beckman Coulter Life Sciences",
+  "timestamp": "2026-10-30T07:05:23.108Z",
+  "duration": "9.8s",
+  "cleanup": {
+    "elementsRemoved": 16,
+    "types": [
+      "overlay",
+      "cookie-banner",
+      "popup",
+      "geo-modal"
+    ],
+    "cookieConsentDismissed": true,
+    "lateConsentOverlaysRemoved": 0
+  },
+  "skeleton": {
+    "signature": "s(s,s(s,s(s(s,s,s,s),s)))",
+    "nodeMap": {
+      "r": "body",
+      "rc1": "#consent_blackbar",
+      "rc2": "#wrapper",
+      "rc2c1": "#main > div.main-holder > div.container.custome-container",
+      "rc2c2": "#main > div.main-holder > div.container:nth-of-type(2)",
+      "rc2c2c1": "#content-holder",
+      "rc2c2c1c1": "#content-holder > h1",
+      "rc2c2c1c2": "#content-holder > div.bcls-aeo-published",
+      "rc2c2c1c3": "#content-holder > p:nth-of-type(1)",
+      "rc2c2c1c4": "#content-holder > p:nth-of-type(2)",
+      "rc2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout"
+    },
+    "sections": [
+      {
+        "id": "rc1",
+        "selector": "#consent_blackbar",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#ffffff",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc2",
+        "selector": "#main > div.main-holder > div.container.custome-container",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#ffffff",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc3",
+        "selector": "#main > div.main-holder > div.container:nth-of-type(2)",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#ffffff",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      }
+    ],
+    "invalidIgnore": []
+  },
+  "pageLayout": {
+    "box": {
+      "y": 122.703125,
+      "height": 1347.1875
+    },
+    "splits": [],
+    "start": {
+      "kind": "paragraph"
+    }
+  },
+  "blocks": [
+    {
+      "id": "e323e7766608",
+      "type": "columns",
+      "selector": "#main > div > div.container.custome-container",
+      "bounds": {
+        "x": 0,
+        "y": 123,
+        "width": 1440,
+        "height": 59
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "list + link"
+      },
+      "description": "container",
+      "features": {
+        "skeleton": "nav",
+        "variant": "nav",
+        "variantClean": "nav"
+      },
+      "screenshot": "blocks/e323e7766608.jpg",
+      "variantId": "v_c5c5770e98ee"
+    },
+    {
+      "id": "218b36ef71db",
+      "type": "default-content",
+      "selector": "#content-holder > h1",
+      "bounds": {
+        "x": 150,
+        "y": 206,
+        "width": 1140,
+        "height": 40
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "12c69315eb9c",
+      "type": "default-content",
+      "selector": "#content-holder > p:nth-child(3)",
+      "bounds": {
+        "x": 150,
+        "y": 270,
+        "width": 1140,
+        "height": 53
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text + link"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tbn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "a1382321e1c8",
+      "type": "default-content",
+      "selector": "#content-holder > p:nth-child(4)",
+      "bounds": {
+        "x": 150,
+        "y": 338,
+        "width": 1140,
+        "height": 26
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "292e0d6b1732",
+      "type": "unknown",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout",
+      "bounds": {
+        "x": 150,
+        "y": 381,
+        "width": 1140,
+        "height": 1039
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "field + link + video + button"
+      },
+      "description": "bc-test-layout",
+      "features": {
+        "skeleton": "form",
+        "variant": "form",
+        "variantClean": "form"
+      },
+      "screenshot": "blocks/292e0d6b1732.jpg",
+      "variantId": "v_5cdc11dd5311"
+    }
+  ]
+}

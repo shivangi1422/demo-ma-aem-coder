@@ -1,0 +1,38 @@
+{
+  "id": "v_6d61ae626c44",
+  "type": "video",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "button"
+  },
+  "layoutKey": "{[T|slider*3] [button] button ~}",
+  "colour": "{[Tw|slider*3] [button] button ~r}",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+        "instanceId": "e3cb7f51b785",
+        "instanceIds": [
+          "e3cb7f51b785"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/e3cb7f51b785.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "Only the control bar of an embedded video player; same video block",
+    "mergedInto": "v_b6cd2922acea"
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "id": "v_27a41c6f82ef",
+  "type": "default-content",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.722Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/plans/centrifuge",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "text"
+  },
+  "layoutKey": "~(T)",
+  "colour": "~k(Tw)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/plans/centrifuge",
+        "instanceId": "c4685959982f",
+        "instanceIds": [
+          "c4685959982f"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_centrifuge--52a96e22/blocks/c4685959982f.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/flow-cytometry",
+        "instanceId": "c4685959982f",
+        "instanceIds": [
+          "c4685959982f"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_flow-cytometry--19a8650c/blocks/c4685959982f.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/liquid-handling",
+        "instanceId": "c4685959982f",
+        "instanceIds": [
+          "c4685959982f"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_liquid-handling--cf2943e6/blocks/c4685959982f.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/plans/particle-analysis",
+        "instanceId": "c4685959982f",
+        "instanceIds": [
+          "c4685959982f"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans_particle-analysis--3d80db36/blocks/c4685959982f.jpg"
+      }
+    ],
+    "reuseCount": 4
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "Short legend line or centered heading plus paragraph; an author can type it, the background is section style",
+    "mergedInto": null
+  }
+}

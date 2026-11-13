@@ -54,6 +54,17 @@ export default function transform(hookName, element, payload) {
       if (isEmpty(el)) el.remove();
     });
 
+    // Support FAQ: empty <a></a> in the intro, &nbsp; spacer paragraph, empty sidebar
+    element.querySelectorAll('#content-holder a:not([href])').forEach((a) => {
+      if (isEmpty(a)) a.remove();
+    });
+    element.querySelectorAll('#content-holder > p').forEach((p) => {
+      if (!p.textContent.replace(/ /g, ' ').trim() && !p.querySelector('img, a[href]')) p.remove();
+    });
+    element.querySelectorAll('aside.faq-sidebar').forEach((el) => {
+      if (isEmpty(el)) el.remove();
+    });
+
     // Product pages: the Content and Resources list and pager are server-rendered
     // data (the resource-list block fetches them); section titles are H3 in the
     // source and become H2 under the page H1.

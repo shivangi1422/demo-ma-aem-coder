@@ -1,0 +1,38 @@
+{
+  "id": "v_afe2cddda7e1",
+  "type": "custom",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/training",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "field + link + video + button"
+  },
+  "layoutKey": "~(form)",
+  "colour": "~w(form)",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/training",
+        "instanceId": "50bca06ef765",
+        "instanceIds": [
+          "50bca06ef765"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_training--3c3158aa/blocks/50bca06ef765.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Same contact form job, fields laid out in two columns in a box",
+    "mergedInto": "v_5cdc11dd5311"
+  }
+}

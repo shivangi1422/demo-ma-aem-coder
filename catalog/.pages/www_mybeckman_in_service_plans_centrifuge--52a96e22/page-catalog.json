@@ -1,0 +1,384 @@
+{
+  "url": "https://www.mybeckman.in/service/plans/centrifuge",
+  "title": "Centrifuge",
+  "timestamp": "2026-10-30T07:05:08.385Z",
+  "duration": "9.7s",
+  "cleanup": {
+    "elementsRemoved": 16,
+    "types": [
+      "overlay",
+      "cookie-banner",
+      "popup",
+      "geo-modal"
+    ],
+    "cookieConsentDismissed": true,
+    "lateConsentOverlaysRemoved": 0
+  },
+  "skeleton": {
+    "signature": "s(s,s(s,s(sB,s(s,s(,)),2x1),sB(s,s,3x1),s))",
+    "nodeMap": {
+      "r": "body",
+      "rc1": "#consent_blackbar",
+      "rc2": "#wrapper",
+      "rc2c1": "#main > div.main-holder > div.container.custome-container",
+      "rc2c2": "#main > div.main-holder > div.container:nth-of-type(2)",
+      "rc2c2c1": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(1)",
+      "rc2c2c2": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(2)",
+      "rc2c2c2c1": "#choosePlan > div.firstSection > h2",
+      "rc2c2c2c2": "#service-plans-table",
+      "rc2c2c2c2c1": "#service-plans-table > table",
+      "rc2c2c2c2c1c1": "#service-plans-table > table > thead",
+      "rc2c2c2c2c1c2": "#service-plans-table > table > tbody",
+      "rc2c2c2c2c1c2c1": "#service-plans-table > table > tbody > tr:nth-of-type(1)",
+      "rc2c2c2c2c1c2c2": "#service-plans-table > table > tbody > tr:nth-of-type(2)",
+      "rc2c2c2c2c1c2c3": "#service-plans-table > table > tbody > tr:nth-of-type(3)",
+      "rc2c2c2c2c1c2c4": "#service-plans-table > table > tbody > tr:nth-of-type(4)",
+      "rc2c2c2c2c1c2c5": "#service-plans-table > table > tbody > tr:nth-of-type(5)",
+      "rc2c2c2c2c1c2c6": "#service-plans-table > table > tbody > tr:nth-of-type(6)",
+      "rc2c2c2c2c1c2c7": "#service-plans-table > table > tbody > tr:nth-of-type(7)",
+      "rc2c2c2c2c1c2c8": "#service-plans-table > table > tbody > tr:nth-of-type(8)",
+      "rc2c2c2c2c1c2c9": "#service-plans-table > table > tbody > tr:nth-of-type(9)",
+      "rc2c2c2c2c1c2c10": "#service-plans-table > table > tbody > tr:nth-of-type(10)",
+      "rc2c2c2c2c1c2c11": "#service-plans-table > table > tbody > tr:nth-of-type(11)",
+      "rc2c2c2c2c1c2c12": "#service-plans-table > table > tbody > tr:nth-of-type(12)",
+      "rc2c2c2c2c2": "#service-plans-table > div.footnotes",
+      "rc2c2c2c2c2c1": "#service-plans-table > div.footnotes > p",
+      "rc2c2c2c2c2c2": "#service-plans-table > div.footnotes > div",
+      "rc2c2c2c2c2c2c1": "#service-plans-table > div.footnotes > div > p:nth-of-type(1)",
+      "rc2c2c2c2c2c2c2": "#service-plans-table > div.footnotes > div > p:nth-of-type(2)",
+      "rc2c2c3": "#main > div.main-holder > div.container:nth-of-type(2) > div.bc-test-layout > div.block > div.bc-rich-text:nth-of-type(3)",
+      "rc2c3": "#main > div.main-holder > div.bc-rich-text",
+      "rc2c3c1": "#getInTouch > div.Section > div.Contact > h2",
+      "rc2c3c2": "#getInTouch > div.Section > div.Contact > p",
+      "rc2c3c3": "#getInTouch > div.Section > div.Contact > div.Contact__body",
+      "rc2c4": "#main > div.main-holder > div.row.js-component"
+    },
+    "sections": [
+      {
+        "id": "rc1",
+        "selector": "#consent_blackbar",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#ffffff",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc2",
+        "selector": "#main > div.main-holder > div.container.custome-container",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#ffffff",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc3",
+        "selector": "#main > div.main-holder > div.container:nth-of-type(2)",
+        "layout": null,
+        "hasBg": false,
+        "hint": "block",
+        "background": "#ffffff",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      },
+      {
+        "id": "rc4",
+        "selector": "#main > div.main-holder > div.bc-rich-text",
+        "layout": null,
+        "hasBg": true,
+        "hint": "block",
+        "background": "#007acb",
+        "backgroundImage": null,
+        "colored": true,
+        "paintSelector": "#getInTouch"
+      },
+      {
+        "id": "rc5",
+        "selector": "#main > div.main-holder > div.row.js-component",
+        "layout": null,
+        "hasBg": false,
+        "hint": "default-content",
+        "background": "#ffffff",
+        "backgroundImage": null,
+        "colored": false,
+        "paintSelector": null
+      }
+    ],
+    "invalidIgnore": []
+  },
+  "pageLayout": {
+    "box": {
+      "y": 122.703125,
+      "height": 2018.34375
+    },
+    "splits": [],
+    "start": {
+      "kind": "paragraph"
+    }
+  },
+  "blocks": [
+    {
+      "id": "e323e7766608",
+      "type": "columns",
+      "selector": "#main > div > div.container.custome-container",
+      "bounds": {
+        "x": 0,
+        "y": 123,
+        "width": 1440,
+        "height": 59
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "list + link"
+      },
+      "description": "container",
+      "features": {
+        "skeleton": "nav",
+        "variant": "nav",
+        "variantClean": "nav"
+      },
+      "screenshot": "blocks/e323e7766608.jpg",
+      "variantId": "v_c5c5770e98ee"
+    },
+    {
+      "id": "88b7ef161d78",
+      "type": "unknown",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(1)",
+      "bounds": {
+        "x": 0,
+        "y": 182,
+        "width": 1440,
+        "height": 360
+      },
+      "visualChars": {
+        "colorScheme": "dark",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "image + heading + link"
+      },
+      "description": "bc-rich-text",
+      "features": {
+        "skeleton": "~(~@(T [T]))",
+        "variant": "~k(~@(Tw [Tw]))",
+        "variantClean": "~k(~@(Tw [Tw]))"
+      },
+      "screenshot": "blocks/88b7ef161d78.jpg",
+      "variantId": "v_b8a06617cb02"
+    },
+    {
+      "id": "6ba8679a4cd6",
+      "type": "default-content",
+      "selector": "#choosePlan > div > h2",
+      "bounds": {
+        "x": 135,
+        "y": 591,
+        "width": 1170,
+        "height": 28
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "813896e1b219",
+      "type": "unknown",
+      "selector": "#service-plans-table > table",
+      "bounds": {
+        "x": 135,
+        "y": 640,
+        "width": 1170,
+        "height": 573
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "table"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "table",
+        "variant": "table",
+        "variantClean": "table"
+      },
+      "screenshot": "blocks/813896e1b219.jpg",
+      "variantId": "v_8d052bd71622"
+    },
+    {
+      "id": "c4685959982f",
+      "type": "unknown",
+      "selector": "#service-plans-table > div > div > p:nth-child(1)",
+      "bounds": {
+        "x": 135,
+        "y": 1260,
+        "width": 1170,
+        "height": 22
+      },
+      "visualChars": {
+        "colorScheme": "dark",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "~(T)",
+        "variant": "~k(Tn)",
+        "variantClean": "~k(Tw)"
+      },
+      "screenshot": "blocks/c4685959982f.jpg",
+      "variantId": "v_27a41c6f82ef"
+    },
+    {
+      "id": "3bc85b7c95b9",
+      "type": "default-content",
+      "selector": "#service-plans-table > div > div > p:nth-child(2)",
+      "bounds": {
+        "x": 135,
+        "y": 1295,
+        "width": 1170,
+        "height": 22
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tn",
+        "variantClean": "Tw"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "7feb3f12cdda",
+      "type": "columns",
+      "selector": "#main > div > div:nth-child(3) > div.bc-test-layout > div > div:nth-child(3)",
+      "bounds": {
+        "x": 0,
+        "y": 1359,
+        "width": 1440,
+        "height": 349
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "moderate",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "heading + text + link"
+      },
+      "description": "bc-rich-text",
+      "features": {
+        "skeleton": "[T]",
+        "variant": "[Tnw]",
+        "variantClean": "[Tk]"
+      },
+      "screenshot": "blocks/7feb3f12cdda.jpg",
+      "variantId": "v_2fa05e1a5d96"
+    },
+    {
+      "id": "5e614822e5e5",
+      "type": "default-content",
+      "selector": "#getInTouch > div > div > h2",
+      "bounds": {
+        "x": 135,
+        "y": 1798,
+        "width": 1170,
+        "height": 28
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "heading"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tw",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "1844bffa3a76",
+      "type": "default-content",
+      "selector": "#getInTouch > div > div > p",
+      "bounds": {
+        "x": 135,
+        "y": 1846,
+        "width": 1170,
+        "height": 23
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": false,
+        "structure": "text"
+      },
+      "description": "",
+      "features": {
+        "skeleton": "T",
+        "variant": "Tw",
+        "variantClean": "Tk"
+      },
+      "screenshot": null
+    },
+    {
+      "id": "a9c4fdea9adb",
+      "type": "cards",
+      "selector": "#getInTouch > div > div > div",
+      "bounds": {
+        "x": 135,
+        "y": 1919,
+        "width": 1170,
+        "height": 164
+      },
+      "visualChars": {
+        "colorScheme": "light",
+        "density": "minimal",
+        "imagePattern": "noimg",
+        "hasGrid": true,
+        "structure": "link + text"
+      },
+      "description": "contact-body",
+      "features": {
+        "skeleton": "[T]",
+        "variant": "[Tw]",
+        "variantClean": "[Tk]",
+        "set": true
+      },
+      "screenshot": "blocks/a9c4fdea9adb.jpg",
+      "variantId": "v_6cc097716c59"
+    }
+  ]
+}

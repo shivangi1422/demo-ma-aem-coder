@@ -1,0 +1,46 @@
+{
+  "id": "v_b8a06617cb02-1",
+  "type": "hero",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "dark",
+    "density": "moderate",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "image + heading + text + link"
+  },
+  "layoutKey": "~(~@(T))",
+  "colour": "~k(~@(Tw))",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service",
+        "instanceId": "88b7ef161d78",
+        "instanceIds": [
+          "88b7ef161d78"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service--d3bfa37c/blocks/88b7ef161d78.jpg"
+      },
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools",
+        "instanceId": "88b7ef161d78",
+        "instanceIds": [
+          "88b7ef161d78"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools--3f149921/blocks/88b7ef161d78.jpg"
+      }
+    ],
+    "reuseCount": 2
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Same photo hero with centered title; a single button is optional content",
+    "mergedInto": "v_b8a06617cb02"
+  }
+}

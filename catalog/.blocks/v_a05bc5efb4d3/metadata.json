@@ -1,0 +1,38 @@
+{
+  "id": "v_a05bc5efb4d3",
+  "type": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "minimal",
+    "hasGrid": false,
+    "imagePattern": "noimg",
+    "structure": "text + link"
+  },
+  "layoutKey": "~([T|[T]*2])",
+  "colour": "~s([Tk|[Tw]])",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/instrument-optimization/beckmanconnect-support-tools/remote-support",
+        "instanceId": "5044428d1518",
+        "instanceIds": [
+          "5044428d1518"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_instrument-optimization_beckmanconnect-support-tools_remote-support--24f3263b/blocks/5044428d1518.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "low",
+    "reason": "Boxed row with a heading on the left and buttons or benefit items on the right",
+    "mergedInto": null
+  }
+}

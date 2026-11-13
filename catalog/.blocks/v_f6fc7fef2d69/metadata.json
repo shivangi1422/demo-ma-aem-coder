@@ -1,0 +1,38 @@
+{
+  "id": "v_f6fc7fef2d69",
+  "type": "columns",
+  "canonicalModel": "standalone",
+  "version": "1.0.0",
+  "created": "2026-10-30T07:06:43.723Z",
+  "sourceContext": {
+    "originUrl": "https://www.mybeckman.in/service/plans",
+    "discoveredDuring": "site-scope-analysis"
+  },
+  "visualCharacteristics": {
+    "colorScheme": "light",
+    "density": "moderate",
+    "hasGrid": true,
+    "imagePattern": "noimg",
+    "structure": "heading + text + link + video"
+  },
+  "layoutKey": "[T|{video {button {T button} {[T|slider] [button] button ~}}}]",
+  "colour": "[Tk|{video {button {Tk button} {[Tw|slider] [button] button ~r}}}]",
+  "usage": {
+    "pagesUsing": [
+      {
+        "url": "https://www.mybeckman.in/service/plans",
+        "instanceId": "7200cc43eef5",
+        "instanceIds": [
+          "7200cc43eef5"
+        ],
+        "screenshot": ".pages/www_mybeckman_in_service_plans--b7a37871/blocks/7200cc43eef5.jpg"
+      }
+    ],
+    "reuseCount": 1
+  },
+  "naming": {
+    "confidence": "high",
+    "reason": "Text with heading and button beside an embedded video, a fixed two-column layout",
+    "mergedInto": null
+  }
+}
