@@ -45,6 +45,12 @@ export default function transform(hookName, element, payload) {
       container.setAttribute('data-excat-mkto-origin', mktoOrigin);
     });
 
+    // Repairs: "Office Locations" links to a broken Sitecore not-found page; point it at
+    // /contact-us (the office locator, as the Support page's Locations card does)
+    element.querySelectorAll('a[href*="/sitecore/service/notfound.aspx"]').forEach((a) => {
+      if (/office locations/i.test(a.textContent)) a.setAttribute('href', '/contact-us');
+    });
+
     // Training: empty in-page anchor target (no href) for the "Courses" CTA
     removeAll(element, ['a[name="Courses"]:not([href])']);
 

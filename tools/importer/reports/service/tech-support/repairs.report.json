@@ -1,0 +1,14 @@
+{
+  "status": "success",
+  "url": "https://www.mybeckman.in/service/tech-support/repairs",
+  "path": "service/tech-support/repairs",
+  "timestamp": "2026-11-16T10:40:27.657Z",
+  "title": "Repairs",
+  "template": "service-tech-support",
+  "blocks": [
+    "columns-text-first",
+    "columns",
+    "columns-cta"
+  ],
+  "importScript": "6839bdb22eff"
+}

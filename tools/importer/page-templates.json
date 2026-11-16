@@ -760,6 +760,80 @@
           "defaultContent": []
         }
       ]
+    },
+    {
+      "name": "service-tech-support",
+      "urls": [
+        "https://www.mybeckman.in/service/tech-support/repairs"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/service/tech-support/repairs",
+      "description": "Service technical support detail page (Repairs): H1 with text|image columns, image|text columns with a call button (text first on mobile), blue Get in Touch contact band",
+      "urlPattern": "/service/tech-support/*",
+      "blocks": [
+        {
+          "name": "columns-text-first",
+          "instances": [
+            ".Section > .Section__two-column:has(> .Section__two-column-left > img:only-child)"
+          ]
+        },
+        {
+          "name": "columns",
+          "instances": [
+            ".Section > .Section__two-column"
+          ]
+        },
+        {
+          "name": "columns-cta",
+          "instances": [
+            "#getInTouch .Contact__body",
+            ".Contact .Contact__body"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Repair Services intro",
+          "selector": [
+            ".bc-rich-text:has(> .Section > h1)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns"
+          ],
+          "defaultContent": [
+            ".Section > h1"
+          ]
+        },
+        {
+          "id": "section-2",
+          "name": "Onsite repairs",
+          "selector": [
+            ".bc-rich-text:has(.Section__two-column-left > img:only-child)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-text-first"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Get in Touch",
+          "selector": [
+            "#getInTouch",
+            ".Section--blue:has(.Contact)"
+          ],
+          "style": "blue, centered",
+          "blocks": [
+            "columns-cta"
+          ],
+          "defaultContent": [
+            "#getInTouch .Contact > h2",
+            "#getInTouch .Contact > p"
+          ]
+        }
+      ]
     }
   ]
 }

@@ -500,6 +500,10 @@
           {
             "name": "Call to action (button over text, centered)",
             "value": "cta"
+          },
+          {
+            "name": "Text first (mobile: text above image)",
+            "value": "text-first"
           }
         ]
       }

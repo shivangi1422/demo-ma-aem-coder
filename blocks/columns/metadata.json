@@ -19,6 +19,10 @@
     {
       "class": "cta",
       "label": "Call to action (button over text, centered)"
+    },
+    {
+      "class": "text-first",
+      "label": "Text first (mobile: text above image)"
     }
   ],
   "memberVariantIds": [
@@ -28,10 +32,11 @@
     "pagesUsing": [
       "/service",
       "/service/plans",
-      "/service/plans/centrifuge"
+      "/service/plans/centrifuge",
+      "/service/tech-support/repairs"
     ],
-    "reuseCount": 3,
-    "lastUsed": "2026-11-02"
+    "reuseCount": 4,
+    "lastUsed": "2026-11-16"
   },
   "reuseGuidance": "Use for a fixed set of 2-3 different content pieces side by side that do not repeat as a list. Use Style cta for contact/action buttons over short text. For repeating look-alike items use cards-grid."
 }

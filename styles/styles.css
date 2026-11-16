@@ -801,6 +801,38 @@ main .section.grey {
   }
 }
 
+/* Tech support family (/service/tech-support/repairs, recognised by its text-first
+   columns): the source .Section keeps 4vw 8vw 0 on phones and 2vw on every side from
+   700px (also >= 992px, unlike the landing), and crops its photos to 320px (not 350px) */
+.service-plans main:has(.columns.text-first) {
+  --sp-section-top: 4vw;
+  --sp-section-bottom: 0;
+  --sp-section-x: 8vw;
+}
+
+/* phones: the photo below the text-first row's button starts 20px lower (source) */
+.service-plans main .columns.text-first .columns-img-col {
+  margin-top: 20px;
+}
+
+@media (width >= 700px) {
+  .service-plans main:has(.columns.text-first) {
+    --sp-section-top: 2vw;
+    --sp-section-bottom: 2vw;
+    --sp-section-x: 2vw;
+  }
+}
+
+@media (width >= 768px) {
+  .service-plans main:has(.columns.text-first) .columns:not(.cta) .columns-img-col img {
+    height: 320px;
+  }
+
+  .service-plans main .columns.text-first .columns-img-col {
+    margin-top: 0;
+  }
+}
+
 /* Product plan pages: two-column rows are text pairs */
 
 /* flow family (source .Section__two-column-item): stacked blocks with 40px after the

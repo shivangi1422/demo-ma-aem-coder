@@ -13,3 +13,6 @@ helix-importer-ui
 !AGENTS.md
 migration-work/navigation-validation/
 migration-work/footer-validation/
+
+# site catalog for the Planning view (screenshots, page analysis): read from the workspace, not git
+catalog/
