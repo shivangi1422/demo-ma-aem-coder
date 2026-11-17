@@ -32,10 +32,11 @@
     "pagesUsing": [
       "/support",
       "/service/training",
-      "/service/plans/request"
+      "/service/plans/request",
+      "/resources/industries/synthetic-biology"
     ],
-    "reuseCount": 3,
-    "lastUsed": "2026-11-03"
+    "reuseCount": 4,
+    "lastUsed": "2026-11-17"
   },
   "reuseGuidance": "Use wherever the source embeds a Marketo form (mktoForm). Author only the form URL; the fields come from Marketo. Default = sidebar panel, two-column = wide in-page form on a band, stacked = in-page form with labels above fields."
 }

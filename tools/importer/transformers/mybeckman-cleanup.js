@@ -60,6 +60,26 @@ export default function transform(hookName, element, payload) {
       a.replaceWith(...a.childNodes);
     });
 
+    // Industries (synthetic-biology): red pill CTAs are <a href><button class="btn">Label</button></a>.
+    // <button> is dropped in afterTransform, so the link takes the label and the
+    // primary-button class (-> <p><strong><a></a></strong></p> below, or the block parser's button).
+    element.querySelectorAll('a[href] > button.btn:only-child').forEach((button) => {
+      const a = button.parentElement;
+      const label = button.textContent.replace(/\s+/g, ' ').trim();
+      if (!label) return;
+      a.textContent = label;
+      a.classList.add('btn', 'btn-primary');
+    });
+    // named in-page target (<a name="form"></a>) used by a[href="#form"] links: the id
+    // moves to the enclosing .bc-rich-text so the sections transformer keeps it as the
+    // section anchor
+    element.querySelectorAll('.bc-rich-text a[name]:not([href])').forEach((a) => {
+      const name = a.getAttribute('name');
+      const band = a.closest('.bc-rich-text');
+      if (name && !a.textContent.trim() && !element.querySelector(`[id="${name}"]`) && !band.id) band.id = name;
+      if (!a.textContent.trim()) a.remove();
+    });
+
     // Training: empty in-page anchor target (no href) for the "Courses" CTA
     removeAll(element, ['a[name="Courses"]:not([href])']);
 

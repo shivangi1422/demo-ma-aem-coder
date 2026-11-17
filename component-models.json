@@ -94,6 +94,10 @@
           {
             "name": "Disease Research",
             "value": "disease-research"
+          },
+          {
+            "name": "Industries",
+            "value": "industries"
           }
         ]
       },
@@ -273,6 +277,28 @@
     ]
   },
   {
+    "id": "accordion",
+    "fields": [
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "classes",
+        "label": "Style",
+        "value": "",
+        "options": [
+          {
+            "name": "Default (caret titles)",
+            "value": ""
+          },
+          {
+            "name": "Two column (grey bars, one open at a time; first half of the items in the left column)",
+            "value": "two-column"
+          }
+        ]
+      }
+    ]
+  },
+  {
     "id": "accordion-item",
     "fields": [
       {
@@ -379,6 +405,10 @@
           {
             "name": "Callouts (3-up bordered linked tiles: image, centered title, text)",
             "value": "callouts"
+          },
+          {
+            "name": "Videos (Wistia gallery: thumbnail, duration, title linked to the Wistia video; plays full screen)",
+            "value": "videos"
           }
         ]
       }
@@ -535,6 +565,14 @@
           {
             "name": "Jump links (bar of in-page links)",
             "value": "jumplinks"
+          },
+          {
+            "name": "Wide first (text about 7/12, graphic 5/12)",
+            "value": "wide-first"
+          },
+          {
+            "name": "Media wide (video 8/12 | narrow 3/12 column)",
+            "value": "media-wide"
           }
         ]
       }
@@ -1197,6 +1235,10 @@
           {
             "name": "Stacked (labels above fields, centered, no panel)",
             "value": "stacked"
+          },
+          {
+            "name": "Compact (two 150px label|field pairs per row from 768px; stacked on phones)",
+            "value": "compact"
           }
         ]
       }
@@ -1476,6 +1518,119 @@
         "valueType": "string",
         "name": "imageAlt",
         "label": "Panel Image Alt",
+        "value": ""
+      }
+    ]
+  },
+  {
+    "id": "tabs-workflow-stage",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "title",
+        "label": "Stage title",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "description",
+        "label": "Description (optional)",
+        "value": ""
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "state",
+        "label": "State",
+        "value": "stage",
+        "description": "Greyed-out stages are shown but cannot be selected. Steps and products below a stage (up to the next stage) belong to it.",
+        "options": [
+          {
+            "name": "Clickable",
+            "value": "stage"
+          },
+          {
+            "name": "Greyed out (not clickable)",
+            "value": "stage-inactive"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tabs-workflow-step",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "label",
+        "label": "Step label",
+        "value": "",
+        "description": "Products list this exact label in their Steps field to light up for this step"
+      },
+      {
+        "component": "select",
+        "valueType": "string",
+        "name": "state",
+        "label": "State",
+        "value": "step",
+        "options": [
+          {
+            "name": "Clickable",
+            "value": "step"
+          },
+          {
+            "name": "Greyed out (not clickable)",
+            "value": "step-inactive"
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "id": "tabs-workflow-product",
+    "fields": [
+      {
+        "component": "reference",
+        "valueType": "string",
+        "name": "image",
+        "label": "Product image",
+        "multi": false
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageAlt",
+        "label": "Image alt (leave empty: the name names the link)",
+        "value": ""
+      },
+      {
+        "component": "aem-content",
+        "valueType": "string",
+        "name": "link",
+        "label": "Product page"
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "linkText",
+        "label": "Product name",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "steps",
+        "label": "Steps (comma-separated step labels this product lights up for)",
+        "value": ""
+      },
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "imageHeight",
+        "label": "Image height in px (optional, e.g. 90)",
         "value": ""
       }
     ]

@@ -911,7 +911,7 @@ main .section.grey {
 
 /*
  * Templates "support", "service-training", "service-plan-request" and
- * "support-faq", plus "disease-research" (page metadata "template", body classes .support /
+ * "support-faq", plus "disease-research" and "industries" (page metadata "template", body classes .support /
  * .service-training / .service-plan-request / .support-faq / .disease-research). Mirrors the source page CSS: bootstrap
  * container (750/970/1170px at 768/992/1200px, 15px gutters), #4d4d4d text and
  * the source type scale. Breakpoints mirror the source (768px / 992px / 1200px).
@@ -922,6 +922,7 @@ main .section.grey {
 .service-training main,
 .support-faq main,
 .disease-research main,
+.industries main,
 .service-plan-request main {
   --st-container: 100%;
 
@@ -933,6 +934,7 @@ main .section.grey {
   .service-training main,
   .support-faq main,
   .disease-research main,
+  .industries main,
   .service-plan-request main {
     --st-container: 750px;
   }
@@ -943,6 +945,7 @@ main .section.grey {
   .service-training main,
   .support-faq main,
   .disease-research main,
+  .industries main,
   .service-plan-request main {
     --st-container: 970px;
   }
@@ -953,6 +956,7 @@ main .section.grey {
   .service-training main,
   .support-faq main,
   .disease-research main,
+  .industries main,
   .service-plan-request main {
     --st-container: 1170px;
   }
@@ -962,6 +966,7 @@ main .section.grey {
 .service-training main > .section,
 .support-faq main > .section,
 .disease-research main > .section,
+.industries main > .section,
 .service-plan-request main > .section {
   margin: 0;
 }
@@ -970,6 +975,7 @@ main .section.grey {
 .service-training main > .section:not(.split) > div,
 .support-faq main > .section:not(.split) > div,
 .disease-research main > .section:not(.split) > div,
+.industries main > .section:not(.split) > div,
 .service-plan-request main > .section:not(.split) > div {
   box-sizing: border-box;
   max-width: var(--st-container);
@@ -993,6 +999,7 @@ main .section.grey {
 .service-training main h1,
 .support-faq main h1,
 .disease-research main h1,
+.industries main h1,
 .service-plan-request main h1 {
   margin: 24.12px 0;
   color: #4d4d4d;
@@ -1006,6 +1013,7 @@ main .section.grey {
 .service-training main .default-content-wrapper p,
 .support-faq main .default-content-wrapper p,
 .disease-research main .default-content-wrapper p,
+.industries main .default-content-wrapper p,
 .service-plan-request main .default-content-wrapper p {
   margin: 16px 0;
   font-size: 16px;
@@ -1016,6 +1024,7 @@ main .section.grey {
 .service-training main .default-content-wrapper a:any-link,
 .support-faq main .default-content-wrapper a:any-link,
 .disease-research main .default-content-wrapper a:any-link,
+.industries main .default-content-wrapper a:any-link,
 .service-plan-request main .default-content-wrapper a:any-link {
   color: #007acb;
 }
@@ -1027,6 +1036,7 @@ main .section.grey {
 .service-training main .default-content-wrapper p a:any-link:not(.button),
 .support-faq main .default-content-wrapper p a:any-link:not(.button),
 .disease-research main .default-content-wrapper p a:any-link:not(.button),
+.industries main .default-content-wrapper p a:any-link:not(.button),
 .service-plan-request main .default-content-wrapper p a:any-link:not(.button) {
   text-decoration: underline;
   text-underline-offset: 0.15em;
@@ -1082,6 +1092,162 @@ main .section.grey {
 .service-training main .default-content-wrapper ul li,
 .disease-research main .default-content-wrapper ul li {
   line-height: 26.4px;
+}
+
+/* industries (e.g. /resources/industries/synthetic-biology): full-width banner,
+   then 1170px bands 30px (intro, workflow) / 50px (resources, videos,
+   testimonial) / 40px (contact form) apart; the contact band is a contained
+   #f0f0f0 box; red pill buttons; 12px footnote */
+.industries main > .section:not(.split) {
+  padding: 50px 0 0;
+}
+
+.industries main > .section:not(.split):has(> .hero-centered-wrapper) {
+  padding: 0;
+}
+
+.industries main > .section:not(.split):has(.columns.wide-first),
+.industries main > .section:not(.split):has(.tabs-workflow) {
+  padding-top: 30px;
+}
+
+.industries main > .section:not(.split) > .hero-centered-wrapper {
+  max-width: none;
+  padding: 0;
+}
+
+.industries main .default-content-wrapper h2 {
+  margin: 20.75px 0;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.industries main > .section > .default-content-wrapper:first-child > h2:first-child {
+  margin-top: 0;
+}
+
+/* the video gallery follows its heading directly */
+.industries main > .section:has(.cards-grid.videos) .default-content-wrapper h2 {
+  margin-bottom: 0;
+}
+
+/* "Talk to an Expert": centered under the workflow, 15px above */
+.industries main .tabs-workflow-wrapper + .default-content-wrapper {
+  text-align: center;
+}
+
+.industries main .tabs-workflow-wrapper + .default-content-wrapper p.button-wrapper {
+  margin: 15px 0 0;
+}
+
+.industries main .default-content-wrapper a.button.primary {
+  display: inline-block;
+  margin: 0;
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #ea1c2c;
+  color: #fff;
+  font-family: var(--body-font-family);
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 22.275px;
+  text-decoration: none;
+}
+
+.industries main .default-content-wrapper a.button.primary:hover,
+.industries main .default-content-wrapper a.button.primary:focus-visible {
+  background-color: #c41020;
+}
+
+/* contact band: contained grey box (heading + form), not full-bleed */
+.industries main > .section.grey:not(.split) {
+  padding-top: 40px;
+  background: none;
+}
+
+.industries main > .section.grey:not(.split) > div {
+  background-color: #f0f0f0;
+}
+
+.industries main > .section.grey:not(.split) > .default-content-wrapper {
+  padding: 20px 15px 10px;
+  text-align: center;
+}
+
+/* inside the padded grey box the heading keeps its 20.75px top margin */
+.industries main > .section.grey > .default-content-wrapper:first-child > h2:first-child {
+  margin: 20.75px 0 0;
+}
+
+.industries main > .section.grey .default-content-wrapper p {
+  margin: 5px 0 16px;
+}
+
+/* footnote band (last section): 12px text, 20px below */
+.industries main > .section:not(.split):last-of-type {
+  padding: 0 0 20px;
+}
+
+.industries main > .section:last-of-type .default-content-wrapper p {
+  margin: 12px 0;
+  font-size: 12px;
+  line-height: 19.8px;
+}
+
+/* banner: the photo at its own ratio (1440x422; square photo on phones), no
+   tint, white title and tagline centered on it */
+.industries main .hero-centered {
+  display: block;
+  min-height: 0;
+  background-color: transparent;
+}
+
+.industries main .hero-centered.hero-centered-has-image::after {
+  content: none;
+}
+
+.industries main .hero-centered .hero-centered-background {
+  position: static;
+}
+
+.industries main .hero-centered .hero-centered-background picture,
+.industries main .hero-centered .hero-centered-background img {
+  height: auto;
+  object-fit: fill;
+}
+
+.industries main .hero-centered .hero-centered-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 90%;
+  max-width: none;
+  padding: 0;
+  transform: translate(-50%, -50%);
+}
+
+.industries main .hero-centered .hero-centered-content h1 {
+  margin: 0;
+  font-size: 36px;
+  font-weight: 700;
+  line-height: 1.1;
+}
+
+.industries main .hero-centered .hero-centered-content p {
+  margin: 5px 0 0;
+  font-size: 36px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+@media (width >= 768px) {
+  .industries main .hero-centered .hero-centered-content h1 {
+    font-size: 56px;
+  }
 }
 
 /* disease-research (e.g. /resources/disease-research/leukemia-and-lymphoma):

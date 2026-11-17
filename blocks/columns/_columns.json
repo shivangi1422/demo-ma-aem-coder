@@ -56,6 +56,14 @@
             {
               "name": "Jump links (bar of in-page links)",
               "value": "jumplinks"
+            },
+            {
+              "name": "Wide first (text about 7/12, graphic 5/12)",
+              "value": "wide-first"
+            },
+            {
+              "name": "Media wide (video 8/12 | narrow 3/12 column)",
+              "value": "media-wide"
             }
           ]
         }

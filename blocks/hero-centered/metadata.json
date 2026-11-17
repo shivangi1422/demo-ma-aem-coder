@@ -39,10 +39,11 @@
       "/service/plans/flow-cytometry",
       "/service/plans/particle-analysis",
       "/service/training",
-      "/resources/disease-research/leukemia-and-lymphoma"
+      "/resources/disease-research/leukemia-and-lymphoma",
+      "/resources/industries/synthetic-biology"
     ],
-    "reuseCount": 6,
-    "lastUsed": "2026-11-16"
+    "reuseCount": 7,
+    "lastUsed": "2026-11-17"
   },
   "reuseGuidance": "Use for a page-top banner with a photo background and centered text plus CTA. For split or solid banners use hero (Style: split, banner)."
 }

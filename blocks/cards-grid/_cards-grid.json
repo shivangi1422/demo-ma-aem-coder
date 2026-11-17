@@ -97,6 +97,10 @@
             {
               "name": "Callouts (3-up bordered linked tiles: image, centered title, text)",
               "value": "callouts"
+            },
+            {
+              "name": "Videos (Wistia gallery: thumbnail, duration, title linked to the Wistia video; plays full screen)",
+              "value": "videos"
             }
           ]
         }

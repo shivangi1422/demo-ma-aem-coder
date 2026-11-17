@@ -46,6 +46,10 @@
             {
               "name": "Stacked (labels above fields, centered, no panel)",
               "value": "stacked"
+            },
+            {
+              "name": "Compact (two 150px label|field pairs per row from 768px; stacked on phones)",
+              "value": "compact"
             }
           ]
         }

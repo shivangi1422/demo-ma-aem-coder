@@ -183,3 +183,101 @@
     text-decoration: underline;
   }
 }
+
+/* Wide first (synthetic-biology intro): text 7fr | graphic 5fr with a 30px gap
+   from 768px, the text vertically centred; on phones the text comes first.
+   Media wide (testimonial): video 8/12 | spotlight 3/12 with the source's empty
+   1/12 spacer as the gap, from 992px. Both: centred red pill button. */
+/* stylelint-disable no-descending-specificity -- option overrides follow the base rules */
+.columns.wide-first > div > .columns-img-col {
+  order: 2;
+}
+
+.columns.wide-first .columns-img-col picture,
+.columns.wide-first .columns-img-col > p {
+  display: block;
+  margin: 16px 0;
+}
+
+.columns.wide-first .columns-img-col img {
+  min-width: 200px;
+}
+
+.columns.media-wide > div {
+  gap: 0;
+}
+
+.columns.media-wide > div > div:not(.columns-video-col) > p:has(picture, img) {
+  margin: 16px 0 0;
+  line-height: 0;
+}
+
+.columns.media-wide > div > div:not(.columns-video-col) img {
+  box-sizing: border-box;
+  border: 1px solid #b3b3b3;
+}
+
+.columns.wide-first p.button-wrapper,
+.columns.media-wide p.button-wrapper {
+  margin: 15px 0 0;
+  text-align: center;
+}
+
+.columns.wide-first a.button:any-link,
+.columns.media-wide a.button:any-link {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 9999px;
+  background-color: #ea1c2c;
+  color: #fff;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 22.275px;
+}
+
+.columns.wide-first a.button:any-link:hover,
+.columns.wide-first a.button:any-link:focus-visible,
+.columns.media-wide a.button:any-link:hover,
+.columns.media-wide a.button:any-link:focus-visible {
+  background-color: #c41020;
+  color: #fff;
+}
+
+@media (width >= 768px) {
+  .columns.wide-first > div {
+    display: grid;
+    grid-template-columns: 7fr 5fr;
+    align-items: stretch;
+    gap: 0 30px;
+  }
+
+  .columns.wide-first > div > div {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    order: unset;
+  }
+
+  .columns.wide-first > div > .columns-img-col {
+    display: block;
+    order: unset;
+  }
+
+  .columns.wide-first > div > div > p + p {
+    margin-top: 0;
+  }
+}
+
+@media (width >= 992px) {
+  .columns.media-wide > div {
+    display: grid;
+    grid-template-columns: calc((100% + 20px) * 8 / 12 - 20px) calc((100% + 20px) * 3 / 12 - 20px);
+    align-items: start;
+    justify-content: space-between;
+  }
+
+  .columns.media-wide > div > div {
+    order: unset;
+  }
+}
+/* stylelint-enable no-descending-specificity */

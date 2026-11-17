@@ -36,7 +36,8 @@
       "resource-list",
       "product-nav",
       "specifications",
-      "accordion"
+      "accordion",
+      "tabs-workflow"
     ]
   },
   {
@@ -124,6 +125,14 @@
     "id": "tabs-products",
     "components": [
       "tabs-products-item"
+    ]
+  },
+  {
+    "id": "tabs-workflow",
+    "components": [
+      "tabs-workflow-stage",
+      "tabs-workflow-step",
+      "tabs-workflow-product"
     ]
   }
 ]

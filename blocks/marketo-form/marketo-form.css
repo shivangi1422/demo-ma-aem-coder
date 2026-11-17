@@ -301,5 +301,114 @@
     grid-column: 1 / -1;
   }
 }
+
+/* option "compact" (source: /resources/industries/synthetic-biology "Our team is
+   ready to help", form 3101): the "stacked" rules on phones (the block also gets
+   .stacked); from 768px two pairs per row of 150px label | 150px field, 35px
+   apart, in the 720px form; consent copy 685px; centred red pill submit */
+.marketo-form.compact .mktoForm {
+  padding: 10px;
+}
+
+.marketo-form.compact .mktoForm .mktoButtonRow {
+  margin: 0;
+  text-align: center;
+}
+
+/* Marketo sets an inline margin-left on the button wrapper; only !important
+   overrides it, so the submit stays centred as in the source */
+.marketo-form.compact .mktoForm .mktoButtonWrap {
+  margin: 20px 0 !important;
+}
+
+.marketo-form.compact .mktoForm .mktoButton {
+  padding: 12px 20px;
+  border: 0;
+  border-radius: 9999px;
+  background: #ea1c2c;
+  box-shadow: none;
+  font-size: 13.5px;
+  font-weight: 500;
+  line-height: 22.275px;
+}
+
+.marketo-form.compact .mktoForm .mktoButton:hover,
+.marketo-form.compact .mktoForm .mktoButton:focus-visible {
+  background: #c41020;
+}
+
+.marketo-form.compact .mktoForm .mktoRadioList > label {
+  margin: 1.3px 0 3.9px 19.5px;
+  line-height: 1.2;
+}
+
+.marketo-form.compact .mktoForm .mktoHtmlText a:any-link {
+  color: #007acb;
+}
+
+@media (width >= 768px) {
+  .marketo-form.compact .mktoForm {
+    padding: 20px 0 0;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFormRow {
+    display: flex;
+    gap: 0 35px;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFormRow > .mktoFormCol {
+    flex: 0 0 auto;
+    width: auto;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFieldWrap {
+    display: grid;
+    grid-template-columns: 150px 150px;
+    align-items: start;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFieldWrap label.mktoLabel {
+    margin: 0;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFieldWrap > :not(.mktoLabel) {
+    grid-column: 2;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFieldWrap input:not([type="radio"], [type="checkbox"], [type="hidden"]) {
+    min-height: 0;
+    line-height: 14.4px;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFieldWrap select {
+    min-height: 27px;
+    padding: 2px 5px;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFieldWrap textarea {
+    padding: 2px 5px;
+  }
+
+  /* radio groups: label column, the options 9px into the field column */
+  .marketo-form.compact .mktoForm .mktoFieldWrap:has(> .mktoRadioList) {
+    display: grid;
+    grid-template-columns: 150px 152px;
+    gap: 0;
+  }
+
+  .marketo-form.compact .mktoForm .mktoFieldWrap > .mktoRadioList {
+    margin-left: 9px;
+  }
+
+  /* consent copy runs 685px wide across both pairs */
+  .marketo-form.compact .mktoForm .mktoFieldWrap:has(> .mktoHtmlText) {
+    display: block;
+  }
+
+  .marketo-form.compact .mktoForm .mktoHtmlText {
+    width: 685px;
+    max-width: 100%;
+  }
+}
 /* stylelint-enable no-descending-specificity */
 /* stylelint-enable selector-class-pattern */

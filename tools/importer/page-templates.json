@@ -903,6 +903,173 @@
           ]
         }
       ]
+    },
+    {
+      "name": "resources-industries",
+      "urls": [
+        "https://www.mybeckman.in/resources/industries/synthetic-biology"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/industries/synthetic-biology",
+      "description": "Industry landing page (Synthetic Biology): full-width banner with centered title, intro text|graphic, interactive workflow (stages, steps, highlighted products), two-column featured-resources accordion, Wistia video gallery, testimonial video + spotlight download, grey contact form band, footnote",
+      "urlPattern": "/resources/industries/*",
+      "blocks": [
+        {
+          "name": "hero-centered-banner",
+          "instances": [
+            ".bc-rich-text > .outimg:has(#topbannertext)"
+          ]
+        },
+        {
+          "name": "columns-wide-first",
+          "instances": [
+            ".intro:has(> .intro-text):has(> .intro-image)"
+          ]
+        },
+        {
+          "name": "tabs-workflow",
+          "instances": [
+            ".tab-scroll"
+          ]
+        },
+        {
+          "name": "accordion-two-column",
+          "instances": [
+            ".row:has(> [class*=\"col-sm-6\"] > .accordion)"
+          ]
+        },
+        {
+          "name": "cards-grid-videos",
+          "instances": [
+            ".wistia_channel"
+          ]
+        },
+        {
+          "name": "columns-media-wide",
+          "instances": [
+            ".row:has(> .col-md-8 wistia-player):has(> .col-md-3)"
+          ]
+        },
+        {
+          "name": "marketo-form-compact",
+          "instances": [
+            "#main .formassembly-container.marketo-two-column"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Banner",
+          "selector": [
+            ".bc-rich-text:has(> .outimg)"
+          ],
+          "style": null,
+          "blocks": [
+            "hero-centered-banner"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-2",
+          "name": "Intro",
+          "selector": [
+            ".bc-rich-text:has(.intro)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-wide-first"
+          ],
+          "defaultContent": []
+        },
+        {
+          "id": "section-3",
+          "name": "Interactive workflow",
+          "selector": [
+            ".bc-rich-text:has(.tab-scroll)"
+          ],
+          "style": null,
+          "blocks": [
+            "tabs-workflow"
+          ],
+          "defaultContent": [
+            ".containercustom > h2",
+            ".containercustom > p",
+            ".containercustom > div > a.btn"
+          ]
+        },
+        {
+          "id": "section-4",
+          "name": "Featured resources",
+          "selector": [
+            ".bc-rich-text:has(.accordion)"
+          ],
+          "style": null,
+          "blocks": [
+            "accordion-two-column"
+          ],
+          "defaultContent": [
+            ".containercustom > h2"
+          ]
+        },
+        {
+          "id": "section-5",
+          "name": "Video gallery",
+          "selector": [
+            ".bc-rich-text:has(.wistia_channel)"
+          ],
+          "style": null,
+          "blocks": [
+            "cards-grid-videos"
+          ],
+          "defaultContent": [
+            ".containercustom > h2"
+          ]
+        },
+        {
+          "id": "section-6",
+          "name": "Customer testimonial",
+          "selector": [
+            ".bc-rich-text:has(.col-md-8)"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-media-wide"
+          ],
+          "defaultContent": [
+            ".containercustom > h2"
+          ]
+        },
+        {
+          "id": "section-7",
+          "name": "Contact form",
+          "selector": [
+            "#form",
+            ".bc-rich-text:has(> a[name=\"form\"])",
+            ".bc-rich-text:has(+ .formassembly-container)"
+          ],
+          "style": "grey",
+          "blocks": [
+            "marketo-form-compact"
+          ],
+          "defaultContent": [
+            ".containercustom > h2",
+            ".containercustom > p"
+          ],
+          "anchor": "form"
+        },
+        {
+          "id": "section-8",
+          "name": "Footnote",
+          "selector": [
+            ".formassembly-container + .bc-rich-text"
+          ],
+          "style": null,
+          "blocks": [],
+          "defaultContent": [
+            ".containercustom > p"
+          ]
+        }
+      ]
     }
   ]
 }

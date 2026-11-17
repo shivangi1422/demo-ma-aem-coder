@@ -95,6 +95,10 @@
             {
               "name": "Disease Research",
               "value": "disease-research"
+            },
+            {
+              "name": "Industries",
+              "value": "industries"
             }
           ]
         },

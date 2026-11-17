@@ -80,9 +80,12 @@ function hide(block) {
  * Decorates the marketo-form block: one cell holding the Marketo form URL becomes
  * an embedded Marketo form, loaded when the block nears the viewport.
  * Style option "two-column": labels beside fields.
+ * Style option "compact": the "stacked" layout on phones, two label|field pairs
+ * per row from 768px (it builds on the stacked rules, so it gets that class too).
  * @param {Element} block
  */
 export default function decorate(block) {
+  if (block.classList.contains('compact')) block.classList.add('stacked');
   const config = readConfig(block);
   if (!config) {
     hide(block);

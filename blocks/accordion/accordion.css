@@ -86,3 +86,130 @@
   background-color: #007acb;
   color: #fff;
 }
+
+/*
+ * Option "two-column" (Featured Resources, /resources/industries/synthetic-biology):
+ * grey #f0f0f0 header bars (16px/500, "+" turning 45deg into an "x" when open),
+ * two columns from 768px (20px gutter, first half of the items on the left),
+ * one item open at a time (accordion.js). Header hover colours by position:
+ * 1 #d9d9d9, 2 red, 3 blue, 4 purple (white text). Panels hold icon + link rows
+ * separated by 1px #eee rules.
+ */
+/* stylelint-disable no-descending-specificity -- option overrides follow the base rules */
+.accordion.two-column {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0 20px;
+}
+
+.accordion.two-column .accordion-column {
+  border-radius: 2px;
+  overflow: hidden;
+}
+
+.accordion.two-column .accordion-item {
+  margin-bottom: 5px;
+}
+
+.accordion.two-column .accordion-item-label {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin: 0;
+  padding: 15px 20px;
+  border-radius: 0;
+  background-color: #f0f0f0;
+  color: #4d4d4d;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 26.4px;
+  transition: background-color 0.3s;
+}
+
+.accordion.two-column .accordion-item-label::before {
+  content: none;
+}
+
+.accordion.two-column .accordion-item-label::after {
+  content: '+';
+  flex: none;
+  transition: transform 0.3s ease;
+}
+
+.accordion.two-column .accordion-item[open] > .accordion-item-label::after {
+  transform: rotate(45deg);
+}
+
+.accordion.two-column .accordion-item-color-1 > .accordion-item-label:hover {
+  background-color: #d9d9d9;
+  color: #4d4d4d;
+}
+
+.accordion.two-column .accordion-item-color-2 > .accordion-item-label:hover {
+  background-color: #ea1c2c;
+  color: #fff;
+}
+
+.accordion.two-column .accordion-item-color-3 > .accordion-item-label:hover {
+  background-color: #0d426a;
+  color: #fff;
+}
+
+.accordion.two-column .accordion-item-color-4 > .accordion-item-label:hover {
+  background-color: #6f295b;
+  color: #fff;
+}
+
+.accordion.two-column .accordion-item-body {
+  padding: 15px 20px;
+  background-color: #fff;
+}
+
+.accordion.two-column .accordion-item-body p {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  margin: 0;
+}
+
+.accordion.two-column .accordion-item-body p + p {
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px solid #eee;
+}
+
+.accordion.two-column .accordion-item-body picture,
+.accordion.two-column .accordion-item-body .icon {
+  flex: none;
+  width: auto;
+  height: auto;
+  line-height: 0;
+}
+
+.accordion.two-column .accordion-item-body img {
+  width: auto;
+  height: 50px;
+}
+
+/* the source shows the "web page" icon a little smaller (40px) than the PDF icon */
+.accordion.two-column .accordion-item-body img[src*="webpage"] {
+  height: 40px;
+}
+
+.accordion.two-column .accordion-item-body a:any-link:not(.button) {
+  color: #007acb;
+  text-decoration: none;
+}
+
+.accordion.two-column .accordion-item-body a:any-link:not(.button):hover,
+.accordion.two-column .accordion-item-body a:any-link:not(.button):focus-visible {
+  text-decoration: underline;
+}
+
+@media (width >= 768px) {
+  .accordion.two-column {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+/* stylelint-enable no-descending-specificity */

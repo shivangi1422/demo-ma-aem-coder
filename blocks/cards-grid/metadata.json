@@ -10,10 +10,11 @@
       "/service/training",
       "/support",
       "/support/faq",
-      "/resources/disease-research/leukemia-and-lymphoma"
+      "/resources/disease-research/leukemia-and-lymphoma",
+      "/resources/industries/synthetic-biology"
     ],
-    "reuseCount": 6,
-    "lastUsed": "2026-11-16"
+    "reuseCount": 7,
+    "lastUsed": "2026-11-17"
   },
   "canonicalModel": "collection",
   "contentPattern": {

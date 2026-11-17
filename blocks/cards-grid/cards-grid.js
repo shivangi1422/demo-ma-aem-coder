@@ -302,6 +302,126 @@ function buildCallouts(cardRows) {
 }
 
 /**
+ * Returns the Wistia media id of a link to fast.wistia.net/embed/iframe/<id>,
+ * fast.wistia.com/medias/<id> or <account>.wistia.com/medias/<id>.
+ * @param {HTMLAnchorElement|null} link
+ * @returns {string}
+ */
+function wistiaId(link) {
+  if (!link) return '';
+  try {
+    const url = new URL(link.href, window.location.href);
+    if (!/(^|\.)wistia\.(com|net)$/.test(url.hostname)) return '';
+    return url.pathname.match(/\/(?:embed\/iframe|embed\/medias|medias)\/([a-z0-9]+)/i)?.[1] || '';
+  } catch {
+    return '';
+  }
+}
+
+let videoDialog;
+
+/**
+ * Opens the shared full-screen video dialog (dark overlay, close button top
+ * right, player with the video title below), like the source's Wistia popover.
+ * Closes with the close button, Escape or a click on the overlay; focus returns
+ * to the card that opened it.
+ * @param {string} id Wistia media id
+ * @param {string} title
+ */
+function openVideo(id, title) {
+  if (!videoDialog) {
+    videoDialog = document.createElement('dialog');
+    videoDialog.className = 'cards-grid-video-dialog';
+    videoDialog.innerHTML = `<button type="button" class="cards-grid-video-close" aria-label="Close video"></button>
+      <div class="cards-grid-video-player"></div>
+      <p class="cards-grid-video-title"></p>`;
+    videoDialog.querySelector('.cards-grid-video-close')
+      .addEventListener('click', () => videoDialog.close());
+    videoDialog.addEventListener('click', (e) => {
+      if (e.target === videoDialog) videoDialog.close();
+    });
+    // stop playback when the dialog closes
+    videoDialog.addEventListener('close', () => {
+      videoDialog.querySelector('.cards-grid-video-player').replaceChildren();
+    });
+    document.body.append(videoDialog);
+  }
+  const iframe = document.createElement('iframe');
+  iframe.src = `https://fast.wistia.net/embed/iframe/${id}?autoPlay=true`;
+  iframe.title = title ? `Video: ${title}` : 'Video';
+  iframe.allow = 'autoplay; fullscreen; picture-in-picture; encrypted-media';
+  videoDialog.querySelector('.cards-grid-video-player').replaceChildren(iframe);
+  videoDialog.querySelector('.cards-grid-video-title').textContent = title;
+  videoDialog.setAttribute('aria-label', title || 'Video');
+  videoDialog.showModal();
+}
+
+/**
+ * Videos: Wistia video gallery - 16:9 thumbnail with a duration badge and the
+ * title below; activating a card plays the video in a full-screen dialog.
+ * Authored card: image = thumbnail, text = title linked to the Wistia media
+ * (https://fast.wistia.net/embed/iframe/<id>) + optional duration paragraph
+ * ("4 MIN"). Without a Wistia link the card is a plain link (or plain text).
+ * @param {Element[]} cardRows
+ * @returns {Element}
+ */
+function buildVideos(cardRows) {
+  const ul = document.createElement('ul');
+  cardRows.forEach((row) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    const { imgCell, textCell } = splitCells(row);
+    const link = textCell && textCell.querySelector('a[href]');
+    const id = wistiaId(link);
+    const title = (link || textCell?.querySelector('h2, h3, h4, p'))?.textContent.trim() || '';
+    const duration = textCell && [...textCell.querySelectorAll('p')]
+      .find((p) => !p.querySelector('a') && p.textContent.trim());
+
+    const card = document.createElement(id ? 'button' : 'a');
+    card.className = 'cards-grid-video';
+    if (id) {
+      card.type = 'button';
+      card.setAttribute('aria-haspopup', 'dialog');
+      const length = duration ? ` (${duration.textContent.trim()})` : '';
+      card.setAttribute('aria-label', `Play video: ${title}${length}`);
+      card.addEventListener('click', () => openVideo(id, title));
+    } else if (link) {
+      card.href = link.getAttribute('href');
+    }
+
+    const media = document.createElement('span');
+    media.className = 'cards-grid-image';
+    if (imgCell) moveInstrumentation(imgCell, media);
+    const picture = pictureFrom(imgCell, '640');
+    if (picture) {
+      const img = picture.tagName === 'IMG' ? picture : picture.querySelector('img');
+      if (img) {
+        img.loading = 'lazy';
+        img.alt = '';
+      }
+      media.append(picture);
+    }
+    if (duration) {
+      const badge = document.createElement('span');
+      badge.className = 'cards-grid-duration';
+      badge.textContent = duration.textContent.trim();
+      media.append(badge);
+    }
+    card.append(media);
+
+    const label = document.createElement('span');
+    label.className = 'cards-grid-label';
+    if (textCell) moveInstrumentation(textCell, label);
+    label.textContent = title;
+    card.append(label);
+
+    li.append(card);
+    ul.append(li);
+  });
+  return ul;
+}
+
+/**
  * Related: horizontal product carousel (source: "Related ... Products" on product
  * pages). Cards scroll in a snap container; previous/next buttons move by one
  * card and are disabled at the ends. Image, title and text link to the product.
@@ -390,6 +510,7 @@ function buildRelated(cardRows) {
  *   - .cards-grid.related      horizontal product carousel with previous/next buttons
  *   - .cards-grid.thumblist    2-up: 90px thumb left of uppercase title + text, whole tile links
  *   - .cards-grid.callouts     3-up bordered tiles: image, centered title, text; tile links
+ *   - .cards-grid.videos       Wistia gallery: thumbnail + duration + title; plays in a dialog
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
  * @param {Element} block
  */
@@ -412,6 +533,7 @@ export default function decorate(block) {
     related: buildRelated,
     thumblist: buildThumbList,
     callouts: buildCallouts,
+    videos: buildVideos,
   };
   const style = Object.keys(builders).find((cls) => block.classList.contains(cls));
   if (style) {

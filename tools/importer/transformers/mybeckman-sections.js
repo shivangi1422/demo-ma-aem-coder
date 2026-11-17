@@ -60,7 +60,9 @@ export default function transform(hookName, element, payload) {
       .filter(({ el }) => el);
 
     // anchors are resolved up front, while hero CTAs (a[href="#..."]) still exist
-    found.forEach((entry) => { entry.anchor = findAnchor(element, entry.el); });
+    // a template section may name its anchor explicitly (e.g. "form" for the
+    // contact band that the a[href="#form"] buttons jump to)
+    found.forEach((entry) => { entry.anchor = entry.section.anchor || findAnchor(element, entry.el); });
 
     for (let i = found.length - 1; i >= 0; i -= 1) {
       const { section, el, anchor } = found[i];

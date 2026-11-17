@@ -1210,3 +1210,189 @@ main .cards-grid.icon-left .cards-grid-action a.button:focus-visible {
   }
 }
 /* stylelint-enable no-descending-specificity */
+
+/* ============================================================
+   VIDEOS (synthetic-biology "Video Gallery")
+   Wistia gallery: 228px cards (16:9 thumbnail 128px, dark duration badge
+   bottom-left, 2-line title below), 45px apart and centered; one 302px card
+   per row on phones. A card opens the video in a full-screen dark dialog.
+   ============================================================ */
+/* stylelint-disable no-descending-specificity -- distinct variant, ordering intentional */
+
+/* the source gallery section pads the cards: 10px / 71px on phones, 42px / 23px from 768px */
+.cards-grid.videos {
+  padding: 10px 0 71px;
+}
+
+.cards-grid.videos ul {
+  grid-template-columns: minmax(0, 302px);
+  justify-content: center;
+  gap: 15px 45px;
+}
+
+.cards-grid.videos ul > li {
+  display: block;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  overflow: visible;
+}
+
+.cards-grid.videos .cards-grid-video {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  margin: 0;
+  padding: 0 0 21px;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  color: #4d4d4d;
+  font: inherit;
+  text-align: left;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.cards-grid.videos .cards-grid-video:focus-visible {
+  outline: 2px solid #007acb;
+  outline-offset: 4px;
+}
+
+.cards-grid.videos .cards-grid-image {
+  position: relative;
+  display: block;
+  aspect-ratio: 16 / 9;
+  overflow: hidden;
+  background-color: #000;
+}
+
+.cards-grid.videos .cards-grid-image picture,
+.cards-grid.videos .cards-grid-image img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.1s;
+}
+
+.cards-grid.videos .cards-grid-video:hover .cards-grid-image img {
+  transform: scale(1.03);
+}
+
+.cards-grid.videos .cards-grid-duration {
+  position: absolute;
+  bottom: 7.2px;
+  left: 7.2px;
+  padding: 6.4px;
+  background-color: rgb(0 0 0 / 85%);
+  box-shadow: 0 2px 2px rgb(0 0 0 / 40%);
+  color: #fff;
+  font-size: 11.2px;
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.cards-grid.videos .cards-grid-label {
+  display: -webkit-box;
+  padding-top: 11px;
+  overflow: hidden;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 14.4px;
+  font-weight: 400;
+  line-height: 1.25;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+@media (width >= 768px) {
+  .cards-grid.videos {
+    padding: 42px 0 23px;
+  }
+
+  .cards-grid.videos ul {
+    grid-template-columns: repeat(auto-fit, 228px);
+  }
+
+  .cards-grid.videos .cards-grid-label {
+    font-size: 15.96px;
+  }
+}
+
+/* full-screen video dialog (shared by all video cards on the page) */
+.cards-grid-video-dialog {
+  box-sizing: border-box;
+  width: 100vw;
+  max-width: none;
+  height: 100vh;
+  max-height: none;
+  margin: 0;
+  padding: 80px 5vw 40px;
+  border: 0;
+  background: rgb(0 0 0 / 92%);
+  color: #fff;
+  overflow: auto;
+}
+
+.cards-grid-video-dialog::backdrop {
+  background: transparent;
+}
+
+.cards-grid-video-dialog .cards-grid-video-player {
+  width: min(1122px, 100%, (100vh - 220px) * 16 / 9);
+  margin: 0 auto;
+  aspect-ratio: 16 / 9;
+}
+
+.cards-grid-video-dialog iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+.cards-grid-video-dialog .cards-grid-video-title {
+  width: min(1122px, 100%, (100vh - 220px) * 16 / 9);
+  margin: 24px auto 0;
+  color: #fff;
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 1.4;
+}
+
+.cards-grid-video-dialog .cards-grid-video-close {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 32px;
+  height: 32px;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  cursor: pointer;
+}
+
+.cards-grid-video-dialog .cards-grid-video-close::before,
+.cards-grid-video-dialog .cards-grid-video-close::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 3px;
+  background-color: #fff;
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.cards-grid-video-dialog .cards-grid-video-close::after {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.cards-grid-video-dialog .cards-grid-video-close:focus-visible {
+  outline: 2px solid #fff;
+  outline-offset: 2px;
+}
+/* stylelint-enable no-descending-specificity */
