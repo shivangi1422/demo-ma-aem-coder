@@ -68,6 +68,10 @@
             {
               "name": "Left-aligned (graphic + buttons, no tint)",
               "value": "left"
+            },
+            {
+              "name": "Strip (contained photo, heading on a dark band at the left)",
+              "value": "strip"
             }
           ]
         }

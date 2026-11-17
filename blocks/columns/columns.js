@@ -104,6 +104,15 @@ export default function decorate(block) {
     return;
   }
 
+  // jump links: a bar of in-page links; plain links, never buttons
+  if (block.classList.contains('jumplinks')) {
+    block.setAttribute('role', 'navigation');
+    block.setAttribute('aria-label', 'On this page');
+    block.querySelectorAll('a').forEach((a) => a.classList.remove('button', 'primary', 'secondary', 'accent'));
+    block.querySelectorAll('.button-wrapper').forEach((p) => p.classList.remove('button-wrapper'));
+    return;
+  }
+
   // setup image and video columns
   [...block.children].forEach((row) => {
     [...row.children].forEach((col) => {

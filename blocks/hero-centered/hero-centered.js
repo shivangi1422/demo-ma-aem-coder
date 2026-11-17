@@ -90,6 +90,19 @@ export default function decorate(block) {
     block.classList.add('hero-centered-has-mobile-image');
   }
 
+  // strip banners are in-page jump-link targets: the block carries the heading's
+  // anchor so a jump lands on the banner, not 40% down inside it
+  if (block.classList.contains('strip')) {
+    const heading = content.querySelector('h1, h2, h3');
+    const id = heading && (heading.id || heading.textContent.trim().toLowerCase()
+      .replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, ''));
+    // move the heading's own id, or add one from its text when nothing else uses it
+    if (id && (heading.id === id || !document.getElementById(id))) {
+      heading.removeAttribute('id');
+      block.id = id;
+    }
+  }
+
   const children = [];
   if (background.firstElementChild) {
     block.classList.add('hero-centered-has-image');

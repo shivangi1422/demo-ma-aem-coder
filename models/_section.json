@@ -92,7 +92,8 @@
         "coveo-search",
         "resource-list",
         "product-nav",
-        "specifications"
+        "specifications",
+        "accordion"
       ]
     }
   ]

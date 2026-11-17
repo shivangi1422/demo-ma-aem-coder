@@ -51,6 +51,15 @@ export default function transform(hookName, element, payload) {
       if (/office locations/i.test(a.textContent)) a.setAttribute('href', '/contact-us');
     });
 
+    // Disease research (leukemia-and-lymphoma): the zoom lightbox icon over the
+    // diagrams is dropped (the image stays), and the superscript reference links
+    // (#ref1..#ref6) are unwrapped to plain superscripts - the ids on the
+    // reference list items do not survive the migration.
+    removeAll(element, ['.container-overlay-full-width > .overlay']);
+    element.querySelectorAll('sup > a[href^="#ref"]').forEach((a) => {
+      a.replaceWith(...a.childNodes);
+    });
+
     // Training: empty in-page anchor target (no href) for the "Courses" CTA
     removeAll(element, ['a[name="Courses"]:not([href])']);
 

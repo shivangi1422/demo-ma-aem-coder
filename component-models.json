@@ -90,6 +90,10 @@
           {
             "name": "Search",
             "value": "search"
+          },
+          {
+            "name": "Disease Research",
+            "value": "disease-research"
           }
         ]
       },
@@ -269,6 +273,25 @@
     ]
   },
   {
+    "id": "accordion-item",
+    "fields": [
+      {
+        "component": "text",
+        "valueType": "string",
+        "name": "summary",
+        "label": "Title",
+        "value": ""
+      },
+      {
+        "component": "richtext",
+        "name": "text",
+        "value": "",
+        "label": "Content",
+        "valueType": "string"
+      }
+    ]
+  },
+  {
     "id": "cards-benefits",
     "fields": [
       {
@@ -352,6 +375,10 @@
           {
             "name": "Thumb List (2-up: 90px square thumbnail left of uppercase title and text)",
             "value": "thumblist"
+          },
+          {
+            "name": "Callouts (3-up bordered linked tiles: image, centered title, text)",
+            "value": "callouts"
           }
         ]
       }
@@ -504,6 +531,10 @@
           {
             "name": "Text first (mobile: text above image)",
             "value": "text-first"
+          },
+          {
+            "name": "Jump links (bar of in-page links)",
+            "value": "jumplinks"
           }
         ]
       }
@@ -1069,6 +1100,10 @@
           {
             "name": "Left-aligned (graphic + buttons, no tint)",
             "value": "left"
+          },
+          {
+            "name": "Strip (contained photo, heading on a dark band at the left)",
+            "value": "strip"
           }
         ]
       }

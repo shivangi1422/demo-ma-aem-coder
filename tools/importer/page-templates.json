@@ -834,6 +834,75 @@
           ]
         }
       ]
+    },
+    {
+      "name": "resources-disease-research",
+      "urls": [
+        "https://www.mybeckman.in/resources/disease-research/leukemia-and-lymphoma"
+      ],
+      "representativeUrl": "https://www.mybeckman.in/resources/disease-research/leukemia-and-lymphoma",
+      "description": "Disease research gateway page (Leukemia and Lymphoma): H1 + intro, sticky jump-link bar, contained strip banners per topic, bordered callout tile grids, text|infographic columns, expandable advantages (accordion), bordered workflow diagrams, references",
+      "urlPattern": "/resources/disease-research/*",
+      "blocks": [
+        {
+          "name": "columns-jumplinks",
+          "instances": [
+            ".bc-rich-text > .sticky"
+          ]
+        },
+        {
+          "name": "hero-centered-strip",
+          "instances": [
+            ".image_wrapper_vk"
+          ]
+        },
+        {
+          "name": "cards-grid-callouts",
+          "instances": [
+            ".product-series-callouts"
+          ]
+        },
+        {
+          "name": "columns-text-first",
+          "instances": [
+            ".bc-rich-text > .row:has(> [class*=\"col-md-6\"] .container-overlay-full-width)"
+          ]
+        },
+        {
+          "name": "accordion",
+          "instances": [
+            ".wrap-collabsible:not(.wrap-collabsible + .wrap-collabsible)"
+          ]
+        }
+      ],
+      "sections": [
+        {
+          "id": "section-1",
+          "name": "Main content",
+          "selector": [
+            "#main > div.main-holder > div.container:nth-of-type(2)",
+            "#main .main-holder"
+          ],
+          "style": null,
+          "blocks": [
+            "columns-jumplinks",
+            "hero-centered-strip",
+            "cards-grid-callouts",
+            "columns-text-first",
+            "accordion"
+          ],
+          "defaultContent": [
+            "#content-holder > h1",
+            "#content-holder > p",
+            ".bc-rich-text > h3",
+            ".bc-rich-text > p",
+            ".bc-rich-text > ul",
+            ".bc-rich-text > h2",
+            ".bc-rich-text > ol",
+            ".container-overlay-full-width > img"
+          ]
+        }
+      ]
     }
   ]
 }

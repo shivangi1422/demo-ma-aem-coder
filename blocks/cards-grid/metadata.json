@@ -9,10 +9,11 @@
       "/service/plans",
       "/service/training",
       "/support",
-      "/support/faq"
+      "/support/faq",
+      "/resources/disease-research/leukemia-and-lymphoma"
     ],
-    "reuseCount": 5,
-    "lastUsed": "2026-11-10"
+    "reuseCount": 6,
+    "lastUsed": "2026-11-16"
   },
   "canonicalModel": "collection",
   "contentPattern": {

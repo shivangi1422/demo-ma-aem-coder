@@ -1,0 +1,88 @@
+/* Accordion: borderless list of light titles, each with a small caret that
+   turns down when the item is open (source: "Advantages of standardized reagents"). */
+
+.accordion .accordion-item-label {
+  display: block;
+  margin: 0 0 5px;
+  padding: 10px;
+  border-radius: 7px;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.65;
+  cursor: pointer;
+  list-style: none;
+  transition: color 0.25s ease-out;
+}
+
+.accordion .accordion-item-label::-webkit-details-marker {
+  display: none;
+}
+
+.accordion .accordion-item-label::before {
+  content: '';
+  display: inline-block;
+  margin-right: 7px;
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid currentcolor;
+  vertical-align: middle;
+  transform: translateY(-2px);
+  transition: transform 0.2s ease-out;
+}
+
+.accordion .accordion-item[open] > .accordion-item-label::before {
+  transform: rotate(90deg) translateX(-3px);
+}
+
+.accordion .accordion-item-label:hover {
+  color: #0098ce;
+}
+
+.accordion .accordion-item-label:focus-visible {
+  outline: 2px solid #007acb;
+  outline-offset: 2px;
+}
+
+.accordion .accordion-item-body p {
+  margin: 16px 0;
+  font-size: 16px;
+  line-height: 26.4px;
+}
+
+.accordion .accordion-item-body a:any-link:not(.button) {
+  color: #007acb;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+/* panel call-to-action: white outlined button */
+.accordion .accordion-item-body .button-wrapper {
+  margin: 16px 0;
+}
+
+.accordion .accordion-item-body a.button {
+  display: inline-block;
+  box-sizing: border-box;
+  max-width: 100%;
+  margin: 0;
+  padding: 13px 20px;
+  border: 1px solid #007acb;
+  border-radius: 0;
+  background-color: #fff;
+  color: #007acb;
+  font-family: var(--body-font-family);
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 16px;
+  text-align: center;
+  text-decoration: none;
+  white-space: normal;
+}
+
+.accordion .accordion-item-body a.button:hover,
+.accordion .accordion-item-body a.button:focus-visible {
+  background-color: #007acb;
+  color: #fff;
+}

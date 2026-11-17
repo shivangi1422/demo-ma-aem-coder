@@ -371,3 +371,61 @@
   }
 }
 /* stylelint-enable no-descending-specificity */
+
+/*
+ * Option "strip" (disease-research pages): a contained banner shown whole at the
+ * photo's own ratio with no tint; the heading sits on a black-to-transparent band
+ * at the left, 40% down. Band padding mirrors the source (2px/15px top+bottom).
+ */
+/* stylelint-disable no-descending-specificity -- option overrides follow the base rules */
+.hero-centered.strip {
+  display: block;
+  min-height: 0;
+  background-color: transparent;
+
+  /* in-page jump links land just below the fixed header */
+  scroll-margin-top: calc(var(--nav-height) + 20px);
+  text-align: left;
+}
+
+.hero-centered.strip.hero-centered-has-image::after {
+  content: none;
+}
+
+.hero-centered.strip .hero-centered-background {
+  position: static;
+}
+
+.hero-centered.strip .hero-centered-background picture,
+.hero-centered.strip .hero-centered-background img {
+  height: auto;
+  object-fit: fill;
+}
+
+.hero-centered.strip .hero-centered-content {
+  position: absolute;
+  top: 40%;
+  left: 0;
+  display: flex;
+  align-items: center;
+  width: auto;
+  max-width: 100%;
+  padding: 2px 80px 2px 40px;
+  background: linear-gradient(to right, #000, transparent);
+  color: #fff;
+}
+
+.hero-centered.strip .hero-centered-content h1,
+.hero-centered.strip .hero-centered-content h2 {
+  margin: 5px 0;
+  font-size: 25px;
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+@media (width >= 768px) {
+  .hero-centered.strip .hero-centered-content {
+    padding: 15px 80px 15px 40px;
+  }
+}
+/* stylelint-enable no-descending-specificity */

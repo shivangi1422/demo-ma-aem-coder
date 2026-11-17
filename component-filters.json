@@ -35,7 +35,14 @@
       "coveo-search",
       "resource-list",
       "product-nav",
-      "specifications"
+      "specifications",
+      "accordion"
+    ]
+  },
+  {
+    "id": "accordion",
+    "components": [
+      "accordion-item"
     ]
   },
   {

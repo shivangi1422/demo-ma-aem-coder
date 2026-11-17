@@ -911,8 +911,8 @@ main .section.grey {
 
 /*
  * Templates "support", "service-training", "service-plan-request" and
- * "support-faq" (page metadata "template", body classes .support /
- * .service-training / .service-plan-request / .support-faq). Mirrors the source page CSS: bootstrap
+ * "support-faq", plus "disease-research" (page metadata "template", body classes .support /
+ * .service-training / .service-plan-request / .support-faq / .disease-research). Mirrors the source page CSS: bootstrap
  * container (750/970/1170px at 768/992/1200px, 15px gutters), #4d4d4d text and
  * the source type scale. Breakpoints mirror the source (768px / 992px / 1200px).
  * Scoped so other pages using the same blocks are unaffected.
@@ -921,6 +921,7 @@ main .section.grey {
 .support main,
 .service-training main,
 .support-faq main,
+.disease-research main,
 .service-plan-request main {
   --st-container: 100%;
 
@@ -931,6 +932,7 @@ main .section.grey {
   .support main,
   .service-training main,
   .support-faq main,
+  .disease-research main,
   .service-plan-request main {
     --st-container: 750px;
   }
@@ -940,6 +942,7 @@ main .section.grey {
   .support main,
   .service-training main,
   .support-faq main,
+  .disease-research main,
   .service-plan-request main {
     --st-container: 970px;
   }
@@ -949,6 +952,7 @@ main .section.grey {
   .support main,
   .service-training main,
   .support-faq main,
+  .disease-research main,
   .service-plan-request main {
     --st-container: 1170px;
   }
@@ -957,6 +961,7 @@ main .section.grey {
 .support main > .section,
 .service-training main > .section,
 .support-faq main > .section,
+.disease-research main > .section,
 .service-plan-request main > .section {
   margin: 0;
 }
@@ -964,6 +969,7 @@ main .section.grey {
 .support main > .section:not(.split) > div,
 .service-training main > .section:not(.split) > div,
 .support-faq main > .section:not(.split) > div,
+.disease-research main > .section:not(.split) > div,
 .service-plan-request main > .section:not(.split) > div {
   box-sizing: border-box;
   max-width: var(--st-container);
@@ -986,6 +992,7 @@ main .section.grey {
 .support main h1,
 .service-training main h1,
 .support-faq main h1,
+.disease-research main h1,
 .service-plan-request main h1 {
   margin: 24.12px 0;
   color: #4d4d4d;
@@ -998,6 +1005,7 @@ main .section.grey {
 .support main .default-content-wrapper p,
 .service-training main .default-content-wrapper p,
 .support-faq main .default-content-wrapper p,
+.disease-research main .default-content-wrapper p,
 .service-plan-request main .default-content-wrapper p {
   margin: 16px 0;
   font-size: 16px;
@@ -1007,6 +1015,7 @@ main .section.grey {
 .support main .default-content-wrapper a:any-link,
 .service-training main .default-content-wrapper a:any-link,
 .support-faq main .default-content-wrapper a:any-link,
+.disease-research main .default-content-wrapper a:any-link,
 .service-plan-request main .default-content-wrapper a:any-link {
   color: #007acb;
 }
@@ -1017,6 +1026,7 @@ main .section.grey {
 .support main .default-content-wrapper p a:any-link:not(.button),
 .service-training main .default-content-wrapper p a:any-link:not(.button),
 .support-faq main .default-content-wrapper p a:any-link:not(.button),
+.disease-research main .default-content-wrapper p a:any-link:not(.button),
 .service-plan-request main .default-content-wrapper p a:any-link:not(.button) {
   text-decoration: underline;
   text-underline-offset: 0.15em;
@@ -1053,7 +1063,8 @@ main .section.grey {
   padding: 0;
 }
 
-.service-training main .default-content-wrapper h2 {
+.service-training main .default-content-wrapper h2,
+.disease-research main .default-content-wrapper h2 {
   margin: 20.75px 0;
   color: #4d4d4d;
   font-family: var(--body-font-family);
@@ -1062,13 +1073,68 @@ main .section.grey {
   line-height: 1.1;
 }
 
-.service-training main .default-content-wrapper ul {
+.service-training main .default-content-wrapper ul,
+.disease-research main .default-content-wrapper ul {
   margin: 0 0 10px;
   padding-left: 17px;
 }
 
-.service-training main .default-content-wrapper ul li {
+.service-training main .default-content-wrapper ul li,
+.disease-research main .default-content-wrapper ul li {
   line-height: 26.4px;
+}
+
+/* disease-research (e.g. /resources/disease-research/leukemia-and-lymphoma):
+   one long 1170px column of text, strip banners, callout tiles and an accordion */
+.disease-research main .default-content-wrapper h3 {
+  margin: 25px 0;
+  color: #4d4d4d;
+  font-family: var(--body-font-family);
+  font-size: 25px;
+  font-weight: 300;
+  line-height: 1.1;
+}
+
+.disease-research main .default-content-wrapper ol {
+  margin: 0 0 10px;
+  padding-left: 40px;
+  line-height: 26.4px;
+}
+
+.disease-research main .default-content-wrapper sup {
+  position: relative;
+  top: -0.5em;
+  font-size: 12px;
+  line-height: 0;
+  vertical-align: baseline;
+}
+
+/* diagrams: bordered, full column width, 20px below each */
+.disease-research main .default-content-wrapper p:has(> picture) {
+  margin: 0 0 20px;
+  line-height: 0;
+}
+
+.disease-research main .default-content-wrapper picture img,
+.disease-research main .columns .columns-img-col img {
+  box-sizing: border-box;
+  width: 100%;
+  height: auto;
+  border: 1px solid #ced2d4;
+}
+
+/* callout tiles: 32px above, the last row's 24px tile margin below */
+.disease-research main > .section:not(.split) > .cards-grid-wrapper {
+  margin-top: 32px;
+  padding-bottom: 24px;
+}
+
+/* two columns (text | infographic): 30px gutter, tops aligned */
+@media (width >= 900px) {
+  .disease-research main .columns:not(.jumplinks) > div {
+    align-items: flex-start;
+    gap: 30px;
+  }
 }
 
 /* "Course Catalog" heading sits right under the training methods (margin-top: 0) */

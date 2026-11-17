@@ -47,7 +47,7 @@
           "valueType": "boolean",
           "name": "breadcrumbs",
           "label": "Show Breadcrumbs",
-          "description": "Shows a Home > … breadcrumb trail built from the page URL"
+          "description": "Shows a Home > \u2026 breadcrumb trail built from the page URL"
         },
         {
           "component": "select",
@@ -91,6 +91,10 @@
             {
               "name": "Search",
               "value": "search"
+            },
+            {
+              "name": "Disease Research",
+              "value": "disease-research"
             }
           ]
         },

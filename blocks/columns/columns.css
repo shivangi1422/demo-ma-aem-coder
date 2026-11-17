@@ -134,3 +134,52 @@
   height: 100%;
   border: 0;
 }
+
+/* Jump links (disease-research pages): a bar of in-page links between grey
+   rules. It scrolls with the page (not sticky). Shown from 768px; the source
+   hides it on phones. */
+.columns-wrapper:has(> .columns.jumplinks) {
+  display: none;
+}
+
+@media (width >= 768px) {
+  .columns-wrapper:has(> .columns.jumplinks) {
+    display: block;
+  }
+
+  .columns.jumplinks {
+    margin: 5px 0;
+    border-top: 1px solid #7d868c;
+    border-bottom: 1px solid #7d868c;
+    background-color: #fff;
+  }
+
+  .columns.jumplinks > div {
+    flex-flow: row nowrap;
+    align-items: stretch;
+    justify-content: center;
+    gap: 0;
+  }
+
+  .columns.jumplinks > div > div {
+    flex: 0 1 auto;
+    order: unset;
+    padding: 20px;
+  }
+
+  .columns.jumplinks p {
+    margin: 0;
+  }
+
+  .columns.jumplinks a:any-link {
+    color: #007acb;
+    font-size: 16px;
+    line-height: 26.4px;
+    text-decoration: none;
+  }
+
+  .columns.jumplinks a:any-link:hover,
+  .columns.jumplinks a:any-link:focus-visible {
+    text-decoration: underline;
+  }
+}

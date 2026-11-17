@@ -258,6 +258,50 @@ function buildThumbList(cardRows) {
 }
 
 /**
+ * Callouts: bordered tiles with a contained image, a centered light title and
+ * text; the title link is stretched over the whole tile in CSS (the tile is
+ * clickable while the link keeps the title as its accessible name). Below 768px
+ * the source shows the title only.
+ * @param {Element[]} cardRows
+ * @returns {Element}
+ */
+function buildCallouts(cardRows) {
+  const ul = document.createElement('ul');
+  cardRows.forEach((row) => {
+    const li = document.createElement('li');
+    moveInstrumentation(row, li);
+    const { imgCell, textCell } = splitCells(row);
+
+    const picture = pictureFrom(imgCell, '750');
+    if (picture) {
+      const img = picture.querySelector('img') || picture;
+      img.loading = 'lazy';
+      const media = document.createElement('div');
+      media.className = 'cards-grid-image';
+      moveInstrumentation(imgCell, media);
+      media.append(picture);
+      li.append(media);
+    }
+
+    if (textCell) {
+      const body = document.createElement('div');
+      body.className = 'cards-grid-body';
+      moveInstrumentation(textCell, body);
+      while (textCell.firstChild) body.append(textCell.firstChild);
+      const heading = body.querySelector('h2, h3, h4, h5, h6');
+      const link = (heading && heading.querySelector('a[href]')) || body.querySelector('a[href]');
+      if (link) {
+        link.classList.add('cards-grid-link');
+        li.classList.add('cards-grid-linked');
+      }
+      li.append(body);
+    }
+    ul.append(li);
+  });
+  return ul;
+}
+
+/**
  * Related: horizontal product carousel (source: "Related ... Products" on product
  * pages). Cards scroll in a snap container; previous/next buttons move by one
  * card and are disabled at the ends. Image, title and text link to the product.
@@ -345,6 +389,7 @@ function buildRelated(cardRows) {
  *   - .cards-grid.buttons      red link tiles with a white icon
  *   - .cards-grid.related      horizontal product carousel with previous/next buttons
  *   - .cards-grid.thumblist    2-up: 90px thumb left of uppercase title + text, whole tile links
+ *   - .cards-grid.callouts     3-up bordered tiles: image, centered title, text; tile links
  * Authored structure: row 0 = heading/intro, rows 1..N = one card each.
  * @param {Element} block
  */
@@ -366,6 +411,7 @@ export default function decorate(block) {
     buttons: buildButtons,
     related: buildRelated,
     thumblist: buildThumbList,
+    callouts: buildCallouts,
   };
   const style = Object.keys(builders).find((cls) => block.classList.contains(cls));
   if (style) {

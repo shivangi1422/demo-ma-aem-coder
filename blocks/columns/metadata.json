@@ -33,9 +33,10 @@
       "/service",
       "/service/plans",
       "/service/plans/centrifuge",
-      "/service/tech-support/repairs"
+      "/service/tech-support/repairs",
+      "/resources/disease-research/leukemia-and-lymphoma"
     ],
-    "reuseCount": 4,
+    "reuseCount": 5,
     "lastUsed": "2026-11-16"
   },
   "reuseGuidance": "Use for a fixed set of 2-3 different content pieces side by side that do not repeat as a list. Use Style cta for contact/action buttons over short text. For repeating look-alike items use cards-grid."

@@ -93,6 +93,10 @@
             {
               "name": "Thumb List (2-up: 90px square thumbnail left of uppercase title and text)",
               "value": "thumblist"
+            },
+            {
+              "name": "Callouts (3-up bordered linked tiles: image, centered title, text)",
+              "value": "callouts"
             }
           ]
         }
